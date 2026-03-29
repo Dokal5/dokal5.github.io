@@ -118,6 +118,70 @@
     color: rgba(13, 13, 13, 0.7);
   }
 
+  .causality-map {
+    margin-top: 24px;
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .causality-map h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .causality-map p,
+  .causality-map li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .causality-grid {
+    display: grid;
+    grid-template-columns: 1fr 68px 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-top: 20px;
+  }
+
+  .p-column,
+  .pnl-column {
+    display: grid;
+    gap: 12px;
+  }
+
+  .causal-item {
+    border: 1px solid rgba(13, 13, 13, 0.1);
+    background: rgba(13, 13, 13, 0.02);
+    padding: 12px 14px;
+  }
+
+  .causal-item strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: var(--amber);
+  }
+
+  .causal-links {
+    display: grid;
+    gap: 12px;
+    margin-top: 31px;
+  }
+
+  .causal-link {
+    text-align: center;
+    font-family: "DM Mono", monospace;
+    color: rgba(13, 13, 13, 0.45);
+    font-size: 11px;
+  }
+
+
   .flow {
     display: grid;
     gap: 12px;
@@ -179,6 +243,28 @@
     border-color: rgba(255, 255, 255, 0.12);
   }
 
+  .impact-stream {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .impact-pill {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 6px 10px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.84);
+  }
+
+  .impact-pill b {
+    color: var(--cream);
+    margin-left: 6px;
+    letter-spacing: 0.04em;
+  }
+
   .pnl-metrics {
     margin-top: 20px;
   }
@@ -199,6 +285,18 @@
     font-size: 18px;
     letter-spacing: 0;
     text-transform: none;
+  }
+
+  .metric-card.positive {
+    border-color: color-mix(in srgb, #7bbf6a 70%, white);
+  }
+
+  .metric-card.negative {
+    border-color: color-mix(in srgb, #d26f60 70%, white);
+  }
+
+  .metric-card.neutral {
+    border-color: rgba(255, 255, 255, 0.25);
   }
 
   .decision-list,
@@ -241,6 +339,15 @@
     .interactive-grid,
     .alignment-grid {
       grid-template-columns: 1fr;
+    }
+
+    .causality-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .causal-links {
+      margin-top: 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .flow-row {
@@ -319,6 +426,31 @@
         </p>
       </div>
     </div>
+
+    <div class="causality-map">
+      <h3>4Ps -> income statement causality map</h3>
+      <p>Each P changes one or more P&amp;L lines. The goal is not isolated optimization by P, but coherent choices that improve both demand and economics.</p>
+      <div class="causality-grid">
+        <div class="p-column">
+          <div class="causal-item"><strong>Product</strong>Value proposition quality, feature cost, and service design change willingness-to-pay and gross profit per customer.</div>
+          <div class="causal-item"><strong>Price</strong>Price level and discount architecture directly affect realized revenue, gross margin, and profit conversion.</div>
+          <div class="causal-item"><strong>Place</strong>Channel choice changes reach, commission structure, return rates, and selling cost intensity.</div>
+          <div class="causal-item"><strong>Promotion</strong>Media mix and retention programs affect acquisition volume, CAC, repeat rate, and operating leverage.</div>
+        </div>
+        <div class="causal-links" aria-hidden="true">
+          <div class="causal-link">-&gt;</div>
+          <div class="causal-link">-&gt;</div>
+          <div class="causal-link">-&gt;</div>
+          <div class="causal-link">-&gt;</div>
+        </div>
+        <div class="pnl-column">
+          <div class="causal-item"><strong>Revenue</strong>Volume x realized price x mix x repeat behavior.</div>
+          <div class="causal-item"><strong>Gross margin</strong>Price discipline minus product and channel cost-to-serve.</div>
+          <div class="causal-item"><strong>Selling costs</strong>Acquisition spend, incentives, commissions, and retention cost.</div>
+          <div class="causal-item"><strong>Operating profit</strong>Revenue quality + margin quality - cost to win and keep demand.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -342,11 +474,15 @@
         <div class="mini-label">Decision profile</div>
         <h3 id="decision-title">Heavy discounting</h3>
         <p id="decision-copy">Discounting can raise short-term volume quickly, but it often compresses gross margin and can make future full-price selling harder.</p>
+        <div class="impact-stream" id="impact-stream">
+          <div class="impact-pill">Primary P <b id="primary-p">Price</b></div>
+          <div class="impact-pill">Causal path <b id="causal-path">Price -&gt; Revenue / Margin -&gt; Profit</b></div>
+        </div>
         <div class="pnl-metrics">
-          <div class="metric-card"><strong>Revenue</strong><span id="revenue-impact">Up</span></div>
-          <div class="metric-card"><strong>Gross margin</strong><span id="margin-impact">Down</span></div>
-          <div class="metric-card"><strong>Selling cost</strong><span id="cost-impact">Up</span></div>
-          <div class="metric-card"><strong>Operating profit</strong><span id="profit-impact">Mixed</span></div>
+          <div class="metric-card" id="revenue-card"><strong>Revenue</strong><span id="revenue-impact">Up</span></div>
+          <div class="metric-card" id="margin-card"><strong>Gross margin</strong><span id="margin-impact">Down</span></div>
+          <div class="metric-card" id="cost-card"><strong>Selling cost</strong><span id="cost-impact">Up</span></div>
+          <div class="metric-card" id="profit-card"><strong>Operating profit</strong><span id="profit-impact">Mixed</span></div>
         </div>
       </div>
 
@@ -407,10 +543,18 @@
     discount: {
       title: "Heavy discounting",
       copy: "Discounting can raise short-term volume quickly, but it often compresses gross margin and can make future full-price selling harder.",
+      primaryP: "Price",
+      causalPath: "Price -> Revenue / Margin -> Profit",
       revenue: "Up",
       margin: "Down",
       cost: "Up",
       profit: "Mixed",
+      metricClass: {
+        revenue: "positive",
+        margin: "negative",
+        cost: "negative",
+        profit: "neutral"
+      },
       financeTitle: "Volume improves faster than profit quality",
       financeCopy: "This is often attractive when the business needs traffic or short-term movement, but it can weaken economics if discounting becomes the main route to demand.",
       list: [
@@ -424,10 +568,18 @@
     premium: {
       title: "Premium positioning",
       copy: "A stronger premium position can reduce price pressure and improve margin, but it usually requires better proof, better delivery, and more credible brand meaning.",
+      primaryP: "Product + Price",
+      causalPath: "Product/Price -> Margin quality -> Profit",
       revenue: "Selective up",
       margin: "Up",
       cost: "Up",
       profit: "Potentially up",
+      metricClass: {
+        revenue: "neutral",
+        margin: "positive",
+        cost: "negative",
+        profit: "positive"
+      },
       financeTitle: "Revenue quality improves if the promise is credible",
       financeCopy: "Premium logic can produce a healthier P&L when the firm truly supports it through product, channel, and message consistency.",
       list: [
@@ -441,10 +593,18 @@
     marketplace: {
       title: "Marketplace growth",
       copy: "Marketplace channels can add fast demand and reach, but they often reshape the P&L through commissions, comparison pressure, and weaker pricing control.",
+      primaryP: "Place",
+      causalPath: "Place -> Reach/commission -> Margin & Profit",
       revenue: "Up",
       margin: "Down",
       cost: "Mixed",
       profit: "Depends",
+      metricClass: {
+        revenue: "positive",
+        margin: "negative",
+        cost: "neutral",
+        profit: "neutral"
+      },
       financeTitle: "Reach expands, but control and margin may weaken",
       financeCopy: "This route can improve top-line growth while reducing the economic quality of each sale if the business becomes too dependent on the platform.",
       list: [
@@ -458,10 +618,18 @@
     retention: {
       title: "Retention improvement",
       copy: "Better onboarding, service, and repeat behavior often improve the P&L more quietly but more powerfully than headline acquisition spikes.",
+      primaryP: "Promotion (Retention)",
+      causalPath: "Promotion -> Repeat rate/CAC efficiency -> Profit",
       revenue: "Up over time",
       margin: "Up",
       cost: "More efficient",
       profit: "Up",
+      metricClass: {
+        revenue: "positive",
+        margin: "positive",
+        cost: "positive",
+        profit: "positive"
+      },
       financeTitle: "Retention improves both demand quality and economic efficiency",
       financeCopy: "When customers stay longer, the business earns more from each acquired customer and can support healthier acquisition economics.",
       list: [
@@ -481,10 +649,21 @@
   const marginImpact = document.getElementById("margin-impact");
   const costImpact = document.getElementById("cost-impact");
   const profitImpact = document.getElementById("profit-impact");
+  const primaryP = document.getElementById("primary-p");
+  const causalPath = document.getElementById("causal-path");
+  const revenueCard = document.getElementById("revenue-card");
+  const marginCard = document.getElementById("margin-card");
+  const costCard = document.getElementById("cost-card");
+  const profitCard = document.getElementById("profit-card");
   const financeTitle = document.getElementById("finance-title");
   const financeCopy = document.getElementById("finance-copy");
   const decisionList = document.getElementById("decision-list");
   const takeawayLine = document.getElementById("takeaway-line");
+
+  function setMetricClass(node, statusClass) {
+    node.classList.remove("positive", "negative", "neutral");
+    node.classList.add(statusClass);
+  }
 
   function renderDecision(key) {
     const data = decisionData[key];
@@ -492,10 +671,16 @@
     decisionButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
     decisionTitle.textContent = data.title;
     decisionCopy.textContent = data.copy;
+    primaryP.textContent = data.primaryP;
+    causalPath.textContent = data.causalPath;
     revenueImpact.textContent = data.revenue;
     marginImpact.textContent = data.margin;
     costImpact.textContent = data.cost;
     profitImpact.textContent = data.profit;
+    setMetricClass(revenueCard, data.metricClass.revenue);
+    setMetricClass(marginCard, data.metricClass.margin);
+    setMetricClass(costCard, data.metricClass.cost);
+    setMetricClass(profitCard, data.metricClass.profit);
     financeTitle.textContent = data.financeTitle;
     financeCopy.textContent = data.financeCopy;
     decisionList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
@@ -505,6 +690,8 @@
   decisionButtons.forEach((button) => {
     button.addEventListener("click", () => renderDecision(button.dataset.key));
   });
+
+  renderDecision("discount");
 </script>
 
 </body>
