@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Does Real Advantage Come From? | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+
+<style>
+  .section {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* JOBS GRID */
+  .jobs-band {
+    background: var(--ink);
+    padding: 80px;
+  }
+
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .job-card {
+    background: var(--ink);
+    padding: 36px 28px;
+    position: relative;
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .job-card:hover {
+    background: #181818;
+  }
+
+  .job-num {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: rgba(200,135,43,0.4);
+    margin-bottom: 20px;
+  }
+
+  .job-product {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--amber);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .job-arrow {
+    font-size: 18px;
+    color: rgba(255,255,255,0.15);
+    margin: 12px 0;
+  }
+
+  .job-outcome {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(245,240,232,0.85);
+    font-style: italic;
+  }
+
+  /* VALUE TYPES */
+  .value-section {
+    padding: 100px 80px;
+    background: var(--pale);
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1240px;
+    margin: 0 auto;
+    background: rgba(13,13,13,0.08);
+  }
+
+  .value-card {
+    background: var(--pale);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(13,13,13,0.1);
+    z-index: 2;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .value-card.functional::before { background: var(--slate); }
+  .value-card.economic::before { background: var(--sage); }
+  .value-card.psychological::before { background: var(--rust); }
+  .value-card.social::before { background: var(--amber); }
+  .value-card.systemic::before { background: var(--ink); }
+  .value-card.risk::before { background: #7a5a8a; }
+
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .functional .value-icon { background: rgba(58,74,92,0.1); }
+  .economic .value-icon { background: rgba(74,103,65,0.1); }
+  .psychological .value-icon { background: rgba(139,58,42,0.1); }
+  .social .value-icon { background: rgba(200,135,43,0.1); }
+  .systemic .value-icon { background: rgba(13,13,13,0.08); }
+  .risk .value-icon { background: rgba(122,90,138,0.1); }
+
+  .value-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .functional .value-label { color: var(--slate); }
+  .economic .value-label { color: var(--sage); }
+  .psychological .value-label { color: var(--rust); }
+  .social .value-label { color: var(--amber); }
+  .systemic .value-label { color: var(--ink); }
+  .risk .value-label { color: #7a5a8a; }
+
+  .value-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .value-desc {
+    font-size: 12px;
+    line-height: 1.85;
+    color: rgba(13,13,13,0.6);
+    margin-bottom: 20px;
+  }
+
+  .value-bullets {
+    list-style: none;
+    font-size: 11px;
+    color: rgba(13,13,13,0.55);
+    line-height: 1.9;
+  }
+
+  .value-bullets li::before {
+    content: '→ ';
+    opacity: 0.5;
+  }
+
+  /* THREE LAYERS */
+  .layers-section {
+    background: var(--ink);
+    padding: 100px 80px;
+  }
+
+  .layers-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .layer {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .layer:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 39px;
+    top: 80px;
+    bottom: -80px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--amber), rgba(200,135,43,0.1));
+  }
+
+  .layer + .layer {
+    margin-top: 80px;
+  }
+
+  .layer-num-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .layer-num {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--amber);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .layer-content {
+    padding-top: 12px;
+  }
+
+  .layer-tag {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(200,135,43,0.5);
+    margin-bottom: 10px;
+  }
+
+  .layer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .layer-desc {
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .layer-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .layer-ex {
+    font-size: 10px;
+    padding: 5px 12px;
+    border: 1px solid rgba(200,135,43,0.25);
+    color: rgba(200,135,43,0.7);
+    letter-spacing: 0.05em;
+  }
+
+  /* KEY DISTINCTION */
+  .distinction {
+    padding: 100px 80px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .distinction::before {
+    content: 'VALUE ≠ ADVANTAGE';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(13,13,13,0.03);
+    white-space: nowrap;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .distinction-grid {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .dist-box {
+    padding: 48px 40px;
+    position: relative;
+  }
+
+  .dist-box.value-box {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .dist-box.adv-box {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .dist-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: rgba(13,13,13,0.2);
+  }
+
+  .dist-tag {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .dist-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .dist-desc {
+    font-size: 13px;
+    line-height: 1.85;
+    opacity: 0.75;
+  }
+
+  /* CONTEXT MATTERS */
+  .context-section {
+    background: var(--pale);
+    padding: 100px 80px;
+  }
+
+  .context-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .context-card {
+    border: 1px solid rgba(13,13,13,0.1);
+    padding: 32px;
+    position: relative;
+    background: white;
+  }
+
+  .context-attribute {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--amber);
+    font-family: 'Playfair Display', serif;
+  }
+
+  .context-row {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(13,13,13,0.06);
+  }
+
+  .context-row:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .context-for {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(13,13,13,0.35);
+    margin-bottom: 4px;
+  }
+
+  .context-result {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .context-result.positive { color: var(--sage); }
+  .context-result.negative { color: var(--rust); }
+
+  /* FORMULA BAR */
+  .formula-section {
+    background: var(--ink);
+    padding: 80px;
+    text-align: center;
+  }
+
+  .formula-title {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(200,135,43,0.5);
+    margin-bottom: 48px;
+  }
+
+  .formula-eq {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14px, 2vw, 22px);
+    color: var(--cream);
+    line-height: 2.2;
+    max-width: 900px;
+    margin: 0 auto 20px;
+  }
+
+  .formula-eq .term {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid rgba(200,135,43,0.3);
+    margin: 4px;
+    color: var(--amber-light);
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 400;
+  }
+
+  .formula-eq .op {
+    color: rgba(245,240,232,0.25);
+    padding: 0 6px;
+  }
+
+  .formula-eq .lhs {
+    color: var(--cream);
+    font-size: clamp(16px, 2.5vw, 26px);
+  }
+
+  .formula-eq .eq {
+    color: var(--amber);
+    padding: 0 16px;
+  }
+
+  .formula-adv {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .formula-adv-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,240,232,0.65);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .formula-adv-text strong {
+    color: var(--amber);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .foot-left {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  footer .foot-right {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--amber);
+    font-style: italic;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .jobs-band, .value-section, .layers-section, .distinction, .context-section, .formula-section { padding: 60px 32px; }
+    .jobs-grid { grid-template-columns: 1fr 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+    .context-grid { grid-template-columns: 1fr; }
+    .distinction-grid { grid-template-columns: 1fr; }
+    .dist-divider { display: none; }
+    .section { padding: 60px 32px; }
+    footer { padding: 24px 32px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div style="position:sticky; top:0; z-index:20; padding:18px 24px; background:rgba(245,240,232,0.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(13,13,13,0.08);">
+  <a href="../index.html" style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#8b3a2a; text-decoration:none;">← Back to Thoughts</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Strategic Framework · Competitive Advantage</div>
+    <h1 class="hero-title">Where does real <em>advantage</em> come from?</h1>
+    <p class="hero-sub">Not from the product itself. Not from competition. True competitive advantage comes from one place: delivering progress that customers care about — better, more reliably, and more profitably than anyone else.</p>
+    <div class="hero-formula">
+      <div class="label">Core thesis</div>
+      Can a company help a specific customer, in a specific context, achieve a progress they care about — and make that value felt, trusted, and repeatedly accessible?
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <p class="big-quote">Customers don't buy products. They buy <strong>progress</strong> — a better version of a situation they're already in.</p>
+  </div>
+</section>
+
+<!-- JOBS TO BE DONE -->
+<div class="jobs-band">
+  <div style="max-width:1240px; margin:0 auto 40px;">
+    <div class="section-tag" style="color:var(--amber);">01 · The Core Insight</div>
+    <h2 class="section-title" style="color:var(--cream);">They're not buying the product.</h2>
+    <p class="section-intro" style="color:rgba(245,240,232,0.5);">Every purchase is really a hire. Customers recruit products to complete a job they couldn't — or didn't want to — do alone.</p>
+  </div>
+  <div class="jobs-grid">
+    <div class="job-card">
+      <div class="job-num">01</div>
+      <div class="job-product">A drill</div>
+      <div class="job-arrow">↓</div>
+      <div class="job-outcome">A way to hang that painting I've been putting off</div>
+    </div>
+    <div class="job-card">
+      <div class="job-num">02</div>
+      <div class="job-product">An ERP system</div>
+      <div class="job-arrow">↓</div>
+      <div class="job-outcome">Control over a company that feels like it's outgrowing itself</div>
+    </div>
+    <div class="job-card">
+      <div class="job-num">03</div>
+      <div class="job-product">Premium coffee</div>
+      <div class="job-arrow">↓</div>
+      <div class="job-outcome">A ritual that signals: today is starting right</div>
+    </div>
+    <div class="job-card">
+      <div class="job-num">04</div>
+      <div class="job-product">A consulting report</div>
+      <div class="job-arrow">↓</div>
+      <div class="job-outcome">Confidence in a decision — and cover when presenting it upward</div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE TYPES -->
+<section class="value-section">
+  <div style="max-width:1240px; margin:0 auto 0;">
+    <div class="section-tag">02 · Six Dimensions of Progress</div>
+    <h2 class="section-title">What customers are actually buying</h2>
+    <p class="section-intro">Progress isn't one-dimensional. A customer's "job to be done" spans six distinct value layers — each one a different kind of improvement in their situation.</p>
+  </div>
+  <div class="value-grid" style="max-width:1240px; margin:0 auto;">
+    <div class="value-card functional">
+      <div class="value-icon">⚙</div>
+      <div class="value-label">Functional Value</div>
+      <div class="value-title">Gets the task done better</div>
+      <div class="value-desc">The most visible dimension. Does this make things faster, more accurate, more reliable, or easier to execute?</div>
+      <ul class="value-bullets">
+        <li>Faster outcomes</li>
+        <li>Higher success rate</li>
+        <li>Less effort required</li>
+        <li>More precision</li>
+      </ul>
+    </div>
+    <div class="value-card economic">
+      <div class="value-icon">◈</div>
+      <div class="value-label">Economic Value</div>
+      <div class="value-title">Makes resources go further</div>
+      <div class="value-desc">Not just "cheaper" — the whole resource equation shifts. Less waste, more leverage, better returns per effort invested.</div>
+      <ul class="value-bullets">
+        <li>Lower total cost</li>
+        <li>Higher asset utilization</li>
+        <li>Better cash flow</li>
+        <li>Increased revenue potential</li>
+      </ul>
+    </div>
+    <div class="value-card risk">
+      <div class="value-icon">◉</div>
+      <div class="value-label">Risk Value</div>
+      <div class="value-title">Reduces exposure to failure</div>
+      <div class="value-desc">Customers don't just want outcomes — they want to avoid bad ones. Reducing uncertainty is itself a form of progress.</div>
+      <ul class="value-bullets">
+        <li>Lower decision risk</li>
+        <li>Fewer failure modes</li>
+        <li>More predictability</li>
+        <li>Downside protection</li>
+      </ul>
+    </div>
+    <div class="value-card psychological">
+      <div class="value-icon">◇</div>
+      <div class="value-label">Psychological Value</div>
+      <div class="value-title">Puts the mind at rest</div>
+      <div class="value-desc">The most underestimated dimension. People aren't purely rational. Feeling confident, calm, and in control is real value.</div>
+      <ul class="value-bullets">
+        <li>Reduced anxiety</li>
+        <li>Sense of control</li>
+        <li>Feeling understood</li>
+        <li>"I made the right call"</li>
+      </ul>
+    </div>
+    <div class="value-card social">
+      <div class="value-icon">◯</div>
+      <div class="value-label">Identity & Social Value</div>
+      <div class="value-title">Signals who you are</div>
+      <div class="value-desc">Purchases are statements. People buy belonging, status, and self-expression — not just utility. <em>Some brands don't solve problems. They confirm identities.</em></div>
+      <ul class="value-bullets">
+        <li>Status & prestige</li>
+        <li>Group belonging</li>
+        <li>Values alignment</li>
+        <li>Professional image</li>
+      </ul>
+    </div>
+    <div class="value-card systemic">
+      <div class="value-icon">▣</div>
+      <div class="value-label">Systemic Value</div>
+      <div class="value-title">Makes the whole machine run smoother</div>
+      <div class="value-desc">Especially powerful in B2B. The value isn't one feature — it's reduced organizational friction across teams, processes, and scale.</div>
+      <ul class="value-bullets">
+        <li>Easier to standardize</li>
+        <li>Simpler to train on</li>
+        <li>Scales without breaking</li>
+        <li>Cross-team coordination</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- THREE LAYERS ANALYSIS -->
+<section class="layers-section">
+  <div class="layers-container">
+    <div class="section-tag" style="color:var(--amber); margin-bottom:16px;">03 · The Analysis Framework</div>
+    <h2 class="section-title" style="color:var(--cream); margin-bottom:16px;">Three layers to diagnose any company</h2>
+    <p class="section-intro" style="color:rgba(245,240,232,0.45); margin-bottom:72px;">Apply this sequence to any business — including your own — and competitive logic becomes much clearer.</p>
+
+    <div class="layer">
+      <div class="layer-num-wrap">
+        <div class="layer-num">I</div>
+      </div>
+      <div class="layer-content">
+        <div class="layer-tag">Start here</div>
+        <div class="layer-title">What progress is the customer trying to make?</div>
+        <div class="layer-desc">The real job. Not what they say they want — what situation are they trying to get out of, or into? This is your anchor point for everything else.</div>
+        <div class="layer-examples">
+          <span class="layer-ex">Reach a result faster</span>
+          <span class="layer-ex">Reduce failure risk</span>
+          <span class="layer-ex">Feel professionally credible</span>
+          <span class="layer-ex">Regain a sense of order</span>
+          <span class="layer-ex">Make better decisions with less effort</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-num-wrap">
+        <div class="layer-num">II</div>
+      </div>
+      <div class="layer-content">
+        <div class="layer-tag">Then classify</div>
+        <div class="layer-title">Which value dimension does that progress belong to?</div>
+        <div class="layer-desc">Map the job onto the six value types: Functional, Economic, Risk, Psychological, Identity, Systemic. This tells you what kind of proof customers need, and what competitors can steal.</div>
+        <div class="layer-examples">
+          <span class="layer-ex">Functional</span>
+          <span class="layer-ex">Economic</span>
+          <span class="layer-ex">Risk</span>
+          <span class="layer-ex">Psychological</span>
+          <span class="layer-ex">Identity</span>
+          <span class="layer-ex">Systemic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-num-wrap">
+        <div class="layer-num">III</div>
+      </div>
+      <div class="layer-content">
+        <div class="layer-tag">Only now ask</div>
+        <div class="layer-title">What capability lets this company deliver that value better than anyone else?</div>
+        <div class="layer-desc">This is where competitive advantage lives — not in value itself, but in the structural ability to produce it more consistently, at lower cost, and in ways that are hard to copy.</div>
+        <div class="layer-examples">
+          <span class="layer-ex">Technology</span>
+          <span class="layer-ex">Brand trust</span>
+          <span class="layer-ex">Network effects</span>
+          <span class="layer-ex">Data moat</span>
+          <span class="layer-ex">Process efficiency</span>
+          <span class="layer-ex">Distribution reach</span>
+          <span class="layer-ex">Organizational speed</span>
+          <span class="layer-ex">Customer relationships</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY DISTINCTION -->
+<section class="distinction">
+  <div style="max-width:1240px; margin:0 auto 56px;">
+    <div class="section-tag">04 · The Critical Distinction</div>
+    <h2 class="section-title">Value and advantage are not the same thing</h2>
+    <p class="section-intro">Most people confuse these. Separating them is the most clarifying move in competitive strategy.</p>
+  </div>
+
+  <div class="distinction-grid">
+    <div class="dist-box value-box">
+      <div class="dist-tag">Value is about</div>
+      <div class="dist-title">Customer outcomes</div>
+      <div class="dist-desc">The result the customer experiences. The progress they feel. The job that gets done. Value is a relationship between product and customer context — it's subjective, situational, and always perceived from the outside.</div>
+    </div>
+    <div class="dist-divider">≠</div>
+    <div class="dist-box adv-box">
+      <div class="dist-tag">Advantage is about</div>
+      <div class="dist-title">Competitive position</div>
+      <div class="dist-desc">Your structural ability to deliver that value more consistently, more cheaply, or in ways harder to replicate. Advantage is internal — it lives in capabilities, not in customer perceptions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT MATTERS -->
+<section class="context-section">
+  <div style="max-width:1240px; margin: 0 auto 64px;">
+    <div class="section-tag">05 · The Precision Principle</div>
+    <h2 class="section-title">Value is never universal</h2>
+    <p class="section-intro">The same attribute can be a strength or a weakness depending on who's evaluating it and in what situation. There's no "generally valuable" — only "valuable for this customer, in this context."</p>
+  </div>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <div class="context-attribute">"Low price"</div>
+      <div class="context-row">
+        <div class="context-for">For cost-sensitive buyers</div>
+        <div class="context-result positive">→ Strong value signal</div>
+      </div>
+      <div class="context-row">
+        <div class="context-for">For prestige-seeking buyers</div>
+        <div class="context-result negative">→ Destroys perceived quality</div>
+      </div>
+    </div>
+    <div class="context-card">
+      <div class="context-attribute">"Fast delivery"</div>
+      <div class="context-row">
+        <div class="context-for">For urgent, reactive needs</div>
+        <div class="context-result positive">→ Core differentiator</div>
+      </div>
+      <div class="context-row">
+        <div class="context-for">For careful, deliberate buyers</div>
+        <div class="context-result negative">→ May signal cutting corners</div>
+      </div>
+    </div>
+    <div class="context-card">
+      <div class="context-attribute">"Premium quality"</div>
+      <div class="context-row">
+        <div class="context-for">For performance-focused segments</div>
+        <div class="context-result positive">→ Worth paying more for</div>
+      </div>
+      <div class="context-row">
+        <div class="context-for">For pragmatic, "good enough" buyers</div>
+        <div class="context-result negative">→ Over-engineering nobody asked for</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:700px; margin:48px auto 0; text-align:center;">
+    <p style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; font-style:italic; color:rgba(13,13,13,0.6); line-height:1.8;">
+      The goal is not to find a universal value list — it's to find <strong style="font-weight:600; font-style:normal; color:var(--ink);">which value, for which customer, in which context</strong>, is decisive.
+    </p>
+  </div>
+</section>
+
+<!-- FINAL FORMULA -->
+<section class="formula-section">
+  <div class="formula-title">The complete model</div>
+
+  <div class="formula-eq">
+    <span class="lhs">Customer Progress</span>
+    <span class="eq">=</span>
+    <span class="term">Functional improvement</span>
+    <span class="op">+</span>
+    <span class="term">Economic improvement</span>
+    <span class="op">+</span>
+    <span class="term">Risk reduction</span>
+    <span class="op">+</span>
+    <span class="term">Psychological stability</span>
+    <span class="op">+</span>
+    <span class="term">Identity confirmation</span>
+    <span class="op">+</span>
+    <span class="term">Systemic fluidity</span>
+  </div>
+
+  <div class="formula-adv">
+    <div class="formula-adv-text">
+      <strong>Competitive Advantage</strong> = the ability to deliver the above <strong>more consistently, at greater scale, more profitably</strong> — and in ways your competitors cannot easily replicate.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-left">Where Does Real Advantage Come From?</div>
+  <div class="foot-right">Value is for the customer. Advantage is against the competition.</div>
+</footer>
+
+</body>
+</html>

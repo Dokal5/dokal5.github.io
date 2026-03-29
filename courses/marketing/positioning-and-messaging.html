@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Target Segment to Positioning to Messaging | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --seg-students: #5271b8;
+    --seg-professionals: #4e8b6b;
+    --seg-premium: #b66155;
+    --panel-line: rgba(13, 13, 13, 0.1);
+    --panel-soft: rgba(255, 255, 255, 0.42);
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .hero-pill {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+    padding: 6px 10px;
+  }
+
+  .logic-section,
+  .workshop-section {
+    padding: 100px 80px;
+  }
+
+  .foundation-section {
+    padding: 100px 80px;
+    background: var(--pale);
+  }
+
+  .foundation-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .foundation-card,
+  .mix-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .mix-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .foundation-card p,
+  .mix-card p,
+  .mix-list li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .value-chain {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .value-chain-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 18px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .value-chain-row strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .value-chain-row span {
+    display: block;
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+    font-family: inherit;
+  }
+
+  .mix-list {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  .logic-shell,
+  .workshop-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .logic-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(13, 13, 13, 0.08);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    margin-top: 36px;
+  }
+
+  .logic-card {
+    background: white;
+    padding: 30px 28px;
+    position: relative;
+  }
+
+  .logic-step {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+
+  .logic-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .logic-card p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.66);
+  }
+
+  .logic-arrow {
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    z-index: 2;
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    padding: 96px 80px;
+    color: var(--cream);
+  }
+
+  .interactive-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro {
+    color: rgba(245, 240, 232, 0.68);
+  }
+
+  .segment-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .segment-btn {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.72);
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .segment-btn:hover,
+  .segment-btn.active {
+    transform: translateY(-1px);
+    border-color: var(--active-segment, var(--amber));
+    background: color-mix(in srgb, var(--active-segment, var(--amber)) 12%, transparent);
+    color: var(--cream);
+  }
+
+  .positioning-stage {
+    display: grid;
+    grid-template-columns: 280px 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .segment-profile,
+  .position-card,
+  .message-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 30px 28px;
+  }
+
+  .panel-kicker {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+
+  .segment-name,
+  .position-title,
+  .message-headline {
+    font-family: "Playfair Display", serif;
+    line-height: 1.15;
+  }
+
+  .segment-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .segment-copy,
+  .position-copy,
+  .message-support,
+  .message-proof,
+  .misfit-copy {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(245, 240, 232, 0.74);
+  }
+
+  .segment-needs {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .segment-needs span {
+    font-size: 11px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(245, 240, 232, 0.74);
+  }
+
+  .position-card,
+  .message-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .position-card::before,
+  .message-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--active-segment, var(--amber));
+  }
+
+  .position-title {
+    font-size: 36px;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+
+  .position-points {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .point-row {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .point-row strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .point-row span {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245, 240, 232, 0.82);
+  }
+
+  .message-headline {
+    font-size: 34px;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+
+  .message-block {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .message-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .message-tone {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .message-tone span {
+    font-size: 11px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .animated-panel {
+    transition: opacity 320ms ease, transform 320ms ease;
+  }
+
+  .animated-panel.is-swapping {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .misalignment-section {
+    padding: 96px 80px;
+    background: linear-gradient(180deg, var(--pale) 0%, var(--cream) 100%);
+  }
+
+  .misalignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .misfit-toggle {
+    display: flex;
+    gap: 8px;
+    margin: 28px 0 30px;
+  }
+
+  .misfit-toggle button {
+    border: 1px solid var(--panel-line);
+    background: transparent;
+    color: var(--ink);
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    cursor: pointer;
+  }
+
+  .misfit-toggle button.active {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .misfit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .misfit-card {
+    border: 1px solid var(--panel-line);
+    background: var(--panel-soft);
+    padding: 28px 26px;
+    transition: transform 240ms ease, border-color 240ms ease, opacity 240ms ease;
+  }
+
+  .misfit-card.good {
+    border-top: 3px solid var(--sage);
+  }
+
+  .misfit-card.bad {
+    border-top: 3px solid var(--rust);
+  }
+
+  .misfit-card.is-muted {
+    opacity: 0.45;
+    transform: scale(0.98);
+  }
+
+  .misfit-card.is-hidden {
+    display: none;
+  }
+
+  .misfit-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .misfit-card .misfit-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .misfit-card.good .misfit-label {
+    color: var(--sage);
+  }
+
+  .misfit-card.bad .misfit-label {
+    color: var(--rust);
+  }
+
+  .misfit-card strong {
+    color: var(--ink);
+  }
+
+  .misfit-example {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: grid;
+    gap: 14px;
+  }
+
+  .misfit-example-row strong,
+  .misfit-reaction strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .misfit-example-row span,
+  .misfit-reaction span {
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .misfit-reaction {
+    margin-top: 6px;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.72);
+    border-left: 3px solid currentColor;
+  }
+
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(13, 13, 13, 0.08);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    margin-top: 32px;
+  }
+
+  .worksheet-card {
+    background: white;
+    padding: 28px 24px;
+  }
+
+  .worksheet-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .worksheet-step {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .worksheet-list {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  .worksheet-copy,
+  .worksheet-list li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.74);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .logic-section,
+    .interactive-band,
+    .misalignment-section,
+    .workshop-section {
+      padding: 60px 32px;
+    }
+
+    .foundation-grid,
+    .logic-flow,
+    .positioning-stage,
+    .misfit-grid,
+    .workshop-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .logic-arrow {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · From Target Segment to Positioning to Messaging</div>
+    <h1 class="hero-title">From <em>Target Segment</em> To Positioning To Messaging</h1>
+    <p class="hero-sub">
+      Positioning is the strategic response to the segment you choose. Messaging is how that response becomes understandable, credible, and persuasive in the market.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core Learning Chain</div>
+      Target Segment → Positioning Choice → Messaging Expression
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Interactive</div>
+      <div class="hero-pill">Animated</div>
+      <div class="hero-pill">Concept Page</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      If the target changes, the <strong>position</strong> changes.
+      If the position changes, the <strong>message</strong> must change too.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag reveal">01 · Source Of Value</div>
+    <h2 class="section-title reveal">Before position and message, we need to know what the audience is actually buying</h2>
+    <p class="section-intro reveal">
+      This page is about moving from target segment to position to message. That chain only works if we first understand the progress the audience is actually trying to make. Otherwise, the position becomes arbitrary and the message becomes empty wording.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card reveal">
+        <h3>What people are actually buying</h3>
+        <p>
+          A drill may be bought for a hole, but often what someone really wants is a finished wall, a calmer home, or the feeling that a long-postponed task is finally done. The product is only the vehicle. The purchase is really a hire for progress. That matters here because positioning should express that progress, and messaging should put it into language the audience can immediately recognize.
+        </p>
+        <div class="value-chain">
+          <div class="value-chain-row">
+            <strong>Job</strong>
+            <span>What is the person trying to get done, solve, avoid, or become?</span>
+          </div>
+          <div class="value-chain-row">
+            <strong>Value</strong>
+            <span>What kind of improvement matters most here: functional, economic, psychological, social, systemic, or risk reduction?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mix-card reveal">
+        <h3>Why the marketing mix matters here</h3>
+        <p>
+          The logic is simple: positioning should guide the marketing mix, and message is one part of that mix.
+        </p>
+        <p>
+          In other words, message does not decide the whole marketing mix by itself. Instead, the chosen position should shape product, price, place, and promotion, and the message should express that same position in words.
+        </p>
+        <ul class="mix-list">
+          <li><strong>Product</strong>: makes the promised value real in use</li>
+          <li><strong>Price</strong>: signals what that value is worth</li>
+          <li><strong>Place</strong>: makes that value accessible in the right context</li>
+          <li><strong>Promotion</strong>: explains the value in language the audience can recognize</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logic-section">
+  <div class="logic-shell">
+    <div class="section-tag reveal">02 · Core Logic</div>
+    <h2 class="section-title reveal">The relationship to keep in view</h2>
+    <p class="section-intro reveal">
+      Positioning and messaging make sense only after the firm chooses who it wants to prioritize. This works best as a chain of decisions, not as a collection of disconnected labels.
+    </p>
+
+    <div class="logic-flow">
+      <div class="logic-card reveal">
+        <div class="logic-step">Step 1</div>
+        <h3>Segmentation</h3>
+        <p>Recognize that the market is made of different groups with different priorities, contexts, and expectations.</p>
+        <div class="logic-arrow">→</div>
+      </div>
+      <div class="logic-card reveal">
+        <div class="logic-step">Step 2</div>
+        <h3>Targeting</h3>
+        <p>Choose which segment matters most and deserves the strongest strategic attention.</p>
+        <div class="logic-arrow">→</div>
+      </div>
+      <div class="logic-card reveal">
+        <div class="logic-step">Step 3</div>
+        <h3>Positioning</h3>
+        <p>Decide what the offering should mean to that chosen segment and which difference should matter.</p>
+        <div class="logic-arrow">→</div>
+      </div>
+      <div class="logic-card reveal">
+        <div class="logic-step">Step 4</div>
+        <h3>Messaging</h3>
+        <p>Translate the position into language, emphasis, proof, and tone that the target can actually receive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">03 · Interactive Model</div>
+    <h2 class="section-title">Choose a target and watch the position change</h2>
+    <p class="section-intro">
+      This interaction shows how quickly the logic shifts when the audience changes. When the target changes, the position changes, and the message follows.
+    </p>
+
+    <div class="segment-selector" id="segment-selector">
+      <button class="segment-btn active" data-segment="students" style="--active-segment: var(--seg-students);">Budget-Conscious Buyers</button>
+      <button class="segment-btn" data-segment="professionals" style="--active-segment: var(--seg-professionals);">Busy Professionals</button>
+      <button class="segment-btn" data-segment="premium" style="--active-segment: var(--seg-premium);">Premium Enthusiasts</button>
+    </div>
+
+    <div class="positioning-stage" id="positioning-stage">
+      <div class="segment-profile animated-panel" id="segment-profile">
+        <div class="panel-kicker">Target Segment</div>
+        <div class="segment-name" id="segment-name">Budget-Conscious Buyers</div>
+        <p class="segment-copy" id="segment-copy">
+          Buyers with limited budgets who still want confidence that they are making a smart, practical choice.
+        </p>
+        <div class="segment-needs" id="segment-needs">
+          <span>Affordability</span>
+          <span>Clarity</span>
+          <span>Low risk</span>
+        </div>
+      </div>
+
+      <div class="position-card animated-panel" id="position-card">
+        <div class="panel-kicker">Positioning Response</div>
+        <div class="position-title" id="position-title">Smart value without unnecessary extras</div>
+        <p class="position-copy" id="position-copy">
+          The offering should be perceived as practical, financially sensible, and focused on what matters most.
+        </p>
+        <div class="position-points">
+          <div class="point-row">
+            <strong>Difference</strong>
+            <span id="position-difference">Practical value with no wasted complexity.</span>
+          </div>
+          <div class="point-row">
+            <strong>Reason To Believe</strong>
+            <span id="position-proof">Transparent pricing, essential features, and simple onboarding.</span>
+          </div>
+          <div class="point-row">
+            <strong>Desired Meaning</strong>
+            <span id="position-meaning">“This is the smart choice for me.”</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="message-card animated-panel" id="message-card">
+        <div class="panel-kicker">Messaging Expression</div>
+        <div class="message-headline" id="message-headline">Everything you need, nothing you overpay for.</div>
+        <div class="message-block">
+          <span class="message-label">Support Message</span>
+          <p class="message-support" id="message-support">
+            Built for buyers who want reliable value without paying for features they will never use.
+          </p>
+        </div>
+        <div class="message-block">
+          <span class="message-label">Proof Point</span>
+          <p class="message-proof" id="message-proof">
+            Transparent monthly pricing, easy setup, and no unnecessary premium tiers.
+          </p>
+        </div>
+        <div class="message-block">
+          <span class="message-label">Tone</span>
+          <div class="message-tone" id="message-tone">
+            <span>Practical</span>
+            <span>Clear</span>
+            <span>Reassuring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="misalignment-section">
+  <div class="misalignment-shell">
+    <div class="section-tag reveal">04 · Alignment</div>
+    <h2 class="section-title reveal">Good fit versus bad fit</h2>
+    <p class="section-intro reveal">
+      Positioning and messaging are most visible when they go wrong. The same target can receive a message that feels perfectly matched or obviously mismatched.
+    </p>
+
+    <div class="misfit-toggle reveal" id="misfit-toggle">
+      <button class="active" data-view="aligned">Aligned</button>
+      <button data-view="misaligned">Misaligned</button>
+    </div>
+
+    <div class="misfit-grid">
+      <div class="misfit-card good reveal" id="good-fit">
+        <div class="misfit-label">Aligned</div>
+        <h3>Busy professionals hear a message built for their actual day</h3>
+        <p class="misfit-copy">
+          The segment, the position, and the message are all pointing at the same pressure: people with overloaded schedules who want less friction and more reliability.
+        </p>
+        <div class="misfit-example">
+          <div class="misfit-example-row">
+            <strong>Target Segment</strong>
+            <span>Busy professionals who care about speed, reliability, and not wasting attention.</span>
+          </div>
+          <div class="misfit-example-row">
+            <strong>Positioning Choice</strong>
+            <span>This option removes friction and helps me stay effective when time is tight.</span>
+          </div>
+          <div class="misfit-example-row">
+            <strong>Message</strong>
+            <span>"Built for people who do not have time for friction. Fast onboarding, reliable performance, and support when something matters."</span>
+          </div>
+          <div class="misfit-reaction">
+            <strong>Audience Reaction</strong>
+            <span>"Yes, that is exactly my problem. I do not want more features. I want fewer delays."</span>
+          </div>
+        </div>
+      </div>
+      <div class="misfit-card bad reveal is-hidden" id="bad-fit">
+        <div class="misfit-label">Misaligned</div>
+        <h3>The same professionals hear a message meant for someone else</h3>
+        <p class="misfit-copy">
+          The target is still busy professionals, but the message now emphasizes a very different value logic: low price and stripped-down simplicity for budget-conscious buyers. The message is clear, but it is clear for the wrong audience.
+        </p>
+        <div class="misfit-example">
+          <div class="misfit-example-row">
+            <strong>Target Segment</strong>
+            <span>Busy professionals who care about speed, reliability, and not wasting attention.</span>
+          </div>
+          <div class="misfit-example-row">
+            <strong>Positioning Choice</strong>
+            <span>This option should reduce friction and help me perform under pressure.</span>
+          </div>
+          <div class="misfit-example-row">
+            <strong>Message</strong>
+            <span>"Everything you need, nothing you overpay for. A practical choice for buyers who want reliable value."</span>
+          </div>
+          <div class="misfit-reaction">
+            <strong>Audience Reaction</strong>
+            <span>"Why are you talking to me about cheap and basic? I need something dependable that saves time."</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="workshop-section">
+  <div class="workshop-shell">
+    <div class="section-tag reveal">05 · Worksheet</div>
+    <h2 class="section-title reveal">A simple framework</h2>
+    <p class="section-intro reveal">
+      The point is to move from audience choice to communication logic in a disciplined order.
+    </p>
+
+    <div class="workshop-grid">
+      <div class="worksheet-card reveal">
+        <span class="worksheet-step">Step 1</span>
+        <h3>Target</h3>
+        <p class="worksheet-copy">Which segment are we prioritizing right now?</p>
+        <ul class="worksheet-list">
+          <li>Who exactly is this for?</li>
+          <li>What matters most to them?</li>
+        </ul>
+      </div>
+      <div class="worksheet-card reveal">
+        <span class="worksheet-step">Step 2</span>
+        <h3>Tension</h3>
+        <p class="worksheet-copy">What pressure, problem, or decision matters most to that segment?</p>
+        <ul class="worksheet-list">
+          <li>What are they trying to solve?</li>
+          <li>What risk are they trying to avoid?</li>
+        </ul>
+      </div>
+      <div class="worksheet-card reveal">
+        <span class="worksheet-step">Step 3</span>
+        <h3>Position</h3>
+        <p class="worksheet-copy">What should the offering mean to them?</p>
+        <ul class="worksheet-list">
+          <li>What angle of difference matters?</li>
+          <li>What do we want to stand for?</li>
+        </ul>
+      </div>
+      <div class="worksheet-card reveal">
+        <span class="worksheet-step">Step 4</span>
+        <h3>Message</h3>
+        <p class="worksheet-copy">How do we express that position clearly and credibly?</p>
+        <ul class="worksheet-list">
+          <li>What headline says it best?</li>
+          <li>What supporting message sharpens it?</li>
+        </ul>
+      </div>
+      <div class="worksheet-card reveal">
+        <span class="worksheet-step">Step 5</span>
+        <h3>Proof</h3>
+        <p class="worksheet-copy">Why should the target believe us?</p>
+        <ul class="worksheet-list">
+          <li>What evidence supports the claim?</li>
+          <li>What tone makes it believable?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding: 24px 32px; border-top: 1px solid rgba(13,13,13,0.08); display: flex; justify-content: space-between; gap: 12px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(13,13,13,0.42);">
+  <div>Think with Dave</div>
+  <div>Marketing · From Target Segment to Positioning to Messaging</div>
+</footer>
+
+<script>
+  const segmentData = {
+    students: {
+      color: "#5271b8",
+      name: "Budget-Conscious Buyers",
+      copy: "Buyers with limited budgets who still want confidence that they are making a smart, practical choice.",
+      needs: ["Affordability", "Clarity", "Low risk"],
+      title: "Smart value without unnecessary extras",
+      copy2: "The offering should be perceived as practical, financially sensible, and focused on what matters most.",
+      difference: "Practical value with no wasted complexity.",
+      proof: "Transparent pricing, essential features, and simple onboarding.",
+      meaning: "This is the smart choice for me.",
+      headline: "Everything you need, nothing you overpay for.",
+      support: "Built for buyers who want reliable value without paying for features they will never use.",
+      proofMessage: "Transparent monthly pricing, easy setup, and no unnecessary premium tiers.",
+      tone: ["Practical", "Clear", "Reassuring"]
+    },
+    professionals: {
+      color: "#4e8b6b",
+      name: "Busy Professionals",
+      copy: "Professionals who value speed, reliability, and reduction of friction because their time is already overloaded.",
+      needs: ["Efficiency", "Reliability", "Confidence"],
+      title: "Reliable performance that reduces wasted time",
+      copy2: "The offering should be perceived as dependable, efficient, and worth trusting under pressure.",
+      difference: "Saves attention and reduces decision friction.",
+      proof: "Fast setup, consistent execution, and strong service support.",
+      meaning: "This helps me perform without distraction.",
+      headline: "Built for people who do not have time for friction.",
+      support: "A dependable option for professionals who need smooth execution and fewer avoidable delays.",
+      proofMessage: "Fast onboarding, reliable performance, and responsive support when something matters.",
+      tone: ["Direct", "Professional", "Efficient"]
+    },
+    premium: {
+      color: "#b66155",
+      name: "Premium Enthusiasts",
+      copy: "Customers who want distinction, confidence, and a product that signals taste, quality, or commitment.",
+      needs: ["Status", "Performance", "Confidence"],
+      title: "Premium quality that signals discernment",
+      copy2: "The offering should be perceived as high-standard, elevated, and clearly above ordinary alternatives.",
+      difference: "Feels superior in both experience and symbolic value.",
+      proof: "Craft, premium materials, strong brand cues, and elevated presentation.",
+      meaning: "This reflects the standard I expect from myself.",
+      headline: "For people who do not want the ordinary version.",
+      support: "A premium choice for customers who care about both performance and what their choices signal.",
+      proofMessage: "Refined execution, premium details, and a standard that feels clearly above the category average.",
+      tone: ["Confident", "Refined", "Aspirational"]
+    }
+  };
+
+  const ids = {
+    name: document.getElementById("segment-name"),
+    copy: document.getElementById("segment-copy"),
+    needs: document.getElementById("segment-needs"),
+    title: document.getElementById("position-title"),
+    copy2: document.getElementById("position-copy"),
+    difference: document.getElementById("position-difference"),
+    proof: document.getElementById("position-proof"),
+    meaning: document.getElementById("position-meaning"),
+    headline: document.getElementById("message-headline"),
+    support: document.getElementById("message-support"),
+    proofMessage: document.getElementById("message-proof"),
+    tone: document.getElementById("message-tone"),
+    profile: document.getElementById("segment-profile"),
+    position: document.getElementById("position-card"),
+    message: document.getElementById("message-card"),
+    stage: document.getElementById("positioning-stage")
+  };
+
+  const panels = [ids.profile, ids.position, ids.message];
+
+  function swapSegment(key) {
+    const data = segmentData[key];
+    document.documentElement.style.setProperty("--active-segment", data.color);
+
+    panels.forEach((panel) => panel.classList.add("is-swapping"));
+
+    window.setTimeout(() => {
+      ids.name.textContent = data.name;
+      ids.copy.textContent = data.copy;
+      ids.needs.innerHTML = data.needs.map((item) => `<span>${item}</span>`).join("");
+      ids.title.textContent = data.title;
+      ids.copy2.textContent = data.copy2;
+      ids.difference.textContent = data.difference;
+      ids.proof.textContent = data.proof;
+      ids.meaning.textContent = data.meaning;
+      ids.headline.textContent = data.headline;
+      ids.support.textContent = data.support;
+      ids.proofMessage.textContent = data.proofMessage;
+      ids.tone.innerHTML = data.tone.map((item) => `<span>${item}</span>`).join("");
+      panels.forEach((panel) => panel.classList.remove("is-swapping"));
+    }, 180);
+  }
+
+  document.querySelectorAll(".segment-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".segment-btn").forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+      swapSegment(button.dataset.segment);
+    });
+  });
+
+  document.querySelectorAll("#misfit-toggle button").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#misfit-toggle button").forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+      const aligned = button.dataset.view === "aligned";
+      document.getElementById("good-fit").classList.toggle("is-hidden", !aligned);
+      document.getElementById("bad-fit").classList.toggle("is-hidden", aligned);
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.16 });
+
+  document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+  swapSegment("students");
+</script>
+</body>
+</html>

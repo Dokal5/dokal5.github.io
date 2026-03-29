@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing | Courses | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+  .sequence-map {
+    margin-top: 28px;
+    padding: 34px;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at top left, rgba(74, 103, 65, 0.06), transparent 28%),
+      radial-gradient(circle at top right, rgba(200, 135, 43, 0.08), transparent 32%),
+      linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
+  }
+
+  .sequence-map-body {
+    margin-top: 30px;
+  }
+
+  .sequence-map-title {
+    font-family: "DM Serif Display", serif;
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: #0d0d0d;
+  }
+
+  .sequence-map-copy {
+    max-width: 820px;
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.66);
+    margin-bottom: 24px;
+  }
+
+  .sequence-map-takeaway {
+    margin-bottom: 26px;
+    padding: 16px 18px;
+    border-left: 3px solid #c8872b;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.68);
+  }
+
+  .sequence-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+    padding: 8px 4px 12px;
+  }
+
+  .sequence-track::before {
+    content: "";
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 50%;
+    height: 2px;
+    background:
+      linear-gradient(90deg,
+        rgba(200, 135, 43, 0.14) 0%,
+        rgba(200, 135, 43, 0.42) 18%,
+        rgba(74, 103, 65, 0.32) 52%,
+        rgba(58, 74, 92, 0.34) 100%);
+    z-index: 0;
+  }
+
+  .sequence-track::after {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: calc(50% - 36px);
+    bottom: 30px;
+    background:
+      radial-gradient(circle at 14% 64%, rgba(200, 135, 43, 0.14), transparent 16%),
+      radial-gradient(circle at 43% 34%, rgba(74, 103, 65, 0.12), transparent 18%),
+      radial-gradient(circle at 70% 68%, rgba(58, 74, 92, 0.1), transparent 17%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sequence-card {
+    position: relative;
+    z-index: 1;
+    padding: 22px 18px 18px;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.88);
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .sequence-card:nth-child(1),
+  .sequence-card:nth-child(3) {
+    margin-top: 0;
+  }
+
+  .sequence-card:nth-child(2),
+  .sequence-card:nth-child(4) {
+    margin-top: 72px;
+  }
+
+  .sequence-card:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: calc(50% - 2px);
+    right: -16px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #f5f0e8;
+    background: #0d0d0d;
+    z-index: 2;
+  }
+
+  .sequence-card.is-featured {
+    border-color: rgba(200, 135, 43, 0.34);
+    box-shadow: 0 18px 36px rgba(13, 13, 13, 0.08);
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .sequence-card.is-featured .sequence-icon {
+    background: rgba(200, 135, 43, 0.18);
+    border-color: rgba(200, 135, 43, 0.28);
+    color: #7d3528;
+  }
+
+  .sequence-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8872b;
+    margin-bottom: 10px;
+  }
+
+  .sequence-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    background: rgba(200, 135, 43, 0.12);
+    color: #8b3a2a;
+    border: 1px solid rgba(200, 135, 43, 0.18);
+  }
+
+  .sequence-icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .sequence-name {
+    font-family: "DM Serif Display", serif;
+    font-size: 22px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    color: #0d0d0d;
+  }
+
+  .sequence-desc {
+    font-size: 12px;
+    line-height: 1.75;
+    color: rgba(13, 13, 13, 0.66);
+  }
+
+  .course-groups {
+    display: grid;
+    gap: 28px;
+    margin-top: 26px;
+  }
+
+  .course-group {
+    padding: 22px 22px 18px;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.9);
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .group-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .group-kicker {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8872b;
+  }
+
+  .group-title {
+    font-family: "DM Serif Display", serif;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #0d0d0d;
+  }
+
+  .group-copy {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.66);
+    margin-bottom: 14px;
+    max-width: 820px;
+  }
+
+  .article-list {
+    margin: 0;
+  }
+
+  @media (max-width: 980px) {
+    .sequence-track {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .sequence-track::before,
+    .sequence-track::after {
+      left: 22px;
+      right: auto;
+      top: 18px;
+      bottom: 18px;
+      width: 2px;
+      height: auto;
+      background:
+        linear-gradient(180deg,
+          rgba(200, 135, 43, 0.18) 0%,
+          rgba(200, 135, 43, 0.42) 22%,
+          rgba(74, 103, 65, 0.32) 54%,
+          rgba(58, 74, 92, 0.34) 100%);
+    }
+
+    .sequence-track::after {
+      width: 60px;
+      left: 0;
+      background:
+        radial-gradient(circle at 36px 18%, rgba(200, 135, 43, 0.14), transparent 24%),
+        radial-gradient(circle at 36px 52%, rgba(74, 103, 65, 0.1), transparent 22%),
+        radial-gradient(circle at 36px 84%, rgba(58, 74, 92, 0.1), transparent 20%);
+    }
+
+    .sequence-card:nth-child(2),
+    .sequence-card:nth-child(4) {
+      margin-top: 0;
+    }
+
+    .sequence-card {
+      margin-left: 34px;
+    }
+
+    .sequence-card:not(:last-child)::after {
+      top: auto;
+      right: auto;
+      left: -30px;
+      bottom: -18px;
+      transform: none;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="site-title">Think with Dave</div>
+    <div class="site-sub">Knowledge Garden</div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-label">Navigation</div>
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../thoughts/index.html">Thoughts</a>
+        <a class="nav-link active" href="../index.html">Courses</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Course Areas</div>
+        <a class="nav-link active" href="index.html">Marketing</a>
+        <a class="nav-link" href="../effective-value-capturing/index.html">Effective Value Capturing</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header">
+      <a class="back-link" href="../index.html">← All courses</a>
+      <h1>Marketing</h1>
+      <p class="lead">
+        A structured marketing decision system covering segmentation, positioning, messaging, execution, and performance so organizations can make sharper commercial choices.
+      </p>
+      <div class="sequence-map">
+        <div class="sequence-map-title">Course Sequence Map</div>
+        <p class="sequence-map-copy">
+          This sequence is designed for real commercial decisions. First, leaders need a better understanding of what customers value and how demand is structured. Then they need to choose where to compete and how to position. Only after that should they translate strategy into execution. Finally, they need to evaluate whether those decisions are producing the right outcomes and how priorities should change.
+        </p>
+        <div class="sequence-map-takeaway">
+          Read this map as a management logic chain: diagnosis first, strategic choice second, execution third, performance review last.
+        </div>
+        <div class="sequence-track">
+          <div class="sequence-card">
+            <div class="sequence-label">Part 1</div>
+            <div class="sequence-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="6"></circle>
+                <line x1="20" y1="20" x2="16.6" y2="16.6"></line>
+              </svg>
+            </div>
+            <div class="sequence-name">Market Understanding</div>
+            <div class="sequence-desc">Meaning: clarify what customers value, how demand differs, and how the market is structured before making competitive commitments.</div>
+          </div>
+          <div class="sequence-card">
+            <div class="sequence-label">Part 2</div>
+            <div class="sequence-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16"></path>
+                <path d="M7 12h10"></path>
+                <path d="M10 18h4"></path>
+              </svg>
+            </div>
+            <div class="sequence-name">Strategic Choice</div>
+            <div class="sequence-desc">Meaning: decide which customers matter most, what position the firm should occupy, and what competitive direction should guide resource allocation.</div>
+          </div>
+          <div class="sequence-card is-featured">
+            <div class="sequence-label">Part 3</div>
+            <div class="sequence-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M13 5l7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="sequence-name">Marketing Execution</div>
+            <div class="sequence-desc">Meaning: convert strategy into concrete choices in offer, channels, touchpoints, and customer journey so the market can actually experience the position.</div>
+          </div>
+          <div class="sequence-card">
+            <div class="sequence-label">Part 4</div>
+            <div class="sequence-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 16l5-5 4 4 7-8"></path>
+                <path d="M20 10v6h-6"></path>
+              </svg>
+            </div>
+            <div class="sequence-name">Performance and Evolution</div>
+            <div class="sequence-desc">Meaning: assess whether the strategy is working, what economics it produces, and how priorities should evolve as customer behavior and market conditions change.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="sequence-map-body">
+        <div class="sequence-map-title" style="font-size: 22px; margin-bottom: 8px;">Guided Reading Path</div>
+        <p class="sequence-map-copy" style="margin-bottom: 12px;">
+          The stage map above explains what each part means. The article groups below provide the detailed frameworks behind each management decision stage.
+        </p>
+      <div class="course-groups">
+        <section class="course-group" data-stage-group="understanding">
+          <div class="group-heading">
+            <div class="group-kicker">Part 1</div>
+            <h3 class="group-title">Market Understanding</h3>
+          </div>
+          <p class="group-copy">Begin with customer value, jobs, segmentation variables, and how markets differ before deciding where the organization should compete.</p>
+          <ul class="article-list">
+            <li class="article-item">
+              <a class="article-link" href="customer-value-jobs-and-progress.html">Customer Value, Jobs, and Progress</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="segmentation-variables-and-segment-quality.html">Segmentation Variables and Segment Quality</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="targeting-strategies-and-segment-choice.html">Targeting Strategies and Segment Choice</a>
+              <span class="article-tag">Article</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="course-group" data-stage-group="choice">
+          <div class="group-heading">
+            <div class="group-kicker">Part 2</div>
+            <h3 class="group-title">Strategic Choice</h3>
+          </div>
+          <p class="group-copy">Move into STP logic, target choice, competitive positioning, and the distinction between value proposition, position, and message.</p>
+          <ul class="article-list">
+            <li class="article-item">
+              <a class="article-link" href="stp-segmentation-targeting.html">STP: Segmentation, Targeting, Positioning</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="perceptual-maps-and-competitive-positioning.html">Perceptual Maps and Competitive Positioning</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="value-proposition-vs-positioning-vs-messaging.html">Value Proposition vs Positioning vs Messaging</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="positioning-and-messaging.html">From Target Segment to Positioning to Messaging</a>
+              <span class="article-tag">Article</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="course-group" data-stage-group="execution">
+          <div class="group-heading">
+            <div class="group-kicker">Part 3</div>
+            <h3 class="group-title">Marketing Execution</h3>
+          </div>
+          <p class="group-copy">Translate strategy into the 4Ps, channels, touchpoints, and the customer journey and funnel response in the market.</p>
+          <ul class="article-list">
+            <li class="article-item">
+              <a class="article-link" href="marketing-mix-4ps.html">Marketing Mix: Translating Value Through the 4Ps</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="place-channels-and-touchpoints.html">Place, Channels, and Touchpoints</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="customer-journey-and-funnel.html">Customer Journey and the Marketing Funnel</a>
+              <span class="article-tag">Article</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="course-group" data-stage-group="evolution">
+          <div class="group-heading">
+            <div class="group-kicker">Part 4</div>
+            <h3 class="group-title">Performance and Evolution</h3>
+          </div>
+          <p class="group-copy">Finish with funnel outcomes, retention, lifetime value, and how marketing priorities should change as the market develops over time.</p>
+          <ul class="article-list">
+            <li class="article-item">
+              <a class="article-link" href="marketing-decisions-and-profit-and-loss.html">Marketing Decisions and the Profit and Loss Statement</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="funnel-metrics-retention-and-lifetime-value.html">Funnel Metrics, Retention, and Lifetime Value</a>
+              <span class="article-tag">Article</span>
+            </li>
+            <li class="article-item">
+              <a class="article-link" href="product-life-cycle-and-diffusion.html">Product Life Cycle and Diffusion</a>
+              <span class="article-tag">Article</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>dokal5.github.io · knowledge garden</span>
+    <span>Utrecht, NL</span>
+  </footer>
+</div>
+
+</body>
+</html>
