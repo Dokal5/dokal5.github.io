@@ -1,0 +1,225 @@
+/* Shared editorial/showcase system for flagship long-form pages.
+   Use this for feature articles, course comparison pages, and future
+   narrative content that should follow the same visual language. */
+
+:root {
+  --ink: #0d0d0d;
+  --cream: #f5f0e8;
+  --amber: #c8872b;
+  --amber-light: #e8a84a;
+  --rust: #8b3a2a;
+  --sage: #4a6741;
+  --slate: #3a4a5c;
+  --gold: #d4a843;
+  --pale: #faf8f2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "DM Mono", monospace;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: var(--ink);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  z-index: 3;
+}
+
+.hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 32px;
+  font-weight: 500;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.hero-sub {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(245, 240, 232, 0.6);
+  max-width: 380px;
+  margin-bottom: 48px;
+}
+
+.hero-formula {
+  background: rgba(200, 135, 43, 0.12);
+  border: 1px solid rgba(200, 135, 43, 0.3);
+  border-left: 3px solid var(--amber);
+  padding: 20px 24px;
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--amber-light);
+}
+
+.hero-formula .label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(200, 135, 43, 0.6);
+  margin-bottom: 8px;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 60px;
+  position: relative;
+}
+
+.hero-right-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(200, 135, 43, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 80%, rgba(74, 103, 65, 0.06) 0%, transparent 50%);
+}
+
+.big-quote {
+  font-family: "Fraunces", serif;
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+}
+
+.big-quote::before {
+  content: "\201C";
+  font-family: "Playfair Display", serif;
+  font-size: 120px;
+  color: var(--amber);
+  opacity: 0.2;
+  position: absolute;
+  top: -30px;
+  left: -20px;
+  line-height: 1;
+}
+
+.big-quote strong {
+  font-weight: 600;
+  color: var(--rust);
+}
+
+.section-tag {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-tag::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--amber);
+  opacity: 0.3;
+  max-width: 60px;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section-intro {
+  font-size: 13px;
+  line-height: 1.9;
+  color: rgba(13, 13, 13, 0.6);
+  max-width: 600px;
+  margin-bottom: 64px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left > * {
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-tag { animation-delay: 0.1s; }
+.hero-title { animation-delay: 0.25s; }
+.hero-sub { animation-delay: 0.4s; }
+.hero-formula { animation-delay: 0.55s; }
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-left::after {
+    display: none;
+  }
+
+  .hero-right {
+    display: none;
+  }
+
+  .hero-left {
+    padding: 60px 40px;
+  }
+}

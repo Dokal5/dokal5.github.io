@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STP: Segmentation, Targeting, Positioning | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --seg-a: #5271b8;
+    --seg-b: #4e8b6b;
+    --seg-c: #be8644;
+    --seg-d: #b66155;
+    --target: #6d4c91;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .hero-pill {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+    padding: 6px 10px;
+  }
+
+  .visual-band {
+    background: var(--pale);
+    padding: 100px 80px;
+  }
+
+  .visual-shell {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 24px;
+    max-width: 1240px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .visual-panel,
+  .visual-stage {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .visual-panel {
+    padding: 28px;
+    position: sticky;
+    top: 24px;
+  }
+
+  .visual-kicker,
+  .legend-title,
+  .criteria strong,
+  .step-label,
+  .logic-step {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .visual-kicker,
+  .legend-title,
+  .criteria strong,
+  .step-label {
+    color: var(--amber);
+  }
+
+  .visual-heading {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    line-height: 1.15;
+    margin: 14px 0 10px;
+    color: var(--ink);
+  }
+
+  .visual-copy,
+  .step-desc,
+  .criteria,
+  .legend-row,
+  .caption-text,
+  .insight-copy,
+  .response-copy,
+  .contrast-copy {
+    font-size: 12px;
+    line-height: 1.85;
+    color: rgba(13, 13, 13, 0.62);
+  }
+
+  .step-box {
+    margin: 28px 0 22px;
+    padding: 18px 0 0;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .step-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .step-badge {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 11px;
+  }
+
+  .step-name {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0;
+  }
+
+  .controls button {
+    border: 1px solid rgba(13, 13, 13, 0.12);
+    background: transparent;
+    color: var(--ink);
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .controls button:hover {
+    transform: translateY(-1px);
+  }
+
+  .controls .primary {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .criteria {
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 18px 0;
+  }
+
+  .criteria strong {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .legend {
+    padding-top: 18px;
+  }
+
+  .legend-title {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .legend-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+  }
+
+  .swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+  }
+
+  .visual-stage {
+    position: relative;
+    min-height: 760px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top right, rgba(200, 135, 43, 0.08), transparent 32%),
+      radial-gradient(circle at bottom left, rgba(74, 103, 65, 0.08), transparent 28%),
+      linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
+  }
+
+  .scene {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .dot {
+    transition:
+      fill 850ms ease,
+      r 650ms ease,
+      opacity 650ms ease,
+      stroke 650ms ease,
+      stroke-width 650ms ease,
+      filter 650ms ease,
+      cx 850ms ease,
+      cy 850ms ease;
+  }
+
+  .label {
+    font-family: "DM Mono", monospace;
+    font-size: 22px;
+    fill: var(--ink);
+    opacity: 0;
+    transition: opacity 700ms ease;
+    letter-spacing: 0.03em;
+  }
+
+  .segment-hull,
+  .target-box {
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+
+  .label.visible,
+  .segment-hull.visible,
+  .target-box.visible {
+    opacity: 1;
+  }
+
+  .caption {
+    position: absolute;
+    right: 28px;
+    bottom: 28px;
+    max-width: 300px;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .caption-title {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+
+  .insight-section {
+    padding: 110px 80px;
+    background: var(--cream);
+  }
+
+  .insight-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+
+  .insight-card,
+  .response-panel,
+  .contrast-grid > div,
+  .example-panel {
+    background: var(--pale);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .insight-card,
+  .response-panel,
+  .example-panel,
+  .contrast-grid > div {
+    padding: 30px 28px;
+  }
+
+  .insight-card h3,
+  .response-panel h3,
+  .contrast-grid h3,
+  .example-panel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .logic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .logic-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .logic-list li:last-child {
+    border-bottom: none;
+  }
+
+  .logic-step {
+    color: rgba(13, 13, 13, 0.38);
+    margin-bottom: 6px;
+  }
+
+  .logic-title {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin: 32px 0;
+  }
+
+  .contrast-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .contrast-label.targeting {
+    color: var(--amber);
+  }
+
+  .contrast-label.positioning {
+    color: var(--slate);
+  }
+
+  .response-panel {
+    border-left: 3px solid var(--amber);
+    margin-bottom: 32px;
+  }
+
+  .response-list {
+    margin-top: 16px;
+    padding-left: 18px;
+  }
+
+  .response-list li {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.62);
+  }
+
+  .example-panel {
+    background: white;
+    border-top: 3px solid var(--slate);
+  }
+
+  .example-line {
+    margin-top: 16px;
+    padding: 18px 20px;
+    background: rgba(58, 74, 92, 0.06);
+    border: 1px solid rgba(58, 74, 92, 0.16);
+    font-size: 12px;
+    line-height: 1.85;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .footer-back {
+    padding: 42px 80px 80px;
+    background: var(--cream);
+  }
+
+  .footer-back a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.16);
+    padding-bottom: 6px;
+  }
+
+  @media (max-width: 980px) {
+    .visual-band,
+    .insight-section,
+    .footer-back {
+      padding: 72px 28px;
+    }
+
+    .visual-shell,
+    .insight-grid,
+    .contrast-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .visual-panel {
+      position: static;
+    }
+
+    .visual-stage {
+      min-height: 620px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Marketing Course · STP</div>
+    <h1 class="hero-title">STP: <em>Segmentation</em>, Targeting, Positioning</h1>
+    <p class="hero-sub">
+      STP is not just a sequence of labels. It is a chain of strategic decisions: first recognize meaningful groups, then choose whom to serve, then decide what the firm should mean to that audience.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Working logic</div>
+      Segmentation identifies differences.<br>
+      Targeting chooses a priority audience.<br>
+      Positioning becomes the market-facing response to that choice.
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Segment logic</div>
+      <div class="hero-pill">Audience choice</div>
+      <div class="hero-pill">Meaning in market</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      Positioning is what happens <strong>after</strong> the target is chosen: the firm decides the distinct promise it wants to occupy in that segment’s mind.
+    </div>
+  </div>
+</section>
+
+<section class="visual-band">
+  <div class="visual-shell">
+    <aside class="visual-panel">
+      <div class="visual-kicker">Interactive visual</div>
+      <h2 class="visual-heading">Segmentation to Targeting</h2>
+      <p class="visual-copy">
+        Start with an undifferentiated market, reveal the clusters inside it, and then isolate the customers that best fit the strategic choice.
+      </p>
+
+      <div class="step-box">
+        <div class="step-label">Current step</div>
+        <div class="step-meta">
+          <div class="step-badge" id="stepBadge">1</div>
+          <div class="step-name" id="stepName">Whole market</div>
+        </div>
+        <p class="step-desc" id="stepDesc">
+          At the start, every customer looks the same in the visualization. We only see a market full of people, not yet meaningful groups.
+        </p>
+      </div>
+
+      <div class="controls">
+        <button class="primary" id="playBtn" type="button">Play animation</button>
+        <button id="nextBtn" type="button">Next step</button>
+        <button id="resetBtn" type="button">Reset</button>
+      </div>
+
+      <div class="criteria">
+        <strong>Example targeting criteria</strong>
+        Segment selected: young urban professionals<br>
+        Needs: convenience and premium quality<br>
+        Behavior: high usage, digital first<br>
+        Price stance: willing to pay more for speed and ease
+      </div>
+
+      <div class="legend">
+        <span class="legend-title">Legend</span>
+        <div class="legend-row"><span class="swatch" style="background:#0d0d0d"></span>Unsorted market</div>
+        <div class="legend-row"><span class="swatch" style="background:#5271b8"></span>Segment A: value focused families</div>
+        <div class="legend-row"><span class="swatch" style="background:#4e8b6b"></span>Segment B: convenience seekers</div>
+        <div class="legend-row"><span class="swatch" style="background:#be8644"></span>Segment C: premium enthusiasts</div>
+        <div class="legend-row"><span class="swatch" style="background:#b66155"></span>Segment D: traditional loyalists</div>
+        <div class="legend-row"><span class="swatch" style="background:#6d4c91"></span>Chosen target within one segment</div>
+      </div>
+    </aside>
+
+    <div class="visual-stage">
+      <svg class="scene" id="scene" viewBox="0 0 900 720" preserveAspectRatio="xMidYMid meet" aria-label="Segmentation and targeting animation">
+        <g id="hulls"></g>
+        <g id="labels"></g>
+        <g id="dots"></g>
+        <g id="targetLayer"></g>
+      </svg>
+
+      <div class="caption">
+        <div class="caption-title">Current focus</div>
+        <p class="caption-text" id="captionText">
+          Start with the whole market. Everyone is visible, but no decision has been made yet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insight-section">
+  <div class="insight-wrap">
+    <div class="section-tag">Strategic Meaning</div>
+    <h2 class="section-title">Positioning Is the Response to the Chosen Target</h2>
+    <p class="section-intro">
+      Segmentation and targeting are not the end of the framework. Once the firm chooses which customers it wants to prioritize, it still must decide how it should be perceived by them. Positioning is that decision.
+    </p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h3>From market choice to market meaning</h3>
+        <p class="insight-copy">
+          Segmentation tells us that different kinds of customers exist. Targeting tells us which of those customers the firm will prioritize. Positioning then defines the promise, association, and value logic the company wants that audience to hold in mind.
+        </p>
+        <p class="insight-copy" style="margin-top:14px;">
+          That is why positioning comes after targeting. A position only becomes sharp when it is built for someone specific rather than for the entire market.
+        </p>
+      </div>
+
+      <div class="insight-card">
+        <h3>STP logic</h3>
+        <ul class="logic-list">
+          <li>
+            <div class="logic-step">1. Segmentation</div>
+            <div class="logic-title">Divide the broader market into groups with distinct needs, behaviors, and value expectations.</div>
+          </li>
+          <li>
+            <div class="logic-step">2. Targeting</div>
+            <div class="logic-title">Choose the segment that best fits the firm’s capabilities, economics, and strategic intent.</div>
+          </li>
+          <li>
+            <div class="logic-step">3. Positioning</div>
+            <div class="logic-title">Design the distinct meaning and value proposition the chosen segment should associate with the firm.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contrast-grid">
+      <div>
+        <div class="contrast-label targeting">Targeting answers</div>
+        <h3>Who are we serving?</h3>
+        <p class="contrast-copy">
+          Which customer group matters most? Which segment is reachable, attractive, and aligned enough to prioritize over the others?
+        </p>
+      </div>
+      <div>
+        <div class="contrast-label positioning">Positioning answers</div>
+        <h3>How should we matter to them?</h3>
+        <p class="contrast-copy">
+          What benefit should the target audience associate with us? Why should they choose us over alternatives? What distinctive place should we occupy in their perception?
+        </p>
+      </div>
+    </div>
+
+    <div class="response-panel">
+      <h3>Positioning as a strategic response</h3>
+      <p class="response-copy">
+        Positioning should be derived from the implications of the chosen target segment. If the target values convenience, the position should emphasize speed, simplicity, and reduced effort. If the target values prestige, the position may instead emphasize exclusivity, design, and status.
+      </p>
+      <ul class="response-list">
+        <li>The segment’s needs indicate what kind of value matters most.</li>
+        <li>The firm’s capabilities indicate what promise it can credibly deliver.</li>
+        <li>The competitive context indicates how the promise can be differentiated.</li>
+      </ul>
+    </div>
+
+    <div class="example-panel">
+      <h3>Example</h3>
+      <p class="response-copy">
+        If the target segment is young urban professionals who are digital-first and willing to pay for ease, a weak position would be “good quality for everyone.” A stronger position would be “the premium everyday option that saves time and removes friction from busy city life.”
+      </p>
+      <div class="example-line">
+        The move from ST to P is the move from selecting <em>who</em> to serve to deciding <em>what we want to mean</em> to them.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-back">
+  <a href="index.html">Back to Marketing</a>
+</div>
+
+<script>
+  const svgNS = "http://www.w3.org/2000/svg";
+  const dotsLayer = document.getElementById("dots");
+  const hullsLayer = document.getElementById("hulls");
+  const labelsLayer = document.getElementById("labels");
+  const targetLayer = document.getElementById("targetLayer");
+
+  const stepBadge = document.getElementById("stepBadge");
+  const stepName = document.getElementById("stepName");
+  const stepDesc = document.getElementById("stepDesc");
+  const captionText = document.getElementById("captionText");
+
+  const playBtn = document.getElementById("playBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const resetBtn = document.getElementById("resetBtn");
+
+  const colors = {
+    neutral: "#0d0d0d",
+    A: "#5271b8",
+    B: "#4e8b6b",
+    C: "#be8644",
+    D: "#b66155",
+    target: "#6d4c91"
+  };
+
+  const steps = [
+    {
+      name: "Whole market",
+      desc: "At the start, every customer looks the same in the visualization. We only see a market full of people, not yet meaningful groups.",
+      caption: "Start with the whole market. Everyone is visible, but no decision has been made yet."
+    },
+    {
+      name: "Segmentation",
+      desc: "Now patterns appear. Customers are grouped into segments with shared needs, behavior, or value expectations.",
+      caption: "The market is divided into distinct groups. Segmentation turns a crowd into analyzable clusters."
+    },
+    {
+      name: "Targeting",
+      desc: "One segment is chosen, then the best fitting customers inside it are highlighted according to fictional targeting criteria.",
+      caption: "A target is selected based on strategic fit. The chosen dots represent the audience the firm will prioritize."
+    }
+  ];
+
+  const segmentConfig = {
+    A: { cx: 220, cy: 220, spread: 115, count: 36, label: "Segment A" },
+    B: { cx: 650, cy: 200, spread: 115, count: 36, label: "Segment B" },
+    C: { cx: 260, cy: 530, spread: 115, count: 36, label: "Segment C" },
+    D: { cx: 660, cy: 520, spread: 115, count: 36, label: "Segment D" }
+  };
+
+  const dots = [];
+  let currentStep = 0;
+  let playTimeouts = [];
+
+  function rand(seed) {
+    const x = Math.sin(seed) * 10000;
+    return x - Math.floor(x);
+  }
+
+  function createSVG(tag, attrs = {}) {
+    const el = document.createElementNS(svgNS, tag);
+    Object.entries(attrs).forEach(([key, value]) => {
+      el.setAttribute(key, value);
+    });
+    return el;
+  }
+
+  function scatterPoint(i) {
+    const cols = 12;
+    const gapX = 60;
+    const gapY = 56;
+    const startX = 115;
+    const startY = 110;
+    const row = Math.floor(i / cols);
+    const col = i % cols;
+    const jitterX = (rand(i * 12.31) - 0.5) * 24;
+    const jitterY = (rand(i * 4.77) - 0.5) * 24;
+    return {
+      x: startX + col * gapX + jitterX,
+      y: startY + row * gapY + jitterY
+    };
+  }
+
+  function clusteredPoint(segmentKey, i) {
+    const segment = segmentConfig[segmentKey];
+    const angle = rand(i * 1.73 + segment.cx) * Math.PI * 2;
+    const radius = Math.sqrt(rand(i * 3.91 + segment.cy)) * segment.spread;
+    const x = segment.cx + Math.cos(angle) * radius;
+    const y = segment.cy + Math.sin(angle) * radius;
+    return { x, y };
+  }
+
+  function buildScene() {
+    dotsLayer.innerHTML = "";
+    hullsLayer.innerHTML = "";
+    labelsLayer.innerHTML = "";
+    targetLayer.innerHTML = "";
+    dots.length = 0;
+
+    const segmentKeys = Object.keys(segmentConfig);
+    let globalIndex = 0;
+
+    for (const key of segmentKeys) {
+      const cfg = segmentConfig[key];
+
+      const hull = createSVG("ellipse", {
+        cx: cfg.cx,
+        cy: cfg.cy,
+        rx: cfg.spread + 36,
+        ry: cfg.spread + 18,
+        fill: colors[key],
+        "fill-opacity": "0.08",
+        stroke: colors[key],
+        "stroke-opacity": "0.28",
+        "stroke-width": "2.5",
+        class: "segment-hull",
+        id: `hull-${key}`
+      });
+      hullsLayer.appendChild(hull);
+
+      const label = createSVG("text", {
+        x: cfg.cx,
+        y: cfg.cy - cfg.spread - 48,
+        "text-anchor": "middle",
+        class: "label",
+        id: `label-${key}`
+      });
+      label.textContent = cfg.label;
+      labelsLayer.appendChild(label);
+
+      for (let i = 0; i < cfg.count; i++) {
+        const scatter = scatterPoint(globalIndex);
+        const cluster = clusteredPoint(key, globalIndex + 1);
+        const isTarget = key === "B" && cluster.x > 630 && cluster.y > 150 && cluster.y < 255;
+
+        const circle = createSVG("circle", {
+          cx: scatter.x,
+          cy: scatter.y,
+          r: 6,
+          fill: colors.neutral,
+          opacity: 0.95,
+          class: "dot"
+        });
+
+        dotsLayer.appendChild(circle);
+        dots.push({
+          el: circle,
+          segment: key,
+          scatter,
+          cluster,
+          isTarget
+        });
+        globalIndex += 1;
+      }
+    }
+
+    const targetBox = createSVG("rect", {
+      x: 560,
+      y: 118,
+      width: 182,
+      height: 176,
+      rx: 24,
+      fill: colors.target,
+      "fill-opacity": "0.07",
+      stroke: colors.target,
+      "stroke-width": "3",
+      "stroke-dasharray": "10 8",
+      class: "target-box",
+      id: "target-box"
+    });
+    targetLayer.appendChild(targetBox);
+
+    const targetText = createSVG("text", {
+      x: 651,
+      y: 322,
+      "text-anchor": "middle",
+      class: "label",
+      id: "target-label"
+    });
+    targetText.textContent = "Chosen target";
+    targetLayer.appendChild(targetText);
+  }
+
+  function clearPlayTimeouts() {
+    playTimeouts.forEach(clearTimeout);
+    playTimeouts = [];
+  }
+
+  function moveDots(toCluster) {
+    dots.forEach((dot) => {
+      const x = toCluster ? dot.cluster.x : dot.scatter.x;
+      const y = toCluster ? dot.cluster.y : dot.scatter.y;
+      dot.el.setAttribute("cx", x);
+      dot.el.setAttribute("cy", y);
+    });
+  }
+
+  function updateStep(stepIndex) {
+    currentStep = stepIndex;
+    const step = steps[stepIndex];
+    stepBadge.textContent = String(stepIndex + 1);
+    stepName.textContent = step.name;
+    stepDesc.textContent = step.desc;
+    captionText.textContent = step.caption;
+
+    const hullEls = [...document.querySelectorAll(".segment-hull")];
+    const labelEls = [...document.querySelectorAll("#labels .label")];
+    const targetBox = document.getElementById("target-box");
+    const targetLabel = document.getElementById("target-label");
+
+    if (stepIndex === 0) {
+      moveDots(false);
+      hullEls.forEach((el) => el.classList.remove("visible"));
+      labelEls.forEach((el) => el.classList.remove("visible"));
+      targetBox.classList.remove("visible");
+      targetLabel.classList.remove("visible");
+
+      dots.forEach((dot) => {
+        dot.el.setAttribute("fill", colors.neutral);
+        dot.el.setAttribute("r", 6);
+        dot.el.setAttribute("opacity", 0.95);
+        dot.el.setAttribute("stroke", "none");
+        dot.el.setAttribute("stroke-width", 0);
+        dot.el.style.filter = "none";
+      });
+    }
+
+    if (stepIndex === 1) {
+      moveDots(true);
+      hullEls.forEach((el) => el.classList.add("visible"));
+      labelEls.forEach((el) => el.classList.add("visible"));
+      targetBox.classList.remove("visible");
+      targetLabel.classList.remove("visible");
+
+      dots.forEach((dot) => {
+        dot.el.setAttribute("fill", colors[dot.segment]);
+        dot.el.setAttribute("r", 6.5);
+        dot.el.setAttribute("opacity", 0.95);
+        dot.el.setAttribute("stroke", "none");
+        dot.el.setAttribute("stroke-width", 0);
+        dot.el.style.filter = "none";
+      });
+    }
+
+    if (stepIndex === 2) {
+      moveDots(true);
+      hullEls.forEach((el) => el.classList.add("visible"));
+      labelEls.forEach((el) => el.classList.add("visible"));
+      targetBox.classList.add("visible");
+      targetLabel.classList.add("visible");
+
+      dots.forEach((dot) => {
+        if (dot.segment !== "B") {
+          dot.el.setAttribute("fill", "#d6d0c8");
+          dot.el.setAttribute("r", 5.5);
+          dot.el.setAttribute("opacity", 0.46);
+          dot.el.setAttribute("stroke", "none");
+          dot.el.setAttribute("stroke-width", 0);
+          dot.el.style.filter = "none";
+          return;
+        }
+
+        if (dot.isTarget) {
+          dot.el.setAttribute("fill", colors.target);
+          dot.el.setAttribute("r", 8.5);
+          dot.el.setAttribute("opacity", 1);
+          dot.el.setAttribute("stroke", "#ffffff");
+          dot.el.setAttribute("stroke-width", 2.5);
+          dot.el.style.filter = "drop-shadow(0 0 10px rgba(109, 76, 145, 0.34))";
+        } else {
+          dot.el.setAttribute("fill", colors.B);
+          dot.el.setAttribute("r", 6.2);
+          dot.el.setAttribute("opacity", 0.33);
+          dot.el.setAttribute("stroke", "none");
+          dot.el.setAttribute("stroke-width", 0);
+          dot.el.style.filter = "none";
+        }
+      });
+    }
+  }
+
+  function playSequence() {
+    clearPlayTimeouts();
+    updateStep(0);
+    playTimeouts.push(setTimeout(() => updateStep(1), 1200));
+    playTimeouts.push(setTimeout(() => updateStep(2), 2800));
+  }
+
+  playBtn.addEventListener("click", playSequence);
+  nextBtn.addEventListener("click", () => {
+    clearPlayTimeouts();
+    const next = (currentStep + 1) % steps.length;
+    updateStep(next);
+  });
+  resetBtn.addEventListener("click", () => {
+    clearPlayTimeouts();
+    updateStep(0);
+  });
+
+  buildScene();
+  updateStep(0);
+</script>
+
+</body>
+</html>

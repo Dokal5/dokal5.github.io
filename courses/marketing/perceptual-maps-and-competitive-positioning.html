@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perceptual Maps and Competitive Positioning | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --map-accent: #8b3a2a;
+    --brand-a: #b66155;
+    --brand-b: #5271b8;
+    --brand-c: #4e8b6b;
+    --brand-d: #d4a843;
+    --brand-e: #6d4c91;
+    --brand-f: #3a4a5c;
+    --brand-g: #c8872b;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .hero-pill {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+    padding: 8px 12px;
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .alignment-shell {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .foundation-card,
+  .alignment-card,
+  .sequence-panel,
+  .profile-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .alignment-card h3,
+  .sequence-panel h3,
+  .profile-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .foundation-card .flow-row span,
+  .alignment-card p,
+  .alignment-card li,
+  .sequence-panel p,
+  .sequence-panel li,
+  .profile-card p,
+  .profile-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .mini-label,
+  .step-kicker,
+  .profile-meta strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .sequence-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+    align-items: start;
+    position: relative;
+  }
+
+  .sequence-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 6;
+    overflow: visible;
+  }
+
+  .sequence-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    min-width: 0;
+  }
+
+  .sequence-bridge {
+    display: grid;
+    place-items: center;
+    min-height: 100%;
+    padding-top: 104px;
+  }
+
+  .bridge-shell {
+    width: 100%;
+    display: grid;
+    gap: 14px;
+    justify-items: center;
+    text-align: center;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .bridge-shell:hover .bridge-arrow,
+  .bridge-shell:focus-visible .bridge-arrow {
+    border-color: rgba(200, 135, 43, 0.42);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(139, 58, 42, 0.3), transparent 58%),
+      rgba(255, 255, 255, 0.05);
+  }
+
+  .bridge-shell:focus-visible {
+    outline: none;
+  }
+
+  .bridge-copy {
+    max-width: 120px;
+    font-size: 10px;
+    line-height: 1.8;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.64);
+  }
+
+  .bridge-arrow {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(139, 58, 42, 0.22), transparent 58%),
+      rgba(255, 255, 255, 0.03);
+    display: grid;
+    place-items: center;
+    animation: bridgeFloat 2.2s ease-in-out infinite;
+  }
+
+  .bridge-arrow svg {
+    width: 58px;
+    height: 58px;
+  }
+
+  @keyframes bridgeFloat {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+  }
+
+  .step-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .step-kicker::after {
+    content: "";
+    width: 42px;
+    height: 1px;
+    background: rgba(200, 135, 43, 0.4);
+  }
+
+  .map-frame {
+    position: relative;
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .axis-label {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    fill: rgba(245, 240, 232, 0.68);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .map-label {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    fill: rgba(245, 240, 232, 0.88);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .map-label.soft {
+    fill: rgba(245, 240, 232, 0.56);
+  }
+
+  .quadrant-label {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    fill: rgba(245, 240, 232, 0.52);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .brand-point {
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease,
+      r 220ms ease,
+      cx 520ms ease,
+      cy 520ms ease,
+      filter 180ms ease;
+  }
+
+  .brand-staging {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .brand-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    cursor: pointer;
+    transition: opacity 240ms ease, transform 240ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
+  }
+
+  .brand-chip.is-sent {
+    opacity: 0.18;
+    transform: scale(0.94);
+  }
+
+  .brand-chip.is-selected {
+    opacity: 1;
+    color: var(--cream);
+    border-color: rgba(200, 135, 43, 0.62);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .brand-chip-dot,
+  .flying-chip-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 4;
+  }
+
+  .flying-chip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(13, 13, 13, 0.88);
+    color: var(--cream);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+    transform: translate(-50%, -50%);
+    will-change: left, top, opacity, transform;
+  }
+
+  .flying-chip.is-landed {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+
+  .flying-zoom-brand {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(245, 240, 232, 0.9);
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+    will-change: left, top, opacity, transform;
+    transition:
+      left 680ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      top 680ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0ms linear,
+      transform 680ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .flying-zoom-brand .marker-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 1.6px rgba(245, 240, 232, 0.14);
+  }
+
+  .broad-brand {
+    opacity: 0;
+    transition: opacity 240ms ease;
+  }
+
+  .interactive-band.is-broad-complete .broad-brand {
+    opacity: 1;
+  }
+
+  .brand-point.is-muted {
+    opacity: 0.22;
+  }
+
+  .brand-point.is-active {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+  }
+
+  .brand-point.is-selected {
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.32));
+    stroke: rgba(245, 240, 232, 0.94);
+    stroke-width: 2.4;
+  }
+
+  .map-label.is-muted {
+    opacity: 0.32;
+  }
+
+  .map-label.is-selected {
+    fill: var(--cream);
+  }
+
+  .brand-point.clustered {
+    stroke: rgba(255, 255, 255, 0.72);
+    stroke-width: 1.5;
+  }
+
+  .cluster-highlight {
+    fill: rgba(255, 255, 255, 0.02);
+    stroke: var(--map-accent);
+    stroke-width: 2.2;
+    stroke-dasharray: 8 6;
+    animation: clusterPulse 2.6s ease-in-out infinite;
+  }
+
+  @keyframes clusterPulse {
+    0%, 100% {
+      fill: rgba(255, 255, 255, 0.02);
+      stroke-opacity: 0.7;
+    }
+    50% {
+      fill: rgba(139, 58, 42, 0.1);
+      stroke-opacity: 1;
+    }
+  }
+
+  .zoom-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.7);
+  }
+
+  .zoom-link::before,
+  .zoom-link::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(245, 240, 232, 0.16);
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0 6px;
+  }
+
+  .controls button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .controls button:hover,
+  .controls button.active {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--map-accent) 18%, transparent);
+    border-color: var(--map-accent);
+    color: var(--cream);
+  }
+
+  .zoom-copy {
+    margin-top: 14px;
+    padding: 16px;
+    border-left: 3px solid var(--map-accent);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .profile-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, opacity 220ms ease;
+  }
+
+  .profile-card.is-active {
+    transform: translateY(-4px);
+    border-color: rgba(200, 135, 43, 0.58);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .profile-card.is-muted {
+    opacity: 0.58;
+  }
+
+  .zoom-panel {
+    opacity: 0.5;
+    transform: none;
+    pointer-events: auto;
+    overflow: visible;
+    transition: opacity 260ms ease, border-color 260ms ease, background 260ms ease;
+  }
+
+  .sequence-layout.is-zoom-open .zoom-panel {
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .zoom-map-entities {
+    opacity: 0;
+    transition: opacity 0ms linear;
+  }
+
+  .sequence-layout.is-zoom-brands-visible .zoom-map-entities {
+    opacity: 1;
+  }
+
+  .profile-card h3 {
+    font-size: 24px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .profile-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.82);
+  }
+
+  .profile-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .profile-meta {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .profile-meta div {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 12px;
+  }
+
+  .profile-meta p {
+    color: rgba(245, 240, 232, 0.76);
+  }
+
+  .takeaway-line {
+    margin-top: 22px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    font-family: "Fraunces", serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    z-index: 8;
+    min-width: 160px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(13, 13, 13, 0.92);
+    color: var(--cream);
+    font-size: 11px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 140ms ease, transform 140ms ease;
+  }
+
+  .tooltip.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 980px) {
+    .foundation-grid,
+    .alignment-grid,
+    .profiles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sequence-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .sequence-bridge {
+      padding-top: 0;
+    }
+
+    .bridge-shell {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      text-align: left;
+    }
+
+    .bridge-copy {
+      max-width: none;
+    }
+
+    .bridge-arrow {
+      width: 68px;
+      height: 68px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Positioning Map</div>
+    <h1 class="hero-title">Perceptual Maps and Competitive <em>Positioning</em></h1>
+    <p class="hero-sub">
+      A perceptual map is useful for locating brands in the broad competitive space, but true differentiation often becomes visible only after we compare nearby competitors again with a second set of attributes.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Broad market map -> cluster detection -> second-level differentiation
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Denim industry</div>
+      <div class="hero-pill">Two-step positioning</div>
+      <div class="hero-pill">Audience and benefit logic</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      Positioning should be read in stages: first where a brand sits in the market, then how it separates itself from the brands that appear closest to it.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">A single perceptual map is useful, but often not sufficient</h2>
+    <p class="section-intro">
+      Traditional perceptual maps usually begin with two broad dimensions. In many categories, price and quality are the right starting point because they reveal the broad competitive structure quickly. But brands that look close together on that first map often need further comparison. That is why positioning should be taught as a layered evaluation process, not as a one-time static picture.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>What the first map does well</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Locate</strong>
+            <span>Show where brands sit in the broader market on price and quality.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Cluster</strong>
+            <span>Reveal which competitors seem to occupy similar broad positions.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Compare</strong>
+            <span>Establish the overall structure of the category before going deeper.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>Why a second map is needed</h3>
+        <p>
+          When several brands sit near each other on price and quality, that first map no longer explains why customers might still choose differently. A second-level map can reveal differences in style meaning, audience identity, and benefit sought.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Layered Illustration</div>
+    <h2 class="section-title">Perceptual Maps and Competitive Positioning</h2>
+    <p class="section-intro">
+      The denim category below is illustrated as a sequential positioning process. We start with a broad price and quality map to locate the market structure, then isolate the three brands that sit too close together there. Only after that do we zoom in with a second map that reveals how audience identity, style meaning, and benefit sought create real differentiation.
+    </p>
+
+    <div class="sequence-layout" id="sequence-layout">
+      <div class="sequence-overlay" id="sequence-overlay" aria-hidden="true"></div>
+      <div class="sequence-panel" id="broad-scene">
+        <div class="step-kicker">Step 1 · Broad Market Position</div>
+        <h3>Primary denim market map</h3>
+        <p>Seven denim brands are positioned first on the broadest competitive dimensions: cheap versus expensive and low quality versus high quality.</p>
+        <div class="brand-staging" id="brand-staging" aria-label="Denim brand list before mapping">
+          <div class="brand-chip" data-chip-brand="levi"><span class="brand-chip-dot" style="background: var(--brand-a);"></span>Levi's</div>
+          <div class="brand-chip" data-chip-brand="tommy"><span class="brand-chip-dot" style="background: var(--brand-b);"></span>Tommy Jeans</div>
+          <div class="brand-chip" data-chip-brand="replay"><span class="brand-chip-dot" style="background: var(--brand-c);"></span>Replay</div>
+          <div class="brand-chip" data-chip-brand="diesel"><span class="brand-chip-dot" style="background: var(--brand-d);"></span>Diesel</div>
+          <div class="brand-chip" data-chip-brand="gstar"><span class="brand-chip-dot" style="background: var(--brand-e);"></span>G-Star RAW</div>
+          <div class="brand-chip" data-chip-brand="denham"><span class="brand-chip-dot" style="background: var(--brand-f);"></span>Denham</div>
+          <div class="brand-chip" data-chip-brand="wrangler"><span class="brand-chip-dot" style="background: var(--brand-g);"></span>Wrangler</div>
+        </div>
+        <div class="map-frame" id="broad-map-wrap">
+          <div class="map-overlay" id="broad-map-overlay" aria-hidden="true"></div>
+          <svg viewBox="0 0 560 420" aria-label="Broad denim perceptual map">
+            <line x1="70" y1="350" x2="500" y2="350" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+            <line x1="70" y1="350" x2="70" y2="60" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+            <line x1="285" y1="350" x2="285" y2="60" stroke="rgba(255,255,255,0.14)" stroke-dasharray="5 5" stroke-width="1.2"></line>
+            <line x1="70" y1="205" x2="500" y2="205" stroke="rgba(255,255,255,0.14)" stroke-dasharray="5 5" stroke-width="1.2"></line>
+            <text class="axis-label" x="116" y="390" text-anchor="middle">Cheap</text>
+            <text class="axis-label" x="424" y="390" text-anchor="middle">Expensive</text>
+            <text class="axis-label" x="24" y="104" text-anchor="middle" transform="rotate(-90, 24, 104)">High quality</text>
+            <text class="axis-label" x="24" y="302" text-anchor="middle" transform="rotate(-90, 24, 302)">Low quality</text>
+            <text class="quadrant-label" x="118" y="110">Accessible premium</text>
+            <text class="quadrant-label" x="340" y="110">Luxury denim</text>
+            <text class="quadrant-label" x="106" y="314">Mass value</text>
+            <text class="quadrant-label" x="338" y="314">Price tension</text>
+            <rect class="cluster-highlight" x="228" y="164" width="126" height="74" rx="12"></rect>
+
+            <g class="broad-brand" style="--delay: 40ms;">
+              <circle class="brand-point" data-brand="levi" cx="248" cy="214" r="10" fill="var(--brand-a)"></circle>
+              <text class="map-label" x="262" y="218">Levi's</text>
+            </g>
+
+            <g class="broad-brand" style="--delay: 110ms;">
+              <circle class="brand-point" data-brand="tommy" cx="292" cy="184" r="10" fill="var(--brand-b)"></circle>
+              <text class="map-label" x="306" y="188">Tommy Jeans</text>
+            </g>
+
+            <g class="broad-brand" style="--delay: 180ms;">
+              <circle class="brand-point" data-brand="replay" cx="310" cy="206" r="10" fill="var(--brand-c)"></circle>
+              <text class="map-label" x="324" y="210">Replay</text>
+            </g>
+
+            <g class="broad-brand" style="--delay: 250ms;">
+              <circle class="brand-point" data-brand="diesel" cx="392" cy="138" r="10" fill="var(--brand-d)"></circle>
+              <text class="map-label" x="406" y="142">Diesel</text>
+            </g>
+
+            <g class="broad-brand" style="--delay: 320ms;">
+              <circle class="brand-point" data-brand="gstar" cx="446" cy="104" r="10" fill="var(--brand-e)"></circle>
+              <text class="map-label" x="460" y="108">G-Star RAW</text>
+            </g>
+
+            <g class="broad-brand" style="--delay: 390ms;">
+              <circle class="brand-point" data-brand="denham" cx="344" cy="168" r="10" fill="var(--brand-f)"></circle>
+              <text class="map-label soft" x="358" y="172">Denham</text>
+            </g>
+
+            <g class="broad-brand" style="--delay: 460ms;">
+              <circle class="brand-point" data-brand="wrangler" cx="164" cy="246" r="10" fill="var(--brand-g)"></circle>
+              <text class="map-label soft" x="178" y="250">Wrangler</text>
+            </g>
+          </svg>
+          <div class="tooltip" id="broad-tooltip"></div>
+        </div>
+        <div class="zoom-link">Zoom into the clustered middle brands</div>
+      </div>
+
+      <div class="sequence-bridge">
+        <button class="bridge-shell" id="zoom-trigger" type="button" aria-controls="zoom-panel" aria-expanded="false">
+          <div class="bridge-copy">Price and quality do not fully separate this cluster</div>
+          <div class="bridge-arrow">
+            <svg viewBox="0 0 64 64">
+              <defs>
+                <linearGradient id="bridge-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(245,240,232,0.28)"></stop>
+                  <stop offset="100%" stop-color="#8b3a2a"></stop>
+                </linearGradient>
+              </defs>
+              <circle cx="18" cy="32" r="5" fill="var(--brand-a)"></circle>
+              <circle cx="28" cy="24" r="5" fill="var(--brand-b)"></circle>
+              <circle cx="28" cy="40" r="5" fill="var(--brand-c)"></circle>
+              <path d="M16 32h20" stroke="rgba(245,240,232,0.28)" stroke-width="2"></path>
+              <path d="M34 32h14" stroke="var(--map-accent)" stroke-width="2.4" stroke-linecap="round"></path>
+              <path d="M44 24l8 8-8 8" fill="none" stroke="var(--map-accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div class="bridge-copy">Trend level and expression value separate them</div>
+        </button>
+      </div>
+
+      <div class="sequence-panel zoom-panel" id="zoom-panel">
+        <div class="step-kicker">Step 2 · Zoomed Differentiation</div>
+        <h3>Secondary map for the clustered brands</h3>
+        <p>
+          These three brands remain too close on price and quality to explain the choice clearly. The second comparison therefore shifts to the attributes that better separate them: trend level versus classic orientation, and self-expression versus everyday practicality.
+        </p>
+
+        <div class="controls" id="zoom-controls">
+          <button class="active" data-view="default" type="button">Show differentiated view</button>
+          <button data-view="animate" type="button">Replay separation</button>
+        </div>
+
+        <div class="map-frame">
+          <svg viewBox="0 0 560 420" aria-label="Zoomed denim perceptual map">
+            <line x1="70" y1="350" x2="500" y2="350" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+            <line x1="70" y1="350" x2="70" y2="60" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+            <line x1="285" y1="350" x2="285" y2="60" stroke="rgba(255,255,255,0.14)" stroke-dasharray="5 5" stroke-width="1.2"></line>
+            <line x1="70" y1="205" x2="500" y2="205" stroke="rgba(255,255,255,0.14)" stroke-dasharray="5 5" stroke-width="1.2"></line>
+            <text class="axis-label" x="126" y="390" text-anchor="middle">Everyday Practicality</text>
+            <text class="axis-label" x="428" y="390" text-anchor="middle">Self Expression</text>
+            <text class="axis-label" x="24" y="108" text-anchor="middle" transform="rotate(-90, 24, 108)">Trendy</text>
+            <text class="axis-label" x="24" y="300" text-anchor="middle" transform="rotate(-90, 24, 300)">Classic</text>
+            <text class="quadrant-label" x="98" y="114">Classic practical</text>
+            <text class="quadrant-label" x="336" y="114">Trend expression</text>
+            <text class="quadrant-label" x="92" y="314">Reliable basics</text>
+            <text class="quadrant-label" x="334" y="314">Stylized everyday</text>
+
+            <g class="zoom-map-entities">
+              <circle class="brand-point" id="zoom-levi" cx="192" cy="246" r="12" fill="var(--brand-a)"></circle>
+              <text class="map-label" id="zoom-levi-label" x="208" y="250">Levi's</text>
+
+              <circle class="brand-point" id="zoom-tommy" cx="392" cy="136" r="12" fill="var(--brand-b)"></circle>
+              <text class="map-label" id="zoom-tommy-label" x="408" y="140">Tommy Jeans</text>
+
+              <circle class="brand-point" id="zoom-replay" cx="314" cy="206" r="12" fill="var(--brand-c)"></circle>
+              <text class="map-label" id="zoom-replay-label" x="330" y="210">Replay</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="zoom-copy">
+          Brands that looked close together on the first map now separate because they stand for different style meanings, address different audiences, and deliver different benefits.
+        </div>
+      </div>
+    </div>
+
+    <div class="profiles-grid">
+      <div class="profile-card" data-profile="levi">
+        <div class="profile-pill"><span class="profile-dot" style="background: var(--brand-a);"></span>Levi's</div>
+        <h3>Classic expressive balance</h3>
+        <div class="profile-meta">
+          <div>
+            <strong>Positioning summary</strong>
+            <p>Mid-market denim with strong heritage recognition, positioned between everyday wearability and moderate self-expression rather than at either extreme.</p>
+          </div>
+          <div>
+            <strong>Core customer</strong>
+            <p>Broad adult denim buyers who want a familiar, trusted brand and expect one pair to work across casual, routine, and light style-led settings.</p>
+          </div>
+          <div>
+            <strong>Primary benefit sought</strong>
+            <p>Recognizable authenticity, dependable fit expectations, and low-risk purchase confidence.</p>
+          </div>
+          <div>
+            <strong>Style signal</strong>
+            <p>Classic American denim codes with enough cultural relevance to feel expressive, but not strongly trend-driven.</p>
+          </div>
+          <div>
+            <strong>Functional expectation</strong>
+            <p>Reliable construction, familiar cuts, and repeat-purchase usability rather than experimental washes or fashion-forward silhouettes.</p>
+          </div>
+          <div>
+            <strong>Relative distinction</strong>
+            <p>Compared with Tommy Jeans, Levi’s is less logo-led and less youth-coded. Compared with Replay, it is less fashion-shaped and less premium-styled in everyday wear.</p>
+          </div>
+          <div>
+            <strong>Evidence cues for placement</strong>
+            <p>High brand familiarity, core denim heritage, mainstream distribution, and product lines built around classic fits justify its more classic and moderately expressive position.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card" data-profile="tommy">
+        <div class="profile-pill"><span class="profile-dot" style="background: var(--brand-b);"></span>Tommy Jeans</div>
+        <h3>Youthful identity expression</h3>
+        <div class="profile-meta">
+          <div>
+            <strong>Positioning summary</strong>
+            <p>Mid-market denim with stronger youth orientation and higher symbolic visibility, positioned toward self-expression and trend familiarity more than pure denim heritage.</p>
+          </div>
+          <div>
+            <strong>Core customer</strong>
+            <p>Younger casual-fashion buyers who want denim to connect with a recognizable branded lifestyle and signal contemporary taste without entering niche designer territory.</p>
+          </div>
+          <div>
+            <strong>Primary benefit sought</strong>
+            <p>Visible brand meaning, social recognizability, and easy access to current youth-coded style.</p>
+          </div>
+          <div>
+            <strong>Style signal</strong>
+            <p>Cleaner, more logo-aware, and more youth-facing than Levi’s, with stronger emphasis on branded identity as part of the look.</p>
+          </div>
+          <div>
+            <strong>Functional expectation</strong>
+            <p>Expected to perform adequately as everyday denim, but functional reliability is not the main basis of choice; brand image carries more weight.</p>
+          </div>
+          <div>
+            <strong>Relative distinction</strong>
+            <p>Compared with Levi’s, Tommy Jeans is more trend-facing and more overtly identity-signaling. Compared with Replay, it is less product-led and less style-refined, relying more on brand-coded lifestyle cues.</p>
+          </div>
+          <div>
+            <strong>Evidence cues for placement</strong>
+            <p>Younger campaign language, more prominent branded styling, and a stronger connection to casual lifestyle branding justify its higher self-expression and higher trend position.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card" data-profile="replay">
+        <div class="profile-pill"><span class="profile-dot" style="background: var(--brand-c);"></span>Replay</div>
+        <h3>Stylized everyday premium</h3>
+        <div class="profile-meta">
+          <div>
+            <strong>Positioning summary</strong>
+            <p>Mid-price to upper-mid-price denim with a more style-shaped everyday proposition, positioned more expressively than Levi’s but less symbolically than Tommy Jeans.</p>
+          </div>
+          <div>
+            <strong>Core customer</strong>
+            <p>Style-aware everyday wearers who want denim to look sharper and more elevated, but still expect regular use rather than occasional fashion purchase.</p>
+          </div>
+          <div>
+            <strong>Primary benefit sought</strong>
+            <p>Improved silhouette, more polished casual appearance, and a feeling of upgraded everyday denim.</p>
+          </div>
+          <div>
+            <strong>Style signal</strong>
+            <p>More fitted, styled, and design-conscious than Levi’s, but less overtly logo-driven and less youth-coded than Tommy Jeans.</p>
+          </div>
+          <div>
+            <strong>Functional expectation</strong>
+            <p>Consumers still expect repeat wear, comfort, and wardrobe versatility, even though styling and finish matter more than in a purely basic denim purchase.</p>
+          </div>
+          <div>
+            <strong>Relative distinction</strong>
+            <p>Compared with Levi’s, Replay leans more into styled everyday premium cues and more visible design shaping. Compared with Tommy Jeans, it relies less on symbolic branding and more on cut, finish, and the garment itself.</p>
+          </div>
+          <div>
+            <strong>Evidence cues for placement</strong>
+            <p>More fashion-shaped product presentation, sharper silhouettes, and premium-casual styling cues justify its position as a stylized everyday brand rather than a heritage-basic or logo-led brand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaway-line">
+      A single perceptual map is useful for identifying the broad competitive space, but it is often not enough to explain true differentiation. When competitors occupy similar price and quality positions, a second-level map using different attributes can reveal how they target different audiences and deliver different benefits.
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">03 · Alignment</div>
+    <h2 class="section-title">Positioning should be analysed in layers, not as one fixed picture</h2>
+    <p class="section-intro">
+      The first map helps us understand the broad market environment. The second map explains why customers may still separate brands that initially appear similar.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Weak reading</h3>
+        <p>If we stop at price and quality, the three middle denim brands can look almost interchangeable. That flattens real differences in identity, style meaning, and benefit sought.</p>
+      </div>
+
+      <div class="alignment-card">
+        <h3>Stronger reading</h3>
+        <p>Broad market position comes first, but true competitive interpretation often requires a second comparison layer. That is where audience identity and everyday versus expressive value become visible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Perceptual Maps</div>
+</footer>
+
+<script>
+  const broadTooltip = document.getElementById("broad-tooltip");
+  const interactiveBand = document.querySelector(".interactive-band");
+  const broadScene = document.getElementById("broad-scene");
+  const sequenceLayout = document.getElementById("sequence-layout");
+  const sequenceOverlay = document.getElementById("sequence-overlay");
+  const zoomTrigger = document.getElementById("zoom-trigger");
+  const broadMapWrap = document.getElementById("broad-map-wrap");
+  const broadMapOverlay = document.getElementById("broad-map-overlay");
+  const stagingChips = Array.from(document.querySelectorAll(".brand-chip[data-chip-brand]"));
+  const broadBrands = {
+    levi: "Levi's: mid price, mid quality, central to the denim middle.",
+    tommy: "Tommy Jeans: mid price, mid quality, but more identity-led and youthful.",
+    replay: "Replay: mid price, mid quality, with a more stylized premium-casual feel.",
+    diesel: "Diesel: more expensive and more fashion-signalling.",
+    gstar: "G-Star RAW: premium, directional, and more design-led.",
+    denham: "Denham: premium denim with higher quality cues and a crafted feel.",
+    wrangler: "Wrangler: lower priced and more utilitarian."
+  };
+
+  const clusteredIds = ["levi", "tommy", "replay"];
+  const broadPoints = Array.from(document.querySelectorAll('.brand-point[data-brand]'));
+  const broadChips = Array.from(document.querySelectorAll('.brand-chip[data-chip-brand]'));
+  const broadLabels = Array.from(document.querySelectorAll('#broad-map-wrap .broad-brand .map-label'));
+  const clusteredPoints = clusteredIds.map((id) => document.getElementById(`zoom-${id}`));
+  const clusteredLabels = clusteredIds.map((id) => document.getElementById(`zoom-${id}-label`));
+  const profileCards = Array.from(document.querySelectorAll(".profile-card[data-profile]"));
+  const controls = Array.from(document.querySelectorAll("#zoom-controls button"));
+  const zoomSection = document.querySelector(".interactive-band");
+  const finalPositions = [
+    { x: 192, y: 246, lx: 208, ly: 250 },
+    { x: 392, y: 136, lx: 408, ly: 140 },
+    { x: 292, y: 214, lx: 308, ly: 218 }
+  ];
+  const startPositions = [
+    { x: 248, y: 214, lx: 264, ly: 218 },
+    { x: 292, y: 184, lx: 308, ly: 188 },
+    { x: 310, y: 206, lx: 326, ly: 210 }
+  ];
+
+  let animationFrame = null;
+  let hasAutoPlayed = false;
+  let broadMapAnimatedIn = false;
+  let broadMapElements = null;
+  let broadMapTicking = false;
+  let selectedBroadBrand = null;
+  let zoomPanelOpen = false;
+  let zoomFlightActive = false;
+  let zoomBrandsVisible = false;
+
+  function positionTransferredMarkers() {
+    if (!sequenceLayout || !sequenceOverlay) {
+      return;
+    }
+
+    const layoutRect = sequenceLayout.getBoundingClientRect();
+
+    Array.from(sequenceOverlay.querySelectorAll(".flying-zoom-brand[data-brand]")).forEach((token) => {
+      const brandId = token.dataset.brand;
+      const targetPoint = document.getElementById(`zoom-${brandId}`);
+
+      if (!targetPoint) {
+        return;
+      }
+
+      const targetRect = targetPoint.getBoundingClientRect();
+      token.style.left = `${targetRect.left - layoutRect.left + (targetRect.width / 2)}px`;
+      token.style.top = `${targetRect.top - layoutRect.top + (targetRect.height / 2)}px`;
+    });
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function ensureBroadMapElements() {
+    if (broadMapElements || !broadMapWrap || !broadMapOverlay) {
+      return;
+    }
+
+    broadMapOverlay.innerHTML = "";
+    broadMapElements = stagingChips.map((chip) => {
+      const brandId = chip.dataset.chipBrand;
+      const chipColor = window.getComputedStyle(chip.querySelector(".brand-chip-dot")).backgroundColor;
+      const flyingChip = document.createElement("div");
+
+      flyingChip.className = "flying-chip";
+      flyingChip.innerHTML = `<span class="flying-chip-dot" style="background:${chipColor};"></span>${chip.textContent.trim()}`;
+      broadMapOverlay.appendChild(flyingChip);
+
+      return { brandId, chip, flyingChip };
+    });
+  }
+
+  function getBroadMapProgress() {
+    if (!broadScene) {
+      return 1;
+    }
+
+    const rect = broadScene.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const start = viewportHeight * 0.88;
+    const travel = Math.max(rect.height * 0.92, viewportHeight * 0.56);
+    const raw = (start - rect.top) / travel;
+
+    return clamp(raw, 0, 1);
+  }
+
+  function renderBroadMapProgress(progress) {
+    ensureBroadMapElements();
+
+    if (!broadMapElements || !broadMapWrap) {
+      return;
+    }
+
+    const wrapperRect = broadMapWrap.getBoundingClientRect();
+    const easedProgress = progress < 0.7 ? progress / 0.7 : 1;
+    const finalReveal = clamp((progress - 0.58) / 0.24, 0, 1);
+
+    broadMapElements.forEach((item, index) => {
+      const chipRect = item.chip.getBoundingClientRect();
+      const targetPoint = document.querySelector(`.brand-point[data-brand="${item.brandId}"]`);
+
+      if (!targetPoint) {
+        return;
+      }
+
+      const pointRect = targetPoint.getBoundingClientRect();
+      const stagger = index * 0.055;
+      const localProgress = clamp((easedProgress - stagger) / (1 - stagger), 0, 1);
+      const currentX = (chipRect.left - wrapperRect.left + (chipRect.width / 2)) + (((pointRect.left - wrapperRect.left + (pointRect.width / 2)) - (chipRect.left - wrapperRect.left + (chipRect.width / 2))) * localProgress);
+      const currentY = (chipRect.top - wrapperRect.top + (chipRect.height / 2)) + (((pointRect.top - wrapperRect.top + (pointRect.height / 2)) - (chipRect.top - wrapperRect.top + (chipRect.height / 2))) * localProgress);
+
+      item.flyingChip.style.left = `${currentX}px`;
+      item.flyingChip.style.top = `${currentY}px`;
+      item.flyingChip.style.opacity = `${1 - clamp((localProgress - 0.82) / 0.18, 0, 1)}`;
+      item.flyingChip.style.transform = `translate(-50%, -50%) scale(${1 - (localProgress * 0.28)})`;
+      item.chip.classList.toggle("is-sent", localProgress > 0.18);
+    });
+
+    if (interactiveBand) {
+      interactiveBand.classList.toggle("is-broad-complete", finalReveal > 0.02);
+    }
+
+    document.querySelectorAll(".broad-brand").forEach((brand) => {
+      brand.style.opacity = `${finalReveal}`;
+    });
+
+    if (progress > 0.78 && !broadMapAnimatedIn) {
+      broadMapAnimatedIn = true;
+    }
+
+    if (progress < 0.35) {
+      broadMapAnimatedIn = false;
+    }
+  }
+
+  function updateBroadMapOnScroll() {
+    if (broadMapTicking) {
+      return;
+    }
+
+    broadMapTicking = true;
+    window.requestAnimationFrame(() => {
+      renderBroadMapProgress(getBroadMapProgress());
+      broadMapTicking = false;
+    });
+  }
+
+  function moveZoomMap(positions) {
+    clusteredPoints.forEach((point, index) => {
+      point.setAttribute("cx", positions[index].x);
+      point.setAttribute("cy", positions[index].y);
+      clusteredLabels[index].setAttribute("x", positions[index].lx);
+      clusteredLabels[index].setAttribute("y", positions[index].ly);
+    });
+  }
+
+  function setProfileState(activeId = null) {
+    profileCards.forEach((card) => {
+      const isActive = activeId && card.dataset.profile === activeId;
+      card.classList.toggle("is-active", Boolean(isActive));
+      card.classList.toggle("is-muted", Boolean(activeId) && !isActive);
+    });
+  }
+
+  function setActiveControl(view) {
+    controls.forEach((button) => button.classList.toggle("active", button.dataset.view === view));
+  }
+
+  function setZoomPanelOpen(isOpen) {
+    zoomPanelOpen = isOpen;
+    if (sequenceLayout) {
+      sequenceLayout.classList.toggle("is-zoom-open", isOpen);
+    }
+    if (zoomTrigger) {
+      zoomTrigger.setAttribute("aria-expanded", String(isOpen));
+    }
+  }
+
+  function setZoomBrandsVisible(isVisible) {
+    zoomBrandsVisible = isVisible;
+    if (sequenceLayout) {
+      sequenceLayout.classList.toggle("is-zoom-brands-visible", isVisible);
+    }
+  }
+
+  function setBroadSelection(brandId = null) {
+    selectedBroadBrand = brandId;
+
+    broadChips.forEach((chip) => {
+      const isSelected = brandId && chip.dataset.chipBrand === brandId;
+      chip.classList.toggle("is-selected", Boolean(isSelected));
+    });
+
+    broadPoints.forEach((point) => {
+      const isSelected = brandId && point.dataset.brand === brandId;
+      point.classList.toggle("is-selected", Boolean(isSelected));
+      point.classList.toggle("is-muted", Boolean(brandId) && !isSelected);
+    });
+
+    broadLabels.forEach((label) => {
+      const labelText = label.textContent.trim().toLowerCase();
+      const matches =
+        (brandId === "levi" && labelText === "levi's") ||
+        (brandId === "tommy" && labelText === "tommy jeans") ||
+        (brandId === "replay" && labelText === "replay") ||
+        (brandId === "diesel" && labelText === "diesel") ||
+        (brandId === "gstar" && labelText === "g-star raw") ||
+        (brandId === "denham" && labelText === "denham") ||
+        (brandId === "wrangler" && labelText === "wrangler") ||
+        false;
+
+      label.classList.toggle("is-selected", Boolean(matches));
+      label.classList.toggle("is-muted", Boolean(brandId) && !matches);
+    });
+  }
+
+  function easeOutCubic(value) {
+    return 1 - Math.pow(1 - value, 3);
+  }
+
+  function animateBetween(fromPositions, toPositions, duration = 850) {
+    if (animationFrame) {
+      window.cancelAnimationFrame(animationFrame);
+    }
+
+    const start = window.performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = easeOutCubic(progress);
+      const currentPositions = fromPositions.map((from, index) => ({
+        x: from.x + (toPositions[index].x - from.x) * eased,
+        y: from.y + (toPositions[index].y - from.y) * eased,
+        lx: from.lx + (toPositions[index].lx - from.lx) * eased,
+        ly: from.ly + (toPositions[index].ly - from.ly) * eased
+      }));
+
+      moveZoomMap(currentPositions);
+
+      if (progress < 1) {
+        animationFrame = window.requestAnimationFrame(step);
+      } else {
+        animationFrame = null;
+        moveZoomMap(toPositions);
+      }
+    }
+
+    animationFrame = window.requestAnimationFrame(step);
+  }
+
+  function playZoom() {
+    sequenceOverlay.innerHTML = "";
+    setActiveControl("animate");
+    setProfileState(null);
+    setZoomBrandsVisible(true);
+    moveZoomMap(startPositions);
+    window.setTimeout(() => {
+      animateBetween(startPositions, finalPositions);
+      window.setTimeout(() => {
+        setActiveControl("default");
+      }, 860);
+    }, 120);
+  }
+
+  function animateClusterTransfer() {
+    if (!sequenceLayout || !sequenceOverlay || zoomFlightActive) {
+      return;
+    }
+
+    zoomFlightActive = true;
+    sequenceOverlay.innerHTML = "";
+
+    const layoutRect = sequenceLayout.getBoundingClientRect();
+
+    clusteredIds.forEach((id, index) => {
+      const sourcePoint = document.querySelector(`.brand-point[data-brand="${id}"]`);
+      const targetPoint = document.getElementById(`zoom-${id}`);
+
+      if (!sourcePoint || !targetPoint) {
+        return;
+      }
+
+      const sourceRect = sourcePoint.getBoundingClientRect();
+      const targetRect = targetPoint.getBoundingClientRect();
+      const token = document.createElement("div");
+      const tokenColor = window.getComputedStyle(sourcePoint).fill || sourcePoint.getAttribute("fill");
+      const tokenLabel =
+        id === "levi" ? "Levi's" :
+        id === "tommy" ? "Tommy Jeans" :
+        "Replay";
+
+      token.className = "flying-zoom-brand";
+      token.dataset.brand = id;
+      token.innerHTML = `<span class="marker-dot" style="background:${tokenColor};"></span><span>${tokenLabel}</span>`;
+      token.style.left = `${sourceRect.left - layoutRect.left + (sourceRect.width / 2)}px`;
+      token.style.top = `${sourceRect.top - layoutRect.top + (sourceRect.height / 2)}px`;
+      sequenceOverlay.appendChild(token);
+
+      window.setTimeout(() => {
+        token.style.left = `${targetRect.left - layoutRect.left + (targetRect.width / 2)}px`;
+        token.style.top = `${targetRect.top - layoutRect.top + (targetRect.height / 2)}px`;
+      }, index * 70 + 40);
+
+      window.setTimeout(() => {
+        if (index === clusteredIds.length - 1) {
+          zoomFlightActive = false;
+        }
+      }, index * 70 + 980);
+    });
+  }
+
+  moveZoomMap(finalPositions);
+  setProfileState(null);
+  setZoomPanelOpen(false);
+  setZoomBrandsVisible(false);
+  ensureBroadMapElements();
+  renderBroadMapProgress(0);
+
+  if (zoomTrigger) {
+    zoomTrigger.addEventListener("click", () => {
+      setZoomPanelOpen(true);
+      setZoomBrandsVisible(false);
+      animateClusterTransfer();
+    });
+  }
+
+  controls.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.dataset.view === "animate") {
+        playZoom();
+      } else {
+        setActiveControl("default");
+        moveZoomMap(finalPositions);
+        setProfileState(null);
+      }
+    });
+  });
+
+  clusteredPoints.forEach((point, index) => {
+    const id = clusteredIds[index];
+
+    point.addEventListener("mouseenter", () => setProfileState(id));
+    point.addEventListener("mouseleave", () => setProfileState(null));
+  });
+
+  profileCards.forEach((card) => {
+    const id = card.dataset.profile;
+    const point = document.getElementById(`zoom-${id}`);
+
+    card.addEventListener("mouseenter", () => {
+      setProfileState(id);
+      point.classList.add("is-active");
+    });
+
+    card.addEventListener("mouseleave", () => {
+      setProfileState(null);
+      point.classList.remove("is-active");
+    });
+  });
+
+  document.querySelectorAll(".brand-point[data-brand]").forEach((point) => {
+    point.addEventListener("mouseenter", (event) => {
+      broadTooltip.textContent = broadBrands[event.currentTarget.dataset.brand];
+      const rect = event.currentTarget.ownerSVGElement.getBoundingClientRect();
+      const pointRect = event.currentTarget.getBoundingClientRect();
+      broadTooltip.style.left = `${pointRect.left - rect.left + 20}px`;
+      broadTooltip.style.top = `${pointRect.top - rect.top - 8}px`;
+      broadTooltip.classList.add("is-visible");
+    });
+
+    point.addEventListener("mouseleave", () => {
+      broadTooltip.classList.remove("is-visible");
+    });
+
+    point.addEventListener("click", (event) => {
+      const brandId = event.currentTarget.dataset.brand;
+      setBroadSelection(selectedBroadBrand === brandId ? null : brandId);
+    });
+  });
+
+  broadChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const brandId = chip.dataset.chipBrand;
+      setBroadSelection(selectedBroadBrand === brandId ? null : brandId);
+    });
+  });
+
+  if ("IntersectionObserver" in window && zoomSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAutoPlayed) {
+          hasAutoPlayed = true;
+          interactiveBand.classList.add("is-revealed");
+          updateBroadMapOnScroll();
+        }
+      });
+    }, { threshold: 0.45 });
+
+    observer.observe(zoomSection);
+  } else if (interactiveBand) {
+    interactiveBand.classList.add("is-revealed");
+    updateBroadMapOnScroll();
+  }
+
+  window.addEventListener("scroll", updateBroadMapOnScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    updateBroadMapOnScroll();
+    positionTransferredMarkers();
+  });
+</script>
+
+</body>
+</html>
