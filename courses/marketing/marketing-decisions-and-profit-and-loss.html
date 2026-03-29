@@ -434,99 +434,99 @@
         <div class="p-column">
           <div class="causal-item"><strong>Product</strong>Value proposition quality, feature cost, and service design change willingness-to-pay and gross profit per customer.</div>
           <div class="causal-item"><strong>Price</strong>Price level and discount architecture directly affect realized revenue, gross margin, and profit conversion.</div>
-          <div class="causal-item"><strong>Place</strong>Channel choice changes reach, commission structure, return rates, and selling cost intensity.</div>
-          <div class="causal-item"><strong>Promotion</strong>Media mix and retention programs affect acquisition volume, CAC, repeat rate, and operating leverage.</div>
-        </div>
-        <div class="causal-links" aria-hidden="true">
-          <div class="causal-link">-&gt;</div>
-          <div class="causal-link">-&gt;</div>
-          <div class="causal-link">-&gt;</div>
-          <div class="causal-link">-&gt;</div>
-        </div>
-        <div class="pnl-column">
-          <div class="causal-item"><strong>Revenue</strong>Volume x realized price x mix x repeat behavior.</div>
-          <div class="causal-item"><strong>Gross margin</strong>Price discipline minus product and channel cost-to-serve.</div>
-          <div class="causal-item"><strong>Selling costs</strong>Acquisition spend, incentives, commissions, and retention cost.</div>
-          <div class="causal-item"><strong>Operating profit</strong>Revenue quality + margin quality - cost to win and keep demand.</div>
-        </div>
+    <h2 class="section-title">Click each P to see its direct impact on the income statement</h2>
+      Use the 4Ps as direct controls. Click Product, Price, Place, or Promotion to see the most common first-order effects on revenue, margin, selling and marketing expense, other operating expense, and operating profit.
+      <button class="active" data-key="product" type="button">Product</button>
+      <button data-key="price" type="button">Price</button>
+      <button data-key="place" type="button">Place</button>
+      <button data-key="promotion" type="button">Promotion</button>
+        <h3 id="decision-title">Product</h3>
+        <p id="decision-copy">Product decisions shape value, cost-to-serve, and differentiation. Better product-market fit can lift conversion and retention, while complexity can increase delivery and support cost.</p>
+          <div class="impact-pill">Primary P <b id="primary-p">Product</b></div>
+          <div class="impact-pill">Causal path <b id="causal-path">Product -> Value perception/cost-to-serve -> Margin & Profit</b></div>
+          <div class="metric-card" id="revenue-card"><strong>Revenue</strong><span id="revenue-impact">Up when fit is strong</span></div>
+          <div class="metric-card" id="margin-card"><strong>Gross margin</strong><span id="margin-impact">Up or down (depends on product cost)</span></div>
+          <div class="metric-card" id="cost-card"><strong>Selling &amp; marketing expense</strong><span id="cost-impact">Mixed</span></div>
+          <div class="metric-card" id="opex-card"><strong>Other operating expense</strong><span id="opex-impact">Mixed</span></div>
+          <div class="metric-card" id="profit-card"><strong>Operating profit</strong><span id="profit-impact">Quality-dependent</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="interactive-band">
-  <div class="interactive-shell">
-    <div class="section-tag">02 · Decision Simulator</div>
-    <h2 class="section-title">Select a marketing decision and inspect the P&amp;L effect</h2>
-    <p class="section-intro">
-      The point is not to treat finance as separate from marketing. The point is to see how each commercial decision changes the structure of the business.
-    </p>
-
-    <div class="decision-selector" id="decision-selector">
-      <button class="active" data-key="discount" type="button">Heavy discounting</button>
-      <button data-key="premium" type="button">Premium positioning</button>
-      <button data-key="marketplace" type="button">Marketplace growth</button>
-      <button data-key="retention" type="button">Retention improvement</button>
-    </div>
-
-    <div class="interactive-grid">
-      <div class="panel">
-        <div class="mini-label">Decision profile</div>
-        <h3 id="decision-title">Heavy discounting</h3>
-        <p id="decision-copy">Discounting can raise short-term volume quickly, but it often compresses gross margin and can make future full-price selling harder.</p>
-        <div class="impact-stream" id="impact-stream">
-          <div class="impact-pill">Primary P <b id="primary-p">Price</b></div>
-          <div class="impact-pill">Causal path <b id="causal-path">Price -&gt; Revenue / Margin -&gt; Profit</b></div>
-        </div>
-        <div class="pnl-metrics">
-          <div class="metric-card" id="revenue-card"><strong>Revenue</strong><span id="revenue-impact">Up</span></div>
-          <div class="metric-card" id="margin-card"><strong>Gross margin</strong><span id="margin-impact">Down</span></div>
-          <div class="metric-card" id="cost-card"><strong>Selling cost</strong><span id="cost-impact">Up</span></div>
-          <div class="metric-card" id="profit-card"><strong>Operating profit</strong><span id="profit-impact">Mixed</span></div>
-        </div>
-      </div>
-
-      <div class="detail-panel">
-        <div class="mini-label">Interpretation</div>
-        <h3 id="finance-title">Volume improves faster than profit quality</h3>
-        <p id="finance-copy">This is often attractive when the business needs traffic or short-term movement, but it can weaken economics if discounting becomes the main route to demand.</p>
-        <ul class="decision-list" id="decision-list">
-          <li>Higher unit volume does not guarantee higher gross profit.</li>
-          <li>Frequent discounts can train customers to wait for lower prices.</li>
-          <li>The P&amp;L may show revenue growth with disappointing operating leverage.</li>
-        </ul>
-        <div class="takeaway-line" id="takeaway-line">
-          Marketing decisions should be judged not only by demand created, but by the kind of profit they create.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="alignment-section">
-  <div class="alignment-shell">
-    <div class="section-tag">03 · Alignment</div>
-    <h2 class="section-title">Good marketing should improve the quality of the P&amp;L, not only the size of activity</h2>
-    <p class="section-intro">
-      The strongest commercial systems do more than produce revenue. They create revenue that is sustainable, defendable, and economically attractive.
-    </p>
-
-    <div class="alignment-grid">
-      <div class="alignment-card">
-        <h3>Weak commercial logic</h3>
-        <ul>
-          <li>Chases volume without considering gross margin quality.</li>
-          <li>Over-relies on expensive acquisition or deep discounting.</li>
-          <li>Confuses activity growth with profit improvement.</li>
-        </ul>
-      </div>
-
-      <div class="alignment-card">
-        <h3>Stronger commercial logic</h3>
-        <ul>
-          <li>Connects targeting, positioning, and retention to financial outcomes.</li>
-          <li>Understands how channel, pricing, and promotion decisions change margin structure.</li>
-          <li>Uses marketing to improve both demand and economic quality.</li>
+        <h3 id="finance-title">Product defines revenue quality and cost structure at the same time</h3>
+        <p id="finance-copy">A better product can support higher willingness-to-pay and retention, but added complexity may increase service and fulfillment burden.</p>
+          <li>Feature bloat can increase operating expense faster than willingness-to-pay.</li>
+          <li>Clear differentiation can protect margin and reduce discount pressure.</li>
+          <li>Product quality impacts returns, support tickets, and repeat behavior.</li>
+          Product is both a demand lever and a cost architecture decision.
+    product: {
+      title: "Product",
+      copy: "Product choices determine customer value, feature cost, quality perception, and support burden. Strong product-market fit improves conversion and repeat demand.",
+      primaryP: "Product",
+      causalPath: "Product -> Value + cost-to-serve -> Margin & Profit",
+      revenue: "Up when fit is strong",
+      margin: "Up or down (depends on product cost)",
+      cost: "Mixed",
+      opex: "Mixed",
+      profit: "Quality-dependent",
+        margin: "neutral",
+        cost: "neutral",
+        opex: "neutral",
+      financeTitle: "Product defines revenue quality and cost structure at the same time",
+      financeCopy: "A better product can support higher willingness-to-pay and retention, but added complexity may increase service and fulfillment burden.",
+        "Feature bloat can increase operating expense faster than willingness-to-pay.",
+        "Clear differentiation can protect margin and reduce discount pressure.",
+        "Product quality impacts returns, support tickets, and repeat behavior."
+      takeaway: "Product is both a demand lever and a cost architecture decision.",
+      accent: "#6f7f4f"
+    price: {
+      title: "Price",
+      copy: "Pricing changes realized revenue immediately and strongly influences gross margin. Discount-heavy structures can weaken long-term price integrity.",
+      primaryP: "Price",
+      causalPath: "Price -> Realized revenue/margin -> Profit",
+      revenue: "Up or down (elasticity)",
+      margin: "Highly sensitive",
+      cost: "Up if promo-driven",
+      opex: "Neutral",
+      profit: "Highly sensitive",
+        margin: "negative",
+        profit: "neutral"
+      financeTitle: "Price is the fastest path into both top line and margin line",
+      financeCopy: "Every pricing move has tradeoffs between volume and unit economics. The right decision depends on elasticity, positioning, and competitive response.",
+        "Discounting may lift units while reducing gross profit per unit.",
+        "Price discipline can improve margin even with flatter volume.",
+        "Promotion depth and frequency affect selling and marketing expense."
+      takeaway: "Price policy should be evaluated by gross profit and operating profit, not revenue alone.",
+      accent: "#8b3a2a"
+    place: {
+      title: "Place",
+      copy: "Channel and distribution design affects reach, conversion context, commissions, shipping burden, and returns behavior.",
+      causalPath: "Place -> Reach + shipping/commission -> Opex & Profit",
+      revenue: "Up with wider reach",
+      margin: "Down if channel takes share",
+      opex: "Up when logistics burden rises",
+      profit: "Depends on channel economics",
+      financeTitle: "Distribution choice shapes cost-to-serve as much as demand",
+      financeCopy: "New channels can unlock volume, but commissions, fulfillment costs, and return rates may dilute profitability.",
+        "Marketplace reach can increase revenue quickly.",
+        "Commission structures and logistics can reduce net contribution per order.",
+        "Channel design determines who owns customer data and repeat economics."
+      takeaway: "Place decisions should be managed as a full unit-economics equation.",
+    promotion: {
+      title: "Promotion",
+      copy: "Promotion drives awareness and acquisition volume, but it also directly determines marketing and sales expense and customer acquisition cost.",
+      primaryP: "Promotion",
+      causalPath: "Promotion -> CAC + S&M expense -> Operating profit",
+      revenue: "Up if conversion quality holds",
+      margin: "Neutral to up",
+      cost: "Up (spend-led)",
+      opex: "Down per customer with retention efficiency",
+      profit: "Up if LTV/CAC improves",
+        margin: "neutral",
+        cost: "negative",
+      financeTitle: "Promotion is a growth lever and an expense line at the same time",
+      financeCopy: "The same campaign can grow revenue and hurt profit if CAC rises faster than lifetime value. Efficiency and retention quality are critical.",
+        "Acquisition spend should be judged against payback and contribution margin.",
+        "Retention promotion can reduce opex per retained customer over time.",
+        "Promotion quality matters more than activity volume."
+      takeaway: "Promotion should optimize LTV/CAC and operating leverage, not just traffic.",
         </ul>
       </div>
     </div>
@@ -691,7 +691,7 @@
     button.addEventListener("click", () => renderDecision(button.dataset.key));
   });
 
-  renderDecision("discount");
+  renderDecision("product");
 </script>
 
 </body>
