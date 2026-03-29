@@ -88,6 +88,142 @@
     background: rgba(13,13,13,0.08);
   }
 
+  .value-framework {
+    max-width: 1240px;
+    margin: 38px auto 48px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.78), rgba(250,246,240,0.92));
+    border: 1px solid rgba(13,13,13,0.1);
+    padding: 38px 34px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .value-framework::before {
+    content: '';
+    position: absolute;
+    inset: -30% auto auto -10%;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,135,43,0.1), rgba(200,135,43,0));
+    pointer-events: none;
+  }
+
+  .framework-title {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(13,13,13,0.45);
+    margin-bottom: 26px;
+  }
+
+  .framework-core {
+    position: relative;
+    margin: 0 auto;
+    max-width: 860px;
+    min-height: 520px;
+  }
+
+  .framework-hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 230px;
+    height: 230px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid rgba(13,13,13,0.14);
+    background: radial-gradient(circle at 35% 30%, #fff, #f6eee1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    line-height: 1.35;
+    color: var(--ink);
+    z-index: 2;
+  }
+
+  .framework-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 470px;
+    height: 470px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px dashed rgba(13,13,13,0.2);
+    z-index: 0;
+  }
+
+  .framework-node {
+    --x: 50%;
+    --y: 50%;
+    --accent: var(--ink);
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    width: 220px;
+    padding: 18px 18px 14px;
+    background: rgba(255,255,255,0.86);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    box-shadow: 0 12px 34px rgba(13,13,13,0.08);
+    z-index: 2;
+  }
+
+  .framework-node::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1px;
+    height: 120px;
+    transform-origin: top center;
+    transform: translate(-50%, -50%) rotate(var(--angle));
+    background: linear-gradient(to bottom, rgba(13,13,13,0.12), rgba(13,13,13,0));
+    z-index: -1;
+  }
+
+  .framework-node .node-name {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .framework-node .node-move {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .framework-node .node-hint {
+    font-size: 11px;
+    line-height: 1.55;
+    color: rgba(13,13,13,0.58);
+  }
+
+  .framework-node.functional { --accent: var(--slate); --angle: 180deg; --x: 50%; --y: 9%; }
+  .framework-node.economic { --accent: var(--sage); --angle: 240deg; --x: 80%; --y: 26%; }
+  .framework-node.risk { --accent: #7a5a8a; --angle: 300deg; --x: 80%; --y: 74%; }
+  .framework-node.psychological { --accent: var(--rust); --angle: 0deg; --x: 50%; --y: 91%; }
+  .framework-node.social { --accent: var(--amber); --angle: 60deg; --x: 20%; --y: 74%; }
+  .framework-node.systemic { --accent: var(--ink); --angle: 120deg; --x: 20%; --y: 26%; }
+
+  .framework-caption {
+    margin-top: 28px;
+    font-size: 12px;
+    color: rgba(13,13,13,0.55);
+    line-height: 1.8;
+    max-width: 860px;
+  }
+
   .value-card {
     background: var(--pale);
     padding: 44px 36px;
@@ -516,6 +652,39 @@
     .dist-divider { display: none; }
     .section { padding: 60px 32px; }
     footer { padding: 24px 32px; flex-direction: column; gap: 8px; text-align: center; }
+
+    .value-framework { padding: 24px 18px 20px; }
+    .framework-core {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      max-width: 100%;
+    }
+    .framework-hub {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      margin: 0 auto 12px;
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      border-radius: 0;
+      padding: 16px 20px;
+      font-size: 19px;
+    }
+    .framework-ring { display: none; }
+    .framework-node {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .framework-node::before { display: none; }
   }
 </style>
 </head>
@@ -582,6 +751,44 @@
     <div class="section-tag">02 · Six Dimensions of Progress</div>
     <h2 class="section-title">What customers are actually buying</h2>
     <p class="section-intro">Progress isn't one-dimensional. A customer's "job to be done" spans six distinct value layers — each one a different kind of improvement in their situation.</p>
+  </div>
+  <div class="value-framework">
+    <div class="framework-title">Visual framework · the six value layers around customer progress</div>
+    <div class="framework-core">
+      <div class="framework-ring"></div>
+      <div class="framework-hub">Customer Progress<br>is multi-layered</div>
+      <div class="framework-node functional">
+        <div class="node-name">Functional</div>
+        <div class="node-move">Do the task better</div>
+        <div class="node-hint">Speed, reliability, ease, and quality of execution.</div>
+      </div>
+      <div class="framework-node economic">
+        <div class="node-name">Economic</div>
+        <div class="node-move">Improve resource return</div>
+        <div class="node-hint">Better ROI, lower waste, and stronger cost/value dynamics.</div>
+      </div>
+      <div class="framework-node risk">
+        <div class="node-name">Risk</div>
+        <div class="node-move">Reduce downside exposure</div>
+        <div class="node-hint">More certainty, fewer failure paths, safer decisions.</div>
+      </div>
+      <div class="framework-node psychological">
+        <div class="node-name">Psychological</div>
+        <div class="node-move">Increase confidence</div>
+        <div class="node-hint">Less anxiety, more clarity, and greater sense of control.</div>
+      </div>
+      <div class="framework-node social">
+        <div class="node-name">Identity & Social</div>
+        <div class="node-move">Signal who I am</div>
+        <div class="node-hint">Status, belonging, and alignment with personal/professional identity.</div>
+      </div>
+      <div class="framework-node systemic">
+        <div class="node-name">Systemic</div>
+        <div class="node-move">Strengthen the wider system</div>
+        <div class="node-hint">Smoother coordination, adoption, and scalable operations.</div>
+      </div>
+    </div>
+    <p class="framework-caption">Think of these as interlocking layers instead of a checklist: the strongest advantages combine several layers in one coherent customer experience.</p>
   </div>
   <div class="value-grid" style="max-width:1240px; margin:0 auto;">
     <div class="value-card functional">
