@@ -9,7 +9,13 @@
 <link rel="stylesheet" href="../../assets/css/article-showcase.css">
 <style>
   :root {
-    --segment-accent: #5271b8;
+    --segment-accent: #6a7fbe;
+    --segment-accent-soft: rgba(106, 127, 190, 0.12);
+    --segment-accent-strong: rgba(106, 127, 190, 0.28);
+    --paper: #fffdf9;
+    --line: rgba(13, 13, 13, 0.08);
+    --muted: rgba(13, 13, 13, 0.64);
+    --panel-shadow: 0 28px 70px rgba(18, 22, 29, 0.08);
   }
 
   .top-nav {
@@ -23,188 +29,594 @@
   }
 
   .top-nav a {
-    color: rgba(245, 240, 232, 0.72);
+    color: rgba(245, 240, 232, 0.74);
     text-decoration: none;
-    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    border-bottom: 1px solid rgba(245, 240, 232, 0.22);
     padding-bottom: 4px;
   }
 
-  .hero-pills,
-  .variable-selector,
-  .score-row {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-left,
+  .hero-right {
+    min-height: 100vh;
+  }
+
+  .hero-left {
+    gap: 28px;
+  }
+
+  .hero-copy {
+    max-width: 520px;
+  }
+
+  .hero-support {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 200px);
+    gap: 16px;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .hero-formula {
+    margin: 0;
+  }
+
+  .hero-related {
+    padding: 16px 18px;
+    background: rgba(245, 240, 232, 0.05);
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    max-width: 430px;
+  }
+
+  .hero-related-label,
+  .hero-pill,
+  .contrast-label,
+  .panel-label,
+  .metric-label,
+  .detail-label,
+  .bridge-step,
+  .rating-scale,
+  .footer-note {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .hero-related-label {
+    color: rgba(245, 240, 232, 0.52);
+    margin-bottom: 8px;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+  }
+
+  .hero-related a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.32);
+    line-height: 1.8;
+  }
+
+  .hero-related p {
+    color: rgba(245, 240, 232, 0.72);
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .hero-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  .hero-pills {
-    margin-top: 28px;
-  }
-
-  .hero-pill,
-  .variable-selector button,
-  .score-chip {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 8px 12px;
-  }
-
   .hero-pill {
     color: rgba(245, 240, 232, 0.78);
     border: 1px solid rgba(245, 240, 232, 0.14);
+    padding: 8px 12px;
   }
 
-  .foundation-section,
-  .interactive-band,
+  .hero-visual {
+    width: min(540px, 100%);
+    padding: 34px;
+    background: rgba(255, 255, 255, 0.54);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    box-shadow: var(--panel-shadow);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(185, 146, 70, 0.12);
+    pointer-events: none;
+  }
+
+  .hero-visual h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .hero-visual p {
+    font-size: 12px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .hero-grid-card {
+    padding: 18px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+
+  .hero-grid-card strong {
+    display: block;
+    font-size: 12px;
+    margin: 10px 0 8px;
+  }
+
+  .hero-grid-card p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .principle-section,
+  .comparison-section,
+  .quality-section,
   .alignment-section {
     padding: 96px 80px;
   }
 
-  .foundation-shell,
-  .interactive-shell,
+  .comparison-section {
+    background:
+      radial-gradient(circle at top left, rgba(185, 146, 70, 0.06), transparent 30%),
+      linear-gradient(180deg, #faf8f2 0%, #f3efe6 100%);
+  }
+
+  .quality-section {
+    background: var(--ink);
+  }
+
+  .quality-section .section-title,
+  .quality-section .section-intro,
+  .quality-section p,
+  .quality-section li {
+    color: var(--cream);
+  }
+
+  .principle-shell,
+  .comparison-shell,
+  .quality-shell,
   .alignment-shell {
     max-width: 1240px;
     margin: 0 auto;
   }
 
-  .foundation-grid,
-  .alignment-grid,
-  .segment-grid {
+  .principle-grid,
+  .comparison-grid,
+  .quality-grid,
+  .alignment-grid {
     display: grid;
     gap: 24px;
   }
 
-  .foundation-grid,
+  .principle-grid {
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    align-items: start;
+  }
+
+  .comparison-grid,
+  .quality-grid,
   .alignment-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 32px;
   }
 
-  .segment-grid {
-    grid-template-columns: 0.95fr 1.05fr;
-    margin-top: 24px;
-  }
-
-  .foundation-card,
-  .segment-panel,
-  .score-panel,
-  .alignment-card {
-    padding: 32px 30px;
-    border: 1px solid rgba(13, 13, 13, 0.08);
+  .card,
+  .panel,
+  .alignment-card,
+  .quality-card {
     background: white;
+    border: 1px solid var(--line);
+    box-shadow: var(--panel-shadow);
   }
 
-  .foundation-card h3,
-  .segment-panel h3,
-  .score-panel h3,
-  .alignment-card h3 {
+  .card,
+  .panel,
+  .alignment-card,
+  .quality-card {
+    padding: 30px;
+  }
+
+  .card h3,
+  .panel h3,
+  .alignment-card h3,
+  .quality-card h3 {
     font-family: "Playfair Display", serif;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.15;
     margin-bottom: 16px;
   }
 
-  .foundation-card p,
-  .foundation-card li,
-  .segment-panel p,
-  .segment-panel li,
-  .score-panel p,
-  .score-panel li,
+  .card p,
+  .panel p,
   .alignment-card p,
-  .alignment-card li {
-    font-size: 13px;
+  .quality-card p {
+    font-size: 12px;
     line-height: 1.9;
-    color: rgba(13, 13, 13, 0.7);
+    color: var(--muted);
   }
 
-  .flow {
+  .contrast-stack {
     display: grid;
-    gap: 12px;
-    margin-top: 18px;
-  }
-
-  .flow-row {
-    display: grid;
-    grid-template-columns: 150px 1fr;
     gap: 16px;
-    border-top: 1px solid rgba(13, 13, 13, 0.08);
-    padding-top: 12px;
   }
 
-  .flow-row strong,
-  .mini-label,
-  .score-label {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+  .contrast-card {
+    padding: 22px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, #ffffff 0%, #fcfaf5 100%);
+  }
+
+  .contrast-card.strong {
+    border-color: var(--segment-accent-strong);
+    background: linear-gradient(180deg, rgba(185, 146, 70, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+  }
+
+  .contrast-label,
+  .panel-label,
+  .metric-label,
+  .detail-label,
+  .bridge-step,
+  .rating-scale {
     color: var(--amber);
   }
 
-  .interactive-band {
-    background: var(--ink);
-    color: var(--cream);
+  .contrast-card strong {
+    display: block;
+    margin: 10px 0 8px;
+    font-size: 18px;
+    line-height: 1.35;
+    color: var(--ink);
   }
 
-  .interactive-shell .section-title,
-  .interactive-shell .section-intro,
-  .interactive-shell h3 {
-    color: var(--cream);
+  .contrast-card p {
+    margin-bottom: 12px;
   }
 
-  .interactive-shell .section-intro,
-  .interactive-shell p,
-  .interactive-shell li {
-    color: rgba(245, 240, 232, 0.72);
+  .contrast-points,
+  .detail-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
   }
 
-  .variable-selector button {
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: transparent;
-    color: rgba(245, 240, 232, 0.76);
-    cursor: pointer;
+  .contrast-point,
+  .detail-item {
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
   }
 
-  .variable-selector button.active,
-  .variable-selector button:hover {
-    background: color-mix(in srgb, var(--segment-accent) 18%, transparent);
-    border-color: var(--segment-accent);
-    color: var(--cream);
+  .comparison-grid {
+    align-items: start;
   }
 
-  .segment-panel,
-  .score-panel {
+  .comparison-control {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.75fr);
+    gap: 18px;
+    margin-bottom: 24px;
+    align-items: start;
+  }
+
+  .control-card,
+  .selection-card {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--line);
+    box-shadow: var(--panel-shadow);
+    padding: 22px 24px;
+  }
+
+  .control-card p,
+  .selection-card p,
+  .control-card li {
+    font-size: 12px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+
+  .control-card ul {
+    margin-top: 12px;
+    padding-left: 18px;
+  }
+
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .framework-item {
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--line);
+  }
+
+  .framework-item strong {
+    display: block;
+    margin: 8px 0 6px;
+    color: var(--ink);
+    font-size: 12px;
+  }
+
+  .framework-item p {
+    font-size: 11px;
+    line-height: 1.75;
+  }
+
+  .variable-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .section-switcher {
+    margin-bottom: 24px;
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: var(--panel-shadow);
+  }
+
+  .quality-section .section-switcher {
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
   }
 
-  .score-row {
-    margin-top: 22px;
+  .switcher-copy {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-top: 10px;
   }
 
-  .score-chip {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    min-width: 132px;
+  .quality-section .switcher-copy,
+  .quality-section .section-switcher .panel-label {
+    color: rgba(245, 240, 232, 0.78);
   }
 
-  .score-chip strong {
+  .control-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: var(--segment-accent-soft);
+    border: 1px solid var(--segment-accent-strong);
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .control-note::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--segment-accent);
+    flex: 0 0 auto;
+  }
+
+  .selection-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, #faf8f2 100%);
+    border-color: var(--segment-accent-strong);
+  }
+
+  .selection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .selection-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 10px;
+    background: var(--segment-accent);
+    color: #fff9f0;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .selection-card strong {
     display: block;
-    color: var(--cream);
-    margin-top: 8px;
-    font-size: 16px;
-    letter-spacing: 0;
-    text-transform: none;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
   }
 
-  .segment-list,
-  .alignment-card ul {
+  .selection-meta {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .selection-meta-row {
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .variable-button {
+    border: 1px solid rgba(13, 13, 13, 0.12);
+    background: rgba(255, 255, 255, 0.6);
+    color: rgba(13, 13, 13, 0.74);
+    padding: 12px 16px;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .variable-button:hover {
+    transform: translateY(-1px);
+    border-color: var(--segment-accent);
+  }
+
+  .variable-button.active {
+    background: var(--segment-accent);
+    color: #fff9f0;
+    border-color: var(--segment-accent);
+    box-shadow: 0 18px 35px rgba(13, 13, 13, 0.1);
+  }
+
+  .detail-block + .detail-block {
+    margin-top: 20px;
+  }
+
+  .detail-heading {
+    display: block;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .detail-list {
+    margin-top: 10px;
+  }
+
+  .detail-item strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--ink);
+    font-size: 12px;
+  }
+
+  .quality-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+  }
+
+  .quality-card h3,
+  .quality-card p {
+    color: var(--cream);
+  }
+
+  .quality-summary {
+    padding: 26px;
+    background: linear-gradient(180deg, rgba(185, 146, 70, 0.16) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border: 1px solid rgba(185, 146, 70, 0.22);
     margin-top: 18px;
-    padding-left: 18px;
+  }
+
+  .metric-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .metric {
+    display: grid;
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .metric-head strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: var(--cream);
+  }
+
+  .metric-body {
+    display: grid;
+    gap: 10px;
+  }
+
+  .rating-track {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rating-fill {
+    height: 100%;
+    width: calc(var(--rating) * 20%);
+    background: linear-gradient(90deg, var(--segment-accent) 0%, #f2d287 100%);
+    transition: width 0.45s ease;
+  }
+
+  .rating-scale {
+    color: rgba(245, 240, 232, 0.66);
+  }
+
+  .alignment-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .alignment-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: rgba(13, 13, 13, 0.08);
+  }
+
+  .alignment-card.strong::before {
+    background: var(--segment-accent);
+  }
+
+  .alignment-example {
+    display: inline-block;
+    margin: 10px 0 16px;
+    padding: 12px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  [data-swap] {
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  .is-swapping {
+    opacity: 0;
+    transform: translateY(8px);
   }
 
   footer {
     padding: 24px 32px;
-    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -214,21 +626,72 @@
     color: rgba(13, 13, 13, 0.42);
   }
 
-  @media (max-width: 900px) {
-    .foundation-section,
-    .interactive-band,
+  @media (max-width: 1100px) {
+    .hero-support,
+    .principle-grid,
+    .comparison-control,
+    .comparison-grid,
+    .quality-grid,
+    .alignment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-left,
+    .hero-right,
+    .principle-section,
+    .comparison-section,
+    .quality-section,
     .alignment-section {
-      padding: 72px 32px;
+      padding: 80px 40px;
     }
 
-    .foundation-grid,
-    .alignment-grid,
-    .segment-grid {
+    .hero-left,
+    .hero-right {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero {
       grid-template-columns: 1fr;
     }
 
-    .flow-row {
+    .hero-right {
+      display: block;
+    }
+
+    .hero-left::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .top-nav {
+      left: 24px;
+      top: 22px;
+    }
+
+    .hero-left,
+    .hero-right,
+    .principle-section,
+    .comparison-section,
+    .quality-section,
+    .alignment-section {
+      padding: 72px 24px;
+    }
+
+    .hero-grid,
+    .metric,
+    .selection-header,
+    .framework-grid {
       grid-template-columns: 1fr;
+    }
+
+    .card,
+    .panel,
+    .alignment-card,
+    .quality-card {
+      padding: 24px;
     }
 
     footer {
@@ -238,157 +701,315 @@
 </style>
 </head>
 <body>
-
 <section class="hero">
   <div class="hero-left">
     <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
-    <div class="hero-tag">Marketing Course · Segmentation</div>
-    <h1 class="hero-title">Segmentation Variables and Segment <em>Quality</em></h1>
-    <p class="hero-sub">
-      Teams often know the words demographic, psychographic, and behavioral, but still struggle to tell whether a segmentation is actually useful for strategy.
-    </p>
-    <div class="hero-formula">
-      <div class="label">Core logic</div>
-      Variable chosen -> Segment revealed -> Strategic usefulness
+    <div class="hero-copy">
+      <div class="hero-tag">Marketing Course · Segmentation</div>
+      <h1 class="hero-title">Segmentation Variables and Segment <em>Quality</em></h1>
+      <p class="hero-sub">
+        Segmentation is not only about grouping people. For management teams, the quality of a segmentation variable depends on whether it reveals a difference that improves resource allocation, targeting, positioning, product design, price logic, channel choice, and communication.
+      </p>
     </div>
+
+    <div class="hero-support">
+      <div class="hero-formula">
+        <div class="label">Core logic</div>
+        Strong variable -> meaningful segment -> clearer strategic decisions
+      </div>
+      <div class="hero-related">
+        <div class="hero-related-label">Related Page</div>
+        <p><a href="stp-segmentation-targeting.html">STP: Segmentation, Targeting, Positioning</a><br>Use this when you want the broader STP sequence after checking whether the segmentation variable itself is strategically strong enough.</p>
+      </div>
+    </div>
+
     <div class="hero-pills">
-      <div class="hero-pill">Segmentation</div>
-      <div class="hero-pill">Variable quality</div>
-      <div class="hero-pill">Actionable groups</div>
+      <div class="hero-pill">Strategic clarity</div>
+      <div class="hero-pill">Decision quality</div>
+      <div class="hero-pill">Interactive comparison</div>
     </div>
   </div>
+
   <div class="hero-right">
     <div class="hero-right-bg"></div>
-    <div class="big-quote">
-      Not every way of grouping a market helps a firm make a better decision. Good segmentation reveals differences that are strategically meaningful, not merely easy to describe.
+    <div class="hero-visual">
+      <h2>Some variables describe the market. Fewer variables explain what the firm should do next.</h2>
+      <p>
+        A tidy segment is not automatically a useful one. Strong segmentation variables reveal a difference in needs, behavior, economics, or response that matters enough to change the offer, message, channel, or price.
+      </p>
+      <div class="hero-grid">
+        <div class="hero-grid-card">
+          <div class="panel-label">Weak signal</div>
+          <strong>Easy to label</strong>
+          <p>Clean descriptors can make a market sound organized while still hiding major variation in motives and response.</p>
+        </div>
+        <div class="hero-grid-card">
+          <div class="panel-label">Strong signal</div>
+          <strong>Harder to ignore</strong>
+          <p>A useful variable makes decision tradeoffs visible. It points toward different targets, value propositions, and execution choices.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="foundation-section">
-  <div class="foundation-shell">
-    <div class="section-tag">01 · Foundation</div>
+<section class="principle-section">
+  <div class="principle-shell">
+    <div class="section-tag">01 · Core Principle</div>
     <h2 class="section-title">A segment should be more than a description</h2>
     <p class="section-intro">
-      Useful segments help explain differences in need, behavior, economics, or response. Weak segments may still sound neat, but they do not guide targeting, positioning, or the marketing mix very well.
+      Useful segments reveal differences in customer needs, behavior, economics, or response. Weak segments can still sound neat and measurable, but they often do little to guide targeting, positioning, or the marketing mix.
     </p>
 
-    <div class="foundation-grid">
-      <div class="foundation-card">
-        <h3>Segmentation variables: who, where, why, how, what</h3>
-        <div class="flow">
-          <div class="flow-row">
-            <strong>Who</strong>
-            <span>Demographic variables such as age, income, occupation, household type, and life stage.</span>
+    <div class="principle-grid">
+      <div class="card">
+        <div class="panel-label">Management implication</div>
+        <h3>Segment quality is about decision value</h3>
+        <p>
+          The best segmentation variable is not the one that creates the neatest slide or dashboard. It is the one that makes the next commercial choice easier and better. If the variable does not help explain what customers want, how they behave, what they will pay, or how they respond, its strategic value is limited.
+        </p>
+        <div class="detail-list">
+          <div class="detail-item">
+            <strong>Descriptive variables</strong>
+            <p>Often easier to collect and report. They help summarize a market, but not always diagnose it.</p>
           </div>
-          <div class="flow-row">
-            <strong>Where</strong>
-            <span>Geographic variables such as country, region, city type, climate, and density.</span>
+          <div class="detail-item">
+            <strong>Strategic variables</strong>
+            <p>More likely to connect directly to message, product design, service model, economics, and channel choice.</p>
           </div>
-          <div class="flow-row">
-            <strong>Why</strong>
-            <span>Psychographic variables such as lifestyle, identity, aspirations, values, and preferences.</span>
-          </div>
-          <div class="flow-row">
-            <strong>How</strong>
-            <span>Behavioral variables such as usage rate, loyalty, occasion, and switching pattern.</span>
-          </div>
-          <div class="flow-row">
-            <strong>What</strong>
-            <span>Benefit sought: the specific progress, outcome, or value the customer most wants from the offer.</span>
+          <div class="detail-item">
+            <strong>Practical reality</strong>
+            <p>Strong variables sometimes need a second operational layer. Benefit sought may guide strategy, while age, location, or income help execution.</p>
           </div>
         </div>
       </div>
 
-      <div class="foundation-card">
-        <h3>What makes a segmentation strong</h3>
-        <ul style="padding-left:18px;">
-          <li>It reveals a difference that matters for customer value.</li>
-          <li>It can guide targeting and resource allocation.</li>
-          <li>It suggests different positions, channels, or messages.</li>
-          <li>It is specific enough to act on, not just interesting to observe.</li>
-        </ul>
+      <div class="contrast-stack">
+        <div class="contrast-card">
+          <div class="contrast-label">Descriptive but weak</div>
+          <strong>“Urban professionals aged 25 to 34”</strong>
+          <p>This sounds precise, but it may still hide very different routines, cooking confidence, budgets, time pressure, and desired outcomes.</p>
+          <div class="contrast-points">
+            <div class="contrast-point">Good for describing who is present.</div>
+            <div class="contrast-point">Less useful for predicting what the firm should change.</div>
+            <div class="contrast-point">Usually needs another layer before it guides the offer.</div>
+          </div>
+        </div>
+
+        <div class="contrast-card strong">
+          <div class="contrast-label">Strategically useful</div>
+          <strong>“Busy households seeking low-effort weekday dinners”</strong>
+          <p>This variable reveals what progress matters and what friction should be removed, so it changes value proposition and execution.</p>
+          <div class="contrast-points">
+            <div class="contrast-point">Guides product design toward speed and simplicity.</div>
+            <div class="contrast-point">Supports clearer positioning and message hierarchy.</div>
+            <div class="contrast-point">Improves targeting because the reason to buy is visible.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="interactive-band">
-  <div class="interactive-shell">
-    <div class="section-tag">02 · Interactive Sort</div>
-    <h2 class="section-title">Choose a segmentation variable and inspect the strategic value</h2>
+<section class="comparison-section">
+  <div class="comparison-shell">
+    <div class="section-tag">02 · Interactive Comparison</div>
+    <h2 class="section-title">Choose a segmentation variable and inspect its strategic value</h2>
     <p class="section-intro">
-      Imagine a meal-kit company trying to understand its market. The same market can be grouped in many ways, but some segmentations create much better strategic clarity than others.
+      Take a meal kit company as the operating example. Each variable below creates a different view of the same market. Some are easier to measure. Some create stronger strategic clarity and a better basis for action.
     </p>
 
-    <div class="variable-selector" id="variable-selector">
-      <button class="active" data-key="age" type="button">Age</button>
-      <button data-key="income" type="button">Income</button>
-      <button data-key="lifestyle" type="button">Lifestyle</button>
-      <button data-key="usage" type="button">Usage</button>
-      <button data-key="occasion" type="button">Occasion</button>
-      <button data-key="benefit" type="button">Benefit sought</button>
-    </div>
-
-    <div class="segment-grid">
-      <div class="segment-panel">
-        <div class="mini-label">Segment output</div>
-        <h3 id="segment-title">Age-based segmentation</h3>
-        <p id="segment-copy">
-          This gives a convenient descriptive split, but age alone may not reveal why customers choose the category.
-        </p>
-        <ul class="segment-list" id="segment-list">
-          <li>18-24 early career households</li>
-          <li>25-39 busy professionals</li>
-          <li>40-55 family managers</li>
-        </ul>
+    <div class="comparison-control">
+      <div class="control-card">
+        <div class="panel-label">How to use this</div>
+        <p>Select one variable. These six are not arbitrary. They are a compact teaching set drawn from the main segmentation families used in strategy: demographic, psychographic, behavioral, and benefit-based segmentation.</p>
+        <div class="framework-grid">
+          <div class="framework-item">
+            <div class="detail-label">Demographic</div>
+            <strong>Age and income</strong>
+            <p>Useful for description, sizing, affordability, and media execution.</p>
+          </div>
+          <div class="framework-item">
+            <div class="detail-label">Psychographic</div>
+            <strong>Lifestyle</strong>
+            <p>Useful when routines, identity, and priorities shape response.</p>
+          </div>
+          <div class="framework-item">
+            <div class="detail-label">Behavioral</div>
+            <strong>Usage and occasion</strong>
+            <p>Useful when actual behavior or buying context changes economics and message fit.</p>
+          </div>
+        </div>
+        <p>Benefit sought is included as the strategic benchmark because it often creates the clearest bridge into targeting, positioning, and the marketing mix.</p>
+        <div class="variable-nav" id="variable-nav" aria-label="Segmentation variable selector">
+          <button class="variable-button active" data-key="age" type="button" aria-pressed="true">Age</button>
+          <button class="variable-button" data-key="income" type="button" aria-pressed="false">Income</button>
+          <button class="variable-button" data-key="lifestyle" type="button" aria-pressed="false">Lifestyle</button>
+          <button class="variable-button" data-key="usage" type="button" aria-pressed="false">Usage</button>
+          <button class="variable-button" data-key="occasion" type="button" aria-pressed="false">Occasion</button>
+          <button class="variable-button" data-key="benefit" type="button" aria-pressed="false">Benefit sought</button>
+        </div>
+        <div class="control-note">This selection updates the comparison panels in Section 2.</div>
       </div>
 
-      <div class="score-panel">
-        <div class="mini-label">Segment quality check</div>
-        <h3 id="score-title">Useful, but not yet decisive</h3>
-        <p id="score-copy">
-          Age may correlate with different routines, but it usually needs another layer to explain what progress people want from the offer.
-        </p>
-        <div class="score-row">
-          <div class="score-chip"><span class="score-label">Meaning</span><strong id="meaning-score">Medium</strong></div>
-          <div class="score-chip"><span class="score-label">Actionability</span><strong id="action-score">Medium</strong></div>
-          <div class="score-chip"><span class="score-label">Prediction</span><strong id="predict-score">Low</strong></div>
-          <div class="score-chip"><span class="score-label">Overall</span><strong id="overall-score">Fair</strong></div>
+      <div class="selection-card">
+        <div class="selection-header">
+          <div>
+            <div class="panel-label">Current view</div>
+            <strong id="selection-name">Age</strong>
+          </div>
+          <div class="selection-chip" id="selection-chip">Selected</div>
+        </div>
+        <p id="selection-summary">Useful for market description and planning, but usually too weak on its own to guide proposition design or pricing decisions.</p>
+        <div class="selection-meta">
+          <div class="selection-meta-row">
+            <div class="detail-label">What will update below</div>
+            <p id="selection-updates">Variable meaning, what it hides, the meal kit segment outputs, and the Section 2 segment-quality comparison.</p>
+          </div>
+          <div class="selection-meta-row">
+            <div class="detail-label">Best use</div>
+            <p id="selection-best-use">Best used as a supporting layer alongside a stronger need, usage, or benefit lens.</p>
+          </div>
         </div>
       </div>
+    </div>
+
+    <div class="comparison-grid" id="comparison-grid">
+      <article class="panel" data-swap="comparison">
+        <div class="panel-label">Selected variable</div>
+        <h3 id="variable-title">Age</h3>
+        <div class="detail-block">
+          <div class="detail-label">What this variable reveals</div>
+          <span class="detail-heading" id="reveal-heading">Life stage and likely household context</span>
+          <p id="reveal-copy">
+            Age can suggest routines, family structure, and category familiarity. It can be a useful shortcut when life stage genuinely changes the problem.
+          </p>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">What this variable may hide</div>
+          <p id="hide-copy">
+            People of similar age can still have very different time pressure, budgets, dietary goals, and expectations of convenience.
+          </p>
+        </div>
+      </article>
+
+      <article class="panel" data-swap="comparison">
+        <div class="panel-label">Meal kit output</div>
+        <h3 id="output-title">Example segment output for the meal kit market</h3>
+        <div class="detail-list" id="output-list">
+          <div class="detail-item">
+            <strong>Young professionals building cooking habits</strong>
+            <p>Interested in manageable recipes and light structure.</p>
+          </div>
+          <div class="detail-item">
+            <strong>Parents balancing work and home routines</strong>
+            <p>Need predictable weeknight planning and family-fit portions.</p>
+          </div>
+          <div class="detail-item">
+            <strong>Older households with established meal routines</strong>
+            <p>May value quality and predictability more than novelty.</p>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Segment quality assessment</div>
+          <p id="quality-copy">
+            Useful as a descriptive layer, but usually not strong enough on its own to explain what progress matters most in the category.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="quality-section">
+  <div class="quality-shell">
+    <div class="section-tag">03 · Segment Quality Check</div>
+    <h2 class="section-title">Segment quality check</h2>
+    <p class="section-intro">
+      Evaluate the selected variable on five dimensions. Stronger variables do not simply sound smarter. They explain more, reduce uncertainty, and improve the quality of strategic and commercial decisions.
+    </p>
+
+    <div class="section-switcher">
+      <div class="panel-label">Section 3 switcher</div>
+      <p class="switcher-copy">Choose a variable for the quality evaluation only. This control does not change the comparison above or the decision bridge below.</p>
+      <div class="variable-nav" id="quality-variable-nav" aria-label="Segment quality variable selector">
+        <button class="variable-button active" data-key="age" type="button" aria-pressed="true">Age</button>
+        <button class="variable-button" data-key="income" type="button" aria-pressed="false">Income</button>
+        <button class="variable-button" data-key="lifestyle" type="button" aria-pressed="false">Lifestyle</button>
+        <button class="variable-button" data-key="usage" type="button" aria-pressed="false">Usage</button>
+        <button class="variable-button" data-key="occasion" type="button" aria-pressed="false">Occasion</button>
+        <button class="variable-button" data-key="benefit" type="button" aria-pressed="false">Benefit sought</button>
+      </div>
+    </div>
+
+    <div class="quality-grid">
+      <article class="quality-card" data-swap="quality">
+        <div class="panel-label">Selected variable review</div>
+        <h3 id="quality-title">Age has descriptive value, but limited standalone power</h3>
+        <p id="quality-intro">
+          Age can be useful when life stage strongly shapes the category, yet it often works best as a secondary execution layer rather than the main strategic lens.
+        </p>
+        <div class="quality-summary">
+          <div class="detail-label">Overall assessment</div>
+          <p id="overall-copy">
+            A fair starting point. It organizes the market, but it rarely gives enough evidence by itself to drive sharp positioning or offer design.
+          </p>
+        </div>
+      </article>
+
+      <article class="quality-card" data-swap="quality">
+        <div class="metric-list" id="metric-list"></div>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="alignment-section">
   <div class="alignment-shell">
-    <div class="section-tag">03 · Alignment</div>
+    <div class="section-tag">04 · Strategic Alignment</div>
     <h2 class="section-title">Descriptive segments are not automatically strategic segments</h2>
     <p class="section-intro">
-      The strongest segmentation is the one that visibly changes what a firm should do next.
+      The strongest segmentation is the one that visibly changes what a firm should do next. A segment is strategically better when it already contains clues about value, proof, pricing, and channel.
     </p>
 
     <div class="alignment-grid">
-      <div class="alignment-card">
-        <h3>Weak but familiar</h3>
-        <p>“Women aged 25-34 in cities” sounds clean, but it may still hide very different jobs, budgets, lifestyles, and sought benefits.</p>
-        <ul>
-          <li>Easy to describe</li>
-          <li>Harder to infer what message or offer should change</li>
-          <li>Often needs a second layer</li>
-        </ul>
-      </div>
+      <article class="alignment-card">
+        <div class="panel-label">Weak but familiar</div>
+        <h3>Clean description, weak decision guidance</h3>
+        <div class="alignment-example">“Women aged 25 to 34 in cities”</div>
+        <p>
+          This sounds clear, but it still hides different jobs, budgets, schedules, cooking skills, health goals, and benefits sought. It is easy to describe and harder to act on.
+        </p>
+        <div class="detail-list">
+          <div class="detail-item">
+            <strong>What it gives you</strong>
+            <p>A tidy audience label for dashboards, media filters, or presentation slides.</p>
+          </div>
+          <div class="detail-item">
+            <strong>What it does not settle</strong>
+            <p>Which value proposition matters, what friction to remove, or which channel and pricing choices should change.</p>
+          </div>
+        </div>
+      </article>
 
-      <div class="alignment-card">
-        <h3>Stronger and more actionable</h3>
-        <p>“Busy professionals seeking low-effort weekday meals” already suggests different value, positioning, and channel choices.</p>
-        <ul>
-          <li>Explains what progress matters</li>
-          <li>Supports clearer targeting</li>
-          <li>Improves positioning and 4P decisions</li>
-        </ul>
-      </div>
+      <article class="alignment-card strong">
+        <div class="panel-label">Stronger and more actionable</div>
+        <h3>Messier label, stronger strategic signal</h3>
+        <div class="alignment-example">“Busy professionals seeking low effort weekday meals”</div>
+        <p>
+          This is strategically better because it already suggests what problem to solve, what message to prioritize, what offer to build, and where the customer is likely to notice and respond.
+        </p>
+        <div class="detail-list">
+          <div class="detail-item">
+            <strong>What it gives you</strong>
+            <p>A visible link between customer progress and firm action: speed, simplicity, planning relief, and habit support.</p>
+          </div>
+          <div class="detail-item">
+            <strong>Why it matters</strong>
+            <p>The segment itself points toward targeting, positioning, product configuration, service promise, and channel emphasis.</p>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -401,112 +1022,490 @@
 <script>
   const segmentationData = {
     age: {
-      title: "Age-based segmentation",
-      copy: "This gives a convenient descriptive split, but age alone may not reveal why customers choose the category.",
-      list: [
-        "18-24 early career households",
-        "25-39 busy professionals",
-        "40-55 family managers"
+      accent: "#6a7fbe",
+      title: "Age",
+      outputTitle: "Age-based segment output for the meal kit market",
+      revealHeading: "Life stage and likely household context",
+      revealCopy:
+        "Age can suggest life stage, household structure, and rough differences in routine, which makes it useful for market sizing and broad media planning.",
+      hideCopy:
+        "People of the same age can still have very different jobs to be done, willingness to pay, retention potential, and service expectations.",
+      output: [
+        {
+          title: "Young professionals building cooking habits",
+          copy: "Interested in manageable recipes, some novelty, and manageable commitment."
+        },
+        {
+          title: "Parents balancing work and home routines",
+          copy: "Need predictable planning support and household-fit portions."
+        },
+        {
+          title: "Older households with established meal routines",
+          copy: "May value quality, consistency, and control more than experimentation."
+        }
       ],
-      scoreTitle: "Useful, but not yet decisive",
-      scoreCopy: "Age may correlate with different routines, but it usually needs another layer to explain what progress people want from the offer.",
-      scores: ["Medium", "Medium", "Low", "Fair"],
-      accent: "#5271b8"
+      qualityCopy:
+        "Useful as a descriptive layer, but usually not strong enough on its own to explain what progress matters most in the category.",
+      qualityTitle: "Age has descriptive value, but limited standalone power",
+      selectionSummary:
+        "Useful for market description and planning, but usually too weak on its own to guide proposition design or pricing decisions.",
+      selectionBestUse:
+        "Best used as a supporting layer alongside a stronger need, usage, or benefit lens.",
+      qualityIntro:
+        "Age works when life stage genuinely changes demand, yet it usually needs a second layer before management can make a high-confidence commercial decision.",
+      overallCopy:
+        "A fair starting point for organizing the market. On its own, it rarely provides enough evidence to drive proposition design, channel investment, or pricing structure.",
+      ratings: [
+        { label: "Meaning", score: 3, scoreLabel: "Moderate", copy: "Explains some context, but not necessarily the core need." },
+        { label: "Actionability", score: 3, scoreLabel: "Moderate", copy: "Easy to target in media, harder to translate into a distinct offer." },
+        { label: "Prediction", score: 2, scoreLabel: "Limited", copy: "Weak predictor of benefit sought unless paired with other signals." },
+        { label: "Strategic usefulness", score: 2, scoreLabel: "Limited", copy: "Better for describing who is there than deciding what to do." },
+        { label: "Overall assessment", score: 3, scoreLabel: "Fair", copy: "Useful as a supporting variable, rarely the best primary one." }
+      ],
+      decisionTitle: "Age creates a partial view of what to do",
+      decisionCopy:
+        "Age helps management define a broad audience, but it does not reliably tell the business which friction to remove, which offer to prioritize, or where margin will come from.",
+      decisionNote: "Selected variable: age",
+      bridgeVariableCopy:
+        "A descriptive variable that often acts as a first cut rather than the final strategic lens.",
+      bridgeSegment: "Parents balancing work and home routines",
+      bridgeSegmentCopy:
+        "A practical group to describe, but still broad enough to contain different motivations and desired outcomes.",
+      decisions: [
+        { label: "Targeting", copy: "Use age as a planning filter, but do not allocate major spend without a need-based validation layer." },
+        { label: "Positioning", copy: "Avoid building the proposition around the demographic label alone." },
+        { label: "Product or service design", copy: "Hold back from standardizing the offer until the underlying job and friction points are clearer." },
+        { label: "Price logic", copy: "Measure willingness to pay directly instead of inferring it from age bands." },
+        { label: "Channel choice", copy: "Treat age-based media buying as an input, not the full go-to-market plan." },
+        { label: "Communication", copy: "Lead with outcome and operational relief, not demographic identity." }
+      ]
     },
     income: {
-      title: "Income-based segmentation",
-      copy: "Income improves affordability analysis, but it still does not automatically reveal the sought benefit.",
-      list: [
-        "Budget-sensitive households",
-        "Mid-market convenience seekers",
-        "Premium time-saving buyers"
+      accent: "#b6853c",
+      title: "Income",
+      outputTitle: "Income-based segment output for the meal kit market",
+      revealHeading: "Affordability, budget pressure, and premium room",
+      revealCopy:
+        "Income helps estimate affordability, price sensitivity, and whether the market can support premium service levels, upsell paths, or differentiated tiers.",
+      hideCopy:
+        "Income does not reliably reveal which value proposition will win, what benefit is most important, or which customers will remain loyal at a given price point.",
+      output: [
+        {
+          title: "Budget-sensitive households",
+          copy: "Need strong value framing, low waste, and clear savings versus alternatives."
+        },
+        {
+          title: "Mid-market convenience seekers",
+          copy: "Want planning relief at a price that still feels reasonable."
+        },
+        {
+          title: "Premium time-saving buyers",
+          copy: "Accept higher prices when the service reduces hassle and preserves quality."
+        }
       ],
-      scoreTitle: "Economically helpful",
-      scoreCopy: "Income is useful for pricing and value capture, especially when willingness to pay matters strongly.",
-      scores: ["Medium", "High", "Medium", "Good"],
-      accent: "#c8872b"
+      qualityCopy:
+        "Income is strategically useful when willingness to pay or margin structure is central, but it still leaves the desired benefit partly unresolved.",
+      qualityTitle: "Income is strong for economics, weaker for motivation",
+      selectionSummary:
+        "Strong for pricing architecture, affordability analysis, and tier design, but weaker for explaining why demand appears.",
+      selectionBestUse:
+        "Best used when margin structure and willingness to pay matter, then paired with a motive or behavior variable.",
+      qualityIntro:
+        "This variable improves pricing architecture and value capture decisions, but it only partially explains why the customer chooses the category in the first place.",
+      overallCopy:
+        "A good variable for commercial design, especially where tier structure and margin discipline matter. Better for economics than for full positioning clarity.",
+      ratings: [
+        { label: "Meaning", score: 3, scoreLabel: "Moderate", copy: "Explains affordability, not always the job the customer hires the offer to do." },
+        { label: "Actionability", score: 4, scoreLabel: "Strong", copy: "Useful for pack, tier, and pricing decisions." },
+        { label: "Prediction", score: 3, scoreLabel: "Moderate", copy: "Can predict willingness to pay better than message response." },
+        { label: "Strategic usefulness", score: 4, scoreLabel: "Strong", copy: "Particularly valuable when commercial model and margin structure matter." },
+        { label: "Overall assessment", score: 4, scoreLabel: "Good", copy: "Best used with a need or behavior variable to avoid shallow segmentation." }
+      ],
+      decisionTitle: "Income sharpens price logic more than customer motivation",
+      decisionCopy:
+        "Management can design tiers, discount logic, and premium bundles more intelligently, but still needs another variable to know which promise should lead demand generation.",
+      decisionNote: "Selected variable: income",
+      bridgeVariableCopy:
+        "A commercially important variable that tells the firm more about budget room than about the exact progress sought.",
+      bridgeSegment: "Premium time-saving buyers",
+      bridgeSegmentCopy:
+        "Customers who can pay more when convenience feels meaningfully better than the alternative.",
+      decisions: [
+        { label: "Targeting", copy: "Concentrate spend where wallet fit matches the service model and target gross margin." },
+        { label: "Positioning", copy: "Frame the offer as economically justified value, not vague affordability." },
+        { label: "Product or service design", copy: "Build clear good-better-best structures with visible differences in convenience and quality." },
+        { label: "Price logic", copy: "Use tiering, premium add-ons, and subscription incentives with margin discipline." },
+        { label: "Channel choice", copy: "Favor channels where premium value can be demonstrated rather than discounted away." },
+        { label: "Communication", copy: "Translate price into outcomes such as time saved, waste reduced, or perceived quality gained." }
+      ]
     },
     lifestyle: {
-      title: "Lifestyle-based segmentation",
-      copy: "Lifestyle starts to reveal routines, identity, and context, which often matter more than age alone.",
-      list: [
-        "Health-focused planners",
-        "Time-pressed achievers",
-        "Food-curious experience seekers"
+      accent: "#4d7b62",
+      title: "Lifestyle",
+      outputTitle: "Lifestyle-based segment output for the meal kit market",
+      revealHeading: "Routines, identity, aspirations, and everyday context",
+      revealCopy:
+        "Lifestyle starts to explain how customers live, what they prioritize, and which proposition is most likely to fit naturally into their routine.",
+      hideCopy:
+        "Lifestyle labels can become strategically vague if they are not tied to observable behavior, channel patterns, and purchasing signals.",
+      output: [
+        {
+          title: "Health-focused planners",
+          copy: "Want controlled ingredients, reliable portions, and a sense of discipline."
+        },
+        {
+          title: "Time-pressed achievers",
+          copy: "Need low friction meals that protect schedule and energy."
+        },
+        {
+          title: "Food-curious experience seekers",
+          copy: "Value variety, discovery, and stories behind the menu."
+        }
       ],
-      scoreTitle: "Often strategically richer",
-      scoreCopy: "Lifestyle segmentation can point more directly toward message, product design, and channel choices.",
-      scores: ["High", "Medium", "High", "Very good"],
-      accent: "#4a6741"
+      qualityCopy:
+        "Lifestyle is often richer than demographics because it begins to explain fit between the customer and the offer, especially for message and design choices.",
+      qualityTitle: "Lifestyle often creates stronger strategic texture",
+      selectionSummary:
+        "Richer than simple descriptors because it reveals routine fit and identity, though it must stay grounded in observable behavior.",
+      selectionBestUse:
+        "Best used when the offer wins by fitting a specific way of living, not just a demographic profile.",
+      qualityIntro:
+        "This variable can reveal meaningful differences in priorities and routines, though it must be defined carefully to stay commercially actionable.",
+      overallCopy:
+        "A strong variable when the category is shaped by routine fit and identity expression. Best used when management can link it to observable signals and operational choices.",
+      ratings: [
+        { label: "Meaning", score: 4, scoreLabel: "Strong", copy: "Explains how the offer fits into everyday life more directly than age or income." },
+        { label: "Actionability", score: 3, scoreLabel: "Moderate", copy: "Needs disciplined definition to avoid vague personas." },
+        { label: "Prediction", score: 4, scoreLabel: "Strong", copy: "Often predicts response to message, format, and feature emphasis." },
+        { label: "Strategic usefulness", score: 4, scoreLabel: "Strong", copy: "Useful for positioning, menu design, creative tone, and channel fit." },
+        { label: "Overall assessment", score: 4, scoreLabel: "Very good", copy: "Strategically richer than simple descriptors, but should stay behavior-linked." }
+      ],
+      decisionTitle: "Lifestyle points toward fit, not just profile",
+      decisionCopy:
+        "A lifestyle view helps management decide what kind of routine support, identity signal, and brand tone the offer should carry in-market.",
+      decisionNote: "Selected variable: lifestyle",
+      bridgeVariableCopy:
+        "A psychographic variable that can shape message, product framing, and brand tone when it stays grounded in real behavior.",
+      bridgeSegment: "Time-pressed achievers",
+      bridgeSegmentCopy:
+        "Customers who want dinner decisions to consume less time, attention, and energy during demanding weeks.",
+      decisions: [
+        { label: "Targeting", copy: "Focus customer acquisition on routines where convenience creates measurable value." },
+        { label: "Positioning", copy: "Emphasize fit with the customer’s way of living, not just category features." },
+        { label: "Product or service design", copy: "Reduce prep complexity and build features that reinforce the chosen routine." },
+        { label: "Price logic", copy: "Anchor price against saved effort, reduced friction, and lifestyle fit." },
+        { label: "Channel choice", copy: "Use channels that naturally intersect with the routines and identities described." },
+        { label: "Communication", copy: "Speak to lived context and self-image, not only ingredients or menus." }
+      ]
     },
     usage: {
-      title: "Usage-rate segmentation",
-      copy: "Behavior often tells us more about economics and retention than static descriptors do.",
-      list: [
-        "Light experimenters",
-        "Weekly routine users",
-        "Heavy loyal users"
+      accent: "#8e5a40",
+      title: "Usage",
+      outputTitle: "Usage-based segment output for the meal kit market",
+      revealHeading: "Actual behavior, intensity, and commercial importance",
+      revealCopy:
+        "Usage shows how often customers engage, how dependent they are on the category, and where retention, account value, and service economics differ.",
+      hideCopy:
+        "Usage explains what customers do, but not always why they do it. Heavy users may still differ in motive, margin quality, and sensitivity to changes in service design.",
+      output: [
+        {
+          title: "Light experimenters",
+          copy: "Trying the category occasionally and still comparing alternatives."
+        },
+        {
+          title: "Weekly routine users",
+          copy: "Depend on the service as part of a regular meal planning habit."
+        },
+        {
+          title: "Heavy loyal users",
+          copy: "High repeat use, low switching, and strong potential lifetime value."
+        }
       ],
-      scoreTitle: "Strong for commercial design",
-      scoreCopy: "Usage helps clarify retention strategy, loyalty economics, and what sort of offer structure makes sense.",
-      scores: ["High", "High", "High", "Very good"],
-      accent: "#8b3a2a"
+      qualityCopy:
+        "Usage is one of the strongest variables when the firm needs better retention, service economics, cadence design, or loyalty strategy.",
+      qualityTitle: "Usage is behavior-rich and commercially powerful",
+      selectionSummary:
+        "One of the clearest lenses for retention, account value, and operating economics because it is anchored in real behavior.",
+      selectionBestUse:
+        "Best used when repeat behavior, churn, service cadence, and loyalty economics shape performance.",
+      qualityIntro:
+        "Behavior gives the company a concrete view of frequency, habit strength, retention risk, and account value, which makes this variable highly actionable for operators.",
+      overallCopy:
+        "One of the strongest variables for commercial design and operating control. It still benefits from a second layer that explains why the behavior exists.",
+      ratings: [
+        { label: "Meaning", score: 4, scoreLabel: "Strong", copy: "Shows concrete differences in how the category is used." },
+        { label: "Actionability", score: 5, scoreLabel: "Very strong", copy: "Directly useful for retention offers, cadence, loyalty, and service design." },
+        { label: "Prediction", score: 4, scoreLabel: "Strong", copy: "Often predicts churn risk, lifetime value, and response to incentive design." },
+        { label: "Strategic usefulness", score: 5, scoreLabel: "Very strong", copy: "Especially powerful when the business model depends on repeat behavior." },
+        { label: "Overall assessment", score: 5, scoreLabel: "Excellent", copy: "A top-tier variable for economics and operating decisions." }
+      ],
+      decisionTitle: "Usage makes retention and economics easier to manage",
+      decisionCopy:
+        "A usage lens changes what management does around cadence, onboarding, loyalty, churn prevention, and service configuration.",
+      decisionNote: "Selected variable: usage",
+      bridgeVariableCopy:
+        "A behavioral variable that exposes different account economics and levels of category dependence.",
+      bridgeSegment: "Weekly routine users",
+      bridgeSegmentCopy:
+        "Customers who use meal kits as part of a recurring system, not just an occasional experiment.",
+      decisions: [
+        { label: "Targeting", copy: "Prioritize customer pools whose habits support recurring revenue and lower churn." },
+        { label: "Positioning", copy: "Position the service as part of a dependable operating routine, not a novelty purchase." },
+        { label: "Product or service design", copy: "Optimize reordering, cadence control, and features that reinforce habit formation." },
+        { label: "Price logic", copy: "Use subscriptions, bundles, and loyalty mechanics tied directly to repeat behavior." },
+        { label: "Channel choice", copy: "Lean into CRM, lifecycle channels, and retention interventions over broad awareness alone." },
+        { label: "Communication", copy: "Stress consistency, reduced planning friction, and long-term account value." }
+      ]
     },
     occasion: {
-      title: "Occasion-based segmentation",
-      copy: "Some categories make most sense when grouped by the moment or context in which the need appears.",
-      list: [
-        "Weeknight time pressure",
-        "Entertaining at home",
-        "Recovery after travel or overtime"
+      accent: "#7d5d97",
+      title: "Occasion",
+      outputTitle: "Occasion-based segment output for the meal kit market",
+      revealHeading: "The moment, trigger, or situation in which the need appears",
+      revealCopy:
+        "Occasion-based segmentation reveals when the job becomes urgent. It helps the firm understand context, timing, and why the same customer may require different value at different moments.",
+      hideCopy:
+        "Occasion does not always explain the deeper stable preference, long-term value, or willingness to pay across many situations. It can over-focus on the moment.",
+      output: [
+        {
+          title: "Weeknight time-pressure meals",
+          copy: "Need speed, predictability, and low mental effort."
+        },
+        {
+          title: "Hosting at home",
+          copy: "Want impressive outcomes, confidence, and smoother preparation."
+        },
+        {
+          title: "Recovery after travel or overtime",
+          copy: "Need rapid reset with minimal planning or shopping."
+        }
       ],
-      scoreTitle: "Powerful when context matters",
-      scoreCopy: "Occasion segments are especially useful when the job changes depending on the situation.",
-      scores: ["High", "Medium", "High", "Good"],
-      accent: "#6d4c91"
+      qualityCopy:
+        "Occasion is strong when demand changes by context. It is especially useful for categories where the same buyer has multiple jobs at different times.",
+      qualityTitle: "Occasion is powerful when the job changes by moment",
+      selectionSummary:
+        "Strong when demand is situation-driven because it shows when urgency appears and what context should shape the offer.",
+      selectionBestUse:
+        "Best used when the same customer wants different value in different moments or use cases.",
+      qualityIntro:
+        "This variable helps the firm map trigger situations to offer configuration, demand timing, and channel emphasis.",
+      overallCopy:
+        "A strong variable for contextual targeting and proposition design, particularly when buying situations vary more than customer profiles.",
+      ratings: [
+        { label: "Meaning", score: 4, scoreLabel: "Strong", copy: "Explains what is happening in the moment of need." },
+        { label: "Actionability", score: 4, scoreLabel: "Strong", copy: "Useful for campaign timing, menu design, and context-specific offers." },
+        { label: "Prediction", score: 4, scoreLabel: "Strong", copy: "Predicts which message or configuration will work in a given situation." },
+        { label: "Strategic usefulness", score: 4, scoreLabel: "Strong", copy: "Very helpful when the category is situation-driven." },
+        { label: "Overall assessment", score: 4, scoreLabel: "Very good", copy: "A strong behavioral lens, especially when paired with benefit sought." }
+      ],
+      decisionTitle: "Occasion helps the firm respond to context, not just customer type",
+      decisionCopy:
+        "The meal kit company can align menu design, timing, and activation spend with specific situations rather than treating all demand as the same.",
+      decisionNote: "Selected variable: occasion",
+      bridgeVariableCopy:
+        "A contextual variable that exposes how the same customer may want different value at different moments.",
+      bridgeSegment: "Weeknight time-pressure meals",
+      bridgeSegmentCopy:
+        "A situation where speed, simplicity, and planning relief matter more than exploration or entertainment.",
+      decisions: [
+        { label: "Targeting", copy: "Prioritize high-friction moments where the service solves an immediate operational problem for the buyer." },
+        { label: "Positioning", copy: "Frame the offer around the situation being solved, not a generic category claim." },
+        { label: "Product or service design", copy: "Create menu bundles and service levels tailored to the moment, such as ultra-fast weekday kits." },
+        { label: "Price logic", copy: "Price according to the urgency and value of the situation solved." },
+        { label: "Channel choice", copy: "Use channels and timing that intersect with the moment when demand becomes salient." },
+        { label: "Communication", copy: "Show the operational relief created when the occasion is handled well." }
+      ]
     },
     benefit: {
-      title: "Benefit-sought segmentation",
-      copy: "This variable focuses directly on the progress customers want, which often makes it the most strategically revealing.",
-      list: [
-        "Save time with minimal effort",
-        "Eat better without planning",
-        "Feel impressive when hosting others"
+      accent: "#c59c45",
+      title: "Benefit sought",
+      outputTitle: "Benefit-sought segment output for the meal kit market",
+      revealHeading: "The progress the customer wants from the offer",
+      revealCopy:
+        "Benefit sought reveals the value the customer is trying to achieve. It connects directly to why the offer is chosen and what management should optimize.",
+      hideCopy:
+        "This variable can be harder to measure directly and may need descriptive or behavioral layers for media buying, channel execution, or sales operations.",
+      output: [
+        {
+          title: "Save time with minimal effort",
+          copy: "Need the service to remove planning, shopping, and prep burden."
+        },
+        {
+          title: "Eat better without planning",
+          copy: "Want healthier habits without relying on willpower every evening."
+        },
+        {
+          title: "Feel impressive when hosting others",
+          copy: "Seek confidence, social payoff, and quality signals when others are present."
+        }
       ],
-      scoreTitle: "Closest to strategic intent",
-      scoreCopy: "Benefit-sought segmentation often gives the cleanest bridge into targeting, positioning, and the marketing mix.",
-      scores: ["High", "High", "High", "Excellent"],
-      accent: "#d4a843"
+      qualityCopy:
+        "Benefit sought is one of the most strategically revealing variables because it already contains the customer's desired outcome and the basis for differentiation.",
+      qualityTitle: "Benefit sought is closest to strategic intent",
+      selectionSummary:
+        "Usually the strongest primary lens because it reveals the outcome customers want and directly sharpens positioning and offer design.",
+      selectionBestUse:
+        "Best used as the strategic lead variable, then paired with descriptive layers for execution and media efficiency.",
+      qualityIntro:
+        "This variable often creates the cleanest bridge into targeting, positioning, and offer design because it focuses on the progress the customer wants, not just their profile.",
+      overallCopy:
+        "Usually one of the strongest primary variables. It may need a second layer for efficient execution, but it creates the clearest strategic direction for management.",
+      ratings: [
+        { label: "Meaning", score: 5, scoreLabel: "Very strong", copy: "Explains what value the customer is actively trying to obtain." },
+        { label: "Actionability", score: 4, scoreLabel: "Strong", copy: "Directly useful for proposition design, though it may need support variables for execution." },
+        { label: "Prediction", score: 5, scoreLabel: "Very strong", copy: "Often predicts message response, offer preference, and willingness to switch." },
+        { label: "Strategic usefulness", score: 5, scoreLabel: "Very strong", copy: "Excellent for targeting, positioning, product design, and communication choices." },
+        { label: "Overall assessment", score: 5, scoreLabel: "Excellent", copy: "One of the best primary lenses because it creates immediate strategic clarity." }
+      ],
+      decisionTitle: "Benefit sought translates directly into strategic choices",
+      decisionCopy:
+        "When the company knows the progress customers want, management can make sharper decisions across the full marketing mix without relying on weak assumptions.",
+      decisionNote: "Selected variable: benefit sought",
+      bridgeVariableCopy:
+        "A strategic variable that starts with the value sought rather than the surface description of the buyer.",
+      bridgeSegment: "Save time with minimal effort",
+      bridgeSegmentCopy:
+        "A segment defined by the outcome desired, which makes offer design and message choice much clearer.",
+      decisions: [
+        { label: "Targeting", copy: "Prioritize customers whose unmet need is speed and reduced effort, not simply a shared profile." },
+        { label: "Positioning", copy: "Own the promise of low-friction weekday meals with minimal cognitive load." },
+        { label: "Product or service design", copy: "Design menus, packaging, and workflow around fewer steps, faster completion, and lower failure risk." },
+        { label: "Price logic", copy: "Price against time saved and effort removed, not just ingredients delivered." },
+        { label: "Channel choice", copy: "Use channels that reach customers at moments of planning fatigue and routine pressure." },
+        { label: "Communication", copy: "Lead with the progress achieved and the operational relief created." }
+      ]
     }
   };
 
-  const variableButtons = Array.from(document.querySelectorAll("#variable-selector button"));
-  const segmentTitle = document.getElementById("segment-title");
-  const segmentCopy = document.getElementById("segment-copy");
-  const segmentList = document.getElementById("segment-list");
-  const scoreTitle = document.getElementById("score-title");
-  const scoreCopy = document.getElementById("score-copy");
-  const meaningScore = document.getElementById("meaning-score");
-  const actionScore = document.getElementById("action-score");
-  const predictScore = document.getElementById("predict-score");
-  const overallScore = document.getElementById("overall-score");
+  const comparisonButtons = Array.from(document.querySelectorAll("#variable-nav .variable-button"));
+  const qualityButtons = Array.from(document.querySelectorAll("#quality-variable-nav .variable-button"));
+  const comparisonSwapTargets = Array.from(document.querySelectorAll('[data-swap="comparison"]'));
+  const qualitySwapTargets = Array.from(document.querySelectorAll('[data-swap="quality"]'));
+  const variableTitle = document.getElementById("variable-title");
+  const revealHeading = document.getElementById("reveal-heading");
+  const revealCopy = document.getElementById("reveal-copy");
+  const hideCopy = document.getElementById("hide-copy");
+  const outputTitle = document.getElementById("output-title");
+  const outputList = document.getElementById("output-list");
+  const qualityCopy = document.getElementById("quality-copy");
+  const qualityTitle = document.getElementById("quality-title");
+  const qualityIntro = document.getElementById("quality-intro");
+  const overallCopy = document.getElementById("overall-copy");
+  const metricList = document.getElementById("metric-list");
+  const selectionName = document.getElementById("selection-name");
+  const selectionSummary = document.getElementById("selection-summary");
+  const selectionBestUse = document.getElementById("selection-best-use");
+  const comparisonGrid = document.getElementById("comparison-grid");
 
-  function renderSegmentation(key) {
-    const data = segmentationData[key];
-    document.documentElement.style.setProperty("--segment-accent", data.accent);
-    variableButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
-    segmentTitle.textContent = data.title;
-    segmentCopy.textContent = data.copy;
-    segmentList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
-    scoreTitle.textContent = data.scoreTitle;
-    scoreCopy.textContent = data.scoreCopy;
-    [meaningScore.textContent, actionScore.textContent, predictScore.textContent, overallScore.textContent] = data.scores;
+  function updateButtons(buttons, key) {
+    buttons.forEach((button) => {
+      const isActive = button.dataset.key === key;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
   }
 
-  variableButtons.forEach((button) => {
-    button.addEventListener("click", () => renderSegmentation(button.dataset.key));
-  });
-</script>
+  function updateSwapTargets(targets, callback) {
+    targets.forEach((element) => element.classList.add("is-swapping"));
 
+    window.setTimeout(() => {
+      callback();
+      window.requestAnimationFrame(() => {
+        targets.forEach((element) => element.classList.remove("is-swapping"));
+      });
+    }, 180);
+  }
+
+  function renderOutput(items) {
+    outputList.innerHTML = items
+      .map(
+        (item) => `
+          <div class="detail-item">
+            <strong>${item.title}</strong>
+            <p>${item.copy}</p>
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  function renderRatings(items) {
+    metricList.innerHTML = items
+      .map(
+        (item) => `
+          <div class="metric">
+            <div class="metric-head">
+              <div class="metric-label">${item.label}</div>
+              <strong>${item.scoreLabel}</strong>
+            </div>
+            <div class="metric-body">
+              <div class="rating-track" style="--rating:${item.score};">
+                <div class="rating-fill"></div>
+              </div>
+              <div class="rating-scale">Rating ${item.score}/5</div>
+              <p>${item.copy}</p>
+            </div>
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  function applyAccent(accent) {
+    document.documentElement.style.setProperty("--segment-accent", accent);
+    document.documentElement.style.setProperty("--segment-accent-soft", `${accent}1f`);
+    document.documentElement.style.setProperty("--segment-accent-strong", `${accent}4d`);
+  }
+
+  function renderComparison(key) {
+    const data = segmentationData[key];
+    updateButtons(comparisonButtons, key);
+    applyAccent(data.accent);
+
+    updateSwapTargets(comparisonSwapTargets, () => {
+      variableTitle.textContent = data.title;
+      revealHeading.textContent = data.revealHeading;
+      revealCopy.textContent = data.revealCopy;
+      hideCopy.textContent = data.hideCopy;
+      outputTitle.textContent = data.outputTitle;
+      renderOutput(data.output);
+      qualityCopy.textContent = data.qualityCopy;
+      qualityTitle.textContent = data.qualityTitle;
+      selectionName.textContent = data.title;
+      selectionSummary.textContent = data.selectionSummary;
+      selectionBestUse.textContent = data.selectionBestUse;
+    });
+  }
+
+  function renderQuality(key) {
+    const data = segmentationData[key];
+    updateButtons(qualityButtons, key);
+
+    updateSwapTargets(qualitySwapTargets, () => {
+      qualityTitle.textContent = data.qualityTitle;
+      qualityIntro.textContent = data.qualityIntro;
+      overallCopy.textContent = data.overallCopy;
+      renderRatings(data.ratings);
+    });
+  }
+
+  comparisonButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      renderComparison(button.dataset.key);
+
+      const comparisonTop = comparisonGrid.getBoundingClientRect().top;
+      if (comparisonTop > window.innerHeight - 140) {
+        comparisonGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  qualityButtons.forEach((button) => {
+    button.addEventListener("click", () => renderQuality(button.dataset.key));
+  });
+
+  renderComparison("age");
+  renderQuality("age");
+</script>
 </body>
 </html>
