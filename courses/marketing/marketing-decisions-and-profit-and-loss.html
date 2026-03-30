@@ -1,925 +1,1111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing Decisions to P&amp;L Simulator | Marketing | Think with Dave</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/article-showcase.css">
-<style>
-  :root {
-    --accent: #4f6e45;
-    --accent-soft: rgba(79, 110, 69, 0.18);
-    --danger: #b55345;
-    --warning: #c9832b;
-    --ok: #4f8a59;
-    --panel-border: rgba(255, 255, 255, 0.14);
-  }
-
-  .top-nav {
-    position: absolute;
-    top: 28px;
-    left: 32px;
-    z-index: 5;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  .top-nav a {
-    color: rgba(245, 240, 232, 0.78);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(245, 240, 232, 0.28);
-    padding-bottom: 4px;
-  }
-
-  .hero-pills {
-    margin-top: 26px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .hero-pill {
-    padding: 8px 12px;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.82);
-    border: 1px solid rgba(245, 240, 232, 0.16);
-  }
-
-  .simulator-section {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 96px 80px;
-  }
-
-  .simulator-shell {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  .simulator-shell .section-title,
-  .simulator-shell .section-intro {
-    color: var(--cream);
-  }
-
-  .simulator-shell .section-intro {
-    color: rgba(245, 240, 232, 0.72);
-    max-width: 900px;
-  }
-
-  .sim-grid {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 24px;
-    align-items: start;
-  }
-
-  .panel {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--panel-border);
-    padding: 26px 24px;
-  }
-
-  .panel h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 14px;
-    color: var(--cream);
-  }
-
-  .mono-label {
-    display: block;
-    margin-bottom: 9px;
-    font-size: 10px;
-    letter-spacing: 0.17em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.66);
-  }
-
-  .scenario-buttons,
-  .button-row,
-  .chip-row,
-  .metric-grid,
-  .compare-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .scenario-btn,
-  .option-btn,
-  .run-btn,
-  .reset-btn {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    color: rgba(245, 240, 232, 0.84);
-    padding: 9px 12px;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
-
-  .scenario-btn.active,
-  .option-btn.active,
-  .scenario-btn:hover,
-  .option-btn:hover,
-  .run-btn:hover,
-  .reset-btn:hover {
-    border-color: var(--accent);
-    background: var(--accent-soft);
-    color: var(--cream);
-  }
-
-  .control-block {
-    margin-top: 20px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .control-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .input-wrap input[type="number"],
-  .input-wrap input[type="range"] {
-    width: 100%;
-  }
-
-  input[type="number"] {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: var(--cream);
-    padding: 9px 10px;
-    font-family: "DM Mono", monospace;
-    font-size: 13px;
-  }
-
-  input[type="range"] {
-    accent-color: var(--accent);
-    margin-top: 8px;
-  }
-
-  .value-read {
-    margin-top: 5px;
-    font-size: 11px;
-    color: rgba(245, 240, 232, 0.72);
-    font-family: "DM Mono", monospace;
-  }
-
-  .budget-box {
-    margin-top: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 12px;
-  }
-
-  .budget-line {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    font-size: 11px;
-    margin-bottom: 7px;
-    color: rgba(245, 240, 232, 0.84);
-  }
-
-  .budget-track {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.09);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-
-  .budget-fill {
-    height: 100%;
-    width: 0;
-    transition: width 0.25s ease;
-    background: linear-gradient(90deg, var(--ok), var(--warning));
-  }
-
-  .budget-fill.over {
-    background: var(--danger);
-  }
-
-  .constraint-note {
-    margin-top: 10px;
-    font-size: 11px;
-    color: rgba(245, 240, 232, 0.72);
-    line-height: 1.6;
-  }
-
-  .action-row {
-    margin-top: 22px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .run-btn {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 20%, transparent);
-  }
-
-  .status-note {
-    margin-top: 10px;
-    min-height: 20px;
-    font-size: 11px;
-    color: rgba(245, 240, 232, 0.74);
-  }
-
-  .status-note.error {
-    color: #ef9f91;
-  }
-
-  .metric-grid {
-    margin-top: 16px;
-  }
-
-  .metric-card {
-    flex: 1 1 170px;
-    border: 1px solid rgba(255, 255, 255, 0.17);
-    padding: 14px;
-  }
-
-  .metric-card strong {
-    display: block;
-    margin-bottom: 9px;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.7);
-  }
-
-  .metric-card span {
-    font-size: 24px;
-    color: var(--cream);
-    font-family: "Fraunces", serif;
-  }
-
-  .metric-sub {
-    margin-top: 6px;
-    font-size: 11px;
-    color: rgba(245, 240, 232, 0.66);
-  }
-
-  .compare-grid {
-    margin-top: 22px;
-  }
-
-  .compare-card {
-    flex: 1 1 250px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 14px;
-  }
-
-  .compare-card h4 {
-    font-family: "Playfair Display", serif;
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: var(--cream);
-  }
-
-  .compare-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8px;
-    font-size: 12px;
-    line-height: 1.6;
-    color: rgba(245, 240, 232, 0.84);
-  }
-
-  .feedback-box {
-    margin-top: 22px;
-    border-left: 3px solid var(--accent);
-    padding: 12px 14px;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .feedback-title {
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.72);
-    margin-bottom: 8px;
-  }
-
-  .feedback-line,
-  .feedback-list li {
-    font-size: 13px;
-    line-height: 1.8;
-    color: rgba(245, 240, 232, 0.88);
-  }
-
-  .feedback-list {
-    margin-top: 8px;
-    padding-left: 18px;
-  }
-
-  footer {
-    padding: 24px 32px;
-    border-top: 1px solid rgba(13, 13, 13, 0.08);
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(13, 13, 13, 0.42);
-  }
-
-  @media (max-width: 980px) {
-    .simulator-section {
-      padding: 72px 32px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Logics, Marketing Mix, and Profit and Loss Patterns</title>
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --ink: #142132;
+      --muted: #516075;
+      --line: #d6dde7;
+      --brand: #1f4ea3;
+      --brand-soft: #eaf1ff;
+      --success: #1f7a52;
+      --warning: #a26900;
+      --danger: #982e34;
+      --radius: 12px;
+      --shadow: 0 16px 35px rgba(10, 32, 65, 0.09);
     }
 
-    .sim-grid,
-    .control-grid {
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    .layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px 90px;
+    }
+
+    .hero {
+      padding: 64px 0 28px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 18px 0 0;
+    }
+
+    .sticky-controls {
+      position: sticky;
+      top: 0;
+      z-index: 8;
+      background: rgba(243, 245, 248, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      margin: 0 -24px;
+      padding: 12px 24px;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn,
+    .logic-card,
+    .tab-btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .btn:hover,
+    .tab-btn:hover,
+    .logic-card:hover {
+      border-color: var(--brand);
+    }
+
+    .btn.primary {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .meta-chip {
+      margin-left: auto;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .logic-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .logic-card {
+      text-align: left;
+      padding: 16px;
+      min-height: 175px;
+    }
+
+    .logic-card.active {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+      box-shadow: var(--shadow);
+    }
+
+    .logic-card h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .logic-card p {
+      margin: 9px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .logic-card .tag {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #1c355f;
+      font-weight: 600;
+    }
+
+    .logic-sections {
+      margin-top: 24px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .logic-section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .logic-header {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .logic-header h2 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .logic-header p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    .tab-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0 8px;
+    }
+
+    .tab-btn {
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .tab-btn.active {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-soft);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface-2);
+      padding: 12px;
+    }
+
+    .panel h4 {
+      margin: 0 0 6px;
+      font-size: 0.95rem;
+    }
+
+    .panel p, .panel li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .compare-wrap {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .company-grid {
+      display: grid;
+      gap: 10px;
       grid-template-columns: 1fr;
     }
 
-    footer {
-      flex-direction: column;
+    .company-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface-2);
+      padding: 12px;
     }
-  }
-</style>
+
+    .compare-wrap.is-compare .company-grid {
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+    }
+
+    .compare-wrap.is-compare .company-card {
+      border-color: #98b3e1;
+      background: #f3f7ff;
+    }
+
+    .company-card h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .subhead {
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    dl {
+      margin: 10px 0 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+      font-size: 0.84rem;
+    }
+
+    dt { font-weight: 700; }
+    dd { margin: 2px 0 0; color: var(--muted); }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 840px;
+      font-size: 0.83rem;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f6ff;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .summary {
+      margin-top: 26px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .insight {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .empty-state {
+      margin-top: 20px;
+      border: 1px dashed #9fb0ca;
+      border-radius: 10px;
+      background: #edf4ff;
+      padding: 20px;
+      color: #2f4a77;
+    }
+
+    @media (max-width: 1100px) {
+      .logic-grid,
+      .company-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+      .meta-chip { width: 100%; margin-left: 0; }
+    }
+
+    @media (max-width: 760px) {
+      .layout { padding: 0 14px 70px; }
+      .sticky-controls { margin: 0 -14px; padding: 10px 14px; }
+      .logic-grid,
+      .grid-2,
+      .company-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="layout">
+    <header class="hero">
+      <h1>Business Logics, Marketing Mix, and Profit and Loss Patterns</h1>
+      <p>
+        Industries are surface labels. Business logic explains the deeper economic engine: why firms choose different product, price, promotion, and channel designs, and why their P&amp;L structures differ even inside the same sector.
+        Use this page as a strategy pattern-recognition tool for decision quality, not as a theory lesson.
+      </p>
+    </header>
 
-<section class="hero">
-  <div class="hero-left">
-    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
-    <div class="hero-tag">Marketing Course · Decision Simulator</div>
-    <h1 class="hero-title">Marketing P’s to <em>Income Statement</em> Simulator</h1>
-    <p class="hero-sub">
-      This is a decision environment, not a passive explainer. Pick a scenario, allocate scarce resources across product, price, communication, and distribution, then run the simulation to see what your decisions do to revenue, cost, profit, and margin.
-    </p>
-    <div class="hero-formula">
-      <div class="label">Simulation spine</div>
-      Scenario pressure + 4P decisions -> WTP, demand, conversion, unit cost -> P&amp;L outcomes
-    </div>
-    <div class="hero-pills">
-      <div class="hero-pill">Trade-offs required</div>
-      <div class="hero-pill">Budget constrained</div>
-      <div class="hero-pill">Before vs after</div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-right-bg"></div>
-    <div class="big-quote">
-      No lever is free. If you push volume too hard, margin erodes. If you push quality too far without price support, profit collapses.
-    </div>
-  </div>
-</section>
-
-<section class="simulator-section">
-  <div class="simulator-shell">
-    <div class="section-tag">01 · Interactive Simulation</div>
-    <h2 class="section-title">Make your decisions first, then reveal the P&amp;L impact</h2>
-    <p class="section-intro">
-      Use one scenario and one set of decisions per run. You cannot maximize everything: budget is capped, higher quality raises cost, wider distribution increases reach but compresses margin, and aggressive promotion trades margin for volume.
-    </p>
-
-    <div class="sim-grid">
-      <div class="panel">
-        <h3>Control Panel</h3>
-        <label class="mono-label">Scenario</label>
-        <div class="scenario-buttons" id="scenario-buttons"></div>
-        <p class="constraint-note" id="scenario-description"></p>
-
-        <div class="control-block">
-          <label class="mono-label">Product · Quality level</label>
-          <div class="button-row" id="quality-buttons"></div>
-        </div>
-
-        <div class="control-block">
-          <div class="control-grid">
-            <div class="input-wrap">
-              <label class="mono-label" for="price-input">Price ($)</label>
-              <input id="price-input" type="number" min="40" max="300" step="1" value="110">
-            </div>
-            <div class="input-wrap">
-              <label class="mono-label" for="promo-input">Promotion discount (%)</label>
-              <input id="promo-input" type="range" min="0" max="35" value="8">
-              <div class="value-read" id="promo-read">8%</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="control-block">
-          <div class="control-grid">
-            <div class="input-wrap">
-              <label class="mono-label" for="comm-budget">Communication budget ($)</label>
-              <input id="comm-budget" type="number" min="0" max="300000" step="5000" value="80000">
-            </div>
-            <div>
-              <label class="mono-label">Communication mix complexity</label>
-              <div class="button-row" id="mix-buttons"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="control-block">
-          <label class="mono-label">Distribution coverage</label>
-          <div class="chip-row" id="distribution-buttons"></div>
-        </div>
-
-        <div class="budget-box">
-          <div class="budget-line">
-            <span>Total operating resource limit</span>
-            <strong id="budget-limit"></strong>
-          </div>
-          <div class="budget-line">
-            <span>Resource used by decisions</span>
-            <strong id="budget-used"></strong>
-          </div>
-          <div class="budget-track"><div class="budget-fill" id="budget-fill"></div></div>
-          <p class="constraint-note" id="budget-warning">Increasing one area must reduce flexibility somewhere else.</p>
-        </div>
-
-        <div class="action-row">
-          <button class="run-btn" id="run-sim" type="button">Run Simulation</button>
-          <button class="reset-btn" id="reset-btn" type="button">Reset Decisions</button>
-        </div>
-        <div class="status-note" id="status-note">Select a scenario and configure your decisions.</div>
+    <section class="sticky-controls" aria-label="Logic controls">
+      <div class="controls-row">
+        <button class="btn" id="resetBtn" type="button">Reset Selection</button>
+        <button class="btn" id="selectAllBtn" type="button">Select All</button>
+        <button class="btn" id="singleSelectBtn" type="button">Choose One Logic Only</button>
+        <button class="btn primary" id="compareToggle" type="button" aria-pressed="false">Compare Mode: Off</button>
+        <div class="meta-chip" id="selectionMeta">0 logics selected</div>
       </div>
+    </section>
 
-      <div class="panel">
-        <h3>P&amp;L Dashboard</h3>
-        <label class="mono-label">Financial outcome (after simulation run)</label>
-        <div class="metric-grid">
-          <div class="metric-card">
-            <strong>Revenue</strong>
-            <span id="revenue-value">—</span>
-            <div class="metric-sub" id="demand-value">Demand: —</div>
-          </div>
-          <div class="metric-card">
-            <strong>Total Cost</strong>
-            <span id="cost-value">—</span>
-            <div class="metric-sub" id="unit-cost-value">Unit cost: —</div>
-          </div>
-          <div class="metric-card">
-            <strong>Profit</strong>
-            <span id="profit-value">—</span>
-            <div class="metric-sub" id="margin-value">Margin: —</div>
-          </div>
-          <div class="metric-card">
-            <strong>Profit Score</strong>
-            <span id="score-value">—</span>
-            <div class="metric-sub" id="wtp-value">WTP: — · Conversion: —</div>
-          </div>
-        </div>
+    <main>
+      <section aria-label="Business logic selector">
+        <div class="logic-grid" id="logicGrid"></div>
+      </section>
 
-        <div class="compare-grid">
-          <div class="compare-card">
-            <h4>Before (baseline)</h4>
-            <div class="compare-row"><span>Revenue</span><strong id="base-revenue">—</strong></div>
-            <div class="compare-row"><span>Total cost</span><strong id="base-cost">—</strong></div>
-            <div class="compare-row"><span>Profit</span><strong id="base-profit">—</strong></div>
-            <div class="compare-row"><span>Margin</span><strong id="base-margin">—</strong></div>
-          </div>
-          <div class="compare-card">
-            <h4>After (your decisions)</h4>
-            <div class="compare-row"><span>Revenue</span><strong id="after-revenue">—</strong></div>
-            <div class="compare-row"><span>Total cost</span><strong id="after-cost">—</strong></div>
-            <div class="compare-row"><span>Profit</span><strong id="after-profit">—</strong></div>
-            <div class="compare-row"><span>Margin</span><strong id="after-margin">—</strong></div>
-          </div>
-        </div>
+      <section class="logic-sections" id="logicSections" aria-live="polite"></section>
 
-        <div class="feedback-box">
-          <div class="feedback-title">Strategic feedback</div>
-          <p class="feedback-line" id="feedback-summary">Run the simulation to evaluate your choices.</p>
-          <ul class="feedback-list" id="feedback-list"></ul>
+      <section class="summary" id="crossSummary">
+        <h2>Cross-logic summary: value source, constraints, marketing quality, and healthy P&amp;L profile</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Logic</th>
+                <th>Where value comes from</th>
+                <th>Dominant financial constraint</th>
+                <th>What good marketing means</th>
+                <th>Healthy P&amp;L tendency</th>
+              </tr>
+            </thead>
+            <tbody id="summaryBody"></tbody>
+          </table>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
-</section>
 
-<footer>
-  <div>Think with Dave</div>
-  <div>Marketing · P&amp;L Simulator</div>
-</footer>
+  <script>
+    const businessLogics = [
+      {
+        id: 'perception',
+        name: 'Perception Driven',
+        definition: 'Perceived meaning and trust create willingness to pay above functional parity.',
+        profitEngine: 'Pricing power from symbolic value',
+        dominantConstraint: 'Brand dilution and trust erosion',
+        explanation: 'This logic monetizes identity, aesthetics, reassurance, and category status signals.',
+        representative: 'Representative because value is interpreted psychologically before it is measured functionally.',
+        differs: 'Unlike efficiency logic, margin comes from meaning rather than cost leadership; unlike subscription logic, single-transaction pricing power is central.',
+        keyInsight: 'If promise and delivery diverge, the premium collapses faster than cost can adjust.',
+        companies: [
+          {
+            companyName: 'Aureline Atelier',
+            ticker: 'AURX',
+            sector: 'Premium fashion',
+            tier: 'Icon tier',
+            archetype: 'Category-defining narrative house with deliberate scarcity.',
+            productLogic: 'Design cadence optimized for brand codes over assortment breadth.',
+            priceLogic: 'High premium with controlled markdown discipline.',
+            promotionLogic: 'Story-led campaigns with selective creator partnerships.',
+            placeLogic: 'Flagship retail plus curated digital channels.',
+            customerResponse: 'Identity reinforcement and social signaling.',
+            costStructure: 'High creative and retail theater costs, lower price sensitivity.',
+            pnl: {
+              revenueModel: 'High AOV, moderate volume, periodic launches.',
+              grossMargin: 'Very high',
+              opexIntensity: 'High brand investment',
+              operatingMargin: 'Strong when full-price sell-through holds'
+            },
+            profitEngine: 'Premium conversion at full price',
+            tradeOff: 'Scale can dilute exclusivity.',
+            failureCondition: 'Frequent discounting resets consumer reference price.'
+          },
+          {
+            companyName: 'Lumina Beauty Co',
+            ticker: 'LMBY',
+            sector: 'Prestige cosmetics',
+            tier: 'Growth tier',
+            archetype: 'Fast innovation brand balancing prestige and accessibility.',
+            productLogic: 'Pipeline driven by trend speed and hero SKU extension.',
+            priceLogic: 'Mid-premium with bundles for trial acceleration.',
+            promotionLogic: 'Influencer-heavy social proof and launch drops.',
+            placeLogic: 'Owned DTC plus selective specialty retail.',
+            customerResponse: 'Aspirational trial and repeat routines.',
+            costStructure: 'Moderate COGS, high launch marketing intensity.',
+            pnl: {
+              revenueModel: 'Launch spikes plus replenishment base.',
+              grossMargin: 'High',
+              opexIntensity: 'High variable marketing',
+              operatingMargin: 'Volatile around launch cycles'
+            },
+            profitEngine: 'Hit-rate of hero launches',
+            tradeOff: 'Speed can weaken long-term brand coherence.',
+            failureCondition: 'Paid reach inflation outruns repurchase quality.'
+          },
+          {
+            companyName: 'Verity Audio',
+            ticker: 'VRAU',
+            sector: 'Design-led consumer electronics',
+            tier: 'Challenger tier',
+            archetype: 'Craft-positioned challenger using industrial design distinctiveness.',
+            productLogic: 'Feature set selected for emotional finish, not spec racing.',
+            priceLogic: 'Premium to mainstream alternatives.',
+            promotionLogic: 'Experience-led retail events and review seeding.',
+            placeLogic: 'DTC-heavy with a few high-trust distributors.',
+            customerResponse: 'Preference from perceived quality and trust.',
+            costStructure: 'Higher unit costs from low-to-mid production runs.',
+            pnl: {
+              revenueModel: 'Hardware sales with accessory attach.',
+              grossMargin: 'Mid-high',
+              opexIntensity: 'Moderate-high',
+              operatingMargin: 'Improves after brand awareness threshold'
+            },
+            profitEngine: 'Price premium vs cost penalty gap',
+            tradeOff: 'Too much feature parity invites commoditization.',
+            failureCondition: 'Quality narrative breaks through reliability issues.'
+          }
+        ]
+      },
+      {
+        id: 'efficiency',
+        name: 'Efficiency Driven',
+        definition: 'Operational discipline and scale keep prices low while preserving viable margin.',
+        profitEngine: 'Cost advantage multiplied by throughput',
+        dominantConstraint: 'Execution slippage in supply or labor productivity',
+        explanation: 'Marketing mix is designed to support velocity, standardization, and predictable replenishment.',
+        representative: 'Representative where repeat transactions and logistics precision dominate outcomes.',
+        differs: 'Unlike perception logic, price is a signal of discipline not prestige; unlike platform logic, value is internal operational excellence rather than network density.',
+        keyInsight: 'A small cost leak across large volume destroys annual margin quickly.',
+        companies: [
+          {
+            companyName: 'MetroValue Retail',
+            ticker: 'MVRL',
+            sector: 'Discount grocery',
+            tier: 'Scale leader',
+            archetype: 'Everyday low-price chain built on private-label mix.',
+            productLogic: 'Narrow core assortment to maximize buying leverage.',
+            priceLogic: 'Everyday low price with minimal promo spikes.',
+            promotionLogic: 'Price credibility and weekly basket signaling.',
+            placeLogic: 'Dense store network near high-frequency demand zones.',
+            customerResponse: 'Routine repeat visits for basket savings.',
+            costStructure: 'Lean store labor, aggressive sourcing, high inventory turns.',
+            pnl: {
+              revenueModel: 'High transaction frequency, low basket margins.',
+              grossMargin: 'Low-mid',
+              opexIntensity: 'Low per unit but large absolute scale',
+              operatingMargin: 'Thin but steady'
+            },
+            profitEngine: 'Turnover velocity with cost control',
+            tradeOff: 'Under-investment can degrade store experience.',
+            failureCondition: 'Shrinkage and labor inefficiency compress thin margins.'
+          },
+          {
+            companyName: 'FlowShip Logistics',
+            ticker: 'FSLG',
+            sector: 'Parcel logistics',
+            tier: 'Network optimizer',
+            archetype: 'Regional logistics player winning with route optimization.',
+            productLogic: 'Service tiers standardized around SLA reliability.',
+            priceLogic: 'Contract pricing tied to volume commitments.',
+            promotionLogic: 'B2B credibility through delivery-performance proof.',
+            placeLogic: 'Hub-and-spoke network with dynamic rerouting.',
+            customerResponse: 'Retention from dependable on-time metrics.',
+            costStructure: 'Fuel, fleet, and labor efficiency dominate.',
+            pnl: {
+              revenueModel: 'Contract base plus peak surcharges.',
+              grossMargin: 'Low-mid',
+              opexIntensity: 'High operating leverage',
+              operatingMargin: 'Sensitive to utilization swings'
+            },
+            profitEngine: 'Cost per delivery below competitor benchmark',
+            tradeOff: 'Service customization increases complexity.',
+            failureCondition: 'Route density drops below break-even threshold.'
+          },
+          {
+            companyName: 'Basis Home Goods',
+            ticker: 'BSHG',
+            sector: 'Value household retail',
+            tier: 'Local challenger',
+            archetype: 'Local operator extracting margin through disciplined inventory flow.',
+            productLogic: 'Core SKUs dominate shelf and reorder cadence.',
+            priceLogic: 'Entry price anchors with occasional traffic deals.',
+            promotionLogic: 'Circular offers tied to high-frequency categories.',
+            placeLogic: 'Neighborhood stores with fulfillment pickup option.',
+            customerResponse: 'Convenience plus trust in low prices.',
+            costStructure: 'Rent and labor tightly managed, low marketing spend.',
+            pnl: {
+              revenueModel: 'Frequent low-ticket purchases.',
+              grossMargin: 'Low',
+              opexIntensity: 'Moderate with strict overhead control',
+              operatingMargin: 'Low but resilient if stock turns stay high'
+            },
+            profitEngine: 'Inventory turn + controlled overhead',
+            tradeOff: 'Too many promotions erode baseline margin.',
+            failureCondition: 'Stock-outs reduce traffic and fixed-cost absorption.'
+          }
+        ]
+      },
+      {
+        id: 'recurring',
+        name: 'Recurring or Subscription',
+        definition: 'Customer acquisition cost is recovered through retention and repeated monetization over time.',
+        profitEngine: 'Lifetime value minus acquisition and servicing cost',
+        dominantConstraint: 'Churn and payback period length',
+        explanation: 'Marketing decisions prioritize cohort quality, onboarding, habit formation, and expansion revenue.',
+        representative: 'Representative where economics are cohort-based and future cash flows justify upfront spend.',
+        differs: 'Unlike capacity logic, fixed assets are often digital; unlike perception logic, durable cash flow quality matters more than one-time premium pricing.',
+        keyInsight: 'Growth with weak retention can look impressive while destroying enterprise value.',
+        companies: [
+          {
+            companyName: 'StackPilot Cloud',
+            ticker: 'SPCL',
+            sector: 'B2B SaaS',
+            tier: 'Enterprise leader',
+            archetype: 'Mission-critical workflow suite with deep integrations.',
+            productLogic: 'Modular platform supporting expansion into adjacent use cases.',
+            priceLogic: 'Seat + usage hybrid with annual commitments.',
+            promotionLogic: 'Content + partner ecosystem + account-based programs.',
+            placeLogic: 'Direct sales for enterprise, self-serve for SMB.',
+            customerResponse: 'High switching costs and expanding usage depth.',
+            costStructure: 'High R&D and sales expense upfront, low marginal delivery cost.',
+            pnl: {
+              revenueModel: 'Recurring ARR plus upsell modules.',
+              grossMargin: 'Very high',
+              opexIntensity: 'High growth-phase S&M',
+              operatingMargin: 'Negative early, strong positive at scale'
+            },
+            profitEngine: 'Net revenue retention above 110%',
+            tradeOff: 'Aggressive growth spend delays margin realization.',
+            failureCondition: 'Churn spikes before CAC payback.'
+          },
+          {
+            companyName: 'PulseStream Media',
+            ticker: 'PLSM',
+            sector: 'Streaming',
+            tier: 'Scale challenger',
+            archetype: 'Content-bundled streaming service focused on family households.',
+            productLogic: 'Library depth and recommendation quality drive stickiness.',
+            priceLogic: 'Tiered monthly plans with ad-supported entry.',
+            promotionLogic: 'Launch campaigns around flagship releases.',
+            placeLogic: 'Connected TV apps and telecom bundles.',
+            customerResponse: 'Habit usage and churn suppression through fresh content.',
+            costStructure: 'Large content amortization plus platform delivery cost.',
+            pnl: {
+              revenueModel: 'Subscription + ad tier blend.',
+              grossMargin: 'Mid-high',
+              opexIntensity: 'High content and marketing',
+              operatingMargin: 'Fluctuates with content cycle'
+            },
+            profitEngine: 'Retention with controlled content spend',
+            tradeOff: 'Content arms race pressures cash flow.',
+            failureCondition: 'Subscriber growth plateaus while amortization remains high.'
+          },
+          {
+            companyName: 'Orbit Mobile Connect',
+            ticker: 'ORBT',
+            sector: 'Telecom membership',
+            tier: 'Value stabilizer',
+            archetype: 'Bundle-focused operator protecting retention through service reliability.',
+            productLogic: 'Plan simplicity with bundled add-on services.',
+            priceLogic: 'Predictable contract pricing with loyalty discounts.',
+            promotionLogic: 'Upgrade and retention campaigns over pure acquisition.',
+            placeLogic: 'Digital-first service with assisted retail touchpoints.',
+            customerResponse: 'Low churn from utility dependence.',
+            costStructure: 'Network capex burden plus service costs.',
+            pnl: {
+              revenueModel: 'Monthly recurring billing.',
+              grossMargin: 'Mid',
+              opexIntensity: 'Moderate-high support and retention costs',
+              operatingMargin: 'Stable if churn remains low'
+            },
+            profitEngine: 'Long customer tenure',
+            tradeOff: 'Price competition can degrade ARPU.',
+            failureCondition: 'Network quality drop accelerates churn.'
+          }
+        ]
+      },
+      {
+        id: 'platform',
+        name: 'Platform or Network',
+        definition: 'Value is created by matching participants across two or more sides and increasing interaction density.',
+        profitEngine: 'Take rate on high-volume interactions',
+        dominantConstraint: 'Liquidity imbalance and participant trust',
+        explanation: 'Marketing mix focuses on balancing supply and demand, reducing friction, and reinforcing ecosystem trust loops.',
+        representative: 'Representative when user value increases as more participants join and transact.',
+        differs: 'Unlike efficiency logic, value is externalized across participants; unlike subscription logic, recurring revenue may depend on transaction intensity rather than fixed contracts.',
+        keyInsight: 'Network growth without quality controls increases gross volume while reducing platform trust.',
+        companies: [
+          {
+            companyName: 'Mercato Exchange',
+            ticker: 'MRTX',
+            sector: 'Online marketplace',
+            tier: 'Category orchestrator',
+            archetype: 'Multi-category marketplace balancing buyer value with seller economics.',
+            productLogic: 'Trust features and ranking systems reduce transaction risk.',
+            priceLogic: 'Commission plus optional seller services.',
+            promotionLogic: 'Demand-side traffic plus supply-side onboarding incentives.',
+            placeLogic: 'Mobile app and web storefront ecosystem.',
+            customerResponse: 'Convenience and selection breadth.',
+            costStructure: 'Tech infrastructure plus trust and support operations.',
+            pnl: {
+              revenueModel: 'Take rate on gross merchandise volume.',
+              grossMargin: 'High on core fees',
+              opexIntensity: 'High product and trust operations',
+              operatingMargin: 'Expands after scale and fraud controls mature'
+            },
+            profitEngine: 'Dense repeat transactions',
+            tradeOff: 'Higher take rates can trigger seller disintermediation.',
+            failureCondition: 'Low-quality listings degrade conversion and retention.'
+          },
+          {
+            companyName: 'RideMesh',
+            ticker: 'RDSM',
+            sector: 'Ride-hailing',
+            tier: 'Regional scaler',
+            archetype: 'Mobility platform prioritizing marketplace balance over pure growth.',
+            productLogic: 'Matching speed and reliability features.',
+            priceLogic: 'Dynamic pricing with bounded surge controls.',
+            promotionLogic: 'Geo-targeted incentives for riders and drivers.',
+            placeLogic: 'App-only with city operations teams.',
+            customerResponse: 'Availability and wait-time sensitivity.',
+            costStructure: 'Incentive subsidies and support operations.',
+            pnl: {
+              revenueModel: 'Commission per completed trip.',
+              grossMargin: 'Mid',
+              opexIntensity: 'High subsidies in expansion markets',
+              operatingMargin: 'Improves once marketplace balances'
+            },
+            profitEngine: 'Trip density per city',
+            tradeOff: 'Incentive cuts can reduce supply quickly.',
+            failureCondition: 'Driver liquidity falls below rider demand peaks.'
+          },
+          {
+            companyName: 'AdCircuit Media',
+            ticker: 'ADCM',
+            sector: 'Digital ad platform',
+            tier: 'Niche specialist',
+            archetype: 'Vertical ad exchange with high-intent audience segments.',
+            productLogic: 'Targeting precision and measurement credibility.',
+            priceLogic: 'Auction-based with performance floors.',
+            promotionLogic: 'Publisher and advertiser acquisition in parallel.',
+            placeLogic: 'API integrations and managed service layer.',
+            customerResponse: 'ROI-driven budget allocation.',
+            costStructure: 'Data, infrastructure, compliance, and sales support.',
+            pnl: {
+              revenueModel: 'Media spend take rate plus tools subscription.',
+              grossMargin: 'Mid-high',
+              opexIntensity: 'High data and compliance costs',
+              operatingMargin: 'Sensitive to ad-cycle volatility'
+            },
+            profitEngine: 'Match quality and auction liquidity',
+            tradeOff: 'Compliance overhead rises with scale.',
+            failureCondition: 'Measurement trust declines and spend exits.'
+          }
+        ]
+      },
+      {
+        id: 'capacity',
+        name: 'Capacity or Asset Utilization',
+        definition: 'Large fixed assets require high utilization to absorb cost and protect margin.',
+        profitEngine: 'Load factor and yield optimization',
+        dominantConstraint: 'Demand volatility against fixed-cost base',
+        explanation: 'Marketing mix decisions coordinate demand timing, mix, and pricing to keep assets productive.',
+        representative: 'Representative where idle capacity destroys economics quickly and recovery is time-bound.',
+        differs: 'Unlike subscription logic, value is often perishable; unlike platform logic, assets are owned or contracted heavily.',
+        keyInsight: 'The wrong demand mix can produce full capacity with weak profitability.',
+        companies: [
+          {
+            companyName: 'AeroNova Airlines',
+            ticker: 'ANVA',
+            sector: 'Commercial aviation',
+            tier: 'Network major',
+            archetype: 'Hub-based carrier balancing premium and economy yields.',
+            productLogic: 'Cabin segmentation plus route portfolio optimization.',
+            priceLogic: 'Dynamic yield management by demand windows.',
+            promotionLogic: 'Loyalty ecosystem and route-level campaigns.',
+            placeLogic: 'Direct digital booking plus travel intermediaries.',
+            customerResponse: 'Schedule convenience and perceived reliability.',
+            costStructure: 'Very high fixed fleet and labor costs.',
+            pnl: {
+              revenueModel: 'Ticket yield + ancillaries + loyalty monetization.',
+              grossMargin: 'Low-mid',
+              opexIntensity: 'Very high fixed-cost intensity',
+              operatingMargin: 'Cyclical, highly sensitive to load and fuel'
+            },
+            profitEngine: 'Yield-managed seat utilization',
+            tradeOff: 'Discounting fills seats but can erode route profitability.',
+            failureCondition: 'Sustained low load factor on fixed route base.'
+          },
+          {
+            companyName: 'HarborStay Hotels',
+            ticker: 'HBSH',
+            sector: 'Hotel operations',
+            tier: 'Urban portfolio',
+            archetype: 'Business-travel weighted hotel group managing seasonal occupancy.',
+            productLogic: 'Room tiering and service bundles by segment.',
+            priceLogic: 'Daily rate optimization by occupancy forecasts.',
+            promotionLogic: 'Corporate contracts plus demand-fill campaigns.',
+            placeLogic: 'Brand website, OTAs, and corporate travel desks.',
+            customerResponse: 'Booking confidence and location utility.',
+            costStructure: 'High fixed property costs and staffing baseline.',
+            pnl: {
+              revenueModel: 'Room revenue + food, events, and add-ons.',
+              grossMargin: 'Mid',
+              opexIntensity: 'High fixed overhead',
+              operatingMargin: 'Strong above occupancy threshold'
+            },
+            profitEngine: 'Occupancy times average daily rate',
+            tradeOff: 'OTA dependence raises distribution cost.',
+            failureCondition: 'Persistent occupancy below break-even point.'
+          },
+          {
+            companyName: 'RouteLease Mobility',
+            ticker: 'RTLM',
+            sector: 'Car rentals',
+            tier: 'Fleet optimizer',
+            archetype: 'Fleet-heavy mobility company balancing airport and city demand.',
+            productLogic: 'Fleet composition tuned to demand segment mix.',
+            priceLogic: 'Dynamic pricing with peak-period premiums.',
+            promotionLogic: 'Travel partner bundles and loyalty offers.',
+            placeLogic: 'Airport hubs + local pickup points + app reservations.',
+            customerResponse: 'Availability certainty and transaction speed.',
+            costStructure: 'Fleet financing, depreciation, and maintenance burden.',
+            pnl: {
+              revenueModel: 'Daily rental yield plus ancillary fees.',
+              grossMargin: 'Mid',
+              opexIntensity: 'High fixed and maintenance costs',
+              operatingMargin: 'Depends on fleet utilization and resale values'
+            },
+            profitEngine: 'Fleet utilization and residual value management',
+            tradeOff: 'Overexpansion creates idle asset drag.',
+            failureCondition: 'Demand shock leaves fleet underutilized for extended period.'
+          }
+        ]
+      },
+      {
+        id: 'solution',
+        name: 'Solution or Relationship Driven B2B',
+        definition: 'Complex high-value sales depend on trust, customization, and multi-stakeholder relationship depth.',
+        profitEngine: 'High-value deal quality with expansion and renewal',
+        dominantConstraint: 'Long sales cycle and delivery complexity',
+        explanation: 'Marketing mix aligns thought leadership, consultative selling, and delivery credibility to de-risk adoption.',
+        representative: 'Representative when purchase frequency is low but contract value and switching impact are high.',
+        differs: 'Unlike efficiency logic, customization is a feature not a cost defect; unlike platform logic, value is co-created directly with client teams.',
+        keyInsight: 'Pipeline growth is meaningless if implementation quality cannot support promised outcomes.',
+        companies: [
+          {
+            companyName: 'Vector Industrial Systems',
+            ticker: 'VINS',
+            sector: 'Industrial equipment',
+            tier: 'Trusted incumbent',
+            archetype: 'Mission-critical equipment provider with lifecycle service contracts.',
+            productLogic: 'Configurable systems designed around client process constraints.',
+            priceLogic: 'Value-based pricing with multiyear service layers.',
+            promotionLogic: 'Account-based engagement and engineering credibility.',
+            placeLogic: 'Direct enterprise sales with partner integrators.',
+            customerResponse: 'Risk reduction and long-term operating confidence.',
+            costStructure: 'High solution engineering and field support costs.',
+            pnl: {
+              revenueModel: 'Project revenue + recurring service contracts.',
+              grossMargin: 'Mid-high',
+              opexIntensity: 'High pre-sales and delivery investment',
+              operatingMargin: 'Strong on mature accounts and renewals'
+            },
+            profitEngine: 'Installed base monetization',
+            tradeOff: 'Customization can suppress scalability.',
+            failureCondition: 'Project overruns consume service margin.'
+          },
+          {
+            companyName: 'NorthBridge Advisory',
+            ticker: 'NBAD',
+            sector: 'Consulting services',
+            tier: 'Specialist premium',
+            archetype: 'Expert-led advisory firm focused on transformation programs.',
+            productLogic: 'Modular offerings tailored to strategic pain points.',
+            priceLogic: 'Premium project fees plus retained advisory.',
+            promotionLogic: 'Thought leadership and C-suite relationship programs.',
+            placeLogic: 'Direct relationship channels and referral network.',
+            customerResponse: 'Trust in expertise and execution certainty.',
+            costStructure: 'People-heavy model with utilization risk.',
+            pnl: {
+              revenueModel: 'Project fees with occasional recurring retainers.',
+              grossMargin: 'Mid',
+              opexIntensity: 'High talent and business development spend',
+              operatingMargin: 'Depends on consultant utilization and rate discipline'
+            },
+            profitEngine: 'Utilization of high-bill-rate experts',
+            tradeOff: 'Over-customization reduces repeatability.',
+            failureCondition: 'Bench growth and delayed project starts.'
+          },
+          {
+            companyName: 'ArcSphere Enterprise Tech',
+            ticker: 'ARCT',
+            sector: 'Specialized enterprise technology',
+            tier: 'Growth integrator',
+            archetype: 'Industry-specific software and integration provider for regulated sectors.',
+            productLogic: 'Core platform plus integration and compliance extensions.',
+            priceLogic: 'License or subscription + professional services.',
+            promotionLogic: 'Case-based proof and executive workshops.',
+            placeLogic: 'Direct enterprise teams with select channel partners.',
+            customerResponse: 'Adoption confidence from domain specialization.',
+            costStructure: 'Balanced software R&D and service delivery teams.',
+            pnl: {
+              revenueModel: 'Blended recurring software and project services.',
+              grossMargin: 'Mixed (high software, lower services)',
+              opexIntensity: 'High sales engineering and onboarding costs',
+              operatingMargin: 'Expands as recurring mix rises'
+            },
+            profitEngine: 'Cross-sell from initial land to platform standardization',
+            tradeOff: 'Services growth can mask weak product scalability.',
+            failureCondition: 'Low renewal rates after complex implementation.'
+          }
+        ]
+      }
+    ];
 
-<script>
-  const scenarios = {
-    stable_competitor_cut: {
-      label: "Stable demand, price war",
-      marketDemandFactor: 1,
-      competitorPriceDrop: 0.1,
-      competitorPromotionLift: 0.04,
-      rawCostIncrease: 0.15,
-      budgetLimit: 320000,
-      description: "Competitor reduces price by 10%, raw material cost rises by 15%, and total market demand is stable."
-    },
-    growth_promo_fight: {
-      label: "Growing market, promo fight",
-      marketDemandFactor: 1.14,
-      competitorPriceDrop: 0.04,
-      competitorPromotionLift: 0.12,
-      rawCostIncrease: 0.06,
-      budgetLimit: 350000,
-      description: "Demand is growing, but competitors increase promotions and lightly discount to capture momentum."
-    },
-    decline_cost_shock: {
-      label: "Demand decline, cost shock",
-      marketDemandFactor: 0.86,
-      competitorPriceDrop: 0.06,
-      competitorPromotionLift: 0.08,
-      rawCostIncrease: 0.2,
-      budgetLimit: 280000,
-      description: "Demand contracts, competitors stay aggressive, and input costs surge by 20%."
-    }
-  };
-
-  const qualityLevels = {
-    low: { label: "Low", wtpDelta: -10, unitCostDelta: -8, complexityCost: 5000 },
-    medium: { label: "Medium", wtpDelta: 0, unitCostDelta: 0, complexityCost: 18000 },
-    high: { label: "High", wtpDelta: 18, unitCostDelta: 14, complexityCost: 40000 }
-  };
-
-  const mixComplexity = {
-    low: { label: "Low", conversionBoost: 0.008, wtpLift: 1, spendMultiplier: 0.8, complexityCost: 8000 },
-    medium: { label: "Medium", conversionBoost: 0.018, wtpLift: 3, spendMultiplier: 1, complexityCost: 18000 },
-    high: { label: "High", conversionBoost: 0.032, wtpLift: 6, spendMultiplier: 1.24, complexityCost: 32000 }
-  };
-
-  const distributionLevels = {
-    narrow: { label: "Narrow", demandFactor: 0.82, unitCostAdd: -3, marginPenalty: 0, fixedCost: 12000 },
-    medium: { label: "Medium", demandFactor: 1, unitCostAdd: 1, marginPenalty: 0.02, fixedCost: 28000 },
-    wide: { label: "Wide", demandFactor: 1.21, unitCostAdd: 6, marginPenalty: 0.05, fixedCost: 52000 }
-  };
-
-  const baselineInput = {
-    quality: "medium",
-    price: 110,
-    promotionDiscount: 8,
-    communicationBudget: 80000,
-    mix: "medium",
-    distribution: "medium"
-  };
-
-  const modelDefaults = {
-    baseDemand: 10000,
-    baseUnitCost: 58,
-    baseWTP: 112,
-    baseConversion: 0.12
-  };
-
-  const state = {
-    scenarioKey: "stable_competitor_cut",
-    quality: baselineInput.quality,
-    price: baselineInput.price,
-    promotionDiscount: baselineInput.promotionDiscount,
-    communicationBudget: baselineInput.communicationBudget,
-    mix: baselineInput.mix,
-    distribution: baselineInput.distribution,
-    baselineResult: null,
-    afterResult: null
-  };
-
-  const els = {
-    scenarioButtons: document.getElementById("scenario-buttons"),
-    scenarioDescription: document.getElementById("scenario-description"),
-    qualityButtons: document.getElementById("quality-buttons"),
-    mixButtons: document.getElementById("mix-buttons"),
-    distributionButtons: document.getElementById("distribution-buttons"),
-    priceInput: document.getElementById("price-input"),
-    promoInput: document.getElementById("promo-input"),
-    promoRead: document.getElementById("promo-read"),
-    commBudget: document.getElementById("comm-budget"),
-    budgetLimit: document.getElementById("budget-limit"),
-    budgetUsed: document.getElementById("budget-used"),
-    budgetFill: document.getElementById("budget-fill"),
-    budgetWarning: document.getElementById("budget-warning"),
-    statusNote: document.getElementById("status-note"),
-    runBtn: document.getElementById("run-sim"),
-    resetBtn: document.getElementById("reset-btn"),
-    revenueValue: document.getElementById("revenue-value"),
-    demandValue: document.getElementById("demand-value"),
-    costValue: document.getElementById("cost-value"),
-    unitCostValue: document.getElementById("unit-cost-value"),
-    profitValue: document.getElementById("profit-value"),
-    marginValue: document.getElementById("margin-value"),
-    scoreValue: document.getElementById("score-value"),
-    wtpValue: document.getElementById("wtp-value"),
-    baseRevenue: document.getElementById("base-revenue"),
-    baseCost: document.getElementById("base-cost"),
-    baseProfit: document.getElementById("base-profit"),
-    baseMargin: document.getElementById("base-margin"),
-    afterRevenue: document.getElementById("after-revenue"),
-    afterCost: document.getElementById("after-cost"),
-    afterProfit: document.getElementById("after-profit"),
-    afterMargin: document.getElementById("after-margin"),
-    feedbackSummary: document.getElementById("feedback-summary"),
-    feedbackList: document.getElementById("feedback-list")
-  };
-
-  function formatMoney(value) {
-    return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
-  }
-
-  function formatPct(value) {
-    return `${(value * 100).toFixed(1)}%`;
-  }
-
-  function buildOptionButtons(container, options, selectedKey, onClick) {
-    container.innerHTML = "";
-    Object.entries(options).forEach(([key, cfg]) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "option-btn";
-      if (key === selectedKey) btn.classList.add("active");
-      btn.textContent = cfg.label;
-      btn.addEventListener("click", () => onClick(key));
-      container.appendChild(btn);
-    });
-  }
-
-  function buildScenarioButtons() {
-    els.scenarioButtons.innerHTML = "";
-    Object.entries(scenarios).forEach(([key, scenario]) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "scenario-btn";
-      if (key === state.scenarioKey) btn.classList.add("active");
-      btn.textContent = scenario.label;
-      btn.addEventListener("click", () => {
-        state.scenarioKey = key;
-        updateScenarioUI();
-        updateBudgetUI();
-        setStatus("Scenario changed. Update decisions, then run simulation.");
-      });
-      els.scenarioButtons.appendChild(btn);
-    });
-  }
-
-  function updateScenarioUI() {
-    const scenario = scenarios[state.scenarioKey];
-    els.scenarioDescription.textContent = scenario.description;
-    Array.from(els.scenarioButtons.children).forEach((btn, idx) => {
-      const key = Object.keys(scenarios)[idx];
-      btn.classList.toggle("active", key === state.scenarioKey);
-    });
-  }
-
-  function getBudgetUsed() {
-    const qualityCost = qualityLevels[state.quality].complexityCost;
-    const mixCost = mixComplexity[state.mix].complexityCost;
-    const distributionCost = distributionLevels[state.distribution].fixedCost;
-    const commCost = state.communicationBudget;
-    return qualityCost + mixCost + distributionCost + commCost;
-  }
-
-  function updateBudgetUI() {
-    const scenario = scenarios[state.scenarioKey];
-    const used = getBudgetUsed();
-    const ratio = used / scenario.budgetLimit;
-    els.budgetLimit.textContent = formatMoney(scenario.budgetLimit);
-    els.budgetUsed.textContent = formatMoney(used);
-    els.budgetFill.style.width = `${Math.min(ratio, 1) * 100}%`;
-    els.budgetFill.classList.toggle("over", ratio > 1);
-    if (ratio > 1) {
-      els.budgetWarning.textContent = "Budget exceeded. Reduce communication, complexity, or distribution before running.";
-      els.budgetWarning.style.color = "#ef9f91";
-    } else if (ratio > 0.9) {
-      els.budgetWarning.textContent = "Very tight buffer. One more increase will likely force trade-offs elsewhere.";
-      els.budgetWarning.style.color = "#f2c080";
-    } else {
-      els.budgetWarning.textContent = "Increasing one area must reduce flexibility somewhere else.";
-      els.budgetWarning.style.color = "rgba(245, 240, 232, 0.72)";
-    }
-  }
-
-  function clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value));
-  }
-
-  function simulate(inputs, scenarioKey) {
-    const scenario = scenarios[scenarioKey];
-    const quality = qualityLevels[inputs.quality];
-    const mix = mixComplexity[inputs.mix];
-    const distribution = distributionLevels[inputs.distribution];
-
-    const effectivePrice = inputs.price * (1 - inputs.promotionDiscount / 100);
-
-    const communicationEffect = Math.log1p(inputs.communicationBudget / 30000);
-    const brandEquity = clamp((mix.wtpLift + communicationEffect * 3.1 + inputs.promotionDiscount * 0.05) / 30, 0, 1);
-
-    const wtp = modelDefaults.baseWTP
-      + quality.wtpDelta
-      + mix.wtpLift
-      + communicationEffect * 4
-      - scenario.competitorPriceDrop * 35;
-
-    const priceGap = effectivePrice - wtp;
-    const baseConv = modelDefaults.baseConversion + mix.conversionBoost + communicationEffect * 0.006 - scenario.competitorPromotionLift * 0.08;
-    const conversionRate = clamp(baseConv - priceGap * 0.0018, 0.03, 0.42);
-
-    const demand = Math.max(0,
-      modelDefaults.baseDemand
-      * scenario.marketDemandFactor
-      * distribution.demandFactor
-      * (0.74 + conversionRate * 2.2)
-      * (1 + scenario.competitorPromotionLift * -0.35)
-      * (1 + inputs.promotionDiscount / 100 * 0.45)
-    );
-
-    const unitCost = modelDefaults.baseUnitCost
-      + quality.unitCostDelta
-      + distribution.unitCostAdd
-      + scenario.rawCostIncrease * 22
-      + mix.spendMultiplier * 1.3;
-
-    const distributionCost = distribution.fixedCost + demand * (distribution.marginPenalty * 7);
-    const marketingCost = inputs.communicationBudget * mix.spendMultiplier + demand * (inputs.promotionDiscount / 100) * (inputs.price * 0.14);
-
-    const revenue = effectivePrice * demand;
-    const totalCost = unitCost * demand + marketingCost + distributionCost;
-    const profit = revenue - totalCost;
-    const marginPct = revenue === 0 ? 0 : profit / revenue;
-
-    return {
-      revenue,
-      totalCost,
-      profit,
-      marginPct,
-      demand,
-      unitCost,
-      wtp,
-      conversionRate,
-      brandEquity,
-      effectivePrice,
-      marketingCost,
-      distributionCost
+    // state layer
+    const state = {
+      selectedLogicIds: new Set(),
+      tabByLogic: {},
+      compareMode: false,
+      singleSelectMode: false
     };
-  }
 
-  function getProfitScore(result, scenarioKey) {
-    const baseline = state.baselineResult || simulate(baselineInput, scenarioKey);
-    const relative = baseline.profit === 0 ? 0 : (result.profit - baseline.profit) / Math.abs(baseline.profit);
-    const score = clamp(55 + relative * 90 + result.marginPct * 70 - (result.marketingCost / result.revenue) * 15, 1, 99);
-    return Math.round(score);
-  }
+    // interaction layer
+    const logicGrid = document.getElementById('logicGrid');
+    const logicSections = document.getElementById('logicSections');
+    const summaryBody = document.getElementById('summaryBody');
+    const selectionMeta = document.getElementById('selectionMeta');
+    const compareToggle = document.getElementById('compareToggle');
 
-  function makeFeedback(result, score) {
-    const notes = [];
-
-    if (result.effectivePrice < result.wtp - 6) {
-      notes.push("Your effective price is below WTP: you are leaving money on the table.");
-    }
-    if (result.effectivePrice > result.wtp + 10) {
-      notes.push("Price sits well above WTP: margin intention is high, but conversion suffers.");
-    }
-    if (state.promotionDiscount >= 20 && result.marginPct < 0.12) {
-      notes.push("You increased promotion but destroyed margin. Check discount depth against unit economics.");
-    }
-    if (state.distribution === "wide" && result.distributionCost > result.marketingCost * 0.55) {
-      notes.push("High distribution coverage is hurting profitability through channel and servicing cost.");
-    }
-    if (state.quality === "high" && state.price < result.unitCost * 1.45) {
-      notes.push("High quality needs stronger pricing support. Current pricing does not recover the added cost base.");
-    }
-    if (state.communicationBudget > scenarios[state.scenarioKey].budgetLimit * 0.4 && score < 60) {
-      notes.push("Communication spend is heavy, but financial return is weak. Improve mix quality or price capture.");
-    }
-    if (notes.length === 0) {
-      notes.push("Trade-offs are balanced: demand, price capture, and cost discipline are aligned for this scenario.");
-    }
-
-    const summary = score >= 75
-      ? "Strong decision quality: profitable growth with manageable trade-offs."
-      : score >= 55
-        ? "Mixed quality: some choices work, but at least one trade-off is under-managed."
-        : "Weak decision quality: current setup creates costly growth or low conversion.";
-
-    return { summary, notes };
-  }
-
-  function renderResults(result, score, feedback) {
-    els.revenueValue.textContent = formatMoney(result.revenue);
-    els.demandValue.textContent = `Demand: ${Math.round(result.demand).toLocaleString()} units`;
-    els.costValue.textContent = formatMoney(result.totalCost);
-    els.unitCostValue.textContent = `Unit cost: ${formatMoney(result.unitCost)} · Marketing: ${formatMoney(result.marketingCost)}`;
-    els.profitValue.textContent = formatMoney(result.profit);
-    els.marginValue.textContent = `Margin: ${formatPct(result.marginPct)}`;
-    els.scoreValue.textContent = `${score}/100`;
-    els.wtpValue.textContent = `WTP: ${formatMoney(result.wtp)} · Conversion: ${formatPct(result.conversionRate)} · Brand equity: ${Math.round(result.brandEquity * 100)}`;
-
-    els.afterRevenue.textContent = formatMoney(result.revenue);
-    els.afterCost.textContent = formatMoney(result.totalCost);
-    els.afterProfit.textContent = formatMoney(result.profit);
-    els.afterMargin.textContent = formatPct(result.marginPct);
-
-    const base = state.baselineResult;
-    els.baseRevenue.textContent = formatMoney(base.revenue);
-    els.baseCost.textContent = formatMoney(base.totalCost);
-    els.baseProfit.textContent = formatMoney(base.profit);
-    els.baseMargin.textContent = formatPct(base.marginPct);
-
-    els.feedbackSummary.textContent = feedback.summary;
-    els.feedbackList.innerHTML = feedback.notes.map((note) => `<li>${note}</li>`).join("");
-  }
-
-  function setStatus(message, isError = false) {
-    els.statusNote.textContent = message;
-    els.statusNote.classList.toggle("error", isError);
-  }
-
-  function syncButtons() {
-    buildOptionButtons(els.qualityButtons, qualityLevels, state.quality, (key) => {
-      state.quality = key;
-      syncButtons();
-      updateBudgetUI();
-    });
-    buildOptionButtons(els.mixButtons, mixComplexity, state.mix, (key) => {
-      state.mix = key;
-      syncButtons();
-      updateBudgetUI();
-    });
-    buildOptionButtons(els.distributionButtons, distributionLevels, state.distribution, (key) => {
-      state.distribution = key;
-      syncButtons();
-      updateBudgetUI();
-    });
-  }
-
-  function runSimulation() {
-    const scenario = scenarios[state.scenarioKey];
-    const budgetUsed = getBudgetUsed();
-    if (budgetUsed > scenario.budgetLimit) {
-      setStatus("Cannot run: budget limit exceeded. Reduce at least one major lever.", true);
-      return;
-    }
-
-    const result = simulate(state, state.scenarioKey);
-    const score = getProfitScore(result, state.scenarioKey);
-    const feedback = makeFeedback(result, score);
-
-    state.afterResult = result;
-    renderResults(result, score, feedback);
-    setStatus("Simulation complete. Review feedback and iterate another decision set.");
-  }
-
-  function resetState() {
-    state.quality = baselineInput.quality;
-    state.price = baselineInput.price;
-    state.promotionDiscount = baselineInput.promotionDiscount;
-    state.communicationBudget = baselineInput.communicationBudget;
-    state.mix = baselineInput.mix;
-    state.distribution = baselineInput.distribution;
-
-    els.priceInput.value = state.price;
-    els.promoInput.value = state.promotionDiscount;
-    els.commBudget.value = state.communicationBudget;
-    els.promoRead.textContent = `${state.promotionDiscount}%`;
-
-    syncButtons();
-    updateBudgetUI();
-    setStatus("Decisions reset. Run simulation when ready.");
-  }
-
-  function init() {
-    buildScenarioButtons();
-    updateScenarioUI();
-    syncButtons();
-
-    els.priceInput.addEventListener("input", () => {
-      state.price = clamp(Number(els.priceInput.value || baselineInput.price), 40, 300);
-      els.priceInput.value = state.price;
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      state.selectedLogicIds.clear();
+      renderAll();
     });
 
-    els.promoInput.addEventListener("input", () => {
-      state.promotionDiscount = Number(els.promoInput.value);
-      els.promoRead.textContent = `${state.promotionDiscount}%`;
+    document.getElementById('selectAllBtn').addEventListener('click', () => {
+      businessLogics.forEach(logic => state.selectedLogicIds.add(logic.id));
+      renderAll();
     });
 
-    els.commBudget.addEventListener("input", () => {
-      state.communicationBudget = clamp(Number(els.commBudget.value || 0), 0, 300000);
-      els.commBudget.value = state.communicationBudget;
-      updateBudgetUI();
+    document.getElementById('singleSelectBtn').addEventListener('click', () => {
+      state.singleSelectMode = !state.singleSelectMode;
+      document.getElementById('singleSelectBtn').classList.toggle('primary', state.singleSelectMode);
+      document.getElementById('singleSelectBtn').textContent = state.singleSelectMode ? 'Single Logic Mode: On' : 'Choose One Logic Only';
+      if (state.singleSelectMode && state.selectedLogicIds.size > 1) {
+        const first = [...state.selectedLogicIds][0];
+        state.selectedLogicIds = new Set([first]);
+      }
+      renderAll();
     });
 
-    els.runBtn.addEventListener("click", runSimulation);
-    els.resetBtn.addEventListener("click", resetState);
+    compareToggle.addEventListener('click', () => {
+      state.compareMode = !state.compareMode;
+      compareToggle.textContent = `Compare Mode: ${state.compareMode ? 'On' : 'Off'}`;
+      compareToggle.setAttribute('aria-pressed', String(state.compareMode));
+      renderLogicSections();
+    });
 
-    updateBudgetUI();
-    state.baselineResult = simulate(baselineInput, state.scenarioKey);
-    els.baseRevenue.textContent = formatMoney(state.baselineResult.revenue);
-    els.baseCost.textContent = formatMoney(state.baselineResult.totalCost);
-    els.baseProfit.textContent = formatMoney(state.baselineResult.profit);
-    els.baseMargin.textContent = formatPct(state.baselineResult.marginPct);
-  }
+    function toggleLogic(logicId) {
+      if (state.selectedLogicIds.has(logicId)) {
+        state.selectedLogicIds.delete(logicId);
+      } else {
+        if (state.singleSelectMode) {
+          state.selectedLogicIds = new Set([logicId]);
+        } else {
+          state.selectedLogicIds.add(logicId);
+        }
+      }
+      renderAll();
+    }
 
-  init();
-</script>
+    function setTab(logicId, tab) {
+      state.tabByLogic[logicId] = tab;
+      renderLogicSections();
+    }
 
+    // rendering layer
+    function renderLogicCards() {
+      logicGrid.innerHTML = businessLogics.map(logic => {
+        const active = state.selectedLogicIds.has(logic.id);
+        return `
+          <button class="logic-card ${active ? 'active' : ''}" type="button" data-id="${logic.id}">
+            <h3>${logic.name}</h3>
+            <p>${logic.definition}</p>
+            <span class="tag"><strong>Profit engine:</strong> ${logic.profitEngine}</span>
+            <span class="tag"><strong>Constraint:</strong> ${logic.dominantConstraint}</span>
+          </button>
+        `;
+      }).join('');
+
+      logicGrid.querySelectorAll('.logic-card').forEach(card => {
+        card.addEventListener('click', () => toggleLogic(card.dataset.id));
+      });
+    }
+
+    function renderLogicSections() {
+      const selected = businessLogics.filter(logic => state.selectedLogicIds.has(logic.id));
+      selectionMeta.textContent = `${selected.length} logic${selected.length === 1 ? '' : 's'} selected`;
+
+      if (!selected.length) {
+        logicSections.innerHTML = '<div class="empty-state">Select one or more logic cards to explore how marketing mix design and profit structure shift by business logic.</div>';
+        return;
+      }
+
+      logicSections.innerHTML = selected.map(logic => {
+        const tab = state.tabByLogic[logic.id] || 'overview';
+
+        return `
+          <article class="logic-section">
+            <div class="logic-header">
+              <div>
+                <h2>${logic.name}</h2>
+                <p>${logic.definition}</p>
+              </div>
+            </div>
+
+            <div class="tab-row">
+              ${renderTabButton(logic.id, 'overview', tab)}
+              ${renderTabButton(logic.id, 'company', tab, 'Company Comparison')}
+              ${renderTabButton(logic.id, 'pnl', tab, 'P&L Comparison')}
+              ${renderTabButton(logic.id, 'insight', tab, 'Key Insight')}
+            </div>
+
+            ${renderLogicTabContent(logic, tab)}
+          </article>
+        `;
+      }).join('');
+
+      logicSections.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => setTab(btn.dataset.logic, btn.dataset.tab));
+      });
+    }
+
+    function renderTabButton(logicId, key, activeTab, label) {
+      const text = label || key.charAt(0).toUpperCase() + key.slice(1);
+      return `<button class="tab-btn ${activeTab === key ? 'active' : ''}" type="button" data-logic="${logicId}" data-tab="${key}">${text}</button>`;
+    }
+
+    function renderLogicTabContent(logic, tab) {
+      if (tab === 'overview') {
+        return `
+          <div class="grid-2">
+            <section class="panel">
+              <h4>Logic explanation</h4>
+              <p>${logic.explanation}</p>
+            </section>
+            <section class="panel">
+              <h4>Why representative</h4>
+              <p>${logic.representative}</p>
+            </section>
+            <section class="panel" style="grid-column: 1 / -1;">
+              <h4>How this differs from the other five</h4>
+              <p>${logic.differs}</p>
+            </section>
+          </div>
+        `;
+      }
+
+      if (tab === 'company') {
+        return `
+          <div class="compare-wrap ${state.compareMode ? 'is-compare' : ''}">
+            <div class="company-grid">
+              ${logic.companies.map(company => renderCompanyCard(company)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (tab === 'pnl') {
+        return `
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Revenue model</th>
+                  <th>Gross margin level</th>
+                  <th>Operating expense intensity</th>
+                  <th>Operating margin pattern</th>
+                  <th>Profit engine</th>
+                  <th>Main trade-off</th>
+                  <th>Failure condition</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${logic.companies.map(company => `
+                  <tr>
+                    <td><strong>${company.companyName}</strong><br><span class="subhead">${company.ticker}</span></td>
+                    <td>${company.pnl.revenueModel}</td>
+                    <td>${company.pnl.grossMargin}</td>
+                    <td>${company.pnl.opexIntensity}</td>
+                    <td>${company.pnl.operatingMargin}</td>
+                    <td>${company.profitEngine}</td>
+                    <td>${company.tradeOff}</td>
+                    <td>${company.failureCondition}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      return `<p class="insight"><strong>Key strategic insight:</strong> ${logic.keyInsight}</p>`;
+    }
+
+    function renderCompanyCard(company) {
+      return `
+        <section class="company-card">
+          <h4>${company.companyName}</h4>
+          <div class="subhead">${company.ticker} • ${company.sector} • ${company.tier}</div>
+          <dl>
+            <div><dt>Strategic archetype</dt><dd>${company.archetype}</dd></div>
+            <div><dt>Product logic</dt><dd>${company.productLogic}</dd></div>
+            <div><dt>Price logic</dt><dd>${company.priceLogic}</dd></div>
+            <div><dt>Promotion logic</dt><dd>${company.promotionLogic}</dd></div>
+            <div><dt>Place/channel logic</dt><dd>${company.placeLogic}</dd></div>
+            <div><dt>Core customer response mechanism</dt><dd>${company.customerResponse}</dd></div>
+            <div><dt>Cost structure logic</dt><dd>${company.costStructure}</dd></div>
+            <div><dt>P&amp;L pattern</dt><dd>${company.pnl.revenueModel}; Gross margin: ${company.pnl.grossMargin}; Opex: ${company.pnl.opexIntensity}; Op margin: ${company.pnl.operatingMargin}.</dd></div>
+            <div><dt>Profit engine</dt><dd>${company.profitEngine}</dd></div>
+            <div><dt>Main trade-off</dt><dd>${company.tradeOff}</dd></div>
+            <div><dt>Failure condition</dt><dd>${company.failureCondition}</dd></div>
+          </dl>
+        </section>
+      `;
+    }
+
+    function renderCrossSummary() {
+      summaryBody.innerHTML = businessLogics.map(logic => `
+        <tr>
+          <td><strong>${logic.name}</strong></td>
+          <td>${logic.profitEngine}</td>
+          <td>${logic.dominantConstraint}</td>
+          <td>${logic.explanation}</td>
+          <td>${logic.keyInsight}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAll() {
+      renderLogicCards();
+      renderLogicSections();
+      renderCrossSummary();
+    }
+
+    renderAll();
+  </script>
 </body>
 </html>
