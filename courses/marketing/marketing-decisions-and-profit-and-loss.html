@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Logics, Marketing Mix, and Profit and Loss Patterns | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f1ea;
+    --bg-2: #ece4d8;
+    --panel: rgba(255, 255, 255, 0.88);
+    --panel-strong: rgba(255, 255, 255, 0.96);
+    --ink: #171411;
+    --muted: rgba(23, 20, 17, 0.68);
+    --line: rgba(23, 20, 17, 0.1);
+    --line-strong: rgba(23, 20, 17, 0.18);
+    --accent: #7a4d32;
+    --accent-2: #47655a;
+    --accent-3: #9b7a43;
+    --shadow: 0 18px 54px rgba(31, 24, 17, 0.08);
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+    --font-head: "DM Serif Display", serif;
+    --font-body: "Source Serif 4", serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --max: 1380px;
+    --sticky-offset: 18px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.75;
+    background:
+      radial-gradient(circle at top left, rgba(122, 77, 50, 0.08), transparent 22%),
+      radial-gradient(circle at top right, rgba(71, 101, 90, 0.08), transparent 24%),
+      linear-gradient(180deg, var(--bg) 0%, #f8f5ef 32%, var(--bg-2) 100%);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  select {
+    font: inherit;
+  }
+
+  .page {
+    width: min(var(--max), calc(100vw - 28px));
+    margin: 0 auto;
+    padding: 18px 0 72px;
+  }
+
+  .hero,
+  .toolbar,
+  .reading-guide,
+  .selector-intro,
+  .logic-card,
+  .logic-section,
+  .summary,
+  .empty-state {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    padding: 28px 30px 32px;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    top: -100px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(122, 77, 50, 0.12), transparent 66%);
+    pointer-events: none;
+  }
+
+  .back-link,
+  .eyebrow,
+  .control-label,
+  .kicker,
+  .mini-kicker,
+  .table-label {
+    font-family: var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+    gap: 26px;
+    align-items: end;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-family: var(--font-head);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 5vw, 4.8rem);
+    line-height: 0.98;
+    max-width: 920px;
+    margin-bottom: 16px;
+  }
+
+  .hero p,
+  .hero li,
+  .section-copy,
+  .logic-intro,
+  .tab-copy,
+  .metric-copy,
+  .summary td,
+  .summary th,
+  .empty-state p {
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .hero-main p {
+    max-width: 820px;
+    margin: 0;
+  }
+
+  .hero-note {
+    padding: 20px 22px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(122, 77, 50, 0.18);
+    background: linear-gradient(180deg, rgba(122, 77, 50, 0.08), rgba(122, 77, 50, 0.03));
+  }
+
+  .hero-note h2 {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-note ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .toolbar {
+    position: sticky;
+    top: var(--sticky-offset);
+    z-index: 40;
+    margin: 18px 0 26px;
+    border-radius: 22px;
+    padding: 14px 18px;
+  }
+
+  .reading-guide,
+  .selector-intro {
+    border-radius: var(--radius-xl);
+    padding: 24px 26px;
+    margin-top: 18px;
+  }
+
+  .reading-guide-flow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    margin-top: 18px;
+  }
+
+  .guide-step {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .guide-arrow {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+  }
+
+  .guide-step h3,
+  .selector-intro h2 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .toolbar-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 16px 20px;
+    align-items: center;
+  }
+
+  .toolbar-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .control-label {
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  .toolbar button,
+  .toolbar select,
+  .view-tab {
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--ink);
+    transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  }
+
+  .toolbar button,
+  .toolbar select,
+  .view-tab {
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+
+  .toolbar button:hover,
+  .toolbar select:hover,
+  .view-tab:hover {
+    transform: translateY(-1px);
+    border-color: var(--line-strong);
+  }
+
+  .toolbar button.is-active,
+  .view-tab.is-active {
+    background: var(--ink);
+    color: #f7f2ea;
+    border-color: var(--ink);
+  }
+
+  .logic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 18px 0 24px;
+  }
+
+  .logic-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-height: 100%;
+  }
+
+  .logic-card-body {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 22px;
+  }
+
+  .logic-visual {
+    margin: -22px -22px 18px;
+    aspect-ratio: 20 / 9;
+    overflow: hidden;
+    border-radius: 24px 24px 18px 18px;
+    background: linear-gradient(180deg, rgba(122, 77, 50, 0.08), rgba(122, 77, 50, 0.03));
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logic-visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .logic-visual.is-broken {
+    display: none;
+  }
+
+  .logic-card h2 {
+    font-size: 1.6rem;
+    margin: 0 0 8px;
+  }
+
+  .logic-card p {
+    margin: 0 0 12px;
+  }
+
+  .logic-icon {
+    width: 54px;
+    height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 54px;
+    border-radius: 16px;
+    border: 1px solid rgba(122, 77, 50, 0.16);
+    background: linear-gradient(180deg, rgba(122, 77, 50, 0.08), rgba(122, 77, 50, 0.03));
+    color: var(--accent);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+
+  .logic-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    flex: 0 0 24px;
+  }
+
+  .logic-meta {
+    display: grid;
+    gap: 10px;
+  }
+
+  .meta-line {
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .meta-line strong {
+    display: block;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3px;
+  }
+
+  .industry-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .industry-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.76);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .logic-sections {
+    display: grid;
+    gap: 22px;
+  }
+
+  .compare-workspace {
+    display: grid;
+    gap: 22px;
+  }
+
+  .compare-shell {
+    border-radius: var(--radius-xl);
+    padding: 26px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .compare-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr);
+    gap: 18px;
+    align-items: start;
+    margin-bottom: 18px;
+  }
+
+  .compare-head h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+  }
+
+  .compare-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .compare-panel {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.68);
+  }
+
+  .compare-panel .logic-visual {
+    margin: -18px -18px 16px;
+  }
+
+  .compare-panel h3 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .compare-panel-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .logic-type-line {
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .compare-panel .logic-meta {
+    margin-top: 16px;
+  }
+
+  .panel-select-wrap {
+    justify-self: end;
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .panel-select-wrap select {
+    width: 100%;
+  }
+
+  .compare-panel-switch {
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+
+  .compare-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .compare-detail-card {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.74);
+  }
+
+  .decision-summary {
+    margin: 10px 0 0;
+    font-size: 0.98rem;
+    color: var(--accent);
+  }
+
+  .mix-detail-grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .mix-detail-row {
+    display: grid;
+    gap: 12px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.74);
+  }
+
+  .mix-detail-body {
+    display: grid;
+    gap: 10px;
+  }
+
+  .mix-detail-block {
+    display: grid;
+    gap: 3px;
+  }
+
+  .mix-detail-block strong {
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  .mix-detail-block p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .pnl-visual {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .pnl-summary {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .pnl-waterfall {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .pnl-summary p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .pnl-benchmark-meta {
+    margin: 12px 0 0;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .pnl-benchmark-meta p {
+    margin: 0;
+  }
+
+  .pnl-row {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) 54px;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .pnl-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .pnl-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .pnl-bar {
+    height: 18px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(23, 20, 17, 0.06);
+    border: 1px solid rgba(23, 20, 17, 0.05);
+  }
+
+  .pnl-fill {
+    height: 100%;
+    border-radius: 999px;
+  }
+
+  .pnl-fill.sales {
+    background: linear-gradient(90deg, #2c2824, #5a5048);
+  }
+
+  .pnl-fill.cogs {
+    background: linear-gradient(90deg, #8d684c, #b98963);
+  }
+
+  .pnl-fill.gross {
+    background: linear-gradient(90deg, #4d6e61, #6f9889);
+  }
+
+  .pnl-fill.marketing {
+    background: linear-gradient(90deg, #a86f42, #cd9467);
+  }
+
+  .pnl-fill.opex {
+    background: linear-gradient(90deg, #60748e, #889bb3);
+  }
+
+  .pnl-fill.margin {
+    background: linear-gradient(90deg, #1f5c49, #368068);
+  }
+
+  .pnl-value {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .pnl-note {
+    display: none;
+  }
+
+  .compare-contrast {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 18px;
+    background:
+      linear-gradient(180deg, rgba(122, 77, 50, 0.06), rgba(122, 77, 50, 0.02)),
+      rgba(255, 255, 255, 0.72);
+  }
+
+  .compare-contrast h3 {
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+  }
+
+  .toolbar-copy {
+    margin: 0;
+    max-width: 460px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .empty-state {
+    border-radius: var(--radius-xl);
+    padding: 36px 32px;
+  }
+
+  .empty-state h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .logic-section {
+    border-radius: var(--radius-xl);
+    padding: 26px;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 18px;
+  }
+
+  .section-head h2 {
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+  }
+
+  .section-subgrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .section-panel {
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px 18px 16px;
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  .section-panel h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .section-panel ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted);
+  }
+
+  .tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .overview-grid,
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .overview-card,
+  .insight-card,
+  .metric-card {
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.64);
+  }
+
+  .overview-card h3,
+  .insight-card h3,
+  .metric-card h3 {
+    font-size: 1.24rem;
+    margin-bottom: 8px;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .company-card {
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.74);
+  }
+
+  .company-card header {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .company-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  .ticker-line {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+
+  .company-card dl,
+  .pnl-card dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .company-card dt,
+  .pnl-card dt {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+
+  .company-card dd,
+  .pnl-card dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .money-scale {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .money-scale-signs {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .money-scale-label {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .pnl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .pnl-card {
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 18px;
+    background:
+      linear-gradient(180deg, rgba(71, 101, 90, 0.07), rgba(71, 101, 90, 0.02)),
+      rgba(255, 255, 255, 0.7);
+  }
+
+  .pnl-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+
+  .compare-mode .overview-grid,
+  .compare-mode .insight-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .compare-mode .section-subgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compare-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.66);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+  }
+
+  th,
+  td {
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line);
+  }
+
+  th {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(122, 77, 50, 0.04);
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .table-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 0.68rem;
+  }
+
+  .summary {
+    border-radius: var(--radius-xl);
+    margin-top: 30px;
+    padding: 26px;
+  }
+
+  .summary-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    align-items: end;
+    margin-bottom: 18px;
+  }
+
+  .summary h2 {
+    font-size: 2.3rem;
+    margin-bottom: 8px;
+  }
+
+  .summary-pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  .selector-intro-copy {
+    max-width: 980px;
+    margin: 0;
+  }
+
+  .selector-note {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--accent-3);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.52);
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .summary td:first-child,
+  .summary th:first-child {
+    position: sticky;
+    left: 0;
+    background: #f7f3ec;
+    z-index: 1;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 1180px) {
+    .logic-grid,
+    .compare-grid,
+    .pnl-grid,
+    .compare-layout,
+    .toolbar-selects {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-grid,
+    .section-subgrid,
+    .summary-head,
+    .compare-head {
+      grid-template-columns: 1fr;
+    }
+
+    .compare-panel-head {
+      grid-template-columns: 1fr;
+    }
+
+    .panel-select-wrap {
+      justify-self: start;
+      max-width: 100%;
+    }
+
+    .toolbar-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .reading-guide-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .guide-arrow {
+      margin: 0 auto;
+      transform: rotate(90deg);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .page {
+      width: min(var(--max), calc(100vw - 18px));
+      padding-top: 10px;
+    }
+
+    .hero,
+    .logic-section,
+    .summary,
+    .empty-state {
+      padding: 20px;
+    }
+
+    .logic-grid,
+    .overview-grid,
+    .insight-grid,
+    .compare-grid,
+    .pnl-grid,
+    .compare-layout,
+    .compare-mode .overview-grid,
+    .compare-mode .insight-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .toolbar {
+      top: 8px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page" id="app">
+  <header class="hero">
+    <a class="back-link" href="index.html">← Back to Marketing</a>
+    <div class="eyebrow">Marketing Decisions and the Profit and Loss Statement</div>
+    <div class="hero-grid">
+      <div class="hero-main">
+        <h1>Business Logics, Marketing Mix, and Profit and Loss Patterns</h1>
+        <p>
+          This page is organized around six common business logics. Use them to compare how different types of businesses make different marketing choices and produce different income statement patterns.
+        </p>
+      </div>
+      <aside class="hero-note" aria-label="Page framing">
+        <h2>What this page helps you do</h2>
+        <ul>
+          <li>Understand six common business logics.</li>
+          <li>Compare how each logic changes marketing strategy choices.</li>
+          <li>Compare how each logic changes income statement patterns.</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <section class="reading-guide" aria-labelledby="reading-guide-title">
+    <div class="eyebrow">How To Use This Page</div>
+    <h2 id="reading-guide-title">Understand six common business logics, then compare two playbooks to see how their marketing choices and P and L patterns differ.</h2>
+    <div class="reading-guide-flow">
+      <article class="guide-step">
+        <div class="table-label">Step 1</div>
+        <h3>Understand the six business logics</h3>
+        <p>Read the six playbooks and their industry examples first.</p>
+      </article>
+      <div class="guide-arrow" aria-hidden="true">→</div>
+      <article class="guide-step">
+        <div class="table-label">Step 2</div>
+        <h3>Choose two playbooks to compare</h3>
+        <p>Use the comparison tool below to compare their marketing strategy and income statement pattern side by side.</p>
+      </article>
+      <div class="guide-arrow" aria-hidden="true">→</div>
+      <article class="guide-step">
+        <div class="table-label">Goal</div>
+        <h3>See what changes when the business logic changes</h3>
+        <p>The goal is to compare how different business logics create different marketing choices and different income statement patterns.</p>
+      </article>
+    </div>
+  </section>
+
+  <main>
+    <section class="selector-intro" aria-labelledby="logic-selector-heading">
+      <div class="eyebrow">The Six Business Playbooks</div>
+      <h2 id="logic-selector-heading">Here are six different types of business logic, each linked to different industry examples.</h2>
+      <p class="selector-intro-copy">
+        Use the playbook below to compare how different business logics lead to different marketing strategy choices and different income statement patterns.
+      </p>
+      <div class="selector-note">
+        Read the six playbooks first, then use the comparison tool below to compare any two side by side.
+      </div>
+      <div class="logic-grid" id="logicCardGrid"></div>
+    </section>
+
+    <section class="compare-workspace" id="logicSections"></section>
+
+  </main>
+</div>
+
+<script>
+  const BUSINESS_LOGICS = [
+    {
+      id: "perception-driven",
+      name: "Perception Driven",
+      selectorLabel: "Cosmetic / Luxury",
+      shortDefinition: "Brand premium supports gross margin, but branding and retail presentation costs are significant.",
+      image: "./perception-driven.png",
+      icon: `
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.8 12s3-4.6 8.2-4.6 8.2 4.6 8.2 4.6-3 4.6-8.2 4.6S3.8 12 3.8 12z"></path>
+          <circle cx="12" cy="12" r="1.9"></circle>
+        </svg>
+      `,
+      industryExamples: ["Cosmetics", "Luxury", "Prestige beauty", "Premium personal care"],
+      benchmarkCompanies: ["LVMH", "L'Oréal", "Hermès"],
+      benchmarkReferences: [
+        { name: "LVMH", year: "FY 2025", note: "broad luxury group economics." },
+        { name: "L'Oréal", year: "FY 2025", note: "anchors the beauty and cosmetics side of the category." },
+        { name: "Hermès", year: "FY 2025", note: "a very pure high end luxury benchmark." }
+      ],
+      profitEngine: "Brand pricing power and ability to sustain premium positioning",
+      dominantConstraint: "Brand dilution and retail presentation cost",
+      productPriority: "Shape the offer so design, symbolism, and aesthetic cues increase willingness to pay.",
+      pricePriority: "Protect premium pricing and avoid discount behavior that weakens perceived distinction.",
+      promotionPriority: "Use storytelling, symbolism, and trust signals to reinforce meaning rather than justify price.",
+      channelPriority: "Choose selective channels that preserve image, control presentation, and protect premium context.",
+      pnlProfile: { sales: 100, cogs: 29, grossProfit: 71, marketing: 22, opex: 27, operatingMargin: 22 },
+      explanation: "Perception driven businesses protect pricing power by shaping what the offer means to the buyer, not just what the product physically does.",
+      representativeWhy: "This logic is representative because it shows how marketing can function as value creation, not only communication. Perception changes elasticity, category rules, and margin room.",
+      differs: "Unlike efficiency logic, the question is not how cheaply the firm can serve demand. Unlike subscription logic, the core challenge is not retention mechanics. The decisive variable is whether buyers continue to attach premium meaning to the offer.",
+      marketingMeaning: "Product, price, promotion, and place are all used to preserve premium perception and justify a high gross margin.",
+      healthyPnL: "High gross margin with meaningful brand and retail support costs.",
+      keyInsight: "When perception is the engine, price cuts often destroy the very signal that supported margin in the first place.",
+      companies: [
+        {
+          name: "Aureline House",
+          ticker: "AURH",
+          sector: "Premium fashion",
+          tier: "Iconic flagship brand",
+          archetype: "Uses design language and scarcity to turn brand meaning into durable pricing power.",
+          productLogic: "Tight collection architecture, seasonal drops, and distinctive design codes.",
+          priceLogic: "Premium pricing with limited promotional leakage.",
+          promotionLogic: "Editorial storytelling, prestige collaborations, and image-led launch rhythm.",
+          placeLogic: "Selective retail footprint and controlled direct-to-consumer distribution.",
+          customerResponse: "Buyers pay to signal identity and status, not only function.",
+          costStructure: "High design, campaign, and store experience cost, but modest variable production complexity relative to price.",
+          pnl: {
+            revenueModel: "Unit sales plus accessory mix and selective licensing.",
+            grossMargin: "Very high",
+            opexIntensity: "High but brand-building led",
+            operatingMargin: "Strong when discounting remains low and full-price sell-through holds"
+          },
+          profitEngineDetail: "Margin expansion through symbolic premium and controlled scarcity.",
+          tradeOff: "Growth through ubiquity can weaken exclusivity.",
+          failureCondition: "Frequent discounting trains buyers to stop believing the brand premium."
+        },
+        {
+          name: "Velune Beauty",
+          ticker: "VLNB",
+          sector: "Prestige cosmetics",
+          tier: "Scaled premium specialist",
+          archetype: "Builds trust and repeat buying through image, efficacy cues, and ritual packaging.",
+          productLogic: "Hero products backed by format consistency and visible routine design.",
+          priceLogic: "Upper-mid premium with bundle logic that protects headline pricing.",
+          promotionLogic: "Influence, expert endorsement, and social proof around results and lifestyle.",
+          placeLogic: "Omnichannel with strict merchandising control in prestige retail and owned digital.",
+          customerResponse: "Customers repurchase because the brand feels safer, more aspirational, and more reliable than substitutes.",
+          costStructure: "Brand and launch spending stay elevated; production is manageable relative to selling price.",
+          pnl: {
+            revenueModel: "Repeat product purchases, gift sets, and channel launches.",
+            grossMargin: "High",
+            opexIntensity: "High marketing intensity",
+            operatingMargin: "Healthy if launches refresh demand without overloading media spend"
+          },
+          profitEngineDetail: "Repeat premium purchases supported by trust-rich category framing.",
+          tradeOff: "Fast launch cadence lifts excitement but can create channel clutter.",
+          failureCondition: "When product credibility falls, perception turns from premium to superficial."
+        },
+        {
+          name: "North Circuit Labs",
+          ticker: "NCLB",
+          sector: "Design-led consumer electronics",
+          tier: "Aspirational challenger",
+          archetype: "Competes through brand feel and product aura rather than pure technical spec leadership.",
+          productLogic: "Integrated hardware-software experience with visual coherence and simplified choice.",
+          priceLogic: "Above-category pricing justified by design confidence and ecosystem feel.",
+          promotionLogic: "Keynote-style launches, product films, and use-case aspiration.",
+          placeLogic: "Flagship e-commerce, curated retail, and experiential stores in symbolic locations.",
+          customerResponse: "Customers interpret product ownership as a statement of modern taste and trust.",
+          costStructure: "Hardware cost remains meaningful, so the margin story depends on mix and premium pricing discipline.",
+          pnl: {
+            revenueModel: "Hardware sales with accessory and service attach.",
+            grossMargin: "Medium-high",
+            opexIntensity: "Moderate-high",
+            operatingMargin: "Can be strong, but only if premium pricing survives competitive imitation"
+          },
+          profitEngineDetail: "Premium hardware economics amplified by ecosystem attach.",
+          tradeOff: "Broadening volume can expose the brand to spec-based comparison.",
+          failureCondition: "If the offer starts being judged as a commodity device, margin compresses quickly."
+        }
+      ]
+    },
+    {
+      id: "efficiency-driven",
+      name: "Efficiency Driven",
+      selectorLabel: "Supermarket / Discount Retail",
+      shortDefinition: "Low margin, high volume, operational efficiency.",
+      image: "./efficiency-driven.png",
+      icon: `
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.5 8h15"></path>
+          <path d="M4.5 12h15"></path>
+          <path d="M4.5 16h15"></path>
+          <circle cx="9" cy="8" r="1.6" fill="currentColor" stroke="none"></circle>
+          <circle cx="15" cy="12" r="1.6" fill="currentColor" stroke="none"></circle>
+          <circle cx="11" cy="16" r="1.6" fill="currentColor" stroke="none"></circle>
+        </svg>
+      `,
+      industryExamples: ["Supermarkets", "Discount retail", "Value grocery", "Mass retail"],
+      benchmarkCompanies: ["Walmart", "Costco", "Ahold Delhaize"],
+      benchmarkReferences: [
+        { name: "Walmart", year: "FY 2026", note: "a scale retail benchmark." },
+        { name: "Costco", year: "FY 2025", note: "a low margin, high efficiency membership retail model." },
+        { name: "Ahold Delhaize", year: "FY 2025", note: "a European grocery benchmark." }
+      ],
+      profitEngine: "Inventory turnover, procurement efficiency, and store productivity",
+      dominantConstraint: "High COGS and very thin operating margin",
+      productPriority: "Simplify assortment and service design so the operating model stays fast, repeatable, and low cost.",
+      pricePriority: "Translate cost advantage into visible value while preserving enough margin through discipline and scale.",
+      promotionPriority: "Signal dependable value, traffic-driving offers, and clarity rather than aspiration.",
+      channelPriority: "Use formats and routes that improve throughput, density, and low-friction customer access.",
+      pnlProfile: { sales: 100, cogs: 75, grossProfit: 25, marketing: 3, opex: 18, operatingMargin: 4 },
+      explanation: "Efficiency driven businesses earn advantage by designing systems that deliver acceptable value at lower total cost than rivals.",
+      representativeWhy: "This logic is representative because it shows marketing as demand steering in service of asset, assortment, and operating discipline rather than image creation.",
+      differs: "Unlike perception logic, pricing power is limited. Unlike capacity logic, the problem is not short-lived inventory. The core advantage comes from repeatable process economics.",
+      marketingMeaning: "Marketing must support traffic, price trust, and operational simplicity without adding unnecessary cost.",
+      healthyPnL: "Very thin margin structure with heavy cost of goods burden.",
+      keyInsight: "In this logic, clever campaigns that add demand variance or assortment sprawl can damage the cost model more than they help revenue.",
+      companies: [
+        {
+          name: "Plainbasket Markets",
+          ticker: "PBMK",
+          sector: "Discount grocery",
+          tier: "Ultra-value leader",
+          archetype: "Competes through relentless assortment simplification and procurement leverage.",
+          productLogic: "Low-SKU, high-turn staples with private label emphasis.",
+          priceLogic: "Everyday low price anchored in visible savings rather than promotions.",
+          promotionLogic: "Sparse, value-led messaging focused on trust in price consistency.",
+          placeLogic: "Dense network of operationally simple stores with standardized layouts.",
+          customerResponse: "Customers respond to reliability, speed, and confidence that the basket will be cheaper.",
+          costStructure: "Thin labor model, high supplier pressure, and strong logistics discipline.",
+          pnl: {
+            revenueModel: "High-frequency basket transactions.",
+            grossMargin: "Low",
+            opexIntensity: "Low-moderate",
+            operatingMargin: "Thin but durable when volume and shrink remain controlled"
+          },
+          profitEngineDetail: "Tiny per-basket economics multiplied by disciplined throughput.",
+          tradeOff: "Range expansion can attract shoppers but undermines simplicity.",
+          failureCondition: "Cost inflation or operating complexity erodes already narrow margin space."
+        },
+        {
+          name: "Routechain Logistics",
+          ticker: "RCHN",
+          sector: "Parcel and logistics",
+          tier: "Scaled efficiency operator",
+          archetype: "Turns route density and process precision into attractive unit economics.",
+          productLogic: "Standardized service modules with clear service-level tiers.",
+          priceLogic: "Contracted pricing tied to volume and route economics.",
+          promotionLogic: "Proof-based commercial selling around reliability and total cost.",
+          placeLogic: "Hub-and-spoke network optimized for route density and utilization.",
+          customerResponse: "Buyers stay when reliability lowers hidden operating friction.",
+          costStructure: "Labor, fuel, and network assets dominate; efficiency depends on route balance.",
+          pnl: {
+            revenueModel: "Shipment fees, enterprise contracts, and premium handling surcharges.",
+            grossMargin: "Low-medium",
+            opexIntensity: "Moderate",
+            operatingMargin: "Healthy only when density and service standardization stay high"
+          },
+          profitEngineDetail: "Density advantage across routing, labor, and fixed network cost.",
+          tradeOff: "Customization for key accounts can break standard operating flows.",
+          failureCondition: "Volume volatility and poor routing discipline destroy contribution margins."
+        },
+        {
+          name: "Keystone Value Retail",
+          ticker: "KVRL",
+          sector: "General discount retail",
+          tier: "Assortment optimizer",
+          archetype: "Balances value perception with selective category breadth to lift basket economics.",
+          productLogic: "Core traffic categories supported by opportunistic seasonal and treasure-hunt items.",
+          priceLogic: "Aggressive opening price points with selective margin capture in discretionary categories.",
+          promotionLogic: "Circulars, price events, and local inventory-led messaging.",
+          placeLogic: "Suburban boxes with centralized replenishment and low service overhead.",
+          customerResponse: "Customers respond to deal confidence plus discovery upside.",
+          costStructure: "Store labor and logistics remain tightly controlled; markdown discipline matters.",
+          pnl: {
+            revenueModel: "Transaction volume with margin mix from discretionary add-ons.",
+            grossMargin: "Low-medium",
+            opexIntensity: "Moderate",
+            operatingMargin: "Moderate if markdowns stay disciplined and traffic remains stable"
+          },
+          profitEngineDetail: "Traffic scale plus mix management across a low-cost operating base.",
+          tradeOff: "More excitement can help traffic but also increase inventory risk.",
+          failureCondition: "Markdowns and category sprawl overwhelm volume gains."
+        }
+      ]
+    },
+    {
+      id: "subscription-driven",
+      name: "Recurring or Subscription",
+      selectorLabel: "Streaming / Subscription",
+      shortDefinition: "Recurring revenue, retention, and scale.",
+      image: "./subscription-driven.png",
+      icon: `
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 7.2A7 7 0 1 1 5.4 15"></path>
+          <path d="M7 4.8v4.4h4.4"></path>
+          <path d="M12 8.4v3.9l2.6 1.7"></path>
+        </svg>
+      `,
+      industryExamples: ["Streaming", "Subscriptions", "Memberships", "SaaS"],
+      benchmarkCompanies: ["Netflix", "Spotify", "SiriusXM"],
+      benchmarkReferences: [
+        { name: "Netflix", year: "FY 2025", note: "the cleanest large scale streaming subscription benchmark." },
+        { name: "Spotify", year: "FY 2025", note: "broadens the sample to audio subscription." },
+        { name: "SiriusXM", year: "FY 2025", note: "a mature subscription media model with stable recurring economics." }
+      ],
+      profitEngine: "Retention, ARPU, content efficiency, and operating leverage",
+      dominantConstraint: "Subscriber acquisition cost and retention pressure",
+      productPriority: "Build recurring usage habits, reduce cancellation risk, and create reasons to stay over time.",
+      pricePriority: "Design plans, bundles, and tiers around retention, expansion, and payback rather than one-off margin.",
+      promotionPriority: "Acquire customers the product can retain and reactivate weak cohorts before churn accelerates.",
+      channelPriority: "Use digital, sales, and service channels that lower acquisition cost and support ongoing engagement.",
+      pnlProfile: { sales: 100, cogs: 53, grossProfit: 47, marketing: 13, opex: 12, operatingMargin: 22 },
+      explanation: "Recurring businesses shape marketing around payback, retention, and account expansion because the initial sale is only the start of the economic relationship.",
+      representativeWhy: "This logic is representative because it makes time the critical economic variable. Marketing must build both acquisition efficiency and staying power.",
+      differs: "Unlike efficiency logic, low cost alone is not enough. Unlike B2B solution logic, the relationship is systematic and scaled. The business succeeds when recurring cash flows compound.",
+      marketingMeaning: "Marketing must acquire subscribers efficiently and support retention so the model earns operating leverage over time.",
+      healthyPnL: "Recurring revenue with healthier gross profit and scalable margin potential.",
+      keyInsight: "In subscription businesses, not all revenue is equal. Revenue from weakly retained customers often looks good in quarter one and bad in year two.",
+      companies: [
+        {
+          name: "Northbeam Cloud",
+          ticker: "NBCL",
+          sector: "Mid-market SaaS",
+          tier: "Scaled subscription platform",
+          archetype: "Uses workflow entrenchment and seat expansion to turn retention into operating leverage.",
+          productLogic: "Core workflow software plus modular add-ons and integrations.",
+          priceLogic: "Per-seat and feature-tier pricing designed to expand with usage.",
+          promotionLogic: "Performance marketing, content-led pipeline, and product proof through demos and trials.",
+          placeLogic: "Inside sales and self-serve digital conversion working in parallel.",
+          customerResponse: "Customers stay when the product becomes embedded in daily operating routines.",
+          costStructure: "High product development and sales expense up front, low marginal delivery cost.",
+          pnl: {
+            revenueModel: "Monthly or annual recurring revenue with expansion upsell.",
+            grossMargin: "Very high",
+            opexIntensity: "High sales and product investment",
+            operatingMargin: "Initially compressed, then attractive if net retention stays strong"
+          },
+          profitEngineDetail: "Compounding account value through retention and expansion.",
+          tradeOff: "Fast acquisition can degrade customer quality and raise churn later.",
+          failureCondition: "Weak product adoption shortens customer life and destroys CAC payback."
+        },
+        {
+          name: "SignalMobile Plus",
+          ticker: "SGMP",
+          sector: "Telecom subscription",
+          tier: "Mass-market retention manager",
+          archetype: "Protects recurring cash flow by lowering churn through service reliability and bundle stickiness.",
+          productLogic: "Tiered plans bundled with family features, device financing, and service add-ons.",
+          priceLogic: "Predictable monthly pricing with lock-in incentives and bundle discounts.",
+          promotionLogic: "Switcher offers, retention campaigns, and contract renewal management.",
+          placeLogic: "Direct digital, retail stores, and call-center assisted conversion.",
+          customerResponse: "Customers stay because switching friction and service continuity matter.",
+          costStructure: "Network cost is heavy, but recurring billing and scale create leverage over time.",
+          pnl: {
+            revenueModel: "Subscription fees, device plans, and add-on services.",
+            grossMargin: "Medium-high",
+            opexIntensity: "Moderate-high",
+            operatingMargin: "Stable if churn and acquisition incentives remain under control"
+          },
+          profitEngineDetail: "Predictable revenue stream sustained by low churn and bundle depth.",
+          tradeOff: "Aggressive acquisition promotions can damage long-run customer profitability.",
+          failureCondition: "High churn converts recurring economics into expensive reacquisition cycles."
+        },
+        {
+          name: "Evening Frame",
+          ticker: "EVFR",
+          sector: "Streaming membership",
+          tier: "Content-driven challenger",
+          archetype: "Uses distinctive content identity to sustain subscriptions in a crowded market.",
+          productLogic: "Curated content library with periodic flagship releases.",
+          priceLogic: "Accessible monthly pricing with annual prepay incentives.",
+          promotionLogic: "Launch-based buzz, recommendation loops, and cultural positioning.",
+          placeLogic: "Owned app ecosystem across TV, mobile, and web.",
+          customerResponse: "Customers stay when the service remains part of their habitual entertainment stack.",
+          costStructure: "Content amortization and marketing are the largest cost drivers.",
+          pnl: {
+            revenueModel: "Recurring membership with occasional ad-supported tier mix.",
+            grossMargin: "Medium",
+            opexIntensity: "High content and acquisition intensity",
+            operatingMargin: "Volatile if content investment outpaces subscriber retention"
+          },
+          profitEngineDetail: "Retention-supported amortization of large content investments.",
+          tradeOff: "More content can reduce churn, but weak content efficiency burns cash.",
+          failureCondition: "A hit-driven strategy without stickiness creates expensive subscriber churn waves."
+        }
+      ]
+    },
+    {
+      id: "platform-driven",
+      name: "Platform or Network",
+      selectorLabel: "Marketplace",
+      shortDefinition: "Take rate, traffic efficiency, and network effects.",
+      image: "./platform-driven.png",
+      icon: `
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="6.5" cy="12" r="2.1"></circle>
+          <circle cx="17.5" cy="7" r="2.1"></circle>
+          <circle cx="17.5" cy="17" r="2.1"></circle>
+          <path d="M8.4 10.9l6.8-2.7"></path>
+          <path d="M8.4 13.1l6.8 2.7"></path>
+        </svg>
+      `,
+      industryExamples: ["Marketplaces", "Platforms", "E-commerce aggregation", "Transaction networks"],
+      benchmarkCompanies: ["eBay", "Etsy", "MercadoLibre"],
+      benchmarkReferences: [
+        { name: "eBay", year: "FY 2025", note: "a classic marketplace benchmark." },
+        { name: "Etsy", year: "FY 2025", note: "a more curated asset light marketplace profile." },
+        { name: "MercadoLibre", year: "FY 2025", note: "a more operationally mixed marketplace model with logistics and fintech exposure." }
+      ],
+      profitEngine: "Take rate, traffic efficiency, and network effects",
+      dominantConstraint: "Platform operating cost and traffic efficiency",
+      productPriority: "Improve matching quality, reduce friction, and increase trust for every side of the network.",
+      pricePriority: "Balance subsidies, take rates, and incentives so both sides of the market stay active.",
+      promotionPriority: "Grow the weaker side of the network, build trust, and reinforce repeat ecosystem participation.",
+      channelPriority: "Concentrate usage in interfaces and ecosystem touchpoints that strengthen network density.",
+      pnlProfile: { sales: 100, cogs: 29, grossProfit: 71, marketing: 24, opex: 36, operatingMargin: 11 },
+      explanation: "Platform businesses win when enough participants join and remain active for the network to become increasingly useful to every side.",
+      representativeWhy: "This logic is representative because marketing must solve a system problem, not just a buyer persuasion problem. Demand on one side is meaningless without supply or attention on the other.",
+      differs: "Unlike subscription logic, the engine is not only retention of one customer base. Unlike capacity logic, the scarce resource is not merely fixed inventory. The challenge is market thickness and interaction quality.",
+      marketingMeaning: "Marketing must improve traffic efficiency, network participation, and repeat transaction behavior.",
+      healthyPnL: "High platform gross profit but meaningful operating cost to sustain the ecosystem.",
+      keyInsight: "Platforms often look inefficient early because they are financing liquidity. The real question is whether each side is becoming more valuable as the network thickens.",
+      companies: [
+        {
+          name: "MarketSpan Exchange",
+          ticker: "MSEX",
+          sector: "B2C marketplace",
+          tier: "Category leader",
+          archetype: "Uses buyer trust and seller breadth to make the marketplace the default destination.",
+          productLogic: "Search, discovery, reviews, and trust systems that reduce matching risk.",
+          priceLogic: "Low buyer friction with seller commissions and premium service fees.",
+          promotionLogic: "Two-sided acquisition focused on supply depth, buyer trust, and category dominance.",
+          placeLogic: "Digital marketplace with app-first repeat behavior and integrated seller tools.",
+          customerResponse: "Buyers come for choice and trust; sellers come for demand concentration.",
+          costStructure: "Technology, trust systems, and ecosystem support dominate more than direct inventory cost.",
+          pnl: {
+            revenueModel: "Take rate on transactions plus seller services and advertising.",
+            grossMargin: "High",
+            opexIntensity: "High ecosystem investment early, moderating later",
+            operatingMargin: "Can expand significantly once liquidity and repeat volume stabilize"
+          },
+          profitEngineDetail: "Higher transaction density improves both monetization and matching efficiency.",
+          tradeOff: "Monetizing sellers too aggressively can reduce supply quality.",
+          failureCondition: "If trust weakens or supply fragments, network effects reverse."
+        },
+        {
+          name: "RideGrid Mobility",
+          ticker: "RGMO",
+          sector: "Ride hailing platform",
+          tier: "Balance optimizer",
+          archetype: "Manages rider demand and driver supply in real time to protect liquidity.",
+          productLogic: "Fast match, clear ETA, and reliability of service availability.",
+          priceLogic: "Dynamic pricing used to balance demand, supply, and service levels.",
+          promotionLogic: "Rider incentives, driver acquisition, and local market reactivation.",
+          placeLogic: "App-based on-demand access across metropolitan density nodes.",
+          customerResponse: "Users stay when the platform consistently solves convenience and wait-time uncertainty.",
+          costStructure: "Incentives, technology, insurance support, and local market activation dominate.",
+          pnl: {
+            revenueModel: "Commission on rides plus ancillary mobility services.",
+            grossMargin: "Medium-high",
+            opexIntensity: "High local market and incentive intensity",
+            operatingMargin: "Improves only when repeat density lowers incentive dependence"
+          },
+          profitEngineDetail: "Liquidity-led repeat usage that raises take-rate efficiency over time.",
+          tradeOff: "Price stability helps demand, but surge tools are often needed to maintain supply.",
+          failureCondition: "If one side leaves, the other side follows."
+        },
+        {
+          name: "SignalReach Media",
+          ticker: "SRMD",
+          sector: "Advertising platform",
+          tier: "Attention aggregator",
+          archetype: "Converts audience concentration and advertiser tools into scalable monetization.",
+          productLogic: "Audience targeting, campaign tools, and measurement infrastructure.",
+          priceLogic: "Auction or performance-based pricing tied to attention and targeting value.",
+          promotionLogic: "Creator acquisition, advertiser enablement, and proof of measurable outcomes.",
+          placeLogic: "Digital ecosystem spanning owned properties and partner inventory.",
+          customerResponse: "Advertisers spend more when reach, targeting, and measurement work together.",
+          costStructure: "Infrastructure, moderation, and ecosystem tooling dominate ongoing spend.",
+          pnl: {
+            revenueModel: "Advertising spend and ecosystem service fees.",
+            grossMargin: "High",
+            opexIntensity: "Moderate-high",
+            operatingMargin: "Attractive if audience scale stays high and moderation cost stays controlled"
+          },
+          profitEngineDetail: "Audience concentration converted into highly monetizable inventory.",
+          tradeOff: "More inventory raises revenue but may reduce user quality.",
+          failureCondition: "Weak user engagement reduces both advertiser demand and pricing power."
+        }
+      ]
+    },
+    {
+      id: "capacity-driven",
+      name: "Capacity or Asset Utilization",
+      selectorLabel: "Airline",
+      shortDefinition: "Capacity utilization, fuel sensitivity, and cost intensity.",
+      image: "./capacity-driven.png",
+      icon: `
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 17.2h14"></path>
+          <path d="M7.2 15.6V9.7h9.6v5.9"></path>
+          <path d="M9.3 12.2h5.4"></path>
+          <path d="M10 9.7V7.8h4v1.9"></path>
+        </svg>
+      `,
+      industryExamples: ["Airlines", "Aviation", "Passenger travel", "Route networks"],
+      benchmarkCompanies: ["Delta Air Lines", "United Airlines", "Southwest Airlines"],
+      benchmarkReferences: [
+        { name: "Delta Air Lines", year: "FY 2025", note: "a strong large carrier benchmark." },
+        { name: "United Airlines", year: "FY 2025", note: "a strong large carrier benchmark." },
+        { name: "Southwest Airlines", year: "FY 2025", note: "a different airline model beyond premium network carriers." }
+      ],
+      profitEngine: "Load factor, pricing discipline, route economics, and fuel exposure",
+      dominantConstraint: "High cost burden and volatile margin",
+      productPriority: "Design inventory, service tiers, and booking rules to steer the right demand into fixed capacity.",
+      pricePriority: "Use yield management to fill capacity without teaching the market to wait for discounts.",
+      promotionPriority: "Stimulate weak periods, protect peak yield, and shape mix across booking windows and segments.",
+      channelPriority: "Favor distribution that improves occupancy, booking visibility, and rate control.",
+      pnlProfile: { sales: 100, cogs: 78, grossProfit: 22, marketing: 3, opex: 10, operatingMargin: 9 },
+      explanation: "Capacity businesses rely on pricing, distribution, and demand shaping to keep expensive assets productive enough to absorb fixed cost.",
+      representativeWhy: "This logic is representative because marketing and revenue management are tightly linked. Demand quality, timing, and booking mix can matter more than raw volume.",
+      differs: "Unlike efficiency logic, the issue is not mainly reducing operating cost per unit. Unlike platform logic, there is no network flywheel to rescue weak utilization. Profit depends on using finite, perishable capacity intelligently.",
+      marketingMeaning: "Marketing must support demand, yield, and load factor without undermining pricing discipline.",
+      healthyPnL: "Heavy cost structure and thin margins with high sensitivity to utilization.",
+      keyInsight: "In capacity businesses, the same seat, room, or asset can be profitable or destructive depending on timing, mix, and price discipline.",
+      companies: [
+        {
+          name: "Altair Air Group",
+          ticker: "AAGR",
+          sector: "Airline",
+          tier: "Yield manager",
+          archetype: "Uses route design, fare fences, and load factor discipline to monetize perishable seats.",
+          productLogic: "Segmented fare classes layered onto a largely fixed flight product.",
+          priceLogic: "Dynamic pricing by booking window, demand segment, and seat inventory.",
+          promotionLogic: "Route launches, loyalty stimulation, and tactical load support in weak periods.",
+          placeLogic: "Direct booking, corporate sales, and aggregator distribution.",
+          customerResponse: "Customers respond differently by urgency, flexibility, and loyalty status.",
+          costStructure: "Aircraft, crews, and airport operations create a large fixed-cost base.",
+          pnl: {
+            revenueModel: "Ticket sales, ancillary fees, and loyalty monetization.",
+            grossMargin: "Low-medium",
+            opexIntensity: "High fixed-cost intensity",
+            operatingMargin: "Highly sensitive to load factor, fuel cost, and yield mix"
+          },
+          profitEngineDetail: "Small pricing and utilization improvements create outsized margin swings.",
+          tradeOff: "Discounting can fill seats but damage average yield.",
+          failureCondition: "Persistent underutilization leaves fixed costs uncovered."
+        },
+        {
+          name: "Harborstay Hotels",
+          ticker: "HBST",
+          sector: "Hotels",
+          tier: "Brand-and-yield operator",
+          archetype: "Balances occupancy and room rate through segment mix and channel discipline.",
+          productLogic: "Room inventory packaged with service tiers and loyalty benefits.",
+          priceLogic: "Seasonal and event-driven revenue management with rate fences by segment.",
+          promotionLogic: "Brand campaigns plus demand stimulation in shoulder periods.",
+          placeLogic: "Direct booking, travel intermediaries, and corporate contracts.",
+          customerResponse: "Guests choose based on location, trust, and perceived trip-value fit.",
+          costStructure: "Property and labor costs are structurally heavy; occupancy swings matter.",
+          pnl: {
+            revenueModel: "Room nights, food and beverage, and loyalty partnerships.",
+            grossMargin: "Medium",
+            opexIntensity: "High fixed asset and labor intensity",
+            operatingMargin: "Healthy only when occupancy and average rate hold together"
+          },
+          profitEngineDetail: "RevPAR growth on top of a mostly fixed property base.",
+          tradeOff: "Occupancy through discounting can dilute brand and compress rate integrity.",
+          failureCondition: "Weak occupancy forces the business to spread fixed costs over too few nights."
+        },
+        {
+          name: "Vector Fleet Rentals",
+          ticker: "VFRL",
+          sector: "Car rental",
+          tier: "Asset turn optimizer",
+          archetype: "Combines fleet mix, pricing discipline, and local demand shaping to keep cars productive.",
+          productLogic: "Fleet segmented by use case, season, and booking urgency.",
+          priceLogic: "Dynamic rates tied to availability, local demand, and rental duration.",
+          promotionLogic: "Travel partnerships, app offers, and local utilization recovery campaigns.",
+          placeLogic: "Airport locations, urban hubs, and digital reservations.",
+          customerResponse: "Customers compare convenience, certainty of availability, and visible total price.",
+          costStructure: "Fleet ownership or leasing plus location network costs dominate.",
+          pnl: {
+            revenueModel: "Rental fees, upgrades, insurance, and ancillary add-ons.",
+            grossMargin: "Medium",
+            opexIntensity: "High asset carrying cost",
+            operatingMargin: "Good when fleet utilization and resale discipline work together"
+          },
+          profitEngineDetail: "Asset productivity across day-rate management and fleet rotation.",
+          tradeOff: "More fleet availability reduces stock-outs but raises idle asset cost.",
+          failureCondition: "Excess fleet relative to demand destroys asset returns."
+        }
+      ]
+    },
+    {
+      id: "solution-driven",
+      name: "Solution or Relationship Driven B2B",
+      selectorLabel: "Enterprise Services",
+      shortDefinition: "Billable expertise, utilization, and talent cost.",
+      image: "./solution-driven.png",
+      icon: `
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5.4" y="5.4" width="13.2" height="13.2" rx="2"></rect>
+          <path d="M8.6 12.2l2.2 2.1 4.8-4.8"></path>
+        </svg>
+      `,
+      industryExamples: ["Enterprise services", "Consulting", "B2B solutions", "Professional services"],
+      benchmarkCompanies: ["Accenture", "Cognizant", "Capgemini"],
+      benchmarkReferences: [
+        { name: "Accenture", year: "Fiscal 2025", note: "a flagship global enterprise services benchmark." },
+        { name: "Cognizant", year: "FY 2025", note: "a comparable listed IT services model." },
+        { name: "Capgemini", year: "FY 2025", note: "another global enterprise services reference from Europe." }
+      ],
+      profitEngine: "Utilization, pricing, talent mix, and delivery efficiency",
+      dominantConstraint: "People cost and delivery overhead",
+      productPriority: "Frame the offer as a high-trust solution tailored to expensive, important customer problems.",
+      pricePriority: "Use value-based pricing tied to risk reduction, performance, and account-specific impact.",
+      promotionPriority: "Build credibility through proof, expertise, and content that advances long buying cycles.",
+      channelPriority: "Rely on direct sales, account relationships, and expert-led commercial touchpoints.",
+      pnlProfile: { sales: 100, cogs: 68, grossProfit: 32, marketing: 4, opex: 14, operatingMargin: 14 },
+      explanation: "Solution-driven B2B businesses shape marketing around credibility, problem diagnosis, and account fit because demand is sparse, trust-heavy, and economically concentrated.",
+      representativeWhy: "This logic is representative because marketing is inseparable from commercial qualification, proof, and relationship depth. The task is not mass persuasion but account progression.",
+      differs: "Unlike subscription logic, the buying motion is slower and more human-intensive. Unlike platform logic, value does not come from ecosystem density. The engine is winning and deepening a limited set of valuable accounts.",
+      marketingMeaning: "Marketing must build trust, support enterprise selling, and help high-value accounts convert efficiently.",
+      healthyPnL: "Moderate gross margin with labor intensive delivery economics.",
+      keyInsight: "In this logic, marketing is partly a filtering system. It should attract the right problems and repel expensive misfit opportunities.",
+      companies: [
+        {
+          name: "ForgePoint Systems",
+          ticker: "FGPS",
+          sector: "Industrial equipment",
+          tier: "Mission-critical specialist",
+          archetype: "Sells high-trust, high-cost systems where failure risk makes credibility decisive.",
+          productLogic: "Customized hardware and service packages around a critical operating need.",
+          priceLogic: "Value-based pricing anchored in downtime reduction and lifecycle economics.",
+          promotionLogic: "Technical proof, case evidence, field events, and account-based marketing.",
+          placeLogic: "Direct enterprise sales, channel specialists, and service teams.",
+          customerResponse: "Buyers choose when confidence in long-term performance outweighs price pressure.",
+          costStructure: "Engineering support, sales intensity, and implementation cost are meaningful.",
+          pnl: {
+            revenueModel: "Large project revenue plus service contracts and aftermarket parts.",
+            grossMargin: "Medium-high",
+            opexIntensity: "High technical sales and support intensity",
+            operatingMargin: "Attractive when win rates and delivery discipline remain strong"
+          },
+          profitEngineDetail: "Large, defensible account value with recurring service tail.",
+          tradeOff: "Customization helps win business but can reduce delivery repeatability.",
+          failureCondition: "A weak qualification process turns revenue into costly custom projects."
+        },
+        {
+          name: "Axiom Advisory Partners",
+          ticker: "AXAP",
+          sector: "Consulting",
+          tier: "Relationship-led advisor",
+          archetype: "Uses trust, reputation, and senior access to win low-frequency high-value mandates.",
+          productLogic: "Problem-led service design with modular frameworks adapted to each client context.",
+          priceLogic: "Premium fees justified by strategic impact and risk reduction.",
+          promotionLogic: "Thought leadership, referrals, executive networks, and credibility signaling.",
+          placeLogic: "Partner-led selling supported by content, events, and account relationships.",
+          customerResponse: "Clients buy when the firm appears safer, sharper, and more credible than alternatives.",
+          costStructure: "People cost dominates; utilization and staffing mix drive economics.",
+          pnl: {
+            revenueModel: "Project fees, retainers, and follow-on work from existing clients.",
+            grossMargin: "Medium",
+            opexIntensity: "High talent and business development intensity",
+            operatingMargin: "Good when utilization and pricing stay ahead of salary inflation"
+          },
+          profitEngineDetail: "High-value mandates won through trust and expert access.",
+          tradeOff: "Senior-led selling helps conversion but can create delivery bottlenecks.",
+          failureCondition: "Underpriced work or weak staffing discipline erodes project economics."
+        },
+        {
+          name: "HelioStack Enterprise",
+          ticker: "HLSE",
+          sector: "Specialized B2B technology",
+          tier: "Account expansion operator",
+          archetype: "Wins through domain expertise and then grows within accounts through integration depth.",
+          productLogic: "Configurable enterprise software with services wrapped around deployment and change management.",
+          priceLogic: "Contract pricing tied to scope, modules, and implementation complexity.",
+          promotionLogic: "ABM, solution content, analyst proof, and customer evidence.",
+          placeLogic: "Field sales, partners, and customer success layers for account growth.",
+          customerResponse: "Buyers commit when the vendor demonstrates fit, low implementation risk, and long-term partnership value.",
+          costStructure: "Sales, implementation, and account support remain heavy before account maturity.",
+          pnl: {
+            revenueModel: "License or contract revenue, implementation fees, and recurring support.",
+            grossMargin: "High after implementation, lower during services-heavy phases",
+            opexIntensity: "High commercial and support intensity",
+            operatingMargin: "Improves as expansion revenue outgrows new-logo acquisition cost"
+          },
+          profitEngineDetail: "Deep account penetration that spreads selling cost across a larger relationship.",
+          tradeOff: "Landing larger accounts often requires more expensive pre-sales effort.",
+          failureCondition: "If deployment complexity rises faster than account value, the model stalls."
+        }
+      ]
+    }
+  ];
+
+  const MARKETING_MIX_DETAILS = {
+    "perception-driven": {
+      decisionSummary: "Protect distinction.",
+      items: [
+        {
+          label: "Product",
+          what: "Design for symbolism, aesthetics, and ritual, not just function.",
+          why: "Customers pay for identity, desirability, and distinction as much as product performance.",
+          how: "Use premium materials, refined packaging, signature sensory cues, curated assortment, and limited editions."
+        },
+        {
+          label: "Price",
+          what: "Protect premium pricing as a signal of value.",
+          why: "Price helps define prestige. Heavy discounting weakens exclusivity and perceived quality.",
+          how: "Maintain price discipline, use tiered ranges carefully, avoid deep promotions, and use gifting or bundles selectively."
+        },
+        {
+          label: "Promotion",
+          what: "Build meaning and desirability rather than justify price.",
+          why: "Luxury wins in perception before it wins in specification.",
+          how: "Use storytelling, creator partnerships, campaign imagery, heritage, and strong brand codes."
+        },
+        {
+          label: "Place",
+          what: "Control distribution tightly.",
+          why: "Where the brand appears shapes how premium it feels.",
+          how: "Use selective retail, flagships, premium counters, controlled ecommerce, and high quality visual merchandising."
+        },
+        {
+          label: "People",
+          what: "Use staff to embody the brand.",
+          why: "Consultation and service reinforce trust, confidence, and emotional value.",
+          how: "Train advisors on product knowledge, consultation style, etiquette, and upsell logic."
+        },
+        {
+          label: "Process",
+          what: "Make the journey feel elegant and intentional.",
+          why: "A premium product loses value if the surrounding experience feels careless.",
+          how: "Refine consultation flow, packaging, checkout, fulfillment, aftercare, and replenishment touchpoints."
+        },
+        {
+          label: "Physical Evidence / Presence",
+          what: "Make quality visible before it is proven.",
+          why: "Customers infer value from cues long before product usage confirms it.",
+          how: "Use premium packaging, store design, typography, photography, materials, and display systems."
+        }
+      ]
+    },
+    "efficiency-driven": {
+      decisionSummary: "Protect efficiency.",
+      items: [
+        {
+          label: "Product",
+          what: "Offer practical, reliable, fast moving goods with clear value.",
+          why: "Customers prioritize utility, availability, and affordability over symbolic meaning.",
+          how: "Build broad assortment, strong private label, key national brands, and efficient SKU management."
+        },
+        {
+          label: "Price",
+          what: "Signal price competitiveness and value for money.",
+          why: "Price perception drives traffic, basket size, and repeat visits.",
+          how: "Use EDLP, sharp promo pricing on known value items, price packs, and tight category pricing architecture."
+        },
+        {
+          label: "Promotion",
+          what: "Drive traffic and basket expansion.",
+          why: "Communication is mainly used to activate demand and reinforce value image.",
+          how: "Use flyers, weekly deals, app offers, loyalty discounts, in store signage, and seasonal campaigns."
+        },
+        {
+          label: "Place",
+          what: "Maximize convenience and access.",
+          why: "The easier the store is to reach and shop, the stronger the volume engine.",
+          how: "Use dense store networks, practical layouts, parking access, neighborhood presence, and omnichannel pickup or delivery."
+        },
+        {
+          label: "People",
+          what: "Support speed, availability, and execution.",
+          why: "Customers expect efficiency more than elevated service.",
+          how: "Train staff on shelf replenishment, checkout speed, problem solving, and basic service consistency."
+        },
+        {
+          label: "Process",
+          what: "Make shopping fast, predictable, and low friction.",
+          why: "This model depends on throughput, efficiency, and repeat behavior.",
+          how: "Optimize replenishment, queue flow, checkout, inventory systems, and click and collect processes."
+        },
+        {
+          label: "Physical Evidence / Presence",
+          what: "Reinforce value and clarity.",
+          why: "Shoppers want quick orientation and visible price trust.",
+          how: "Use price labels, promo signage, clean category navigation, private label packaging, and efficiency focused store design."
+        }
+      ]
+    },
+    "subscription-driven": {
+      decisionSummary: "Protect retention.",
+      items: [
+        {
+          label: "Product",
+          what: "Offer ongoing access to content or service rather than one off ownership.",
+          why: "The model depends on retention, usage frequency, and perceived ongoing relevance.",
+          how: "Build content libraries, recommendation systems, tiered plans, personalized experiences, and smooth multi device access."
+        },
+        {
+          label: "Price",
+          what: "Design recurring pricing to balance acquisition, retention, and ARPU.",
+          why: "Monthly price shapes subscriber growth, churn, and upgrade behavior.",
+          how: "Use monthly plans, annual discounts, premium tiers, family plans, ad supported tiers, and periodic price increases."
+        },
+        {
+          label: "Promotion",
+          what: "Acquire users and keep the service top of mind.",
+          why: "A subscription model must continuously justify continued payment.",
+          how: "Use trial offers, launch campaigns, content releases, retention messaging, email nudges, and personalized recommendations."
+        },
+        {
+          label: "Place",
+          what: "Be available wherever usage happens.",
+          why: "Convenience and accessibility drive subscription value.",
+          how: "Use apps across TV, mobile, tablet, browser, gaming consoles, and telecom or device partnerships."
+        },
+        {
+          label: "People",
+          what: "Use people mainly in support, curation, and brand voice.",
+          why: "The experience is mostly digital, but trust and support still matter.",
+          how: "Provide customer support, creator or curator presence, community management, and service recovery teams."
+        },
+        {
+          label: "Process",
+          what: "Reduce friction from sign up to repeat engagement.",
+          why: "Every extra click increases churn risk.",
+          how: "Simplify onboarding, billing, cancellation, content discovery, notifications, and renewal flows."
+        },
+        {
+          label: "Physical Evidence / Presence",
+          what: "Use interface quality and brand environment as proof of value.",
+          why: "In digital subscriptions, the interface is part of the product.",
+          how: "Use polished UI, strong thumbnails, recognizable content rails, clean plan comparisons, and consistent cross device design."
+        }
+      ]
+    },
+    "platform-driven": {
+      decisionSummary: "Protect liquidity and trust.",
+      items: [
+        {
+          label: "Product",
+          what: "Provide trusted matching between buyers and sellers.",
+          why: "The value is not the inventory itself but efficient discovery and transaction infrastructure.",
+          how: "Build search, filters, seller tools, ratings, payments, dispute systems, and category architecture."
+        },
+        {
+          label: "Price",
+          what: "Monetize through take rate, fees, and optional seller services.",
+          why: "The platform must capture value without discouraging participation on either side.",
+          how: "Use commissions, listing fees, promoted listings, fulfillment fees, and subscription tools for sellers."
+        },
+        {
+          label: "Promotion",
+          what: "Grow both sides of the market and stimulate liquidity.",
+          why: "A marketplace fails if buyers arrive without supply or sellers arrive without demand.",
+          how: "Use buyer acquisition campaigns, seller recruitment, referral incentives, category specific pushes, and CRM activation."
+        },
+        {
+          label: "Place",
+          what: "Create a digital destination with broad reach and low friction access.",
+          why: "Convenience and visibility determine transaction volume.",
+          how: "Use web, app, SEO, paid traffic, category landing pages, and integration with logistics and payments."
+        },
+        {
+          label: "People",
+          what: "Support trust, dispute handling, and ecosystem health.",
+          why: "The platform’s reputation depends on confidence between strangers.",
+          how: "Use seller support teams, moderation, customer service, trust and safety staff, and account managers for key sellers."
+        },
+        {
+          label: "Process",
+          what: "Make listing, search, purchase, payment, and fulfillment predictable.",
+          why: "Transaction friction reduces conversion and repeat use.",
+          how: "Optimize onboarding, listing creation, checkout, tracking, returns, reviews, and claims resolution."
+        },
+        {
+          label: "Physical Evidence / Presence",
+          what: "Use trust signals to reduce uncertainty.",
+          why: "Users judge the platform by how safe and reliable it feels.",
+          how: "Show ratings, verification badges, return policies, delivery estimates, seller history, and clean transaction design."
+        }
+      ]
+    },
+    "capacity-driven": {
+      decisionSummary: "Protect utilization.",
+      items: [
+        {
+          label: "Product",
+          what: "Sell transport capacity with differentiated service levels.",
+          why: "Airlines monetize limited seat inventory across customer segments with different willingness to pay.",
+          how: "Use fare classes, cabin tiers, ancillaries, route design, loyalty benefits, and scheduling convenience."
+        },
+        {
+          label: "Price",
+          what: "Manage yield dynamically.",
+          why: "A seat loses all value once the plane departs.",
+          how: "Use dynamic pricing, fare buckets, demand forecasting, ancillary pricing, and segmentation by flexibility and comfort."
+        },
+        {
+          label: "Promotion",
+          what: "Stimulate bookings and support route economics.",
+          why: "Demand has to be steered across time, routes, and customer segments.",
+          how: "Use fare campaigns, loyalty offers, route launches, corporate sales, co branded cards, and seasonal push campaigns."
+        },
+        {
+          label: "Place",
+          what: "Build network access and booking presence.",
+          why: "Convenience, route coverage, and booking accessibility strongly affect choice.",
+          how: "Use direct booking channels, OTAs, alliances, hub systems, code sharing, and airport slot strategy."
+        },
+        {
+          label: "People",
+          what: "Use staff to ensure service reliability and safety.",
+          why: "Human execution affects punctuality, customer experience, and trust.",
+          how: "Train crew, ground staff, service teams, pilots, and recovery teams for both compliance and customer handling."
+        },
+        {
+          label: "Process",
+          what: "Manage an ultra time sensitive operation.",
+          why: "Small operational failures cascade into cost, delay, and brand damage.",
+          how: "Coordinate scheduling, maintenance, boarding, baggage, turnaround, disruption management, and rebooking systems."
+        },
+        {
+          label: "Physical Evidence / Presence",
+          what: "Make reliability and comfort tangible.",
+          why: "Travelers evaluate quality from aircraft condition, lounges, check in, cleanliness, and digital touchpoints.",
+          how: "Use cabin design, airport counters, apps, lounge access, signage, uniforms, and onboard service standards."
+        }
+      ]
+    },
+    "solution-driven": {
+      decisionSummary: "Protect billable expertise.",
+      items: [
+        {
+          label: "Product",
+          what: "Package expertise into solutions, projects, and ongoing service contracts.",
+          why: "Clients are buying capability, problem solving, and delivery confidence rather than physical goods.",
+          how: "Use modular service offers, consulting packages, managed services, specialized teams, and industry tailored solutions."
+        },
+        {
+          label: "Price",
+          what: "Price based on expertise, scope, risk, and client value.",
+          why: "Margins depend on balancing client willingness to pay with labor cost and delivery complexity.",
+          how: "Use day rates, retainers, milestone pricing, value based pricing, fixed fee projects, and change request mechanisms."
+        },
+        {
+          label: "Promotion",
+          what: "Build credibility and trust before the sale.",
+          why: "Clients need proof that the provider can solve important business problems.",
+          how: "Use thought leadership, case studies, proposals, events, account based marketing, and relationship driven selling."
+        },
+        {
+          label: "Place",
+          what: "Meet clients where buying and delivery happen.",
+          why: "Accessibility and presence affect enterprise trust and account growth.",
+          how: "Use direct sales, client sites, hybrid delivery, regional offices, partner ecosystems, and digital account interfaces."
+        },
+        {
+          label: "People",
+          what: "Make talent the core competitive asset.",
+          why: "Service quality and margin both depend heavily on who does the work.",
+          how: "Recruit specialized staff, train continuously, manage staffing mix, and align incentives with utilization and quality."
+        },
+        {
+          label: "Process",
+          what: "Standardize delivery enough to scale without losing customization.",
+          why: "Pure customization kills margin, but rigid templates fail clients.",
+          how: "Use project methods, playbooks, QA systems, staffing models, proposal workflows, and post project reviews."
+        },
+        {
+          label: "Physical Evidence / Presence",
+          what: "Use proof and professionalism to reduce perceived risk.",
+          why: "Services are intangible, so clients rely on signals to judge quality before buying.",
+          how: "Use proposals, credentials, case studies, dashboards, polished documents, offices, and professional presentation standards."
+        }
+      ]
+    }
+  };
+
+  const state = {
+    leftLogicId: BUSINESS_LOGICS[0].id,
+    rightLogicId: BUSINESS_LOGICS[1].id,
+    compareView: "marketing"
+  };
+
+  const logicCardGrid = document.getElementById("logicCardGrid");
+  const logicSections = document.getElementById("logicSections");
+
+  const formatCompanyTableRows = (companies, fieldMap) => {
+    return fieldMap.map((item) => `
+      <tr>
+        <td><strong>${item.label}</strong></td>
+        ${companies.map((company) => `<td>${item.getValue(company)}</td>`).join("")}
+      </tr>
+    `).join("");
+  };
+
+  function getEuroScale(level) {
+    const normalized = level.toLowerCase();
+
+    if (normalized.includes("very high")) return 4;
+    if (normalized.includes("medium-high") || normalized.includes("moderate-high")) return 3;
+    if (normalized.includes("high")) return 3;
+    if (normalized.includes("low-medium") || normalized.includes("moderate")) return 2;
+    if (normalized.includes("medium")) return 2;
+    if (normalized.includes("low")) return 1;
+    return 2;
+  }
+
+  function renderEuroLevel(level) {
+    const scale = getEuroScale(level);
+    return `
+      <span class="money-scale">
+        <span class="money-scale-signs" aria-label="${level}">${"€".repeat(scale)}</span>
+        <span class="money-scale-label">${level}</span>
+      </span>
+    `;
+  }
+
+  const getLogicById = (logicId) =>
+    BUSINESS_LOGICS.find((logic) => logic.id === logicId) || BUSINESS_LOGICS[0];
+
+  function renderLogicCards() {
+    logicCardGrid.innerHTML = BUSINESS_LOGICS.map((logic) => {
+      const imageSrc = logic.image ? new URL(logic.image, window.location.href).href : "";
+      return `
+        <article class="logic-card">
+          <div class="logic-card-body">
+            ${logic.image ? `<div class="logic-visual"><img src="${imageSrc}" alt="${logic.name} industry example"></div><div class="logic-icon" aria-hidden="true" style="display:none;">${logic.icon}</div>` : `<div class="logic-icon" aria-hidden="true">${logic.icon}</div>`}
+            <h2>${logic.name}</h2>
+            <p>${logic.shortDefinition}</p>
+            <div class="logic-meta">
+              <div class="meta-line">
+                <strong>Industry Examples</strong>
+                <div class="industry-list">
+                  ${logic.industryExamples.map((industry) => `<span class="industry-chip">${industry}</span>`).join("")}
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    logicCardGrid.querySelectorAll(".logic-visual img").forEach((image) => {
+      image.addEventListener("error", () => {
+        const visual = image.closest(".logic-visual");
+        const fallbackIcon = visual?.nextElementSibling;
+        if (visual) visual.classList.add("is-broken");
+        if (fallbackIcon?.classList.contains("logic-icon")) {
+          fallbackIcon.style.display = "inline-flex";
+        }
+      }, { once: true });
+    });
+  }
+  function renderComparePanel(logic, sideKey) {
+    const imageSrc = logic.image ? new URL(logic.image, window.location.href).href : "";
+    const mixDetail = MARKETING_MIX_DETAILS[logic.id];
+    return `
+      <article class="compare-panel">
+        ${logic.image ? `<div class="logic-visual"><img src="${imageSrc}" alt="${logic.name} representative industry"></div>` : `<div class="logic-icon" aria-hidden="true">${logic.icon}</div>`}
+        <div class="compare-panel-head">
+          <div>
+            <h3>${logic.selectorLabel}</h3>
+            <div class="logic-type-line">${logic.name}</div>
+            ${mixDetail?.decisionSummary ? `<p class="decision-summary">${mixDetail.decisionSummary}</p>` : ""}
+          </div>
+          <div class="panel-select-wrap">
+            <label class="control-label" for="${sideKey}LogicSelect">${sideKey === "left" ? "Left Industry" : "Right Industry"}</label>
+            <select id="${sideKey}LogicSelect" aria-label="Choose ${sideKey} business logic"></select>
+          </div>
+        </div>
+        <p class="logic-intro">${logic.shortDefinition}</p>
+        <div class="logic-meta">
+          <div class="meta-line">
+            <strong>Representative Industries</strong>
+            <div class="industry-list">
+              ${logic.industryExamples.map((industry) => `<span class="industry-chip">${industry}</span>`).join("")}
+            </div>
+          </div>
+        </div>
+        <div class="tab-row compare-panel-switch" role="tablist" aria-label="Comparison views">
+          <button type="button" class="view-tab ${state.compareView === "marketing" ? "is-active" : ""}" data-compare-view="marketing">Marketing Mix</button>
+          <button type="button" class="view-tab ${state.compareView === "pnl" ? "is-active" : ""}" data-compare-view="pnl">Income Statement</button>
+        </div>
+        ${renderCompareDetails(logic)}
+      </article>
+    `;
+  }
+
+  function renderPnlVisual(logic) {
+    const profile = logic.pnlProfile;
+    const benchmarkReferenceBlock = logic.benchmarkReferences?.length
+      ? `
+          <div class="pnl-benchmark-meta">
+            <p><span class="table-label">Benchmark Companies</span> ${logic.benchmarkReferences.map((item) => `${item.name} (${item.year})`).join(", ")}.</p>
+          </div>
+        `
+      : "";
+
+    return `
+      <div class="pnl-visual">
+        <div class="pnl-summary">
+          <div class="table-label">Profit Logic</div>
+          <p><strong>Profit engine:</strong> ${logic.profitEngine}.</p>
+          <p><strong>Financial constraint:</strong> ${logic.dominantConstraint}.</p>
+        </div>
+        <div class="pnl-waterfall">
+          <div class="pnl-row">
+            <div class="pnl-label">Sales</div>
+            <div class="pnl-bar"><div class="pnl-fill sales" style="width:${profile.sales}%;"></div></div>
+            <div class="pnl-value">${profile.sales}%</div>
+          </div>
+          <div class="pnl-row">
+            <div class="pnl-label">COGS</div>
+            <div class="pnl-bar"><div class="pnl-fill cogs" style="width:${profile.cogs}%;"></div></div>
+            <div class="pnl-value">${profile.cogs}%</div>
+          </div>
+          <div class="pnl-row">
+            <div class="pnl-label">Gross Profit</div>
+            <div class="pnl-bar"><div class="pnl-fill gross" style="width:${profile.grossProfit}%;"></div></div>
+            <div class="pnl-value">${profile.grossProfit}%</div>
+          </div>
+          <div class="pnl-row">
+            <div class="pnl-label">Marketing</div>
+            <div class="pnl-bar"><div class="pnl-fill marketing" style="width:${profile.marketing}%;"></div></div>
+            <div class="pnl-value">${profile.marketing}%</div>
+          </div>
+          <div class="pnl-row">
+            <div class="pnl-label">Other Opex</div>
+            <div class="pnl-bar"><div class="pnl-fill opex" style="width:${profile.opex}%;"></div></div>
+            <div class="pnl-value">${profile.opex}%</div>
+          </div>
+          <div class="pnl-row">
+            <div class="pnl-label">Op Margin</div>
+            <div class="pnl-bar"><div class="pnl-fill margin" style="width:${profile.operatingMargin}%;"></div></div>
+            <div class="pnl-value">${profile.operatingMargin}%</div>
+          </div>
+          ${benchmarkReferenceBlock}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderCompareDetails(logic) {
+    if (state.compareView === "pnl") {
+      return renderPnlVisual(logic);
+    }
+
+    const mixDetail = MARKETING_MIX_DETAILS[logic.id];
+    const items = mixDetail?.items || [];
+
+    return `
+      <div class="mix-detail-grid">
+        ${items.map((item) => `
+          <article class="mix-detail-row">
+            <div class="table-label">${item.label}</div>
+            <div class="mix-detail-body">
+              <div class="mix-detail-block">
+                <strong>What</strong>
+                <p>${item.what}</p>
+              </div>
+              <div class="mix-detail-block">
+                <strong>Why</strong>
+                <p>${item.why}</p>
+              </div>
+              <div class="mix-detail-block">
+                <strong>How</strong>
+                <p>${item.how}</p>
+              </div>
+            </div>
+          </article>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function renderContrastSummary(leftLogic, rightLogic) {
+    const summaryText = state.compareView === "pnl"
+      ? `${leftLogic.name} shows a different income statement shape from ${rightLogic.name}. The contrast comes from how much of sales is absorbed by COGS, how much is consumed by marketing and operating expense, and how much remains as operating margin.`
+      : `${leftLogic.name} designs marketing around ${leftLogic.marketingMeaning.toLowerCase()} By contrast, ${rightLogic.name} designs marketing around ${rightLogic.marketingMeaning.toLowerCase()}.`;
+
+    return `
+      <section class="compare-contrast">
+        <div class="table-label">What To Notice In This Comparison</div>
+        <h3>${leftLogic.name} versus ${rightLogic.name}</h3>
+        <p class="section-copy">${summaryText}</p>
+      </section>
+    `;
+  }
+
+  function renderLogicSections() {
+    const leftLogic = getLogicById(state.leftLogicId);
+    const rightLogic = getLogicById(state.rightLogicId);
+
+    logicSections.innerHTML = `
+      <section class="compare-shell">
+        <div class="compare-head">
+          <div>
+            <div class="eyebrow">Side By Side Comparison</div>
+            <h2>${leftLogic.name} and ${rightLogic.name}</h2>
+            <p class="section-copy">Compare how two business logics differ in marketing design and in income statement shape.</p>
+          </div>
+        </div>
+        <div class="compare-layout">
+          ${renderComparePanel(leftLogic, "left")}
+          ${renderComparePanel(rightLogic, "right")}
+        </div>
+        ${renderContrastSummary(leftLogic, rightLogic)}
+      </section>
+    `;
+
+    logicSections.querySelectorAll(".logic-visual img").forEach((image) => {
+      image.addEventListener("error", () => {
+        const visual = image.closest(".logic-visual");
+        if (visual) visual.classList.add("is-broken");
+      }, { once: true });
+    });
+  }
+
+  function renderSelectOptions() {
+    const leftLogicSelect = document.getElementById("leftLogicSelect");
+    const rightLogicSelect = document.getElementById("rightLogicSelect");
+    if (!leftLogicSelect || !rightLogicSelect) return;
+    const options = BUSINESS_LOGICS.map((logic) => `<option value="${logic.id}">${logic.selectorLabel}</option>`).join("");
+    leftLogicSelect.innerHTML = options;
+    rightLogicSelect.innerHTML = options;
+  }
+
+  function renderApp() {
+    renderLogicCards();
+    renderLogicSections();
+    renderSelectOptions();
+    const leftLogicSelect = document.getElementById("leftLogicSelect");
+    const rightLogicSelect = document.getElementById("rightLogicSelect");
+    if (leftLogicSelect) leftLogicSelect.value = state.leftLogicId;
+    if (rightLogicSelect) rightLogicSelect.value = state.rightLogicId;
+  }
+
+  logicSections.addEventListener("change", (event) => {
+    if (event.target.id === "leftLogicSelect") {
+      state.leftLogicId = event.target.value;
+      renderApp();
+    }
+
+    if (event.target.id === "rightLogicSelect") {
+      state.rightLogicId = event.target.value;
+      renderApp();
+    }
+  });
+
+  logicSections.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-compare-view]");
+    if (!button) return;
+    state.compareView = button.dataset.compareView;
+    renderApp();
+  });
+
+  renderApp();
+</script>
+</body>
+</html>
