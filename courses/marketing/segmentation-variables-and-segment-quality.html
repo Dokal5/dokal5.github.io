@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segmentation Variables and Segment Quality | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --segment-accent: #5271b8;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills,
+  .variable-selector,
+  .score-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-pills {
+    margin-top: 28px;
+  }
+
+  .hero-pill,
+  .variable-selector button,
+  .score-chip {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+
+  .hero-pill {
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .alignment-grid,
+  .segment-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .segment-grid {
+    grid-template-columns: 0.95fr 1.05fr;
+    margin-top: 24px;
+  }
+
+  .foundation-card,
+  .segment-panel,
+  .score-panel,
+  .alignment-card {
+    padding: 32px 30px;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    background: white;
+  }
+
+  .foundation-card h3,
+  .segment-panel h3,
+  .score-panel h3,
+  .alignment-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .segment-panel p,
+  .segment-panel li,
+  .score-panel p,
+  .score-panel li,
+  .alignment-card p,
+  .alignment-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .mini-label,
+  .score-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .variable-selector button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    cursor: pointer;
+  }
+
+  .variable-selector button.active,
+  .variable-selector button:hover {
+    background: color-mix(in srgb, var(--segment-accent) 18%, transparent);
+    border-color: var(--segment-accent);
+    color: var(--cream);
+  }
+
+  .segment-panel,
+  .score-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .score-row {
+    margin-top: 22px;
+  }
+
+  .score-chip {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    min-width: 132px;
+  }
+
+  .score-chip strong {
+    display: block;
+    color: var(--cream);
+    margin-top: 8px;
+    font-size: 16px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .segment-list,
+  .alignment-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .foundation-grid,
+    .alignment-grid,
+    .segment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Segmentation</div>
+    <h1 class="hero-title">Segmentation Variables and Segment <em>Quality</em></h1>
+    <p class="hero-sub">
+      Teams often know the words demographic, psychographic, and behavioral, but still struggle to tell whether a segmentation is actually useful for strategy.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Variable chosen -> Segment revealed -> Strategic usefulness
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Segmentation</div>
+      <div class="hero-pill">Variable quality</div>
+      <div class="hero-pill">Actionable groups</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      Not every way of grouping a market helps a firm make a better decision. Good segmentation reveals differences that are strategically meaningful, not merely easy to describe.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">A segment should be more than a description</h2>
+    <p class="section-intro">
+      Useful segments help explain differences in need, behavior, economics, or response. Weak segments may still sound neat, but they do not guide targeting, positioning, or the marketing mix very well.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>Segmentation variables: who, where, why, how, what</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Who</strong>
+            <span>Demographic variables such as age, income, occupation, household type, and life stage.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Where</strong>
+            <span>Geographic variables such as country, region, city type, climate, and density.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Why</strong>
+            <span>Psychographic variables such as lifestyle, identity, aspirations, values, and preferences.</span>
+          </div>
+          <div class="flow-row">
+            <strong>How</strong>
+            <span>Behavioral variables such as usage rate, loyalty, occasion, and switching pattern.</span>
+          </div>
+          <div class="flow-row">
+            <strong>What</strong>
+            <span>Benefit sought: the specific progress, outcome, or value the customer most wants from the offer.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>What makes a segmentation strong</h3>
+        <ul style="padding-left:18px;">
+          <li>It reveals a difference that matters for customer value.</li>
+          <li>It can guide targeting and resource allocation.</li>
+          <li>It suggests different positions, channels, or messages.</li>
+          <li>It is specific enough to act on, not just interesting to observe.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Interactive Sort</div>
+    <h2 class="section-title">Choose a segmentation variable and inspect the strategic value</h2>
+    <p class="section-intro">
+      Imagine a meal-kit company trying to understand its market. The same market can be grouped in many ways, but some segmentations create much better strategic clarity than others.
+    </p>
+
+    <div class="variable-selector" id="variable-selector">
+      <button class="active" data-key="age" type="button">Age</button>
+      <button data-key="income" type="button">Income</button>
+      <button data-key="lifestyle" type="button">Lifestyle</button>
+      <button data-key="usage" type="button">Usage</button>
+      <button data-key="occasion" type="button">Occasion</button>
+      <button data-key="benefit" type="button">Benefit sought</button>
+    </div>
+
+    <div class="segment-grid">
+      <div class="segment-panel">
+        <div class="mini-label">Segment output</div>
+        <h3 id="segment-title">Age-based segmentation</h3>
+        <p id="segment-copy">
+          This gives a convenient descriptive split, but age alone may not reveal why customers choose the category.
+        </p>
+        <ul class="segment-list" id="segment-list">
+          <li>18-24 early career households</li>
+          <li>25-39 busy professionals</li>
+          <li>40-55 family managers</li>
+        </ul>
+      </div>
+
+      <div class="score-panel">
+        <div class="mini-label">Segment quality check</div>
+        <h3 id="score-title">Useful, but not yet decisive</h3>
+        <p id="score-copy">
+          Age may correlate with different routines, but it usually needs another layer to explain what progress people want from the offer.
+        </p>
+        <div class="score-row">
+          <div class="score-chip"><span class="score-label">Meaning</span><strong id="meaning-score">Medium</strong></div>
+          <div class="score-chip"><span class="score-label">Actionability</span><strong id="action-score">Medium</strong></div>
+          <div class="score-chip"><span class="score-label">Prediction</span><strong id="predict-score">Low</strong></div>
+          <div class="score-chip"><span class="score-label">Overall</span><strong id="overall-score">Fair</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">03 · Alignment</div>
+    <h2 class="section-title">Descriptive segments are not automatically strategic segments</h2>
+    <p class="section-intro">
+      The strongest segmentation is the one that visibly changes what a firm should do next.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Weak but familiar</h3>
+        <p>“Women aged 25-34 in cities” sounds clean, but it may still hide very different jobs, budgets, lifestyles, and sought benefits.</p>
+        <ul>
+          <li>Easy to describe</li>
+          <li>Harder to infer what message or offer should change</li>
+          <li>Often needs a second layer</li>
+        </ul>
+      </div>
+
+      <div class="alignment-card">
+        <h3>Stronger and more actionable</h3>
+        <p>“Busy professionals seeking low-effort weekday meals” already suggests different value, positioning, and channel choices.</p>
+        <ul>
+          <li>Explains what progress matters</li>
+          <li>Supports clearer targeting</li>
+          <li>Improves positioning and 4P decisions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Segmentation Quality</div>
+</footer>
+
+<script>
+  const segmentationData = {
+    age: {
+      title: "Age-based segmentation",
+      copy: "This gives a convenient descriptive split, but age alone may not reveal why customers choose the category.",
+      list: [
+        "18-24 early career households",
+        "25-39 busy professionals",
+        "40-55 family managers"
+      ],
+      scoreTitle: "Useful, but not yet decisive",
+      scoreCopy: "Age may correlate with different routines, but it usually needs another layer to explain what progress people want from the offer.",
+      scores: ["Medium", "Medium", "Low", "Fair"],
+      accent: "#5271b8"
+    },
+    income: {
+      title: "Income-based segmentation",
+      copy: "Income improves affordability analysis, but it still does not automatically reveal the sought benefit.",
+      list: [
+        "Budget-sensitive households",
+        "Mid-market convenience seekers",
+        "Premium time-saving buyers"
+      ],
+      scoreTitle: "Economically helpful",
+      scoreCopy: "Income is useful for pricing and value capture, especially when willingness to pay matters strongly.",
+      scores: ["Medium", "High", "Medium", "Good"],
+      accent: "#c8872b"
+    },
+    lifestyle: {
+      title: "Lifestyle-based segmentation",
+      copy: "Lifestyle starts to reveal routines, identity, and context, which often matter more than age alone.",
+      list: [
+        "Health-focused planners",
+        "Time-pressed achievers",
+        "Food-curious experience seekers"
+      ],
+      scoreTitle: "Often strategically richer",
+      scoreCopy: "Lifestyle segmentation can point more directly toward message, product design, and channel choices.",
+      scores: ["High", "Medium", "High", "Very good"],
+      accent: "#4a6741"
+    },
+    usage: {
+      title: "Usage-rate segmentation",
+      copy: "Behavior often tells us more about economics and retention than static descriptors do.",
+      list: [
+        "Light experimenters",
+        "Weekly routine users",
+        "Heavy loyal users"
+      ],
+      scoreTitle: "Strong for commercial design",
+      scoreCopy: "Usage helps clarify retention strategy, loyalty economics, and what sort of offer structure makes sense.",
+      scores: ["High", "High", "High", "Very good"],
+      accent: "#8b3a2a"
+    },
+    occasion: {
+      title: "Occasion-based segmentation",
+      copy: "Some categories make most sense when grouped by the moment or context in which the need appears.",
+      list: [
+        "Weeknight time pressure",
+        "Entertaining at home",
+        "Recovery after travel or overtime"
+      ],
+      scoreTitle: "Powerful when context matters",
+      scoreCopy: "Occasion segments are especially useful when the job changes depending on the situation.",
+      scores: ["High", "Medium", "High", "Good"],
+      accent: "#6d4c91"
+    },
+    benefit: {
+      title: "Benefit-sought segmentation",
+      copy: "This variable focuses directly on the progress customers want, which often makes it the most strategically revealing.",
+      list: [
+        "Save time with minimal effort",
+        "Eat better without planning",
+        "Feel impressive when hosting others"
+      ],
+      scoreTitle: "Closest to strategic intent",
+      scoreCopy: "Benefit-sought segmentation often gives the cleanest bridge into targeting, positioning, and the marketing mix.",
+      scores: ["High", "High", "High", "Excellent"],
+      accent: "#d4a843"
+    }
+  };
+
+  const variableButtons = Array.from(document.querySelectorAll("#variable-selector button"));
+  const segmentTitle = document.getElementById("segment-title");
+  const segmentCopy = document.getElementById("segment-copy");
+  const segmentList = document.getElementById("segment-list");
+  const scoreTitle = document.getElementById("score-title");
+  const scoreCopy = document.getElementById("score-copy");
+  const meaningScore = document.getElementById("meaning-score");
+  const actionScore = document.getElementById("action-score");
+  const predictScore = document.getElementById("predict-score");
+  const overallScore = document.getElementById("overall-score");
+
+  function renderSegmentation(key) {
+    const data = segmentationData[key];
+    document.documentElement.style.setProperty("--segment-accent", data.accent);
+    variableButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
+    segmentTitle.textContent = data.title;
+    segmentCopy.textContent = data.copy;
+    segmentList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
+    scoreTitle.textContent = data.scoreTitle;
+    scoreCopy.textContent = data.scoreCopy;
+    [meaningScore.textContent, actionScore.textContent, predictScore.textContent, overallScore.textContent] = data.scores;
+  }
+
+  variableButtons.forEach((button) => {
+    button.addEventListener("click", () => renderSegmentation(button.dataset.key));
+  });
+</script>
+
+</body>
+</html>
