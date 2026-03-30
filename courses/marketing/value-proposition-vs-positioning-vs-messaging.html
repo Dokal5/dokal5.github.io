@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Value Proposition vs Positioning vs Messaging | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --message-accent: #d4a843;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills,
+  .audience-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-pills {
+    margin-top: 28px;
+  }
+
+  .hero-pill,
+  .audience-selector button {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+
+  .hero-pill {
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .alignment-grid,
+  .stack-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .stack-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 24px;
+  }
+
+  .foundation-card,
+  .stack-card,
+  .alignment-card {
+    padding: 32px 30px;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    background: white;
+  }
+
+  .foundation-card h3,
+  .stack-card h3,
+  .alignment-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .stack-card p,
+  .stack-card li,
+  .alignment-card p,
+  .alignment-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .mini-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .audience-selector button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    cursor: pointer;
+  }
+
+  .audience-selector button.active,
+  .audience-selector button:hover {
+    background: color-mix(in srgb, var(--message-accent) 18%, transparent);
+    border-color: var(--message-accent);
+    color: var(--cream);
+  }
+
+  .stack-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .stack-card .mini-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .stack-card h3 {
+    font-size: 24px;
+  }
+
+  .alignment-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .foundation-grid,
+    .alignment-grid,
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Value and Message</div>
+    <h1 class="hero-title">Value Proposition vs Positioning vs <em>Messaging</em></h1>
+    <p class="hero-sub">
+      These three ideas are often collapsed into one sentence. They are connected, but they are not the same job. One clarifies the value promised, one clarifies the market meaning, and one expresses it in language.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Value proposition -> positioning -> messaging
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Value proposition</div>
+      <div class="hero-pill">Positioning</div>
+      <div class="hero-pill">Messaging</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      The value proposition says <strong>what value is offered</strong>. Positioning says <strong>what the brand should mean</strong>. Messaging says <strong>how we express that meaning</strong>.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">Three layers, three jobs</h2>
+    <p class="section-intro">
+      Good strategic reasoning here depends on keeping the layers separate. Otherwise teams start rewriting taglines when the real issue is unclear value or fuzzy positioning.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>What each layer is for</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Value proposition</strong>
+            <span>The concrete value or progress offered to a customer.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Positioning</strong>
+            <span>The distinct market meaning the brand should occupy for the chosen segment.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Messaging</strong>
+            <span>The actual words, proof, emphasis, and tone used to communicate the position.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>Typical confusion</h3>
+        <p>
+          Teams often jump directly to copywriting. But weak copy is often only the visible symptom of a weak position or a vague value proposition underneath it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Stack Builder</div>
+    <h2 class="section-title">Choose an audience and watch the three layers shift</h2>
+    <p class="section-intro">
+      One software offer is used below, but the audience changes. As the audience changes, the value emphasis, the position, and the message all need to change in a disciplined order.
+    </p>
+
+    <div class="audience-selector" id="audience-selector">
+      <button class="active" data-key="students" type="button">Budget-conscious buyers</button>
+      <button data-key="professionals" type="button">Busy professionals</button>
+      <button data-key="premium" type="button">Premium enthusiasts</button>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <span class="mini-label">Value proposition</span>
+        <h3 id="value-title">Reliable core functionality without paying for extras</h3>
+        <p id="value-copy">The main promised value is sensible performance at a price that feels justified.</p>
+      </div>
+
+      <div class="stack-card">
+        <span class="mini-label">Positioning</span>
+        <h3 id="position-title">The smart practical choice</h3>
+        <p id="position-copy">The brand should feel financially sensible, clear, and free of waste.</p>
+      </div>
+
+      <div class="stack-card">
+        <span class="mini-label">Messaging</span>
+        <h3 id="message-title">Everything you need, nothing you overpay for.</h3>
+        <p id="message-copy">Clear, reassuring language and proof points around transparent pricing and useful essentials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">03 · Alignment</div>
+    <h2 class="section-title">If the stack collapses, the message starts doing the wrong work</h2>
+    <p class="section-intro">
+      Messaging should express a position. It should not be forced to invent one on the spot.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Good stack</h3>
+        <ul>
+          <li>The value proposition states what progress is offered.</li>
+          <li>The position states what the brand should mean for the target.</li>
+          <li>The message expresses that meaning clearly and credibly.</li>
+        </ul>
+      </div>
+
+      <div class="alignment-card">
+        <h3>Collapsed stack</h3>
+        <ul>
+          <li>The value proposition is vague.</li>
+          <li>The position is generic.</li>
+          <li>The message becomes a pile of adjectives with no strategic backbone.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Value vs Position vs Messaging</div>
+</footer>
+
+<script>
+  const audienceData = {
+    students: {
+      valueTitle: "Reliable core functionality without paying for extras",
+      valueCopy: "The main promised value is sensible performance at a price that feels justified.",
+      positionTitle: "The smart practical choice",
+      positionCopy: "The brand should feel financially sensible, clear, and free of waste.",
+      messageTitle: "Everything you need, nothing you overpay for.",
+      messageCopy: "Clear, reassuring language and proof points around transparent pricing and useful essentials.",
+      accent: "#5271b8"
+    },
+    professionals: {
+      valueTitle: "Less friction and more dependable progress under time pressure",
+      valueCopy: "The main promised value is smoother work and fewer delays when attention is scarce.",
+      positionTitle: "The effective option for overloaded schedules",
+      positionCopy: "The brand should feel fast, trustworthy, and designed for people who cannot afford disruption.",
+      messageTitle: "Built for people who do not have time for friction.",
+      messageCopy: "Focused language and proof points around speed, dependable execution, and responsive support.",
+      accent: "#4a6741"
+    },
+    premium: {
+      valueTitle: "Refined execution that feels clearly above the category average",
+      valueCopy: "The main promised value is elevated quality, polish, and confidence in every interaction.",
+      positionTitle: "The premium standard in the category",
+      positionCopy: "The brand should feel selective, refined, and intentionally above mainstream alternatives.",
+      messageTitle: "For those who expect a higher standard by default.",
+      messageCopy: "Sharper language and proof points around craftsmanship, elevated detail, and category leadership.",
+      accent: "#d4a843"
+    }
+  };
+
+  const audienceButtons = Array.from(document.querySelectorAll("#audience-selector button"));
+  const valueTitle = document.getElementById("value-title");
+  const valueCopy = document.getElementById("value-copy");
+  const positionTitle = document.getElementById("position-title");
+  const positionCopy = document.getElementById("position-copy");
+  const messageTitle = document.getElementById("message-title");
+  const messageCopy = document.getElementById("message-copy");
+
+  function renderAudience(key) {
+    const data = audienceData[key];
+    document.documentElement.style.setProperty("--message-accent", data.accent);
+    audienceButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
+    valueTitle.textContent = data.valueTitle;
+    valueCopy.textContent = data.valueCopy;
+    positionTitle.textContent = data.positionTitle;
+    positionCopy.textContent = data.positionCopy;
+    messageTitle.textContent = data.messageTitle;
+    messageCopy.textContent = data.messageCopy;
+  }
+
+  audienceButtons.forEach((button) => {
+    button.addEventListener("click", () => renderAudience(button.dataset.key));
+  });
+</script>
+
+</body>
+</html>

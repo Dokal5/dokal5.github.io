@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Journey and the Marketing Funnel | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --stage-trigger: #7a5a8a;
+    --stage-consideration: #5271b8;
+    --stage-evaluation: #4e8b6b;
+    --stage-purchase: #be8644;
+    --stage-post: #b66155;
+    --stage-loyalty: #3f6b58;
+    --loop-ink: #1a241f;
+    --loop-glow: #ffd6a1;
+    --journey-active: var(--stage-trigger);
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .inline-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.24);
+  }
+
+  .hero .inline-link,
+  .interactive-band .inline-link {
+    border-bottom-color: rgba(245, 240, 232, 0.28);
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .hero-related {
+    margin-top: 22px;
+    padding: 16px 18px;
+    background: rgba(245, 240, 232, 0.05);
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    max-width: 430px;
+  }
+
+  .hero-related-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.52);
+    margin-bottom: 8px;
+  }
+
+  .hero-related a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.32);
+    line-height: 1.8;
+  }
+
+  .hero-related p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: rgba(245, 240, 232, 0.7);
+  }
+
+  .hero-pill {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+    padding: 6px 10px;
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .mapping-section {
+    padding: 100px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .mapping-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .mapping-help-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .foundation-grid {
+    margin-top: 32px;
+  }
+
+  .foundation-takeaway {
+    margin-top: 24px;
+    background: linear-gradient(135deg, rgba(244, 239, 231, 0.92), rgba(255, 255, 255, 0.98));
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-takeaway h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    line-height: 1.12;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .foundation-takeaway p,
+  .foundation-takeaway li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .foundation-takeaway ul {
+    margin-top: 16px;
+    padding-left: 18px;
+  }
+
+  .foundation-card,
+  .mapping-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .mapping-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .mapping-card h3 {
+    font-size: 24px;
+    line-height: 1.18;
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .mapping-card p,
+  .mapping-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .definition-flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .definition-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 18px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .definition-row strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .definition-row span {
+    display: block;
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .foundation-card ul,
+  .mapping-card ul {
+    margin-top: 16px;
+    padding-left: 18px;
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro {
+    color: rgba(245, 240, 232, 0.68);
+  }
+
+  .journey-selector {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+    margin: 30px 0 24px;
+  }
+
+  .journey-btn {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(245, 240, 232, 0.72);
+    padding: 18px 14px 16px;
+    cursor: pointer;
+    transition: transform 220ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    min-height: 118px;
+  }
+
+  .journey-btn.loop-stage {
+    background:
+      linear-gradient(180deg, rgba(255, 214, 161, 0.16), rgba(255, 214, 161, 0) 36%),
+      linear-gradient(180deg, rgba(26, 36, 31, 0.96), rgba(20, 28, 24, 0.92));
+    border: 2px solid rgba(255, 214, 161, 0.44);
+    color: rgba(255, 248, 238, 0.96);
+    box-shadow:
+      0 0 0 1px rgba(255, 214, 161, 0.12),
+      0 18px 34px rgba(0, 0, 0, 0.28);
+  }
+
+  .journey-btn.loop-stage::before {
+    content: "";
+    position: absolute;
+    inset: auto -18% -42% auto;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 214, 161, 0.22), rgba(255, 214, 161, 0));
+    pointer-events: none;
+  }
+
+  .journey-btn.loop-stage::after {
+    content: "Loyalty loop";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: "DM Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(26, 36, 31, 0.96);
+    background: rgba(255, 214, 161, 0.94);
+    padding: 5px 7px 4px;
+    border-radius: 999px;
+  }
+
+  .journey-btn.purchase.loop-stage {
+    border-color: rgba(255, 214, 161, 0.48);
+  }
+
+  .journey-btn.post.loop-stage {
+    border-color: rgba(255, 214, 161, 0.48);
+  }
+
+  .journey-btn.loyalty.loop-stage {
+    border-color: rgba(255, 214, 161, 0.56);
+    box-shadow:
+      0 0 0 1px rgba(255, 214, 161, 0.2),
+      0 20px 36px rgba(0, 0, 0, 0.32);
+  }
+
+  .journey-btn.active {
+    background: color-mix(in srgb, var(--journey-active) 16%, rgba(255, 255, 255, 0.03));
+    color: var(--cream);
+    border-color: var(--journey-active);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px color-mix(in srgb, var(--journey-active) 18%, transparent);
+  }
+
+  .journey-btn.trigger.active { border-color: var(--stage-trigger); box-shadow: 0 14px 28px color-mix(in srgb, var(--stage-trigger) 18%, transparent); }
+  .journey-btn.consideration.active { border-color: var(--stage-consideration); box-shadow: 0 14px 28px color-mix(in srgb, var(--stage-consideration) 18%, transparent); }
+  .journey-btn.evaluation.active { border-color: var(--stage-evaluation); box-shadow: 0 14px 28px color-mix(in srgb, var(--stage-evaluation) 18%, transparent); }
+  .journey-btn.purchase.active { border-color: var(--stage-purchase); box-shadow: 0 14px 28px color-mix(in srgb, var(--stage-purchase) 18%, transparent); }
+  .journey-btn.post.active { border-color: var(--stage-post); box-shadow: 0 14px 28px color-mix(in srgb, var(--stage-post) 18%, transparent); }
+  .journey-btn.loyalty.active { border-color: var(--stage-loyalty); box-shadow: 0 14px 28px color-mix(in srgb, var(--stage-loyalty) 18%, transparent); }
+
+  .journey-btn.loop-stage.active {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--journey-active) 30%, rgba(255, 214, 161, 0.3)), rgba(255, 255, 255, 0.04)),
+      linear-gradient(180deg, rgba(26, 36, 31, 0.98), rgba(20, 28, 24, 0.95));
+    box-shadow:
+      0 0 0 1px rgba(255, 214, 161, 0.24),
+      0 18px 34px color-mix(in srgb, var(--journey-active) 34%, rgba(0, 0, 0, 0.2));
+  }
+
+  .journey-step {
+    display: block;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.46);
+    margin-bottom: 10px;
+  }
+
+  .journey-btn.loop-stage .journey-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 214, 161, 0.16);
+    color: rgba(255, 214, 161, 0.94);
+  }
+
+  .journey-btn.active .journey-step {
+    color: var(--amber);
+  }
+
+  .journey-btn.loop-stage.active .journey-step {
+    color: rgba(255, 214, 161, 0.98);
+    background: rgba(255, 214, 161, 0.18);
+  }
+
+  .journey-name {
+    display: block;
+    font-family: "DM Mono", monospace;
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    color: inherit;
+    text-wrap: balance;
+  }
+
+  .journey-btn.loop-stage .journey-name {
+    color: rgba(255, 248, 238, 0.98);
+  }
+
+  .journey-preview {
+    display: block;
+    font-size: 10px;
+    line-height: 1.5;
+    color: rgba(245, 240, 232, 0.64);
+    text-wrap: pretty;
+  }
+
+  .journey-btn.loop-stage .journey-preview {
+    color: rgba(255, 240, 224, 0.82);
+  }
+
+  .journey-btn.active .journey-preview {
+    color: rgba(245, 240, 232, 0.84);
+  }
+
+  .journey-selector-note {
+    margin: -4px 0 18px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: rgba(255, 240, 224, 0.78);
+    background: linear-gradient(90deg, rgba(255, 214, 161, 0.12), rgba(255, 214, 161, 0.03));
+    border-left: 4px solid rgba(255, 214, 161, 0.8);
+    padding: 14px 16px;
+  }
+
+  .journey-selector-note strong {
+    color: rgba(255, 214, 161, 0.92);
+    font-weight: 600;
+  }
+
+  .journey-stage {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .journey-panel,
+  .funnel-panel {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 30px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .journey-panel {
+    background: linear-gradient(180deg, rgba(82, 113, 184, 0.16), rgba(255, 255, 255, 0.04));
+    border-color: rgba(82, 113, 184, 0.24);
+  }
+
+  .funnel-panel {
+    background: linear-gradient(180deg, rgba(190, 134, 68, 0.16), rgba(255, 255, 255, 0.04));
+    border-color: rgba(190, 134, 68, 0.24);
+  }
+
+  .journey-panel::before,
+  .funnel-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--journey-active);
+  }
+
+  .panel-kicker {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+
+  .journey-panel .panel-kicker {
+    color: rgba(187, 211, 255, 0.92);
+  }
+
+  .funnel-panel .panel-kicker {
+    color: rgba(255, 214, 161, 0.92);
+  }
+
+  .stage-name,
+  .funnel-title {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+
+  .stage-copy,
+  .funnel-copy,
+  .journey-note,
+  .funnel-note,
+  .journey-list li,
+  .funnel-list li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(245, 240, 232, 0.76);
+  }
+
+  .journey-grid,
+  .funnel-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .journey-row,
+  .funnel-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+  }
+
+  .journey-row strong,
+  .funnel-row strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .journey-list,
+  .funnel-list {
+    margin-top: 8px;
+    padding-left: 18px;
+  }
+
+  .panel-swapping {
+    opacity: 0.7;
+    transform: translateY(6px);
+  }
+
+  .mapping-section {
+    background: var(--pale);
+  }
+
+  .mapping-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: rgba(13, 13, 13, 0.08);
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    margin-top: 32px;
+  }
+
+  .mapping-card {
+    border: 0;
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+    transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+  }
+
+  .mapping-card:hover,
+  .mapping-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(13, 13, 13, 0.08);
+    position: relative;
+    z-index: 1;
+  }
+
+  .mapping-card:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+  }
+
+  .mapping-card.is-active {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 239, 231, 0.96));
+    box-shadow: 0 22px 36px rgba(13, 13, 13, 0.12);
+    position: relative;
+    z-index: 2;
+  }
+
+  .mapping-card.is-active::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: var(--mapping-accent, var(--ink));
+  }
+
+  .mapping-card .stage-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .mapping-card.trigger { --mapping-accent: var(--stage-trigger); }
+  .mapping-card.consideration { --mapping-accent: var(--stage-consideration); }
+  .mapping-card.evaluation { --mapping-accent: var(--stage-evaluation); }
+  .mapping-card.purchase { --mapping-accent: var(--stage-purchase); }
+  .mapping-card.post { --mapping-accent: var(--stage-post); }
+  .mapping-card.loyalty { --mapping-accent: var(--stage-loyalty); }
+
+  .mapping-card.trigger .stage-label { color: var(--stage-trigger); }
+  .mapping-card.consideration .stage-label { color: var(--stage-consideration); }
+  .mapping-card.evaluation .stage-label { color: var(--stage-evaluation); }
+  .mapping-card.purchase .stage-label { color: var(--stage-purchase); }
+  .mapping-card.post .stage-label { color: var(--stage-post); }
+  .mapping-card.loyalty .stage-label { color: var(--stage-loyalty); }
+
+  .mapping-help {
+    margin-top: 22px;
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 28px 30px;
+    box-shadow: 0 24px 40px rgba(13, 13, 13, 0.06);
+  }
+
+  .mapping-help-tag {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .mapping-help-header {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .mapping-help-header h3 {
+    margin-bottom: 10px;
+  }
+
+  .mapping-help-copy,
+  .mapping-help-note,
+  .mapping-help-list li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .mapping-help-note {
+    margin: 0;
+    padding: 16px 18px;
+    background: var(--pale);
+    border-left: 4px solid var(--amber);
+  }
+
+  .mapping-help-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 22px;
+  }
+
+  .mapping-help-block {
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 16px;
+  }
+
+  .mapping-help-block strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .mapping-help-list {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1120px) {
+    .foundation-grid,
+    .mapping-help-header {
+      grid-template-columns: 1fr;
+    }
+
+    .journey-selector {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .mapping-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mapping-help-header,
+    .mapping-help-grid {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+  @media (max-width: 980px) {
+    .journey-stage {
+      grid-template-columns: 1fr;
+    }
+
+    .journey-selector {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .mapping-section {
+      padding: 60px 32px;
+    }
+
+    .journey-selector {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+  }
+
+  @media (max-width: 640px) {
+    .journey-selector {
+      grid-template-columns: 1fr;
+    }
+
+    .journey-btn {
+      min-height: auto;
+    }
+
+    .journey-name {
+      font-size: 14px;
+    }
+
+    .mapping-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mapping-help {
+      padding: 24px 22px;
+    }
+
+    .definition-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Customer Journey and Funnel</div>
+    <h1 class="hero-title">Customer Journey And The <em>Marketing Funnel</em></h1>
+    <p class="hero-sub">
+      A customer journey shows how buyers move from trigger to consideration, evaluation, purchase, postpurchase experience, and loyalty. A marketing funnel shows how the firm responds at each stage with the right channel, message, touchpoint, and campaign logic.
+    </p>
+    <div class="hero-related">
+      <div class="hero-related-label">Related Page</div>
+      <p><a href="product-life-cycle-and-diffusion.html">Product Life Cycle and Diffusion</a><br>Use this when you want the market-level diagnosis that should shape how the funnel and journey are designed here.</p>
+    </div>
+    <div class="hero-formula">
+      <div class="label">Core Relationship</div>
+      The customer journey reflects how customers move from trigger to purchase and beyond, what touchpoints they are exposed to, and what considerations matter at each stage. Based on that, we create a marketing funnel response to meet them, capture them, and satisfy them in the right way at the right time.
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Interactive</div>
+      <div class="hero-pill">Customer Journey</div>
+      <div class="hero-pill">Marketing Funnel</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      The customer journey helps us understand
+      <strong>how customers decide</strong>, <strong>what they consider</strong>, and <strong>where they show up</strong>.
+      The marketing funnel is the deliberate response we build around that.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag reveal">01 · Foundation</div>
+    <h2 class="section-title reveal">Why we need a customer journey</h2>
+    <p class="section-intro reveal">
+      Marketing is not just about sending one message to everyone. Buyers move through different stages, ask different questions, and encounter different touchpoints along the way. A customer journey makes that visible, and the funnel helps the firm decide what to do about it.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card reveal">
+        <h3>What a customer journey is</h3>
+        <p>
+          A customer journey is a stage-by-stage view of how a buyer moves through a decision process. It helps us understand what the buyer is trying to figure out, what influences them, and what touchpoints matter at each moment.
+        </p>
+        <div class="definition-flow">
+          <div class="definition-row">
+            <strong>Trigger</strong>
+            <span>The buyer encounters a need, problem, or prompt that starts the journey.</span>
+          </div>
+          <div class="definition-row">
+            <strong>Initial Consideration</strong>
+            <span>The buyer forms an initial set of brands or options based on prior exposure.</span>
+          </div>
+          <div class="definition-row">
+            <strong>Active Evaluation</strong>
+            <span>The buyer adds or subtracts options while searching, comparing, and shopping.</span>
+          </div>
+          <div class="definition-row">
+            <strong>Moment Of Purchase</strong>
+            <span>The buyer selects one brand or option at the point of choice.</span>
+          </div>
+          <div class="definition-row">
+            <strong>Postpurchase Experience</strong>
+            <span>The buyer experiences the reality of the choice and decides whether to stay in the loop.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card reveal">
+        <h3>Why the funnel belongs here</h3>
+        <p>
+          The customer journey helps us understand the customer's decision logic, key considerations, and relevant touchpoints at each stage. The marketing funnel belongs here because it is the deliberate response we build from that understanding.
+        </p>
+        <p>
+          In practice, that means a journey map helps us see how implementation should actually work, especially for place and promotion: where we should show up, what channel or touchpoint matters at that stage, and what kind of message or campaign belongs there for that specific purpose.
+        </p>
+        <p>
+          The larger goal is not only to attract new customers into the journey. It is to keep customers inside the loop after purchase. If the post-purchase experience is strong enough, customers do not fall back into active re-evaluation. They stay, repeat, and become easier to retain than new customers are to acquire.
+        </p>
+        <ul>
+          <li>We identify how the customer thinks and what matters at that stage.</li>
+          <li>We identify where the customer is most likely to encounter the brand.</li>
+          <li>We then choose the channels, campaigns, and actions that fit that stage.</li>
+          <li>The goal is alignment: the right response, in the right place, for the right customer logic.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foundation-takeaway reveal">
+      <div class="section-tag">Why We Use It</div>
+      <h3>The objective is not only to map the journey, but to improve it</h3>
+      <p>
+        A customer journey map helps us do more than describe what customers do. It helps us identify where customers move forward, where they get stuck, and where the experience needs to be fixed so the journey becomes more effective for both the customer and the firm.
+      </p>
+      <ul>
+        <li>We want to keep customers inside the loyalty loop so they do not fall back into full re-evaluation after purchase.</li>
+        <li>We want to identify exactly where the journey is weak so we know what to improve and how to improve it.</li>
+        <li>We use the map to build the customer experience step by step so it becomes more aligned with customer expectations.</li>
+        <li>That makes our products, services, touchpoints, and messages more relevant at each stage of the journey.</li>
+      </ul>
+      <p style="margin-top: 16px;">
+        The journey and funnel explain how an individual buyer moves. <a class="inline-link" href="product-life-cycle-and-diffusion.html">Product Life Cycle and Diffusion</a> explain what kind of market that buyer is moving inside. Earlier markets usually need more education and trial in the funnel, while later markets usually need more proof, efficiency, retention, and value discipline.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Interactive Journey</div>
+    <h2 class="section-title">See the buyer's logic and the firm's response together</h2>
+    <p class="section-intro">
+      This interaction follows the McKinsey-style journey logic. The full loop stays visible, and selecting a stage lets us compare the customer's decision logic with the matching marketing-funnel response.
+    </p>
+
+    <div class="journey-selector" id="journey-selector">
+      <button class="journey-btn trigger active" data-stage="trigger">
+        <span class="journey-step">01</span>
+        <span class="journey-name">Trigger</span>
+        <span class="journey-preview">A need or prompt starts the journey.</span>
+      </button>
+      <button class="journey-btn consideration" data-stage="consideration">
+        <span class="journey-step">02</span>
+        <span class="journey-name">Initial Consideration</span>
+        <span class="journey-preview">An initial set of brands enters the mind.</span>
+      </button>
+      <button class="journey-btn evaluation" data-stage="evaluation">
+        <span class="journey-step">03</span>
+        <span class="journey-name">Active Evaluation</span>
+        <span class="journey-preview">Compare, add, and subtract options.</span>
+      </button>
+      <button class="journey-btn purchase loop-stage" data-stage="purchase">
+        <span class="journey-step">04</span>
+        <span class="journey-name">Moment Of Purchase</span>
+        <span class="journey-preview">Choose one option at the point of sale.</span>
+      </button>
+      <button class="journey-btn post loop-stage" data-stage="post">
+        <span class="journey-step">05</span>
+        <span class="journey-name">Postpurchase Experience</span>
+        <span class="journey-preview">Use, judge, and decide whether to stay.</span>
+      </button>
+      <button class="journey-btn loyalty loop-stage" data-stage="loyalty">
+        <span class="journey-step">06</span>
+        <span class="journey-name">Loyalty Loop</span>
+        <span class="journey-preview">Repeat and stay without full re-evaluation.</span>
+      </button>
+    </div>
+
+    <p class="journey-selector-note">
+      <strong>Stages 04-06 form the loyalty loop.</strong> The strategic goal is to keep customers inside this part of the system so they do not fall back into full re-evaluation.
+    </p>
+
+    <div class="journey-stage">
+      <div class="journey-panel reveal" id="journey-panel">
+        <div class="panel-kicker">Customer Decision Process · What Customers Think</div>
+        <h3 class="stage-name" id="stage-name">Trigger</h3>
+        <p class="stage-copy" id="stage-copy">
+          The buyer encounters a need, problem, or prompt that starts the journey. They may not be comparing brands yet, but something has happened that opens the path into consideration.
+        </p>
+        <div class="journey-grid">
+          <div class="journey-row">
+            <strong>Decision Logic</strong>
+            <span class="journey-note" id="journey-logic">"Something happened. Do I need to care about this now?"</span>
+          </div>
+          <div class="journey-row">
+            <strong>Touchpoints</strong>
+            <ul class="journey-list" id="journey-touchpoints">
+              <li>Life event, need state, or pain point</li>
+              <li>Ambient brand exposure</li>
+              <li>Word of mouth or recent prompts</li>
+            </ul>
+          </div>
+          <div class="journey-row">
+            <strong>Main Considerations</strong>
+            <ul class="journey-list" id="journey-considerations">
+              <li>Problem recognition</li>
+              <li>Relevance</li>
+              <li>Readiness to enter the category</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-panel reveal" id="funnel-panel">
+        <div class="panel-kicker">Marketing Funnel · How Do We Respond?</div>
+        <h3 class="funnel-title" id="funnel-title">Create relevance and trigger category entry</h3>
+        <p class="funnel-copy" id="funnel-copy">
+          At this stage, the goal is to make the need legible and make the brand mentally available when the trigger happens.
+        </p>
+        <div class="funnel-grid">
+          <div class="funnel-row">
+            <strong>Funnel Objective</strong>
+            <span class="funnel-note" id="funnel-objective">Enter the buyer's mind at the moment the trigger appears.</span>
+          </div>
+          <div class="funnel-row">
+            <strong>Recommended Channels</strong>
+            <ul class="funnel-list" id="funnel-channels">
+              <li>Broad reach and category cues</li>
+              <li>Top-of-mind branding</li>
+              <li>Problem-led content</li>
+            </ul>
+          </div>
+          <div class="funnel-row">
+            <strong>Best Campaign Style</strong>
+            <span class="funnel-note" id="funnel-campaign">Trigger-based messaging, need framing, and memorable brand cues.</span>
+          </div>
+          <div class="funnel-row">
+            <strong>Why This Match Works</strong>
+            <span class="funnel-note" id="funnel-why">The buyer is just entering the journey, so the response should open the path into consideration instead of forcing a decision.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mapping-section">
+  <div class="mapping-shell">
+    <div class="section-tag reveal">03 · Stage Map</div>
+    <h2 class="section-title reveal">Moments of truth validate whether the McKinsey-style journey and funnel are working</h2>
+    <p class="section-intro reveal">
+      The point of mapping the customer journey is not only to describe stages. It is to design a funnel response that helps us succeed at the key moments of truth. If those moments are not working, the journey design and the funnel response need improvement.
+    </p>
+
+    <div class="mapping-grid">
+      <button class="mapping-card trigger reveal is-active" data-stage="trigger" type="button">
+        <div class="stage-label">Trigger</div>
+        <h3>Before the moment of truth</h3>
+        <p>A need, event, or prompt starts the journey. There is no formal moment of truth yet, so the firm's job is to be mentally available and move the buyer into the initial consideration set.</p>
+      </button>
+      <button class="mapping-card consideration reveal" data-stage="consideration" type="button">
+        <div class="stage-label">Initial Consideration</div>
+        <h3>Enter the consideration set</h3>
+        <p>The buyer forms an initial set of brands based on prior perceptions and recent touchpoints. This is where exposure begins to pay off because the brand must become one of the options the buyer is willing to consider.</p>
+      </button>
+      <button class="mapping-card evaluation reveal" data-stage="evaluation" type="button">
+        <div class="stage-label">Active Evaluation</div>
+        <h3>Zero Moment of Truth</h3>
+        <p>The buyer adds or subtracts brands while evaluating what they want. Success at this moment means they actively search, evaluate, and compare the offer seriously.</p>
+      </button>
+      <button class="mapping-card purchase reveal" data-stage="purchase" type="button">
+        <div class="stage-label">Moment Of Purchase</div>
+        <h3>First Moment of Truth</h3>
+        <p>The buyer decides. Success at this moment means the firm's confidence, convenience, and conversion support are strong enough for the buyer to commit and purchase at the point of choice.</p>
+      </button>
+      <button class="mapping-card post reveal" data-stage="post" type="button">
+        <div class="stage-label">Postpurchase Experience</div>
+        <h3>Second Moment of Truth</h3>
+        <p>The buyer experiences the outcome. Success at this moment means onboarding, delivery, and expectation match are strong enough to create a positive real experience and keep the buyer in the loop instead of sending them back to re-evaluation.</p>
+      </button>
+      <button class="mapping-card loyalty reveal" data-stage="loyalty" type="button">
+        <div class="stage-label">Loyalty Loop</div>
+        <h3>Third Moment of Truth</h3>
+        <p>The buyer repeats, stays, or recommends without fully reopening the choice set. Success at this moment means loyalty compounds into advocacy, retention, and lower future acquisition pressure.</p>
+      </button>
+    </div>
+
+    <div class="mapping-help reveal" id="mapping-help">
+      <div class="mapping-help-tag">Click A Stage · How Do We Help Customers Pass It?</div>
+      <div class="mapping-help-header">
+        <div>
+          <h3 id="mapping-help-title">Trigger</h3>
+          <p class="mapping-help-copy" id="mapping-help-copy">
+            We help customers pass this stage by making the brand easy to notice, easy to remember, and easy to connect to the need that just appeared.
+          </p>
+        </div>
+        <p class="mapping-help-note" id="mapping-help-note">
+          Focus on category cues, problem framing, and broad-reach touchpoints that put the brand into the buyer's mind before comparison begins.
+        </p>
+      </div>
+      <div class="mapping-help-grid">
+        <div class="mapping-help-block">
+          <strong>Tactics To Prioritize</strong>
+          <ul class="mapping-help-list" id="mapping-help-tactics">
+            <li>SEO and search ads around emerging needs</li>
+            <li>Problem-led content and social distribution</li>
+            <li>Memorable brand cues across high-reach media</li>
+          </ul>
+        </div>
+        <div class="mapping-help-block">
+          <strong>Examples</strong>
+          <ul class="mapping-help-list" id="mapping-help-examples">
+            <li>Publish a landing page that answers “How do I solve this problem?” before pitching the offer.</li>
+            <li>Run YouTube or Instagram ads that frame the pain point and link it to the category.</li>
+            <li>Build remarketing audiences from educational content viewers for the next stage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding: 24px 32px; border-top: 1px solid rgba(13,13,13,0.08); display: flex; justify-content: space-between; gap: 12px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(13,13,13,0.42);">
+  <div>Think with Dave</div>
+  <div>Marketing · Customer Journey</div>
+</footer>
+
+<script>
+  const stageData = {
+    trigger: {
+      color: "#7a5a8a",
+      name: "Trigger",
+      copy: "The buyer encounters a need, problem, or prompt that starts the journey. They are not comparing brands yet, but something has happened that opens the path into consideration.",
+      logic: "Something happened. Do I need to care about this now?",
+      touchpoints: [
+        "Need states and life events",
+        "Ambient brand exposure",
+        "Word of mouth or recent prompts"
+      ],
+      considerations: [
+        "Problem recognition",
+        "Relevance",
+        "Readiness to enter the category"
+      ],
+      funnelTitle: "Create relevance and trigger category entry",
+      funnelCopy: "At this stage, the goal is to make the need legible and make the brand mentally available when the trigger happens.",
+      objective: "Enter the buyer's mind at the moment the trigger appears.",
+      channels: [
+        "Broad reach and category cues",
+        "Top-of-mind branding",
+        "Problem-led content"
+      ],
+      campaign: "Trigger-based messaging, need framing, and memorable brand cues.",
+      why: "The buyer is just entering the journey, so the response should open the path into consideration instead of forcing a decision.",
+      helpTitle: "Trigger",
+      helpCopy: "We help customers pass this stage by making the brand easy to notice, easy to remember, and easy to connect to the need that just appeared.",
+      helpNote: "Focus on category cues, problem framing, and broad-reach touchpoints that put the brand into the buyer's mind before comparison begins.",
+      helpTactics: [
+        "SEO and search ads around emerging needs",
+        "Problem-led content and social distribution",
+        "Memorable brand cues across high-reach media"
+      ],
+      helpExamples: [
+        "Publish a landing page that answers “How do I solve this problem?” before pitching the offer.",
+        "Run YouTube or Instagram ads that frame the pain point and link it to the category.",
+        "Build remarketing audiences from educational content viewers for the next stage."
+      ]
+    },
+    consideration: {
+      color: "#5271b8",
+      name: "Initial Consideration",
+      copy: "The buyer forms an initial set of brands or options based on prior perceptions and recent touchpoints. This is the shortlist that enters the mind before deeper comparison begins.",
+      logic: "Which brands or options come to mind first as possible solutions?",
+      touchpoints: [
+        "Recent exposure and remembered brands",
+        "Category familiarity",
+        "Initial social proof and reputation"
+      ],
+      considerations: [
+        "Mental availability",
+        "Familiarity",
+        "Perceived fit at first glance"
+      ],
+      funnelTitle: "Make sure the brand enters the initial set",
+      funnelCopy: "At this stage, the firm's response is to ensure it becomes one of the brands the buyer is willing to consider seriously.",
+      objective: "Earn inclusion in the buyer's initial consideration set.",
+      channels: [
+        "Consistent brand presence",
+        "Category-level media and recall assets",
+        "High-salience touchpoints"
+      ],
+      campaign: "Brand salience, distinctive assets, and easy-to-recall positioning cues.",
+      why: "If the brand never enters the set, it may never get evaluated no matter how strong the offer is.",
+      helpTitle: "Initial Consideration",
+      helpCopy: "We help customers pass this stage by making sure the brand feels familiar, credible, and relevant enough to enter the shortlist.",
+      helpNote: "Focus on mental availability and repeat exposure so the brand is one of the options the buyer is willing to consider seriously.",
+      helpTactics: [
+        "Consistent brand messaging across paid, owned, and earned channels",
+        "Category pages, listicles, and aggregator placements",
+        "High-recall visual assets and concise value propositions"
+      ],
+      helpExamples: [
+        "Secure placement in “best tools” articles or marketplace category pages where buyers build their shortlist.",
+        "Use LinkedIn or Meta retargeting to reinforce the same value proposition across multiple touchpoints.",
+        "Create simple comparison one-pagers that make the brand easy to remember and explain."
+      ]
+    },
+    evaluation: {
+      color: "#4e8b6b",
+      name: "Active Evaluation",
+      copy: "The buyer actively compares possibilities. They may add or subtract brands as they search, gather information, and shop.",
+      logic: "Which option fits me best? What are the trade-offs? Which one can I trust?",
+      touchpoints: [
+        "Comparison pages and product websites",
+        "Reviews, testimonials, and peer opinions",
+        "Sales conversations and demos"
+      ],
+      considerations: [
+        "Credibility",
+        "Fit with needs",
+        "Trade-offs and differentiation"
+      ],
+      funnelTitle: "Provide proof and reduce uncertainty",
+      funnelCopy: "The firm should help the buyer compare with confidence. This means strong differentiation, concrete evidence, and clearer decision criteria.",
+      objective: "Move the buyer from curiosity to credible preference.",
+      channels: [
+        "Product pages and comparison tables",
+        "Email nurture and remarketing",
+        "Case studies, demos, and consultation"
+      ],
+      campaign: "Proof-driven campaigns, differentiation claims, comparison content, and trust-building assets.",
+      why: "The buyer is asking evaluative questions, so the response must help them judge, not just notice.",
+      helpTitle: "Zero Moment of Truth",
+      helpCopy: "We help customers pass this stage by reducing uncertainty and giving them enough proof to compare the offer with confidence.",
+      helpNote: "Focus on trust, differentiation, and decision support so the buyer can answer why this option fits better than the alternatives.",
+      helpTactics: [
+        "Comparison pages, FAQs, and proof-rich product content",
+        "Reviews, testimonials, and case studies",
+        "Email nurture, demos, and remarketing that answers objections"
+      ],
+      helpExamples: [
+        "Build a comparison page showing how your offer differs from the main alternatives.",
+        "Add customer reviews, before-and-after examples, or ROI case studies to the product page.",
+        "Send follow-up emails that answer common objections after a visitor downloads a guide or starts a demo."
+      ]
+    },
+    purchase: {
+      color: "#be8644",
+      name: "Moment Of Purchase",
+      copy: "The buyer is at the point of choice. The main issue now is confidence, convenience, and final friction at the moment of purchase.",
+      logic: "Am I ready to buy now? Is this safe, easy, and worth committing to?",
+      touchpoints: [
+        "Checkout, sales reps, or proposal flow",
+        "Pricing pages and conversion landing pages",
+        "Trial or final offer interactions"
+      ],
+      considerations: [
+        "Final confidence",
+        "Ease of action",
+        "Perceived risk"
+      ],
+      funnelTitle: "Support conversion and remove final friction",
+      funnelCopy: "The firm's job is to make the next step feel easy, credible, and low-risk. Small frictions matter a lot here.",
+      objective: "Help the buyer complete the decision without hesitation.",
+      channels: [
+        "Conversion pages and checkout design",
+        "Sales enablement and direct contact",
+        "Offer sequencing and retargeting"
+      ],
+      campaign: "Conversion-focused campaigns, urgency with credibility, onboarding previews, and risk-reduction offers.",
+      why: "The buyer already cares. Now they need the path to action to feel smooth and justified.",
+      helpTitle: "First Moment of Truth",
+      helpCopy: "We help customers pass this stage by removing final friction and making the purchase feel easy, safe, and worth acting on now.",
+      helpNote: "Focus on conversion points because this is where small issues on the landing page, pricing page, checkout flow, or sales process can kill the decision.",
+      helpTactics: [
+        "Improve landing pages, pricing pages, and checkout flow",
+        "Reduce risk with guarantees, trials, and transparent policies",
+        "Support decision-making with retargeting, sales scripts, and proof at the point of choice"
+      ],
+      helpExamples: [
+        "Simplify the checkout flow by removing unnecessary form fields and clarifying delivery or onboarding steps.",
+        "Add trust signals, testimonials, pricing clarity, and a guarantee directly on the purchase page.",
+        "Equip sales reps with objection-handling scripts and side-by-side pricing pages that make the decision easier."
+      ]
+    },
+    post: {
+      color: "#b66155",
+      name: "Postpurchase Experience",
+      copy: "The decision has been made, but the journey is not over. The buyer now tests whether the promise matches the reality and whether they should remain in the loop.",
+      logic: "Did I make the right choice? Is this delivering what I expected?",
+      touchpoints: [
+        "Onboarding and support interactions",
+        "Packaging, delivery, and first use",
+        "Emails, help content, and service follow-up"
+      ],
+      considerations: [
+        "Expectation match",
+        "Ease of adoption",
+        "Confidence after purchase"
+      ],
+      funnelTitle: "Protect the experience and reinforce the choice",
+      funnelCopy: "This stage is about making the experience feel right. Good onboarding and service quality turn purchase into satisfaction.",
+      objective: "Reduce regret and increase successful use.",
+      channels: [
+        "Onboarding email and product guidance",
+        "Support and service channels",
+        "Customer success or education content"
+      ],
+      campaign: "Welcome flows, onboarding support, reassurance messaging, and usage activation.",
+      why: "A bad post-purchase stage destroys trust. A strong one creates retention and future advocacy.",
+      helpTitle: "Second Moment of Truth",
+      helpCopy: "We help customers pass this stage by making the first real experience smooth, useful, and consistent with what marketing promised.",
+      helpNote: "Focus on onboarding, expectation matching, and early support because this is where satisfaction or regret gets created.",
+      helpTactics: [
+        "Welcome flows, setup guidance, and onboarding support",
+        "Proactive customer success communication",
+        "Help content, support responsiveness, and usage activation campaigns"
+      ],
+      helpExamples: [
+        "Send a welcome email sequence that shows the first three actions customers should take after purchase.",
+        "Create onboarding videos or checklists that shorten time-to-value in the first week.",
+        "Trigger support outreach when a customer has purchased but has not activated or used the product."
+      ]
+    },
+    loyalty: {
+      color: "#3f6b58",
+      name: "Loyalty Loop",
+      copy: "The buyer repeats, stays, or recommends without fully reopening evaluation. The relationship becomes part of habit, retention, and growth.",
+      logic: "Would I stay with this? Would I buy again without re-evaluating? Would I recommend it?",
+      touchpoints: [
+        "Retention touchpoints and repeat buying moments",
+        "Referral requests and recommendation prompts",
+        "Community, loyalty, and account relationship signals"
+      ],
+      considerations: [
+        "Repeat confidence",
+        "Relationship quality",
+        "Willingness to recommend or stay"
+      ],
+      funnelTitle: "Keep the customer in the loop",
+      funnelCopy: "The firm's job is to make repetition, retention, and recommendation feel natural enough that the buyer does not fully return to re-evaluation.",
+      objective: "Extend customer value through retention, repeat purchase, and referral.",
+      channels: [
+        "Loyalty programs and retention campaigns",
+        "Referral systems and review prompts",
+        "Personalized follow-up and community touchpoints"
+      ],
+      campaign: "Retention communication, referral prompts, loyalty offers, and customer storytelling.",
+      why: "At this stage, the buyer can become a retained customer and a growth channel without fully restarting the decision journey.",
+      helpTitle: "Third Moment of Truth",
+      helpCopy: "We help customers pass this stage by making repeat behavior easier than re-evaluation and by turning satisfaction into loyalty and advocacy.",
+      helpNote: "Focus on retention and habit-building so customers stay in the loop, buy again, and reflect the brand back into the market.",
+      helpTactics: [
+        "Loyalty programs, reorder reminders, and lifecycle CRM",
+        "Referral prompts, review requests, and community-building touchpoints",
+        "Personalized offers and win-back prevention campaigns"
+      ],
+      helpExamples: [
+        "Send reorder reminders or subscription renewal nudges before the customer needs to re-evaluate the market.",
+        "Offer referral rewards after a successful delivery or positive support interaction.",
+        "Build segmented email flows for repeat buyers with personalized offers, loyalty perks, or member-only content."
+      ]
+    }
+  };
+
+  const ids = {
+    journeyPanel: document.getElementById("journey-panel"),
+    funnelPanel: document.getElementById("funnel-panel"),
+    stageName: document.getElementById("stage-name"),
+    stageCopy: document.getElementById("stage-copy"),
+    journeyLogic: document.getElementById("journey-logic"),
+    journeyTouchpoints: document.getElementById("journey-touchpoints"),
+    journeyConsiderations: document.getElementById("journey-considerations"),
+    funnelTitle: document.getElementById("funnel-title"),
+    funnelCopy: document.getElementById("funnel-copy"),
+    funnelObjective: document.getElementById("funnel-objective"),
+    funnelChannels: document.getElementById("funnel-channels"),
+    funnelCampaign: document.getElementById("funnel-campaign"),
+    funnelWhy: document.getElementById("funnel-why"),
+    mappingHelpTitle: document.getElementById("mapping-help-title"),
+    mappingHelpCopy: document.getElementById("mapping-help-copy"),
+    mappingHelpNote: document.getElementById("mapping-help-note"),
+    mappingHelpTactics: document.getElementById("mapping-help-tactics"),
+    mappingHelpExamples: document.getElementById("mapping-help-examples")
+  };
+
+  function listMarkup(items) {
+    return items.map((item) => `<li>${item}</li>`).join("");
+  }
+
+  function setStage(key) {
+    const data = stageData[key];
+    document.documentElement.style.setProperty("--journey-active", data.color);
+
+    ids.journeyPanel.classList.add("panel-swapping");
+    ids.funnelPanel.classList.add("panel-swapping");
+
+    document.querySelectorAll(".journey-btn").forEach((button) => {
+      button.classList.toggle("active", button.dataset.stage === key);
+    });
+
+    window.setTimeout(() => {
+      ids.stageName.textContent = data.name;
+      ids.stageCopy.textContent = data.copy;
+      ids.journeyLogic.textContent = data.logic;
+      ids.journeyTouchpoints.innerHTML = listMarkup(data.touchpoints);
+      ids.journeyConsiderations.innerHTML = listMarkup(data.considerations);
+      ids.funnelTitle.textContent = data.funnelTitle;
+      ids.funnelCopy.textContent = data.funnelCopy;
+      ids.funnelObjective.textContent = data.objective;
+      ids.funnelChannels.innerHTML = listMarkup(data.channels);
+      ids.funnelCampaign.textContent = data.campaign;
+      ids.funnelWhy.textContent = data.why;
+      ids.journeyPanel.classList.remove("panel-swapping");
+      ids.funnelPanel.classList.remove("panel-swapping");
+    }, 150);
+  }
+
+  function setMappingStage(key) {
+    const data = stageData[key];
+
+    document.querySelectorAll(".mapping-card").forEach((card) => {
+      card.classList.toggle("is-active", card.dataset.stage === key);
+    });
+
+    ids.mappingHelpTitle.textContent = data.helpTitle;
+    ids.mappingHelpCopy.textContent = data.helpCopy;
+    ids.mappingHelpNote.textContent = data.helpNote;
+    ids.mappingHelpTactics.innerHTML = listMarkup(data.helpTactics);
+    ids.mappingHelpExamples.innerHTML = listMarkup(data.helpExamples);
+  }
+
+  document.querySelectorAll(".journey-btn").forEach((button) => {
+    button.addEventListener("click", () => setStage(button.dataset.stage));
+  });
+
+  document.querySelectorAll(".mapping-card").forEach((card) => {
+    card.addEventListener("click", () => setMappingStage(card.dataset.stage));
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.16 });
+
+  document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+  setStage("trigger");
+  setMappingStage("trigger");
+</script>
+</body>
+</html>

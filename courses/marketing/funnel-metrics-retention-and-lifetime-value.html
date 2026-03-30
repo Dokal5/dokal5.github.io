@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funnel Metrics, Retention, and Lifetime Value | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --funnel-accent: #4a6741;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills,
+  .scenario-selector,
+  .metric-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-pills {
+    margin-top: 28px;
+  }
+
+  .hero-pill,
+  .scenario-selector button,
+  .metric-card {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-pill {
+    padding: 8px 12px;
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .interactive-grid,
+  .alignment-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .interactive-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    margin-top: 24px;
+  }
+
+  .foundation-card,
+  .panel,
+  .detail-panel,
+  .alignment-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .panel h3,
+  .detail-panel h3,
+  .alignment-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .panel p,
+  .panel li,
+  .detail-panel p,
+  .detail-panel li,
+  .alignment-card p,
+  .alignment-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .mini-label,
+  .metric-card strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .scenario-selector button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    cursor: pointer;
+    padding: 8px 12px;
+  }
+
+  .scenario-selector button.active,
+  .scenario-selector button:hover {
+    background: color-mix(in srgb, var(--funnel-accent) 18%, transparent);
+    border-color: var(--funnel-accent);
+    color: var(--cream);
+  }
+
+  .panel,
+  .detail-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .metric-grid {
+    margin-top: 20px;
+  }
+
+  .metric-card {
+    flex: 1 1 140px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 16px;
+  }
+
+  .metric-card strong {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .metric-card span {
+    color: var(--cream);
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .detail-list,
+  .alignment-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .foundation-grid,
+    .interactive-grid,
+    .alignment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Funnel Economics</div>
+    <h1 class="hero-title">Funnel Metrics, Retention, and Lifetime <em>Value</em></h1>
+    <p class="hero-sub">
+      A funnel can look healthy at the top and still destroy value if retention is weak. Decision makers often over-read acquisition and conversion, even though repeat behavior changes the economics of the whole system.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Acquisition -> conversion -> retention -> lifetime value
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Journey metrics</div>
+      <div class="hero-pill">Retention</div>
+      <div class="hero-pill">LTV</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      Marketing does not end at conversion. If the customer leaves quickly, the funnel may be efficient in appearance but weak in economic reality.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">The funnel needs to connect to customer economics</h2>
+    <p class="section-intro">
+      Metrics become useful when teams can see how one stage affects the others. A strong conversion rate matters, but not if the acquired customers churn immediately.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>Four metrics that should talk to each other</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Traffic</strong>
+            <span>How many people are entering the system?</span>
+          </div>
+          <div class="flow-row">
+            <strong>Conversion</strong>
+            <span>How many move into purchase or activation?</span>
+          </div>
+          <div class="flow-row">
+            <strong>Retention</strong>
+            <span>How many stay, repeat, or remain valuable over time?</span>
+          </div>
+          <div class="flow-row">
+            <strong>Lifetime value</strong>
+            <span>How much total value does a customer generate across the relationship?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>Common management mistake</h3>
+        <p>
+          Teams often assume better acquisition automatically means a better business. But if post-purchase experience is weak, acquisition can simply feed a leaky bucket.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Scenario Comparison</div>
+    <h2 class="section-title">Compare the funnel when retention improves or breaks</h2>
+    <p class="section-intro">
+      The three scenarios below imagine the same subscription product with different funnel economics. The point is to see how retention changes the meaning of everything else.
+    </p>
+
+    <div class="scenario-selector" id="scenario-selector">
+      <button class="active" data-key="fragile" type="button">High conversion, weak retention</button>
+      <button data-key="balanced" type="button">Balanced system</button>
+      <button data-key="loyal" type="button">Strong retention loop</button>
+    </div>
+
+    <div class="interactive-grid">
+      <div class="panel">
+        <div class="mini-label">Metric snapshot</div>
+        <h3 id="scenario-title">High conversion, weak retention</h3>
+        <p id="scenario-copy">The top of the funnel looks efficient, but customers leave too quickly for the economics to become truly attractive.</p>
+        <div class="metric-grid">
+          <div class="metric-card"><strong>Conversion</strong><span id="conv-value">6.2%</span></div>
+          <div class="metric-card"><strong>3-Month retention</strong><span id="ret-value">28%</span></div>
+          <div class="metric-card"><strong>CAC</strong><span id="cac-value">EUR 44</span></div>
+          <div class="metric-card"><strong>LTV</strong><span id="ltv-value">EUR 71</span></div>
+        </div>
+      </div>
+
+      <div class="detail-panel">
+        <div class="mini-label">Interpretation</div>
+        <h3 id="impact-title">Acquisition is working harder than the relationship</h3>
+        <p id="impact-copy">The business is paying to win customers it cannot keep long enough. That usually means the post-purchase experience, fit, or onboarding logic needs work.</p>
+        <ul class="detail-list" id="impact-list">
+          <li>Strong paid acquisition can hide weak product-market fit.</li>
+          <li>Retention is the main bottleneck in the system.</li>
+          <li>Improving customer experience may create more value than buying more traffic.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">03 · Alignment</div>
+    <h2 class="section-title">The best funnel is not always the one with the highest immediate conversion</h2>
+    <p class="section-intro">
+      Marketing quality should be judged not only by what enters the system, but by what remains valuable after customers have real experience with the offer.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Short-term obsession</h3>
+        <ul>
+          <li>Optimize top-of-funnel traffic and conversion only.</li>
+          <li>Ignore onboarding, usage, and repeat behavior.</li>
+          <li>Risk building a high-churn acquisition machine.</li>
+        </ul>
+      </div>
+
+      <div class="alignment-card">
+        <h3>Stronger system view</h3>
+        <ul>
+          <li>Connect journey design with post-purchase experience.</li>
+          <li>Treat retention as evidence of real value delivered.</li>
+          <li>Use lifetime value to judge acquisition quality more honestly.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Funnel and LTV</div>
+</footer>
+
+<script>
+  const scenarioData = {
+    fragile: {
+      title: "High conversion, weak retention",
+      copy: "The top of the funnel looks efficient, but customers leave too quickly for the economics to become truly attractive.",
+      conv: "6.2%",
+      ret: "28%",
+      cac: "EUR 44",
+      ltv: "EUR 71",
+      impactTitle: "Acquisition is working harder than the relationship",
+      impactCopy: "The business is paying to win customers it cannot keep long enough. That usually means the post-purchase experience, fit, or onboarding logic needs work.",
+      list: [
+        "Strong paid acquisition can hide weak product-market fit.",
+        "Retention is the main bottleneck in the system.",
+        "Improving customer experience may create more value than buying more traffic."
+      ],
+      accent: "#8b3a2a"
+    },
+    balanced: {
+      title: "Balanced system",
+      copy: "Acquisition, conversion, and retention all perform reasonably well, creating healthier economics and more strategic flexibility.",
+      conv: "4.8%",
+      ret: "46%",
+      cac: "EUR 39",
+      ltv: "EUR 118",
+      impactTitle: "The funnel and the relationship support each other",
+      impactCopy: "This is often the most realistic target state: not perfect at every step, but coherent enough that customer value accumulates over time.",
+      list: [
+        "Acquisition is efficient enough to grow without panic.",
+        "Retention supports payback and repeat value.",
+        "The firm can improve either side of the system without structural weakness."
+      ],
+      accent: "#4a6741"
+    },
+    loyal: {
+      title: "Strong retention loop",
+      copy: "Conversion is not the highest, but the customers who do enter the system stay and compound value over time.",
+      conv: "3.9%",
+      ret: "68%",
+      cac: "EUR 42",
+      ltv: "EUR 196",
+      impactTitle: "The relationship is turning into an asset",
+      impactCopy: "Retention makes acquisition more powerful because each customer remains economically valuable for longer and is more likely to repeat or advocate.",
+      list: [
+        "Retention multiplies the value of each acquired customer.",
+        "Higher LTV allows more flexibility in acquisition investment.",
+        "The loyalty loop is becoming economically visible, not just conceptually attractive."
+      ],
+      accent: "#d4a843"
+    }
+  };
+
+  const scenarioButtons = Array.from(document.querySelectorAll("#scenario-selector button"));
+  const scenarioTitle = document.getElementById("scenario-title");
+  const scenarioCopy = document.getElementById("scenario-copy");
+  const convValue = document.getElementById("conv-value");
+  const retValue = document.getElementById("ret-value");
+  const cacValue = document.getElementById("cac-value");
+  const ltvValue = document.getElementById("ltv-value");
+  const impactTitle = document.getElementById("impact-title");
+  const impactCopy = document.getElementById("impact-copy");
+  const impactList = document.getElementById("impact-list");
+
+  function renderScenario(key) {
+    const data = scenarioData[key];
+    document.documentElement.style.setProperty("--funnel-accent", data.accent);
+    scenarioButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
+    scenarioTitle.textContent = data.title;
+    scenarioCopy.textContent = data.copy;
+    convValue.textContent = data.conv;
+    retValue.textContent = data.ret;
+    cacValue.textContent = data.cac;
+    ltvValue.textContent = data.ltv;
+    impactTitle.textContent = data.impactTitle;
+    impactCopy.textContent = data.impactCopy;
+    impactList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
+  }
+
+  scenarioButtons.forEach((button) => {
+    button.addEventListener("click", () => renderScenario(button.dataset.key));
+  });
+</script>
+
+</body>
+</html>

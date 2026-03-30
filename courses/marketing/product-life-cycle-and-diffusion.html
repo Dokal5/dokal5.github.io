@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Life Cycle and Diffusion | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --life-accent: #c8872b;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .inline-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.24);
+  }
+
+  .interactive-band .inline-link {
+    border-bottom-color: rgba(245, 240, 232, 0.3);
+  }
+
+  .hero-pills,
+  .stage-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-pills {
+    margin-top: 28px;
+  }
+
+  .hero-related {
+    margin-top: 22px;
+    padding: 16px 18px;
+    background: rgba(245, 240, 232, 0.05);
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    max-width: 420px;
+  }
+
+  .hero-related-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.52);
+    margin-bottom: 8px;
+  }
+
+  .hero-related a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.32);
+    line-height: 1.8;
+  }
+
+  .hero-related p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: rgba(245, 240, 232, 0.7);
+  }
+
+  .hero-pill,
+  .stage-selector button {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+
+  .hero-pill {
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .signal-section,
+  .ansoff-section,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .signal-shell,
+  .ansoff-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .interactive-grid,
+  .signal-grid,
+  .ansoff-grid,
+  .alignment-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .interactive-grid {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 24px;
+  }
+
+  .signal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .ansoff-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .causal-flow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .causal-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 22px 20px;
+  }
+
+  .causal-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .causal-card p,
+  .causal-card li {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .causal-card ul {
+    margin-top: 14px;
+    padding-left: 18px;
+  }
+
+  .causal-arrow {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .causal-table-wrap {
+    margin-top: 24px;
+    overflow-x: auto;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    background: white;
+  }
+
+  .causal-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+  }
+
+  .causal-table th,
+  .causal-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 18px 16px;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .causal-table th {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    background: rgba(200, 135, 43, 0.05);
+  }
+
+  .causal-table td:first-child {
+    font-weight: 600;
+    color: rgba(13, 13, 13, 0.92);
+    min-width: 150px;
+  }
+
+  .foundation-card,
+  .curve-panel,
+  .detail-panel,
+  .signal-card,
+  .ansoff-card,
+  .alignment-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .curve-panel h3,
+  .detail-panel h3,
+  .signal-card h3,
+  .ansoff-card h3,
+  .alignment-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .curve-panel p,
+  .curve-panel li,
+  .detail-panel p,
+  .detail-panel li,
+  .signal-card p,
+  .signal-card li,
+  .ansoff-card p,
+  .ansoff-card li,
+  .alignment-card p,
+  .alignment-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .signal-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  .signal-diagnostic {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .signal-row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .signal-row strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .signal-row span {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .signal-table-wrap {
+    margin-top: 28px;
+    overflow-x: auto;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    background: white;
+  }
+
+  .signal-table {
+    width: 100%;
+    min-width: 860px;
+    border-collapse: collapse;
+  }
+
+  .signal-table th,
+  .signal-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 18px 16px;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .signal-table th {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    background: rgba(200, 135, 43, 0.05);
+  }
+
+  .signal-table td:first-child,
+  .signal-table th:first-child {
+    min-width: 150px;
+  }
+
+  .signal-table td:first-child {
+    font-weight: 600;
+    color: rgba(13, 13, 13, 0.92);
+  }
+
+  .foundation-bridge {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: rgba(200, 135, 43, 0.08);
+    border-left: 3px solid var(--amber);
+    font-size: 12px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+    max-width: 780px;
+  }
+
+  .section-link {
+    margin-top: 22px;
+    font-size: 11px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.56);
+    max-width: 760px;
+  }
+
+  .section-link strong {
+    color: var(--amber);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  .sequence-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .sequence-card {
+    position: relative;
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 20px 18px;
+  }
+
+  .sequence-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 34px;
+    right: -10px;
+    width: 20px;
+    height: 1px;
+    background: rgba(200, 135, 43, 0.45);
+  }
+
+  .sequence-step {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .sequence-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .sequence-copy {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .sequence-question {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    font-size: 11px;
+    line-height: 1.7;
+    color: rgba(13, 13, 13, 0.56);
+  }
+
+  .sequence-question strong {
+    color: var(--amber);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  .ansoff-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .mini-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .stage-selector button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    cursor: pointer;
+  }
+
+  .stage-selector button.active,
+  .stage-selector button:hover {
+    background: color-mix(in srgb, var(--life-accent) 18%, transparent);
+    border-color: var(--life-accent);
+    color: var(--cream);
+  }
+
+  .curve-panel,
+  .detail-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 18px;
+  }
+
+  .axis-label,
+  .curve-label {
+    font-family: "DM Mono", monospace;
+    fill: rgba(245, 240, 232, 0.72);
+    font-size: 11px;
+  }
+
+  .stage-dot {
+    transition: fill 220ms ease, r 220ms ease;
+  }
+
+  .detail-list,
+  .alignment-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .signal-section,
+    .ansoff-section,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .foundation-grid,
+    .interactive-grid,
+    .signal-grid,
+    .sequence-grid,
+    .ansoff-grid,
+    .causal-flow,
+    .alignment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    .signal-row {
+      grid-template-columns: 1fr;
+    }
+
+    .sequence-card:not(:last-child)::after {
+      display: none;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Lifecycle</div>
+    <h1 class="hero-title">Product Life Cycle and <em>Diffusion</em></h1>
+    <p class="hero-sub">
+      Teams often confuse the customer journey with the product's life in the market. The customer journey happens inside an individual's decision. The product life cycle and diffusion describe how the market changes over time.
+    </p>
+    <div class="hero-related">
+      <div class="hero-related-label">Related Page</div>
+      <p><a href="customer-journey-and-funnel.html">Customer Journey And The Marketing Funnel</a><br>Use this when you want the buyer-level funnel and journey view that should be shaped by the market stage diagnosed here.</p>
+    </div>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Adoption over time -> stage of market development -> changing marketing priorities
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Lifecycle</div>
+      <div class="hero-pill">Diffusion</div>
+      <div class="hero-pill">Timing logic</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      A brand can be doing the right marketing for the wrong stage. What works in introduction often fails in maturity because the market, not just the customer, has changed.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">Use lifecycle to read the market stage, and diffusion to read the adopter type</h2>
+    <p class="section-intro">
+      Product life cycle and diffusion both describe change over time, but they operate at different analytical levels. Product life cycle shows how developed the category is. Diffusion shows how developed adoption is within that category.
+    </p>
+    <div class="foundation-bridge">
+      In simple terms: <strong>lifecycle asks "Where is the market now?"</strong> and <strong>diffusion asks "Who is buying now?"</strong> Together they create the basis for the next decision: what kind of market response makes sense here?
+    </div>
+    <div class="sequence-grid">
+      <div class="sequence-card">
+        <div class="sequence-step">Step 1</div>
+        <h3>Read the market</h3>
+        <p class="sequence-copy">Use the product life cycle to identify whether the category is in introduction, growth, maturity, or decline.</p>
+        <p class="sequence-question"><strong>Decision question</strong><br>What stage is this category in?</p>
+      </div>
+      <div class="sequence-card">
+        <div class="sequence-step">Step 2</div>
+        <h3>Read the adopters</h3>
+        <p class="sequence-copy">Use diffusion to identify whether current buyers are innovators, early adopters, the majority, or laggards.</p>
+        <p class="sequence-question"><strong>Decision question</strong><br>Who is buying now, and what convinces them?</p>
+      </div>
+      <div class="sequence-card">
+        <div class="sequence-step">Step 3</div>
+        <h3>Match the market response</h3>
+        <p class="sequence-copy">Use the market stage and adopter type to shape the right message, proof, channel, pricing logic, and offer design.</p>
+        <p class="sequence-question"><strong>Decision question</strong><br>What message, proof, offer, and channel fit this context?</p>
+      </div>
+      <div class="sequence-card">
+        <div class="sequence-step">Step 4</div>
+        <h3>Choose growth direction</h3>
+        <p class="sequence-copy">Only after that, use Ansoff to decide whether growth should come from market penetration, market development, product development, or diversification.</p>
+        <p class="sequence-question"><strong>Decision question</strong><br>Where should growth come from next?</p>
+      </div>
+    </div>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>Lifecycle = market stage</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Introduction</strong>
+            <span>The category is still emerging. Awareness is low, uncertainty is high, and the market is not yet broadly formed.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Growth</strong>
+            <span>The category starts scaling. Adoption accelerates, visibility rises, and competitors begin to enter more seriously.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Maturity</strong>
+            <span>The category is established. Most buyers understand it, growth slows, and competition intensifies around share and value.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Decline</strong>
+            <span>The category loses momentum. Demand softens, substitutes pull attention away, and strategic contraction or renewal becomes more relevant.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>Diffusion = adopter type</h3>
+        <p>
+          Diffusion focuses on the people entering the market at a given moment. Innovators and early adopters tolerate novelty. The majority wants stronger proof, easier adoption, and lower perceived risk. Laggards usually arrive only when the product is familiar, necessary, or hard to avoid.
+        </p>
+        <p>
+          So if lifecycle says the category is in growth, diffusion still matters because growth can be led by different groups. A market led by early adopters needs a different message, proof structure, offer, and channel mix than a market led by the early majority.
+        </p>
+      </div>
+    </div>
+    <div class="section-link">
+      <strong>Next</strong><br>Once the difference is clear, the next task is diagnosis: use observable market signals to identify which adopter logic is active now.
+    </div>
+  </div>
+</section>
+
+<section class="signal-section">
+  <div class="signal-shell">
+    <div class="section-tag">02 · Diagnose Adoption</div>
+    <h2 class="section-title">Use market signals to identify which diffusion logic is active</h2>
+    <p class="section-intro">
+      Treat diffusion as a practical diagnostic lens. Do not rely on intuition alone. Look at observable signals that reveal who is buying now, what slows the next wave of adoption, and what conditions buyers need before they move.
+    </p>
+
+    <div class="signal-table-wrap">
+      <table class="signal-table">
+        <thead>
+          <tr>
+            <th>Buyer Symptom</th>
+            <th>Introduction</th>
+            <th>Growth</th>
+            <th>Maturity</th>
+            <th>Decline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Buyer type</td>
+            <td>Curious experimenters, enthusiasts, opinion leaders</td>
+            <td>Early mainstream buyers begin entering alongside early adopters</td>
+            <td>Broad majority market, more cautious and comparison-driven</td>
+            <td>Late adopters, laggards, habitual users, loyal niches</td>
+          </tr>
+          <tr>
+            <td>Typical questions</td>
+            <td>“What is this?” “Why does this matter?”</td>
+            <td>“Does it work for me?” “Who else is using it?”</td>
+            <td>“Why this one over alternatives?” “Is it worth the price?”</td>
+            <td>“Do I still need this?” “Is there a simple reason to stay?”</td>
+          </tr>
+          <tr>
+            <td>Proof required</td>
+            <td><strong>Low</strong>: limited proof accepted if the idea feels novel or valuable</td>
+            <td><strong>Medium</strong>: more proof needed through testimonials, usage evidence, and reassurance</td>
+            <td><strong>High</strong>: strong proof expected through comparisons, reliability signals, and reputation</td>
+            <td><strong>Low to medium</strong>: proof matters less than familiarity, habit, or residual utility</td>
+          </tr>
+          <tr>
+            <td>Tolerance for complexity</td>
+            <td><strong>High</strong>: buyers tolerate friction, setup, and learning</td>
+            <td><strong>Medium</strong>: buyers accept complexity if payoff is clear</td>
+            <td><strong>Low</strong>: buyers expect convenience and ease</td>
+            <td><strong>Very low</strong>: simplicity and continuity matter most</td>
+          </tr>
+          <tr>
+            <td>Price behavior</td>
+            <td><strong>Premium tolerant</strong>: willing to pay for novelty or advantage</td>
+            <td><strong>Value-aware</strong>: some premium accepted with proof</td>
+            <td><strong>Price-sensitive</strong>: strong value-for-money scrutiny</td>
+            <td><strong>Highly selective</strong>: limited or residual spending</td>
+          </tr>
+          <tr>
+            <td>Main adoption barrier</td>
+            <td><strong>Understanding</strong>: buyers still need the category explained</td>
+            <td><strong>Trust and ease</strong>: buyers need reassurance and lower friction</td>
+            <td><strong>Differentiation and price</strong>: buyers compare alternatives more closely</td>
+            <td><strong>Relevance</strong>: new adoption upside is limited</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">03 · Marketing Fit</div>
+    <h2 class="section-title">Move through the market stage and see how the marketing logic changes</h2>
+    <p class="section-intro">
+      Once you know the market stage and the adopter pattern, the next task is response design. The same product can need a different message, proof structure, offer, and channel emphasis as the market evolves.
+    </p>
+    <p class="section-link" style="color: rgba(245, 240, 232, 0.7); max-width: 820px;">
+      <strong>Connection</strong><br>This is where lifecycle and diffusion connect directly to funnel design: different markets need different journeys, different friction levels, and different funnel priorities. For the customer-level view, see <a class="inline-link" href="customer-journey-and-funnel.html">Customer Journey And The Marketing Funnel</a>.
+    </p>
+
+    <div class="stage-selector" id="stage-selector">
+      <button class="active" data-key="intro" type="button">Introduction</button>
+      <button data-key="growth" type="button">Growth</button>
+      <button data-key="maturity" type="button">Maturity</button>
+      <button data-key="decline" type="button">Decline</button>
+    </div>
+
+    <div class="interactive-grid">
+      <div class="curve-panel">
+        <div class="mini-label">Market curve</div>
+        <svg viewBox="0 0 520 280" aria-label="Product lifecycle curve">
+          <line x1="40" y1="230" x2="480" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+          <line x1="40" y1="230" x2="40" y2="40" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"></line>
+          <path d="M 55 220 C 120 215, 160 175, 210 120 S 320 55, 380 92 S 440 175, 470 205" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="3"></path>
+          <text class="axis-label" x="260" y="265" text-anchor="middle">Time</text>
+          <text class="axis-label" x="14" y="138" text-anchor="middle" transform="rotate(-90, 14, 138)">Sales / Adoption</text>
+          <circle class="stage-dot" id="stage-dot" cx="123" cy="199" r="12" fill="var(--life-accent)"></circle>
+          <text class="curve-label" id="curve-label" x="141" y="203">Introduction</text>
+        </svg>
+      </div>
+
+      <div class="detail-panel">
+        <div class="mini-label">Market response</div>
+        <h3 id="stage-title">Education and trial matter most</h3>
+        <p id="stage-copy">At introduction, the category is still being formed. Buyers are mainly innovators and a few early adopters, so marketing needs to explain the product, reduce uncertainty, and make first trial feel worthwhile.</p>
+        <ul class="detail-list" id="stage-list">
+          <li>Who is buying: innovators first, followed by a small set of early adopters willing to tolerate uncertainty.</li>
+          <li>What they need: category explanation, credibility, and a reason to experiment.</li>
+          <li>What marketing should emphasize: education, proof of concept, trial, and learning.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ansoff-section">
+  <div class="ansoff-shell">
+    <div class="section-tag">04 · Growth Choices</div>
+    <h2 class="section-title">Ansoff is relevant as the next question, not the main diagnosis</h2>
+    <p class="section-intro">
+      Do not begin with growth moves. First diagnose where the market is, who is buying, and what kind of market response fits. Only after that should Ansoff be used to ask where growth should come from next.
+    </p>
+    <div class="causal-flow">
+      <div class="causal-card">
+        <h3>1. Read the market condition</h3>
+        <p>Use lifecycle and diffusion together to establish the actual market condition.</p>
+        <ul>
+          <li>Lifecycle tells you how developed the category is.</li>
+          <li>Diffusion tells you which buyer base is moving now.</li>
+        </ul>
+        <div class="causal-arrow">Leads To</div>
+      </div>
+      <div class="causal-card">
+        <h3>2. Define the strategic problem</h3>
+        <p>The combination of stage and buyer type creates a different business problem in each period.</p>
+        <ul>
+          <li>Earlier markets face adoption and uncertainty problems.</li>
+          <li>Later markets face preference, saturation, or weak momentum problems.</li>
+        </ul>
+        <div class="causal-arrow">Leads To</div>
+      </div>
+      <div class="causal-card">
+        <h3>3. Choose the growth direction</h3>
+        <p>Ansoff becomes relevant only after the strategic problem is clear.</p>
+        <ul>
+          <li>The same Ansoff option is not equally relevant in every market condition.</li>
+          <li>The better the diagnosis, the better the growth choice.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="causal-table-wrap">
+      <table class="causal-table">
+        <thead>
+          <tr>
+            <th>Lifecycle + Diffusion</th>
+            <th>What That Usually Means</th>
+            <th>Strategic Problem</th>
+            <th>Most Relevant Ansoff Choice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Introduction + innovators / early adopters</td>
+            <td>The category is still forming and adoption is limited to buyers who tolerate uncertainty.</td>
+            <td>Prove value, reduce uncertainty, and find scalable adoption.</td>
+            <td>Market development or product development.</td>
+          </tr>
+          <tr>
+            <td>Growth + early majority entering</td>
+            <td>The market is expanding beyond enthusiasts and proof starts to matter much more.</td>
+            <td>Scale adoption, improve access, and build preference before the market settles.</td>
+            <td>Market penetration or market development.</td>
+          </tr>
+          <tr>
+            <td>Maturity + majority market</td>
+            <td>The category is established and buyers are more comparative, risk-aware, and price conscious.</td>
+            <td>Defend share, preserve preference, and renew value in a saturated market.</td>
+            <td>Market penetration or product development.</td>
+          </tr>
+          <tr>
+            <td>Decline + laggards / residual demand</td>
+            <td>Adoption has largely run its course and remaining demand is habitual, late, or niche.</td>
+            <td>Manage contraction, reposition selectively, or create a new growth path.</td>
+            <td>Product development or diversification.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ansoff-grid">
+      <div class="ansoff-card">
+        <h3>Market Penetration</h3>
+        <p>
+          Sell more of the current product to the current market. This is most relevant when the category still has room to deepen adoption or when mature competition turns growth into a fight for share.
+        </p>
+        <ul>
+          <li>Best fit: growth and maturity.</li>
+          <li>Use when: awareness already exists and the main challenge is winning preference, distribution, frequency, or share.</li>
+        </ul>
+      </div>
+
+      <div class="ansoff-card">
+        <h3>Market Development</h3>
+        <p>
+          Take the current product into new segments, geographies, or channels. This becomes more relevant when the offer works, but adoption is still uneven across markets or segments.
+        </p>
+        <ul>
+          <li>Best fit: introduction and growth, sometimes maturity.</li>
+          <li>Use when: the product is validated, but the next promising market has not yet been reached well.</li>
+        </ul>
+      </div>
+
+      <div class="ansoff-card">
+        <h3>Product Development</h3>
+        <p>
+          Create improved, extended, or adjacent offers for the current market. This matters more when maturity or decline signals that the current offer is losing momentum.
+        </p>
+        <ul>
+          <li>Best fit: maturity and decline.</li>
+          <li>Use when: the category feels saturated and new value is needed to reopen interest, usage, or relevance.</li>
+        </ul>
+      </div>
+
+      <div class="ansoff-card">
+        <h3>Diversification</h3>
+        <p>
+          Enter a new market with a new product. This is the riskiest option and is usually more relevant when the current category offers weak future momentum or strategic renewal is necessary.
+        </p>
+        <ul>
+          <li>Best fit: later-stage transition or structural decline.</li>
+          <li>Use when: existing growth paths inside the current category are weak and the firm needs a new engine of growth.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-link">
+      <strong>Strategic point</strong><br>Ansoff does not replace lifecycle and diffusion. It comes after them, because the quality of the growth decision depends on the quality of the diagnosis.
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">05 · Alignment</div>
+    <h2 class="section-title">The same brand may need different marketing logic at different stages</h2>
+    <p class="section-intro">
+      The strategic lesson is not that one framework matters more than the others. It is that good marketing depends on fit. Stage awareness changes what counts as a good message, good proof, good channel choice, and good investment logic.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Why alignment matters</h3>
+        <ul>
+          <li>A strategy that works in one period may fail in another because the market context changes.</li>
+          <li>Earlier stages need more education, category-building, trial, and uncertainty reduction.</li>
+          <li>Later stages need more differentiation, convenience, retention, and efficiency.</li>
+        </ul>
+      </div>
+
+      <div class="alignment-card">
+        <h3>What managers should take away</h3>
+        <ul>
+          <li>First read the market stage.</li>
+          <li>Then read the adopter group and what they need to move.</li>
+          <li>Then match the market response, and only then decide the broader growth direction.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Lifecycle and Diffusion</div>
+</footer>
+
+<script>
+  const stageData = {
+    intro: {
+      label: "Introduction",
+      coords: [123, 199],
+      title: "Education and trial matter most",
+      copy: "At introduction, the category itself still needs explanation. Buyers are mainly innovators and a few early adopters, so the task is to make the unfamiliar understandable, credible, and worth trying.",
+      list: [
+        "Who is buying: innovators first, followed by a small set of early adopters willing to tolerate uncertainty.",
+        "What they need: category explanation, credibility, and a reason to experiment.",
+        "What marketing should emphasize: education, proof of concept, trial, and learning."
+      ],
+      accent: "#c8872b"
+    },
+    growth: {
+      label: "Growth",
+      coords: [250, 87],
+      title: "Adoption accelerates and competition becomes more visible",
+      copy: "In growth, the category gains legitimacy and adoption accelerates. The market starts moving from early adopters toward the early majority, so the job shifts from pure explanation toward proof, access, and sharper positioning.",
+      list: [
+        "Who is buying: early adopters still matter, but the early majority begins to enter.",
+        "What they need: stronger evidence, easier access, and clearer reasons to choose.",
+        "What marketing should emphasize: proof, availability, positioning, and scalable acquisition."
+      ],
+      accent: "#4a6741"
+    },
+    maturity: {
+      label: "Maturity",
+      coords: [344, 75],
+      title: "The market is crowded, so distinction becomes harder and more necessary",
+      copy: "At maturity, most buyers already understand the category. The problem is no longer basic awareness, but winning preference, defending share, and keeping customers in a crowded market shaped by majority buyers.",
+      list: [
+        "Who is buying: the majority market dominates, including more risk-averse late-majority buyers.",
+        "What they need: reliability, convenience, reassurance, and a clear reason to prefer one option over another.",
+        "What marketing should emphasize: differentiation, retention, distribution strength, and price-value discipline."
+      ],
+      accent: "#5271b8"
+    },
+    decline: {
+      label: "Decline",
+      coords: [455, 185],
+      title: "Demand softens and the category must adapt or contract",
+      copy: "In decline, demand softens, substitutes pull attention away, and adoption has largely run its course. Remaining demand often comes from laggards, habitual users, or loyal niches, so strategy becomes more selective.",
+      list: [
+        "Who is buying: laggards, habitual users, and remaining loyal segments.",
+        "What they need: familiarity, continuity, or a very specific residual value proposition.",
+        "What marketing should emphasize: selective investment, repositioning, harvesting, or transition."
+      ],
+      accent: "#8b3a2a"
+    }
+  };
+
+  const stageButtons = Array.from(document.querySelectorAll("#stage-selector button"));
+  const stageDot = document.getElementById("stage-dot");
+  const curveLabel = document.getElementById("curve-label");
+  const stageTitle = document.getElementById("stage-title");
+  const stageCopy = document.getElementById("stage-copy");
+  const stageList = document.getElementById("stage-list");
+
+  function renderStage(key) {
+    const data = stageData[key];
+    document.documentElement.style.setProperty("--life-accent", data.accent);
+    stageButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
+    stageDot.setAttribute("cx", data.coords[0]);
+    stageDot.setAttribute("cy", data.coords[1]);
+    curveLabel.setAttribute("x", data.coords[0] + 18);
+    curveLabel.setAttribute("y", data.coords[1] + 4);
+    curveLabel.textContent = data.label;
+    stageTitle.textContent = data.title;
+    stageCopy.textContent = data.copy;
+    stageList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
+  }
+
+  stageButtons.forEach((button) => {
+    button.addEventListener("click", () => renderStage(button.dataset.key));
+  });
+</script>
+
+</body>
+</html>

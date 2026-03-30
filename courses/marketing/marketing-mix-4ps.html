@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Mix: Translating Value Through the 4Ps | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --mix-product: #4e8b6b;
+    --mix-price: #be8644;
+    --mix-place: #5271b8;
+    --mix-promo: #b66155;
+    --mix-active: var(--mix-product);
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .hero-pill {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+    padding: 6px 10px;
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .translation-section,
+  .alignment-section {
+    padding: 100px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .translation-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .foundation-card,
+  .alignment-card {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .alignment-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .foundation-card p,
+  .alignment-card p,
+  .alignment-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .source-flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .source-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 18px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .source-row strong,
+  .mix-role strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .source-row span {
+    display: block;
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.72);
+    font-family: inherit;
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro {
+    color: rgba(245, 240, 232, 0.7);
+  }
+
+  .mix-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0 24px;
+  }
+
+  .mix-btn {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.72);
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 13px 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .mix-btn:hover,
+  .mix-btn.active {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--mix-active) 12%, transparent);
+    border-color: var(--mix-active);
+    color: var(--cream);
+  }
+
+  .mix-stage {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .core-panel,
+  .detail-panel {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 28px;
+  }
+
+  .core-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .panel-kicker {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+
+  .core-summary {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 20px 18px;
+    margin-bottom: 18px;
+  }
+
+  .core-summary-label,
+  .mobile-tile-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .core-summary h3,
+  .mobile-tile h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    line-height: 1.12;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .core-summary p,
+  .mobile-tile p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .core-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .mobile-tile {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 14px 14px 13px;
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, opacity 220ms ease;
+  }
+
+  .mobile-tile.active {
+    border-color: var(--mix-active);
+    background: color-mix(in srgb, var(--mix-active) 10%, rgba(255, 255, 255, 0.04));
+    transform: translateY(-1px);
+  }
+
+  .detail-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--mix-active);
+  }
+
+  .detail-panel.is-swapping {
+    opacity: 0.7;
+  }
+
+  .detail-title {
+    font-family: "Playfair Display", serif;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 14px;
+  }
+
+  .detail-copy,
+  .detail-meaning,
+  .detail-example {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(245, 240, 232, 0.76);
+  }
+
+  .detail-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .detail-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+  }
+
+  .detail-row strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .alignment-card ul {
+    margin-top: 16px;
+    padding-left: 18px;
+  }
+
+  .alignment-section {
+    background: linear-gradient(180deg, var(--cream) 0%, #f6f1e8 100%);
+  }
+
+  .alignment-good,
+  .alignment-bad {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  .alignment-good strong,
+  .alignment-bad strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .alignment-good strong { color: var(--sage); }
+  .alignment-bad strong { color: var(--rust); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1220px) {
+    .mix-stage {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 60px 32px;
+    }
+
+    .foundation-grid,
+    .mix-stage,
+    .alignment-grid {
+      grid-template-columns: 1fr;
+    }
+
+  }
+
+  @media (max-width: 720px) {
+    .core-panel,
+    .detail-panel {
+      padding: 22px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .core-mobile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Marketing Mix</div>
+    <h1 class="hero-title">Marketing Mix As The <em>Translation</em> Of Value</h1>
+    <p class="hero-sub">
+      Product, price, place, and promotion do not create value on their own. They translate a chosen value logic into four different market decisions so the position becomes real.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core Translation</div>
+      Value Logic → Position → Product / Price / Place / Promotion
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Interactive</div>
+      <div class="hero-pill">Animated</div>
+      <div class="hero-pill">Marketing Mix</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      One value idea can appear in four different forms:
+      <strong>what it is</strong>, <strong>what it costs</strong>, <strong>where it appears</strong>, and <strong>how it is understood</strong>.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag reveal">01 · Foundation</div>
+    <h2 class="section-title reveal">The 4Ps start with the value people are actually buying</h2>
+    <p class="section-intro reveal">
+      Before deciding product, price, place, or promotion, the firm has to know what kind of progress matters to the customer. The marketing mix is the implementation layer that makes that value visible and accessible in the market.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card reveal">
+        <h3>The source of the value comes first</h3>
+        <p>
+          People do not buy the offer just because it exists. They buy progress: saved time, reduced risk, more confidence, better performance, stronger identity, or a smoother system. That source logic comes first. The 4Ps come after.
+        </p>
+        <div class="source-flow">
+          <div class="source-row">
+            <strong>Job</strong>
+            <span>What is the person trying to get done, solve, avoid, or enable?</span>
+          </div>
+          <div class="source-row">
+            <strong>Value</strong>
+            <span>What kind of improvement is decisive here: functional, economic, psychological, social, systemic, or risk reduction?</span>
+          </div>
+          <div class="source-row">
+            <strong>Position</strong>
+            <span>What should the offer mean to the chosen audience because of that value?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card reveal">
+        <h3>The 4Ps should follow the customer profile</h3>
+        <p>
+          Once the value logic is clear, each part of the marketing mix should respond to something specific we know about the customer. The 4Ps are not abstract decisions. They should be shaped by the benefit sought, affordability, touchpoints, and message resonance of the audience.
+        </p>
+        <div class="source-flow">
+          <div class="source-row">
+            <strong>Product</strong>
+            <span>Build around the benefit the customer is actually looking for.</span>
+          </div>
+          <div class="source-row">
+            <strong>Price</strong>
+            <span>Set it in line with what this audience can afford and what they are willing to pay for that benefit.</span>
+          </div>
+          <div class="source-row">
+            <strong>Place</strong>
+            <span>Show up in the channels, locations, and touchpoints where this audience already appears.</span>
+          </div>
+          <div class="source-row">
+            <strong>Promotion</strong>
+            <span>Use messages, language, and proof that this audience can actually recognize and resonate with.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Fundamental</div>
+    <h2 class="section-title">Watch one value logic become four market decisions</h2>
+    <p class="section-intro">
+      The center stays the same: reliable progress for busy professionals. What changes is the form that value takes when it moves through each part of the marketing mix.
+    </p>
+
+    <div class="mix-selector" id="mix-selector">
+      <button class="mix-btn active" data-mix="product">Product</button>
+      <button class="mix-btn" data-mix="price">Price</button>
+      <button class="mix-btn" data-mix="place">Place</button>
+      <button class="mix-btn" data-mix="promotion">Promotion</button>
+    </div>
+
+    <div class="mix-stage">
+      <div class="core-panel reveal">
+        <div class="panel-kicker">Value Core</div>
+        <div class="core-summary">
+          <div class="core-summary-label">Chosen Value</div>
+          <h3>Less friction and more reliable progress for busy professionals</h3>
+          <p>The four Ps below are different market translations of the same value logic. Select one to see how that specific decision helps deliver the chosen position.</p>
+        </div>
+
+        <div class="core-mobile-grid">
+          <div class="mobile-tile active" id="mobile-product">
+            <div class="mobile-tile-label">Product</div>
+            <h3>Value in use</h3>
+            <p>Fewer steps, cleaner design, and dependable performance.</p>
+          </div>
+          <div class="mobile-tile" id="mobile-price">
+            <div class="mobile-tile-label">Price</div>
+            <h3>Value in money</h3>
+            <p>Worth paying more for because it saves time and avoids hassle.</p>
+          </div>
+          <div class="mobile-tile" id="mobile-place">
+            <div class="mobile-tile-label">Place</div>
+            <h3>Value in access</h3>
+            <p>Easy to find, quick to adopt, and available where busy people already operate.</p>
+          </div>
+          <div class="mobile-tile" id="mobile-promotion">
+            <div class="mobile-tile-label">Promotion</div>
+            <h3>Value in language</h3>
+            <p>Explained as speed, reliability, and fewer interruptions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-panel reveal" id="detail-panel">
+        <div class="panel-kicker" id="detail-kicker">Product Translation</div>
+        <h3 class="detail-title" id="detail-title">Turn the value into the experience people actually use</h3>
+        <p class="detail-copy" id="detail-copy">
+          Product gives the chosen value a tangible form. If the value is "less friction," the offer should feel simpler, faster, and easier to operate from the first interaction onward.
+        </p>
+        <div class="detail-grid">
+          <div class="detail-row">
+            <strong>Purpose</strong>
+            <span class="detail-meaning" id="detail-purpose">Deliver the value through the design of the offer itself.</span>
+          </div>
+          <div class="detail-row">
+            <strong>Translation Question</strong>
+            <span class="detail-meaning" id="detail-question">What should the product be like if this value claim is true?</span>
+          </div>
+          <div class="detail-row">
+            <strong>Concrete Example</strong>
+            <span class="detail-example" id="detail-example">Fast onboarding, fewer configuration steps, intuitive navigation, and responsive support.</span>
+          </div>
+          <div class="detail-row">
+            <strong>Customer Profile Link</strong>
+            <span class="detail-meaning" id="detail-customer">This audience values ease, reliability, and time-saving benefits, so the offer should be built around those expected gains.</span>
+          </div>
+          <div class="detail-row">
+            <strong>Position Supported</strong>
+            <span class="detail-meaning" id="detail-position">Built for people who do not have time for avoidable complexity.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag reveal">03 · Alignment</div>
+    <h2 class="section-title reveal">A position becomes believable only when the 4Ps agree</h2>
+    <p class="section-intro reveal">
+      The 4Ps are not separate tactics. Together, they form the market expression of a single value logic.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card reveal">
+        <h3>Aligned example</h3>
+        <p>A company wants to stand for reliable speed for busy professionals.</p>
+        <div class="alignment-good">
+          <strong>All four support the same meaning</strong>
+          <ul>
+            <li>Product: minimal setup and dependable performance</li>
+            <li>Price: premium enough to signal time-saving value</li>
+            <li>Place: direct online access and quick onboarding</li>
+            <li>Promotion: fewer delays, less friction, more focus</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alignment-card reveal">
+        <h3>Misaligned example</h3>
+        <p>The same company claims reliability for professionals but acts like a discount commodity brand.</p>
+        <div class="alignment-bad">
+          <strong>One P breaks the position</strong>
+          <ul>
+            <li>Product: polished and efficient</li>
+            <li>Price: extreme discount signal</li>
+            <li>Place: crowded low-trust channels</li>
+            <li>Promotion: cheap, basic, bargain messaging</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding: 24px 32px; border-top: 1px solid rgba(13,13,13,0.08); display: flex; justify-content: space-between; gap: 12px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(13,13,13,0.42);">
+  <div>Think with Dave</div>
+  <div>Marketing · Marketing Mix</div>
+</footer>
+
+<script>
+  const mixData = {
+    product: {
+      color: "#4e8b6b",
+      kicker: "Product Translation",
+      title: "Turn the value into the experience people actually use",
+      copy: "Product gives the chosen value a tangible form. If the value is 'less friction,' the offer should feel simpler, faster, and easier to operate from the first interaction onward.",
+      purpose: "Deliver the value through the design of the offer itself.",
+      question: "What should the product be like if this value claim is true?",
+      example: "Fast onboarding, fewer configuration steps, intuitive navigation, and responsive support.",
+      customer: "This audience values ease, reliability, and time-saving benefits, so the offer should be built around those expected gains.",
+      position: "Built for people who do not have time for avoidable complexity."
+    },
+    price: {
+      color: "#be8644",
+      kicker: "Price Translation",
+      title: "Turn the value into a believable economic signal",
+      copy: "Price tells the market what kind of value this is. If the value is reliable progress, the price should communicate that this offer saves time and trouble, not that it is the cheapest possible option.",
+      purpose: "Express the value in payment logic and market signal.",
+      question: "How should the offer be priced if the promise is worth paying for?",
+      example: "Straightforward subscription tiers, no hidden costs, and a price premium justified by speed and dependability.",
+      customer: "This audience is willing to pay for time savings and reduced hassle, but the price still has to feel justified within their affordability range.",
+      position: "Worth it because it reduces drag on important work."
+    },
+    place: {
+      color: "#5271b8",
+      kicker: "Place Translation",
+      title: "Turn the value into accessibility in the right context",
+      copy: "Place determines whether the chosen audience can encounter the offer in a moment and channel that fits the position. A value promise about ease should also feel easy to access.",
+      purpose: "Make the value available where the audience already operates.",
+      question: "Where and how should people access this offer if convenience matters?",
+      example: "Direct online availability, frictionless sign-up, fast implementation, and presence in trusted professional channels.",
+      customer: "This audience spends time in specific professional channels and digital touchpoints, so access should be designed around those routine environments.",
+      position: "Available in the environments where busy people need quick confidence."
+    },
+    promotion: {
+      color: "#b66155",
+      kicker: "Promotion Translation",
+      title: "Turn the value into language the audience can immediately recognize",
+      copy: "Promotion gives the value a story, a tone, and a proof structure. If the core value is less friction, the message should focus on speed, clarity, and reliability rather than on abstract features alone.",
+      purpose: "Communicate the value so the audience understands and believes it.",
+      question: "What should we say if we want the audience to feel the value quickly?",
+      example: "Messaging built around 'less friction, fewer delays, more focus' supported by proof about setup time and performance.",
+      customer: "This audience responds to language about speed, reliability, and focus, so the message should use cues that match those priorities and feel credible to them.",
+      position: "This helps me keep moving instead of getting slowed down."
+    }
+  };
+
+  const ids = {
+    panel: document.getElementById("detail-panel"),
+    kicker: document.getElementById("detail-kicker"),
+    title: document.getElementById("detail-title"),
+    copy: document.getElementById("detail-copy"),
+    purpose: document.getElementById("detail-purpose"),
+    question: document.getElementById("detail-question"),
+    example: document.getElementById("detail-example"),
+    customer: document.getElementById("detail-customer"),
+    position: document.getElementById("detail-position")
+  };
+
+  function setMix(key) {
+    const data = mixData[key];
+    document.documentElement.style.setProperty("--mix-active", data.color);
+
+    ids.panel.classList.add("is-swapping");
+
+    document.querySelectorAll(".mix-btn").forEach((button) => {
+      button.classList.toggle("active", button.dataset.mix === key);
+    });
+
+    ["product", "price", "place", "promotion"].forEach((name) => {
+      document.getElementById(`mobile-${name}`).classList.toggle("active", name === key);
+    });
+
+    window.setTimeout(() => {
+      ids.kicker.textContent = data.kicker;
+      ids.title.textContent = data.title;
+      ids.copy.textContent = data.copy;
+      ids.purpose.textContent = data.purpose;
+      ids.question.textContent = data.question;
+      ids.example.textContent = data.example;
+      ids.customer.textContent = data.customer;
+      ids.position.textContent = data.position;
+      ids.panel.classList.remove("is-swapping");
+    }, 160);
+  }
+
+  document.querySelectorAll(".mix-btn").forEach((button) => {
+    button.addEventListener("click", () => setMix(button.dataset.mix));
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.16 });
+
+  document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+  setMix("product");
+</script>
+</body>
+</html>

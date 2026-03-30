@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Targeting Strategies and Segment Choice | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --target-accent: #8b3a2a;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills,
+  .strategy-selector,
+  .matrix-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-pills {
+    margin-top: 28px;
+  }
+
+  .hero-pill,
+  .strategy-selector button {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+
+  .hero-pill {
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .alignment-grid,
+  .interactive-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 32px;
+  }
+
+  .interactive-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    margin-top: 24px;
+  }
+
+  .foundation-card,
+  .panel,
+  .detail-panel,
+  .alignment-card {
+    padding: 32px 30px;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    background: white;
+  }
+
+  .foundation-card h3,
+  .panel h3,
+  .detail-panel h3,
+  .alignment-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .panel p,
+  .panel li,
+  .detail-panel p,
+  .detail-panel li,
+  .alignment-card p,
+  .alignment-card li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .mini-label,
+  .matrix-card strong {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .strategy-selector button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    cursor: pointer;
+  }
+
+  .strategy-selector button.active,
+  .strategy-selector button:hover {
+    background: color-mix(in srgb, var(--target-accent) 18%, transparent);
+    border-color: var(--target-accent);
+    color: var(--cream);
+  }
+
+  .panel,
+  .detail-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .matrix-grid {
+    margin-top: 22px;
+  }
+
+  .matrix-card {
+    flex: 1 1 180px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 16px 16px 14px;
+  }
+
+  .matrix-card span {
+    display: block;
+    margin-top: 8px;
+    font-size: 16px;
+    color: var(--cream);
+  }
+
+  .detail-list,
+  .alignment-card ul {
+    margin-top: 18px;
+    padding-left: 18px;
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .foundation-grid,
+    .alignment-grid,
+    .interactive-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Targeting</div>
+    <h1 class="hero-title">Targeting Strategies and Segment <em>Choice</em></h1>
+    <p class="hero-sub">
+      Segmentation reveals differences. Targeting decides how the firm will compete across those differences. Teams often confuse the segment itself with the strategy for serving it.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Segment attractiveness + firm fit -> targeting strategy -> resource spread
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Targeting</div>
+      <div class="hero-pill">Strategy choice</div>
+      <div class="hero-pill">Resource allocation</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      The question is not only <strong>which</strong> segment looks attractive. The question is also how broadly or narrowly the firm should spread its effort across the market.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">A target segment is not the same thing as a targeting strategy</h2>
+    <p class="section-intro">
+      After segmentation, the firm still has to decide whether it will serve the whole market similarly, several segments differently, one segment deeply, or even a very narrow personalized slice.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>Questions targeting should answer</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Attractiveness</strong>
+            <span>Is the segment large enough, profitable enough, and worth serving?</span>
+          </div>
+          <div class="flow-row">
+            <strong>Fit</strong>
+            <span>Does the firm have the capability, credibility, and economics to win there?</span>
+          </div>
+          <div class="flow-row">
+            <strong>Focus</strong>
+            <span>Should resources be spread across many segments or concentrated in one?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>Four classic strategies</h3>
+        <ul style="padding-left:18px;">
+          <li><strong>Undifferentiated:</strong> broad offer for the whole market.</li>
+          <li><strong>Differentiated:</strong> different offers or positions for multiple segments.</li>
+          <li><strong>Concentrated:</strong> one priority segment with deep focus.</li>
+          <li><strong>Micromarketing:</strong> very narrow or individualized adaptation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Strategy Selector</div>
+    <h2 class="section-title">Choose a targeting strategy and inspect the tradeoff</h2>
+    <p class="section-intro">
+      Imagine a productivity software firm deciding how to grow. Each strategy changes focus, complexity, and risk in a different way.
+    </p>
+
+    <div class="strategy-selector" id="strategy-selector">
+      <button class="active" data-key="undiff" type="button">Undifferentiated</button>
+      <button data-key="diff" type="button">Differentiated</button>
+      <button data-key="concentrated" type="button">Concentrated</button>
+      <button data-key="micro" type="button">Micromarketing</button>
+    </div>
+
+    <div class="interactive-grid">
+      <div class="panel">
+        <div class="mini-label">Strategy profile</div>
+        <h3 id="strategy-title">Undifferentiated marketing</h3>
+        <p id="strategy-copy">
+          One broad offer is pushed to a wide market with limited adaptation.
+        </p>
+        <div class="matrix-grid">
+          <div class="matrix-card"><strong>Coverage</strong><span id="coverage-value">Very broad</span></div>
+          <div class="matrix-card"><strong>Complexity</strong><span id="complexity-value">Low</span></div>
+          <div class="matrix-card"><strong>Risk</strong><span id="risk-value">Commoditization</span></div>
+        </div>
+      </div>
+
+      <div class="detail-panel">
+        <div class="mini-label">Decision implication</div>
+        <h3 id="decision-title">Best when needs are similar and scale matters most</h3>
+        <p id="decision-copy">
+          This works when customers are similar enough that heavy adaptation adds more cost than advantage.
+        </p>
+        <ul class="detail-list" id="detail-list">
+          <li>Useful when the market is relatively homogeneous.</li>
+          <li>Often emphasizes scale, availability, and consistency.</li>
+          <li>Can struggle to create a distinctive position for very different segments.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">03 · Alignment</div>
+    <h2 class="section-title">The best target is the one the firm can serve credibly and profitably</h2>
+    <p class="section-intro">
+      Teams often over-focus on market size and under-focus on fit. Strong targeting combines outside attractiveness with inside capability.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Attractive but poor fit</h3>
+        <p>A premium segment may look profitable, but if the firm lacks service quality, brand legitimacy, or channel access, targeting it can create expensive disappointment.</p>
+      </div>
+
+      <div class="alignment-card">
+        <h3>Smaller but stronger fit</h3>
+        <p>A narrower segment can be a smarter choice when the firm's value, economics, and capabilities line up tightly with that group's needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Targeting Strategies</div>
+</footer>
+
+<script>
+  const strategyData = {
+    undiff: {
+      title: "Undifferentiated marketing",
+      copy: "One broad offer is pushed to a wide market with limited adaptation.",
+      coverage: "Very broad",
+      complexity: "Low",
+      risk: "Commoditization",
+      decisionTitle: "Best when needs are similar and scale matters most",
+      decisionCopy: "This works when customers are similar enough that heavy adaptation adds more cost than advantage.",
+      list: [
+        "Useful when the market is relatively homogeneous.",
+        "Often emphasizes scale, availability, and consistency.",
+        "Can struggle to create a distinctive position for very different segments."
+      ],
+      accent: "#8b3a2a"
+    },
+    diff: {
+      title: "Differentiated marketing",
+      copy: "The firm serves multiple segments with adjusted offers, messages, or positions.",
+      coverage: "Broad to medium",
+      complexity: "High",
+      risk: "Execution spread",
+      decisionTitle: "Best when segment differences matter and the firm can manage complexity",
+      decisionCopy: "This strategy creates stronger fit across segments, but it requires more adaptation and operational discipline.",
+      list: [
+        "Useful when different segments want clearly different value.",
+        "Can support multiple positions under one portfolio.",
+        "Raises coordination, cost, and brand-management complexity."
+      ],
+      accent: "#5271b8"
+    },
+    concentrated: {
+      title: "Concentrated marketing",
+      copy: "The firm focuses most of its effort on one priority segment and tries to win there deeply.",
+      coverage: "Narrow",
+      complexity: "Medium",
+      risk: "Dependence on one segment",
+      decisionTitle: "Best when the firm has a strong fit with one clearly valuable group",
+      decisionCopy: "Concentration can create sharp positioning and efficient resource use, especially for smaller firms.",
+      list: [
+        "Useful when resources are limited and focus matters.",
+        "Can create strong authority with the chosen segment.",
+        "Exposes the firm if that segment weakens or becomes crowded."
+      ],
+      accent: "#4a6741"
+    },
+    micro: {
+      title: "Micromarketing",
+      copy: "The firm adapts at a very local, account-level, or personalized level.",
+      coverage: "Very narrow",
+      complexity: "Very high",
+      risk: "Scalability strain",
+      decisionTitle: "Best when customization itself is part of the value",
+      decisionCopy: "Micromarketing can create very strong relevance, but only if the economics support the extra adaptation.",
+      list: [
+        "Useful for local tailoring, account-based marketing, or highly specific needs.",
+        "Can produce excellent fit and relevance.",
+        "Requires careful economics because complexity rises quickly."
+      ],
+      accent: "#d4a843"
+    }
+  };
+
+  const strategyButtons = Array.from(document.querySelectorAll("#strategy-selector button"));
+  const strategyTitle = document.getElementById("strategy-title");
+  const strategyCopy = document.getElementById("strategy-copy");
+  const coverageValue = document.getElementById("coverage-value");
+  const complexityValue = document.getElementById("complexity-value");
+  const riskValue = document.getElementById("risk-value");
+  const decisionTitle = document.getElementById("decision-title");
+  const decisionCopy = document.getElementById("decision-copy");
+  const detailList = document.getElementById("detail-list");
+
+  function renderStrategy(key) {
+    const data = strategyData[key];
+    document.documentElement.style.setProperty("--target-accent", data.accent);
+    strategyButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
+    strategyTitle.textContent = data.title;
+    strategyCopy.textContent = data.copy;
+    coverageValue.textContent = data.coverage;
+    complexityValue.textContent = data.complexity;
+    riskValue.textContent = data.risk;
+    decisionTitle.textContent = data.decisionTitle;
+    decisionCopy.textContent = data.decisionCopy;
+    detailList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
+  }
+
+  strategyButtons.forEach((button) => {
+    button.addEventListener("click", () => renderStrategy(button.dataset.key));
+  });
+</script>
+
+</body>
+</html>

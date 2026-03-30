@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Value, Jobs, and Progress | Marketing | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/article-showcase.css">
+<style>
+  :root {
+    --active-accent: #4a6741;
+  }
+
+  .top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 5;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .top-nav a {
+    color: rgba(245, 240, 232, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    padding-bottom: 4px;
+  }
+
+  .hero-pills,
+  .selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-pills {
+    margin-top: 28px;
+  }
+
+  .hero-pill,
+  .selector button {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+
+  .hero-pill {
+    color: rgba(245, 240, 232, 0.78);
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .foundation-section,
+  .interactive-band,
+  .alignment-section {
+    padding: 96px 80px;
+  }
+
+  .foundation-shell,
+  .interactive-shell,
+  .alignment-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .foundation-grid,
+  .alignment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .foundation-card,
+  .alignment-card,
+  .panel,
+  .detail-panel {
+    background: white;
+    border: 1px solid rgba(13, 13, 13, 0.08);
+    padding: 32px 30px;
+  }
+
+  .foundation-card h3,
+  .alignment-card h3,
+  .panel h3,
+  .detail-panel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .foundation-card p,
+  .foundation-card li,
+  .alignment-card p,
+  .alignment-card li,
+  .panel p,
+  .panel li,
+  .detail-panel p,
+  .detail-panel li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(13, 13, 13, 0.7);
+  }
+
+  .flow {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    padding-top: 12px;
+  }
+
+  .flow-row strong,
+  .label-mini {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .interactive-band {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-title,
+  .interactive-shell .section-intro,
+  .interactive-shell h3 {
+    color: var(--cream);
+  }
+
+  .interactive-shell .section-intro,
+  .interactive-shell p,
+  .interactive-shell li {
+    color: rgba(245, 240, 232, 0.72);
+  }
+
+  .selector {
+    margin-bottom: 24px;
+  }
+
+  .selector button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.76);
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .selector button:hover,
+  .selector button.active {
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--active-accent) 18%, transparent);
+    border-color: var(--active-accent);
+    color: var(--cream);
+  }
+
+  .interactive-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 24px;
+  }
+
+  .panel,
+  .detail-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .detail-grid {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .detail-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 12px;
+  }
+
+  .detail-row strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .value-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .value-tags span {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 7px 10px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .alignment-good,
+  .alignment-bad {
+    margin-top: 18px;
+    padding: 18px 18px 14px;
+  }
+
+  .alignment-good {
+    background: rgba(74, 103, 65, 0.08);
+    border-left: 3px solid var(--sage);
+  }
+
+  .alignment-bad {
+    background: rgba(139, 58, 42, 0.08);
+    border-left: 3px solid var(--rust);
+  }
+
+  footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(13, 13, 13, 0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.42);
+  }
+
+  @media (max-width: 900px) {
+    .foundation-section,
+    .interactive-band,
+    .alignment-section {
+      padding: 72px 32px;
+    }
+
+    .foundation-grid,
+    .alignment-grid,
+    .interactive-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .flow-row {
+      grid-template-columns: 1fr;
+    }
+
+    footer {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
+    <div class="hero-tag">Marketing Course · Customer Value</div>
+    <h1 class="hero-title">Customer Value, Jobs, and <em>Progress</em></h1>
+    <p class="hero-sub">
+      Before segmentation, messaging, or the marketing mix, we need to know what people are actually hiring the offer to do. The offer is the vehicle. The customer is buying progress.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core logic</div>
+      Offer -> Job -> Value Type -> Positioning Implication
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">Customer value</div>
+      <div class="hero-pill">Jobs to be done</div>
+      <div class="hero-pill">Interactive translator</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      Teams often say what the product <strong>is</strong> before they can say what progress the customer is trying to make. Marketing works better when we reverse that order.
+    </div>
+  </div>
+</section>
+
+<section class="foundation-section">
+  <div class="foundation-shell">
+    <div class="section-tag">01 · Foundation</div>
+    <h2 class="section-title">The first mistake is confusing the thing sold with the value bought</h2>
+    <p class="section-intro">
+      A product description is not yet a customer insight. We need to separate the offer itself, the job the customer is hiring it for, the value that matters most, and the implication for market meaning.
+    </p>
+
+    <div class="foundation-grid">
+      <div class="foundation-card">
+        <h3>Four layers to keep separate</h3>
+        <div class="flow">
+          <div class="flow-row">
+            <strong>Offer</strong>
+            <span>The concrete product, service, or system the firm brings to market.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Job</strong>
+            <span>What the customer is trying to get done, solve, avoid, or enable in a specific context.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Value</strong>
+            <span>The improvement that matters most: time, certainty, status, confidence, coordination, savings, or reduced risk.</span>
+          </div>
+          <div class="flow-row">
+            <strong>Meaning</strong>
+            <span>What the brand should stand for if it truly delivers that progress better than alternatives.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="foundation-card">
+        <h3>Why this matters for the rest of the course</h3>
+        <p>
+          STP becomes sharper when we know which progress different customers value. Positioning improves when it expresses that progress clearly. The 4Ps become more coherent when they all translate the same value logic into market decisions.
+        </p>
+        <ul style="margin-top:18px; padding-left:18px;">
+          <li>Segmentation starts to reflect real differences in what matters.</li>
+          <li>Targeting becomes a choice about who values this progress most.</li>
+          <li>Positioning becomes the market meaning of that progress.</li>
+          <li>The marketing mix turns that meaning into product, price, place, and promotion.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-band">
+  <div class="interactive-shell">
+    <div class="section-tag">02 · Interactive Translator</div>
+    <h2 class="section-title">Select an offer and reveal what is really being bought</h2>
+    <p class="section-intro">
+      The point is not to memorize one “correct” answer. The point is to practice moving from surface description to customer progress.
+    </p>
+
+    <div class="selector" id="offer-selector">
+      <button class="active" data-offer="drill" type="button">Drill</button>
+      <button data-offer="meal" type="button">Meal Kit</button>
+      <button data-offer="erp" type="button">ERP System</button>
+      <button data-offer="bike" type="button">Bike Share</button>
+    </div>
+
+    <div class="interactive-grid">
+      <div class="panel">
+        <div class="label-mini">Selected offer</div>
+        <h3 id="offer-name">Cordless drill</h3>
+        <p id="offer-copy">
+          A basic description tells us what the object is, but not yet why someone hires it.
+        </p>
+        <div class="value-tags" id="value-tags">
+          <span>Functional value</span>
+          <span>Confidence</span>
+        </div>
+      </div>
+
+      <div class="detail-panel">
+        <div class="label-mini">What the customer is buying</div>
+        <div class="detail-grid">
+          <div class="detail-row">
+            <strong>Job to be done</strong>
+            <p id="job-copy">Complete a home task quickly without needing professional help.</p>
+          </div>
+          <div class="detail-row">
+            <strong>Progress desired</strong>
+            <p id="progress-copy">From frustration and delay to control and completion.</p>
+          </div>
+          <div class="detail-row">
+            <strong>Likely value type</strong>
+            <p id="value-copy">Functional value plus the psychological value of competence.</p>
+          </div>
+          <div class="detail-row">
+            <strong>Positioning implication</strong>
+            <p id="meaning-copy">Position it as the easy, reliable way to finish important jobs without friction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alignment-section">
+  <div class="alignment-shell">
+    <div class="section-tag">03 · Alignment</div>
+    <h2 class="section-title">Good marketing starts by naming the right progress</h2>
+    <p class="section-intro">
+      When we misread the value being bought, every later step starts to wobble.
+    </p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3>Aligned reading</h3>
+        <p>The firm sees that busy professionals are not mainly buying software features. They are buying smoother coordination and fewer operational mistakes.</p>
+        <div class="alignment-good">
+          <p><strong>Result:</strong> the position, message, and mix all support ease, visibility, and confidence.</p>
+        </div>
+      </div>
+
+      <div class="alignment-card">
+        <h3>Misread reading</h3>
+        <p>The firm thinks the same buyers mainly want “more tools” and piles on features that do not solve the real job.</p>
+        <div class="alignment-bad">
+          <p><strong>Result:</strong> messaging becomes feature-heavy, the product feels complex, and the position stops matching the progress customers actually care about.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Think with Dave</div>
+  <div>Marketing · Customer Value</div>
+</footer>
+
+<script>
+  const offerData = {
+    drill: {
+      name: "Cordless drill",
+      copy: "A tool category is visible immediately. The customer outcome is not.",
+      tags: ["Functional value", "Confidence"],
+      job: "Complete a home task quickly without needing professional help.",
+      progress: "From frustration and delay to control and completion.",
+      value: "Functional value plus the psychological value of competence.",
+      meaning: "Position it as the easy, reliable way to finish important jobs without friction.",
+      accent: "#4a6741"
+    },
+    meal: {
+      name: "Meal kit subscription",
+      copy: "The product is food delivery, but the real hire is often decision simplification.",
+      tags: ["Time saving", "Reduced effort"],
+      job: "Get dinner on the table without planning, shopping, and wasting mental energy.",
+      progress: "From decision fatigue to predictable routine and relief.",
+      value: "Economic value in time saved plus psychological relief.",
+      meaning: "Position it as the calm, dependable way to feed the household on busy days.",
+      accent: "#c8872b"
+    },
+    erp: {
+      name: "ERP system",
+      copy: "Software looks technical, but the purchase is usually about coordination and control.",
+      tags: ["Systemic value", "Risk reduction"],
+      job: "Run operations with fewer errors, delays, blind spots, and expensive handoffs.",
+      progress: "From fragmented processes to visibility, coordination, and confidence.",
+      value: "Systemic value plus the reduction of operational risk.",
+      meaning: "Position it as the system that creates reliable control across the business.",
+      accent: "#5271b8"
+    },
+    bike: {
+      name: "Bike-share membership",
+      copy: "The customer is not buying the bicycle itself so much as flexible movement in a city context.",
+      tags: ["Access value", "Convenience"],
+      job: "Move through the city quickly without owning, storing, or maintaining a bike.",
+      progress: "From transport friction to low-commitment mobility.",
+      value: "Functional access plus economic and convenience value.",
+      meaning: "Position it as the easiest urban movement option when speed and flexibility matter.",
+      accent: "#8b3a2a"
+    }
+  };
+
+  const buttons = Array.from(document.querySelectorAll("#offer-selector button"));
+  const offerName = document.getElementById("offer-name");
+  const offerCopy = document.getElementById("offer-copy");
+  const tags = document.getElementById("value-tags");
+  const jobCopy = document.getElementById("job-copy");
+  const progressCopy = document.getElementById("progress-copy");
+  const valueCopy = document.getElementById("value-copy");
+  const meaningCopy = document.getElementById("meaning-copy");
+
+  function renderOffer(key) {
+    const data = offerData[key];
+    document.documentElement.style.setProperty("--active-accent", data.accent);
+    buttons.forEach((button) => button.classList.toggle("active", button.dataset.offer === key));
+    offerName.textContent = data.name;
+    offerCopy.textContent = data.copy;
+    tags.innerHTML = data.tags.map((tag) => `<span>${tag}</span>`).join("");
+    jobCopy.textContent = data.job;
+    progressCopy.textContent = data.progress;
+    valueCopy.textContent = data.value;
+    meaningCopy.textContent = data.meaning;
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => renderOffer(button.dataset.offer));
+  });
+</script>
+
+</body>
+</html>
