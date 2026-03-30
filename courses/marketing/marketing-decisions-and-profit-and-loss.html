@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing Decisions and the Profit and Loss Statement | Marketing | Think with Dave</title>
+<title>Marketing Decisions to P&amp;L Simulator | Marketing | Think with Dave</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/article-showcase.css">
 <style>
   :root {
-    --finance-accent: #4a6741;
+    --accent: #4f6e45;
+    --accent-soft: rgba(79, 110, 69, 0.18);
+    --danger: #b55345;
+    --warning: #c9832b;
+    --ok: #4f8a59;
+    --panel-border: rgba(255, 255, 255, 0.14);
   }
 
   .top-nav {
@@ -23,297 +28,298 @@
   }
 
   .top-nav a {
-    color: rgba(245, 240, 232, 0.72);
+    color: rgba(245, 240, 232, 0.78);
     text-decoration: none;
-    border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+    border-bottom: 1px solid rgba(245, 240, 232, 0.28);
     padding-bottom: 4px;
   }
 
-  .hero-pills,
-  .decision-selector,
-  .pnl-metrics {
+  .hero-pills {
+    margin-top: 26px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  .hero-pills {
-    margin-top: 28px;
-  }
-
-  .hero-pill,
-  .decision-selector button,
-  .metric-card {
+  .hero-pill {
+    padding: 8px 12px;
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.82);
+    border: 1px solid rgba(245, 240, 232, 0.16);
   }
 
-  .hero-pill {
-    padding: 8px 12px;
-    color: rgba(245, 240, 232, 0.78);
-    border: 1px solid rgba(245, 240, 232, 0.14);
-  }
-
-  .foundation-section,
-  .interactive-band,
-  .alignment-section {
+  .simulator-section {
+    background: var(--ink);
+    color: var(--cream);
     padding: 96px 80px;
   }
 
-  .foundation-shell,
-  .interactive-shell,
-  .alignment-shell {
-    max-width: 1240px;
+  .simulator-shell {
+    max-width: 1300px;
     margin: 0 auto;
   }
 
-  .foundation-grid,
-  .interactive-grid,
-  .alignment-grid {
-    display: grid;
-    gap: 24px;
-  }
-
-  .foundation-grid,
-  .alignment-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 32px;
-  }
-
-  .interactive-grid {
-    grid-template-columns: 0.92fr 1.08fr;
-    margin-top: 24px;
-  }
-
-  .foundation-card,
-  .panel,
-  .detail-panel,
-  .alignment-card {
-    background: white;
-    border: 1px solid rgba(13, 13, 13, 0.08);
-    padding: 32px 30px;
-  }
-
-  .foundation-card h3,
-  .panel h3,
-  .detail-panel h3,
-  .alignment-card h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-
-  .foundation-card p,
-  .foundation-card li,
-  .panel p,
-  .panel li,
-  .detail-panel p,
-  .detail-panel li,
-  .alignment-card p,
-  .alignment-card li {
-    font-size: 13px;
-    line-height: 1.9;
-    color: rgba(13, 13, 13, 0.7);
-  }
-
-  .causality-map {
-    margin-top: 24px;
-    background: white;
-    border: 1px solid rgba(13, 13, 13, 0.08);
-    padding: 32px 30px;
-  }
-
-  .causality-map h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-
-  .causality-map p,
-  .causality-map li {
-    font-size: 13px;
-    line-height: 1.9;
-    color: rgba(13, 13, 13, 0.7);
-  }
-
-  .causality-grid {
-    display: grid;
-    grid-template-columns: 1fr 68px 1fr;
-    gap: 16px;
-    align-items: start;
-    margin-top: 20px;
-  }
-
-  .p-column,
-  .pnl-column {
-    display: grid;
-    gap: 12px;
-  }
-
-  .causal-item {
-    border: 1px solid rgba(13, 13, 13, 0.1);
-    background: rgba(13, 13, 13, 0.02);
-    padding: 12px 14px;
-  }
-
-  .causal-item strong {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    color: var(--amber);
-  }
-
-  .causal-links {
-    display: grid;
-    gap: 12px;
-    margin-top: 31px;
-  }
-
-  .causal-link {
-    text-align: center;
-    font-family: "DM Mono", monospace;
-    color: rgba(13, 13, 13, 0.45);
-    font-size: 11px;
-  }
-
-
-  .flow {
-    display: grid;
-    gap: 12px;
-    margin-top: 18px;
-  }
-
-  .flow-row {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 16px;
-    border-top: 1px solid rgba(13, 13, 13, 0.08);
-    padding-top: 12px;
-  }
-
-  .flow-row strong,
-  .mini-label,
-  .metric-card strong {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--amber);
-  }
-
-  .interactive-band {
-    background: var(--ink);
+  .simulator-shell .section-title,
+  .simulator-shell .section-intro {
     color: var(--cream);
   }
 
-  .interactive-shell .section-title,
-  .interactive-shell .section-intro,
-  .interactive-shell h3 {
-    color: var(--cream);
-  }
-
-  .interactive-shell .section-intro,
-  .interactive-shell p,
-  .interactive-shell li {
+  .simulator-shell .section-intro {
     color: rgba(245, 240, 232, 0.72);
+    max-width: 900px;
   }
 
-  .decision-selector button {
-    padding: 8px 12px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: transparent;
-    color: rgba(245, 240, 232, 0.76);
-    cursor: pointer;
+  .sim-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 24px;
+    align-items: start;
   }
 
-  .decision-selector button.active,
-  .decision-selector button:hover {
-    background: color-mix(in srgb, var(--finance-accent) 18%, transparent);
-    border-color: var(--finance-accent);
+  .panel {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--panel-border);
+    padding: 26px 24px;
+  }
+
+  .panel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 14px;
     color: var(--cream);
   }
 
-  .panel,
-  .detail-panel {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.12);
+  .mono-label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 10px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.66);
   }
 
-  .impact-stream {
-    margin-top: 18px;
+  .scenario-buttons,
+  .button-row,
+  .chip-row,
+  .metric-grid,
+  .compare-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
 
-  .impact-pill {
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 6px 10px;
+  .scenario-btn,
+  .option-btn,
+  .run-btn,
+  .reset-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: rgba(245, 240, 232, 0.84);
+    padding: 9px 12px;
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .scenario-btn.active,
+  .option-btn.active,
+  .scenario-btn:hover,
+  .option-btn:hover,
+  .run-btn:hover,
+  .reset-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--cream);
+  }
+
+  .control-block {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .control-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .input-wrap input[type="number"],
+  .input-wrap input[type="range"] {
+    width: 100%;
+  }
+
+  input[type="number"] {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--cream);
+    padding: 9px 10px;
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+  }
+
+  input[type="range"] {
+    accent-color: var(--accent);
+    margin-top: 8px;
+  }
+
+  .value-read {
+    margin-top: 5px;
+    font-size: 11px;
+    color: rgba(245, 240, 232, 0.72);
+    font-family: "DM Mono", monospace;
+  }
+
+  .budget-box {
+    margin-top: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px;
+  }
+
+  .budget-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    margin-bottom: 7px;
     color: rgba(245, 240, 232, 0.84);
   }
 
-  .impact-pill b {
-    color: var(--cream);
-    margin-left: 6px;
-    letter-spacing: 0.04em;
+  .budget-track {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 99px;
+    overflow: hidden;
   }
 
-  .pnl-metrics {
-    margin-top: 20px;
+  .budget-fill {
+    height: 100%;
+    width: 0;
+    transition: width 0.25s ease;
+    background: linear-gradient(90deg, var(--ok), var(--warning));
+  }
+
+  .budget-fill.over {
+    background: var(--danger);
+  }
+
+  .constraint-note {
+    margin-top: 10px;
+    font-size: 11px;
+    color: rgba(245, 240, 232, 0.72);
+    line-height: 1.6;
+  }
+
+  .action-row {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .run-btn {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+
+  .status-note {
+    margin-top: 10px;
+    min-height: 20px;
+    font-size: 11px;
+    color: rgba(245, 240, 232, 0.74);
+  }
+
+  .status-note.error {
+    color: #ef9f91;
+  }
+
+  .metric-grid {
+    margin-top: 16px;
   }
 
   .metric-card {
-    flex: 1 1 140px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 16px;
+    flex: 1 1 170px;
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    padding: 14px;
   }
 
   .metric-card strong {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 9px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.7);
   }
 
   .metric-card span {
-    color: var(--cream);
-    font-size: 18px;
-    letter-spacing: 0;
-    text-transform: none;
-  }
-
-  .metric-card.positive {
-    border-color: color-mix(in srgb, #7bbf6a 70%, white);
-  }
-
-  .metric-card.negative {
-    border-color: color-mix(in srgb, #d26f60 70%, white);
-  }
-
-  .metric-card.neutral {
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  .decision-list,
-  .alignment-card ul {
-    margin-top: 18px;
-    padding-left: 18px;
-  }
-
-  .takeaway-line {
-    margin-top: 18px;
-    padding: 16px;
-    border-left: 3px solid var(--finance-accent);
-    background: rgba(255, 255, 255, 0.06);
+    font-size: 24px;
     color: var(--cream);
     font-family: "Fraunces", serif;
-    font-size: 18px;
+  }
+
+  .metric-sub {
+    margin-top: 6px;
+    font-size: 11px;
+    color: rgba(245, 240, 232, 0.66);
+  }
+
+  .compare-grid {
+    margin-top: 22px;
+  }
+
+  .compare-card {
+    flex: 1 1 250px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 14px;
+  }
+
+  .compare-card h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--cream);
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    font-size: 12px;
     line-height: 1.6;
+    color: rgba(245, 240, 232, 0.84);
+  }
+
+  .feedback-box {
+    margin-top: 22px;
+    border-left: 3px solid var(--accent);
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .feedback-title {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.72);
+    margin-bottom: 8px;
+  }
+
+  .feedback-line,
+  .feedback-list li {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245, 240, 232, 0.88);
+  }
+
+  .feedback-list {
+    margin-top: 8px;
+    padding-left: 18px;
   }
 
   footer {
@@ -328,29 +334,13 @@
     color: rgba(13, 13, 13, 0.42);
   }
 
-  @media (max-width: 900px) {
-    .foundation-section,
-    .interactive-band,
-    .alignment-section {
+  @media (max-width: 980px) {
+    .simulator-section {
       padding: 72px 32px;
     }
 
-    .foundation-grid,
-    .interactive-grid,
-    .alignment-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .causality-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .causal-links {
-      margin-top: 0;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .flow-row {
+    .sim-grid,
+    .control-grid {
       grid-template-columns: 1fr;
     }
 
@@ -365,169 +355,149 @@
 <section class="hero">
   <div class="hero-left">
     <div class="top-nav"><a href="index.html">← Back to Marketing</a></div>
-    <div class="hero-tag">Marketing Course · P&amp;L Logic</div>
-    <h1 class="hero-title">Marketing Decisions and the <em>Profit and Loss Statement</em></h1>
+    <div class="hero-tag">Marketing Course · Decision Simulator</div>
+    <h1 class="hero-title">Marketing P’s to <em>Income Statement</em> Simulator</h1>
     <p class="hero-sub">
-      Marketing decisions do not only change awareness, conversion, or positioning. They also move revenue, gross margin, selling cost, and ultimately operating profit. This page links marketing logic to financial outcomes.
+      This is a decision environment, not a passive explainer. Pick a scenario, allocate scarce resources across product, price, communication, and distribution, then run the simulation to see what your decisions do to revenue, cost, profit, and margin.
     </p>
     <div class="hero-formula">
-      <div class="label">Core logic</div>
-      Marketing decision -> revenue and cost effects -> profit impact
+      <div class="label">Simulation spine</div>
+      Scenario pressure + 4P decisions -> WTP, demand, conversion, unit cost -> P&amp;L outcomes
     </div>
     <div class="hero-pills">
-      <div class="hero-pill">P&amp;L logic</div>
-      <div class="hero-pill">Revenue and margin</div>
-      <div class="hero-pill">Decision consequences</div>
+      <div class="hero-pill">Trade-offs required</div>
+      <div class="hero-pill">Budget constrained</div>
+      <div class="hero-pill">Before vs after</div>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-right-bg"></div>
     <div class="big-quote">
-      A marketing choice is only partly a market choice. It is also a financial choice about what kind of revenue, cost structure, and profit profile the firm is creating.
+      No lever is free. If you push volume too hard, margin erodes. If you push quality too far without price support, profit collapses.
     </div>
   </div>
 </section>
 
-<section class="foundation-section">
-  <div class="foundation-shell">
-    <div class="section-tag">01 · Foundation</div>
-    <h2 class="section-title">Marketing decisions travel into the income statement</h2>
+<section class="simulator-section">
+  <div class="simulator-shell">
+    <div class="section-tag">01 · Interactive Simulation</div>
+    <h2 class="section-title">Make your decisions first, then reveal the P&amp;L impact</h2>
     <p class="section-intro">
-      Price, channel choice, promotion intensity, retention quality, and positioning all have financial consequences. Good marketing thinking should eventually connect to the profit and loss statement, not stop at communication logic.
+      Use one scenario and one set of decisions per run. You cannot maximize everything: budget is capped, higher quality raises cost, wider distribution increases reach but compresses margin, and aggressive promotion trades margin for volume.
     </p>
 
-    <div class="foundation-grid">
-      <div class="foundation-card">
-        <h3>Where marketing usually shows up</h3>
-        <div class="flow">
-          <div class="flow-row">
-            <strong>Revenue</strong>
-            <span>Volume, price level, mix quality, repeat purchase, and customer lifetime value.</span>
-          </div>
-          <div class="flow-row">
-            <strong>Gross margin</strong>
-            <span>Discounting, channel mix, premium positioning, and product-service intensity.</span>
-          </div>
-          <div class="flow-row">
-            <strong>Selling costs</strong>
-            <span>Advertising spend, sales support, trade allowances, and channel commissions.</span>
-          </div>
-          <div class="flow-row">
-            <strong>Operating profit</strong>
-            <span>The combined result of revenue quality, margin quality, and the cost to win and retain customers.</span>
+    <div class="sim-grid">
+      <div class="panel">
+        <h3>Control Panel</h3>
+        <label class="mono-label">Scenario</label>
+        <div class="scenario-buttons" id="scenario-buttons"></div>
+        <p class="constraint-note" id="scenario-description"></p>
+
+        <div class="control-block">
+          <label class="mono-label">Product · Quality level</label>
+          <div class="button-row" id="quality-buttons"></div>
+        </div>
+
+        <div class="control-block">
+          <div class="control-grid">
+            <div class="input-wrap">
+              <label class="mono-label" for="price-input">Price ($)</label>
+              <input id="price-input" type="number" min="40" max="300" step="1" value="110">
+            </div>
+            <div class="input-wrap">
+              <label class="mono-label" for="promo-input">Promotion discount (%)</label>
+              <input id="promo-input" type="range" min="0" max="35" value="8">
+              <div class="value-read" id="promo-read">8%</div>
+            </div>
           </div>
         </div>
+
+        <div class="control-block">
+          <div class="control-grid">
+            <div class="input-wrap">
+              <label class="mono-label" for="comm-budget">Communication budget ($)</label>
+              <input id="comm-budget" type="number" min="0" max="300000" step="5000" value="80000">
+            </div>
+            <div>
+              <label class="mono-label">Communication mix complexity</label>
+              <div class="button-row" id="mix-buttons"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-block">
+          <label class="mono-label">Distribution coverage</label>
+          <div class="chip-row" id="distribution-buttons"></div>
+        </div>
+
+        <div class="budget-box">
+          <div class="budget-line">
+            <span>Total operating resource limit</span>
+            <strong id="budget-limit"></strong>
+          </div>
+          <div class="budget-line">
+            <span>Resource used by decisions</span>
+            <strong id="budget-used"></strong>
+          </div>
+          <div class="budget-track"><div class="budget-fill" id="budget-fill"></div></div>
+          <p class="constraint-note" id="budget-warning">Increasing one area must reduce flexibility somewhere else.</p>
+        </div>
+
+        <div class="action-row">
+          <button class="run-btn" id="run-sim" type="button">Run Simulation</button>
+          <button class="reset-btn" id="reset-btn" type="button">Reset Decisions</button>
+        </div>
+        <div class="status-note" id="status-note">Select a scenario and configure your decisions.</div>
       </div>
 
-      <div class="foundation-card">
-        <h3>Common mistake</h3>
-        <p>
-          Organizations often assume that “more marketing” means “better results.” But some decisions raise revenue while weakening margin, while others reduce short-term volume while improving profit quality.
-        </p>
-      </div>
-    </div>
+      <div class="panel">
+        <h3>P&amp;L Dashboard</h3>
+        <label class="mono-label">Financial outcome (after simulation run)</label>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <strong>Revenue</strong>
+            <span id="revenue-value">—</span>
+            <div class="metric-sub" id="demand-value">Demand: —</div>
+          </div>
+          <div class="metric-card">
+            <strong>Total Cost</strong>
+            <span id="cost-value">—</span>
+            <div class="metric-sub" id="unit-cost-value">Unit cost: —</div>
+          </div>
+          <div class="metric-card">
+            <strong>Profit</strong>
+            <span id="profit-value">—</span>
+            <div class="metric-sub" id="margin-value">Margin: —</div>
+          </div>
+          <div class="metric-card">
+            <strong>Profit Score</strong>
+            <span id="score-value">—</span>
+            <div class="metric-sub" id="wtp-value">WTP: — · Conversion: —</div>
+          </div>
+        </div>
 
-    <div class="causality-map">
-      <h3>4Ps -> income statement causality map</h3>
-      <p>Each P changes one or more P&amp;L lines. The goal is not isolated optimization by P, but coherent choices that improve both demand and economics.</p>
-      <div class="causality-grid">
-        <div class="p-column">
-          <div class="causal-item"><strong>Product</strong>Value proposition quality, feature cost, and service design change willingness-to-pay and gross profit per customer.</div>
-          <div class="causal-item"><strong>Price</strong>Price level and discount architecture directly affect realized revenue, gross margin, and profit conversion.</div>
-    <h2 class="section-title">Click each P to see its direct impact on the income statement</h2>
-      Use the 4Ps as direct controls. Click Product, Price, Place, or Promotion to see the most common first-order effects on revenue, margin, selling and marketing expense, other operating expense, and operating profit.
-      <button class="active" data-key="product" type="button">Product</button>
-      <button data-key="price" type="button">Price</button>
-      <button data-key="place" type="button">Place</button>
-      <button data-key="promotion" type="button">Promotion</button>
-        <h3 id="decision-title">Product</h3>
-        <p id="decision-copy">Product decisions shape value, cost-to-serve, and differentiation. Better product-market fit can lift conversion and retention, while complexity can increase delivery and support cost.</p>
-          <div class="impact-pill">Primary P <b id="primary-p">Product</b></div>
-          <div class="impact-pill">Causal path <b id="causal-path">Product -> Value perception/cost-to-serve -> Margin & Profit</b></div>
-          <div class="metric-card" id="revenue-card"><strong>Revenue</strong><span id="revenue-impact">Up when fit is strong</span></div>
-          <div class="metric-card" id="margin-card"><strong>Gross margin</strong><span id="margin-impact">Up or down (depends on product cost)</span></div>
-          <div class="metric-card" id="cost-card"><strong>Selling &amp; marketing expense</strong><span id="cost-impact">Mixed</span></div>
-          <div class="metric-card" id="opex-card"><strong>Other operating expense</strong><span id="opex-impact">Mixed</span></div>
-          <div class="metric-card" id="profit-card"><strong>Operating profit</strong><span id="profit-impact">Quality-dependent</span></div>
-      </div>
-        <h3 id="finance-title">Product defines revenue quality and cost structure at the same time</h3>
-        <p id="finance-copy">A better product can support higher willingness-to-pay and retention, but added complexity may increase service and fulfillment burden.</p>
-          <li>Feature bloat can increase operating expense faster than willingness-to-pay.</li>
-          <li>Clear differentiation can protect margin and reduce discount pressure.</li>
-          <li>Product quality impacts returns, support tickets, and repeat behavior.</li>
-          Product is both a demand lever and a cost architecture decision.
-    product: {
-      title: "Product",
-      copy: "Product choices determine customer value, feature cost, quality perception, and support burden. Strong product-market fit improves conversion and repeat demand.",
-      primaryP: "Product",
-      causalPath: "Product -> Value + cost-to-serve -> Margin & Profit",
-      revenue: "Up when fit is strong",
-      margin: "Up or down (depends on product cost)",
-      cost: "Mixed",
-      opex: "Mixed",
-      profit: "Quality-dependent",
-        margin: "neutral",
-        cost: "neutral",
-        opex: "neutral",
-      financeTitle: "Product defines revenue quality and cost structure at the same time",
-      financeCopy: "A better product can support higher willingness-to-pay and retention, but added complexity may increase service and fulfillment burden.",
-        "Feature bloat can increase operating expense faster than willingness-to-pay.",
-        "Clear differentiation can protect margin and reduce discount pressure.",
-        "Product quality impacts returns, support tickets, and repeat behavior."
-      takeaway: "Product is both a demand lever and a cost architecture decision.",
-      accent: "#6f7f4f"
-    price: {
-      title: "Price",
-      copy: "Pricing changes realized revenue immediately and strongly influences gross margin. Discount-heavy structures can weaken long-term price integrity.",
-      primaryP: "Price",
-      causalPath: "Price -> Realized revenue/margin -> Profit",
-      revenue: "Up or down (elasticity)",
-      margin: "Highly sensitive",
-      cost: "Up if promo-driven",
-      opex: "Neutral",
-      profit: "Highly sensitive",
-        margin: "negative",
-        profit: "neutral"
-      financeTitle: "Price is the fastest path into both top line and margin line",
-      financeCopy: "Every pricing move has tradeoffs between volume and unit economics. The right decision depends on elasticity, positioning, and competitive response.",
-        "Discounting may lift units while reducing gross profit per unit.",
-        "Price discipline can improve margin even with flatter volume.",
-        "Promotion depth and frequency affect selling and marketing expense."
-      takeaway: "Price policy should be evaluated by gross profit and operating profit, not revenue alone.",
-      accent: "#8b3a2a"
-    place: {
-      title: "Place",
-      copy: "Channel and distribution design affects reach, conversion context, commissions, shipping burden, and returns behavior.",
-      causalPath: "Place -> Reach + shipping/commission -> Opex & Profit",
-      revenue: "Up with wider reach",
-      margin: "Down if channel takes share",
-      opex: "Up when logistics burden rises",
-      profit: "Depends on channel economics",
-      financeTitle: "Distribution choice shapes cost-to-serve as much as demand",
-      financeCopy: "New channels can unlock volume, but commissions, fulfillment costs, and return rates may dilute profitability.",
-        "Marketplace reach can increase revenue quickly.",
-        "Commission structures and logistics can reduce net contribution per order.",
-        "Channel design determines who owns customer data and repeat economics."
-      takeaway: "Place decisions should be managed as a full unit-economics equation.",
-    promotion: {
-      title: "Promotion",
-      copy: "Promotion drives awareness and acquisition volume, but it also directly determines marketing and sales expense and customer acquisition cost.",
-      primaryP: "Promotion",
-      causalPath: "Promotion -> CAC + S&M expense -> Operating profit",
-      revenue: "Up if conversion quality holds",
-      margin: "Neutral to up",
-      cost: "Up (spend-led)",
-      opex: "Down per customer with retention efficiency",
-      profit: "Up if LTV/CAC improves",
-        margin: "neutral",
-        cost: "negative",
-      financeTitle: "Promotion is a growth lever and an expense line at the same time",
-      financeCopy: "The same campaign can grow revenue and hurt profit if CAC rises faster than lifetime value. Efficiency and retention quality are critical.",
-        "Acquisition spend should be judged against payback and contribution margin.",
-        "Retention promotion can reduce opex per retained customer over time.",
-        "Promotion quality matters more than activity volume."
-      takeaway: "Promotion should optimize LTV/CAC and operating leverage, not just traffic.",
-        </ul>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>Before (baseline)</h4>
+            <div class="compare-row"><span>Revenue</span><strong id="base-revenue">—</strong></div>
+            <div class="compare-row"><span>Total cost</span><strong id="base-cost">—</strong></div>
+            <div class="compare-row"><span>Profit</span><strong id="base-profit">—</strong></div>
+            <div class="compare-row"><span>Margin</span><strong id="base-margin">—</strong></div>
+          </div>
+          <div class="compare-card">
+            <h4>After (your decisions)</h4>
+            <div class="compare-row"><span>Revenue</span><strong id="after-revenue">—</strong></div>
+            <div class="compare-row"><span>Total cost</span><strong id="after-cost">—</strong></div>
+            <div class="compare-row"><span>Profit</span><strong id="after-profit">—</strong></div>
+            <div class="compare-row"><span>Margin</span><strong id="after-margin">—</strong></div>
+          </div>
+        </div>
+
+        <div class="feedback-box">
+          <div class="feedback-title">Strategic feedback</div>
+          <p class="feedback-line" id="feedback-summary">Run the simulation to evaluate your choices.</p>
+          <ul class="feedback-list" id="feedback-list"></ul>
+        </div>
       </div>
     </div>
   </div>
@@ -535,163 +505,420 @@
 
 <footer>
   <div>Think with Dave</div>
-  <div>Marketing · P&amp;L Impact</div>
+  <div>Marketing · P&amp;L Simulator</div>
 </footer>
 
 <script>
-  const decisionData = {
-    discount: {
-      title: "Heavy discounting",
-      copy: "Discounting can raise short-term volume quickly, but it often compresses gross margin and can make future full-price selling harder.",
-      primaryP: "Price",
-      causalPath: "Price -> Revenue / Margin -> Profit",
-      revenue: "Up",
-      margin: "Down",
-      cost: "Up",
-      profit: "Mixed",
-      metricClass: {
-        revenue: "positive",
-        margin: "negative",
-        cost: "negative",
-        profit: "neutral"
-      },
-      financeTitle: "Volume improves faster than profit quality",
-      financeCopy: "This is often attractive when the business needs traffic or short-term movement, but it can weaken economics if discounting becomes the main route to demand.",
-      list: [
-        "Higher unit volume does not guarantee higher gross profit.",
-        "Frequent discounts can train customers to wait for lower prices.",
-        "The P&L may show revenue growth with disappointing operating leverage."
-      ],
-      takeaway: "Marketing decisions should be judged not only by demand created, but by the kind of profit they create.",
-      accent: "#8b3a2a"
+  const scenarios = {
+    stable_competitor_cut: {
+      label: "Stable demand, price war",
+      marketDemandFactor: 1,
+      competitorPriceDrop: 0.1,
+      competitorPromotionLift: 0.04,
+      rawCostIncrease: 0.15,
+      budgetLimit: 320000,
+      description: "Competitor reduces price by 10%, raw material cost rises by 15%, and total market demand is stable."
     },
-    premium: {
-      title: "Premium positioning",
-      copy: "A stronger premium position can reduce price pressure and improve margin, but it usually requires better proof, better delivery, and more credible brand meaning.",
-      primaryP: "Product + Price",
-      causalPath: "Product/Price -> Margin quality -> Profit",
-      revenue: "Selective up",
-      margin: "Up",
-      cost: "Up",
-      profit: "Potentially up",
-      metricClass: {
-        revenue: "neutral",
-        margin: "positive",
-        cost: "negative",
-        profit: "positive"
-      },
-      financeTitle: "Revenue quality improves if the promise is credible",
-      financeCopy: "Premium logic can produce a healthier P&L when the firm truly supports it through product, channel, and message consistency.",
-      list: [
-        "Volume may become more selective, but margin can improve materially.",
-        "The strategy often requires investment in brand, experience, and proof.",
-        "Profit improves only if the premium position is believable in the market."
-      ],
-      takeaway: "A premium position is not just higher price. It is a different revenue and margin structure.",
-      accent: "#c8872b"
+    growth_promo_fight: {
+      label: "Growing market, promo fight",
+      marketDemandFactor: 1.14,
+      competitorPriceDrop: 0.04,
+      competitorPromotionLift: 0.12,
+      rawCostIncrease: 0.06,
+      budgetLimit: 350000,
+      description: "Demand is growing, but competitors increase promotions and lightly discount to capture momentum."
     },
-    marketplace: {
-      title: "Marketplace growth",
-      copy: "Marketplace channels can add fast demand and reach, but they often reshape the P&L through commissions, comparison pressure, and weaker pricing control.",
-      primaryP: "Place",
-      causalPath: "Place -> Reach/commission -> Margin & Profit",
-      revenue: "Up",
-      margin: "Down",
-      cost: "Mixed",
-      profit: "Depends",
-      metricClass: {
-        revenue: "positive",
-        margin: "negative",
-        cost: "neutral",
-        profit: "neutral"
-      },
-      financeTitle: "Reach expands, but control and margin may weaken",
-      financeCopy: "This route can improve top-line growth while reducing the economic quality of each sale if the business becomes too dependent on the platform.",
-      list: [
-        "Revenue may rise through reach and convenience.",
-        "Commission structures and price competition can compress margin.",
-        "The P&L effect depends on whether the extra volume is worth the lower per-unit economics."
-      ],
-      takeaway: "Channel growth should be evaluated as a margin tradeoff, not only as a demand opportunity.",
-      accent: "#5271b8"
-    },
-    retention: {
-      title: "Retention improvement",
-      copy: "Better onboarding, service, and repeat behavior often improve the P&L more quietly but more powerfully than headline acquisition spikes.",
-      primaryP: "Promotion (Retention)",
-      causalPath: "Promotion -> Repeat rate/CAC efficiency -> Profit",
-      revenue: "Up over time",
-      margin: "Up",
-      cost: "More efficient",
-      profit: "Up",
-      metricClass: {
-        revenue: "positive",
-        margin: "positive",
-        cost: "positive",
-        profit: "positive"
-      },
-      financeTitle: "Retention improves both demand quality and economic efficiency",
-      financeCopy: "When customers stay longer, the business earns more from each acquired customer and can support healthier acquisition economics.",
-      list: [
-        "Repeat revenue increases without needing equal increases in acquisition spend.",
-        "Gross profit quality often improves because customers are retained longer.",
-        "The P&L benefits through stronger lifetime value and better payback on customer acquisition."
-      ],
-      takeaway: "Retention is one of the clearest ways marketing logic becomes visible in the profit and loss statement.",
-      accent: "#4a6741"
+    decline_cost_shock: {
+      label: "Demand decline, cost shock",
+      marketDemandFactor: 0.86,
+      competitorPriceDrop: 0.06,
+      competitorPromotionLift: 0.08,
+      rawCostIncrease: 0.2,
+      budgetLimit: 280000,
+      description: "Demand contracts, competitors stay aggressive, and input costs surge by 20%."
     }
   };
 
-  const decisionButtons = Array.from(document.querySelectorAll("#decision-selector button"));
-  const decisionTitle = document.getElementById("decision-title");
-  const decisionCopy = document.getElementById("decision-copy");
-  const revenueImpact = document.getElementById("revenue-impact");
-  const marginImpact = document.getElementById("margin-impact");
-  const costImpact = document.getElementById("cost-impact");
-  const profitImpact = document.getElementById("profit-impact");
-  const primaryP = document.getElementById("primary-p");
-  const causalPath = document.getElementById("causal-path");
-  const revenueCard = document.getElementById("revenue-card");
-  const marginCard = document.getElementById("margin-card");
-  const costCard = document.getElementById("cost-card");
-  const profitCard = document.getElementById("profit-card");
-  const financeTitle = document.getElementById("finance-title");
-  const financeCopy = document.getElementById("finance-copy");
-  const decisionList = document.getElementById("decision-list");
-  const takeawayLine = document.getElementById("takeaway-line");
+  const qualityLevels = {
+    low: { label: "Low", wtpDelta: -10, unitCostDelta: -8, complexityCost: 5000 },
+    medium: { label: "Medium", wtpDelta: 0, unitCostDelta: 0, complexityCost: 18000 },
+    high: { label: "High", wtpDelta: 18, unitCostDelta: 14, complexityCost: 40000 }
+  };
 
-  function setMetricClass(node, statusClass) {
-    node.classList.remove("positive", "negative", "neutral");
-    node.classList.add(statusClass);
+  const mixComplexity = {
+    low: { label: "Low", conversionBoost: 0.008, wtpLift: 1, spendMultiplier: 0.8, complexityCost: 8000 },
+    medium: { label: "Medium", conversionBoost: 0.018, wtpLift: 3, spendMultiplier: 1, complexityCost: 18000 },
+    high: { label: "High", conversionBoost: 0.032, wtpLift: 6, spendMultiplier: 1.24, complexityCost: 32000 }
+  };
+
+  const distributionLevels = {
+    narrow: { label: "Narrow", demandFactor: 0.82, unitCostAdd: -3, marginPenalty: 0, fixedCost: 12000 },
+    medium: { label: "Medium", demandFactor: 1, unitCostAdd: 1, marginPenalty: 0.02, fixedCost: 28000 },
+    wide: { label: "Wide", demandFactor: 1.21, unitCostAdd: 6, marginPenalty: 0.05, fixedCost: 52000 }
+  };
+
+  const baselineInput = {
+    quality: "medium",
+    price: 110,
+    promotionDiscount: 8,
+    communicationBudget: 80000,
+    mix: "medium",
+    distribution: "medium"
+  };
+
+  const modelDefaults = {
+    baseDemand: 10000,
+    baseUnitCost: 58,
+    baseWTP: 112,
+    baseConversion: 0.12
+  };
+
+  const state = {
+    scenarioKey: "stable_competitor_cut",
+    quality: baselineInput.quality,
+    price: baselineInput.price,
+    promotionDiscount: baselineInput.promotionDiscount,
+    communicationBudget: baselineInput.communicationBudget,
+    mix: baselineInput.mix,
+    distribution: baselineInput.distribution,
+    baselineResult: null,
+    afterResult: null
+  };
+
+  const els = {
+    scenarioButtons: document.getElementById("scenario-buttons"),
+    scenarioDescription: document.getElementById("scenario-description"),
+    qualityButtons: document.getElementById("quality-buttons"),
+    mixButtons: document.getElementById("mix-buttons"),
+    distributionButtons: document.getElementById("distribution-buttons"),
+    priceInput: document.getElementById("price-input"),
+    promoInput: document.getElementById("promo-input"),
+    promoRead: document.getElementById("promo-read"),
+    commBudget: document.getElementById("comm-budget"),
+    budgetLimit: document.getElementById("budget-limit"),
+    budgetUsed: document.getElementById("budget-used"),
+    budgetFill: document.getElementById("budget-fill"),
+    budgetWarning: document.getElementById("budget-warning"),
+    statusNote: document.getElementById("status-note"),
+    runBtn: document.getElementById("run-sim"),
+    resetBtn: document.getElementById("reset-btn"),
+    revenueValue: document.getElementById("revenue-value"),
+    demandValue: document.getElementById("demand-value"),
+    costValue: document.getElementById("cost-value"),
+    unitCostValue: document.getElementById("unit-cost-value"),
+    profitValue: document.getElementById("profit-value"),
+    marginValue: document.getElementById("margin-value"),
+    scoreValue: document.getElementById("score-value"),
+    wtpValue: document.getElementById("wtp-value"),
+    baseRevenue: document.getElementById("base-revenue"),
+    baseCost: document.getElementById("base-cost"),
+    baseProfit: document.getElementById("base-profit"),
+    baseMargin: document.getElementById("base-margin"),
+    afterRevenue: document.getElementById("after-revenue"),
+    afterCost: document.getElementById("after-cost"),
+    afterProfit: document.getElementById("after-profit"),
+    afterMargin: document.getElementById("after-margin"),
+    feedbackSummary: document.getElementById("feedback-summary"),
+    feedbackList: document.getElementById("feedback-list")
+  };
+
+  function formatMoney(value) {
+    return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
   }
 
-  function renderDecision(key) {
-    const data = decisionData[key];
-    document.documentElement.style.setProperty("--finance-accent", data.accent);
-    decisionButtons.forEach((button) => button.classList.toggle("active", button.dataset.key === key));
-    decisionTitle.textContent = data.title;
-    decisionCopy.textContent = data.copy;
-    primaryP.textContent = data.primaryP;
-    causalPath.textContent = data.causalPath;
-    revenueImpact.textContent = data.revenue;
-    marginImpact.textContent = data.margin;
-    costImpact.textContent = data.cost;
-    profitImpact.textContent = data.profit;
-    setMetricClass(revenueCard, data.metricClass.revenue);
-    setMetricClass(marginCard, data.metricClass.margin);
-    setMetricClass(costCard, data.metricClass.cost);
-    setMetricClass(profitCard, data.metricClass.profit);
-    financeTitle.textContent = data.financeTitle;
-    financeCopy.textContent = data.financeCopy;
-    decisionList.innerHTML = data.list.map((item) => `<li>${item}</li>`).join("");
-    takeawayLine.textContent = data.takeaway;
+  function formatPct(value) {
+    return `${(value * 100).toFixed(1)}%`;
   }
 
-  decisionButtons.forEach((button) => {
-    button.addEventListener("click", () => renderDecision(button.dataset.key));
-  });
+  function buildOptionButtons(container, options, selectedKey, onClick) {
+    container.innerHTML = "";
+    Object.entries(options).forEach(([key, cfg]) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "option-btn";
+      if (key === selectedKey) btn.classList.add("active");
+      btn.textContent = cfg.label;
+      btn.addEventListener("click", () => onClick(key));
+      container.appendChild(btn);
+    });
+  }
 
-  renderDecision("product");
+  function buildScenarioButtons() {
+    els.scenarioButtons.innerHTML = "";
+    Object.entries(scenarios).forEach(([key, scenario]) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "scenario-btn";
+      if (key === state.scenarioKey) btn.classList.add("active");
+      btn.textContent = scenario.label;
+      btn.addEventListener("click", () => {
+        state.scenarioKey = key;
+        updateScenarioUI();
+        updateBudgetUI();
+        setStatus("Scenario changed. Update decisions, then run simulation.");
+      });
+      els.scenarioButtons.appendChild(btn);
+    });
+  }
+
+  function updateScenarioUI() {
+    const scenario = scenarios[state.scenarioKey];
+    els.scenarioDescription.textContent = scenario.description;
+    Array.from(els.scenarioButtons.children).forEach((btn, idx) => {
+      const key = Object.keys(scenarios)[idx];
+      btn.classList.toggle("active", key === state.scenarioKey);
+    });
+  }
+
+  function getBudgetUsed() {
+    const qualityCost = qualityLevels[state.quality].complexityCost;
+    const mixCost = mixComplexity[state.mix].complexityCost;
+    const distributionCost = distributionLevels[state.distribution].fixedCost;
+    const commCost = state.communicationBudget;
+    return qualityCost + mixCost + distributionCost + commCost;
+  }
+
+  function updateBudgetUI() {
+    const scenario = scenarios[state.scenarioKey];
+    const used = getBudgetUsed();
+    const ratio = used / scenario.budgetLimit;
+    els.budgetLimit.textContent = formatMoney(scenario.budgetLimit);
+    els.budgetUsed.textContent = formatMoney(used);
+    els.budgetFill.style.width = `${Math.min(ratio, 1) * 100}%`;
+    els.budgetFill.classList.toggle("over", ratio > 1);
+    if (ratio > 1) {
+      els.budgetWarning.textContent = "Budget exceeded. Reduce communication, complexity, or distribution before running.";
+      els.budgetWarning.style.color = "#ef9f91";
+    } else if (ratio > 0.9) {
+      els.budgetWarning.textContent = "Very tight buffer. One more increase will likely force trade-offs elsewhere.";
+      els.budgetWarning.style.color = "#f2c080";
+    } else {
+      els.budgetWarning.textContent = "Increasing one area must reduce flexibility somewhere else.";
+      els.budgetWarning.style.color = "rgba(245, 240, 232, 0.72)";
+    }
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function simulate(inputs, scenarioKey) {
+    const scenario = scenarios[scenarioKey];
+    const quality = qualityLevels[inputs.quality];
+    const mix = mixComplexity[inputs.mix];
+    const distribution = distributionLevels[inputs.distribution];
+
+    const effectivePrice = inputs.price * (1 - inputs.promotionDiscount / 100);
+
+    const communicationEffect = Math.log1p(inputs.communicationBudget / 30000);
+    const brandEquity = clamp((mix.wtpLift + communicationEffect * 3.1 + inputs.promotionDiscount * 0.05) / 30, 0, 1);
+
+    const wtp = modelDefaults.baseWTP
+      + quality.wtpDelta
+      + mix.wtpLift
+      + communicationEffect * 4
+      - scenario.competitorPriceDrop * 35;
+
+    const priceGap = effectivePrice - wtp;
+    const baseConv = modelDefaults.baseConversion + mix.conversionBoost + communicationEffect * 0.006 - scenario.competitorPromotionLift * 0.08;
+    const conversionRate = clamp(baseConv - priceGap * 0.0018, 0.03, 0.42);
+
+    const demand = Math.max(0,
+      modelDefaults.baseDemand
+      * scenario.marketDemandFactor
+      * distribution.demandFactor
+      * (0.74 + conversionRate * 2.2)
+      * (1 + scenario.competitorPromotionLift * -0.35)
+      * (1 + inputs.promotionDiscount / 100 * 0.45)
+    );
+
+    const unitCost = modelDefaults.baseUnitCost
+      + quality.unitCostDelta
+      + distribution.unitCostAdd
+      + scenario.rawCostIncrease * 22
+      + mix.spendMultiplier * 1.3;
+
+    const distributionCost = distribution.fixedCost + demand * (distribution.marginPenalty * 7);
+    const marketingCost = inputs.communicationBudget * mix.spendMultiplier + demand * (inputs.promotionDiscount / 100) * (inputs.price * 0.14);
+
+    const revenue = effectivePrice * demand;
+    const totalCost = unitCost * demand + marketingCost + distributionCost;
+    const profit = revenue - totalCost;
+    const marginPct = revenue === 0 ? 0 : profit / revenue;
+
+    return {
+      revenue,
+      totalCost,
+      profit,
+      marginPct,
+      demand,
+      unitCost,
+      wtp,
+      conversionRate,
+      brandEquity,
+      effectivePrice,
+      marketingCost,
+      distributionCost
+    };
+  }
+
+  function getProfitScore(result, scenarioKey) {
+    const baseline = state.baselineResult || simulate(baselineInput, scenarioKey);
+    const relative = baseline.profit === 0 ? 0 : (result.profit - baseline.profit) / Math.abs(baseline.profit);
+    const score = clamp(55 + relative * 90 + result.marginPct * 70 - (result.marketingCost / result.revenue) * 15, 1, 99);
+    return Math.round(score);
+  }
+
+  function makeFeedback(result, score) {
+    const notes = [];
+
+    if (result.effectivePrice < result.wtp - 6) {
+      notes.push("Your effective price is below WTP: you are leaving money on the table.");
+    }
+    if (result.effectivePrice > result.wtp + 10) {
+      notes.push("Price sits well above WTP: margin intention is high, but conversion suffers.");
+    }
+    if (state.promotionDiscount >= 20 && result.marginPct < 0.12) {
+      notes.push("You increased promotion but destroyed margin. Check discount depth against unit economics.");
+    }
+    if (state.distribution === "wide" && result.distributionCost > result.marketingCost * 0.55) {
+      notes.push("High distribution coverage is hurting profitability through channel and servicing cost.");
+    }
+    if (state.quality === "high" && state.price < result.unitCost * 1.45) {
+      notes.push("High quality needs stronger pricing support. Current pricing does not recover the added cost base.");
+    }
+    if (state.communicationBudget > scenarios[state.scenarioKey].budgetLimit * 0.4 && score < 60) {
+      notes.push("Communication spend is heavy, but financial return is weak. Improve mix quality or price capture.");
+    }
+    if (notes.length === 0) {
+      notes.push("Trade-offs are balanced: demand, price capture, and cost discipline are aligned for this scenario.");
+    }
+
+    const summary = score >= 75
+      ? "Strong decision quality: profitable growth with manageable trade-offs."
+      : score >= 55
+        ? "Mixed quality: some choices work, but at least one trade-off is under-managed."
+        : "Weak decision quality: current setup creates costly growth or low conversion.";
+
+    return { summary, notes };
+  }
+
+  function renderResults(result, score, feedback) {
+    els.revenueValue.textContent = formatMoney(result.revenue);
+    els.demandValue.textContent = `Demand: ${Math.round(result.demand).toLocaleString()} units`;
+    els.costValue.textContent = formatMoney(result.totalCost);
+    els.unitCostValue.textContent = `Unit cost: ${formatMoney(result.unitCost)} · Marketing: ${formatMoney(result.marketingCost)}`;
+    els.profitValue.textContent = formatMoney(result.profit);
+    els.marginValue.textContent = `Margin: ${formatPct(result.marginPct)}`;
+    els.scoreValue.textContent = `${score}/100`;
+    els.wtpValue.textContent = `WTP: ${formatMoney(result.wtp)} · Conversion: ${formatPct(result.conversionRate)} · Brand equity: ${Math.round(result.brandEquity * 100)}`;
+
+    els.afterRevenue.textContent = formatMoney(result.revenue);
+    els.afterCost.textContent = formatMoney(result.totalCost);
+    els.afterProfit.textContent = formatMoney(result.profit);
+    els.afterMargin.textContent = formatPct(result.marginPct);
+
+    const base = state.baselineResult;
+    els.baseRevenue.textContent = formatMoney(base.revenue);
+    els.baseCost.textContent = formatMoney(base.totalCost);
+    els.baseProfit.textContent = formatMoney(base.profit);
+    els.baseMargin.textContent = formatPct(base.marginPct);
+
+    els.feedbackSummary.textContent = feedback.summary;
+    els.feedbackList.innerHTML = feedback.notes.map((note) => `<li>${note}</li>`).join("");
+  }
+
+  function setStatus(message, isError = false) {
+    els.statusNote.textContent = message;
+    els.statusNote.classList.toggle("error", isError);
+  }
+
+  function syncButtons() {
+    buildOptionButtons(els.qualityButtons, qualityLevels, state.quality, (key) => {
+      state.quality = key;
+      syncButtons();
+      updateBudgetUI();
+    });
+    buildOptionButtons(els.mixButtons, mixComplexity, state.mix, (key) => {
+      state.mix = key;
+      syncButtons();
+      updateBudgetUI();
+    });
+    buildOptionButtons(els.distributionButtons, distributionLevels, state.distribution, (key) => {
+      state.distribution = key;
+      syncButtons();
+      updateBudgetUI();
+    });
+  }
+
+  function runSimulation() {
+    const scenario = scenarios[state.scenarioKey];
+    const budgetUsed = getBudgetUsed();
+    if (budgetUsed > scenario.budgetLimit) {
+      setStatus("Cannot run: budget limit exceeded. Reduce at least one major lever.", true);
+      return;
+    }
+
+    const result = simulate(state, state.scenarioKey);
+    const score = getProfitScore(result, state.scenarioKey);
+    const feedback = makeFeedback(result, score);
+
+    state.afterResult = result;
+    renderResults(result, score, feedback);
+    setStatus("Simulation complete. Review feedback and iterate another decision set.");
+  }
+
+  function resetState() {
+    state.quality = baselineInput.quality;
+    state.price = baselineInput.price;
+    state.promotionDiscount = baselineInput.promotionDiscount;
+    state.communicationBudget = baselineInput.communicationBudget;
+    state.mix = baselineInput.mix;
+    state.distribution = baselineInput.distribution;
+
+    els.priceInput.value = state.price;
+    els.promoInput.value = state.promotionDiscount;
+    els.commBudget.value = state.communicationBudget;
+    els.promoRead.textContent = `${state.promotionDiscount}%`;
+
+    syncButtons();
+    updateBudgetUI();
+    setStatus("Decisions reset. Run simulation when ready.");
+  }
+
+  function init() {
+    buildScenarioButtons();
+    updateScenarioUI();
+    syncButtons();
+
+    els.priceInput.addEventListener("input", () => {
+      state.price = clamp(Number(els.priceInput.value || baselineInput.price), 40, 300);
+      els.priceInput.value = state.price;
+    });
+
+    els.promoInput.addEventListener("input", () => {
+      state.promotionDiscount = Number(els.promoInput.value);
+      els.promoRead.textContent = `${state.promotionDiscount}%`;
+    });
+
+    els.commBudget.addEventListener("input", () => {
+      state.communicationBudget = clamp(Number(els.commBudget.value || 0), 0, 300000);
+      els.commBudget.value = state.communicationBudget;
+      updateBudgetUI();
+    });
+
+    els.runBtn.addEventListener("click", runSimulation);
+    els.resetBtn.addEventListener("click", resetState);
+
+    updateBudgetUI();
+    state.baselineResult = simulate(baselineInput, state.scenarioKey);
+    els.baseRevenue.textContent = formatMoney(state.baselineResult.revenue);
+    els.baseCost.textContent = formatMoney(state.baselineResult.totalCost);
+    els.baseProfit.textContent = formatMoney(state.baselineResult.profit);
+    els.baseMargin.textContent = formatPct(state.baselineResult.marginPct);
+  }
+
+  init();
 </script>
 
 </body>
