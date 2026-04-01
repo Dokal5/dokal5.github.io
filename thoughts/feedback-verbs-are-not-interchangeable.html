@@ -193,6 +193,163 @@
 
     .panel { display: none; }
     .panel.active { display: block; }
+    .panel-grid {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .panel-block {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.8rem;
+      background: #fff;
+    }
+
+    .panel-block h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.88rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .panel-block p {
+      color: #27303a;
+      font-size: 0.94rem;
+    }
+
+    .bridge-highlight {
+      border-left: 3px solid var(--accent);
+      background: var(--panel);
+      padding: 0.7rem 0.8rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      font-size: 0.92rem;
+      color: #27303a;
+    }
+
+    .build-bridge {
+      margin-top: 1.4rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 1.1rem;
+    }
+
+    .build-bridge h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .exercise-intro {
+      margin-top: 0.45rem;
+      font-size: 0.95rem;
+    }
+
+    .claim-box {
+      margin-top: 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: 0.8rem;
+      color: #27303a;
+    }
+
+    .classification-grid {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .statement-row {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem;
+      display: grid;
+      grid-template-columns: 1fr minmax(200px, 260px);
+      gap: 0.7rem;
+      align-items: center;
+      background: #fff;
+    }
+
+    .statement-row p {
+      color: #1d2732;
+      font-size: 0.94rem;
+    }
+
+    .statement-row select {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #bdc7d6;
+      background: #fff;
+      color: #1d2732;
+      font-size: 0.93rem;
+      padding: 0.5rem;
+    }
+
+    .statement-row.correct {
+      border-color: #2f5d8a;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, #2f5d8a 20%, transparent);
+      background: #f7fbff;
+    }
+
+    .statement-row.incorrect {
+      border-color: #8a2f2f;
+      background: #fff8f8;
+    }
+
+    .feedback-note {
+      margin-top: 0.4rem;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    .feedback-note strong {
+      color: #1d2732;
+    }
+
+    .exercise-actions {
+      margin-top: 0.95rem;
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      border: 1px solid var(--accent);
+      background: #fff;
+      color: var(--accent);
+      font-weight: 600;
+      border-radius: 9px;
+      padding: 0.55rem 0.8rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .tool-btn:focus-visible,
+    .tab-btn:focus-visible,
+    .statement-row select:focus-visible {
+      outline: 2px solid #123a61;
+      outline-offset: 2px;
+    }
+
+    .score {
+      margin-top: 0.7rem;
+      font-size: 0.92rem;
+      color: #27303a;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
     .bridge {
       display: grid;
@@ -257,6 +414,10 @@
     @media (max-width: 960px) {
       .causal-layout,
       .bridge {
+        grid-template-columns: 1fr;
+      }
+
+      .statement-row {
         grid-template-columns: 1fr;
       }
 
@@ -330,7 +491,7 @@
     </section>
 
     <section class="reveal">
-      <h2>Running Example</h2>
+      <h2>Build the Bridge</h2>
       <p><strong>Example claim:</strong> “We should increase the price of the premium package.”</p>
       <div class="interactive" id="verb-tabs">
         <div class="tabs" role="tablist" aria-label="Feedback verb examples">
@@ -342,21 +503,120 @@
         </div>
         <div class="panels">
           <article class="panel active" role="tabpanel" id="panel-explain" aria-labelledby="tab-explain">
-            Increasing the price of the premium package means charging more for the highest tier offer, while keeping the basic package structure and target segment largely the same.
+            <div class="panel-grid">
+              <div class="panel-block">
+                <h3>Function</h3>
+                <p>Clarify exactly what the claim means before debating whether it is wise.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Content that belongs here</h3>
+                <p>Definition of the proposal, scope, and what is not changing.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Good example</h3>
+                <p>“Increase premium price by 8% while keeping features and target segment the same.”</p>
+              </div>
+              <div class="panel-block">
+                <h3>Common confusion</h3>
+                <p>“Customers might still buy it” (that is reasoning, not explanation).</p>
+              </div>
+            </div>
           </article>
           <article class="panel" role="tabpanel" id="panel-elaborate" aria-labelledby="tab-elaborate">
-            The premium package includes the most advanced features, the highest service level, and the strongest outcome for customers with more complex needs. These customers are often less focused on the lowest price and more focused on performance, convenience, and reliability.
+            <div class="panel-grid">
+              <div class="panel-block">
+                <h3>Function</h3>
+                <p>Add context and decision-relevant variables around the claim.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Content that belongs here</h3>
+                <p>Customer segment characteristics, value drivers, constraints, and market conditions.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Good example</h3>
+                <p>“Premium buyers value uptime and service quality more than minimum price.”</p>
+              </div>
+              <div class="panel-block">
+                <h3>Common confusion</h3>
+                <p>“Therefore we should raise price now” (that jumps to justification).</p>
+              </div>
+            </div>
           </article>
           <article class="panel" role="tabpanel" id="panel-reasoning" aria-labelledby="tab-reasoning">
-            If the premium package delivers significantly more value, and if its customers are less price sensitive, then a moderate price increase is less likely to reduce demand sharply. If demand stays relatively stable while the price rises, the company earns more margin per sale and can improve profitability.
+            <div class="panel-grid">
+              <div class="panel-block">
+                <h3>Function</h3>
+                <p>Build the causal bridge from claim to likely outcome.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Content that belongs here</h3>
+                <p>Linked cause-effect steps, assumptions, and directional impact.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Good example</h3>
+                <p>Higher value perception → lower price sensitivity → limited volume loss → higher margin → better profitability.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Common confusion</h3>
+                <p>“Survey says 62% accept a higher price” (that is evidence, not reasoning).</p>
+              </div>
+              <p class="bridge-highlight"><strong>Causal bridge:</strong> this is the logic engine connecting claim to decision.</p>
+            </div>
           </article>
           <article class="panel" role="tabpanel" id="panel-justify" aria-labelledby="tab-justify">
-            Therefore, increasing the price of the premium package can be an appropriate decision when the offer is clearly differentiated and the target segment values the additional benefits enough to tolerate a higher price.
+            <div class="panel-grid">
+              <div class="panel-block">
+                <h3>Function</h3>
+                <p>State the decision conclusion that follows from the reasoning.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Content that belongs here</h3>
+                <p>A clear “therefore” statement with conditions and choice.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Good example</h3>
+                <p>“Therefore, a controlled premium price increase is justified for this segment.”</p>
+              </div>
+              <div class="panel-block">
+                <h3>Common confusion</h3>
+                <p>“Premium customers need reliability” (context, not conclusion).</p>
+              </div>
+            </div>
           </article>
           <article class="panel" role="tabpanel" id="panel-substantiate" aria-labelledby="tab-substantiate">
-            This should be supported by willingness to pay data, upgrade behavior, customer interviews, conversion rates by tier, margin analysis, and competitor benchmarking.
+            <div class="panel-grid">
+              <div class="panel-block">
+                <h3>Function</h3>
+                <p>Test whether the causal bridge is likely to hold in reality.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Content that belongs here</h3>
+                <p>Evidence: willingness-to-pay data, conversion rates, interviews, and competitor benchmarks.</p>
+              </div>
+              <div class="panel-block">
+                <h3>Good example</h3>
+                <p>“Pilot market kept 94% conversion after a 7% premium price lift.”</p>
+              </div>
+              <div class="panel-block">
+                <h3>Common confusion</h3>
+                <p>“The logic seems reasonable” (reasoning quality is not evidence quality).</p>
+              </div>
+              <p class="bridge-highlight"><strong>Evidence layer:</strong> substantiation stress-tests the bridge, it does not replace it.</p>
+            </div>
           </article>
         </div>
+      </div>
+
+      <div class="build-bridge" aria-labelledby="bridge-exercise-title">
+        <h3 id="bridge-exercise-title">Exercise: Place each statement in the correct verb step</h3>
+        <p class="exercise-intro">Assign each statement to one verb. You will get immediate feedback after each choice.</p>
+        <div class="claim-box"><strong>Claim:</strong> We should increase the price of the premium package.</div>
+        <div class="classification-grid" id="classification-grid"></div>
+        <div class="exercise-actions">
+          <button class="tool-btn" id="check-bridge" type="button">Check all</button>
+          <button class="tool-btn" id="reset-bridge" type="button">Reset</button>
+        </div>
+        <p class="score" id="bridge-score" aria-live="polite"></p>
       </div>
     </section>
 
@@ -403,6 +663,14 @@
 
   <script>
     (function () {
+      const verbLabels = [
+        'Explain',
+        'Elaborate',
+        'Show the reasoning',
+        'Justify',
+        'Substantiate'
+      ];
+
       const buttons = Array.from(document.querySelectorAll('.tab-btn'));
       const panels = Array.from(document.querySelectorAll('.panel'));
 
@@ -416,6 +684,116 @@
       buttons.forEach((button) => {
         button.addEventListener('click', () => activate(button));
       });
+
+      const exerciseData = [
+        {
+          statement: 'Increase premium package price by about 8% while keeping features and tier structure unchanged.',
+          answer: 'Explain',
+          hint: 'This defines the proposal clearly.'
+        },
+        {
+          statement: 'Premium buyers care about reliability and outcomes, so they are typically less price sensitive than basic-tier buyers.',
+          answer: 'Elaborate',
+          hint: 'This adds context and relevant variables.'
+        },
+        {
+          statement: 'Higher value perception can reduce price sensitivity, which limits volume loss and lifts margin, improving profitability.',
+          answer: 'Show the reasoning',
+          hint: 'This is the causal bridge.'
+        },
+        {
+          statement: 'Therefore, raising the premium price is a sound decision if differentiation remains clear.',
+          answer: 'Justify',
+          hint: 'This is the decision conclusion.'
+        },
+        {
+          statement: 'WTP studies, conversion rates, interviews, and competitor benchmarks should verify that the causal chain holds.',
+          answer: 'Substantiate',
+          hint: 'This is evidence that tests the bridge.'
+        }
+      ];
+
+      const grid = document.getElementById('classification-grid');
+      const scoreEl = document.getElementById('bridge-score');
+
+      function optionMarkup(selected) {
+        const options = ['Select verb', ...verbLabels].map((label) => {
+          const value = label === 'Select verb' ? '' : label;
+          const isSelected = selected === value ? ' selected' : '';
+          return `<option value="${value}"${isSelected}>${label}</option>`;
+        }).join('');
+        return options;
+      }
+
+      function renderRows() {
+        grid.innerHTML = exerciseData.map((item, index) => `
+          <div class="statement-row" data-index="${index}">
+            <div>
+              <p>${item.statement}</p>
+              <div class="feedback-note" id="note-${index}"><strong>Status:</strong> Not checked yet.</div>
+            </div>
+            <label>
+              <span class="sr-only">Select verb for statement ${index + 1}</span>
+              <select aria-describedby="note-${index}">
+                ${optionMarkup('')}
+              </select>
+            </label>
+          </div>
+        `).join('');
+      }
+
+      function evaluateRow(row) {
+        const index = Number(row.dataset.index);
+        const select = row.querySelector('select');
+        const note = row.querySelector('.feedback-note');
+        const expected = exerciseData[index].answer;
+        const selected = select.value;
+
+        row.classList.remove('correct', 'incorrect');
+
+        if (!selected) {
+          note.innerHTML = '<strong>Status:</strong> Choose a verb to classify this statement.';
+          return false;
+        }
+
+        if (selected === expected) {
+          row.classList.add('correct');
+          note.innerHTML = `<strong>Correct:</strong> ${exerciseData[index].hint}`;
+          return true;
+        }
+
+        row.classList.add('incorrect');
+        note.innerHTML = `<strong>Not quite:</strong> This belongs to <strong>${expected}</strong>. ${exerciseData[index].hint}`;
+        return false;
+      }
+
+      function updateScore() {
+        const rows = Array.from(grid.querySelectorAll('.statement-row'));
+        const solved = rows.filter((row) => row.classList.contains('correct')).length;
+        scoreEl.textContent = `Progress: ${solved} of ${exerciseData.length} correctly classified.`;
+      }
+
+      renderRows();
+
+      grid.addEventListener('change', (event) => {
+        if (event.target.tagName !== 'SELECT') return;
+        const row = event.target.closest('.statement-row');
+        evaluateRow(row);
+        updateScore();
+      });
+
+      document.getElementById('check-bridge').addEventListener('click', () => {
+        const rows = Array.from(grid.querySelectorAll('.statement-row'));
+        rows.forEach((row) => evaluateRow(row));
+        updateScore();
+      });
+
+      document.getElementById('reset-bridge').addEventListener('click', () => {
+        renderRows();
+        scoreEl.textContent = 'Progress: 0 of 5 correctly classified.';
+      });
+
+      scoreEl.textContent = 'Progress: 0 of 5 correctly classified.';
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
