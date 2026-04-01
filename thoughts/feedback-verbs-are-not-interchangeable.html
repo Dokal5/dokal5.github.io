@@ -118,131 +118,9 @@
     line-height: 1.9;
   }
 
-  .interactive-section {
-    padding: 100px 80px;
-    background: var(--pale);
-  }
-
-  .interactive-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .verb-controls {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(120px, 1fr));
-    gap: 8px;
-    margin: 24px 0 30px;
-  }
-
-  .verb-btn {
-    border: 1px solid rgba(13,13,13,0.14);
-    background: #fff;
-    color: rgba(13,13,13,0.8);
-    font-family: "DM Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 12px 10px;
-    cursor: pointer;
-  }
-
-  .verb-btn.active {
-    border-color: var(--amber);
-    background: rgba(200,135,43,0.12);
-    color: var(--ink);
-  }
-
-  .flow-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    align-items: start;
-    margin-bottom: 36px;
-  }
-
-  .flow-node {
-    text-align: center;
-    font-size: 12px;
-    color: rgba(13,13,13,0.7);
-    position: relative;
-    padding-top: 8px;
-  }
-
-  .flow-node:not(:last-child)::after {
-    content: "→";
-    position: absolute;
-    top: 7px;
-    right: -8px;
-    color: rgba(13,13,13,0.45);
-  }
-
-  .flow-node strong {
-    display: block;
-    font-family: "Playfair Display", serif;
-    font-size: 25px;
-    color: var(--ink);
-    margin-bottom: 10px;
-  }
-
-  .bridge-diagram {
-    border: 1px solid rgba(13,13,13,0.16);
-    background: #fff;
-    padding: 24px;
-  }
-
-  .bridge-top {
-    display: grid;
-    grid-template-columns: 1fr auto 1.35fr auto 1fr;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .box {
-    border: 1px solid rgba(13,13,13,0.35);
-    border-radius: 10px;
-    padding: 16px;
-    background: #fff;
-    transition: all 180ms ease;
-  }
-
-  .box h4 {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(13,13,13,0.58);
-    margin-bottom: 10px;
-  }
-
-  .box p {
-    font-size: 12px;
-    line-height: 1.8;
-    color: rgba(13,13,13,0.8);
-  }
-
-  .bridge-core {
-    min-height: 146px;
-  }
-
-  .diagram-arrow {
-    font-size: 30px;
-    color: rgba(13,13,13,0.5);
-  }
-
-  .bridge-bottom {
-    margin-top: 18px;
-  }
-
-  .box.active-focus {
-    border-color: var(--amber);
-    box-shadow: 0 0 0 2px rgba(200,135,43,0.18);
-    transform: translateY(-2px);
-  }
-
   @media (max-width: 960px) {
     .section,
-    .claim-section,
-    .interactive-section {
+    .claim-section {
       padding: 72px 28px;
     }
 
@@ -252,29 +130,6 @@
 
     .step h3 {
       font-size: 24px;
-    }
-
-    .verb-controls,
-    .flow-row {
-      grid-template-columns: 1fr;
-    }
-
-    .flow-node:not(:last-child)::after {
-      content: "↓";
-      right: auto;
-      left: 50%;
-      top: auto;
-      bottom: -10px;
-      transform: translateX(-50%);
-    }
-
-    .bridge-top {
-      grid-template-columns: 1fr;
-    }
-
-    .diagram-arrow {
-      text-align: center;
-      transform: rotate(90deg);
     }
   }
 </style>
@@ -340,67 +195,6 @@
   </div>
 </section>
 
-<section class="interactive-section">
-  <div class="interactive-wrap">
-    <div class="section-tag">Interactive illustration</div>
-    <h2 class="section-title">Feedback Verbs and the Causal Bridge</h2>
-    <p class="section-intro">
-      Click each verb to see where it acts in the logic. The center is causal reasoning; below it sits substantiation.
-    </p>
-
-    <div class="verb-controls" role="tablist" aria-label="Feedback verb controls">
-      <button class="verb-btn active" data-focus="claim" aria-selected="true">Explain</button>
-      <button class="verb-btn" data-focus="claim" aria-selected="false">Elaborate</button>
-      <button class="verb-btn" data-focus="bridge" aria-selected="false">Show Reasoning</button>
-      <button class="verb-btn" data-focus="decision" aria-selected="false">Justify</button>
-      <button class="verb-btn" data-focus="evidence" aria-selected="false">Substantiate</button>
-    </div>
-
-    <div class="flow-row">
-      <div class="flow-node"><strong>Explain</strong>clarify the claim</div>
-      <div class="flow-node"><strong>Elaborate</strong>add context and variables</div>
-      <div class="flow-node"><strong>Show Reasoning</strong>build causal mechanism</div>
-      <div class="flow-node"><strong>Justify</strong>conclude decision</div>
-      <div class="flow-node"><strong>Substantiate</strong>test with evidence</div>
-    </div>
-
-    <div class="bridge-diagram">
-      <div class="bridge-top">
-        <div class="box diagram-target" data-target="claim">
-          <h4>Left side: Claim</h4>
-          <p>“We should increase the price of the premium package.”</p>
-        </div>
-        <div class="diagram-arrow">→</div>
-        <div class="box bridge-core diagram-target" data-target="bridge">
-          <h4>Causal bridge</h4>
-          <p>
-            Higher value<br>
-            ↓<br>
-            Lower price sensitivity<br>
-            ↓<br>
-            Limited volume loss<br>
-            ↓<br>
-            Higher margin<br>
-            ↓<br>
-            Better profitability
-          </p>
-        </div>
-        <div class="diagram-arrow">→</div>
-        <div class="box diagram-target" data-target="decision">
-          <h4>Right side: Decision</h4>
-          <p>“Therefore, a price increase is appropriate.”</p>
-        </div>
-      </div>
-      <div class="bridge-bottom">
-        <div class="box diagram-target" data-target="evidence">
-          <h4>Below the bridge: Substantiate</h4>
-          <p>WTP data, customer interviews, conversion rates, margin analysis, and competitor benchmarks.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="claim-section">
   <div class="claim-wrap">
     <div class="claim-tag">Practical example</div>
@@ -451,31 +245,6 @@
     </div>
   </div>
 </section>
-
-<script>
-  const verbButtons = document.querySelectorAll(".verb-btn");
-  const targets = document.querySelectorAll(".diagram-target");
-
-  function applyFocus(focus) {
-    targets.forEach((target) => {
-      target.classList.toggle("active-focus", target.dataset.target === focus);
-    });
-  }
-
-  verbButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      verbButtons.forEach((other) => {
-        other.classList.remove("active");
-        other.setAttribute("aria-selected", "false");
-      });
-      button.classList.add("active");
-      button.setAttribute("aria-selected", "true");
-      applyFocus(button.dataset.focus);
-    });
-  });
-
-  applyFocus("claim");
-</script>
 
 </body>
 </html>
