@@ -1,433 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback Verbs Are Not Interchangeable</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/thought-essay.css">
-  <style>
-    :root {
-      --accent: #2f5d8a;
-      --ink: #141414;
-      --muted: #4d5560;
-      --line: #d9dee6;
-      --panel: #f7f9fc;
-      --panel-strong: #eef3f9;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Verbs Are Not Interchangeable | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/article-showcase.css">
+<style>
+  .section {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .verb-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(170px, 1fr));
+    gap: 2px;
+    background: rgba(13,13,13,0.08);
+    margin-top: 36px;
+  }
+
+  .verb-card {
+    background: var(--pale);
+    padding: 30px 24px;
+  }
+
+  .verb-num {
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .verb-title {
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    margin-bottom: 10px;
+  }
+
+  .verb-desc {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13,13,13,0.62);
+  }
+
+  .claim-section {
+    background: var(--ink);
+    padding: 100px 80px;
+  }
+
+  .claim-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--cream);
+  }
+
+  .claim-tag {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 18px;
+  }
+
+  .claim-text {
+    font-family: "Fraunces", serif;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.22;
+    margin-bottom: 28px;
+  }
+
+  .step {
+    border-top: 1px solid rgba(245,240,232,0.16);
+    padding: 24px 0;
+  }
+
+  .step h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 12px;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.76);
+    margin-bottom: 8px;
+  }
+
+  .example {
+    background: rgba(200,135,43,0.1);
+    border-left: 3px solid var(--amber);
+    padding: 14px 16px;
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--cream);
+  }
+
+  .chain {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 2;
+    color: rgba(245,240,232,0.88);
+    letter-spacing: 0.04em;
+  }
+
+  .closing-box {
+    margin-top: 24px;
+    border: 1px solid rgba(200,135,43,0.3);
+    background: rgba(200,135,43,0.08);
+    padding: 20px;
+    color: var(--cream);
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  .interactive-section {
+    padding: 100px 80px;
+    background: var(--pale);
+  }
+
+  .interactive-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .verb-controls {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(120px, 1fr));
+    gap: 8px;
+    margin: 24px 0 30px;
+  }
+
+  .verb-btn {
+    border: 1px solid rgba(13,13,13,0.14);
+    background: #fff;
+    color: rgba(13,13,13,0.8);
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 10px;
+    cursor: pointer;
+  }
+
+  .verb-btn.active {
+    border-color: var(--amber);
+    background: rgba(200,135,43,0.12);
+    color: var(--ink);
+  }
+
+  .flow-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: start;
+    margin-bottom: 36px;
+  }
+
+  .flow-node {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(13,13,13,0.7);
+    position: relative;
+    padding-top: 8px;
+  }
+
+  .flow-node:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 7px;
+    right: -8px;
+    color: rgba(13,13,13,0.45);
+  }
+
+  .flow-node strong {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .bridge-diagram {
+    border: 1px solid rgba(13,13,13,0.16);
+    background: #fff;
+    padding: 24px;
+  }
+
+  .bridge-top {
+    display: grid;
+    grid-template-columns: 1fr auto 1.35fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .box {
+    border: 1px solid rgba(13,13,13,0.35);
+    border-radius: 10px;
+    padding: 16px;
+    background: #fff;
+    transition: all 180ms ease;
+  }
+
+  .box h4 {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(13,13,13,0.58);
+    margin-bottom: 10px;
+  }
+
+  .box p {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13,13,13,0.8);
+  }
+
+  .bridge-core {
+    min-height: 146px;
+  }
+
+  .diagram-arrow {
+    font-size: 30px;
+    color: rgba(13,13,13,0.5);
+  }
+
+  .bridge-bottom {
+    margin-top: 18px;
+  }
+
+  .box.active-focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px rgba(200,135,43,0.18);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 960px) {
+    .section,
+    .claim-section,
+    .interactive-section {
+      padding: 72px 28px;
     }
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
-      background: #ffffff;
-      color: var(--ink);
-      line-height: 1.65;
+    .verb-grid {
+      grid-template-columns: 1fr;
     }
 
-    .page {
-      width: min(1120px, calc(100% - 2.5rem));
-      margin: 0 auto;
-      padding: 3.5rem 0 4.5rem;
+    .step h3 {
+      font-size: 24px;
     }
 
-    section {
-      padding: 2.6rem 0;
-      border-bottom: 1px solid var(--line);
+    .verb-controls,
+    .flow-row {
+      grid-template-columns: 1fr;
     }
 
-    section:last-of-type { border-bottom: none; }
-
-    .hero h1 {
-      font-family: "Source Serif 4", Georgia, serif;
-      font-size: clamp(2rem, 4.5vw, 3.5rem);
-      line-height: 1.08;
-      margin: 0;
-      letter-spacing: -0.02em;
+    .flow-node:not(:last-child)::after {
+      content: "↓";
+      right: auto;
+      left: 50%;
+      top: auto;
+      bottom: -10px;
+      transform: translateX(-50%);
     }
 
-    .hero .subtitle {
-      margin: 0.8rem 0 1.4rem;
-      color: var(--accent);
-      font-size: clamp(1.02rem, 1.8vw, 1.3rem);
-      font-weight: 500;
+    .bridge-top {
+      grid-template-columns: 1fr;
     }
 
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
+    .diagram-arrow {
+      text-align: center;
+      transform: rotate(90deg);
     }
-
-    .framework-row {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(160px, 1fr));
-      gap: 0.85rem;
-      margin-top: 1.25rem;
-      overflow-x: auto;
-      padding-bottom: 0.35rem;
-    }
-
-    .verb-card {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 12px;
-      padding: 1rem;
-      min-height: 138px;
-      position: relative;
-    }
-
-    .verb-card.core {
-      border-color: var(--accent);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
-      background: var(--panel);
-    }
-
-    .verb-card h3 {
-      margin: 0 0 0.45rem;
-      font-size: 1rem;
-      line-height: 1.3;
-      color: var(--ink);
-    }
-
-    .verb-card .function {
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 600;
-      line-height: 1.45;
-    }
-
-    .arrow {
-      align-self: center;
-      justify-self: center;
-      color: var(--line);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .causal-layout {
-      margin-top: 1.3rem;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: 1fr 1.45fr 1fr;
-      align-items: stretch;
-    }
-
-    .stage {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #fff;
-      padding: 1rem;
-    }
-
-    .stage h4 {
-      margin: 0 0 0.8rem;
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .stage ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: var(--muted);
-    }
-
-    .stage li { margin-bottom: 0.45rem; }
-
-    .evidence-layer {
-      margin-top: 1rem;
-      border: 1px dashed var(--accent);
-      border-radius: 10px;
-      background: var(--panel);
-      padding: 0.95rem 1rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .interactive {
-      margin-top: 1.2rem;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      border-bottom: 1px solid var(--line);
-      background: #fff;
-    }
-
-    .tab-btn {
-      flex: 1 1 160px;
-      border: none;
-      border-right: 1px solid var(--line);
-      background: #fff;
-      padding: 0.9rem 0.8rem;
-      cursor: pointer;
-      text-align: left;
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: background 180ms ease, color 180ms ease;
-    }
-
-    .tab-btn:last-child { border-right: none; }
-
-    .tab-btn[aria-selected="true"] {
-      background: var(--panel-strong);
-      color: var(--ink);
-      box-shadow: inset 0 -2px 0 var(--accent);
-    }
-
-    .panels {
-      background: #fff;
-      padding: 1.25rem 1.15rem 1.35rem;
-      min-height: 158px;
-    }
-
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    .bridge {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr 1fr;
-      gap: 1rem;
-      margin-top: 1.2rem;
-      align-items: stretch;
-    }
-
-    .bridge-box {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 1rem;
-      background: #fff;
-    }
-
-    .bridge-box h4 {
-      margin: 0 0 0.6rem;
-      color: var(--accent);
-      font-size: 0.84rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .bridge-flow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      align-items: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .node {
-      padding: 0.45rem 0.62rem;
-      border-radius: 8px;
-      background: var(--panel);
-      border: 1px solid #e5eaf1;
-    }
-
-    .final-box {
-      margin-top: 1.2rem;
-      border-left: 4px solid var(--accent);
-      background: var(--panel);
-      padding: 1.1rem 1rem;
-      border-radius: 10px;
-      font-size: 1.02rem;
-      color: #1d2732;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 500ms ease, transform 500ms ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 960px) {
-      .causal-layout,
-      .bridge {
-        grid-template-columns: 1fr;
-      }
-
-      .page { width: min(1120px, calc(100% - 1.5rem)); }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero reveal">
-      <h1>Feedback Verbs Are Not Interchangeable</h1>
-      <p class="subtitle">Each verb points to a different thinking gap in an argument.</p>
-      <p>Many people receive feedback but do not know what action it actually requires. The problem is often not effort. The problem is translation. Words like explain, justify, or substantiate may sound similar, but they ask for different kinds of improvement.</p>
-    </section>
 
-    <section class="reveal">
-      <h2>Framework Row</h2>
-      <div class="framework-row" aria-label="Feedback verbs framework">
-        <article class="verb-card">
-          <h3>Explain what you mean</h3>
-          <p class="function">Clarify the claim</p>
-        </article>
-        <div class="arrow" aria-hidden="true">→</div>
-        <article class="verb-card">
-          <h3>Elaborate the point</h3>
-          <p class="function">Add context and variables</p>
-        </article>
-        <div class="arrow" aria-hidden="true">→</div>
-        <article class="verb-card core">
-          <h3>Show the reasoning</h3>
-          <p class="function">Build causal mechanism</p>
-        </article>
-        <div class="arrow" aria-hidden="true">→</div>
-        <article class="verb-card">
-          <h3>Justify the decision</h3>
-          <p class="function">Conclude decision</p>
-        </article>
-        <div class="arrow" aria-hidden="true">→</div>
-        <article class="verb-card">
-          <h3>Substantiate it with evidence</h3>
-          <p class="function">Test with evidence</p>
-        </article>
-      </div>
-    </section>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Thoughts Essay</div>
+    <h1 class="hero-title">Feedback Verbs Are <em>Not</em> Interchangeable</h1>
+    <p class="hero-sub">
+      One thing I notice often in supervision and coaching is this: people receive feedback,
+      but they do not know how to respond to it. The problem is usually not effort. The problem is translation.
+    </p>
+    <div class="hero-formula">
+      <div class="label">Core idea</div>
+      If you do not understand the <strong>feedback verb</strong>, you do not understand
+      the expected kind of improvement.
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="big-quote">
+      They may sound similar, but each feedback verb does a different job in building a strong argument.
+    </div>
+  </div>
+</section>
 
-    <section class="reveal">
-      <h2>Causal Chain Interpretation</h2>
-      <p>Reasoning is the causal core. The other verbs either prepare the chain, conclude from it, or test whether it holds.</p>
-      <div class="causal-layout">
-        <article class="stage">
-          <h4>Preparation</h4>
-          <ul>
-            <li><strong>Explain:</strong> makes the starting claim precise.</li>
-            <li><strong>Elaborate:</strong> adds the relevant conditions and variables.</li>
-          </ul>
-        </article>
-        <article class="stage">
-          <h4>Causal Chain</h4>
-          <ul>
-            <li><strong>Reasoning:</strong> connects the variables through cause and effect.</li>
-          </ul>
-        </article>
-        <article class="stage">
-          <h4>Decision Conclusion</h4>
-          <ul>
-            <li><strong>Justify:</strong> turns the chain into a decision conclusion.</li>
-          </ul>
-        </article>
-      </div>
-      <div class="evidence-layer"><strong>Substantiate:</strong> tests whether the chain is credible with evidence.</div>
-    </section>
+<section class="section">
+  <div class="section-tag">Framework</div>
+  <h2 class="section-title">The five response jobs</h2>
+  <p class="section-intro">
+    People often read comments like “explain more” and “justify this point” as if they are equivalent.
+    They are not. Each verb asks for a distinct upgrade in the quality of thinking and communication.
+  </p>
 
-    <section class="reveal">
-      <h2>Running Example</h2>
-      <p><strong>Example claim:</strong> “We should increase the price of the premium package.”</p>
-      <div class="interactive" id="verb-tabs">
-        <div class="tabs" role="tablist" aria-label="Feedback verb examples">
-          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-explain" id="tab-explain">Explain what you mean</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-elaborate" id="tab-elaborate">Elaborate the point</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-reasoning" id="tab-reasoning">Show the reasoning</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-justify" id="tab-justify">Justify the decision</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-substantiate" id="tab-substantiate">Substantiate it with evidence</button>
-        </div>
-        <div class="panels">
-          <article class="panel active" role="tabpanel" id="panel-explain" aria-labelledby="tab-explain">
-            Increasing the price of the premium package means charging more for the highest tier offer, while keeping the basic package structure and target segment largely the same.
-          </article>
-          <article class="panel" role="tabpanel" id="panel-elaborate" aria-labelledby="tab-elaborate">
-            The premium package includes the most advanced features, the highest service level, and the strongest outcome for customers with more complex needs. These customers are often less focused on the lowest price and more focused on performance, convenience, and reliability.
-          </article>
-          <article class="panel" role="tabpanel" id="panel-reasoning" aria-labelledby="tab-reasoning">
-            If the premium package delivers significantly more value, and if its customers are less price sensitive, then a moderate price increase is less likely to reduce demand sharply. If demand stays relatively stable while the price rises, the company earns more margin per sale and can improve profitability.
-          </article>
-          <article class="panel" role="tabpanel" id="panel-justify" aria-labelledby="tab-justify">
-            Therefore, increasing the price of the premium package can be an appropriate decision when the offer is clearly differentiated and the target segment values the additional benefits enough to tolerate a higher price.
-          </article>
-          <article class="panel" role="tabpanel" id="panel-substantiate" aria-labelledby="tab-substantiate">
-            This should be supported by willingness to pay data, upgrade behavior, customer interviews, conversion rates by tier, margin analysis, and competitor benchmarking.
-          </article>
-        </div>
-      </div>
-    </section>
+  <div class="verb-grid">
+    <article class="verb-card">
+      <div class="verb-num">01</div>
+      <h3 class="verb-title">Explain</h3>
+      <p class="verb-desc">Define what you mean, so the claim is clear and unambiguous.</p>
+    </article>
+    <article class="verb-card">
+      <div class="verb-num">02</div>
+      <h3 class="verb-title">Elaborate</h3>
+      <p class="verb-desc">Add relevant context, so the claim is properly situated.</p>
+    </article>
+    <article class="verb-card">
+      <div class="verb-num">03</div>
+      <h3 class="verb-title">Show Reasoning</h3>
+      <p class="verb-desc">Make the causal logic explicit from premise to conclusion.</p>
+    </article>
+    <article class="verb-card">
+      <div class="verb-num">04</div>
+      <h3 class="verb-title">Justify</h3>
+      <p class="verb-desc">Defend why this is the right choice among alternatives.</p>
+    </article>
+    <article class="verb-card">
+      <div class="verb-num">05</div>
+      <h3 class="verb-title">Substantiate</h3>
+      <p class="verb-desc">Support the argument with evidence, not assertion.</p>
+    </article>
+  </div>
+</section>
 
-    <section class="reveal">
-      <h2>Causal Bridge</h2>
-      <div class="bridge">
-        <article class="bridge-box">
-          <h4>Claim</h4>
+<section class="interactive-section">
+  <div class="interactive-wrap">
+    <div class="section-tag">Interactive illustration</div>
+    <h2 class="section-title">Feedback Verbs and the Causal Bridge</h2>
+    <p class="section-intro">
+      Click each verb to see where it acts in the logic. The center is causal reasoning; below it sits substantiation.
+    </p>
+
+    <div class="verb-controls" role="tablist" aria-label="Feedback verb controls">
+      <button class="verb-btn active" data-focus="claim" aria-selected="true">Explain</button>
+      <button class="verb-btn" data-focus="claim" aria-selected="false">Elaborate</button>
+      <button class="verb-btn" data-focus="bridge" aria-selected="false">Show Reasoning</button>
+      <button class="verb-btn" data-focus="decision" aria-selected="false">Justify</button>
+      <button class="verb-btn" data-focus="evidence" aria-selected="false">Substantiate</button>
+    </div>
+
+    <div class="flow-row">
+      <div class="flow-node"><strong>Explain</strong>clarify the claim</div>
+      <div class="flow-node"><strong>Elaborate</strong>add context and variables</div>
+      <div class="flow-node"><strong>Show Reasoning</strong>build causal mechanism</div>
+      <div class="flow-node"><strong>Justify</strong>conclude decision</div>
+      <div class="flow-node"><strong>Substantiate</strong>test with evidence</div>
+    </div>
+
+    <div class="bridge-diagram">
+      <div class="bridge-top">
+        <div class="box diagram-target" data-target="claim">
+          <h4>Left side: Claim</h4>
           <p>“We should increase the price of the premium package.”</p>
-        </article>
-        <article class="bridge-box">
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="box bridge-core diagram-target" data-target="bridge">
           <h4>Causal bridge</h4>
-          <div class="bridge-flow">
-            <span class="node">Higher value</span>
-            <span>→</span>
-            <span class="node">lower price sensitivity</span>
-            <span>→</span>
-            <span class="node">limited volume loss</span>
-            <span>→</span>
-            <span class="node">higher margin</span>
-            <span>→</span>
-            <span class="node">better profitability</span>
-          </div>
-        </article>
-        <article class="bridge-box">
-          <h4>Decision</h4>
+          <p>
+            Higher value<br>
+            ↓<br>
+            Lower price sensitivity<br>
+            ↓<br>
+            Limited volume loss<br>
+            ↓<br>
+            Higher margin<br>
+            ↓<br>
+            Better profitability
+          </p>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="box diagram-target" data-target="decision">
+          <h4>Right side: Decision</h4>
           <p>“Therefore, a price increase is appropriate.”</p>
-        </article>
+        </div>
       </div>
-      <div class="evidence-layer">Substantiate = evidence that the bridge can actually hold.</div>
-    </section>
+      <div class="bridge-bottom">
+        <div class="box diagram-target" data-target="evidence">
+          <h4>Below the bridge: Substantiate</h4>
+          <p>WTP data, customer interviews, conversion rates, margin analysis, and competitor benchmarks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="reveal">
-      <h2>Key Insight</h2>
-      <p>Many weak arguments do not fail because they lack words. They fail because the wrong function is missing. Sometimes the claim is unclear. Sometimes the context is underdeveloped. Sometimes the causal logic is missing. Sometimes the conclusion is not defended. Sometimes evidence is absent.</p>
-      <p style="margin-top: 0.9rem;">Evidence cannot replace reasoning. Data alone does not create an argument. A citation is not a substitute for causal logic.</p>
-    </section>
+<section class="claim-section">
+  <div class="claim-wrap">
+    <div class="claim-tag">Practical example</div>
+    <div class="claim-text">“We should increase the price of the premium package.”</div>
 
-    <section class="reveal">
-      <h2>Final Synthesis</h2>
-      <div class="final-box">“A strong argument is not just a conclusion. It is a structured chain: clarify the claim, develop the context, show the causal logic, defend the choice, and support it with evidence.”</div>
-    </section>
-  </main>
+    <article class="step">
+      <h3>1. Explain</h3>
+      <p>What does this mean exactly?</p>
+      <div class="example">“Increasing the price of the premium package means charging more for the highest tier, without fundamentally changing its role.”</div>
+    </article>
 
-  <script>
-    (function () {
-      const buttons = Array.from(document.querySelectorAll('.tab-btn'));
-      const panels = Array.from(document.querySelectorAll('.panel'));
+    <article class="step">
+      <h3>2. Elaborate</h3>
+      <p>What important context matters?</p>
+      <div class="example">“The premium tier offers more advanced features, more service, and is aimed at customers with more complex needs.”</div>
+    </article>
 
-      function activate(button) {
-        const targetId = button.getAttribute('aria-controls');
+    <article class="step">
+      <h3>3. Show the reasoning</h3>
+      <p>What is the causal chain?</p>
+      <div class="chain">
+        Higher value for a less price-sensitive segment<br>
+        ↓<br>
+        Smaller drop in demand after a price increase<br>
+        ↓<br>
+        Higher margin per sale<br>
+        ↓<br>
+        Better profitability
+      </div>
+    </article>
 
-        buttons.forEach((btn) => btn.setAttribute('aria-selected', btn === button ? 'true' : 'false'));
-        panels.forEach((panel) => panel.classList.toggle('active', panel.id === targetId));
-      }
+    <article class="step">
+      <h3>4. Justify</h3>
+      <p>Why does that make this the right choice?</p>
+      <div class="example">“Therefore, increasing the price is appropriate because this tier creates stronger value and can likely bear a higher price.”</div>
+    </article>
 
-      buttons.forEach((button) => {
-        button.addEventListener('click', () => activate(button));
+    <article class="step">
+      <h3>5. Substantiate</h3>
+      <p>What evidence supports it?</p>
+      <div class="example">“WTP data, customer interviews, conversion rates, margin analysis, and competitor benchmarks.”</div>
+    </article>
+
+    <div class="closing-box">
+      A strong decision argument is not just a conclusion. It is a structured chain:
+      define the claim, develop the context, show the causal logic, defend the choice,
+      and support it with evidence.
+    </div>
+  </div>
+</section>
+
+<script>
+  const verbButtons = document.querySelectorAll(".verb-btn");
+  const targets = document.querySelectorAll(".diagram-target");
+
+  function applyFocus(focus) {
+    targets.forEach((target) => {
+      target.classList.toggle("active-focus", target.dataset.target === focus);
+    });
+  }
+
+  verbButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      verbButtons.forEach((other) => {
+        other.classList.remove("active");
+        other.setAttribute("aria-selected", "false");
       });
+      button.classList.add("active");
+      button.setAttribute("aria-selected", "true");
+      applyFocus(button.dataset.focus);
+    });
+  });
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
+  applyFocus("claim");
+</script>
 
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    })();
-  </script>
 </body>
 </html>
