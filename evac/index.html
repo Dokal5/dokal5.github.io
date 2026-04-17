@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<!--
+  Design logic:
+  This page is intentionally structured as an executive decision interface rather than a teaching page.
+  The layout emphasizes commercial system logic, decision quality, evidence, and profit impact so senior
+  leaders can understand EVAC as a practical management framework, not as a classroom subject.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVAC: Turning Value into Defensible Pricing and Profit Logic</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: #ffffff;
+      --ink: #152033;
+      --muted: #61718a;
+      --line: rgba(24, 42, 74, 0.12);
+      --line-strong: rgba(24, 42, 74, 0.2);
+      --accent: #1f6fff;
+      --accent-soft: rgba(31, 111, 255, 0.12);
+      --accent-2: #15a38a;
+      --accent-3: #f08f3a;
+      --shadow: 0 20px 60px rgba(21, 32, 51, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1320px;
+      --hero-grid: minmax(0, 1.1fr) minmax(420px, 0.9fr);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(31, 111, 255, 0.08), transparent 28%),
+        radial-gradient(circle at 10% 20%, rgba(21, 163, 138, 0.08), transparent 24%),
+        linear-gradient(180deg, #f7f9fc 0%, #eef3f9 100%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(21, 32, 51, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 32, 51, 0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 92%);
+      z-index: -1;
+    }
+
+    h1, h2, h3, h4, p {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      appearance: none;
+    }
+
+    .page-shell {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      font-size: 11px;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 6px rgba(31, 111, 255, 0.08);
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero {
+      padding-top: 28px;
+      padding-bottom: 34px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: var(--hero-grid);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-visual {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -80px -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(31, 111, 255, 0.12), transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(19px, 2vw, 25px);
+      color: var(--ink);
+      max-width: 24ch;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .hero .intro {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .message-block {
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(31, 111, 255, 0.08), rgba(21, 163, 138, 0.06));
+      display: grid;
+      gap: 8px;
+    }
+
+    .message-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .message-block p {
+      font-size: 16px;
+      color: var(--ink);
+      max-width: 48ch;
+    }
+
+    .hero-visual {
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 255, 0.86)),
+        radial-gradient(circle at top left, rgba(31, 111, 255, 0.12), transparent 28%);
+    }
+
+    .visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .visual-header h2 {
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .visual-header p {
+      max-width: 28ch;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-map {
+      position: relative;
+      flex: 1;
+      min-height: 460px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(246, 249, 255, 0.8), rgba(255, 255, 255, 0.92));
+      overflow: hidden;
+    }
+
+    .hero-map svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .flow-line {
+      fill: none;
+      stroke: rgba(31, 111, 255, 0.33);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 12 12;
+      animation: flow 9s linear infinite;
+    }
+
+    .hero-node {
+      position: absolute;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 30px rgba(21, 32, 51, 0.08);
+      width: min(220px, 42%);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .hero-node:hover {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 18px 36px rgba(21, 32, 51, 0.11);
+    }
+
+    .hero-node strong {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .hero-node span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .hero-node.node-1 { top: 8%; left: 7%; }
+    .hero-node.node-2 { top: 26%; right: 8%; }
+    .hero-node.node-3 { top: 48%; left: 15%; }
+    .hero-node.node-4 { top: 62%; right: 12%; }
+    .hero-node.node-5 { bottom: 16%; left: 11%; }
+    .hero-node.node-6 { bottom: 8%; right: 10%; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 3vw, 42px);
+      letter-spacing: -0.04em;
+      max-width: 13ch;
+    }
+
+    .section-head p {
+      max-width: 52ch;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .pain-card {
+      grid-column: span 4;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+      min-height: 164px;
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .pain-card:hover,
+    .pain-card.active {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 255, 0.22);
+      box-shadow: 0 18px 36px rgba(21, 32, 51, 0.08);
+    }
+
+    .pain-card .mini-tag,
+    .evidence-card .mini-tag,
+    .outcome-card .mini-tag,
+    .trigger-card .mini-tag,
+    .diagnostic-list button .mini-tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .pain-card h3,
+    .layer-item h3,
+    .chain-node strong,
+    .evidence-card h3,
+    .scenario-tab strong,
+    .trigger-card h3,
+    .outcome-card h3,
+    .diagnostic-list button strong {
+      font-size: 20px;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .pain-card p,
+    .evidence-card p,
+    .trigger-card p,
+    .outcome-card p,
+    .diagnostic-list button p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .detail-panel,
+    .layer-detail,
+    .chain-detail,
+    .evidence-detail,
+    .scenario-detail,
+    .pressure-detail,
+    .diagnostic-detail {
+      margin-top: 20px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 255, 0.84));
+      box-shadow: 0 16px 40px rgba(21, 32, 51, 0.06);
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .detail-box {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .detail-box h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .detail-box p,
+    .detail-box li {
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .detail-box ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .framework-wrap,
+    .chain-wrap,
+    .scenario-wrap,
+    .pressure-wrap,
+    .diagnostic-wrap,
+    .synthesis-wrap {
+      padding: 28px;
+    }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .layer-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .layer-item {
+      position: relative;
+      width: 100%;
+      text-align: left;
+      padding: 20px 22px 20px 74px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.76);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .layer-item:hover,
+    .layer-item.active {
+      transform: translateX(4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 16px 34px rgba(21, 32, 51, 0.08);
+    }
+
+    .layer-index {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent-soft), rgba(21, 163, 138, 0.14));
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .layer-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .layer-detail h3,
+    .chain-detail h3,
+    .evidence-detail h3,
+    .scenario-detail h3,
+    .pressure-detail h3,
+    .diagnostic-detail h3 {
+      font-size: 26px;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .layer-summary,
+    .chain-caption,
+    .scenario-caption,
+    .pressure-caption,
+    .diagnostic-caption,
+    .synthesis-lead {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+
+    .chain-track {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(150px, 1fr));
+      gap: 12px;
+      align-items: stretch;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .chain-node {
+      position: relative;
+      min-height: 152px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+    }
+
+    .chain-node::after {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      transform: translateY(-50%);
+      color: rgba(31, 111, 255, 0.35);
+      font-size: 24px;
+      pointer-events: none;
+    }
+
+    .chain-node:last-child::after {
+      display: none;
+    }
+
+    .chain-node:hover,
+    .chain-node.active {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 16px 34px rgba(21, 32, 51, 0.08);
+    }
+
+    .chain-node.dimmed {
+      opacity: 0.42;
+    }
+
+    .chain-node.connected {
+      border-color: rgba(21, 163, 138, 0.28);
+      background: linear-gradient(180deg, rgba(21, 163, 138, 0.08), rgba(255, 255, 255, 0.86));
+    }
+
+    .chain-node .meta {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .evidence-grid,
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .evidence-card,
+    .outcome-card {
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .evidence-card:hover,
+    .evidence-card.active,
+    .outcome-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 16px 34px rgba(21, 32, 51, 0.08);
+    }
+
+    .scenario-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .scenario-tab {
+      flex: 1 1 180px;
+      min-width: 0;
+      text-align: left;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.76);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .scenario-tab:hover,
+    .scenario-tab.active {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 16px 34px rgba(21, 32, 51, 0.08);
+    }
+
+    .scenario-tab span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .scenario-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .scenario-box h4 {
+      margin-bottom: 10px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scenario-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .pressure-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .trigger-card {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .trigger-card:hover,
+    .trigger-card.active {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 16px 34px rgba(21, 32, 51, 0.08);
+    }
+
+    .trigger-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 12px 0 0;
+    }
+
+    .outcome-card {
+      min-height: 180px;
+      cursor: default;
+    }
+
+    .diagnostic-layout {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+      gap: 20px;
+    }
+
+    .diagnostic-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .diagnostic-list button {
+      text-align: left;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .diagnostic-list button:hover,
+    .diagnostic-list button.active {
+      transform: translateX(4px);
+      border-color: rgba(31, 111, 255, 0.24);
+      box-shadow: 0 16px 34px rgba(21, 32, 51, 0.08);
+    }
+
+    .synthesis-wrap {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 255, 0.92)),
+        radial-gradient(circle at top left, rgba(31, 111, 255, 0.08), transparent 32%);
+    }
+
+    .synthesis-board {
+      position: relative;
+      min-height: 420px;
+      margin-top: 24px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.88);
+      overflow: hidden;
+    }
+
+    .synthesis-board svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .syn-node {
+      position: absolute;
+      width: 210px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 14px 30px rgba(21, 32, 51, 0.08);
+    }
+
+    .syn-node strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .syn-node span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .syn-node.s1 { top: 10%; left: 6%; }
+    .syn-node.s2 { top: 10%; right: 6%; }
+    .syn-node.s3 { top: 42%; left: 16%; }
+    .syn-node.s4 { top: 42%; right: 16%; }
+    .syn-node.s5 { bottom: 10%; left: 50%; transform: translateX(-50%); }
+
+    .closing-statement {
+      margin-top: 24px;
+      padding: 22px 24px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(31, 111, 255, 0.1), rgba(21, 163, 138, 0.08));
+      border: 1px solid var(--line);
+      font-size: 19px;
+      color: var(--ink);
+    }
+
+    .tooltip {
+      position: fixed;
+      z-index: 10;
+      max-width: 280px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(21, 32, 51, 0.95);
+      color: #f6f9ff;
+      font-size: 12px;
+      line-height: 1.45;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 32px rgba(21, 32, 51, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @keyframes flow {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: -240; }
+    }
+
+    @media (max-width: 1180px) {
+      .hero-wrap,
+      .framework-grid,
+      .diagnostic-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .evidence-grid,
+      .scenario-grid,
+      .outcomes-grid,
+      .pressure-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pain-card {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 840px) {
+      .page-shell {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      section {
+        padding: 28px 0;
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .framework-wrap,
+      .chain-wrap,
+      .scenario-wrap,
+      .pressure-wrap,
+      .diagnostic-wrap,
+      .synthesis-wrap {
+        padding: 22px;
+      }
+
+      .detail-grid,
+      .scenario-grid,
+      .evidence-grid,
+      .outcomes-grid,
+      .pressure-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pain-card {
+        grid-column: span 12;
+      }
+
+      .hero-map,
+      .synthesis-board {
+        min-height: 720px;
+      }
+
+      .hero-node,
+      .syn-node {
+        width: calc(100% - 40px);
+        left: 20px !important;
+        right: auto !important;
+        transform: none !important;
+      }
+
+      .hero-node.node-1 { top: 4%; }
+      .hero-node.node-2 { top: 20%; }
+      .hero-node.node-3 { top: 36%; }
+      .hero-node.node-4 { top: 52%; }
+      .hero-node.node-5 { top: 68%; bottom: auto; }
+      .hero-node.node-6 { top: 84%; bottom: auto; }
+
+      .syn-node.s1 { top: 4%; }
+      .syn-node.s2 { top: 22%; }
+      .syn-node.s3 { top: 40%; }
+      .syn-node.s4 { top: 58%; }
+      .syn-node.s5 { top: 76%; bottom: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-wrap">
+        <div class="hero-copy panel">
+          <span class="eyebrow">Executive Commercial Framework</span>
+          <div>
+            <h1>EVAC: Turning Value into Defensible Pricing and Profit Logic</h1>
+          </div>
+          <p class="subtitle">A strategic framework for leaders who need sharper pricing logic, stronger commercial structure, and more disciplined profit capture.</p>
+          <p class="intro">
+            Most firms do not fail because they lack activity. They fail because they cannot clearly translate value
+            into offer structure, pricing architecture, and disciplined commercial action. EVAC helps leadership teams close that gap.
+          </p>
+          <div class="message-block" data-tooltip="EVAC is positioned here as a management system for decision quality, not as a teaching model or academic theory.">
+            <span class="message-label">Executive Message</span>
+            <p>EVAC is built for organizations that want pricing and offer decisions to become more structured, evidence based, and commercially coherent.</p>
+          </div>
+        </div>
+
+        <div class="hero-visual panel">
+          <div class="visual-header">
+            <div>
+              <h2>System Map</h2>
+            </div>
+            <p>Value capture improves when leaders manage the chain as a system instead of treating price as an isolated number.</p>
+          </div>
+
+          <div class="hero-map">
+            <svg viewBox="0 0 1000 700" aria-hidden="true" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="heroGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+                  <stop offset="0%" stop-color="#1f6fff" stop-opacity="0.55"></stop>
+                  <stop offset="100%" stop-color="#15a38a" stop-opacity="0.5"></stop>
+                </linearGradient>
+              </defs>
+              <path class="flow-line" stroke="url(#heroGradient)" d="M190,110 C370,110 360,190 710,190"></path>
+              <path class="flow-line" stroke="url(#heroGradient)" d="M710,210 C520,240 520,340 250,350"></path>
+              <path class="flow-line" stroke="url(#heroGradient)" d="M250,380 C540,400 560,470 770,470"></path>
+              <path class="flow-line" stroke="url(#heroGradient)" d="M770,500 C560,540 540,600 260,600"></path>
+              <path class="flow-line" stroke="url(#heroGradient)" d="M260,620 C530,650 620,650 780,650"></path>
+            </svg>
+
+            <div class="hero-node node-1" data-tooltip="Customer value is the starting point for commercial logic: the economic, functional, and risk-reduction gains customers recognize.">
+              <strong>Customer Value</strong>
+              <span>What the customer gains, avoids, improves, or protects.</span>
+            </div>
+            <div class="hero-node node-2" data-tooltip="Offer design turns raw value into a decision-ready structure: tiers, bundles, options, and scope choices.">
+              <strong>Offer Design</strong>
+              <span>How the firm packages value into a clear commercial proposition.</span>
+            </div>
+            <div class="hero-node node-3" data-tooltip="Pricing architecture shapes the charging logic: subscriptions, usage, retainers, project fees, bundles, or hybrids.">
+              <strong>Pricing Architecture</strong>
+              <span>How the business charges, frames, and organizes monetization.</span>
+            </div>
+            <div class="hero-node node-4" data-tooltip="Price validation tests whether commercial logic can hold against market reality, cost boundaries, and willingness to pay.">
+              <strong>Price Validation</strong>
+              <span>Whether the price logic is evidence-backed and commercially credible.</span>
+            </div>
+            <div class="hero-node node-5" data-tooltip="Commercial decisions connect value, offers, pricing, and response actions into a management operating logic.">
+              <strong>Commercial Decisions</strong>
+              <span>How leadership teams act when conditions shift or pressure rises.</span>
+            </div>
+            <div class="hero-node node-6" data-tooltip="Profit impact is not only about headline price. It depends on clarity, discipline, mix quality, and response quality.">
+              <strong>Profit Impact</strong>
+              <span>Margin quality, revenue quality, and strategic flexibility.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Commercial Failure Points</span>
+          <h2>Why commercial decisions break down</h2>
+        </div>
+        <p>These issues rarely appear as isolated pricing problems. They usually reflect a deeper breakdown between value logic, offer structure, evidence, and management discipline.</p>
+      </div>
+
+      <div class="card-grid" id="painGrid"></div>
+      <div class="detail-panel" id="painDetail" aria-live="polite"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Five Decision Layers</span>
+          <h2>How EVAC works</h2>
+        </div>
+        <p>EVAC operates as an executive sequence: define value, shape the offer, design the charging logic, validate the price decision, and adapt when commercial conditions change.</p>
+      </div>
+
+      <div class="framework-wrap panel">
+        <div class="framework-grid">
+          <div class="layer-list" id="layerList"></div>
+          <div class="layer-detail" id="layerDetail" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">System Logic</span>
+          <h2>From value to profit capture</h2>
+        </div>
+        <p>Pricing failure is often a system failure. Weakness at one point in the chain creates downstream pressure on discounting, mix quality, and ultimately profit performance.</p>
+      </div>
+
+      <div class="chain-wrap panel">
+        <p class="chain-caption">Select any point in the chain to trace how upstream logic influences downstream performance and where margin quality usually starts to deteriorate.</p>
+        <div class="chain-track" id="chainTrack"></div>
+        <div class="chain-detail" id="chainDetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Evidence Discipline</span>
+          <h2>What makes a pricing decision defensible</h2>
+        </div>
+        <p>Strong pricing decisions are rarely justified by one input. They become defensible when management combines value logic, market evidence, economics, and strategic intent into one commercial view.</p>
+      </div>
+
+      <div class="evidence-grid" id="evidenceGrid"></div>
+      <div class="evidence-detail" id="evidenceDetail" aria-live="polite"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Cross-Model Relevance</span>
+          <h2>How EVAC applies across business models</h2>
+        </div>
+        <p>EVAC is not tied to one industry logic. It helps leadership teams adapt value capture decisions across recurring revenue, physical goods, services, and experience-led businesses.</p>
+      </div>
+
+      <div class="scenario-wrap panel">
+        <div class="scenario-tabs" id="scenarioTabs"></div>
+        <div class="scenario-detail" id="scenarioDetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Strategic Pressure</span>
+          <h2>When leaders need EVAC most</h2>
+        </div>
+        <p>Commercial systems are tested when value perception, costs, or competition shift. Under pressure, weak decision logic shows up quickly and often triggers reactive behavior.</p>
+      </div>
+
+      <div class="pressure-wrap panel">
+        <div class="pressure-grid" id="triggerGrid"></div>
+        <div class="pressure-detail" id="pressureDetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Business Outcomes</span>
+          <h2>What EVAC enables</h2>
+        </div>
+        <p>When value capture decisions become more structured, leadership teams gain clearer commercial logic, faster alignment, and more resilient margin decisions.</p>
+      </div>
+
+      <div class="outcomes-grid" id="outcomeGrid"></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Diagnostic View</span>
+          <h2>Where is your commercial architecture weak?</h2>
+        </div>
+        <p>Most symptoms management sees in pricing, discounting, and margin are late-stage effects. The more useful question is where the architecture first became weak.</p>
+      </div>
+
+      <div class="diagnostic-wrap panel">
+        <div class="diagnostic-layout">
+          <div class="diagnostic-list" id="diagnosticList"></div>
+          <div class="diagnostic-detail" id="diagnosticDetail" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Integrated View</span>
+          <h2>EVAC in one view</h2>
+        </div>
+        <p>EVAC is most useful when it is treated as a linked decision system. Each layer reinforces the next, improving coherence from value definition through to profit capture.</p>
+      </div>
+
+      <div class="synthesis-wrap panel">
+        <p class="synthesis-lead">The framework brings management teams back to five core questions: what customers value, how the offer should be structured, how charging logic should work, how price decisions should be validated, and how the system should adapt when conditions shift.</p>
+        <div class="synthesis-board">
+          <svg viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="synGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#1f6fff" stop-opacity="0.48"></stop>
+                <stop offset="100%" stop-color="#15a38a" stop-opacity="0.52"></stop>
+              </linearGradient>
+            </defs>
+            <path class="flow-line" stroke="url(#synGradient)" d="M220,110 C380,120 470,120 770,110"></path>
+            <path class="flow-line" stroke="url(#synGradient)" d="M210,130 C260,210 285,250 340,265"></path>
+            <path class="flow-line" stroke="url(#synGradient)" d="M790,130 C730,210 710,250 660,265"></path>
+            <path class="flow-line" stroke="url(#synGradient)" d="M355,305 C420,370 455,400 500,430"></path>
+            <path class="flow-line" stroke="url(#synGradient)" d="M645,305 C585,370 550,400 500,430"></path>
+          </svg>
+
+          <div class="syn-node s1">
+            <strong>Define value clearly</strong>
+            <span>Anchor the decision system in the customer gains that matter economically and commercially.</span>
+          </div>
+          <div class="syn-node s2">
+            <strong>Structure the offer coherently</strong>
+            <span>Convert value into tiers, bundles, scope boundaries, and trade-offs management can defend.</span>
+          </div>
+          <div class="syn-node s3">
+            <strong>Design pricing architecture deliberately</strong>
+            <span>Choose charging logic that fits the buying logic, usage pattern, and revenue model.</span>
+          </div>
+          <div class="syn-node s4">
+            <strong>Validate price decisions with evidence</strong>
+            <span>Test the decision against willingness to pay, cost boundaries, market context, and strategic intent.</span>
+          </div>
+          <div class="syn-node s5">
+            <strong>Adapt commercial choices when conditions change</strong>
+            <span>Respond with discipline when customer value perception, cost structure, or competition shifts.</span>
+          </div>
+        </div>
+        <div class="closing-statement">
+          EVAC helps firms move from intuitive and fragmented commercial decisions to a more disciplined system for capturing value with stronger logic and greater confidence.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+
+  <script>
+    const painPoints = [
+      {
+        title: "We talk about value, but cannot define it clearly enough to price it",
+        summary: "Value is discussed broadly, but not translated into decision-ready commercial logic.",
+        inside: "Teams use general claims such as quality, service, innovation, or trust, but cannot specify which outcomes customers actually pay for or which differences materially matter in buying decisions.",
+        damage: "Without a sharp value definition, pricing becomes opinion-led, sales narratives drift, and leadership cannot distinguish between premium logic and unsupported optimism.",
+        wrong: "Management often responds by adjusting the price point directly or asking sales for anecdotal feedback instead of clarifying the value mechanism first."
+      },
+      {
+        title: "Our offer structure has grown without logic",
+        summary: "Legacy packages, exceptions, and add-ons create commercial complexity without strategic clarity.",
+        inside: "Products, service levels, bundles, and customizations accumulate over time. Customers struggle to compare options and internal teams make inconsistent trade-offs.",
+        damage: "Offer sprawl weakens price clarity, increases negotiation friction, and creates hidden margin leakage through poorly controlled scope and discounting.",
+        wrong: "Leaders often add another package or promotion rather than redesigning the architecture around clearer customer value and better commercial boundaries."
+      },
+      {
+        title: "We adjust prices without a clear decision framework",
+        summary: "Pricing moves occur, but the logic behind them is unstable or inconsistent.",
+        inside: "Different business units make price changes based on isolated signals: inflation, competitor moves, quota pressure, or short-term volume goals.",
+        damage: "This produces uneven decisions, internal debate, weak explanations to the market, and lower confidence in price realization.",
+        wrong: "Management often treats each price change as a one-off event instead of linking it back to value, architecture, evidence, and business intent."
+      },
+      {
+        title: "We rely too heavily on competitor signals",
+        summary: "External reference points become stronger than internal commercial logic.",
+        inside: "Teams watch competitor price lists, promotions, and headline offers more closely than they examine customer value, offer economics, or revenue quality.",
+        damage: "The firm becomes reactive, drifts toward imitation, and risks matching structures that do not fit its own economics or strategic position.",
+        wrong: "Leaders often normalize competitor prices mechanically instead of asking whether the competitor model reflects a different value proposition, cost base, or monetization design."
+      },
+      {
+        title: "Discounting is easier than strategic thinking",
+        summary: "Price concessions become the default answer when commercial pressure rises.",
+        inside: "Sales teams lean on discounts to close uncertainty, protect volume, or compensate for weak offer clarity. Commercial approvals then become routine rather than exceptional.",
+        damage: "Repeated concessions reduce price integrity, train the market to wait, and undermine confidence in the original commercial logic.",
+        wrong: "Management often tightens approval rules without addressing the deeper causes: poor offer structure, vague value articulation, or weak price validation."
+      },
+      {
+        title: "Teams across product, marketing, sales, and finance are not aligned",
+        summary: "Each function sees a different commercial story and optimizes locally.",
+        inside: "Product emphasizes features, marketing emphasizes messaging, sales emphasizes conversion, and finance emphasizes margin protection, often without a shared decision framework.",
+        damage: "Misalignment slows decisions, creates conflicting market signals, and weakens management's ability to defend or adapt pricing choices coherently.",
+        wrong: "Leaders often try to solve the issue with more meetings rather than using a common architecture for value, offer, price, and evidence."
+      }
+    ];
+
+    const layers = [
+      {
+        title: "Value Definition",
+        prompt: "Clarify what customers actually value and why it matters.",
+        decide: "Management must decide which customer outcomes create real economic or strategic value, which differences are meaningful, and where value is strong enough to support commercial distinction.",
+        weak: "Value statements stay broad, generic, or internally defined. Teams talk about strengths, but cannot connect them to buyer logic or economic relevance.",
+        strong: "Value is explicit, prioritized, and tied to customer outcomes, use cases, or risk reduction. The firm knows which differences justify stronger commercial positioning.",
+        evidence: "Voice-of-customer work, deal analysis, win-loss patterns, usage behavior, segment economics, customer interviews, and value driver mapping.",
+        risk: "If ignored, the business prices from habit, product pride, or competitor imitation rather than from customer-relevant value."
+      },
+      {
+        title: "Offer Structure",
+        prompt: "Translate value into coherent offers, packages, tiers, or bundles.",
+        decide: "Management must decide what to include, what to separate, how to tier the offer, where scope should be controlled, and how different customer needs should map to different offer forms.",
+        weak: "Packages evolve by history, exceptions, or internal convenience. Customers see clutter, and internal teams struggle to explain why one option should exist versus another.",
+        strong: "The offer structure reflects real buying logic. Packages create clarity, reinforce value differences, and protect margin by making trade-offs visible.",
+        evidence: "Customer segment needs, attach rates, usage patterns, conversion friction, margin analysis by configuration, and deal exception patterns.",
+        risk: "If ignored, weak structure creates ambiguity that later shows up as discount pressure, customization creep, and poor revenue quality."
+      },
+      {
+        title: "Pricing Architecture",
+        prompt: "Design how the firm charges, not only how much it charges.",
+        decide: "Management must decide the charging model: subscription, usage, project fee, retainer, transaction, licensing, bundled price, unbundled modules, or hybrid logic.",
+        weak: "The firm defaults to a familiar billing model even when it misfits the customer's buying logic or the economics of value delivery.",
+        strong: "Charging logic aligns with how customers perceive value, adopt usage, manage budgets, and compare alternatives. The architecture supports both clarity and capture.",
+        evidence: "Revenue model analysis, buying process insight, pricing experiments, cost-to-serve patterns, expansion behavior, and contract structure outcomes.",
+        risk: "If ignored, even a plausible price level can underperform because the charging structure itself weakens adoption, realization, or profitability."
+      },
+      {
+        title: "Price Validation",
+        prompt: "Test the pricing logic against willingness to pay, cost boundaries, and market context.",
+        decide: "Management must decide whether proposed price levels and logic are credible, sustainable, and aligned with value, cost boundaries, and market realities.",
+        weak: "Price decisions rely on internal preference, sales comfort, or headline competitor references without disciplined triangulation.",
+        strong: "Price validation combines customer willingness to pay, cost and contribution boundaries, competitor normalization, and strategic intent into a coherent decision.",
+        evidence: "Research on willingness to pay, quote-to-close data, elasticity signals, margin floors, scenario analysis, and structured competitor comparisons.",
+        risk: "If ignored, the business risks false confidence: prices that look reasonable internally but are either under-monetized or commercially indefensible."
+      },
+      {
+        title: "Commercial Adaptation",
+        prompt: "Adjust decisions when value perception, cost structure, or competitive pressure changes.",
+        decide: "Management must decide whether the right response is a price move, an offer redesign, a packaging shift, a value reframing, a cost response, or selective market repositioning.",
+        weak: "The business reacts to pressure with the fastest visible move, usually a price change or discount, without re-examining the rest of the system.",
+        strong: "Leaders respond through a disciplined review of what changed, where the architecture is vulnerable, and which intervention best protects value capture.",
+        evidence: "Customer feedback, competitor tracking, gross margin patterns, mix shifts, churn or renewal signals, channel response, and scenario planning.",
+        risk: "If ignored, leadership becomes reactive, margin deterioration accelerates, and the market learns that the firm's commercial logic is unstable."
+      }
+    ];
+
+    const chainNodes = [
+      {
+        title: "Customer problem",
+        tag: "Starting point",
+        explanation: "If the business does not understand the customer's actual problem, it builds commercial logic on weak assumptions.",
+        logic: [
+          "Poor problem definition distorts perceived value.",
+          "Misread customer priorities weaken offer relevance.",
+          "Weak relevance reduces the credibility of later pricing choices."
+        ]
+      },
+      {
+        title: "Perceived value",
+        tag: "Meaning",
+        explanation: "Perceived value is the customer's interpretation of worth, not the supplier's internal claim.",
+        logic: [
+          "If value is hard to recognize, offer structure loses meaning.",
+          "Weakly perceived value lowers resistance to price comparisons.",
+          "That increases pressure on discounts and concessions."
+        ]
+      },
+      {
+        title: "Offer structure",
+        tag: "Packaging",
+        explanation: "Offer design determines whether value can be compared, understood, and bought with confidence.",
+        logic: [
+          "Poor offer structure weakens price clarity.",
+          "Weak price clarity increases discount pressure.",
+          "Discount pressure erodes margin quality."
+        ]
+      },
+      {
+        title: "Pricing architecture",
+        tag: "Charging logic",
+        explanation: "Architecture governs how the firm charges and therefore how value is monetized in practice.",
+        logic: [
+          "Misaligned charging logic creates friction even when value is strong.",
+          "Friction reduces conversion quality and upsell quality.",
+          "That weakens both revenue quality and profit capture."
+        ]
+      },
+      {
+        title: "Price level",
+        tag: "Decision point",
+        explanation: "Price level should be a validated result of the system, not an isolated guess.",
+        logic: [
+          "Weak price justification increases internal exceptions.",
+          "More exceptions create inconsistent market signals.",
+          "Inconsistency lowers realization and pricing discipline."
+        ]
+      },
+      {
+        title: "Market response",
+        tag: "External reaction",
+        explanation: "Customers, channels, and competitors respond to the whole offer logic, not only to the headline price.",
+        logic: [
+          "Market pushback can indicate a problem in value, structure, or architecture.",
+          "If management reads it only as price resistance, it may solve the wrong problem.",
+          "Wrong responses compound commercial weakness."
+        ]
+      },
+      {
+        title: "Revenue quality",
+        tag: "Commercial health",
+        explanation: "Revenue quality reflects mix, realization, renewal strength, concession discipline, and the sustainability of price capture.",
+        logic: [
+          "Revenue can rise while quality falls if discounting, poor mix, or hidden service burden increase.",
+          "Low revenue quality weakens the link between growth and profit.",
+          "That reduces strategic room to invest or respond."
+        ]
+      },
+      {
+        title: "Profit impact",
+        tag: "Outcome",
+        explanation: "Profit impact is the cumulative result of the full value capture system.",
+        logic: [
+          "Margin erosion limits strategic flexibility.",
+          "Weak flexibility increases future reactivity.",
+          "Reactive decisions can restart the cycle of weak value capture."
+        ]
+      }
+    ];
+
+    const evidencePillars = [
+      {
+        title: "Customer value evidence",
+        summary: "Proof of what customers actually gain, avoid, improve, or protect.",
+        meaning: "This is the evidence that the commercial promise maps to outcomes customers care about enough to act on.",
+        assess: "Leaders should test whether the firm can name the specific value drivers that matter by segment, use case, or buying context.",
+        bad: "Bad practice relies on broad claims such as quality, innovation, or service without proving commercial relevance.",
+        strong: "Stronger decisions connect value drivers to concrete customer outcomes and use them to shape both the offer and the pricing story."
+      },
+      {
+        title: "Willingness to pay evidence",
+        summary: "Signals showing what customers may accept, reject, trade off, or upgrade into.",
+        meaning: "This evidence helps management understand the price space customers can live with, not just the price they say they prefer in isolation.",
+        assess: "Leaders should use research, experiments, quote behavior, and observed trade-offs rather than relying only on verbal reactions.",
+        bad: "Bad practice treats one survey answer or one sales anecdote as decisive evidence.",
+        strong: "Stronger decisions triangulate stated and revealed behavior to understand what different customer groups will actually pay for."
+      },
+      {
+        title: "Cost and contribution boundary",
+        summary: "The economic limits within which pricing decisions remain commercially sustainable.",
+        meaning: "This protects against prices that look attractive in-market but damage profitability or create structurally weak accounts.",
+        assess: "Leaders should understand floor economics, cost-to-serve patterns, contribution by segment, and how mix affects margin.",
+        bad: "Bad practice relies on average gross margin views that hide variation across customers, channels, and offer configurations.",
+        strong: "Stronger decision making uses segment-level and configuration-level economics to avoid profitable-looking but fragile deals."
+      },
+      {
+        title: "Competitor normalization",
+        summary: "A disciplined reading of competitor signals without becoming captive to them.",
+        meaning: "Competitor information matters, but only after management adjusts for different offers, economics, positioning, and strategic intent.",
+        assess: "Leaders should compare like with like and ask what the competitor structure is actually signaling before reacting.",
+        bad: "Bad practice matches competitor prices mechanically, even when the offer, delivery model, or target segment differs materially.",
+        strong: "Stronger decisions use competitor data as context, not as a substitute for independent commercial logic."
+      },
+      {
+        title: "Strategic intent",
+        summary: "The role the pricing decision is meant to play in the wider business strategy.",
+        meaning: "A price decision can support penetration, margin protection, premium signaling, mix migration, retention, or capacity management.",
+        assess: "Leaders should ask what the business is trying to achieve and whether the chosen pricing logic serves that objective coherently.",
+        bad: "Bad practice assumes every pricing decision should maximize short-term volume or respond immediately to market noise.",
+        strong: "Stronger decisions align the commercial move with the firm's strategic priority and make trade-offs explicit before execution."
+      }
+    ];
+
+    const scenarios = [
+      {
+        name: "SaaS",
+        label: "Recurring software monetization",
+        caption: "EVAC helps SaaS leaders align product value, packaging, usage logic, and expansion economics.",
+        values: ["Workflow efficiency", "Risk reduction", "Speed to insight", "Team productivity"],
+        offers: ["Starter / Growth / Enterprise tiers", "Feature-gated modules", "Seat bundles with service overlays"],
+        pricing: ["Per seat", "Usage-based", "Platform fee plus add-ons"],
+        tensions: ["Adoption versus monetization depth", "Expansion upside versus simplicity", "Avoiding feature sprawl in packaging"],
+        metrics: ["Net revenue retention", "Average revenue per account", "Logo churn", "Expansion mix"]
+      },
+      {
+        name: "Manufacturing",
+        label: "Engineered product and channel economics",
+        caption: "EVAC helps manufacturing teams price beyond cost-plus by linking specification value, service content, and channel realities.",
+        values: ["Performance reliability", "Lower operating cost", "Downtime reduction", "Supply continuity"],
+        offers: ["Base product plus service tiers", "Application-specific bundles", "Channel-specific packs"],
+        pricing: ["List price with controlled rebates", "Contract pricing", "Installed-base service pricing"],
+        tensions: ["Cost inflation versus channel stability", "Customization versus margin control", "Price realization across accounts"],
+        metrics: ["Pocket margin", "Rebate leakage", "Mix by specification tier", "Contribution by account"]
+      },
+      {
+        name: "Consumer brand",
+        label: "Portfolio, pack, and brand-value management",
+        caption: "EVAC helps brand leaders translate perceived value into portfolio architecture, pack-price logic, and margin-aware response decisions.",
+        values: ["Brand trust", "Convenience", "Taste or performance difference", "Status or identity fit"],
+        offers: ["Core / premium / limited ranges", "Pack-size ladders", "Bundle promotions with brand guardrails"],
+        pricing: ["Pack-price architecture", "Channel-specific promo logic", "Premium laddering"],
+        tensions: ["Volume versus brand integrity", "Promo pressure versus price memory", "Portfolio complexity versus shelf clarity"],
+        metrics: ["Realized net price", "Promo dependency", "Mix by tier", "Gross margin by channel"]
+      },
+      {
+        name: "Professional service",
+        label: "Expertise monetization and scope control",
+        caption: "EVAC helps service firms turn expertise into clearer offers, stronger fee logic, and less reactive discounting.",
+        values: ["Decision quality", "Risk reduction", "Time saved", "Outcome confidence"],
+        offers: ["Diagnostic offers", "Retainers", "Project tiers with explicit scope boundaries"],
+        pricing: ["Retainer", "Project fee", "Value-based fee with milestones"],
+        tensions: ["Custom work versus repeatable structure", "Senior expertise versus scalability", "Client pressure on hourly framing"],
+        metrics: ["Realization rate", "Scope creep", "Proposal conversion", "Margin by project type"]
+      },
+      {
+        name: "Hospitality",
+        label: "Experience value under demand variability",
+        caption: "EVAC helps hospitality leaders manage perceived value, price fences, and yield decisions without hollowing out brand positioning.",
+        values: ["Location", "Experience quality", "Convenience", "Service confidence"],
+        offers: ["Room classes", "Experience bundles", "Flexible rate conditions"],
+        pricing: ["Dynamic pricing bands", "Package pricing", "Channel-managed price fences"],
+        tensions: ["Occupancy versus rate integrity", "Direct booking versus platform dependence", "Service cost variability versus guest expectations"],
+        metrics: ["Revenue per available unit", "Average daily rate", "Direct mix", "Contribution after service delivery"]
+      }
+    ];
+
+    const triggers = [
+      {
+        title: "Customer value perception shifts",
+        summary: "Customers see less difference, new needs emerge, or buying criteria change.",
+        examples: ["Customers see less difference", "New needs emerge", "Buying criteria change"],
+        wrong: "Leaders often react by cutting price before testing whether the issue is really price, messaging, offer structure, or value relevance.",
+        temptation: "The fast temptation is to simplify the answer into a price concession or short-term promotion.",
+        response: "EVAC forces a more disciplined review: what changed in perceived value, which offer layers no longer fit, and whether the response should be reframing, restructuring, or repricing."
+      },
+      {
+        title: "Cost structure shifts",
+        summary: "Input costs rise, delivery costs expand, or margin pressure intensifies.",
+        examples: ["Input costs rise", "Service delivery becomes more expensive", "Margin pressure increases"],
+        wrong: "Firms often try to pass cost through mechanically without checking customer value sensitivity, price architecture fit, or where contribution actually deteriorates.",
+        temptation: "The quick move is to raise list prices uniformly or cut discounts across the board.",
+        response: "EVAC helps management separate where a price move is defensible, where architecture should change, and where offer redesign is the better margin response."
+      },
+      {
+        title: "Competitive pressure shifts",
+        summary: "A rival cuts price, changes its offer structure, or crowding increases.",
+        examples: ["A competitor cuts price", "A competitor changes its offer structure", "The market becomes more crowded"],
+        wrong: "Leaders often copy the visible competitor move without testing whether they are responding to the same economics, value proposition, or strategic intent.",
+        temptation: "The immediate temptation is to match or exceed the competitor response in order to protect short-term volume.",
+        response: "EVAC reframes the issue: which part of the system is under threat, what should be defended, and which response preserves value capture rather than weakening it."
+      }
+    ];
+
+    const outcomes = [
+      {
+        title: "Clearer value articulation",
+        summary: "Management teams can explain which customer outcomes matter and why the offer deserves commercial preference."
+      },
+      {
+        title: "More coherent offer architecture",
+        summary: "Packages, tiers, bundles, and scope boundaries make more commercial sense and reduce confusion in the market."
+      },
+      {
+        title: "Stronger pricing discipline",
+        summary: "Pricing decisions become more consistent because they follow a defined logic instead of isolated reactions."
+      },
+      {
+        title: "Less reactive discounting",
+        summary: "Leaders address root causes of pricing pressure instead of relying on concessions as the default solution."
+      },
+      {
+        title: "Better cross functional alignment",
+        summary: "Product, marketing, sales, finance, and leadership work from a shared commercial architecture."
+      },
+      {
+        title: "More defensible margin logic",
+        summary: "Margin protection improves because pricing, offer structure, and contribution boundaries are considered together."
+      },
+      {
+        title: "Faster, clearer commercial decisions",
+        summary: "Leadership teams can make decisions with greater confidence because the evidence and trade-offs are easier to see."
+      }
+    ];
+
+    const diagnostics = [
+      {
+        title: "Value is too vague",
+        summary: "The organization uses broad claims but cannot translate them into commercial decision logic.",
+        symptoms: "Frequent debate over why customers buy, weak premium justification, and inconsistent sales narratives across teams.",
+        root: "The business has not defined the specific outcomes customers value enough to pay for, by segment or use case.",
+        help: "EVAC sharpens the value layer first so later decisions on offers, architecture, and price have a credible base."
+      },
+      {
+        title: "Offer structure is inconsistent",
+        summary: "Packages, bundles, and custom options have grown without strategic coherence.",
+        symptoms: "Customers ask for clarification, sales creates workarounds, and internal teams cannot explain why offer versions exist.",
+        root: "The offer was expanded incrementally instead of being designed around customer value differences and margin logic.",
+        help: "EVAC helps redesign the offer architecture so commercial trade-offs become clearer and easier to defend."
+      },
+      {
+        title: "Pricing model does not fit the business",
+        summary: "The firm may be charging in a familiar way that does not match how value is consumed or perceived.",
+        symptoms: "Customers resist the billing logic, upsell is awkward, and price realization feels weaker than expected.",
+        root: "Pricing architecture was inherited or copied rather than deliberately designed around value delivery and buying logic.",
+        help: "EVAC exposes the architecture question separately from price level, allowing leaders to fix charging logic rather than just the headline number."
+      },
+      {
+        title: "Price levels are weakly justified",
+        summary: "Headline prices exist, but the evidence behind them is thin or inconsistent.",
+        symptoms: "Approval exceptions rise, internal teams debate every increase, and competitor references dominate decisions.",
+        root: "Price validation is weak because willingness to pay, contribution boundaries, and strategic intent are not integrated.",
+        help: "EVAC strengthens the validation layer so price moves can be defended with clearer evidence and better commercial reasoning."
+      },
+      {
+        title: "Competitor reactions dominate decisions",
+        summary: "The market's visible moves outweigh the firm's internal value capture logic.",
+        symptoms: "Teams ask what competitors charge before asking what the customer values or what the economics require.",
+        root: "Competitor context has replaced independent commercial judgment because internal architecture is weak.",
+        help: "EVAC normalizes competitor data as one input, not the governing logic, and reconnects decisions to value, architecture, and intent."
+      },
+      {
+        title: "Teams are misaligned around commercial logic",
+        summary: "Different functions optimize for different outcomes without one coherent decision framework.",
+        symptoms: "Pricing debates are slow, product changes disrupt offers, and sales narratives drift from leadership intent.",
+        root: "There is no shared system linking value, packaging, price architecture, and evidence standards.",
+        help: "EVAC gives management a common commercial language that improves alignment and speeds decision quality."
+      },
+      {
+        title: "Margin is managed too late",
+        summary: "Leadership sees margin weakness as a late-stage result rather than an architectural issue.",
+        symptoms: "Revenue appears stable while margin quality degrades through concessions, poor mix, or hidden delivery burden.",
+        root: "The organization is managing outcomes after the fact rather than addressing upstream weaknesses in value capture design.",
+        help: "EVAC helps diagnose upstream causes earlier, before discounting and weak revenue quality harden into margin problems."
+      }
+    ];
+
+    const painGrid = document.getElementById("painGrid");
+    const painDetail = document.getElementById("painDetail");
+    const layerList = document.getElementById("layerList");
+    const layerDetail = document.getElementById("layerDetail");
+    const chainTrack = document.getElementById("chainTrack");
+    const chainDetail = document.getElementById("chainDetail");
+    const evidenceGrid = document.getElementById("evidenceGrid");
+    const evidenceDetail = document.getElementById("evidenceDetail");
+    const scenarioTabs = document.getElementById("scenarioTabs");
+    const scenarioDetail = document.getElementById("scenarioDetail");
+    const triggerGrid = document.getElementById("triggerGrid");
+    const pressureDetail = document.getElementById("pressureDetail");
+    const outcomeGrid = document.getElementById("outcomeGrid");
+    const diagnosticList = document.getElementById("diagnosticList");
+    const diagnosticDetail = document.getElementById("diagnosticDetail");
+    const tooltip = document.getElementById("tooltip");
+
+    function renderPainDetail(item) {
+      painDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="layer-summary">${item.summary}</p>
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h4>Inside the company</h4>
+            <p>${item.inside}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Commercial damage</h4>
+            <p>${item.damage}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Common wrong response</h4>
+            <p>${item.wrong}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPainCards() {
+      painGrid.innerHTML = painPoints.map((item, index) => `
+        <article class="pain-card${index === 0 ? " active" : ""}" data-index="${index}" tabindex="0">
+          <span class="mini-tag">Pain Point ${index + 1}</span>
+          <h3>${item.title}</h3>
+          <p>${item.summary}</p>
+        </article>
+      `).join("");
+
+      renderPainDetail(painPoints[0]);
+
+      painGrid.querySelectorAll(".pain-card").forEach((card) => {
+        const activate = () => {
+          painGrid.querySelectorAll(".pain-card").forEach((node) => node.classList.remove("active"));
+          card.classList.add("active");
+          renderPainDetail(painPoints[Number(card.dataset.index)]);
+        };
+        card.addEventListener("click", activate);
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activate();
+          }
+        });
+      });
+    }
+
+    function renderLayerDetail(item) {
+      layerDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="layer-summary">${item.prompt}</p>
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h4>Management Decision</h4>
+            <p>${item.decide}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Weak Practice</h4>
+            <p>${item.weak}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Strong Practice</h4>
+            <p>${item.strong}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Evidence to Use</h4>
+            <p>${item.evidence}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Business Risk</h4>
+            <p>${item.risk}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderLayers() {
+      layerList.innerHTML = layers.map((item, index) => `
+        <button class="layer-item${index === 0 ? " active" : ""}" data-index="${index}" type="button">
+          <span class="layer-index">${index + 1}</span>
+          <h3>${item.title}</h3>
+          <p>${item.prompt}</p>
+        </button>
+      `).join("");
+
+      renderLayerDetail(layers[0]);
+
+      layerList.querySelectorAll(".layer-item").forEach((button) => {
+        button.addEventListener("click", () => {
+          layerList.querySelectorAll(".layer-item").forEach((node) => node.classList.remove("active"));
+          button.classList.add("active");
+          renderLayerDetail(layers[Number(button.dataset.index)]);
+        });
+      });
+    }
+
+    function renderChainDetail(index) {
+      const item = chainNodes[index];
+      const upstream = chainNodes.slice(0, index).map((node) => node.title).join(" -> ") || "This is the first upstream definition point.";
+      const downstream = chainNodes.slice(index + 1).map((node) => node.title).join(" -> ") || "This is the final commercial outcome.";
+      chainDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="chain-caption">${item.explanation}</p>
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h4>Upstream Influence</h4>
+            <p>${upstream}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Causal Logic</h4>
+            <ul>${item.logic.map((line) => `<li>${line}</li>`).join("")}</ul>
+          </div>
+          <div class="detail-box">
+            <h4>Downstream Effect</h4>
+            <p>${downstream}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function applyChainState(activeIndex) {
+      chainTrack.querySelectorAll(".chain-node").forEach((node, index) => {
+        node.classList.toggle("active", index === activeIndex);
+        node.classList.toggle("connected", Math.abs(index - activeIndex) <= 1);
+        node.classList.toggle("dimmed", Math.abs(index - activeIndex) > 1);
+      });
+      renderChainDetail(activeIndex);
+    }
+
+    function renderChain() {
+      chainTrack.innerHTML = chainNodes.map((item, index) => `
+        <button class="chain-node${index === 0 ? " active connected" : ""}${index > 1 ? " dimmed" : ""}" data-index="${index}" type="button">
+          <span class="meta">${item.tag}</span>
+          <strong>${item.title}</strong>
+          <p>${item.explanation}</p>
+        </button>
+      `).join("");
+
+      renderChainDetail(0);
+
+      chainTrack.querySelectorAll(".chain-node").forEach((button) => {
+        button.addEventListener("click", () => applyChainState(Number(button.dataset.index)));
+      });
+    }
+
+    function renderEvidenceDetail(item) {
+      evidenceDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="chain-caption">${item.summary}</p>
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h4>What It Means</h4>
+            <p>${item.meaning}</p>
+          </div>
+          <div class="detail-box">
+            <h4>How Leaders Assess It</h4>
+            <p>${item.assess}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Bad Practice</h4>
+            <p>${item.bad}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Stronger Decision Making</h4>
+            <p>${item.strong}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderEvidence() {
+      evidenceGrid.innerHTML = evidencePillars.map((item, index) => `
+        <button class="evidence-card${index === 0 ? " active" : ""}" data-index="${index}" type="button">
+          <span class="mini-tag">Evidence ${index + 1}</span>
+          <h3>${item.title}</h3>
+          <p>${item.summary}</p>
+        </button>
+      `).join("");
+
+      renderEvidenceDetail(evidencePillars[0]);
+
+      evidenceGrid.querySelectorAll(".evidence-card").forEach((button) => {
+        button.addEventListener("click", () => {
+          evidenceGrid.querySelectorAll(".evidence-card").forEach((node) => node.classList.remove("active"));
+          button.classList.add("active");
+          renderEvidenceDetail(evidencePillars[Number(button.dataset.index)]);
+        });
+      });
+    }
+
+    function renderScenarioDetail(item) {
+      scenarioDetail.innerHTML = `
+        <h3>${item.name}</h3>
+        <p class="scenario-caption">${item.caption}</p>
+        <div class="scenario-grid">
+          <div class="scenario-box">
+            <h4>Typical Value Drivers</h4>
+            <ul>${item.values.map((entry) => `<li>${entry}</li>`).join("")}</ul>
+          </div>
+          <div class="scenario-box">
+            <h4>Offer Structure Examples</h4>
+            <ul>${item.offers.map((entry) => `<li>${entry}</li>`).join("")}</ul>
+          </div>
+          <div class="scenario-box">
+            <h4>Pricing Architecture Examples</h4>
+            <ul>${item.pricing.map((entry) => `<li>${entry}</li>`).join("")}</ul>
+          </div>
+          <div class="scenario-box">
+            <h4>Key Decision Tensions</h4>
+            <ul>${item.tensions.map((entry) => `<li>${entry}</li>`).join("")}</ul>
+          </div>
+          <div class="scenario-box">
+            <h4>Most Relevant Metrics</h4>
+            <ul>${item.metrics.map((entry) => `<li>${entry}</li>`).join("")}</ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderScenarios() {
+      scenarioTabs.innerHTML = scenarios.map((item, index) => `
+        <button class="scenario-tab${index === 0 ? " active" : ""}" data-index="${index}" type="button">
+          <strong>${item.name}</strong>
+          <span>${item.label}</span>
+        </button>
+      `).join("");
+
+      renderScenarioDetail(scenarios[0]);
+
+      scenarioTabs.querySelectorAll(".scenario-tab").forEach((button) => {
+        button.addEventListener("click", () => {
+          scenarioTabs.querySelectorAll(".scenario-tab").forEach((node) => node.classList.remove("active"));
+          button.classList.add("active");
+          renderScenarioDetail(scenarios[Number(button.dataset.index)]);
+        });
+      });
+    }
+
+    function renderPressureDetail(item) {
+      pressureDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="pressure-caption">${item.summary}</p>
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h4>Typical Examples</h4>
+            <ul>${item.examples.map((entry) => `<li>${entry}</li>`).join("")}</ul>
+          </div>
+          <div class="detail-box">
+            <h4>What Typically Goes Wrong</h4>
+            <p>${item.wrong}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Fast Temptation</h4>
+            <p>${item.temptation}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Disciplined EVAC Response</h4>
+            <p>${item.response}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTriggers() {
+      triggerGrid.innerHTML = triggers.map((item, index) => `
+        <button class="trigger-card${index === 0 ? " active" : ""}" data-index="${index}" type="button">
+          <span class="mini-tag">Situation ${index + 1}</span>
+          <h3>${item.title}</h3>
+          <p>${item.summary}</p>
+          <ul>${item.examples.map((example) => `<li>${example}</li>`).join("")}</ul>
+        </button>
+      `).join("");
+
+      renderPressureDetail(triggers[0]);
+
+      triggerGrid.querySelectorAll(".trigger-card").forEach((button) => {
+        button.addEventListener("click", () => {
+          triggerGrid.querySelectorAll(".trigger-card").forEach((node) => node.classList.remove("active"));
+          button.classList.add("active");
+          renderPressureDetail(triggers[Number(button.dataset.index)]);
+        });
+      });
+    }
+
+    function renderOutcomes() {
+      outcomeGrid.innerHTML = outcomes.map((item, index) => `
+        <article class="outcome-card">
+          <span class="mini-tag">Outcome ${index + 1}</span>
+          <h3>${item.title}</h3>
+          <p>${item.summary}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderDiagnosticDetail(item) {
+      diagnosticDetail.innerHTML = `
+        <h3>${item.title}</h3>
+        <p class="diagnostic-caption">${item.summary}</p>
+        <div class="detail-grid">
+          <div class="detail-box">
+            <h4>Typical Symptoms</h4>
+            <p>${item.symptoms}</p>
+          </div>
+          <div class="detail-box">
+            <h4>Likely Root Cause</h4>
+            <p>${item.root}</p>
+          </div>
+          <div class="detail-box">
+            <h4>How EVAC Helps</h4>
+            <p>${item.help}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDiagnostics() {
+      diagnosticList.innerHTML = diagnostics.map((item, index) => `
+        <button class="${index === 0 ? "active" : ""}" data-index="${index}" type="button">
+          <span class="mini-tag">Issue ${index + 1}</span>
+          <strong>${item.title}</strong>
+          <p>${item.summary}</p>
+        </button>
+      `).join("");
+
+      renderDiagnosticDetail(diagnostics[0]);
+
+      diagnosticList.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          diagnosticList.querySelectorAll("button").forEach((node) => node.classList.remove("active"));
+          button.classList.add("active");
+          renderDiagnosticDetail(diagnostics[Number(button.dataset.index)]);
+        });
+      });
+    }
+
+    function bindTooltips() {
+      const targets = document.querySelectorAll("[data-tooltip]");
+      targets.forEach((target) => {
+        const placeTooltip = (x, y) => {
+          tooltip.style.left = `${Math.min(x, window.innerWidth - tooltip.offsetWidth - 12)}px`;
+          tooltip.style.top = `${Math.min(y, window.innerHeight - tooltip.offsetHeight - 12)}px`;
+        };
+
+        const show = (event) => {
+          tooltip.textContent = target.dataset.tooltip;
+          tooltip.classList.add("visible");
+          if ("clientX" in event && "clientY" in event) {
+            move(event);
+          } else {
+            const rect = target.getBoundingClientRect();
+            placeTooltip(rect.left, rect.bottom + 12);
+          }
+        };
+
+        const move = (event) => {
+          placeTooltip(event.clientX + 16, event.clientY + 16);
+        };
+
+        const hide = () => tooltip.classList.remove("visible");
+
+        target.addEventListener("mouseenter", show);
+        target.addEventListener("mousemove", move);
+        target.addEventListener("mouseleave", hide);
+        target.addEventListener("focus", (event) => show(event));
+        target.addEventListener("blur", hide);
+      });
+    }
+
+    renderPainCards();
+    renderLayers();
+    renderChain();
+    renderEvidence();
+    renderScenarios();
+    renderTriggers();
+    renderOutcomes();
+    renderDiagnostics();
+    bindTooltips();
+  </script>
+</body>
+</html>
