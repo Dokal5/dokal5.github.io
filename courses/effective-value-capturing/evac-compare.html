@@ -372,6 +372,141 @@
     letter-spacing: 0.05em;
   }
 
+
+  /* ── DECISION ACCOUNTABILITY LAYER ── */
+  .accountability-section {
+    background: var(--pale);
+    padding: 100px 80px;
+  }
+
+  .accountability-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
+  }
+
+  .accountability-intro {
+    background: white;
+    border: 1px solid rgba(13,13,13,0.08);
+    border-top: 3px solid var(--slate);
+    padding: 24px 28px;
+    font-size: 12px;
+    line-height: 1.85;
+    color: rgba(13,13,13,0.62);
+  }
+
+  .diag-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .diag-item {
+    background: white;
+    border: 1px solid rgba(13,13,13,0.1);
+    padding: 14px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    color: rgba(13,13,13,0.75);
+  }
+
+  .principle-panel {
+    background: var(--ink);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--amber);
+    padding: 20px 22px;
+  }
+
+  .principle-line {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+
+  .principle-line + .principle-line {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .case-card {
+    background: white;
+    border: 1px solid rgba(13,13,13,0.1);
+    border-top: 3px solid var(--amber);
+    padding: 28px;
+  }
+
+  .case-tag {
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .case-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .case-desc {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13,13,13,0.62);
+    margin-bottom: 14px;
+  }
+
+  .case-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .case-subcard {
+    border: 1px solid rgba(13,13,13,0.08);
+    background: rgba(245,240,232,0.45);
+    padding: 14px 16px;
+  }
+
+  .case-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(13,13,13,0.55);
+    margin-bottom: 8px;
+  }
+
+  .case-list {
+    margin: 0;
+    padding-left: 16px;
+    font-size: 11px;
+    line-height: 1.7;
+    color: rgba(13,13,13,0.7);
+  }
+
+  .case-takeaway {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--slate);
+    background: rgba(58,74,92,0.08);
+    font-size: 11px;
+    line-height: 1.75;
+    color: rgba(13,13,13,0.7);
+  }
+
+  .accountability-close {
+    font-size: 12px;
+    line-height: 1.8;
+    color: rgba(13,13,13,0.65);
+  }
+
   /* ── DISTINCTION (v1 vs v2 logic) ── */
   .distinction {
     padding: 100px 80px;
@@ -685,6 +820,7 @@
     .distinction-grid, .ped-grid { grid-template-columns: 1fr; }
     .dist-divider, .ped-divider { display: none; }
     .scenario-grid { grid-template-columns: 1fr; }
+    .diag-grid, .case-subgrid { grid-template-columns: 1fr; }
     footer { padding: 24px 32px; flex-direction: column; gap: 8px; text-align: center; }
   }
 </style>
@@ -700,7 +836,7 @@
     <div class="hero-formula">
       <div class="label">The core shift</div>
       EVAC 1.0 → Value → Product → Pricing → Price<br>
-      EVAC 2.0 → Target Economics → Price Corridor → Power → Negotiation
+      EVAC 2.0 → Target Economics → Price Corridor → Power → Accountability → Negotiation
     </div>
   </div>
   <div class="hero-right">
@@ -893,6 +1029,13 @@
           <div class="flow-step">
             <div class="step-num">6</div>
             <div>
+              <div class="step-title">Decision Accountability Layer</div>
+              <div class="step-desc">Align authority, execution ownership, cost absorption, and downside exposure</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">7</div>
+            <div>
               <div class="step-title">Negotiation Space</div>
               <div class="step-desc">Anchor · concession boundaries · walk-away point</div>
             </div>
@@ -995,10 +1138,74 @@
   </div>
 </section>
 
+<!-- ── DECISION ACCOUNTABILITY LAYER ── -->
+<section class="accountability-section">
+  <div style="max-width:1240px; margin:0 auto 40px;">
+    <div class="section-tag">05 · EVAC 2.0 Extension</div>
+    <h2 class="section-title">Decision Accountability Layer</h2>
+    <p class="section-intro">A healthy pricing system aligns decision rights, execution exposure, cost ownership, and downside accountability — so the people moving price also live with its consequences.</p>
+  </div>
+
+  <div class="accountability-wrap">
+    <div class="accountability-intro">
+      Pricing discipline does not break only when the market pushes too hard. It breaks when internal authority design is fragmented. If one team can set price, another team must execute, a third absorbs cost, and nobody bears failure directly, EVAC logic will be bypassed from inside.
+    </div>
+
+    <div class="diag-grid">
+      <div class="diag-item">Who makes the decision?</div>
+      <div class="diag-item">Who executes it?</div>
+      <div class="diag-item">Who absorbs the cost?</div>
+      <div class="diag-item">Who suffers if it fails?</div>
+    </div>
+
+    <div class="principle-panel">
+      <div class="principle-line">No price decision without consequence exposure.</div>
+      <div class="principle-line">No discount freedom without margin accountability.</div>
+      <div class="principle-line">No negotiation authority without execution ownership.</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-tag">Teaching Case</div>
+      <div class="case-title">Aureon Pro: B2B Smart Equipment Launch</div>
+      <div class="case-desc">A company sells a smart equipment system to mid sized logistics warehouses. The offer includes hardware, installation, software dashboard, and maintenance. Sales wants flexibility to close deals. Finance wants to protect margin. Operations wants to avoid overload from custom promises. The General Manager is responsible for overall business economics.</div>
+
+      <div class="case-subgrid">
+        <div class="case-subcard">
+          <div class="case-subtitle">Target economics</div>
+          <ul class="case-list">
+            <li>Revenue target: €2,000,000</li>
+            <li>Gross margin target: 35%</li>
+            <li>Minimum contribution per deal: €25,000</li>
+            <li>Target volume: 30 clients</li>
+            <li>Maximum service burden per account: 40 hours per quarter</li>
+          </ul>
+        </div>
+        <div class="case-subcard">
+          <div class="case-subtitle">Role structure</div>
+          <ul class="case-list">
+            <li><strong>General Manager:</strong> Approves major exceptions and owns final P&amp;L downside.</li>
+            <li><strong>Pricing Lead:</strong> Designs list price, price corridor, and discount boundaries.</li>
+            <li><strong>Sales Manager:</strong> Approves mid level discount requests and is evaluated on both revenue and contribution quality.</li>
+            <li><strong>Account Executive:</strong> Can offer only small discounts within the approved corridor and is accountable for account quality, not just closing.</li>
+            <li><strong>Operations Lead:</strong> Can reject promises that create excessive service burden.</li>
+            <li><strong>Finance Controller:</strong> Flags deals that fall below acceptable contribution logic.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-takeaway">
+        <strong>Case takeaway:</strong> The real issue is not only what price should be charged. The real issue is whether authority, incentives, execution, and downside exposure are aligned.
+      </div>
+    </div>
+
+    <div class="accountability-close">EVAC 2.0 should not only ask whether a price is commercially justified. It should also ask whether the organization is structured so that those who move price must live with the consequences.</div>
+  </div>
+</section>
+
 <!-- ── DISTINCTION: LOGIC DIRECTION ── -->
 <section class="distinction">
   <div style="max-width:1240px; margin:0 auto 56px;">
-    <div class="section-tag">05 · The Critical Distinction</div>
+    <div class="section-tag">06 · The Critical Distinction</div>
     <h2 class="section-title">Forward reasoning vs. reverse pressure</h2>
     <p class="section-intro">The same framework — a completely different cognitive demand. One lets you reason comfortably forward. The other forces you to start with constraints and work backwards.</p>
   </div>
@@ -1023,7 +1230,7 @@
 <!-- ── SCENARIOS ── -->
 <section class="scenario-section">
   <div style="max-width:1240px; margin:0 auto 56px;">
-    <div class="section-tag">06 · Three Key Mechanisms</div>
+    <div class="section-tag">07 · Three Key Mechanisms</div>
     <h2 class="section-title">The mechanisms that make 2.0 different</h2>
     <p class="section-intro">Without these three mechanisms, Power Layer is decoration. With them, it's a fundamentally different kind of analytical pressure.</p>
   </div>
@@ -1053,7 +1260,7 @@
 <!-- ── PEDAGOGY ── -->
 <section class="ped-section">
   <div style="max-width:960px; margin:0 auto 56px;">
-    <div class="section-tag">07 · Decision Impact</div>
+    <div class="section-tag">08 · Decision Impact</div>
     <h2 class="section-title">What each framework makes visible</h2>
     <p class="section-intro">The frameworks produce different kinds of judgment — not because the content differs, but because the pressure differs.</p>
   </div>
@@ -1087,6 +1294,8 @@
     <span class="term">Price Corridor</span>
     <span class="op">+</span>
     <span class="term">Power Layer</span>
+    <span class="op">+</span>
+    <span class="term">Decision Accountability Layer</span>
     <span class="op">+</span>
     <span class="term">Kill Conditions</span>
     <span class="op">+</span>
