@@ -15,6 +15,44 @@
 window.pricingCaseRecords = [
   {
     // Identity
+    slug: "webflow-workspace-site-pricing-split",
+    title: "Webflow and the workspace-site split in web platform pricing",
+    company: "Webflow",
+    industry: "Website experience platform SaaS",
+    market: "In-house marketing teams, web operations teams, freelancers, and agencies managing published sites with collaborative workflows",
+    reviewed_at: "2026-04-22",
+
+    // Public page inputs
+    mechanism_type: "Per-site publishing plan + workspace collaboration layer + role-based seats",
+    pricing_page_url: "https://webflow.com/pricing",
+    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://webflow.com/pricing",
+    pricing_surface: "Webflow makes the buyer pay along three separate surfaces: a Site plan is required to publish each site, Workspace plans expand staging and collaboration controls across a portfolio, and seat types determine what each collaborator can do inside the Workspace.",
+    mechanism_summary: "Webflow does not bundle build, publish, and collaborate into one software seat. It monetizes the live site at the asset level, monetizes staging and governance at the Workspace level, and monetizes role intensity again through full, limited, and free reviewer seats.",
+    target_buyer_inference: "The structure targets buyers who manage websites as operating assets rather than one-off projects: in-house marketing and web teams with multiple stakeholders, plus agencies and freelancers who need client collaboration without giving every participant full design access.",
+    decision_friction: "The buyer has to solve three separate commercial questions before the bill feels intelligible: which Site plan each published property needs, whether the Workspace needs higher collaboration controls, and which collaborators deserve full, limited, or free reviewer access.",
+    exposure_logic: "Webflow gains multiple expansion surfaces, but it also takes on packaging-complexity risk. The model works only if buyers keep accepting that publishing, collaboration, and permission depth are distinct jobs worth paying for separately rather than one fragmented website bill.",
+    logic_flaw: "The main weakness is that the package boundary can follow Webflow's internal product architecture more closely than the buyer's outcome. Many customers experience \"get the site live and keep the team aligned\" as one job, so separate Site, Workspace, and seat decisions can feel administratively clean for Webflow but commercially noisy for the customer.",
+    strategic_opportunity: "A competitor could attack with outcome-based bundles such as one published site plus a collaborator allowance, or agency packages that include client access by default. The opening is not just lower price. It is lower layer-crossing friction and a pricing story that maps more directly to the project the buyer thinks they are purchasing.",
+    page_path: "webflow-workspace-site-pricing-split.html",
+    source_urls: [
+      "https://webflow.com/pricing",
+      "https://help.webflow.com/hc/en-us/articles/33961232582419-Choose-a-Site-plan",
+      "https://help.webflow.com/hc/en-us/articles/33961218263059-Choose-a-Workspace-plan",
+      "https://help.webflow.com/hc/en-us/articles/33961273067411-Roles-and-permissions-overview"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 4,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When value is created by both asset deployment and team coordination, separate the pricing surfaces only if buyers can clearly map each paid layer to a distinct job-to-be-done."
+  },
+  {
+    // Identity
     slug: "figma-role-based-seat-segmentation",
     title: "Figma and role-based seat segmentation across the workflow",
     company: "Figma",
