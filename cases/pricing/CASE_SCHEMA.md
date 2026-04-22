@@ -27,6 +27,8 @@ Each case record must include:
 - `reviewed_at`
 - `framework_tags[]`
 - `mechanism_type`
+- `pricing_page_url`
+- `screenshot_url`
 - `counterintuitive_score`
 - `teaching_value_score`
 - `strategic_gap_score`
@@ -71,16 +73,17 @@ Every published case page must include these sections:
 1. Case title and one-sentence claim
 2. Quick facts
 3. Pricing surface
-4. Mechanism summary
-5. Target buyer inference
-6. Decision friction
-7. Exposure / risk logic
-8. Logic flaw / vulnerability
-9. Strategic opportunity
-10. Transferable pricing principle
-11. Framework links
-12. Scoreboard
-13. Primary sources
+4. Pricing page visual screenshot
+5. Mechanism summary
+6. Target buyer inference
+7. Decision friction
+8. Exposure / risk logic
+9. Logic flaw / vulnerability
+10. Strategic opportunity
+11. Transferable pricing principle
+12. Framework links
+13. Scoreboard
+14. Primary sources
 
 ## Automation Rules
 
@@ -97,3 +100,13 @@ The weekly case automation should:
    - the EVAC library entry only if the featured case changes
 6. Open a draft PR when a case passes the acceptance gate.
 7. Skip repo edits and PR creation if no candidate qualifies.
+
+## Visual Requirement
+
+Every published case must include:
+
+- a direct `pricing_page_url`
+- a `screenshot_url` that gives a visible capture of the live pricing page
+- a short caption explaining what the screenshot helps the reader notice
+
+For the current static site, a live screenshot service is acceptable if it reliably renders the public pricing page.
