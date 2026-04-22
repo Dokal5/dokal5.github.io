@@ -25,7 +25,7 @@ window.pricingCaseRecords = [
     // Public page inputs
     mechanism_type: "Per-site publishing plan + workspace collaboration layer + role-based seats",
     pricing_page_url: "https://webflow.com/pricing",
-    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://webflow.com/pricing",
+    screenshot_url: "../../assets/images/cases/webflow-pricing-page.png",
     pricing_surface: "Webflow makes the buyer pay along three separate surfaces: a Site plan is required to publish each site, Workspace plans expand staging and collaboration controls across a portfolio, and seat types determine what each collaborator can do inside the Workspace.",
     mechanism_summary: "Webflow does not bundle build, publish, and collaborate into one software seat. It monetizes the live site at the asset level, monetizes staging and governance at the Workspace level, and monetizes role intensity again through full, limited, and free reviewer seats.",
     target_buyer_inference: "The structure targets buyers who manage websites as operating assets rather than one-off projects: in-house marketing and web teams with multiple stakeholders, plus agencies and freelancers who need client collaboration without giving every participant full design access.",
@@ -63,7 +63,7 @@ window.pricingCaseRecords = [
     // Public page inputs
     mechanism_type: "Role-based seat segmentation by workflow intensity",
     pricing_page_url: "https://www.figma.com/pricing/",
-    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://www.figma.com/pricing/",
+    screenshot_url: "../../assets/images/cases/figma-pricing-page.png",
     pricing_surface: "Figma publicly separates paid access into Full, Dev, and Collab seats, alongside free View access. Each seat type is tied to a different point in the design-to-build workflow rather than simple per-user uniformity.",
     mechanism_summary: "Figma monetizes workflow position, not just headcount. Full seats pay for creation and system ownership, Dev seats pay for advanced handoff and implementation inspection, Collab seats pay for lighter workshop and collaboration access, and View access stays free to widen network participation.",
     target_buyer_inference: "The structure targets organizations where many people touch product work but not all of them create design assets. It is especially well suited to teams that need broad visibility but want to reserve expensive seats for design owners and higher-intensity builders.",
@@ -101,7 +101,7 @@ window.pricingCaseRecords = [
     // Public page inputs
     mechanism_type: "Flat organization cap + employee-only seat billing",
     pricing_page_url: "https://basecamp.com/pricing/",
-    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://basecamp.com/pricing/",
+    screenshot_url: "../../assets/images/cases/basecamp-pricing-page.png",
     pricing_surface: "Basecamp presents three price surfaces: a free one-project tier, a Plus plan at $15 per employee per month with free guests and contractors, and a Pro Unlimited plan at $299 per month billed annually or $349 month-to-month for unlimited users plus bundled upgrades.",
     mechanism_summary: "The offer deliberately splits between per-employee pricing for smaller teams and a capped organizational price for fast-growing buyers, while still protecting monetization with flat add-ons and annual billing on the capped plan.",
     target_buyer_inference: "The capped plan is aimed at buyers whose coordination costs rise faster than their willingness to manage seat-count debates: agencies, client-facing teams, and growing organizations with many occasional users or external collaborators.",
