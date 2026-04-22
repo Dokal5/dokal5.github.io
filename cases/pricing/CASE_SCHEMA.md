@@ -1,112 +1,134 @@
-# Pricing Case Library Schema
+# Pricing Case Template
 
-This document is the operating contract for new pricing cases added to `cases/pricing/`.
+This file is the working template and quality standard for new pages added under `cases/pricing/`.
 
 ## Purpose
 
-Each case must help do at least one of the following:
+Each case should do three things clearly:
 
-1. Explain how a company captures value in practice.
-2. Reveal a flaw or vulnerability in the pricing logic.
-3. Show a positioning or price-competition opening.
-4. Infer target-buyer differences from pricing structure.
-5. Surface decision friction in the buying process.
-6. Expose how cost structure and delivery risk show up in value capture.
+1. Show how the pricing structure actually works.
+2. Explain where the buying friction or strategic weakness sits.
+3. Leave the reader with a reusable commercial takeaway.
 
-Cases are not descriptive pricing writeups. If the page cannot extract a reusable pricing principle, it does not belong in the library.
+The page should stay abstract and teachable. It is not a dump of research notes, framework mapping, or internal review commentary.
 
-## Required Fields
+## Public Page Rules
 
-Each case record must include:
+For every published case page:
 
-- `slug`
-- `title`
-- `company`
-- `industry`
-- `market`
-- `reviewed_at`
+- Write for a public reader, not for an internal PR review.
+- Keep the page focused on the case itself, not on which framework it matches.
+- Do not include a separate `Framework Links` section.
+- Do not include a separate `Transferable principle` or callout box.
+- Do not add extra “why this belongs in EVAC/Marketing” explanation on the page.
+- Primary sources must use APA-style reference entries.
+- The key analytical sentence in each major section should be bolded inline.
+
+## Required Section Order
+
+Every pricing case page should follow this order:
+
+1. `Case Claim`
+2. `Tier Ladder Analysis`
+3. `Mechanism Summary`
+4. `Target Buyer Inference`
+5. `Decision Friction`
+6. `Exposure and Risk Logic`
+7. `Logic Flaw and Vulnerability` or `Logic Flaw, Vulnerability, and Strategic Opportunity`
+8. `Primary Sources`
+
+If a visual helps, place the pricing-page screenshot inside the pricing section rather than creating a separate standalone section.
+
+## Writing Rules By Section
+
+### 1. Case Claim
+
+- Open with the most important analytical claim.
+- The strongest takeaway sentence in the paragraph should be in `<strong>...</strong>`.
+- Do not add a separate principle box below it.
+
+### 2. Tier Ladder Analysis
+
+- Analyze the visible tier ladder and what matters commercially.
+- State how many visible tiers exist.
+- Explain the likely target buyer for each tier.
+- Name how each tier is labeled on the page.
+- Identify the anchor price for each tier when public pricing is shown.
+- State the price gap between tiers when the math is visible.
+- Explain the value-add argument used to push buyers upward.
+- Include the screenshot and a short caption if useful.
+- Bold the sentence that explains why the ladder matters.
+
+### 3. Mechanism Summary
+
+- Explain the mechanism in plain language.
+- Bold the sentence that states what the real mechanism is.
+
+### 4. Target Buyer Inference
+
+- State who this structure is really for.
+- If using bullets, each bullet must have a clear label and interpretation.
+- Bold the most decision-relevant inference.
+
+### 5. Decision Friction
+
+- Explain where the buyer has to think, classify, estimate, or hesitate.
+- Bold the sentence that names the main friction.
+
+### 6. Exposure and Risk Logic
+
+- Explain what risk the company takes on by pricing this way.
+- Bold the sentence that names the core exposure.
+
+### 7. Logic Flaw / Vulnerability / Strategic Opportunity
+
+- Name the weakness clearly.
+- Explain why that weakness matters.
+- End with the strategic opening created by the weakness.
+- Bold the sentence that identifies the core flaw or the key strategic conclusion.
+
+### 8. Primary Sources
+
+- Use APA-style entries only.
+- Use organization name as author when no individual author is shown.
+- Include retrieval date and full URL.
+- Example format:
+  - `<cite>Figma.</cite> (n.d.). <a href="...">Plans & pricing</a>. Retrieved April 22, 2026, from <a href="...">https://...</a>`
+
+## Things To Remove From Old Drafts
+
+If you are revising an older case, remove these elements when present:
+
+- `Framework Links`
+- `Transferable principle` callout panels
+- PR-style evaluation commentary written for merge decisions
+- repetitive framework tags inside the body
+
+## Metadata Rules
+
+The case record in `case-library.js` may still keep structured metadata for internal sorting and future automation, including:
+
 - `framework_tags[]`
-- `mechanism_type`
-- `pricing_page_url`
-- `screenshot_url`
-- `counterintuitive_score`
-- `teaching_value_score`
-- `strategic_gap_score`
-- `portability_score`
-- `evidence_strength_score`
+- scoring fields
 - `verdict`
 - `transferable_principle`
-- `pricing_surface`
-- `mechanism_summary`
-- `target_buyer_inference`
-- `decision_friction`
-- `exposure_logic`
-- `logic_flaw`
-- `strategic_opportunity`
-- `source_urls[]`
-- `page_path`
+
+But those fields do not all need to be rendered on the public page.
 
 ## Acceptance Gate
 
-A case may be added to the live library only if all of the following are true:
+A case is ready for the live site only if:
 
-- It cites at least 2 public primary sources.
-- It includes a clear `transferable_principle`.
-- `counterintuitive_score >= 4`
-- `teaching_value_score >= 4`
-- `verdict = Accept`
+- it has at least 2 public primary sources
+- the argument is analytically reusable
+- the section structure matches this template
+- the body has been cleaned of framework-justification sections and principle callout boxes
+- the references are in APA-style format
 
-If the case is interesting but not ready:
+## Automation Rule
 
-- use `verdict = Revise`
-- do not feature it as a lead teaching case
+Any future automation or manual drafting flow should generate copy in this exact public-facing shape first, then store extra scoring or framework metadata only in the data layer if needed.
 
-If the case is mainly descriptive:
+## HTML Starter
 
-- use `verdict = Reject-as-library-case`
-- do not add a live case page
-
-## Page Template
-
-Every published case page must include these sections:
-
-1. Case title and one-sentence claim
-2. Quick facts
-3. Pricing surface
-4. Pricing page visual screenshot
-5. Mechanism summary
-6. Target buyer inference
-7. Decision friction
-8. Exposure / risk logic
-9. Logic flaw / vulnerability
-10. Strategic opportunity
-11. Transferable pricing principle
-12. Framework links
-13. Scoreboard
-14. Primary sources
-
-## Automation Rules
-
-The weekly case automation should:
-
-1. Start from the latest `main`.
-2. Create a fresh branch named `codex/pricing-case-YYYYMMDD-<company-or-theme>`.
-3. Evaluate candidate cases using public primary sources first.
-4. Produce at most 1 case per run.
-5. Update:
-   - `cases/pricing/index.html`
-   - `cases/pricing/case-library.js`
-   - the selected case page under `cases/pricing/`
-   - the EVAC library entry only if the featured case changes
-6. Open a draft PR when a case passes the acceptance gate.
-7. Skip repo edits and PR creation if no candidate qualifies.
-
-## Visual Requirement
-
-Every published case must include:
-
-- a direct `pricing_page_url`
-- a `screenshot_url` that gives a visible capture of the live pricing page
-- a short caption explaining what the screenshot helps the reader notice
-
-For the current static site, a live screenshot service is acceptable if it reliably renders the public pricing page.
+Use `cases/pricing/CASE_TEMPLATE.html` as the copyable starting point for any new published pricing case page.
