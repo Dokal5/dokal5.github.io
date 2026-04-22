@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Cases | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/pricing-cases.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="site-title">Think with Dave</div>
+    <div class="site-sub">Knowledge Garden</div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-label">Navigation</div>
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../thoughts/index.html">Thoughts</a>
+        <a class="nav-link" href="../../courses/index.html">Courses</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Case Library</div>
+        <a class="nav-link active" href="index.html">Pricing Cases</a>
+        <a class="nav-link" href="../../courses/effective-value-capturing/index.html">Effective Value Capturing</a>
+        <a class="nav-link" href="../../courses/marketing/index.html">Marketing</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header case-hero">
+      <a class="back-link" href="../../index.html">← Back home</a>
+      <div class="case-kicker">Case Library</div>
+      <h1>Pricing Cases</h1>
+      <p class="lead">
+        Pricing Cases is a live case library for counterintuitive pricing logic. It exists to support EVAC teaching, sharpen competitive pricing diagnosis, and turn real-world price structures into reusable strategic principles.
+      </p>
+
+      <div class="case-summary-grid">
+        <section class="case-panel">
+          <h2>What This Library Is For</h2>
+          <p>
+            This is not a gallery of company price lists. Each case must explain how value is actually captured, where the logic is vulnerable, and what a strategist can learn from the structure itself.
+          </p>
+          <div class="case-workflow">
+            <div class="case-workflow-step">
+              <strong>Research for EVAC teaching</strong>
+              Cases are mapped back to EVAC concepts so the course can reference current market evidence.
+            </div>
+            <div class="case-workflow-step">
+              <strong>Competitive gap finding</strong>
+              Each case must identify a flaw, threshold, exposure point, or design opening rather than stopping at description.
+            </div>
+            <div class="case-workflow-step">
+              <strong>Consulting-grade pattern capture</strong>
+              The library is structured so cases can be reused in client analysis, workshop design, and future cross-industry comparisons.
+            </div>
+          </div>
+        </section>
+
+        <section class="case-panel">
+          <h2>Operating Logic</h2>
+          <div class="case-stat-grid">
+            <div class="case-stat">
+              <div class="case-stat-label">Update cadence</div>
+              <div class="case-stat-value">Weekly scout</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-label">PR unit</div>
+              <div class="case-stat-value">1 case</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-label">Evidence rule</div>
+              <div class="case-stat-value">Primary first</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-label">Review mode</div>
+              <div class="case-stat-value">Draft PR</div>
+            </div>
+          </div>
+          <p style="margin-top: 1rem;">
+            Cases are reviewed through GitHub draft pull requests before they become part of the live library. The goal is not high-frequency coverage. The goal is to accumulate high-leverage teaching cases with strong transfer value.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <section class="case-filter-shell">
+      <div class="case-filter-head">
+        <div>
+          <h2>Review Queue</h2>
+          <p>Filter by industry, framework, pricing mechanism, and verdict to inspect the current library.</p>
+        </div>
+        <div class="case-list-meta" id="case-count">Loading cases...</div>
+      </div>
+
+      <div class="case-filter-grid">
+        <div class="case-filter-group">
+          <label for="industry-filter">Industry</label>
+          <select id="industry-filter">
+            <option value="all">All industries</option>
+          </select>
+        </div>
+        <div class="case-filter-group">
+          <label for="framework-filter">Framework</label>
+          <select id="framework-filter">
+            <option value="all">All framework tags</option>
+          </select>
+        </div>
+        <div class="case-filter-group">
+          <label for="mechanism-filter">Mechanism</label>
+          <select id="mechanism-filter">
+            <option value="all">All mechanisms</option>
+          </select>
+        </div>
+        <div class="case-filter-group">
+          <label for="verdict-filter">Verdict</label>
+          <select id="verdict-filter">
+            <option value="all">All verdicts</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <div class="case-section-grid">
+      <section class="case-section-card">
+        <h2>Latest Case</h2>
+        <p>The most recently reviewed case that cleared the evidence and teaching gate.</p>
+        <div id="latest-case"></div>
+      </section>
+      <section class="case-section-card">
+        <h2>High Counterintuitive</h2>
+        <p>Cases that are especially useful when you want to challenge default pricing assumptions.</p>
+        <div id="counterintuitive-case"></div>
+      </section>
+      <section class="case-section-card">
+        <h2>EVAC Teaching Pick</h2>
+        <p>Cases that can be used immediately in EVAC discussions about mechanism, corridor, or capture boundary design.</p>
+        <div id="evac-case"></div>
+      </section>
+    </div>
+
+    <section class="case-list-shell">
+      <div class="case-list-head">
+        <div>
+          <h2>All Library Cases</h2>
+          <p>Every record here must contribute a transferable pricing principle, not just a company pricing description.</p>
+        </div>
+      </div>
+      <div class="case-card-list" id="case-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>dokal5.github.io · knowledge garden</span>
+    <span>Utrecht, NL</span>
+  </footer>
+
+</div>
+
+<script src="case-library.js"></script>
+<script>
+  (function () {
+    const records = Array.isArray(window.pricingCaseRecords) ? window.pricingCaseRecords.slice() : [];
+    const caseCount = document.getElementById("case-count");
+    const caseList = document.getElementById("case-list");
+    const latestCase = document.getElementById("latest-case");
+    const counterintuitiveCase = document.getElementById("counterintuitive-case");
+    const evacCase = document.getElementById("evac-case");
+
+    const industryFilter = document.getElementById("industry-filter");
+    const frameworkFilter = document.getElementById("framework-filter");
+    const mechanismFilter = document.getElementById("mechanism-filter");
+    const verdictFilter = document.getElementById("verdict-filter");
+
+    function uniqueValues(values) {
+      return Array.from(new Set(values)).sort();
+    }
+
+    function fillSelect(select, values) {
+      values.forEach((value) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+      });
+    }
+
+    fillSelect(industryFilter, uniqueValues(records.map((record) => record.industry)));
+    fillSelect(frameworkFilter, uniqueValues(records.flatMap((record) => record.framework_tags)));
+    fillSelect(mechanismFilter, uniqueValues(records.map((record) => record.mechanism_type)));
+    fillSelect(verdictFilter, uniqueValues(records.map((record) => record.verdict)));
+
+    function scoreChip(label, value) {
+      return '<span class="case-score">' + label + ": " + value + "/5</span>";
+    }
+
+    function frameworkChips(record) {
+      return record.framework_tags.map((tag) => {
+        return '<span class="case-tag" data-framework="' + tag + '">' + tag + '</span>';
+      }).join("");
+    }
+
+    function renderCard(record) {
+      return [
+        '<article class="case-card">',
+        '  <div class="case-card-top">',
+        "    <div>",
+        '      <h3><a class="article-link" href="' + record.page_path + '">' + record.title + "</a></h3>",
+        '      <p class="case-card-sub">' + record.company + " · " + record.industry + " · " + record.market + "</p>",
+        "    </div>",
+        '    <span class="case-verdict">' + record.verdict + "</span>",
+        "  </div>",
+        '  <div class="case-card-summary"><p>' + record.mechanism_summary + "</p></div>",
+        '  <div class="case-tag-row">' + frameworkChips(record) + '<span class="case-tag">' + record.mechanism_type + "</span></div>",
+        '  <div class="case-score-row" style="margin-top: 0.8rem;">' +
+            scoreChip("Counterintuitive", record.counterintuitive_score) +
+            scoreChip("Teaching", record.teaching_value_score) +
+            scoreChip("Gap", record.strategic_gap_score) +
+          "</div>",
+        '  <div class="case-principle"><strong>Transferable principle</strong><p>' + record.transferable_principle + "</p></div>",
+        '  <div class="case-card-footer"><span class="case-list-meta">Reviewed ' + record.reviewed_at + '</span><a class="case-link" href="' + record.page_path + '">Open case</a></div>',
+        "</article>"
+      ].join("");
+    }
+
+    function renderCompact(container, record, emptyText) {
+      if (!record) {
+        container.innerHTML = '<div class="case-empty">' + emptyText + "</div>";
+        return;
+      }
+      container.innerHTML = renderCard(record);
+    }
+
+    function applyFilters() {
+      const filtered = records.filter((record) => {
+        const industryMatch = industryFilter.value === "all" || record.industry === industryFilter.value;
+        const frameworkMatch = frameworkFilter.value === "all" || record.framework_tags.indexOf(frameworkFilter.value) !== -1;
+        const mechanismMatch = mechanismFilter.value === "all" || record.mechanism_type === mechanismFilter.value;
+        const verdictMatch = verdictFilter.value === "all" || record.verdict === verdictFilter.value;
+        return industryMatch && frameworkMatch && mechanismMatch && verdictMatch;
+      }).sort(function (a, b) {
+        return b.reviewed_at.localeCompare(a.reviewed_at);
+      });
+
+      caseCount.textContent = "Showing " + filtered.length + " of " + records.length + " cases";
+
+      if (!filtered.length) {
+        caseList.innerHTML = '<div class="case-empty">No cases match the current filter set.</div>';
+      } else {
+        caseList.innerHTML = filtered.map(renderCard).join("");
+      }
+
+      const latest = filtered[0];
+      const counterPick = filtered.find((record) => record.counterintuitive_score >= 4);
+      const evacPick = filtered.find((record) => record.framework_tags.some((tag) => tag.indexOf("EVAC") === 0));
+
+      renderCompact(latestCase, latest, "No reviewed case yet.");
+      renderCompact(counterintuitiveCase, counterPick, "No counterintuitive case under the current filters.");
+      renderCompact(evacCase, evacPick, "No EVAC-linked case under the current filters.");
+    }
+
+    [industryFilter, frameworkFilter, mechanismFilter, verdictFilter].forEach((select) => {
+      select.addEventListener("change", applyFilters);
+    });
+
+    applyFilters();
+  }());
+</script>
+
+</body>
+</html>
