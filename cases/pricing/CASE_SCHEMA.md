@@ -29,7 +29,7 @@ For every published case page:
 Every pricing case page should follow this order:
 
 1. `Case Claim`
-2. `Pricing Surface` or `Pricing Structure`
+2. `Tier Ladder Analysis`
 3. `Mechanism Summary`
 4. `Target Buyer Inference`
 5. `Decision Friction`
@@ -47,11 +47,17 @@ If a visual helps, place the pricing-page screenshot inside the pricing section 
 - The strongest takeaway sentence in the paragraph should be in `<strong>...</strong>`.
 - Do not add a separate principle box below it.
 
-### 2. Pricing Surface / Pricing Structure
+### 2. Tier Ladder Analysis
 
-- Describe only the visible pricing architecture and what matters commercially.
+- Analyze the visible tier ladder and what matters commercially.
+- State how many visible tiers exist.
+- Explain the likely target buyer for each tier.
+- Name how each tier is labeled on the page.
+- Identify the anchor price for each tier when public pricing is shown.
+- State the price gap between tiers when the math is visible.
+- Explain the value-add argument used to push buyers upward.
 - Include the screenshot and a short caption if useful.
-- Bold the sentence that explains why the surface matters.
+- Bold the sentence that explains why the ladder matters.
 
 ### 3. Mechanism Summary
 
