@@ -1,22 +1,31 @@
+// Public-page note:
+// The case pages should stay concise and should not render every field below.
+// Use this file as the structured data layer for sorting, archive summaries,
+// and future automation support.
+//
+// Field rule:
+// - Core page-copy fields: title, company, industry, market, reviewed_at,
+//   mechanism_type, pricing_page_url, screenshot_url, mechanism_summary,
+//   target_buyer_inference, decision_friction, exposure_logic, logic_flaw,
+//   strategic_opportunity, source_urls, page_path.
+// - Metadata-only fields: framework_tags, scoring fields, verdict,
+//   transferable_principle.
+// - Metadata-only fields may stay in the record for automation and review,
+//   but they do not need to appear on the public page.
 window.pricingCaseRecords = [
   {
+    // Identity
     slug: "figma-role-based-seat-segmentation",
     title: "Figma and role-based seat segmentation across the workflow",
     company: "Figma",
     industry: "Design and product collaboration SaaS",
     market: "Global product teams spanning design, engineering, product, and cross-functional collaborators",
     reviewed_at: "2026-04-22",
-    framework_tags: ["EVAC 2.0", "Marketing"],
+
+    // Public page inputs
     mechanism_type: "Role-based seat segmentation by workflow intensity",
     pricing_page_url: "https://www.figma.com/pricing/",
     screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://www.figma.com/pricing/",
-    counterintuitive_score: 4,
-    teaching_value_score: 5,
-    strategic_gap_score: 4,
-    portability_score: 5,
-    evidence_strength_score: 5,
-    verdict: "Accept",
-    transferable_principle: "When usage intensity differs by role, charge for decision-critical workflow access rather than for raw presence in the collaboration network.",
     pricing_surface: "Figma publicly separates paid access into Full, Dev, and Collab seats, alongside free View access. Each seat type is tied to a different point in the design-to-build workflow rather than simple per-user uniformity.",
     mechanism_summary: "Figma monetizes workflow position, not just headcount. Full seats pay for creation and system ownership, Dev seats pay for advanced handoff and implementation inspection, Collab seats pay for lighter workshop and collaboration access, and View access stays free to widen network participation.",
     target_buyer_inference: "The structure targets organizations where many people touch product work but not all of them create design assets. It is especially well suited to teams that need broad visibility but want to reserve expensive seats for design owners and higher-intensity builders.",
@@ -30,26 +39,31 @@ window.pricingCaseRecords = [
       "https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma",
       "https://help.figma.com/hc/en-us/articles/19813618057623-Dev-Mode-for-admins",
       "https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma"
-    ]
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing"],
+    counterintuitive_score: 4,
+    teaching_value_score: 5,
+    strategic_gap_score: 4,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When usage intensity differs by role, charge for decision-critical workflow access rather than for raw presence in the collaboration network."
   },
   {
+    // Identity
     slug: "basecamp-flat-organization-pricing",
     title: "Basecamp and the flat organization price cap",
     company: "Basecamp / 37signals",
     industry: "Project management SaaS",
     market: "Global SMB, agency, and growing team software buyers",
     reviewed_at: "2026-04-22",
-    framework_tags: ["EVAC 1.0", "EVAC 2.0"],
+
+    // Public page inputs
     mechanism_type: "Flat organization cap + employee-only seat billing",
     pricing_page_url: "https://basecamp.com/pricing/",
     screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://basecamp.com/pricing/",
-    counterintuitive_score: 5,
-    teaching_value_score: 5,
-    strategic_gap_score: 4,
-    portability_score: 4,
-    evidence_strength_score: 4,
-    verdict: "Accept",
-    transferable_principle: "When incremental user cost is low and collaboration breadth drives adoption, cap organizational price to remove headcount anxiety and monetize account-wide rollout.",
     pricing_surface: "Basecamp presents three price surfaces: a free one-project tier, a Plus plan at $15 per employee per month with free guests and contractors, and a Pro Unlimited plan at $299 per month billed annually or $349 month-to-month for unlimited users plus bundled upgrades.",
     mechanism_summary: "The offer deliberately splits between per-employee pricing for smaller teams and a capped organizational price for fast-growing buyers, while still protecting monetization with flat add-ons and annual billing on the capped plan.",
     target_buyer_inference: "The capped plan is aimed at buyers whose coordination costs rise faster than their willingness to manage seat-count debates: agencies, client-facing teams, and growing organizations with many occasional users or external collaborators.",
@@ -62,6 +76,16 @@ window.pricingCaseRecords = [
       "https://basecamp.com/pricing/",
       "https://basecamp.com/try-basecamp/",
       "https://basecamp.com/new/"
-    ]
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 1.0", "EVAC 2.0"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 4,
+    portability_score: 4,
+    evidence_strength_score: 4,
+    verdict: "Accept",
+    transferable_principle: "When incremental user cost is low and collaboration breadth drives adoption, cap organizational price to remove headcount anxiety and monetize account-wide rollout."
   }
 ];

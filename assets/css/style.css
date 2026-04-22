@@ -132,8 +132,95 @@ h3 {
 
 p { margin-bottom: 1.2rem; color: var(--darkgray); font-size: 0.95rem; }
 
+.summary-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+}
+
+.summary-stat {
+  min-width: 140px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.5);
+}
+
+.summary-value {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 1.55rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.summary-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
 /* Sections */
 .section { margin-bottom: 3.5rem; }
+
+.section-note {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 0.84rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.feature-card {
+  display: block;
+  padding: 1.3rem 1.35rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  background:
+    radial-gradient(circle at top right, rgba(139, 99, 85, 0.08), transparent 36%),
+    rgba(255,255,255,0.44);
+  transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px rgba(92,61,46,0.1);
+}
+
+.feature-kicker {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  color: var(--dark);
+}
+
+.feature-card p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
 
 /* Tool cards */
 .tools-grid {
@@ -204,7 +291,6 @@ p { margin-bottom: 1.2rem; color: var(--darkgray); font-size: 0.95rem; }
 }
 
 /* Inline content pages (for article and notes layouts) */
-.content-body { max-width: 640px; }
 .content-body { max-width: 860px; }
 .content-body p { margin-bottom: 1.4rem; line-height: 1.85; }
 .content-body ul, .content-body ol {
@@ -459,6 +545,7 @@ p { margin-bottom: 1.2rem; color: var(--darkgray); font-size: 0.95rem; }
   }
   .main { padding: 2rem 1.5rem; }
   .tools-grid { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
   .footer { grid-column: 1; }
   .compare-row { grid-template-columns: 1fr; }
   .content-grid-2 { grid-template-columns: 1fr; }

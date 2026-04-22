@@ -11,6 +11,32 @@
   margin-bottom: 0.9rem;
 }
 
+.case-inline-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+}
+
+.case-inline-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.case-inline-item strong {
+  color: var(--accent);
+}
+
 .case-company-lockup {
   display: inline-flex;
   align-items: center;
@@ -47,13 +73,6 @@
   text-transform: uppercase;
   color: var(--gray);
   margin-top: 0.12rem;
-}
-
-.case-summary-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.9fr;
-  gap: 1rem;
-  margin-top: 1.75rem;
 }
 
 .case-panel {
@@ -247,7 +266,7 @@
 
 .case-filter-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.9rem;
 }
 
@@ -270,29 +289,6 @@
   padding: 0.75rem 0.8rem;
   font-family: var(--font-body);
   font-size: 0.92rem;
-}
-
-.case-section-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.6rem;
-}
-
-.case-section-card {
-  border: 1px solid var(--lightgray);
-  border-radius: 18px;
-  padding: 1.2rem 1.25rem;
-  background: rgba(255, 255, 255, 0.86);
-}
-
-.case-section-card h2 {
-  margin-bottom: 0.55rem;
-}
-
-.case-section-card p {
-  font-size: 0.9rem;
-  line-height: 1.75;
 }
 
 .case-list-shell {
@@ -329,38 +325,33 @@
 }
 
 .case-card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
 }
 
 .case-card h3 {
   margin: 0 0 0.35rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--dark);
 }
 
 .case-card-sub {
-  font-size: 0.92rem;
-  color: var(--darkgray);
+  font-size: 0.88rem;
+  color: var(--gray);
   margin-bottom: 0;
 }
 
 .case-card-summary {
-  margin: 1rem 0 1.1rem;
+  margin: 0.95rem 0 0.95rem;
 }
 
-.case-tag-row,
-.case-score-row {
+.case-tag-row {
   display: flex;
   gap: 0.55rem;
   flex-wrap: wrap;
+  margin-bottom: 0.95rem;
 }
 
 .case-tag,
-.case-score,
 .case-verdict {
   display: inline-flex;
   align-items: center;
@@ -379,28 +370,10 @@
   background: rgba(247, 244, 239, 0.7);
 }
 
-.case-tag[data-framework="EVAC 1.0"] {
-  border-color: rgba(125, 53, 40, 0.16);
-  color: #7d3528;
-  background: rgba(125, 53, 40, 0.08);
-}
-
-.case-tag[data-framework="EVAC 2.0"] {
-  border-color: rgba(61, 94, 90, 0.16);
-  color: #3d5e5a;
-  background: rgba(61, 94, 90, 0.08);
-}
-
-.case-tag[data-framework="Marketing"] {
-  border-color: rgba(200, 135, 43, 0.18);
-  color: #8b5a22;
-  background: rgba(200, 135, 43, 0.09);
-}
-
-.case-score {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid var(--lightgray);
-  color: var(--darkgray);
+.case-industry-tag {
+  border-color: rgba(92, 61, 46, 0.14);
+  color: var(--accent);
+  background: rgba(92, 61, 46, 0.06);
 }
 
 .case-verdict {
@@ -408,16 +381,27 @@
   color: #3d5e5a;
 }
 
-.case-principle {
-  border-left: 3px solid var(--accent);
-  padding-left: 0.9rem;
-  margin-top: 1rem;
+.case-takeaway strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--dark);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.case-principle strong {
-  display: block;
-  margin-bottom: 0.2rem;
-  color: var(--dark);
+.case-takeaway {
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  background: rgba(92, 61, 46, 0.05);
+  border: 1px solid rgba(92, 61, 46, 0.12);
+}
+
+.case-takeaway p {
+  margin-bottom: 0;
+  font-size: 0.92rem;
 }
 
 .case-card-footer {
