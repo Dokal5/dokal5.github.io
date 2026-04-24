@@ -25,7 +25,7 @@ window.pricingCaseRecords = [
     // Public page inputs
     mechanism_type: "Seat-tier platform pricing + AI outcome meter",
     pricing_page_url: "https://www.intercom.com/pricing",
-    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://www.intercom.com/pricing",
+    screenshot_url: "../../assets/images/cases/intercom-pricing-page.svg",
     pricing_surface: "Intercom publicly presents Essential, Advanced, and Expert helpdesk plans priced per seat, plus a standalone Fin AI Agent offer for existing helpdesks. Across those offers, Fin is priced separately from seats on a per-outcome basis.",
     mechanism_summary: "Intercom sells the helpdesk on seat tiers, then overlays a second meter for successful AI outcomes. The buyer therefore pays for human operating capacity and for AI-delivered results in parallel rather than choosing one pricing grammar or the other.",
     target_buyer_inference: "The structure targets support organizations that still budget for human teams but want AI to scale independently of seat count. It also targets companies that want Intercom's AI layer without changing their existing helpdesk stack.",
