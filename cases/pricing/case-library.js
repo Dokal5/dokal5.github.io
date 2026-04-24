@@ -15,6 +15,44 @@
 window.pricingCaseRecords = [
   {
     // Identity
+    slug: "intercom-seat-plus-outcome-pricing",
+    title: "Intercom and the seat-plus-outcome AI meter",
+    company: "Intercom",
+    industry: "Customer service and support SaaS",
+    market: "Global B2B support teams buying helpdesk software and AI-assisted service operations",
+    reviewed_at: "2026-04-24",
+
+    // Public page inputs
+    mechanism_type: "Seat-tier platform pricing + AI outcome meter",
+    pricing_page_url: "https://www.intercom.com/pricing",
+    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://www.intercom.com/pricing",
+    pricing_surface: "Intercom publicly presents Essential, Advanced, and Expert helpdesk plans priced per seat, plus a standalone Fin AI Agent offer for existing helpdesks. Across those offers, Fin is priced separately from seats on a per-outcome basis.",
+    mechanism_summary: "Intercom sells the helpdesk on seat tiers, then overlays a second meter for successful AI outcomes. The buyer therefore pays for human operating capacity and for AI-delivered results in parallel rather than choosing one pricing grammar or the other.",
+    target_buyer_inference: "The structure targets support organizations that still budget for human teams but want AI to scale independently of seat count. It also targets companies that want Intercom's AI layer without changing their existing helpdesk stack.",
+    decision_friction: "The main friction is forecasting and governance. Buyers must estimate seat count, outcome volume, and which AI actions will be billed, while also accepting that usage limits are managed operationally rather than converted into a perfectly fixed spend line.",
+    exposure_logic: "Intercom lowers monetization risk by charging separately when AI produces a billable result, but it takes on trust risk because the outcome boundary has to remain legible enough that customers accept a second usage meter on top of seat spend.",
+    logic_flaw: "The outcome label is cleaner than the billing boundary underneath it. Official documentation says billable outcomes can include resolutions, configured Procedure handoffs, disqualifications, and qualifications, which makes the meter broader than the intuitive promise of paying only when AI solves a support problem.",
+    strategic_opportunity: "A competitor could attack with cleaner packaging: bundle a committed block of AI outcomes into the seat price, separate workflow handoffs from true resolutions, or provide harder spend caps that buyers can trust more easily in procurement and finance reviews.",
+    page_path: "intercom-seat-plus-outcome-pricing.html",
+    source_urls: [
+      "https://www.intercom.com/pricing",
+      "https://www.intercom.com/help/en/articles/9061614-intercom-plans-explained",
+      "https://www.intercom.com/help/en/articles/8205718-fin-ai-agent-outcomes",
+      "https://www.intercom.com/help/en/articles/8991894-how-to-see-and-manage-your-usage"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 5,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When automation is layered onto a human service workflow, separate platform access from billable successful outcomes only if the outcome boundary stays legible enough that buyers can forecast, govern, and defend the second meter internally."
+  },
+  {
+    // Identity
     slug: "webflow-workspace-site-pricing-split",
     title: "Webflow and the workspace-site split in web platform pricing",
     company: "Webflow",
