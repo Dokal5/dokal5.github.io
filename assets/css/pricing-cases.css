@@ -462,10 +462,12 @@
 }
 
 .case-detail-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.7fr);
-  gap: 1.2rem;
-  align-items: start;
+  display: block;
+}
+
+.case-detail-layout > .content-body {
+  max-width: none;
+  width: 100%;
 }
 
 .case-meta-list {
@@ -594,6 +596,18 @@
   margin-bottom: 0;
   font-size: 0.88rem;
   line-height: 1.55;
+}
+
+.case-layer1-section-head--stacked {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 0.6rem;
+  margin-bottom: 1.15rem;
+}
+
+.case-panel--snapshot {
+  max-width: 360px;
+  margin: 0 0 2rem auto;
 }
 
 .case-starter-toggle {
@@ -1224,6 +1238,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
+  margin-top: 0.2rem;
 }
 
 .case-layer1-example {
@@ -1294,6 +1309,11 @@
 
   .case-starter-toggle {
     justify-self: start;
+  }
+
+  .case-panel--snapshot {
+    max-width: none;
+    margin-right: 0;
   }
 
   .case-starter-funnel-card {
