@@ -1,139 +1,151 @@
-# Pricing Case Template
+# Pricing Case Framework
 
-This file is the working template and quality standard for new pages added under `cases/pricing/`.
+This file defines the public-page structure for pricing case pages under `cases/pricing/`.
 
-## Purpose
+Layer 1 defines the analytical structure. The public page defines the reading and teaching sequence. The public page does not need to follow the same order as Layer 1.
 
-Each case should do three things clearly:
-
-1. Show how the pricing structure actually works.
-2. Explain where the buying friction or strategic weakness sits.
-3. Leave the reader with a reusable commercial takeaway.
-
-The page should stay abstract and teachable. It is not a dump of research notes, framework mapping, or internal review commentary.
+The page is not a description of pricing. The page is a tool to understand what changes the bill.
 
 ## Public Page Rules
 
-For every published case page:
+- Keep the page modular and scan-first.
+- Core Insight must appear before detailed architecture.
+- The main mechanism component must follow `cases/pricing/COMPONENT_LIBRARY.md`.
+- Do not turn the page into a feature comparison.
+- Do not add marketing copy, long narrative setup, framework justification, or a separate transferable-principle callout.
+- Keep the hero company lockup immediately after `.case-kicker`.
+- If a verified local logo asset exists, place the `<img>` inside `.case-company-icon`; otherwise use `.case-company-icon case-company-icon--text`.
+- Keep extra scoring metadata in `case-library.js`; do not render scoring on the public case page.
+- Decision Core Alignment: each public page must visibly answer what is monetized, what changes the bill, and who pays more and why.
+- Keep the embedded JSON object for system use, but do not render a visible Case Snapshot.
 
-- Write for a public reader, not for an internal PR review.
-- Keep the page focused on the case itself, not on which framework it matches.
-- Use the section headings and order exactly as written below.
-- The right sidebar should be `Case Snapshot` only. Do not render a sidebar `Scoreboard`.
-- The hero must include a visible company lockup immediately after `case-kicker`: `.case-company-lockup`, `.case-company-icon`, and `.case-company-name`.
-- If a verified local logo asset exists, place the `<img>` inside `.case-company-icon`; otherwise use `.case-company-icon case-company-icon--text` with a short 2-3 character company initial fallback.
-- Do not include a separate `Framework Links` section.
-- Do not include a separate `Transferable principle` or callout box.
-- Do not add extra “why this belongs in EVAC/Marketing” explanation on the page.
-- Primary sources must use APA-style reference entries.
-- The key analytical sentence in each major section should be bolded inline.
+## Public Section Order
 
-## Required Section Order
+Every public pricing case page should follow this reader-facing order:
 
-Every pricing case page should follow this order:
+1. `Pricing Page Visual`
+2. `Core Insight`
+3. `Pricing Logic Deconstruction`
+4. `Pricing Matrix / Mechanism Logic`
+5. `Pricing Architecture`
+6. `Decision Tension Layer`
+7. `Optional Simulator`
+8. `Strategic Opportunity`
+9. `References`
+10. `Hidden JSON Schema`
 
-1. `Case Claim`
-2. `Tier Ladder Analysis`
-3. `Mechanism Summary`
-4. `Target Buyer Inference`
-5. `Decision Friction`
-6. `Exposure and Risk Logic`
-7. `Logic Flaw and Vulnerability` or `Logic Flaw, Vulnerability, and Strategic Opportunity`
-8. `Primary Sources`
+## Section Rules
 
-If a visual helps, place the pricing-page screenshot inside the pricing section rather than creating a separate standalone section.
+### 1. Pricing Page Visual
 
-## Writing Rules By Section
+Show the original pricing artifact or pricing page screenshot. This grounds the analysis in a real object.
 
-### 1. Case Claim
+If no original pricing artifact is available, use a reconstructed pricing visual based on verified public information and label it clearly as reconstructed.
 
-- Open with the most important analytical claim.
-- The strongest takeaway sentence in the paragraph should be in `<strong>...</strong>`.
-- Do not add a separate principle box below it.
+### 2. Core Insight
 
-### 2. Tier Ladder Analysis
+Show the main pricing insight in no more than three short bullets. These bullets must align with `decision_core`.
 
-- Analyze the visible tier ladder and what matters commercially.
-- State how many visible tiers exist.
-- Explain the likely target buyer for each tier.
-- Name how each tier is labeled on the page.
-- Identify the anchor price for each tier when public pricing is shown.
-- State the price gap between tiers when the math is visible.
-- Explain the value-add argument used to push buyers upward.
-- Include the screenshot and a short caption if useful.
-- Bold the sentence that explains why the ladder matters.
+### 3. Pricing Logic Deconstruction
 
-### 3. Mechanism Summary
+Explain the core pricing logic before showing the full architecture. This section should make clear what changes the bill.
 
-- Explain the mechanism in plain language.
-- Bold the sentence that states what the real mechanism is.
+### 4. Pricing Matrix / Mechanism Logic
 
-### 4. Target Buyer Inference
+Use the correct mechanism format:
 
-- State who this structure is really for.
-- If using bullets, each bullet must have a clear label and interpretation.
-- Bold the most decision-relevant inference.
+- matrix for two-dimensional pricing logic
+- tier ladder for named plans
+- driver logic for usage-based pricing
+- trigger path for threshold-based pricing
+- value extraction map for value-capture mismatch
 
-### 5. Decision Friction
+The selected mechanism must follow `COMPONENT_LIBRARY.md` and align with `drivers`, `formula`, `upgrade_triggers`, and `decision_core`.
 
-- Explain where the buyer has to think, classify, estimate, or hesitate.
-- Bold the sentence that names the main friction.
+### 5. Pricing Architecture
 
-### 6. Exposure and Risk Logic
+Organize the structure into plan tiers, segments, drivers, and upgrade triggers. This section may show the full structure, but should not replace the mechanism explanation.
 
-- Explain what risk the company takes on by pricing this way.
-- Bold the sentence that names the core exposure.
+### 6. Decision Tension Layer
 
-### 7. Logic Flaw / Vulnerability / Strategic Opportunity
+Show where the pricing model creates classification friction, buyer confusion, admin burden, forecasting difficulty, or governance tension.
 
-- Name the weakness clearly.
-- Explain why that weakness matters.
-- End with the strategic opening created by the weakness.
-- Bold the sentence that identifies the core flaw or the key strategic conclusion.
+### 7. Optional Simulator
 
-### 8. Primary Sources
+Include only when interaction makes the pricing mechanism easier to understand. Do not add a simulator just because the template allows it.
 
-- Use APA-style entries only.
-- Use organization name as author when no individual author is shown.
-- Include retrieval date and full URL.
-- Example format:
-  - `<cite>Figma.</cite> (n.d.). <a href="...">Plans & pricing</a>. Retrieved April 22, 2026, from <a href="...">https://...</a>`
+### 8. Strategic Opportunity
 
-## Things To Remove From Old Drafts
+Explain the competitor attack angle or improvement opportunity created by the pricing structure. It must follow from the decision tension or structural weakness.
 
-If you are revising an older case, remove these elements when present:
+### 9. References
 
-- sidebar `Scoreboard`
-- `Framework Links`
-- `Transferable principle` callout panels
-- PR-style evaluation commentary written for merge decisions
-- repetitive framework tags inside the body
+Use public primary sources where possible.
 
-## Metadata Rules
+References support observed facts. Strategic interpretation and inferred pricing logic should be clearly distinguishable from sourced facts.
 
-The case record in `case-library.js` may still keep structured metadata for internal sorting and future automation, including:
+### 10. Hidden JSON Schema
 
-- `framework_tags[]`
-- scoring fields
-- `verdict`
-- `transferable_principle`
+Embed the Layer 1 JSON object for system use. Do not render a visible Case Snapshot and do not show raw JSON to readers.
 
-But those fields do not all need to be rendered on the public page.
+```html
+<script type="application/json" id="pricing-case-schema">
+{
+  "case_id": "",
+  "case_type": "saas | retail | subscription | marketplace | service | hardware | restaurant | logistics | other",
+  "evidence_level": "observed | inferred | hypothesized",
+  "pricing_model": "",
+  "value_metric": "",
+  "segmentation_type": "",
+  "tiers": [],
+  "segments": [],
+  "pricing_logic": "",
+  "key_driver": "",
+  "drivers": [],
+  "formula": "",
+  "upgrade_triggers": [],
+  "visualization": {},
+  "primary_component": "",
+  "decision_core": {
+    "what_is_monetized": "",
+    "what_changes_the_bill": "",
+    "who_pays_more_and_why": ""
+  },
+  "student_10_second_takeaway": "",
+  "friction_points": [],
+  "risks": [],
+  "structural_weakness": "",
+  "strategic_insight": ""
+}
+</script>
+```
+
+## Interactive Field Priority
+
+- `primary_component` defines the main explanation layer.
+- `drivers`, `formula`, and `upgrade_triggers` must support the primary component.
+- `visualization` must not introduce new logic.
+- Do not render multiple competing explanations.
+
+## Funnel Logic Rule
+
+Funnel Logic may be used only when the case is about adoption, activation, conversion, or free-to-paid movement. It should not be required for all pricing cases.
+
+## Reusable Components
+
+For component definitions and primary-component selection, use `cases/pricing/COMPONENT_LIBRARY.md`.
+
+Existing HTML/CSS primitives from `CASE_TEMPLATE.html` and `assets/css/pricing-cases.css` may be reused, but the public reading order above is the source of truth.
 
 ## Acceptance Gate
 
-A case is ready for the live site only if:
+A public case page is ready only if:
 
-- it has at least 2 public primary sources
-- the argument is analytically reusable
-- the section structure matches this template
-- the body has been cleaned of framework-justification sections and principle callout boxes
-- the references are in APA-style format
-
-## Automation Rule
-
-Any future automation or manual drafting flow should generate copy in this exact public-facing shape first, then store extra scoring or framework metadata only in the data layer if needed.
-
-## HTML Starter
-
-Use `cases/pricing/CASE_TEMPLATE.html` as the copyable starting point for any new published pricing case page.
+- the pricing mechanism is understandable within 10 seconds
+- Core Insight appears before detailed architecture
+- the main mechanism component follows from `COMPONENT_LIBRARY.md`
+- Decision Tension explains the buyer-side difficulty
+- Strategic Opportunity follows from the tension or structural weakness
+- Optional Simulator is used only when it clarifies bill movement or value capture
+- the embedded JSON remains valid
+- References include public primary sources where available

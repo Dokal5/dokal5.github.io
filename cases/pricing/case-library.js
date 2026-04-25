@@ -7,7 +7,7 @@
 // - Core page-copy fields: title, company, industry, market, reviewed_at,
 //   mechanism_type, pricing_page_url, screenshot_url, mechanism_summary,
 //   target_buyer_inference, decision_friction, exposure_logic, logic_flaw,
-//   strategic_opportunity, source_urls, page_path.
+//   strategic_opportunity, source_urls, page_path, structured_case.
 // - Metadata-only fields: framework_tags, scoring fields, verdict,
 //   transferable_principle.
 // - Metadata-only fields may stay in the record for automation and review,
@@ -98,7 +98,7 @@ window.pricingCaseRecords = [
     company: "Intercom",
     industry: "Customer service and support SaaS",
     market: "Global B2B support teams buying helpdesk software and AI-assisted service operations",
-    reviewed_at: "2026-04-24",
+    reviewed_at: "2026-04-25",
 
     // Public page inputs
     mechanism_type: "Seat-tier platform pricing + AI outcome meter",
@@ -109,8 +109,8 @@ window.pricingCaseRecords = [
     target_buyer_inference: "The structure targets support organizations that still budget for human teams but want AI to scale independently of seat count. It also targets companies that want Intercom's AI layer without changing their existing helpdesk stack.",
     decision_friction: "The main friction is forecasting and governance. Buyers must estimate seat count, outcome volume, and which AI actions will be billed, while also accepting that usage limits are managed operationally rather than converted into a perfectly fixed spend line.",
     exposure_logic: "Intercom lowers monetization risk by charging separately when AI produces a billable result, but it takes on trust risk because the outcome boundary has to remain legible enough that customers accept a second usage meter on top of seat spend.",
-    logic_flaw: "The outcome label is cleaner than the billing boundary underneath it. Official documentation says billable outcomes can include resolutions, configured Procedure handoffs, disqualifications, and qualifications, which makes the meter broader than the intuitive promise of paying only when AI solves a support problem.",
-    strategic_opportunity: "A competitor could attack with cleaner packaging: bundle a committed block of AI outcomes into the seat price, separate workflow handoffs from true resolutions, or provide harder spend caps that buyers can trust more easily in procurement and finance reviews.",
+    logic_flaw: "The outcome label is cleaner than the billing boundary underneath it. Official documentation says billable outcomes can include resolutions and configured Procedure handoffs, which makes the meter broader than the intuitive promise of paying only when AI solves a support problem.",
+    strategic_opportunity: "A competitor could attack with cleaner packaging: bundle a committed block of AI outcomes into the seat price, separate workflow handoffs from true resolutions, or provide clearer committed outcome blocks that buyers can defend more easily in procurement and finance reviews.",
     page_path: "intercom-seat-plus-outcome-pricing.html",
     source_urls: [
       "https://www.intercom.com/pricing",
@@ -118,6 +118,78 @@ window.pricingCaseRecords = [
       "https://www.intercom.com/help/en/articles/8205718-fin-ai-agent-outcomes",
       "https://www.intercom.com/help/en/articles/8991894-how-to-see-and-manage-your-usage"
     ],
+    structured_case: {
+      case_id: "intercom-seat-plus-outcome-pricing",
+      pricing_model: "Hybrid seat-tier platform pricing plus per-outcome AI usage meter",
+      value_metric: "Fin AI Agent outcome",
+      segmentation_type: "Plan tier, seat role, and usage/outcome segmentation",
+      tiers: [
+        {
+          name: "Essential",
+          plan_level: "Entry",
+          seat_price: "$29 per seat/month, billed annually",
+          usage_price: "$0.99 per Fin outcome",
+          buyer_logic: "Individuals, startups, and small businesses needing core customer support capacity"
+        },
+        {
+          name: "Advanced",
+          plan_level: "Growth",
+          seat_price: "$85 per seat/month, billed annually",
+          usage_price: "$0.99 per Fin outcome",
+          buyer_logic: "Growing support teams needing automation, collaboration, and private or multilingual help centers"
+        },
+        {
+          name: "Expert",
+          plan_level: "Scale",
+          seat_price: "$132 per seat/month, billed annually",
+          usage_price: "$0.99 per Fin outcome",
+          buyer_logic: "Larger teams needing security, service levels, multibrand support, and workflow control"
+        },
+        {
+          name: "Fin AI Agent",
+          plan_level: "Standalone usage layer",
+          seat_price: "No Intercom seats required",
+          usage_price: "$0.99 per Fin outcome; minimum commitments may apply",
+          buyer_logic: "Teams that want Fin on an existing helpdesk instead of replacing their support platform"
+        }
+      ],
+      segments: [
+        {
+          segment: "Full support teammates",
+          basis: "Seat role",
+          pricing_effect: "Paid per teammate according to selected plan"
+        },
+        {
+          segment: "Lite collaborators",
+          basis: "Seat role",
+          pricing_effect: "Free collaboration seats included on Advanced and Expert"
+        },
+        {
+          segment: "Fin usage",
+          basis: "Outcome event",
+          pricing_effect: "Charged when Fin produces a billable resolution or configured Procedure handoff"
+        },
+        {
+          segment: "Existing-helpdesk buyers",
+          basis: "Platform replacement status",
+          pricing_effect: "Can buy Fin as a standalone AI layer without Intercom seats"
+        }
+      ],
+      pricing_logic: "Intercom prices the helpdesk by selected plan and paid full seats, then adds a second meter for Fin outcomes. Spend increases when the buyer adds full seats, upgrades the plan tier, or generates more billable AI outcomes.",
+      key_driver: "Billable Fin outcomes: resolutions or configured Procedure handoffs, charged at most once per conversation.",
+      friction_points: [
+        "Forecasting Fin outcome volume before live deployment",
+        "Explaining the difference between resolutions and configured Procedure handoffs",
+        "Managing usage alerts and hard limits that may not stop at an exact outcome count",
+        "Classifying teammates into full seats versus lighter collaboration access"
+      ],
+      risks: [
+        "Monetization risk: non-outcome AI value may be undercaptured",
+        "Operational complexity: customers must manage both seat planning and outcome governance",
+        "Customer behavior risk: teams may tune workflows to reduce billable outcome volume"
+      ],
+      strategic_insight: "Hybrid pricing is strongest when each layer maps to a different buyer job and the metered event remains simple enough for procurement, admins, and frontline leaders to trust."
+    },
 
     // Metadata only
     framework_tags: ["EVAC 2.0", "Marketing"],
@@ -242,6 +314,116 @@ window.pricingCaseRecords = [
     evidence_strength_score: 5,
     verdict: "Accept",
     transferable_principle: "When usage intensity differs by role, charge for decision-critical workflow access rather than for raw presence in the collaboration network."
+  },
+  {
+    // Identity
+    slug: "figma-role-based-seat-segmentation-v2",
+    title: "Figma and role-based seat segmentation across the workflow (v2)",
+    company: "Figma",
+    industry: "Design and product collaboration SaaS",
+    market: "Global product teams spanning design, engineering, product, and cross-functional collaborators",
+    reviewed_at: "2026-04-26",
+
+    // Public page inputs
+    mechanism_type: "Role-based seat segmentation + plan-tier governance + single-seat-per-user billing",
+    pricing_page_url: "https://www.figma.com/pricing/",
+    screenshot_url: "../../assets/images/cases/figma-pricing-page.png",
+    pricing_surface: "Figma publicly prices one seat per person, but the seat itself changes by workflow role: Full, Dev, and Collab are priced differently inside each paid plan, while view access stays free.",
+    mechanism_summary: "Figma monetizes workflow responsibility rather than raw headcount. The bill rises with the mix of paid seat types and rises again when the buyer needs a higher-governance plan that increases the price of every paid seat.",
+    target_buyer_inference: "The structure fits organizations where many people need visibility, a smaller set need structured collaboration or developer handoff, and only a tighter core owns design creation and system maintenance.",
+    decision_friction: "The main friction is seat classification. Admins have to decide who can remain free, who needs collaboration or handoff access, and when a cross-functional user has crossed into full creator responsibility.",
+    exposure_logic: "Figma lowers adoption friction by keeping visibility free, but it takes on governance complexity risk because the pricing boundary depends on admins accepting and maintaining a meaningful seat taxonomy over time.",
+    logic_flaw: "The weakness is that workflow responsibility is not always stable. When one person shifts between collaboration, inspection, and creation, seat assignment can feel like administrative overhead rather than a clean reflection of value.",
+    strategic_opportunity: "A competitor could attack with temporary upgrades, hybrid project-intensity pricing, or simpler cross-functional seat bundles that reduce seat-governance friction without giving away broad access.",
+    page_path: "figma-role-based-seat-segmentation-v2.html",
+    source_urls: [
+      "https://www.figma.com/pricing/",
+      "https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma",
+      "https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma",
+      "https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience"
+    ],
+    structured_case: {
+      case_id: "figma-role-based-seat-segmentation-v2",
+      case_type: "saas",
+      evidence_level: "observed",
+      pricing_model: "Single-seat-per-user role-based pricing across plan tiers",
+      value_metric: "Paid seat type within the selected plan",
+      segmentation_type: "Workflow role and governance tier",
+      tiers: [
+        {
+          name: "Professional",
+          anchor_price: "Full $16 / Dev $12 / Collab $3 per seat per month",
+          buyer_logic: "Small teams needing unlimited files, advanced prototyping, and easier developer handoff",
+          prices: { view: 0, collab: 3, dev: 12, full: 16 }
+        },
+        {
+          name: "Organization",
+          anchor_price: "Full $55 / Dev $25 / Collab $5 per seat per month",
+          buyer_logic: "Businesses coordinating design across teams with shared assets and centralized admin",
+          prices: { view: 0, collab: 5, dev: 25, full: 55 }
+        },
+        {
+          name: "Enterprise",
+          anchor_price: "Full $90 / Dev $35 / Collab $5 per seat per month",
+          buyer_logic: "Multi-product or multi-brand organizations needing enterprise security and scalable admin management",
+          prices: { view: 0, collab: 5, dev: 35, full: 90 }
+        }
+      ],
+      segments: [
+        {
+          segment: "View",
+          basis: "Visibility only",
+          pricing_effect: "Free seat with view and comment access across files"
+        },
+        {
+          segment: "Collab",
+          basis: "Structured participation",
+          pricing_effect: "Paid seat for FigJam and Figma Slides collaboration with view and comment access in design files"
+        },
+        {
+          segment: "Dev",
+          basis: "Developer handoff",
+          pricing_effect: "Paid seat for Dev Mode plus FigJam and Figma Slides"
+        },
+        {
+          segment: "Full",
+          basis: "Creation and system ownership",
+          pricing_effect: "Highest-priced seat with full access to Figma Design, Dev Mode, FigJam, Figma Slides, Figma Make, and Figma Draw"
+        }
+      ],
+      pricing_logic: "Figma assigns one seat per person. The bill is the selected plan multiplied by the count of Full, Dev, and Collab seats, while View access stays free to widen participation.",
+      key_driver: "The count and mix of paid seat types inside the selected plan.",
+      primary_component: "Pricing Driver Simulator",
+      decision_core: {
+        what_is_monetized: "Paid workflow roles inside the design-to-build process.",
+        what_changes_the_bill: "The number and mix of Collab, Dev, and Full seats, plus the selected plan tier.",
+        who_pays_more_and_why: "Teams with more creators, more developer handoff users, and higher governance needs pay more because they own more output and require more control."
+      },
+      student_10_second_takeaway: "Figma captures value by pricing responsibility in the workflow, not by charging every participant equally.",
+      friction_points: [
+        "Classifying cross-functional users whose work shifts between collaboration, inspection, and creation",
+        "Explaining why a growing design system justifies a more expensive plan for every paid seat",
+        "Reviewing seat assignments so free viewers do not silently drift into paid work",
+        "Managing temporary upgrades when someone needs short bursts of higher-intensity access"
+      ],
+      risks: [
+        "Monetization risk: free viewers may receive meaningful value without expanding paid seat counts",
+        "Operational complexity: admins have to manage seat taxonomy and reassignment over time",
+        "Customer behavior risk: teams may compress responsibilities into fewer paid users to control spend"
+      ],
+      structural_weakness: "Seat classification can feel like workflow governance overhead when the real-world job boundary is fluid.",
+      strategic_insight: "Role-based pricing works when the workflow boundary is legible and stable enough that users accept paying more for responsibility rather than for mere presence."
+    },
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing", "Pricing Framework v2"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 5,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When many people need visibility but only a subset own creation or handoff, charge for workflow responsibility and keep broad visibility free enough to spread the system."
   },
   {
     // Identity

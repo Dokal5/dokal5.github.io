@@ -33,7 +33,7 @@
 
   <main class="main">
     <div class="page-header case-hero">
-      <a class="back-link" href="index.html">← Back to Pricing Cases</a>
+      <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
       <div class="case-kicker">Pricing Case</div>
       <div class="case-company-lockup">
         <div class="case-company-icon case-company-icon--text" aria-label="[Company Name] icon">[IN]</div>
@@ -43,123 +43,307 @@
       </div>
       <h1>[Case Title]</h1>
       <p class="lead">
-        [One short paragraph introducing the company, what the pricing structure does, and why the case matters.]
+        [One sentence naming the pricing architecture and the value-capture question. No narrative setup.]
       </p>
       <div class="case-tag-row" style="margin-top: 1.2rem;">
-        <span class="case-tag">[Mechanism Type]</span>
+        <span class="case-tag">[Tier layer]</span>
+        <span class="case-tag">[Segmentation layer]</span>
+        <span class="case-tag">[Value metric]</span>
       </div>
     </div>
 
     <div class="case-detail-layout">
       <div class="content-body">
-        <section class="section">
+        <section class="section case-framework-section" data-case-section="case-claim">
+          <div class="case-section-label">01 / Case Claim</div>
           <h2>Case Claim</h2>
-          <p>
-            [Open with the core analytical point.] <strong>[Bold the most important takeaway sentence in the section.]</strong> [Then complete the explanation in plain language.]
+          <p class="case-claim-statement">
+            [One clear statement about what makes this pricing model interesting. Name the core monetization move in less than 35 words.]
           </p>
+          <div class="case-answer-grid">
+            <div class="case-answer-card">
+              <span>Monetized</span>
+              <strong>[What is being charged for]</strong>
+              <p>[Plain-language interpretation.]</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Scaled by</span>
+              <strong>[Main value metric]</strong>
+              <p>[What causes a larger bill.]</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Core risk</span>
+              <strong>[Main risk]</strong>
+              <p>[Why the structure can break down.]</p>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Tier Ladder Analysis</h2>
-          <p>
-            [State how many visible tiers exist and why the ladder matters.] <strong>[Bold the sentence that explains the commercial purpose of the ladder.]</strong>
+        <section class="section case-framework-section" data-case-section="pricing-architecture">
+          <div class="case-section-label">02 / Pricing Architecture</div>
+          <h2>Pricing Architecture</h2>
+          <p class="case-section-brief">
+            [Name the visible layers. Do not list features unless they explain the pricing boundary.]
           </p>
-          <ul class="case-structure-list">
-            <li><strong>Tier count:</strong> [How many visible tiers are on the page, including free or enterprise/contact-sales tiers if relevant.]</li>
-            <li><strong>Target buyer by tier:</strong> [Who each tier seems to be for.]</li>
-            <li><strong>Tier labels:</strong> [How the company names each tier on the page.]</li>
-            <li><strong>Anchor prices:</strong> [The public starting price or anchor price for each tier.]</li>
-            <li><strong>Price gaps:</strong> [The visible step-up difference between adjacent tiers.]</li>
-            <li><strong>Value-add argument:</strong> [What extra capability, control, or buyer outcome is used to justify moving up.]</li>
-          </ul>
+          <div class="case-architecture-grid">
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Layer A / Plan Level</div>
+              <h3>[Tier layer name]</h3>
+              <div class="case-tier-stack">
+                <div class="case-tier-row">
+                  <span>[Tier 1]</span>
+                  <strong>[Anchor price]</strong>
+                  <em>[Buyer logic]</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>[Tier 2]</span>
+                  <strong>[Anchor price]</strong>
+                  <em>[Buyer logic]</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>[Tier 3]</span>
+                  <strong>[Anchor price]</strong>
+                  <em>[Buyer logic]</em>
+                </div>
+              </div>
+            </div>
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Layer B / Segmentation</div>
+              <h3>[Segmentation layer name]</h3>
+              <div class="case-segment-map">
+                <div class="case-segment-row">
+                  <span class="case-variable-token">[Segment]</span>
+                  <p>[How this segment changes price or access.]</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">[Segment]</span>
+                  <p>[How this segment changes price or access.]</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">[Segment]</span>
+                  <p>[How this segment changes price or access.]</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="case-visual-card">
-            <img src="[Screenshot URL]" alt="Screenshot of the pricing page">
+            <img src="[Screenshot URL]" alt="Screenshot of the [Company Name] pricing page">
             <div class="case-visual-body">
               <div class="case-visual-label">Pricing Page Visual</div>
-              <p>[One short caption explaining what the screenshot helps the reader notice.]</p>
+              <p>[One sentence explaining what the visual makes legible.]</p>
               <p><a class="case-link" href="[Pricing Page URL]">Open live pricing page</a></p>
             </div>
           </div>
         </section>
 
-        <section class="section">
-          <h2>Mechanism Summary</h2>
-          <p>
-            [Explain the mechanism plainly.] <strong>[Bold the sentence that states what the real mechanism is.]</strong>
+        <section class="section case-framework-section" data-case-section="pricing-mechanism">
+          <div class="case-section-label">03 / Pricing Mechanism</div>
+          <h2>Pricing Mechanism</h2>
+          <p class="case-section-brief">
+            [Name the variable that drives pricing. State how price scales and what the company is really charging for.]
           </p>
+          <div class="case-mechanism-map" aria-label="[Company Name] pricing mechanism">
+            <div class="case-mechanism-node">
+              <span>Base charge</span>
+              <strong>[Base unit]</strong>
+              <p>[What this captures.]</p>
+            </div>
+            <div class="case-mechanism-node">
+              <span>Variable charge</span>
+              <strong>[Scaling unit]</strong>
+              <p>[When this grows.]</p>
+            </div>
+            <div class="case-mechanism-node case-mechanism-node--result">
+              <span>Value captured</span>
+              <strong>[Real economic object]</strong>
+              <p>[What the company monetizes beyond access.]</p>
+            </div>
+          </div>
+          <div class="case-driver-strip">
+            <div>
+              <span>Upgrade trigger</span>
+              <strong>[What moves a buyer to a higher tier]</strong>
+            </div>
+            <div>
+              <span>Higher-payment trigger</span>
+              <strong>[What increases spend inside or across tiers]</strong>
+            </div>
+            <div>
+              <span>Real charge</span>
+              <strong>[What the buyer is really paying for]</strong>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Target Buyer Inference</h2>
-          <p>
-            [State who the structure is really for.] <strong>[Bold the most decision-relevant inference.]</strong>
-          </p>
+        <section class="section case-framework-section" data-case-section="target-buyer-logic">
+          <div class="case-section-label">04 / Target Buyer Logic</div>
+          <h2>Target Buyer Logic</h2>
+          <div class="case-logic-grid">
+            <div class="case-logic-card">
+              <span>Reasonable for</span>
+              <strong>[Buyer type]</strong>
+              <p>[Why this buyer accepts the pricing logic.]</p>
+            </div>
+            <div class="case-logic-card">
+              <span>Reasonable because</span>
+              <strong>[Economic reason]</strong>
+              <p>[How the pricing maps to the buyer's operating reality.]</p>
+            </div>
+            <div class="case-logic-card">
+              <span>Most attractive when</span>
+              <strong>[Condition]</strong>
+              <p>[When the model feels fair.]</p>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
+        <section class="section case-framework-section" data-case-section="decision-friction">
+          <div class="case-section-label">05 / Decision Friction</div>
           <h2>Decision Friction</h2>
-          <p>
-            [Explain where the buyer has to estimate, classify, justify, or hesitate.] <strong>[Bold the sentence that names the main friction.]</strong>
-          </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>[Friction point]</strong>
+              <p>[Where the buyer has to estimate, classify, justify, or slow down.]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>[Friction point]</strong>
+              <p>[Where the buyer has to estimate, classify, justify, or slow down.]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>[Friction point]</strong>
+              <p>[Where the buyer has to estimate, classify, justify, or slow down.]</p>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Exposure and Risk Logic</h2>
-          <p>
-            [Explain what risk the company takes on by pricing this way.] <strong>[Bold the sentence that names the core exposure.]</strong>
-          </p>
+        <section class="section case-framework-section" data-case-section="risk-exposure">
+          <div class="case-section-label">06 / Risk &amp; Exposure</div>
+          <h2>Risk &amp; Exposure</h2>
+          <div class="case-risk-grid">
+            <div class="case-risk-card">
+              <span>Monetization risk</span>
+              <strong>[Risk]</strong>
+              <p>[How the company could under- or over-capture value.]</p>
+            </div>
+            <div class="case-risk-card">
+              <span>Operational complexity</span>
+              <strong>[Risk]</strong>
+              <p>[What is hard to govern or explain.]</p>
+            </div>
+            <div class="case-risk-card">
+              <span>Customer behavior risk</span>
+              <strong>[Risk]</strong>
+              <p>[How customers may adapt to the pricing boundary.]</p>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Logic Flaw, Vulnerability, and Strategic Opportunity</h2>
-          <p>
-            <strong>[Bold the sentence that identifies the core flaw.]</strong> [Explain why the flaw matters and where the strategic opening sits.]
+        <section class="section case-framework-section" data-case-section="structural-weakness">
+          <div class="case-section-label">07 / Structural Weakness</div>
+          <h2>Structural Weakness</h2>
+          <p class="case-claim-statement">
+            [Name the competitor attack surface. Make the weakness structural, not cosmetic.]
           </p>
+          <div class="case-attack-grid">
+            <div>
+              <span>Competitor attack</span>
+              <strong>[Attack option]</strong>
+            </div>
+            <div>
+              <span>Competitor attack</span>
+              <strong>[Attack option]</strong>
+            </div>
+            <div>
+              <span>Competitor attack</span>
+              <strong>[Attack option]</strong>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Primary Sources</h2>
-          <ul class="case-source-list">
-            <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 1]">[Source Title 1]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 1]">[Source URL 1]</a></li>
-            <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 2]">[Source Title 2]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 2]">[Source URL 2]</a></li>
-          </ul>
+        <section class="section case-framework-section" data-case-section="strategic-insight">
+          <div class="case-section-label">08 / Strategic Insight</div>
+          <h2>Strategic Insight</h2>
+          <p class="case-claim-statement">
+            [One reusable lesson about pricing design.]
+          </p>
+          <div class="case-driver-strip">
+            <div>
+              <span>Design lesson</span>
+              <strong>[Reusable design rule]</strong>
+            </div>
+            <div>
+              <span>Pricing lesson</span>
+              <strong>[Reusable pricing rule]</strong>
+            </div>
+          </div>
         </section>
+
       </div>
 
-      <aside class="case-panel">
-        <h2>Case Snapshot</h2>
-        <div class="case-meta-list">
-          <div class="case-meta-item">
-            <div class="case-meta-label">Company</div>
-            <div class="case-meta-value">[Company Name]</div>
+      <aside class="case-panel case-snapshot-panel" data-case-section="case-snapshot" aria-labelledby="case-snapshot-heading">
+        <div class="case-section-label">09 / Case Snapshot</div>
+        <h2 id="case-snapshot-heading">Case Snapshot</h2>
+        <div class="case-snapshot-grid">
+          <div class="case-snapshot-item">
+            <span>Case ID</span>
+            <strong>[case-id]</strong>
           </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Industry</div>
-            <div class="case-meta-value">[Industry]</div>
+          <div class="case-snapshot-item">
+            <span>Pricing model</span>
+            <strong>[pricing_model]</strong>
           </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Market</div>
-            <div class="case-meta-value">[Market]</div>
+          <div class="case-snapshot-item">
+            <span>Value metric</span>
+            <strong>[value_metric]</strong>
           </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Date reviewed</div>
-            <div class="case-meta-value">[Month Day, Year]</div>
+          <div class="case-snapshot-item">
+            <span>Segmentation</span>
+            <strong>[segmentation_type]</strong>
           </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Verdict</div>
-            <div class="case-meta-value">Accept</div>
+          <div class="case-snapshot-item">
+            <span>Key driver</span>
+            <strong>[key_driver]</strong>
+          </div>
+          <div class="case-snapshot-item">
+            <span>Strategic insight</span>
+            <strong>[strategic_insight]</strong>
           </div>
         </div>
       </aside>
+
+      <section class="section case-framework-section case-framework-section--sources" data-case-section="primary-sources">
+        <div class="case-section-label">Support / Sources</div>
+        <h2>Primary Sources</h2>
+        <ul class="case-source-list">
+          <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 1]">[Source Title 1]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 1]">[Source URL 1]</a></li>
+          <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 2]">[Source Title 2]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 2]">[Source URL 2]</a></li>
+        </ul>
+      </section>
     </div>
   </main>
 
   <footer class="footer">
-    <span>dokal5.github.io · knowledge garden</span>
+    <span>dokal5.github.io &middot; knowledge garden</span>
     <span>Utrecht, NL</span>
   </footer>
 
 </div>
+
+<script type="application/json" id="pricing-case-schema">
+{
+  "case_id": "",
+  "pricing_model": "",
+  "value_metric": "",
+  "segmentation_type": "",
+  "tiers": [],
+  "segments": [],
+  "pricing_logic": "",
+  "key_driver": "",
+  "friction_points": [],
+  "risks": [],
+  "strategic_insight": ""
+}
+</script>
 
 </body>
 </html>

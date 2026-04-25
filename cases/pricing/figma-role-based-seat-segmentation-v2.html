@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figma and Role-Based Seat Segmentation (v2) | Pricing Cases | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/pricing-cases.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="site-title">Think with Dave</div>
+    <div class="site-sub">Knowledge Garden</div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-label">Navigation</div>
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../thoughts/index.html">Thoughts</a>
+        <a class="nav-link" href="../../courses/index.html">Courses</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Pricing Cases</div>
+        <a class="nav-link" href="index.html">Library Home</a>
+        <a class="nav-link active" href="figma-role-based-seat-segmentation-v2.html">Figma v2</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header case-hero">
+      <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
+      <div class="case-kicker">Pricing Case v2</div>
+      <div class="case-company-lockup">
+        <div class="case-company-icon" aria-label="Figma logo">
+          <img src="../../assets/images/cases/figma-logo.svg" alt="Figma logo">
+        </div>
+        <div class="case-company-meta">
+          <div class="case-company-name">Figma</div>
+        </div>
+      </div>
+      <h1>Figma and role-based seat segmentation across the workflow (v2)</h1>
+      <p class="lead">
+        Figma prices a single user seat by workflow responsibility, then raises every paid seat as the buyer moves from team productivity to organizational governance.
+      </p>
+      <p class="case-section-brief" style="margin: 0.85rem 0 0;">
+        <a class="case-link" href="figma-role-based-seat-segmentation.html">Open the original Figma case for comparison</a>
+      </p>
+      <div class="case-tag-row" style="margin-top: 1.2rem;">
+        <span class="case-tag">Pricing Driver Simulator</span>
+        <span class="case-tag">Role segmentation</span>
+        <span class="case-tag">Plan-tier governance</span>
+      </div>
+    </div>
+
+    <div class="case-detail-layout">
+      <div class="content-body">
+        <section class="section case-framework-section" data-case-section="pricing-page-visual">
+          <div class="case-section-label">01 / Pricing Page Visual</div>
+          <h2>Pricing Page Visual</h2>
+          <div class="case-visual-card">
+            <img src="../../assets/images/cases/figma-pricing-page.png" alt="Screenshot of the Figma pricing page">
+            <div class="case-visual-body">
+              <div class="case-visual-label">Observed pricing surface</div>
+              <p>The public page makes the seat taxonomy visible: Full, Dev, and Collab are priced differently inside each paid plan while view access stays free.</p>
+              <p><a class="case-link" href="https://www.figma.com/pricing/">Open live pricing page</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="core-insight">
+          <div class="case-section-label">02 / Core Insight</div>
+          <h2>Core Insight</h2>
+          <div class="case-layer1-insight-box">
+            <ul>
+              <li>Figma does not mainly monetize workspace presence; it monetizes paid workflow responsibility.</li>
+              <li>The bill changes with the mix of Collab, Dev, and Full seats inside the selected plan.</li>
+              <li>Plan upgrades matter because they make every paid seat more expensive as governance needs rise.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-logic-deconstruction">
+          <div class="case-section-label">03 / Pricing Logic Deconstruction</div>
+          <h2>Pricing Logic Deconstruction</h2>
+          <p class="case-claim-statement">
+            Figma's commercial move is to keep <strong>visibility free</strong>, charge modestly for <strong>structured participation</strong> and <strong>developer handoff</strong>, and charge most for <strong>creation plus system ownership</strong>.
+          </p>
+          <div class="case-answer-grid">
+            <div class="case-answer-card">
+              <span>What is monetized</span>
+              <strong>Paid workflow roles</strong>
+              <p>Full, Dev, and Collab seats capture progressively deeper responsibility in the design-to-build workflow.</p>
+            </div>
+            <div class="case-answer-card">
+              <span>What changes the bill</span>
+              <strong>Seat mix x plan tier</strong>
+              <p>Seat counts move spend directly, while the selected plan resets the price of every paid seat.</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Who pays more and why</span>
+              <strong>Teams with more owners and more governance</strong>
+              <p>Organizations with more creators, more handoff users, and stronger admin needs pay more because more work is business-critical.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
+          <div class="case-section-label">04 / Pricing Matrix / Mechanism Logic</div>
+          <h2>Pricing Matrix / Mechanism Logic</h2>
+          <p class="case-section-brief">
+            Figma's bill is not a flat seat ladder. It is a role-priced matrix where plan selection changes the price of each paid role.
+          </p>
+          <div class="case-layer1-matrix" id="figma-pricing-matrix"></div>
+          <div class="case-driver-strip">
+            <div>
+              <span>Free boundary</span>
+              <strong>View and comment access stays free on paid plans</strong>
+            </div>
+            <div>
+              <span>Main driver</span>
+              <strong>Count of paid seats by role</strong>
+            </div>
+            <div>
+              <span>Upgrade pressure</span>
+              <strong>Users pay more when responsibility moves from visibility to creation or governance</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-architecture">
+          <div class="case-section-label">05 / Pricing Architecture</div>
+          <h2>Pricing Architecture</h2>
+          <p class="case-section-brief">
+            The architecture combines a governance ladder across plans with a responsibility ladder across seat types.
+          </p>
+          <div class="case-architecture-grid">
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Layer A / Plan Level</div>
+              <h3>Governance tiers</h3>
+              <div class="case-tier-stack">
+                <div class="case-tier-row">
+                  <span>Professional</span>
+                  <strong>Full $16 / Dev $12 / Collab $3</strong>
+                  <em>Small teams needing unlimited files, advanced prototyping, and easier developer handoff.</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>Organization</span>
+                  <strong>Full $55 / Dev $25 / Collab $5</strong>
+                  <em>Cross-team design operations needing shared libraries, centralized assets, and admin control.</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>Enterprise</span>
+                  <strong>Full $90 / Dev $35 / Collab $5</strong>
+                  <em>Multi-brand or multi-product environments needing enterprise security and scalable seat management.</em>
+                </div>
+              </div>
+            </div>
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Layer B / Segmentation</div>
+              <h3>Workflow roles</h3>
+              <div class="case-segment-map">
+                <div class="case-segment-row">
+                  <span class="case-variable-token">View</span>
+                  <p>Free visibility and comment access for broad adoption without marginal seat friction.</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">Collab</span>
+                  <p>Lower-cost paid participation for workshops and lightweight collaboration in FigJam and Figma Slides.</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">Dev</span>
+                  <p>Paid developer handoff for inspection and implementation without paying the full creator rate.</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">Full</span>
+                  <p>Highest-paid ownership layer for designers and other users creating and maintaining core output.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-tension-layer">
+          <div class="case-section-label">06 / Decision Tension Layer</div>
+          <h2>Decision Tension Layer</h2>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>Seat classification pressure</strong>
+              <p>Admins have to decide who is truly a creator, who only needs handoff access, and who can remain free without blocking work.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Role drift over time</strong>
+              <p>Cross-functional users move between collaboration, inspection, and creation, so the correct seat type can change faster than billing cycles.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Plan-wide price reset</strong>
+              <p>Governance upgrades are expensive because they do not just add one control feature; they raise the price of every paid seat in the plan.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Budget optics</strong>
+              <p>The model is legible to admins, but it can feel political if seat assignment starts to stand in for status or internal power.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="optional-simulator">
+          <div class="case-section-label">07 / Optional Simulator</div>
+          <h2>Optional Simulator</h2>
+          <p class="case-section-brief">
+            Change the team mix and watch how the bill moves. The teaching point is that workflow responsibility changes spend faster than raw headcount.
+          </p>
+          <div class="case-layer1-simulator">
+            <div class="case-layer1-controls">
+              <label class="case-layer1-control">
+                <span>Plan tier</span>
+                <select id="figma-plan-selector"></select>
+              </label>
+              <div class="case-layer1-seat-inputs" id="figma-seat-inputs"></div>
+            </div>
+            <div class="case-layer1-results">
+              <div class="case-layer1-result case-layer1-result--primary">
+                <span>Monthly paid seat spend</span>
+                <strong id="figma-total-cost">$0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Paid seats</span>
+                <strong id="figma-paid-seats">0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Average paid seat</span>
+                <strong id="figma-average-paid-seat">$0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Full-seat share</span>
+                <strong id="figma-full-seat-share">0%</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Free viewers</span>
+                <strong id="figma-view-count">0</strong>
+              </div>
+              <div class="case-layer1-mix">
+                <div class="case-layer1-mix-labels" id="figma-mix-labels"></div>
+                <div class="case-layer1-mix-bar" id="figma-mix-bar" aria-label="Paid seat mix"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="strategic-opportunity">
+          <div class="case-section-label">08 / Strategic Opportunity</div>
+          <h2>Strategic Opportunity</h2>
+          <p class="case-claim-statement">
+            The opening for a competitor is not just lower price. It is a cleaner answer to <strong>seat-governance friction</strong> when one person's job crosses creation, collaboration, and implementation.
+          </p>
+          <div class="case-attack-grid">
+            <div>
+              <span>Competitor attack</span>
+              <strong>Temporary role upgrades for short bursts of creator access</strong>
+            </div>
+            <div>
+              <span>Competitor attack</span>
+              <strong>Hybrid bundles that meter project intensity instead of rigid seat labels</strong>
+            </div>
+            <div>
+              <span>Competitor attack</span>
+              <strong>Simpler cross-functional seats for product managers and engineers</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
+          <div class="case-section-label">09 / References</div>
+          <h2>References</h2>
+          <ul class="case-source-list">
+            <li><cite>Figma.</cite> (n.d.). <a href="https://www.figma.com/pricing/">Plans &amp; pricing</a>. Retrieved April 26, 2026, from <a href="https://www.figma.com/pricing/">https://www.figma.com/pricing/</a></li>
+            <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma">Guide to billing at Figma</a>. Retrieved April 26, 2026, from <a href="https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma">https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma</a></li>
+            <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma">Manage seats in Figma</a>. Retrieved April 26, 2026, from <a href="https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma">https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma</a></li>
+            <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience">Updates to Figma's pricing, seats, and billing experience</a>. Retrieved April 26, 2026, from <a href="https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience">https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>dokal5.github.io · knowledge garden</span>
+    <span>Utrecht, NL</span>
+  </footer>
+
+</div>
+
+<script type="application/json" id="pricing-case-schema">
+{
+  "case_id": "figma-role-based-seat-segmentation-v2",
+  "case_type": "saas",
+  "evidence_level": "observed",
+  "pricing_model": "Single-seat-per-user role-based pricing across plan tiers",
+  "value_metric": "Paid seat type within the selected plan",
+  "segmentation_type": "Workflow role and governance tier",
+  "tiers": [
+    {
+      "name": "Professional",
+      "anchor_price": "Full $16 / Dev $12 / Collab $3 per seat per month",
+      "buyer_logic": "Small teams needing unlimited files, advanced prototyping, and easier developer handoff",
+      "prices": {
+        "view": 0,
+        "collab": 3,
+        "dev": 12,
+        "full": 16
+      }
+    },
+    {
+      "name": "Organization",
+      "anchor_price": "Full $55 / Dev $25 / Collab $5 per seat per month",
+      "buyer_logic": "Businesses coordinating design across teams with shared assets and centralized admin",
+      "prices": {
+        "view": 0,
+        "collab": 5,
+        "dev": 25,
+        "full": 55
+      }
+    },
+    {
+      "name": "Enterprise",
+      "anchor_price": "Full $90 / Dev $35 / Collab $5 per seat per month",
+      "buyer_logic": "Multi-product or multi-brand organizations needing enterprise security and scalable admin management",
+      "prices": {
+        "view": 0,
+        "collab": 5,
+        "dev": 35,
+        "full": 90
+      }
+    }
+  ],
+  "segments": [
+    {
+      "segment": "View",
+      "basis": "Visibility only",
+      "pricing_effect": "Free seat with view and comment access across files",
+      "seat_key": "view",
+      "intensity": 0
+    },
+    {
+      "segment": "Collab",
+      "basis": "Structured participation",
+      "pricing_effect": "Paid seat for FigJam and Figma Slides collaboration with view and comment access in design files",
+      "seat_key": "collab",
+      "intensity": 1
+    },
+    {
+      "segment": "Dev",
+      "basis": "Developer handoff",
+      "pricing_effect": "Paid seat for Dev Mode plus FigJam and Figma Slides",
+      "seat_key": "dev",
+      "intensity": 2
+    },
+    {
+      "segment": "Full",
+      "basis": "Creation and system ownership",
+      "pricing_effect": "Highest-priced seat with full access to Figma Design, Dev Mode, FigJam, Figma Slides, Figma Make, and Figma Draw",
+      "seat_key": "full",
+      "intensity": 3
+    }
+  ],
+  "pricing_logic": "Figma assigns one seat per person. The bill is the selected plan multiplied by the count of Full, Dev, and Collab seats, while View access stays free to widen participation.",
+  "key_driver": "The count and mix of paid seat types inside the selected plan.",
+  "drivers": [
+    {
+      "driver": "Selected plan tier",
+      "type": "commitment",
+      "pricing_role": "multiplier",
+      "direction": "enforce_upgrade",
+      "effect": "Raises the price of every paid seat while adding governance, admin, and security capabilities.",
+      "student_label": "Plan tier multiplies seat cost."
+    },
+    {
+      "driver": "Full seat count",
+      "type": "seat",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "Captures the highest-value workflow responsibility: design creation and system ownership.",
+      "student_label": "Creators cost the most."
+    },
+    {
+      "driver": "Dev seat count",
+      "type": "seat",
+      "pricing_role": "variable_charge",
+      "direction": "segment_users",
+      "effect": "Captures technical handoff and implementation inspection without charging the full creator rate.",
+      "student_label": "Builders pay for handoff depth."
+    },
+    {
+      "driver": "Collab seat count",
+      "type": "seat",
+      "pricing_role": "variable_charge",
+      "direction": "improve_adoption",
+      "effect": "Monetizes lightweight participation at a lower price so workshops and co-creation can expand.",
+      "student_label": "Light collaborators still have a paid lane."
+    },
+    {
+      "driver": "View seat access",
+      "type": "seat",
+      "pricing_role": "discount",
+      "direction": "reduce_friction",
+      "effect": "Lets stakeholders stay in the product without forcing marginal seat debates.",
+      "student_label": "Visibility stays free."
+    }
+  ],
+  "formula": {
+    "expression": "Total monthly seat spend = (Collab seats x plan Collab price) + (Dev seats x plan Dev price) + (Full seats x plan Full price)",
+    "variables": [
+      {
+        "symbol": "C",
+        "label": "Collab seat count",
+        "maps_to_driver": "Collab seat count"
+      },
+      {
+        "symbol": "D",
+        "label": "Dev seat count",
+        "maps_to_driver": "Dev seat count"
+      },
+      {
+        "symbol": "F",
+        "label": "Full seat count",
+        "maps_to_driver": "Full seat count"
+      },
+      {
+        "symbol": "Pc/Pd/Pf",
+        "label": "Plan seat prices",
+        "maps_to_driver": "Selected plan tier"
+      }
+    ],
+    "output_label": "Monthly paid seat spend"
+  },
+  "upgrade_triggers": [
+    {
+      "trigger": "A viewer or collaborator needs to create or directly edit design output",
+      "from": "View or Collab",
+      "to": "Full",
+      "why_it_happens": "Workflow responsibility shifts from visibility to ownership.",
+      "pricing_effect": "The bill rises to the highest seat level."
+    },
+    {
+      "trigger": "An engineer needs advanced handoff and Dev Mode access",
+      "from": "View or Collab",
+      "to": "Dev",
+      "why_it_happens": "Implementation work requires deeper inspection and translation to code.",
+      "pricing_effect": "A lower but still paid workflow role is added."
+    },
+    {
+      "trigger": "A team needs shared libraries, broader admin, or cross-team governance",
+      "from": "Professional",
+      "to": "Organization",
+      "why_it_happens": "The design system becomes an organizational asset instead of a single-team tool.",
+      "pricing_effect": "Every paid seat gets more expensive."
+    },
+    {
+      "trigger": "Security, brand complexity, or identity control becomes a buying requirement",
+      "from": "Organization",
+      "to": "Enterprise",
+      "why_it_happens": "IT and procurement enter the decision and value risk reduction more directly.",
+      "pricing_effect": "Seat prices rise again in exchange for enterprise governance."
+    }
+  ],
+  "visualization": {
+    "primary_component": "Pricing Driver Simulator",
+    "supporting_components": [
+      "Segmentation Map",
+      "Tier Ladder"
+    ],
+    "interactive_controls": [
+      "Plan tier",
+      "View seats",
+      "Collab seats",
+      "Dev seats",
+      "Full seats"
+    ],
+    "default_view": "Organization plan with a viewer-heavy team and a smaller set of paid workflow owners",
+    "student_prompt": "Change the seat mix and watch how workflow responsibility, not total headcount, changes the bill."
+  },
+  "primary_component": "Pricing Driver Simulator",
+  "decision_core": {
+    "what_is_monetized": "Paid workflow roles inside the design-to-build process.",
+    "what_changes_the_bill": "The number and mix of Collab, Dev, and Full seats, plus the selected plan tier.",
+    "who_pays_more_and_why": "Teams with more creators, more developer handoff users, and higher governance needs pay more because they own more output and require more control."
+  },
+  "student_10_second_takeaway": "Figma captures value by pricing responsibility in the workflow, not by charging every participant equally.",
+  "friction_points": [
+    "Classifying cross-functional users whose work shifts between collaboration, inspection, and creation",
+    "Explaining why a growing design system justifies a more expensive plan for every paid seat",
+    "Reviewing seat assignments so free viewers do not silently drift into paid work",
+    "Managing temporary upgrades when someone needs short bursts of higher-intensity access"
+  ],
+  "risks": [
+    "Monetization risk: free viewers may receive meaningful value without expanding paid seat counts",
+    "Operational complexity: admins have to manage seat taxonomy and reassignment over time",
+    "Customer behavior risk: teams may compress responsibilities into fewer paid users to control spend"
+  ],
+  "structural_weakness": "Seat classification can feel like workflow governance overhead when the real-world job boundary is fluid.",
+  "strategic_insight": "Role-based pricing works when the workflow boundary is legible and stable enough that users accept paying more for responsibility rather than for mere presence."
+}
+</script>
+
+<script>
+(function () {
+  const dataNode = document.getElementById("pricing-case-schema");
+  if (!dataNode) {
+    return;
+  }
+
+  const caseData = JSON.parse(dataNode.textContent);
+  const tiers = Array.isArray(caseData.tiers) ? caseData.tiers.slice() : [];
+  const segments = Array.isArray(caseData.segments) ? caseData.segments.slice().sort(function (a, b) {
+    return (a.intensity || 0) - (b.intensity || 0);
+  }) : [];
+  const paidSegments = segments.filter(function (segment) {
+    return segment.seat_key !== "view";
+  });
+
+  const defaults = {
+    view: 28,
+    collab: 7,
+    dev: 4,
+    full: 5
+  };
+
+  const planSelector = document.getElementById("figma-plan-selector");
+  const seatInputs = document.getElementById("figma-seat-inputs");
+  const totalCostNode = document.getElementById("figma-total-cost");
+  const paidSeatsNode = document.getElementById("figma-paid-seats");
+  const averagePaidSeatNode = document.getElementById("figma-average-paid-seat");
+  const fullSeatShareNode = document.getElementById("figma-full-seat-share");
+  const viewCountNode = document.getElementById("figma-view-count");
+  const mixLabelsNode = document.getElementById("figma-mix-labels");
+  const mixBarNode = document.getElementById("figma-mix-bar");
+  const matrixNode = document.getElementById("figma-pricing-matrix");
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: value % 1 === 0 ? 0 : 2
+    }).format(value);
+  }
+
+  function roleClassName(segment) {
+    return "case-layer1-role--" + String(segment.intensity || 0);
+  }
+
+  function renderMatrix() {
+    if (!matrixNode) {
+      return;
+    }
+
+    matrixNode.innerHTML = "";
+
+    const grid = document.createElement("div");
+    grid.className = "case-layer1-matrix-grid";
+    grid.style.setProperty("--case-layer1-role-count", String(segments.length));
+
+    const corner = document.createElement("div");
+    corner.className = "case-layer1-matrix-cell case-layer1-axis-cell";
+    corner.innerHTML = "<span>Plan tier</span><strong>Seat prices</strong>";
+    grid.appendChild(corner);
+
+    segments.forEach(function (segment) {
+      const header = document.createElement("div");
+      header.className = "case-layer1-matrix-cell case-layer1-role-head " + roleClassName(segment);
+      header.innerHTML = "<span>Role</span><strong>" + segment.segment + "</strong>";
+      grid.appendChild(header);
+    });
+
+    tiers.forEach(function (tier) {
+      const rowHead = document.createElement("div");
+      rowHead.className = "case-layer1-matrix-cell case-layer1-plan-head";
+      rowHead.innerHTML = "<span>Plan</span><strong>" + tier.name + "</strong>";
+      grid.appendChild(rowHead);
+
+      segments.forEach(function (segment) {
+        const price = tier.prices && typeof tier.prices[segment.seat_key] === "number" ? tier.prices[segment.seat_key] : 0;
+        const cell = document.createElement("div");
+        cell.className = "case-layer1-matrix-cell case-layer1-price-cell " + roleClassName(segment);
+        cell.innerHTML = "<span>" + segment.segment + "</span><strong>" + formatCurrency(price) + "</strong><em>/ month</em>";
+        grid.appendChild(cell);
+      });
+    });
+
+    matrixNode.appendChild(grid);
+  }
+
+  function renderControls() {
+    tiers.forEach(function (tier, index) {
+      const option = document.createElement("option");
+      option.value = tier.name;
+      option.textContent = tier.name;
+      if (index === 1) {
+        option.selected = true;
+      }
+      planSelector.appendChild(option);
+    });
+
+    segments.forEach(function (segment) {
+      const control = document.createElement("label");
+      control.className = "case-layer1-control " + roleClassName(segment);
+      control.innerHTML = "<span>" + segment.segment + " seats</span>";
+
+      const input = document.createElement("input");
+      input.type = "number";
+      input.min = "0";
+      input.step = "1";
+      input.value = String(defaults[segment.seat_key] || 0);
+      input.dataset.seatKey = segment.seat_key;
+
+      control.appendChild(input);
+      seatInputs.appendChild(control);
+    });
+  }
+
+  function currentTier() {
+    return tiers.find(function (tier) {
+      return tier.name === planSelector.value;
+    }) || tiers[0];
+  }
+
+  function readCounts() {
+    return segments.reduce(function (result, segment) {
+      const input = seatInputs.querySelector('input[data-seat-key="' + segment.seat_key + '"]');
+      const value = input ? Math.max(0, Number(input.value) || 0) : 0;
+      result[segment.seat_key] = value;
+      return result;
+    }, {});
+  }
+
+  function updateResults() {
+    const tier = currentTier();
+    const counts = readCounts();
+    const paidSeatCount = paidSegments.reduce(function (sum, segment) {
+      return sum + (counts[segment.seat_key] || 0);
+    }, 0);
+    const totalCost = paidSegments.reduce(function (sum, segment) {
+      const price = tier.prices && typeof tier.prices[segment.seat_key] === "number" ? tier.prices[segment.seat_key] : 0;
+      return sum + ((counts[segment.seat_key] || 0) * price);
+    }, 0);
+    const averagePaidSeat = paidSeatCount ? totalCost / paidSeatCount : 0;
+    const fullSeatShare = paidSeatCount ? ((counts.full || 0) / paidSeatCount) * 100 : 0;
+
+    totalCostNode.textContent = formatCurrency(totalCost);
+    paidSeatsNode.textContent = String(paidSeatCount);
+    averagePaidSeatNode.textContent = formatCurrency(averagePaidSeat);
+    fullSeatShareNode.textContent = Math.round(fullSeatShare) + "%";
+    viewCountNode.textContent = String(counts.view || 0);
+
+    mixLabelsNode.innerHTML = "";
+    mixBarNode.innerHTML = "";
+
+    paidSegments.forEach(function (segment) {
+      const count = counts[segment.seat_key] || 0;
+      const label = document.createElement("span");
+      label.className = "case-layer1-mix-label " + roleClassName(segment);
+      label.textContent = segment.segment + ": " + count;
+      mixLabelsNode.appendChild(label);
+
+      const piece = document.createElement("div");
+      piece.className = "case-layer1-mix-segment " + roleClassName(segment);
+      const share = paidSeatCount ? (count / paidSeatCount) * 100 : 0;
+      piece.style.flexBasis = share + "%";
+      piece.style.flexGrow = count;
+      piece.style.flexShrink = 0;
+      mixBarNode.appendChild(piece);
+    });
+  }
+
+  renderMatrix();
+  renderControls();
+  updateResults();
+
+  planSelector.addEventListener("change", updateResults);
+  seatInputs.addEventListener("input", updateResults);
+}());
+</script>
+
+</body>
+</html>
