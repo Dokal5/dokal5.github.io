@@ -18,6 +18,8 @@ For every published case page:
 
 - Write for a public reader, not for an internal PR review.
 - Keep the page focused on the case itself, not on which framework it matches.
+- Use the section headings and order exactly as written below.
+- The right sidebar should be `Case Snapshot` only. Do not render a sidebar `Scoreboard`.
 - Do not include a separate `Framework Links` section.
 - Do not include a separate `Transferable principle` or callout box.
 - Do not add extra “why this belongs in EVAC/Marketing” explanation on the page.
@@ -99,6 +101,7 @@ If a visual helps, place the pricing-page screenshot inside the pricing section 
 
 If you are revising an older case, remove these elements when present:
 
+- sidebar `Scoreboard`
 - `Framework Links`
 - `Transferable principle` callout panels
 - PR-style evaluation commentary written for merge decisions
