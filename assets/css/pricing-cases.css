@@ -45,6 +45,7 @@
 }
 
 .case-company-icon {
+  flex: 0 0 52px;
   width: 52px;
   height: 52px;
   border-radius: 16px;
@@ -58,12 +59,37 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--dark);
+  overflow: hidden;
 }
 
 .case-company-icon img {
   display: block;
   width: 34px;
   height: 34px;
+  object-fit: contain;
+}
+
+.case-company-icon--text {
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(92, 61, 46, 0.12), rgba(61, 94, 90, 0.12));
+}
+
+.case-company-icon--coda {
+  border-color: rgba(185, 70, 45, 0.2);
+  background: linear-gradient(135deg, #fff5ec, #f7d7cf);
+  color: #8f341f;
+}
+
+.case-company-icon--zapier {
+  border-color: rgba(255, 79, 0, 0.2);
+  background: #fff3e7;
+  color: #a84300;
+}
+
+.case-company-icon--basecamp {
+  border-color: rgba(47, 91, 68, 0.2);
+  background: #edf7ef;
+  color: #2f5b44;
 }
 
 .case-company-name {

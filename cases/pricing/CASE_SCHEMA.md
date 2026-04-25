@@ -20,6 +20,8 @@ For every published case page:
 - Keep the page focused on the case itself, not on which framework it matches.
 - Use the section headings and order exactly as written below.
 - The right sidebar should be `Case Snapshot` only. Do not render a sidebar `Scoreboard`.
+- The hero must include a visible company lockup immediately after `case-kicker`: `.case-company-lockup`, `.case-company-icon`, and `.case-company-name`.
+- If a verified local logo asset exists, place the `<img>` inside `.case-company-icon`; otherwise use `.case-company-icon case-company-icon--text` with a short 2-3 character company initial fallback.
 - Do not include a separate `Framework Links` section.
 - Do not include a separate `Transferable principle` or callout box.
 - Do not add extra “why this belongs in EVAC/Marketing” explanation on the page.
