@@ -579,7 +579,7 @@
 
 .case-layer1-matrix-grid {
   display: grid;
-  grid-template-columns: minmax(96px, 0.9fr) repeat(var(--case-layer1-role-count), minmax(72px, 1fr));
+  grid-template-columns: minmax(138px, 1.35fr) repeat(var(--case-layer1-role-count), minmax(62px, 0.9fr));
   width: 100%;
 }
 
@@ -610,6 +610,7 @@
 .case-layer1-matrix-cell strong {
   color: var(--dark);
   line-height: 1.15;
+  overflow-wrap: normal;
 }
 
 .case-layer1-axis-cell,
