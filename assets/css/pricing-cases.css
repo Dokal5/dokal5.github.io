@@ -45,6 +45,7 @@
 }
 
 .case-company-icon {
+  flex: 0 0 52px;
   width: 52px;
   height: 52px;
   border-radius: 16px;
@@ -58,12 +59,37 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--dark);
+  overflow: hidden;
 }
 
 .case-company-icon img {
   display: block;
   width: 34px;
   height: 34px;
+  object-fit: contain;
+}
+
+.case-company-icon--text {
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(92, 61, 46, 0.12), rgba(61, 94, 90, 0.12));
+}
+
+.case-company-icon--coda {
+  border-color: rgba(185, 70, 45, 0.2);
+  background: linear-gradient(135deg, #fff5ec, #f7d7cf);
+  color: #8f341f;
+}
+
+.case-company-icon--zapier {
+  border-color: rgba(255, 79, 0, 0.2);
+  background: #fff3e7;
+  color: #a84300;
+}
+
+.case-company-icon--basecamp {
+  border-color: rgba(47, 91, 68, 0.2);
+  background: #edf7ef;
+  color: #2f5b44;
 }
 
 .case-company-name {
@@ -571,7 +597,7 @@
 }
 
 .case-layer1-matrix {
-  overflow-x: auto;
+  overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.9);
@@ -579,13 +605,13 @@
 
 .case-layer1-matrix-grid {
   display: grid;
-  grid-template-columns: minmax(130px, 0.9fr) repeat(var(--case-layer1-role-count), minmax(112px, 1fr));
-  min-width: 660px;
+  grid-template-columns: minmax(138px, 1.35fr) repeat(var(--case-layer1-role-count), minmax(62px, 0.9fr));
+  width: 100%;
 }
 
 .case-layer1-matrix-cell {
-  min-height: 88px;
-  padding: 0.78rem 0.85rem;
+  min-height: 84px;
+  padding: 0.68rem 0.58rem;
   border-right: 1px solid var(--lightgray);
   border-bottom: 1px solid var(--lightgray);
   display: flex;
@@ -600,7 +626,7 @@
 .case-layer1-result span,
 .case-layer1-mix-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--gray);
@@ -610,6 +636,7 @@
 .case-layer1-matrix-cell strong {
   color: var(--dark);
   line-height: 1.15;
+  overflow-wrap: normal;
 }
 
 .case-layer1-axis-cell,
@@ -628,7 +655,7 @@
 
 .case-layer1-price-cell strong {
   font-family: var(--font-head);
-  font-size: 1.35rem;
+  font-size: 1.16rem;
   color: var(--case-layer1-role-color);
 }
 
@@ -769,6 +796,10 @@
   border-radius: 18px;
   padding: 1.1rem 1.2rem;
   background: rgba(92, 61, 46, 0.05);
+}
+
+.case-layer1-insight-box--attached {
+  margin-top: 1rem;
 }
 
 .case-layer1-insight-box ul {
