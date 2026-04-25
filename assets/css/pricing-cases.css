@@ -771,6 +771,10 @@
   background: rgba(92, 61, 46, 0.05);
 }
 
+.case-layer1-insight-box--attached {
+  margin-top: 1rem;
+}
+
 .case-layer1-insight-box ul {
   list-style: none;
   padding: 0;
