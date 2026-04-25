@@ -343,64 +343,7 @@
             <div class="case-tension-message" id="tension-scenario-message" aria-live="polite"></div>
           </div>
 
-          <div class="case-tension-grid">
-            <article class="case-tension-card">
-              <div class="case-visual-label">Tension 1</div>
-              <h3>Role ambiguity</h3>
-              <p>Real users often cross role boundaries.</p>
-              <ul class="case-tension-list">
-                <li>A PM occasionally prototypes</li>
-                <li>An engineer gives design feedback</li>
-                <li>A designer inspects implementation details</li>
-              </ul>
-              <div class="case-tension-line">
-                <span>Decision conflict</span>
-                <p>Should the company pay for the user's formal job title or their actual workflow behavior?</p>
-              </div>
-              <div class="case-tension-line">
-                <span>Pricing implication</span>
-                <p>Customers may try to downgrade users, while Figma benefits when boundary-crossing pushes users into paid roles.</p>
-              </div>
-            </article>
-
-            <article class="case-tension-card">
-              <div class="case-visual-label">Tension 2</div>
-              <h3>Governance mismatch</h3>
-              <p>A company may need more seats before it fully values higher governance.</p>
-              <ul class="case-tension-list">
-                <li>Many teams use Figma, but admin is still informal</li>
-                <li>Design systems are emerging, but not yet centrally managed</li>
-                <li>Procurement wants control, but teams only see collaboration value</li>
-              </ul>
-              <div class="case-tension-line">
-                <span>Decision conflict</span>
-                <p>Should the company buy higher governance before everyone feels the need for it?</p>
-              </div>
-              <div class="case-tension-line">
-                <span>Pricing implication</span>
-                <p>Tier upgrades can feel expensive when governance value is invisible until something breaks.</p>
-              </div>
-            </article>
-
-            <article class="case-tension-card">
-              <div class="case-visual-label">Tension 3</div>
-              <h3>Seat vs tier tradeoff</h3>
-              <p>Customers may need to decide whether to spend budget on more high-intensity seats or a higher governance tier.</p>
-              <ul class="case-tension-list">
-                <li>More Full seats for designers</li>
-                <li>More Dev seats for engineers</li>
-                <li>Upgrade to Organization for shared libraries and admin</li>
-              </ul>
-              <div class="case-tension-line">
-                <span>Decision conflict</span>
-                <p>Should the buyer pay for more capability or more control?</p>
-              </div>
-              <div class="case-tension-line">
-                <span>Pricing implication</span>
-                <p>This creates budget tension between teams that want productivity and managers who want governance.</p>
-              </div>
-            </article>
-          </div>
+          <div class="case-tension-grid" id="tension-grid" aria-live="polite"></div>
         </section>
 
         <section class="section case-layer1-section">
@@ -677,6 +620,173 @@ function initializeStarterFunnel() {
   syncGrowthState();
 }
 
+const tensionScenarioContent = {
+  "small-team": {
+    message: "The main tension is role assignment. Who really needs paid access?",
+    tensions: [
+      {
+        title: "Role ambiguity",
+        problem: "A small team often shares work informally, so role boundaries blur quickly.",
+        items: [
+          "A PM mocks up a quick flow for speed",
+          "A founder comments, edits, and reorganizes files",
+          "An engineer opens Dev Mode only during release week"
+        ],
+        conflict: "Should the team pay for a formal role upgrade, or just tolerate occasional boundary crossing?",
+        implication: "Small teams resist paid upgrades when they see usage as occasional rather than structural."
+      },
+      {
+        title: "Starter ceiling",
+        problem: "The team can collaborate cheaply at first, but core workflow ownership appears faster than expected.",
+        items: [
+          "Three design files stop being enough",
+          "One person starts owning the source of truth",
+          "Handoff becomes a weekly rhythm instead of a one-off event"
+        ],
+        conflict: "When does a lightweight experiment become a workflow that deserves paid structure?",
+        implication: "The pricing jump feels sharp because the team upgrades at the moment the workflow becomes real."
+      },
+      {
+        title: "Budget sensitivity",
+        problem: "Every seat decision matters when software spend is still tightly scrutinized.",
+        items: [
+          "Upgrade one Full seat for a designer",
+          "Add one Collab seat for a PM",
+          "Delay another paid seat until the next sprint"
+        ],
+        conflict: "Which role upgrade unlocks the most progress without making the stack feel too expensive?",
+        implication: "Figma wins when even a small number of paid seats become hard to remove from the workflow."
+      }
+    ]
+  },
+  "scaling-company": {
+    message: "The main tension is governance mismatch. The organization is growing faster than its pricing logic.",
+    tensions: [
+      {
+        title: "Role ambiguity",
+        problem: "Real users often cross role boundaries.",
+        items: [
+          "A PM occasionally prototypes",
+          "An engineer gives design feedback",
+          "A designer inspects implementation details"
+        ],
+        conflict: "Should the company pay for the user's formal job title or their actual workflow behavior?",
+        implication: "Customers may try to downgrade users, while Figma benefits when boundary-crossing pushes users into paid roles."
+      },
+      {
+        title: "Governance mismatch",
+        problem: "A growing company may need more seats before it fully values higher governance.",
+        items: [
+          "Many teams use Figma, but admin is still informal",
+          "Design systems are emerging, but not yet centrally managed",
+          "Procurement wants control, but teams only see collaboration value"
+        ],
+        conflict: "Should the company buy higher governance before everyone feels the need for it?",
+        implication: "Tier upgrades can feel expensive when governance value is invisible until something breaks."
+      },
+      {
+        title: "Seat vs tier tradeoff",
+        problem: "Budget often has to choose between more high-intensity seats and a higher governance tier.",
+        items: [
+          "More Full seats for designers",
+          "More Dev seats for engineers",
+          "Upgrade to Organization for shared libraries and admin"
+        ],
+        conflict: "Should the buyer pay for more capability or more control?",
+        implication: "This creates budget tension between teams that want productivity and managers who want governance."
+      }
+    ]
+  },
+  "enterprise-rollout": {
+    message: "The main tension is control. IT and security become part of the pricing decision.",
+    tensions: [
+      {
+        title: "Control vs autonomy",
+        problem: "Enterprise rollout adds stakeholders who care more about control than creative flexibility.",
+        items: [
+          "Security wants identity control before broad rollout",
+          "IT wants standardized workspaces and admin ownership",
+          "Design teams want to keep moving without extra approval steps"
+        ],
+        conflict: "Should the organization centralize control now, or let teams adopt faster with looser rules?",
+        implication: "Enterprise pricing works when governance becomes a prerequisite for trust, not just an optional add-on."
+      },
+      {
+        title: "Compliance gating",
+        problem: "A rollout can stall when compliance requirements arrive before teams feel operational pain.",
+        items: [
+          "SCIM is requested before every team is active",
+          "Procurement asks for centralized policy alignment",
+          "Audit needs appear before usage is fully mature"
+        ],
+        conflict: "Do buyers upgrade for future risk reduction even when current workflow demand feels uneven?",
+        implication: "The tier decision shifts from productivity ROI to organizational risk management."
+      },
+      {
+        title: "Rollout sequencing",
+        problem: "Enterprise buyers must decide whether to expand seats first or lock governance first.",
+        items: [
+          "Add more Dev seats for engineering adoption",
+          "Expand Full seats for design system ownership",
+          "Standardize on Enterprise before broad seat expansion"
+        ],
+        conflict: "Should the organization fund wider usage first, or make the environment controllable before scale?",
+        implication: "Figma captures value by tying large-scale adoption to centralized administration and trust requirements."
+      }
+    ]
+  }
+};
+
+function renderTensionCards(scenarioKey) {
+  const grid = document.getElementById("tension-grid");
+  const scenario = tensionScenarioContent[scenarioKey];
+
+  if (!grid || !scenario) {
+    return;
+  }
+
+  grid.innerHTML = "";
+
+  scenario.tensions.forEach((tension, index) => {
+    const card = document.createElement("article");
+    card.className = "case-tension-card";
+
+    const label = document.createElement("div");
+    label.className = "case-visual-label";
+    label.textContent = "Tension " + (index + 1);
+
+    const title = document.createElement("h3");
+    title.textContent = tension.title;
+
+    const problem = document.createElement("p");
+    problem.textContent = tension.problem;
+
+    const list = document.createElement("ul");
+    list.className = "case-tension-list";
+    tension.items.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      list.appendChild(li);
+    });
+
+    const conflict = document.createElement("div");
+    conflict.className = "case-tension-line";
+    conflict.innerHTML = "<span>Decision conflict</span><p>" + tension.conflict + "</p>";
+
+    const implication = document.createElement("div");
+    implication.className = "case-tension-line";
+    implication.innerHTML = "<span>Pricing implication</span><p>" + tension.implication + "</p>";
+
+    card.appendChild(label);
+    card.appendChild(title);
+    card.appendChild(problem);
+    card.appendChild(list);
+    card.appendChild(conflict);
+    card.appendChild(implication);
+    grid.appendChild(card);
+  });
+}
+
 function initializeTensionSelector() {
   const selector = document.getElementById("tension-scenario");
   const message = document.getElementById("tension-scenario-message");
@@ -685,14 +795,10 @@ function initializeTensionSelector() {
     return;
   }
 
-  const messages = {
-    "small-team": "The main tension is role assignment. Who really needs paid access?",
-    "scaling-company": "The main tension is governance mismatch. The organization is growing faster than its pricing logic.",
-    "enterprise-rollout": "The main tension is control. IT and security become part of the pricing decision."
-  };
-
   const syncScenario = () => {
-    message.textContent = messages[selector.value] || "";
+    const scenario = tensionScenarioContent[selector.value];
+    message.textContent = scenario ? scenario.message : "";
+    renderTensionCards(selector.value);
   };
 
   selector.addEventListener("change", syncScenario);
