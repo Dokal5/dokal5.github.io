@@ -571,7 +571,7 @@
 }
 
 .case-layer1-matrix {
-  overflow-x: auto;
+  overflow: hidden;
   border: 1px solid var(--lightgray);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.9);
@@ -579,13 +579,13 @@
 
 .case-layer1-matrix-grid {
   display: grid;
-  grid-template-columns: minmax(130px, 0.9fr) repeat(var(--case-layer1-role-count), minmax(112px, 1fr));
-  min-width: 660px;
+  grid-template-columns: minmax(96px, 0.9fr) repeat(var(--case-layer1-role-count), minmax(72px, 1fr));
+  width: 100%;
 }
 
 .case-layer1-matrix-cell {
-  min-height: 88px;
-  padding: 0.78rem 0.85rem;
+  min-height: 84px;
+  padding: 0.68rem 0.58rem;
   border-right: 1px solid var(--lightgray);
   border-bottom: 1px solid var(--lightgray);
   display: flex;
@@ -600,7 +600,7 @@
 .case-layer1-result span,
 .case-layer1-mix-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--gray);
@@ -628,7 +628,7 @@
 
 .case-layer1-price-cell strong {
   font-family: var(--font-head);
-  font-size: 1.35rem;
+  font-size: 1.16rem;
   color: var(--case-layer1-role-color);
 }
 
