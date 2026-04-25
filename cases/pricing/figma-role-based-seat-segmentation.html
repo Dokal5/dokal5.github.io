@@ -83,6 +83,68 @@
         <section class="section case-layer1-section">
           <div class="case-layer1-section-head">
             <div>
+              <div class="case-visual-label">Funnel Logic</div>
+              <h2>Starter Funnel Architecture</h2>
+            </div>
+            <label class="case-starter-toggle">
+              <input type="checkbox" id="starter-growth-toggle">
+              <span>Simulate growth</span>
+            </label>
+          </div>
+
+          <div class="case-starter-funnel" id="starter-funnel">
+            <div class="case-starter-funnel-grid" aria-label="Starter funnel progression">
+              <article class="case-starter-funnel-card case-starter-funnel-card--entry">
+                <div class="case-starter-layer-label">Entry Layer</div>
+                <h3>Entry (Adoption)</h3>
+                <ul>
+                  <li>Free viewers</li>
+                  <li>Link-based collaboration</li>
+                  <li>No payment required</li>
+                </ul>
+                <p>Anyone can enter the workflow without friction.</p>
+              </article>
+
+              <div class="case-starter-funnel-arrow" aria-hidden="true">→</div>
+
+              <article class="case-starter-funnel-card case-starter-funnel-card--activation">
+                <div class="case-starter-layer-label">Activation Layer</div>
+                <h3>Activation (Engagement)</h3>
+                <ul>
+                  <li>FigJam</li>
+                  <li>Comments</li>
+                  <li>Limited file creation</li>
+                </ul>
+                <p>Users start participating, but not owning the workflow.</p>
+              </article>
+
+              <div class="case-starter-funnel-arrow" aria-hidden="true">→</div>
+
+              <article class="case-starter-funnel-card case-starter-funnel-card--conversion">
+                <div class="case-starter-layer-label">Conversion Trigger</div>
+                <h3>Conversion (Upgrade)</h3>
+                <ul>
+                  <li>File limits</li>
+                  <li>No Dev Mode</li>
+                  <li>No design ownership</li>
+                </ul>
+                <p>You must upgrade when you become responsible for output.</p>
+              </article>
+            </div>
+
+            <div class="case-starter-growth-message" id="starter-growth-message" aria-live="polite" aria-hidden="true">
+              Starter works until usage scales. Then constraints force upgrade.
+            </div>
+
+            <p class="case-starter-pricing-link">
+              Starter defines how users enter. Seat pricing defines how value is captured.
+            </p>
+          </div>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
               <div class="case-visual-label">Pricing Architecture Matrix</div>
               <h2>Role intensity inside plan governance</h2>
             </div>
@@ -180,6 +242,7 @@
             <li><cite>Figma.</cite> (n.d.). <a href="https://www.figma.com/pricing/">Plans &amp; pricing</a>. Retrieved April 22, 2026, from <a href="https://www.figma.com/pricing/">https://www.figma.com/pricing/</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma">Guide to billing at Figma</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma">https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma">Manage seats in Figma</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma">https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma</a></li>
+            <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview">Starter plan overview</a>. Retrieved April 25, 2026, from <a href="https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview">https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/360041061034-View-your-billing-and-invoices">Manage billing on the Professional plan</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/360041061034-View-your-billing-and-invoices">https://help.figma.com/hc/en-us/articles/360041061034-View-your-billing-and-invoices</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience">Updates to Figma's pricing, seats, and billing experience</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience">https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://www.figma.com/customers/">Customer stories</a>. Retrieved April 22, 2026, from <a href="https://www.figma.com/customers/">https://www.figma.com/customers/</a></li>
@@ -416,8 +479,28 @@ function renderSeatMix(caseData, usersByRole, totalUsers) {
   });
 }
 
+function initializeStarterFunnel() {
+  const toggle = document.getElementById("starter-growth-toggle");
+  const funnel = document.getElementById("starter-funnel");
+  const message = document.getElementById("starter-growth-message");
+
+  if (!toggle || !funnel || !message) {
+    return;
+  }
+
+  const syncGrowthState = () => {
+    const isSimulated = toggle.checked;
+    funnel.classList.toggle("is-growth-simulated", isSimulated);
+    message.setAttribute("aria-hidden", String(!isSimulated));
+  };
+
+  toggle.addEventListener("change", syncGrowthState);
+  syncGrowthState();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const caseData = getCaseData();
+  initializeStarterFunnel();
   renderSimulatorControls(caseData);
   renderPricingMatrix(caseData);
   updateSimulator(caseData);
