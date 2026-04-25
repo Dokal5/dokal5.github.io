@@ -657,20 +657,32 @@
 
 .case-starter-funnel-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
   align-items: stretch;
 }
 
 .case-starter-funnel-card {
-  min-height: 260px;
+  min-width: 0;
   border: 1px solid var(--starter-layer-border);
   border-radius: 14px;
-  padding: 0.95rem;
+  padding: 0.95rem 0.9rem 1rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), var(--starter-layer-bg));
   display: flex;
   flex-direction: column;
+  position: relative;
   transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.case-starter-funnel-card:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -0.66rem;
+  transform: translate(50%, -50%);
+  color: var(--accent2);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
 }
 
 .case-starter-funnel-card--entry {
@@ -701,9 +713,10 @@
 }
 
 .case-starter-funnel-card h3 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.7rem;
   color: var(--dark);
   line-height: 1.18;
+  font-size: 0.95rem;
 }
 
 .case-starter-funnel-card ul {
@@ -718,23 +731,23 @@
   margin: 0;
   padding-left: 0.72rem;
   border-left: 3px solid var(--starter-layer-color);
-  line-height: 1.35;
+  line-height: 1.32;
   color: var(--darkgray);
-  font-size: 0.9rem;
+  font-size: 0.83rem;
+  overflow-wrap: anywhere;
+}
+
+.case-starter-funnel-card li strong,
+.case-starter-funnel-card p strong {
+  color: var(--dark);
 }
 
 .case-starter-funnel-card p {
-  margin: auto 0 0;
+  margin: 1rem 0 0;
   color: var(--dark);
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-
-.case-starter-funnel-arrow {
-  align-self: center;
-  color: var(--accent2);
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-size: 0.83rem;
+  line-height: 1.42;
+  overflow-wrap: anywhere;
 }
 
 .case-starter-funnel.is-growth-simulated .case-starter-funnel-card--conversion {
@@ -771,6 +784,218 @@
   border-top: 1px solid var(--lightgray);
   color: var(--dark);
   font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.case-pricing-logic-summary {
+  border: 1px solid rgba(92, 61, 46, 0.14);
+  border-radius: 14px;
+  padding: 0.85rem 0.95rem;
+  background: rgba(247, 244, 239, 0.74);
+  color: var(--dark);
+  line-height: 1.45;
+}
+
+.case-pricing-logic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.case-pricing-logic-panel {
+  border: 1px solid var(--lightgray);
+  border-radius: 18px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.case-pricing-logic-panel-head h3,
+.case-tension-card h3 {
+  margin: 0;
+  color: var(--accent);
+}
+
+.case-pricing-logic-panel > p,
+.case-tension-card > p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.case-pricing-logic-card-list,
+.case-pricing-logic-card-grid,
+.case-tension-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.case-pricing-logic-card-grid,
+.case-tension-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-pricing-logic-card {
+  --logic-accent: var(--accent2);
+  --logic-bg: rgba(247, 244, 239, 0.86);
+  border: 1px solid color-mix(in srgb, var(--logic-accent) 20%, var(--lightgray));
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), var(--logic-bg));
+  display: grid;
+  gap: 0.7rem;
+}
+
+.case-pricing-logic-card-top {
+  display: grid;
+  gap: 0.16rem;
+}
+
+.case-pricing-logic-card-top strong {
+  color: var(--dark);
+  font-size: 1rem;
+  line-height: 1.12;
+}
+
+.case-pricing-logic-card-top span,
+.case-tension-line span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--logic-accent, var(--gray));
+}
+
+.case-pricing-logic-points,
+.case-tension-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.case-pricing-logic-points li,
+.case-tension-list li {
+  margin: 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--logic-accent, rgba(92, 61, 46, 0.24));
+  color: var(--darkgray);
+  font-size: 0.86rem;
+  line-height: 1.42;
+}
+
+.case-pricing-logic-points li strong {
+  color: var(--dark);
+}
+
+.case-pricing-logic-takeaway {
+  border-top: 1px solid var(--lightgray);
+  padding-top: 0.85rem;
+  color: var(--dark);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.case-pricing-logic-card--tier-0 {
+  --logic-accent: #6c655d;
+  --logic-bg: rgba(108, 101, 93, 0.08);
+}
+
+.case-pricing-logic-card--tier-1 {
+  --logic-accent: #0f766e;
+  --logic-bg: rgba(15, 118, 110, 0.08);
+}
+
+.case-pricing-logic-card--tier-2 {
+  --logic-accent: #8f341f;
+  --logic-bg: rgba(143, 52, 31, 0.08);
+}
+
+.case-pricing-logic-card--role-0 {
+  --logic-accent: #6b7280;
+  --logic-bg: rgba(107, 114, 128, 0.08);
+}
+
+.case-pricing-logic-card--role-1 {
+  --logic-accent: #0f766e;
+  --logic-bg: rgba(15, 118, 110, 0.08);
+}
+
+.case-pricing-logic-card--role-2 {
+  --logic-accent: #2563eb;
+  --logic-bg: rgba(37, 99, 235, 0.08);
+}
+
+.case-pricing-logic-card--role-3 {
+  --logic-accent: #c2410c;
+  --logic-bg: rgba(194, 65, 12, 0.08);
+}
+
+.case-tension-toolbar {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+  align-items: start;
+}
+
+.case-tension-control {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.case-tension-control span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.case-tension-control select {
+  width: 100%;
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--dark);
+  padding: 0.68rem 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.case-tension-message {
+  border: 1px solid rgba(92, 61, 46, 0.14);
+  border-radius: 14px;
+  padding: 0.8rem 0.9rem;
+  background: rgba(247, 244, 239, 0.74);
+  color: var(--dark);
+  line-height: 1.42;
+}
+
+.case-tension-card {
+  border: 1px solid var(--lightgray);
+  border-radius: 16px;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.88);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.case-tension-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.case-tension-line {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.case-tension-line p {
+  margin-bottom: 0;
+  font-size: 0.88rem;
   line-height: 1.45;
 }
 
@@ -1058,6 +1283,10 @@
   .case-gap-grid,
   .case-layer1-section-head,
   .case-layer1-simulator,
+  .case-pricing-logic-grid,
+  .case-pricing-logic-card-grid,
+  .case-tension-toolbar,
+  .case-tension-grid,
   .case-starter-funnel-grid,
   .case-layer1-example-grid {
     grid-template-columns: 1fr;
@@ -1071,9 +1300,11 @@
     min-height: 0;
   }
 
-  .case-starter-funnel-arrow {
-    justify-self: center;
-    transform: rotate(90deg);
+  .case-starter-funnel-card:not(:last-child)::after {
+    top: auto;
+    right: 50%;
+    bottom: -0.95rem;
+    transform: translate(50%, 0) rotate(90deg);
   }
 
   .case-stat-grid,
