@@ -15,6 +15,43 @@
 window.pricingCaseRecords = [
   {
     // Identity
+    slug: "zapier-action-step-task-meter",
+    title: "Zapier and the action-step task meter inside automation pricing",
+    company: "Zapier",
+    industry: "Workflow automation SaaS",
+    market: "B2B operations, RevOps, marketing ops, IT, and cross-functional teams orchestrating workflows across many SaaS tools",
+    reviewed_at: "2026-04-25",
+
+    // Public page inputs
+    mechanism_type: "Tier ladder + action-step metering + automatic overage billing",
+    pricing_page_url: "https://zapier.com/pricing",
+    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://zapier.com/pricing",
+    pricing_surface: "Zapier publicly presents Free, Professional, Team, and Enterprise plans with a task selector that ranges from 100 tasks per month to custom volume bands. The visible plan ladder matters, but the real billing boundary sits underneath it: successful action steps consume tasks, Free limits users to two-step Zaps, certain built-in tools do not consume tasks, and pay-per-task billing can keep workflows running after the included allowance is exhausted.",
+    mechanism_summary: "Zapier does not primarily monetize users, integrations, or the number of automations created. It monetizes successful action steps inside live workflows, then uses plan packaging to control what kinds of workflows buyers can build and how safely they can operate them at scale.",
+    target_buyer_inference: "The structure is best suited to teams that want broad workflow design freedom and many app connections, but can tolerate budgeting by execution volume rather than by seats or static software access.",
+    decision_friction: "The buyer has to forecast workflow architecture and downstream action volume, not just count Zaps or users. Two automations that solve the same business problem can have different costs if one requires more successful action steps, and some internal tools sit outside the meter altogether.",
+    exposure_logic: "Zapier reduces adoption resistance by leaving triggers, filters, paths, Tables, Forms, and several built-in tools outside the task meter, then protects continuity with automatic pay-per-task billing. That means Zapier only captures value when successful action steps fire, even though customers may derive substantial value from designing, governing, and monitoring automations that are partly non-billable.",
+    logic_flaw: "The weakness is that the meter tracks workflow architecture more directly than business outcome. Buyers can get the same commercial result with different step counts, which makes the price feel sensitive to implementation design rather than to the importance of the job being done.",
+    strategic_opportunity: "A competitor could attack with run-based automation bundles, capped workflow packages, or continuity-oriented pricing that monetizes completed business processes more directly than raw action volume. The opening is strongest where buyers fear unpredictable step growth or learn how to compress billable action count by redesigning workflows.",
+    page_path: "zapier-action-step-task-meter.html",
+    source_urls: [
+      "https://zapier.com/pricing",
+      "https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier",
+      "https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 4,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When value is created by completed workflow actions rather than by simple access, meter successful completions instead of seats or automation count, but keep the billing boundary legible enough that architecture choices do not turn into pricing traps."
+  },
+  {
+    // Identity
     slug: "figma-role-based-seat-segmentation",
     title: "Figma and role-based seat segmentation across the workflow",
     company: "Figma",
