@@ -2,6 +2,15 @@
   margin-bottom: 2.5rem;
 }
 
+.case-page--wide .layout {
+  max-width: none;
+  width: 100%;
+}
+
+.case-page--wide .main {
+  max-width: none;
+}
+
 .case-kicker {
   font-family: var(--font-mono);
   font-size: 0.72rem;
