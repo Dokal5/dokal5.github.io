@@ -15,6 +15,47 @@
 window.pricingCaseRecords = [
   {
     // Identity
+    slug: "coda-doc-maker-billing",
+    title: "Coda and Doc Maker billing across a free collaboration surface",
+    company: "Coda",
+    industry: "Collaborative document and workflow SaaS",
+    market: "B2B teams with a small builder group and a much larger collaborator base",
+    reviewed_at: "2026-04-24",
+
+    // Public page inputs
+    mechanism_type: "Tier ladder + maker billing + free editor/viewer collaboration",
+    pricing_page_url: "https://coda.io/pricing",
+    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://coda.io/pricing",
+    pricing_surface: "Coda presents a Free, Pro, Team, and Enterprise ladder, but the real monetization boundary sits inside the paid tiers: only Doc Makers are billed, while editors and viewers remain free even when they contribute meaningfully inside existing docs.",
+    mechanism_summary: "Coda does not primarily monetize broad collaboration. It monetizes the right to originate structure, administer the workspace, and access the full paid Doc Maker surface, while keeping downstream participation free to widen adoption.",
+    target_buyer_inference: "The structure is best suited to organizations where a small number of builders create systems, templates, and operating docs for a wider population that mainly updates, comments, and collaborates inside those systems.",
+    decision_friction: "The buyer has to decide where collaboration ends and creation rights begin: who truly needs to create docs or pages, who can stay a free editor, and when AI use or workspace administration forces a person across the paid boundary.",
+    exposure_logic: "Coda gives up broad per-seat monetization to reduce adoption resistance. The model works only if the builder layer stays scarce and valuable enough that accounts accept paying for Doc Makers while a larger free collaborator base operates inside the system.",
+    logic_flaw: "The weakness is that Coda's free layer can still capture a large share of operational value. If many teams can run substantial workflows inside maker-built docs without expanding the Doc Maker count, the billing boundary can undercapture the value created by heavy editors and repeat contributors.",
+    strategic_opportunity: "A competitor could attack with a hybrid model that still subsidizes broad collaboration but charges more explicitly for workflow scale, automation intensity, or temporary creation rights. The opening is a cleaner match between monetization and operational contribution, not just a lower list price.",
+    page_path: "coda-doc-maker-billing.html",
+    source_urls: [
+      "https://coda.io/pricing",
+      "https://coda.io/product/collaboration-costs-less-with-coda",
+      "https://coda.io/compare/airtable",
+      "https://help.coda.io/hc/en-us/articles/39555725230989-Billing-and-pricing-basics",
+      "https://help.coda.io/hc/en-us/articles/39556004184077-Roles-in-Coda-Doc-Makers-Admins-and-Editors",
+      "https://help.coda.io/hc/en-us/articles/39555796209165-Upgrade-your-Coda-workspace",
+      "https://help.coda.io/hc/en-us/articles/39555859321357-Coda-AI-credits"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 5,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When a few people define the system and many people participate inside it, charge for creation rights and administrative control instead of every collaborator, but only if the free layer does not end up performing too much of the value-creating work."
+  },
+  {
+    // Identity
     slug: "intercom-seat-plus-outcome-pricing",
     title: "Intercom and the seat-plus-outcome AI meter",
     company: "Intercom",
