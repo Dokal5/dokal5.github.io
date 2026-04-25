@@ -131,6 +131,44 @@ window.pricingCaseRecords = [
   },
   {
     // Identity
+    slug: "slack-active-user-billing",
+    title: "Slack and active-user billing inside the collaboration seat ladder",
+    company: "Slack / Salesforce",
+    industry: "Work collaboration and enterprise messaging SaaS",
+    market: "B2B teams coordinating internal work and external collaboration across changing participation levels",
+    reviewed_at: "2026-04-23",
+
+    // Public page inputs
+    mechanism_type: "Tier ladder + active-member billing + guest-role exemptions",
+    pricing_page_url: "https://slack.com/pricing/",
+    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://slack.com/pricing/",
+    pricing_surface: "Slack publicly presents a Free, Pro, Business+, and Enterprise+ ladder, but the paid self-serve economics are shaped by active-member billing, a 28-day activity window, free single-channel guests, and prorated credits when members go inactive.",
+    mechanism_summary: "Slack does not fully monetize provisioned accounts. It monetizes active participation inside the workspace, then widens the collaboration surface with guest-role carve-outs and inactivity credits so adoption can spread before every marginal participant becomes a full billable member.",
+    target_buyer_inference: "The structure is best suited to organizations with uneven participation, contractor or partner access, and internal resistance to paying full-seat prices for everyone who might need visibility.",
+    decision_friction: "The buyer must predict who will count as active over a 28-day window, decide when someone should be a full member versus a guest, and manage the fact that even light participation can flip a person back into billable status.",
+    exposure_logic: "Slack gives up some seat certainty to reduce adoption resistance. The model works only if Slack becomes a habitual operating layer, so that enough members stay active often enough for the active-user meter to capture real value.",
+    logic_flaw: "The weakness is that value in workplace software often persists even when activity drops. A dormant but strategically important user can still benefit from searchable history, channel presence, or emergency access while falling outside the billable boundary, which can make the meter underprice retained access and invite role-gaming.",
+    strategic_opportunity: "A competitor could price persistent knowledge access, retained network presence, or low-frequency participation more explicitly while still offering temporary-member flexibility. The opening is a hybrid model that captures more of the value of being kept inside the operating graph without forcing every marginal collaborator onto a full seat.",
+    page_path: "slack-active-user-billing.html",
+    source_urls: [
+      "https://slack.com/pricing/",
+      "https://slack.com/help/articles/218915077-Slacks-Fair-Billing-Policy",
+      "https://slack.com/help/articles/202518103-Understand-guest-roles-in-Slack",
+      "https://slack.com/help/articles/23546798305171-FAQ--Updates-to-Slack%E2%80%99s-active-user-calculation"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 4,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When collaboration breadth matters but participation intensity is uneven, price active operating presence rather than every provisioned seat, but only if the activity boundary is legible enough that buyers believe it tracks value instead of billing luck."
+  },
+  {
+    // Identity
     slug: "webflow-workspace-site-pricing-split",
     title: "Webflow and the workspace-site split in web platform pricing",
     company: "Webflow",
