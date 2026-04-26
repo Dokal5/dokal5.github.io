@@ -41,142 +41,348 @@
         </div>
         <div class="case-company-meta">
           <div class="case-company-name">Figma</div>
+          <div class="case-company-note case-company-note--reviewed">Reviewed April 22, 2026</div>
         </div>
       </div>
-      <h1>Figma and role-based seat segmentation across the workflow</h1>
+      <h1>Figma role-based seat segmentation</h1>
       <p class="lead">
-        Figma is a U.S.-based design and product collaboration SaaS company serving global B2B product teams. This case matters because its pricing does not start from one seat equals one price. Instead, it prices different roles across the design-to-build workflow separately, which makes it useful for analyzing segmentation logic, internal buying friction, and where a role-based pricing architecture can create both strength and vulnerability.
+        Figma is distinctive because it does not treat every workspace member as the same billable user. It keeps visibility free, then monetizes the permission to collaborate, inspect, and create.
       </p>
       <div class="case-tag-row" style="margin-top: 1.2rem;">
-        <span class="case-tag" data-framework="EVAC 2.0">EVAC 2.0</span>
-        <span class="case-tag" data-framework="Marketing">Marketing</span>
-        <span class="case-tag">Role-based seat segmentation by workflow intensity</span>
+        <span class="case-tag">Workflow-intensity pricing</span>
+        <span class="case-tag">Free visibility layer</span>
+        <span class="case-tag">Plan-tier governance</span>
       </div>
     </div>
 
     <div class="case-detail-layout">
       <div class="content-body">
-        <section class="section">
-          <h2>Case Claim</h2>
-          <div class="case-section-intro">Why this cases worth reading?</div>
-          <p>
-            This case is worth reading because it shows a pricing system that does not monetize collaboration breadth evenly. <strong>Figma creates pricing power by deciding which workflow roles deserve paid intensity and which roles can stay widely distributed at low or zero price.</strong> That makes the case useful for judging where a company sets its monetization boundary, what kind of buyer can tolerate that boundary, and where that same boundary can later become a competitive weakness.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Tier Ladder Analysis</h2>
-          <p>
-            Figma's public pricing shows a layered ladder made of plan tiers plus role-priced seat tiers inside the paid plans. <strong>The commercial point of the ladder is that Figma does not ask every user to move up at the same rate; it asks the account to pay more only when a person performs a higher-intensity workflow role or when the whole organization needs more governance.</strong>
-          </p>
-          <ul class="case-structure-list">
-            <li><strong>Tier count:</strong> The visible ladder has four plan levels, with Starter as the free entry plan and Professional, Organization, and Enterprise as the main account tiers. Inside the paid plans, Figma adds three priced seat tiers plus free View access.</li>
-            <li><strong>Target buyer by tier:</strong> Starter fits individuals and very small teams. Professional fits self-serve teams that need unlimited design workspaces. Organization fits larger multi-team environments that need stronger libraries, admin control, and governance. Enterprise fits scaled accounts that need the deepest security, centralized administration, and billing control.</li>
-            <li><strong>Tier labels:</strong> The plan ladder is labeled Starter, Professional, Organization, and Enterprise, while the seat ladder is labeled View, Collab, Dev, and Full.</li>
-            <li><strong>Anchor prices:</strong> On the public Professional plan, the visible seat anchors are $0 for View, $3 per month for Collab, $12 for Dev, and $16 for Full. Organization and Enterprise then raise the account-level anchor by layering more governance and security on top of the same role logic.</li>
-            <li><strong>Price gaps:</strong> The visible seat jumps on Professional are $3 from View to Collab, $9 from Collab to Dev, and $4 from Dev to Full. Those gaps show that Figma prices handoff and build participation as materially more valuable than light collaboration, while keeping the step from Dev to Full narrower because both roles already sit inside paid workflow intensity.</li>
-            <li><strong>Value-add argument:</strong> The move up is justified first by deeper role permissions and workflow ownership, then by governance, shared libraries, security, admin authority, and billing control as the account shifts from team usage to organizational coordination.</li>
-          </ul>
-          <div class="case-visual-card">
-            <div class="case-visual-body">
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
               <div class="case-visual-label">Pricing Page Visual</div>
+              <h2>The public ladder this model abstracts</h2>
             </div>
+            <p>The matrix below translates this pricing page into role intensity and governance layers.</p>
+          </div>
+          <div class="case-visual-card">
             <img src="../../assets/images/cases/figma-pricing-page.png" alt="Screenshot of the Figma pricing page">
             <div class="case-visual-body">
               <p><a class="case-link" href="https://www.figma.com/pricing/">Open live pricing page</a></p>
             </div>
           </div>
+          <div class="case-layer1-insight-box case-layer1-insight-box--attached">
+            <div class="case-visual-label">Core Insight</div>
+            <ul>
+              <li>Figma prices workflow intensity, not headcount.</li>
+              <li>Free access drives adoption.</li>
+              <li>Role boundaries create friction.</li>
+            </ul>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Mechanism Summary</h2>
-          <p>
-            The main differentiator is not storage, project count, or one feature bundle versus another. <strong>The real differentiator is workflow intensity by role.</strong> Full seats monetize design creation and ownership. Dev seats monetize engineering-side inspection and handoff. Collab seats monetize lighter but still structured participation. View access remains free because Figma benefits when more stakeholders can observe the work even if they are not the ones driving paid workflow intensity.
-          </p>
-          <div class="case-evidence-grid">
-            <div class="case-evidence-item">
-              <strong>Tier logic</strong>
-              Starter is the free entry plan. Professional is the first paid self-serve tier for teams that need unlimited files, projects, and paid seat assignment. Organization adds stronger admin control, shared libraries, and governance for larger multi-team environments. Enterprise adds the highest level of security, centralized administration, and billing control for scaled accounts. The important point is that the plan tier changes the governance and control layer around the account, while the underlying monetization logic still stays role-based through Full, Dev, and Collab seats.
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">Funnel Logic</div>
+              <h2>Starter Funnel Architecture</h2>
             </div>
-            <div class="case-evidence-item">
-              <strong>Seat logic</strong>
-              Seat types separate users by the <strong>type of work</strong> they are allowed to perform, not simply by how many people exist in the account. For example, a product designer who creates and maintains components fits a Full seat; an engineer inspecting specs and code handoff fits a Dev seat; a PM or coordinator mainly commenting and joining structured workshops fits a Collab seat.
+            <label class="case-starter-toggle">
+              <input type="checkbox" id="starter-growth-toggle">
+              <span>Simulate growth</span>
+            </label>
+          </div>
+
+          <div class="case-starter-funnel" id="starter-funnel">
+            <div class="case-starter-funnel-grid" aria-label="Starter funnel progression">
+              <article class="case-starter-funnel-card case-starter-funnel-card--entry">
+                <div class="case-starter-layer-label">Entry Layer</div>
+                <h3>Entry (Adoption)</h3>
+                <ul>
+                  <li><strong>Free viewers</strong></li>
+                  <li><strong>Link-based collaboration</strong></li>
+                  <li><strong>No payment required</strong></li>
+                </ul>
+                <p>Anyone can enter the workflow <strong>without friction</strong>.</p>
+              </article>
+
+              <article class="case-starter-funnel-card case-starter-funnel-card--activation">
+                <div class="case-starter-layer-label">Activation Layer</div>
+                <h3>Activation (Engagement)</h3>
+                <ul>
+                  <li><strong>FigJam</strong></li>
+                  <li><strong>Comments</strong></li>
+                  <li><strong>Limited file creation</strong></li>
+                </ul>
+                <p>Users start participating, but not <strong>owning the workflow</strong>.</p>
+              </article>
+
+              <article class="case-starter-funnel-card case-starter-funnel-card--conversion">
+                <div class="case-starter-layer-label">Conversion Trigger</div>
+                <h3>Conversion (Upgrade)</h3>
+                <ul>
+                  <li><strong>File limits</strong></li>
+                  <li><strong>No Dev Mode</strong></li>
+                  <li><strong>No design ownership</strong></li>
+                </ul>
+                <p>You must upgrade when you become <strong>responsible for output</strong>.</p>
+              </article>
             </div>
-            <div class="case-evidence-item">
-              <strong>Free access logic</strong>
-              View access is the onboarding layer and entry point. It reduces adoption friction, lets more stakeholders enter the workspace early, and expands internal distribution before Figma asks the account to decide who should become paid role seats. The trade-off is that broad free visibility can delay monetization and forces Figma to keep the upgrade boundary credible enough that customers still accept who should remain free and who must become paid.
-              <div class="case-flow-line">
-                <span class="case-flow-step">View enters free</span>
-                <span class="case-flow-step">Work becomes regular</span>
-                <span class="case-flow-step">Admin assigns paid role</span>
+
+            <div class="case-starter-growth-message" id="starter-growth-message" aria-live="polite" aria-hidden="true">
+              Starter works until usage scales. Then constraints force upgrade.
+            </div>
+
+            <p class="case-starter-pricing-link">
+              Starter defines how users enter. Seat pricing defines how value is captured.
+            </p>
+          </div>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">Two Pricing Dimensions</div>
+              <h2>Pricing Logic Deconstruction</h2>
+            </div>
+            <p>Figma's pricing architecture has two layers: plan tiers define the organization's governance need, while roles define the user's workflow responsibility.</p>
+          </div>
+
+          <div class="case-pricing-logic-summary">
+            Figma does not simply price users. It prices the combination of <strong>organizational complexity</strong> and <strong>workflow responsibility</strong>.
+          </div>
+
+          <div class="case-pricing-logic-grid">
+            <article class="case-pricing-logic-panel">
+              <div class="case-pricing-logic-panel-head">
+                <div class="case-visual-label">Plan Tier Logic</div>
+                <h3>Plan tiers: pricing organizational governance</h3>
+              </div>
+              <p>Plan tiers do not only represent more features. They represent different levels of organizational complexity, control, and decision authority.</p>
+
+              <div class="case-pricing-logic-card-list">
+                <article class="case-pricing-logic-card case-pricing-logic-card--tier-0">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Professional</strong>
+                    <span>Team productivity</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> The buyer is a team or small group that mainly wants productivity and collaboration.</li>
+                    <li><strong>Pricing logic</strong> Charge for work execution, not heavy governance.</li>
+                    <li><strong>Typical trigger</strong> A team needs shared files, libraries, and smoother collaboration.</li>
+                  </ul>
+                </article>
+
+                <article class="case-pricing-logic-card case-pricing-logic-card--tier-1">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Organization</strong>
+                    <span>Cross-team coordination</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> The buyer is a company or department managing multiple teams, shared assets, and design systems.</li>
+                    <li><strong>Pricing logic</strong> Charge a governance premium when design becomes a shared organizational asset.</li>
+                    <li><strong>Typical trigger</strong> Multiple teams need consistency, shared libraries, central admin, and scalable collaboration.</li>
+                  </ul>
+                </article>
+
+                <article class="case-pricing-logic-card case-pricing-logic-card--tier-2">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Enterprise</strong>
+                    <span>Security and control</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> The buyer includes IT, procurement, security, or senior management.</li>
+                    <li><strong>Pricing logic</strong> Charge for risk reduction, identity control, compliance, and large-scale administration.</li>
+                    <li><strong>Typical trigger</strong> Security, compliance, SCIM, workspaces, or centralized control become purchasing requirements.</li>
+                  </ul>
+                </article>
+              </div>
+
+              <div class="case-pricing-logic-takeaway">
+                Tier upgrade is not only a usage upgrade. It is an organizational risk and governance upgrade.
+              </div>
+            </article>
+
+            <article class="case-pricing-logic-panel">
+              <div class="case-pricing-logic-panel-head">
+                <div class="case-visual-label">Role Logic</div>
+                <h3>Roles: pricing workflow responsibility</h3>
+              </div>
+              <p>Roles separate users by what they are allowed to do inside the workflow. The more responsibility a user has for producing, changing, or handing off work, the higher the monetization level.</p>
+
+              <div class="case-pricing-logic-card-grid">
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-0">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>View</strong>
+                    <span>Visibility</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> Many stakeholders need access without directly creating output.</li>
+                    <li><strong>Pricing logic</strong> Keep viewing free to reduce adoption friction and spread the product across the organization.</li>
+                    <li><strong>Boundary question</strong> When does a viewer become an active participant?</li>
+                  </ul>
+                </article>
+
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-1">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Collab</strong>
+                    <span>Participation</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> Some users contribute through comments, workshops, FigJam, or lightweight collaboration.</li>
+                    <li><strong>Pricing logic</strong> Monetize structured participation, but keep the price low enough to avoid blocking adoption.</li>
+                    <li><strong>Boundary question</strong> When does collaboration become real production work?</li>
+                  </ul>
+                </article>
+
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-2">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Dev</strong>
+                    <span>Technical handoff</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> Engineers and builders need access to inspect, translate, and implement design work.</li>
+                    <li><strong>Pricing logic</strong> Capture value from engineering dependency and handoff workflow.</li>
+                    <li><strong>Boundary question</strong> When does technical inspection become a paid workflow role?</li>
+                  </ul>
+                </article>
+
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-3">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Full</strong>
+                    <span>Creation and ownership</span>
+                  </div>
+                  <ul class="case-pricing-logic-points">
+                    <li><strong>Assumption</strong> Designers and creators own core files, systems, and design outputs.</li>
+                    <li><strong>Pricing logic</strong> Charge the highest price for users responsible for creating and maintaining the core output.</li>
+                    <li><strong>Boundary question</strong> Who truly needs full creation rights?</li>
+                  </ul>
+                </article>
+              </div>
+
+              <div class="case-pricing-logic-takeaway">
+                Role upgrade is not about identity. It is about workflow responsibility.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">Pricing Architecture Matrix</div>
+              <h2>Role intensity inside plan governance</h2>
+            </div>
+            <p>X-axis: role intensity. Y-axis: organizational governance need.</p>
+          </div>
+          <div class="case-layer1-matrix" id="pricing-matrix" aria-live="polite"></div>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">Seat Mix Simulator</div>
+              <h2>When does visibility become paid work?</h2>
+            </div>
+            <p>Change the mix to see how workflow permissions shape the account cost.</p>
+          </div>
+
+          <div class="case-layer1-simulator">
+            <div class="case-layer1-controls">
+              <label class="case-layer1-control">
+                <span>Plan</span>
+                <select id="plan-selector" aria-label="Select Figma plan"></select>
+              </label>
+              <div class="case-layer1-seat-inputs" id="seat-inputs"></div>
+            </div>
+
+            <div class="case-layer1-results" aria-live="polite">
+              <div class="case-layer1-result case-layer1-result--primary">
+                <span>Monthly cost</span>
+                <strong id="monthly-cost">$0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Total users</span>
+                <strong id="total-users">0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Paid users</span>
+                <strong id="paid-users">0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Avg. cost / user</span>
+                <strong id="average-cost">$0</strong>
               </div>
             </div>
-          </div>
-        </section>
 
-        <section class="section">
-          <h2>Target Buyer Inference</h2>
-          <p>
-            Based on the public seat taxonomy, this is best understood as a B2B pricing architecture aimed at multi-role product organizations rather than small homogeneous teams. The most plausible customer categories are:
-          </p>
-          <ul class="case-structure-list">
-            <li><strong>Client type:</strong> multi-role product organizations. Official Figma customer materials publicly feature companies such as Uber, Spotify, CommBank, Loblaw Digital, and Customer.io (Figma, n.d.), which supports the reading that Figma is selling into teams where design, product, and engineering must coordinate inside one shared workflow.</li>
-            <li><strong>Industry context:</strong> no single target sector is stated on the pricing page. Official customer stories span software, retail, financial services, telecommunications, automotive, agencies, and consumer brands, so the better inference is cross-industry product teams rather than one named vertical.</li>
-            <li><strong>Decision makers:</strong> the clearest documented buyer profile is the admin owner of seat governance: <strong>team admins</strong> on Professional, <strong>organization admins</strong> on Organization and Enterprise, and <strong>billing group admins</strong> on Enterprise. The operational sponsor may sit in design leadership or product operations, but the formal buyer-side control point is administrative seat authority.</li>
-            <li><strong>Buying condition:</strong> <strong>the model becomes most attractive when the account urgently needs broad cross-functional visibility but also must avoid paying creator-seat pricing for everyone.</strong> In other words, the more the organization needs many observers but only a smaller set of true owners, the more critical this pricing logic becomes.</li>
-          </ul>
-        </section>
-
-        <section class="section">
-          <h2>Decision Friction</h2>
-          <ul class="case-structure-list">
-            <li><strong>Role classification burden:</strong> the buyer cannot buy by headcount alone because official billing is determined jointly by plan type and seat type. That means someone must decide who is Full, Dev, Collab, or only View before the invoice is even intelligible.</li>
-            <li><strong>Approval burden:</strong> Figma's help documentation states that admins can control and approve seat requests. This makes pricing workable, but it also turns purchasing into an admin workflow rather than a simple self-serve expansion motion.</li>
-            <li><strong>Role drift burden:</strong> Figma's seat-management documentation assumes seats may need to be changed over time. In real cross-functional teams, people drift between commenting, prototyping, inspecting, and editing, so classification is not a one-time task.</li>
-            <li><strong>Budget interpretation burden:</strong> official billing guidance also explains that approved seat changes are added to the next invoice and can be prorated. That means the buyer is not only classifying people; they are managing the financial consequences of those classification changes.</li>
-          </ul>
-          <p>
-            The friction is therefore causal, not generic. It arises because the pricing architecture requires the customer to translate messy human workflows into clean seat categories, and then keep those categories administratively stable enough for billing to feel fair.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Exposure and Risk Logic</h2>
-          <p>
-            Figma is taking at least three real exposures with this tactic. First, it carries <strong>monetization exposure</strong> by letting many participants stay on free View access. Second, it carries <strong>operational exposure</strong> because role boundaries must remain clear enough in the product and admin layer for customers to keep accepting the taxonomy. Third, it carries <strong>migration exposure</strong> because cross-functional users will keep drifting between roles, which means seat reassignment pressure is built into the model. If those pressures intensify, the current architecture can start leaking value or creating support burden.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Logic Flaw, Vulnerability, and Strategic Opportunity</h2>
-          <p>
-            <strong>The weak spot is boundary ambiguity.</strong> The public pricing page shows a neat ladder of Full, Dev, Collab, and View. The hidden gap is that modern product work is often not neat. One PM may prototype; one designer may inspect implementation; one engineer may leave structured design feedback. When people span multiple modes of use, the pricing logic starts to look cleaner on the pricing page than it feels in live workflow.
-          </p>
-          <div class="case-gap-grid">
-            <div class="case-gap-card">
-              <div class="case-visual-label">Visible on pricing page</div>
-              <ul>
-                <li>Full seat</li>
-                <li>Dev seat</li>
-                <li>Collab seat</li>
-                <li>View seat</li>
-              </ul>
-            </div>
-            <div class="case-gap-card">
-              <div class="case-visual-label">Hidden gap in actual use</div>
-              <ul>
-                <li>One person can move between creator, builder, and reviewer roles in the same week.</li>
-                <li>The model assumes cleaner behavioral boundaries than many product teams actually maintain.</li>
-                <li>That creates an opening for buyers to feel the ladder reflects billing convenience more than workflow truth.</li>
-              </ul>
+            <div class="case-layer1-mix">
+              <div class="case-layer1-mix-labels" id="seat-mix-labels"></div>
+              <div class="case-layer1-mix-bar" id="seat-mix-bar" aria-label="Seat mix visualization"></div>
             </div>
           </div>
-          <p>
-            That is a logic flaw, not just an exposure, because it weakens the conceptual legitimacy of the pricing system in the customer's eyes. Exposure tells us what Figma must manage; vulnerability tells us where a rival can position a better story or where a buyer may mentally reject the current logic.
-          </p>
-          <p>
-            The strategic opportunity follows directly from the flaw: a competitor could attack by making role transitions easier to price through temporary upgrade windows, usage-based workflow passes, or packages that reduce the need for managers to classify every participant upfront. The opportunity is not simply lower price. It is lower seat-governance friction and a more believable mapping between pricing and real work.
-          </p>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">Decision Tension Layer</div>
+              <h2>Decision Tension Layer</h2>
+            </div>
+            <p>The matrix looks clean, but real organizations do not fit perfectly into clean pricing categories.</p>
+          </div>
+
+          <div class="case-tension-toolbar">
+            <label class="case-tension-control">
+              <span>Scenario</span>
+              <select id="tension-scenario" aria-label="Select Figma decision scenario">
+                <option value="small-team">Small team</option>
+                <option value="scaling-company">Scaling company</option>
+                <option value="enterprise-rollout">Enterprise rollout</option>
+              </select>
+            </label>
+            <div class="case-tension-message" id="tension-scenario-message" aria-live="polite"></div>
+          </div>
+
+          <div class="case-tension-grid" id="tension-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-section-head case-layer1-section-head--stacked">
+            <div>
+              <div class="case-visual-label">Boundary Ambiguity</div>
+              <h2>Where the role tension shows up in daily work</h2>
+            </div>
+            <p>These edge cases show how the decision tension becomes concrete inside everyday workflow behavior.</p>
+          </div>
+          <div class="case-layer1-example-grid">
+            <div class="case-layer1-example">
+              <strong>PM occasionally designs</strong>
+              <span>Reviewing turns into creation.</span>
+            </div>
+            <div class="case-layer1-example">
+              <strong>Engineer gives feedback</strong>
+              <span>Inspection turns into collaboration.</span>
+            </div>
+            <div class="case-layer1-example">
+              <strong>Designer inspects code</strong>
+              <span>Creation crosses into handoff.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-layer1-section">
+          <div class="case-layer1-opportunity">
+            <div class="case-visual-label">Strategic Opportunity</div>
+            <h2>Attack the role friction</h2>
+            <p>
+              Competitors can make the pricing story feel closer to real work by reducing seat classification pressure.
+            </p>
+            <div class="case-layer1-opportunity-list">
+              <span>Flexible seat switching</span>
+              <span>Temporary upgrades</span>
+              <span>Usage-based pricing</span>
+            </div>
+          </div>
         </section>
 
         <section class="section">
@@ -185,39 +391,13 @@
             <li><cite>Figma.</cite> (n.d.). <a href="https://www.figma.com/pricing/">Plans &amp; pricing</a>. Retrieved April 22, 2026, from <a href="https://www.figma.com/pricing/">https://www.figma.com/pricing/</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma">Guide to billing at Figma</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma">https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma">Manage seats in Figma</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma">https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma</a></li>
+            <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview">Starter plan overview</a>. Retrieved April 25, 2026, from <a href="https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview">https://help.figma.com/hc/en-us/articles/13838684089751-Starter-plan-overview</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/360041061034-View-your-billing-and-invoices">Manage billing on the Professional plan</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/360041061034-View-your-billing-and-invoices">https://help.figma.com/hc/en-us/articles/360041061034-View-your-billing-and-invoices</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience">Updates to Figma's pricing, seats, and billing experience</a>. Retrieved April 22, 2026, from <a href="https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience">https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience</a></li>
             <li><cite>Figma.</cite> (n.d.). <a href="https://www.figma.com/customers/">Customer stories</a>. Retrieved April 22, 2026, from <a href="https://www.figma.com/customers/">https://www.figma.com/customers/</a></li>
           </ul>
         </section>
       </div>
-
-      <aside class="case-panel">
-        <h2>Case Snapshot</h2>
-        <div class="case-meta-list">
-          <div class="case-meta-item">
-            <div class="case-meta-label">Company</div>
-            <div class="case-meta-value">Figma</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Industry</div>
-            <div class="case-meta-value">Design and product collaboration SaaS</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Market</div>
-            <div class="case-meta-value">Global product teams spanning design, engineering, product, and cross-functional collaborators</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Date reviewed</div>
-            <div class="case-meta-value">April 22, 2026</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Verdict</div>
-            <div class="case-meta-value">Accept</div>
-          </div>
-        </div>
-
-      </aside>
     </div>
   </main>
 
@@ -227,6 +407,413 @@
   </footer>
 
 </div>
+
+<script id="figma-case-data" type="application/json">
+{
+  "case_id": "figma_role_based_seat_segmentation",
+  "pricing_model": "role_based_seat_pricing_with_plan_tiers",
+  "plans": [
+    {
+      "name": "Professional",
+      "collab_price": 3,
+      "dev_price": 12,
+      "full_price": 16
+    },
+    {
+      "name": "Organization",
+      "collab_price": 5,
+      "dev_price": 25,
+      "full_price": 55
+    },
+    {
+      "name": "Enterprise",
+      "collab_price": 5,
+      "dev_price": 35,
+      "full_price": 90
+    }
+  ],
+  "roles": [
+    { "name": "View", "intensity": 0, "price": 0 },
+    { "name": "Collab", "intensity": 1 },
+    { "name": "Dev", "intensity": 2 },
+    { "name": "Full", "intensity": 3 }
+  ]
+}
+</script>
+
+<script>
+function getCaseData() {
+  return JSON.parse(document.getElementById("figma-case-data").textContent);
+}
+
+function getRolePrice(plan, role) {
+  if (typeof role.price === "number") {
+    return role.price;
+  }
+
+  const priceKey = role.name.toLowerCase() + "_price";
+  return plan[priceKey] || 0;
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: value % 1 === 0 ? 0 : 2
+  }).format(value);
+}
+
+function renderPricingMatrix(caseData) {
+  const matrix = document.getElementById("pricing-matrix");
+  const roles = [...caseData.roles].sort((a, b) => a.intensity - b.intensity);
+  const activePlan = document.getElementById("plan-selector").value || caseData.plans[0].name;
+
+  matrix.innerHTML = "";
+
+  const grid = document.createElement("div");
+  grid.className = "case-layer1-matrix-grid";
+  grid.style.setProperty("--case-layer1-role-count", roles.length);
+
+  const corner = document.createElement("div");
+  corner.className = "case-layer1-matrix-cell case-layer1-axis-cell";
+  corner.innerHTML = "<span>Plan tier</span><strong>Governance need</strong>";
+  grid.appendChild(corner);
+
+  roles.forEach((role) => {
+    const header = document.createElement("div");
+    header.className = "case-layer1-matrix-cell case-layer1-role-head case-layer1-role--" + role.intensity;
+    header.innerHTML = "<span>Intensity " + role.intensity + "</span><strong>" + role.name + "</strong>";
+    grid.appendChild(header);
+  });
+
+  caseData.plans.forEach((plan) => {
+    const isActive = plan.name === activePlan;
+    const planCell = document.createElement("div");
+    planCell.className = "case-layer1-matrix-cell case-layer1-plan-head" + (isActive ? " is-active" : "");
+    planCell.innerHTML = "<span>Plan</span><strong>" + plan.name + "</strong>";
+    grid.appendChild(planCell);
+
+    roles.forEach((role) => {
+      const price = getRolePrice(plan, role);
+      const cell = document.createElement("div");
+      cell.className = "case-layer1-matrix-cell case-layer1-price-cell case-layer1-role--" + role.intensity + (isActive ? " is-active" : "");
+      cell.innerHTML = "<span>" + role.name + "</span><strong>" + formatCurrency(price) + "</strong><em>/ month</em>";
+      grid.appendChild(cell);
+    });
+  });
+
+  matrix.appendChild(grid);
+}
+
+function renderSimulatorControls(caseData) {
+  const planSelector = document.getElementById("plan-selector");
+  const seatInputs = document.getElementById("seat-inputs");
+  const roles = [...caseData.roles].sort((a, b) => a.intensity - b.intensity);
+  const defaultsByIntensity = [32, 8, 5, 4];
+
+  caseData.plans.forEach((plan) => {
+    const option = document.createElement("option");
+    option.value = plan.name;
+    option.textContent = plan.name;
+    planSelector.appendChild(option);
+  });
+
+  roles.forEach((role) => {
+    const label = document.createElement("label");
+    label.className = "case-layer1-control case-layer1-role--" + role.intensity;
+
+    const input = document.createElement("input");
+    input.type = "number";
+    input.min = "0";
+    input.step = "1";
+    input.value = defaultsByIntensity[role.intensity] || 0;
+    input.inputMode = "numeric";
+    input.dataset.role = role.name;
+    input.setAttribute("aria-label", role.name + " users");
+
+    const caption = document.createElement("span");
+    caption.textContent = role.name + " users";
+
+    label.appendChild(caption);
+    label.appendChild(input);
+    seatInputs.appendChild(label);
+  });
+
+  planSelector.addEventListener("change", () => {
+    renderPricingMatrix(caseData);
+    updateSimulator(caseData);
+  });
+
+  seatInputs.addEventListener("input", () => updateSimulator(caseData));
+}
+
+function updateSimulator(caseData) {
+  const selectedPlanName = document.getElementById("plan-selector").value;
+  const plan = caseData.plans.find((item) => item.name === selectedPlanName) || caseData.plans[0];
+  const roleInputs = document.querySelectorAll("[data-role]");
+  const usersByRole = {};
+
+  roleInputs.forEach((input) => {
+    usersByRole[input.dataset.role.toLowerCase()] = Math.max(0, Number(input.value) || 0);
+  });
+
+  const roleByName = Object.fromEntries(caseData.roles.map((role) => [role.name.toLowerCase(), role]));
+  const view_users = usersByRole.view || 0;
+  const collab_users = usersByRole.collab || 0;
+  const dev_users = usersByRole.dev || 0;
+  const full_users = usersByRole.full || 0;
+  const monthly_cost =
+    (collab_users * getRolePrice(plan, roleByName.collab)) +
+    (dev_users * getRolePrice(plan, roleByName.dev)) +
+    (full_users * getRolePrice(plan, roleByName.full));
+  const totalUsers = view_users + collab_users + dev_users + full_users;
+  const paidUsers = collab_users + dev_users + full_users;
+  const averageCostPerUser = totalUsers === 0 ? 0 : monthly_cost / totalUsers;
+
+  document.getElementById("monthly-cost").textContent = formatCurrency(monthly_cost);
+  document.getElementById("total-users").textContent = totalUsers;
+  document.getElementById("paid-users").textContent = paidUsers;
+  document.getElementById("average-cost").textContent = formatCurrency(averageCostPerUser);
+
+  renderSeatMix(caseData, usersByRole, totalUsers);
+}
+
+function renderSeatMix(caseData, usersByRole, totalUsers) {
+  const mixBar = document.getElementById("seat-mix-bar");
+  const mixLabels = document.getElementById("seat-mix-labels");
+  const roles = [...caseData.roles].sort((a, b) => a.intensity - b.intensity);
+
+  mixBar.innerHTML = "";
+  mixLabels.innerHTML = "";
+
+  roles.forEach((role) => {
+    const count = usersByRole[role.name.toLowerCase()] || 0;
+    const segment = document.createElement("span");
+    segment.className = "case-layer1-mix-segment case-layer1-role--" + role.intensity;
+    segment.style.flexBasis = totalUsers === 0 ? "0%" : ((count / totalUsers) * 100) + "%";
+    segment.title = role.name + ": " + count;
+    mixBar.appendChild(segment);
+
+    const label = document.createElement("span");
+    label.className = "case-layer1-mix-label case-layer1-role--" + role.intensity;
+    label.textContent = role.name + " " + count;
+    mixLabels.appendChild(label);
+  });
+}
+
+function initializeStarterFunnel() {
+  const toggle = document.getElementById("starter-growth-toggle");
+  const funnel = document.getElementById("starter-funnel");
+  const message = document.getElementById("starter-growth-message");
+
+  if (!toggle || !funnel || !message) {
+    return;
+  }
+
+  const syncGrowthState = () => {
+    const isSimulated = toggle.checked;
+    funnel.classList.toggle("is-growth-simulated", isSimulated);
+    message.setAttribute("aria-hidden", String(!isSimulated));
+  };
+
+  toggle.addEventListener("change", syncGrowthState);
+  syncGrowthState();
+}
+
+const tensionScenarioContent = {
+  "small-team": {
+    message: "The main tension is role assignment. Who really needs paid access?",
+    tensions: [
+      {
+        title: "Role ambiguity",
+        problem: "A small team often shares work informally, so role boundaries blur quickly.",
+        items: [
+          "A PM mocks up a quick flow for speed",
+          "A founder comments, edits, and reorganizes files",
+          "An engineer opens Dev Mode only during release week"
+        ],
+        conflict: "Should the team pay for a formal role upgrade, or just tolerate occasional boundary crossing?",
+        implication: "Small teams resist paid upgrades when they see usage as occasional rather than structural."
+      },
+      {
+        title: "Starter ceiling",
+        problem: "The team can collaborate cheaply at first, but core workflow ownership appears faster than expected.",
+        items: [
+          "Three design files stop being enough",
+          "One person starts owning the source of truth",
+          "Handoff becomes a weekly rhythm instead of a one-off event"
+        ],
+        conflict: "When does a lightweight experiment become a workflow that deserves paid structure?",
+        implication: "The pricing jump feels sharp because the team upgrades at the moment the workflow becomes real."
+      },
+      {
+        title: "Budget sensitivity",
+        problem: "Every seat decision matters when software spend is still tightly scrutinized.",
+        items: [
+          "Upgrade one Full seat for a designer",
+          "Add one Collab seat for a PM",
+          "Delay another paid seat until the next sprint"
+        ],
+        conflict: "Which role upgrade unlocks the most progress without making the stack feel too expensive?",
+        implication: "Figma wins when even a small number of paid seats become hard to remove from the workflow."
+      }
+    ]
+  },
+  "scaling-company": {
+    message: "The main tension is governance mismatch. The organization is growing faster than its pricing logic.",
+    tensions: [
+      {
+        title: "Role ambiguity",
+        problem: "Real users often cross role boundaries.",
+        items: [
+          "A PM occasionally prototypes",
+          "An engineer gives design feedback",
+          "A designer inspects implementation details"
+        ],
+        conflict: "Should the company pay for the user's formal job title or their actual workflow behavior?",
+        implication: "Customers may try to downgrade users, while Figma benefits when boundary-crossing pushes users into paid roles."
+      },
+      {
+        title: "Governance mismatch",
+        problem: "A growing company may need more seats before it fully values higher governance.",
+        items: [
+          "Many teams use Figma, but admin is still informal",
+          "Design systems are emerging, but not yet centrally managed",
+          "Procurement wants control, but teams only see collaboration value"
+        ],
+        conflict: "Should the company buy higher governance before everyone feels the need for it?",
+        implication: "Tier upgrades can feel expensive when governance value is invisible until something breaks."
+      },
+      {
+        title: "Seat vs tier tradeoff",
+        problem: "Budget often has to choose between more high-intensity seats and a higher governance tier.",
+        items: [
+          "More Full seats for designers",
+          "More Dev seats for engineers",
+          "Upgrade to Organization for shared libraries and admin"
+        ],
+        conflict: "Should the buyer pay for more capability or more control?",
+        implication: "This creates budget tension between teams that want productivity and managers who want governance."
+      }
+    ]
+  },
+  "enterprise-rollout": {
+    message: "The main tension is control. IT and security become part of the pricing decision.",
+    tensions: [
+      {
+        title: "Control vs autonomy",
+        problem: "Enterprise rollout adds stakeholders who care more about control than creative flexibility.",
+        items: [
+          "Security wants identity control before broad rollout",
+          "IT wants standardized workspaces and admin ownership",
+          "Design teams want to keep moving without extra approval steps"
+        ],
+        conflict: "Should the organization centralize control now, or let teams adopt faster with looser rules?",
+        implication: "Enterprise pricing works when governance becomes a prerequisite for trust, not just an optional add-on."
+      },
+      {
+        title: "Compliance gating",
+        problem: "A rollout can stall when compliance requirements arrive before teams feel operational pain.",
+        items: [
+          "SCIM is requested before every team is active",
+          "Procurement asks for centralized policy alignment",
+          "Audit needs appear before usage is fully mature"
+        ],
+        conflict: "Do buyers upgrade for future risk reduction even when current workflow demand feels uneven?",
+        implication: "The tier decision shifts from productivity ROI to organizational risk management."
+      },
+      {
+        title: "Rollout sequencing",
+        problem: "Enterprise buyers must decide whether to expand seats first or lock governance first.",
+        items: [
+          "Add more Dev seats for engineering adoption",
+          "Expand Full seats for design system ownership",
+          "Standardize on Enterprise before broad seat expansion"
+        ],
+        conflict: "Should the organization fund wider usage first, or make the environment controllable before scale?",
+        implication: "Figma captures value by tying large-scale adoption to centralized administration and trust requirements."
+      }
+    ]
+  }
+};
+
+function renderTensionCards(scenarioKey) {
+  const grid = document.getElementById("tension-grid");
+  const scenario = tensionScenarioContent[scenarioKey];
+
+  if (!grid || !scenario) {
+    return;
+  }
+
+  grid.innerHTML = "";
+
+  scenario.tensions.forEach((tension, index) => {
+    const card = document.createElement("article");
+    card.className = "case-tension-card";
+
+    const label = document.createElement("div");
+    label.className = "case-visual-label";
+    label.textContent = "Tension " + (index + 1);
+
+    const title = document.createElement("h3");
+    title.textContent = tension.title;
+
+    const problem = document.createElement("p");
+    problem.textContent = tension.problem;
+
+    const list = document.createElement("ul");
+    list.className = "case-tension-list";
+    tension.items.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      list.appendChild(li);
+    });
+
+    const conflict = document.createElement("div");
+    conflict.className = "case-tension-line";
+    conflict.innerHTML = "<span>Decision conflict</span><p>" + tension.conflict + "</p>";
+
+    const implication = document.createElement("div");
+    implication.className = "case-tension-line";
+    implication.innerHTML = "<span>Pricing implication</span><p>" + tension.implication + "</p>";
+
+    card.appendChild(label);
+    card.appendChild(title);
+    card.appendChild(problem);
+    card.appendChild(list);
+    card.appendChild(conflict);
+    card.appendChild(implication);
+    grid.appendChild(card);
+  });
+}
+
+function initializeTensionSelector() {
+  const selector = document.getElementById("tension-scenario");
+  const message = document.getElementById("tension-scenario-message");
+
+  if (!selector || !message) {
+    return;
+  }
+
+  const syncScenario = () => {
+    const scenario = tensionScenarioContent[selector.value];
+    message.textContent = scenario ? scenario.message : "";
+    renderTensionCards(selector.value);
+  };
+
+  selector.addEventListener("change", syncScenario);
+  syncScenario();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const caseData = getCaseData();
+  initializeStarterFunnel();
+  initializeTensionSelector();
+  renderSimulatorControls(caseData);
+  renderPricingMatrix(caseData);
+  updateSimulator(caseData);
+});
+</script>
 
 </body>
 </html>

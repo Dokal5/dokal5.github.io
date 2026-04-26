@@ -2,7 +2,73 @@
 
 This file defines the canonical structured JSON schema for pricing cases.
 
-Use this file for case-data shape only. Layer 1 workflow belongs in `CASE_LAYER1_SCHEMA.md`. Public page order and section behavior belong in `CASE_TEMPLATE.html`.
+## Purpose
+
+Each case should do three things clearly:
+
+1. Show how the pricing structure actually works.
+2. Explain where the buying friction or strategic weakness sits.
+3. Leave the reader with a reusable commercial takeaway.
+
+The page should stay abstract and teachable. It is not a dump of research notes, framework mapping, or internal review commentary.
+
+## Public Page Rules
+
+For every published case page:
+
+- Write for a public reader, not for an internal PR review.
+- Keep the page focused on the case itself, not on which framework it matches.
+- Use the section headings and order exactly as written below.
+- The right sidebar should be `Case Snapshot` only. Do not render a sidebar `Scoreboard`.
+- The hero must include a visible company lockup immediately after `case-kicker`: `.case-company-lockup`, `.case-company-icon`, and `.case-company-name`.
+- If a verified local logo asset exists, place the `<img>` inside `.case-company-icon`; otherwise use `.case-company-icon case-company-icon--text` with a short 2-3 character company initial fallback.
+- Do not include a separate `Framework Links` section.
+- Do not include a separate `Transferable principle` or callout box.
+- Do not add extra “why this belongs in EVAC/Marketing” explanation on the page.
+- Primary sources must use APA-style reference entries.
+- The key analytical sentence in each major section should be bolded inline.
+
+## Required Section Order
+
+Every pricing case page should follow this order:
+
+1. `Case Claim`
+2. `Tier Ladder Analysis`
+3. `Mechanism Summary`
+4. `Target Buyer Inference`
+5. `Decision Friction`
+6. `Exposure and Risk Logic`
+7. `Logic Flaw and Vulnerability` or `Logic Flaw, Vulnerability, and Strategic Opportunity`
+8. `Primary Sources`
+
+If a visual helps, place the pricing-page screenshot inside the pricing section rather than creating a separate standalone section.
+
+## Writing Rules By Section
+
+### 1. Case Claim
+
+- Open with the most important analytical claim.
+- The strongest takeaway sentence in the paragraph should be in `<strong>...</strong>`.
+- Do not add a separate principle box below it.
+
+### 2. Tier Ladder Analysis
+
+- Analyze the visible tier ladder and what matters commercially.
+- State how many visible tiers exist.
+- Explain the likely target buyer for each tier.
+- Name how each tier is labeled on the page.
+- Identify the anchor price for each tier when public pricing is shown.
+- State the price gap between tiers when the math is visible.
+- Explain the value-add argument used to push buyers upward.
+- Include the screenshot and a short caption if useful.
+- Bold the sentence that explains why the ladder matters.
+
+### 3. Mechanism Summary
+
+- Explain the mechanism in plain language.
+- Bold the sentence that states what the real mechanism is.
+
+### 4. Target Buyer Inference
 
 ## Purpose
 
