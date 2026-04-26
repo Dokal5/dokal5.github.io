@@ -8,6 +8,7 @@
 // - Primary logic fields: pricing_model, key_driver, upgrade_triggers,
 //   primary_component, what_is_monetized, what_changes_the_bill,
 //   who_pays_more_and_why, student_10_second_takeaway.
+// - Contract tracking field: contract_status.
 // - Supporting interpretation fields: mechanism_summary, decision_friction,
 //   logic_flaw, strategic_opportunity.
 // - Supporting interpretation fields help reading and previewing cases,
@@ -175,6 +176,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Teams with more system builders and more governance needs pay more because more users originate and administer the structure."
     },
     student_10_second_takeaway: "The bill changes when more people need to become Doc Makers.",
+    contract_status: "repaired_case_v1",
     consistency_status: "structurally_valid",
     consistency_note: "Manual note: driver_logic is the intended primary component because maker count is the main bill-change mechanism.",
 
