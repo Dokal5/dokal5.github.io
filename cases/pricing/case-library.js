@@ -44,18 +44,18 @@ window.pricingCaseRecords = [
       "The account adds SMS or mobile-message credits",
       "Included send or feature limits no longer fit the reachable audience"
     ],
-    primary_component: "trigger_path",
+    primary_component: "driver_logic",
     what_is_monetized: "The current pool of emailable active profiles, with optional mobile-message usage layered on top.",
-    what_changes_the_bill: "The bill changes when more profiles remain emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
-    who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active.",
+    what_changes_the_bill: "The bill changes when more profiles stay emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
+    who_pays_more_and_why: "Brands with larger reachable audiences and multichannel retention needs pay more because more of the customer graph stays commercially active.",
     decision_core: {
       what_is_monetized: "The current pool of emailable active profiles, with optional mobile-message usage layered on top.",
-      what_changes_the_bill: "The bill changes when more profiles remain emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
-      who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active."
+      what_changes_the_bill: "The bill changes when more profiles stay emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
+      who_pays_more_and_why: "Brands with larger reachable audiences and multichannel retention needs pay more because more of the customer graph stays commercially active."
     },
-    student_10_second_takeaway: "The bill changes when more customer profiles stay emailable, not when total historical data grows.",
+    student_10_second_takeaway: "The bill changes when more customer profiles stay emailable and push the account into a higher active-profile band.",
     consistency_status: "structurally_valid",
-    consistency_note: "Manual note: trigger_path is the intended primary component because threshold movement across active-profile bands is the main bill-change mechanism.",
+    consistency_note: "Manual note: driver_logic is the intended primary component because emailable active-profile count is the dominant bill-change variable, while band thresholds and mobile messaging are supporting layers.",
 
     // Supporting interpretation, not primary logic
     mechanism_summary: "Klaviyo does not mainly monetize total stored customer records or only explicit subscribers. It monetizes the current pool of emailable profiles, then layers monthly email-send limits and optional mobile credits on top of that reachable audience boundary.",
