@@ -1,17 +1,25 @@
-// Public-page note:
-// The case pages should stay concise and should not render every field below.
-// Use this file as the structured data layer for sorting, archive summaries,
-// and future automation support.
+// Pricing case index note:
+// This file is a lightweight index layer for sorting, filtering, previewing,
+// and automation support across pricing cases.
+// It is not the canonical Layer 1 JSON source of truth.
+// Full analytical structure belongs in case-specific *-layer1.md files.
 //
 // Field rule:
-// - Core page-copy fields: title, company, industry, market, reviewed_at,
-//   mechanism_type, pricing_page_url, screenshot_url, mechanism_summary,
-//   target_buyer_inference, decision_friction, exposure_logic, logic_flaw,
-//   strategic_opportunity, source_urls, page_path.
+// - Primary logic fields: pricing_model, key_driver, upgrade_triggers,
+//   primary_component, what_is_monetized, what_changes_the_bill,
+//   who_pays_more_and_why, student_10_second_takeaway.
+// - Supporting interpretation fields: mechanism_summary, decision_friction,
+//   logic_flaw, strategic_opportunity.
+// - Supporting interpretation fields help reading and previewing cases,
+//   but they are not the primary source of system logic decisions.
+// - Consistency fields: consistency_status, consistency_note.
+//   Use "flag" for structural index issues.
+//   The validator confirms structural readiness only.
+//   It checks required fields, decision_core presence, and canonical
+//   primary_component tokens only.
+//   It does not prove analytical correctness or component-selection quality.
 // - Metadata-only fields: framework_tags, scoring fields, verdict,
 //   transferable_principle.
-// - Metadata-only fields may stay in the record for automation and review,
-//   but they do not need to appear on the public page.
 window.pricingCaseRecords = [
   {
     // Identity
@@ -27,6 +35,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://www.klaviyo.com/pricing/",
     screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://www.klaviyo.com/pricing/",
     pricing_surface: "Klaviyo publicly presents Free, Email, and Email + mobile messages, but the actual billing trigger sits underneath those plan names in active-profile bands. Any profile that can be emailed counts toward the email base plan, while suppressed profiles remain stored in the account but stop counting toward the bill.",
+
+    // Structured pricing logic
+    pricing_model: "Active-profile band pricing with send limits and optional mobile-message credits",
+    key_driver: "Count of emailable active profiles",
+    upgrade_triggers: [
+      "Emailable active profiles cross the current pricing band",
+      "The account adds SMS or mobile-message credits",
+      "Included send or feature limits no longer fit the reachable audience"
+    ],
+    primary_component: "trigger_path",
+    what_is_monetized: "The current pool of emailable active profiles, with optional mobile-message usage layered on top.",
+    what_changes_the_bill: "The bill changes when more profiles remain emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
+    who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active.",
+    decision_core: {
+      what_is_monetized: "The current pool of emailable active profiles, with optional mobile-message usage layered on top.",
+      what_changes_the_bill: "The bill changes when more profiles remain emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
+      who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active."
+    },
+    student_10_second_takeaway: "The bill changes when more customer profiles stay emailable, not when total historical data grows.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: trigger_path is the intended primary component because threshold movement across active-profile bands is the main bill-change mechanism.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Klaviyo does not mainly monetize total stored customer records or only explicit subscribers. It monetizes the current pool of emailable profiles, then layers monthly email-send limits and optional mobile credits on top of that reachable audience boundary.",
     target_buyer_inference: "The structure is best suited to ecommerce and lifecycle marketing teams that want one persistent customer graph but are willing to actively manage who remains emailable as the brand grows.",
     decision_friction: "The buyer has to manage audience hygiene as a billing task. Checkout-captured addresses can count even without explicit signup, suppressed profiles are free, and crossing an active-profile band can force a move to a profile-compliant plan on the next billing cycle.",
@@ -65,6 +96,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://zapier.com/pricing",
     screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://zapier.com/pricing",
     pricing_surface: "Zapier publicly presents Free, Professional, Team, and Enterprise plans with a task selector that ranges from 100 tasks per month to custom volume bands. The visible plan ladder matters, but the real billing boundary sits underneath it: successful action steps consume tasks, Free limits users to two-step Zaps, certain built-in tools do not consume tasks, and pay-per-task billing can keep workflows running after the included allowance is exhausted.",
+
+    // Structured pricing logic
+    pricing_model: "Task-metered automation pricing with tier packaging and automatic overages",
+    key_driver: "Successful action steps consumed per month",
+    upgrade_triggers: [
+      "Monthly task volume exceeds the included allowance",
+      "The workflow requires more than two-step Zaps or higher-tier features",
+      "The buyer needs team governance or enterprise controls"
+    ],
+    primary_component: "driver_logic",
+    what_is_monetized: "Successful action steps inside live workflows.",
+    what_changes_the_bill: "The bill changes when workflows consume more successful action steps or require higher-tier packaging and governance.",
+    who_pays_more_and_why: "Teams running more workflow volume and more operationally complex automations pay more because more completed work flows through Zapier's meter.",
+    decision_core: {
+      what_is_monetized: "Successful action steps inside live workflows.",
+      what_changes_the_bill: "The bill changes when workflows consume more successful action steps or require higher-tier packaging and governance.",
+      who_pays_more_and_why: "Teams running more workflow volume and more operationally complex automations pay more because more completed work flows through Zapier's meter."
+    },
+    student_10_second_takeaway: "The bill changes when live workflows fire more successful action steps.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: driver_logic is the intended primary component because variable task volume is the main bill-change mechanism.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Zapier does not primarily monetize users, integrations, or the number of automations created. It monetizes successful action steps inside live workflows, then uses plan packaging to control what kinds of workflows buyers can build and how safely they can operate them at scale.",
     target_buyer_inference: "The structure is best suited to teams that want broad workflow design freedom and many app connections, but can tolerate budgeting by execution volume rather than by seats or static software access.",
     decision_friction: "The buyer has to forecast workflow architecture and downstream action volume, not just count Zaps or users. Two automations that solve the same business problem can have different costs if one requires more successful action steps, and some internal tools sit outside the meter altogether.",
@@ -102,6 +156,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://coda.io/pricing",
     screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://coda.io/pricing",
     pricing_surface: "Coda presents a Free, Pro, Team, and Enterprise ladder, but the real monetization boundary sits inside the paid tiers: only Doc Makers are billed, while editors and viewers remain free even when they contribute meaningfully inside existing docs.",
+
+    // Structured pricing logic
+    pricing_model: "Maker-billed collaboration pricing with free editors and viewers",
+    key_driver: "Number of paid Doc Makers",
+    upgrade_triggers: [
+      "Another user needs to create docs or pages",
+      "A user needs workspace administration or AI access tied to maker status",
+      "The team needs a higher tier for governance or workspace scale"
+    ],
+    primary_component: "driver_logic",
+    what_is_monetized: "Creation rights and maker-level control inside the workspace.",
+    what_changes_the_bill: "The bill changes when more users need Doc Maker rights or when the workspace moves to a higher governance tier.",
+    who_pays_more_and_why: "Teams with more system builders and more governance needs pay more because more users originate and administer the structure.",
+    decision_core: {
+      what_is_monetized: "Creation rights and maker-level control inside the workspace.",
+      what_changes_the_bill: "The bill changes when more users need Doc Maker rights or when the workspace moves to a higher governance tier.",
+      who_pays_more_and_why: "Teams with more system builders and more governance needs pay more because more users originate and administer the structure."
+    },
+    student_10_second_takeaway: "The bill changes when more people need to become Doc Makers.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: driver_logic is the intended primary component because maker count is the main bill-change mechanism.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Coda does not primarily monetize broad collaboration. It monetizes the right to originate structure, administer the workspace, and access the full paid Doc Maker surface, while keeping downstream participation free to widen adoption.",
     target_buyer_inference: "The structure is best suited to organizations where a small number of builders create systems, templates, and operating docs for a wider population that mainly updates, comments, and collaborates inside those systems.",
     decision_friction: "The buyer has to decide where collaboration ends and creation rights begin: who truly needs to create docs or pages, who can stay a free editor, and when AI use or workspace administration forces a person across the paid boundary.",
@@ -143,6 +220,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://www.intercom.com/pricing",
     screenshot_url: "../../assets/images/cases/intercom-pricing-page.svg",
     pricing_surface: "Intercom publicly presents Essential, Advanced, and Expert helpdesk plans priced per seat, plus a standalone Fin AI Agent offer for existing helpdesks. Across those offers, Fin is priced separately from seats on a per-outcome basis.",
+
+    // Structured pricing logic
+    pricing_model: "Seat-tier helpdesk pricing plus AI outcome metering",
+    key_driver: "Billable Fin outcomes layered on top of paid full seats",
+    upgrade_triggers: [
+      "Fin produces more billable outcomes",
+      "The team adds more paid full seats",
+      "The buyer needs a higher plan for governance, automation, or security"
+    ],
+    primary_component: "driver_logic",
+    what_is_monetized: "Paid support platform capacity plus billable AI outcomes.",
+    what_changes_the_bill: "The bill changes when full seat count rises, plan tier rises, or Fin produces more billable outcomes.",
+    who_pays_more_and_why: "Support teams with more human capacity and more successful AI-handled work pay more because both operating layers expand.",
+    decision_core: {
+      what_is_monetized: "Paid support platform capacity plus billable AI outcomes.",
+      what_changes_the_bill: "The bill changes when full seat count rises, plan tier rises, or Fin produces more billable outcomes.",
+      who_pays_more_and_why: "Support teams with more human capacity and more successful AI-handled work pay more because both operating layers expand."
+    },
+    student_10_second_takeaway: "The bill changes when the team adds more paid seats or Fin handles more billable outcomes.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: driver_logic is the intended primary component because the pricing logic is a hybrid of seat volume and metered outcomes rather than a single threshold event.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Intercom sells the helpdesk on seat tiers, then overlays a second meter for successful AI outcomes. The buyer therefore pays for human operating capacity and for AI-delivered results in parallel rather than choosing one pricing grammar or the other.",
     target_buyer_inference: "The structure targets support organizations that still budget for human teams but want AI to scale independently of seat count. It also targets companies that want Intercom's AI layer without changing their existing helpdesk stack.",
     decision_friction: "The main friction is forecasting and governance. Buyers must estimate seat count, outcome volume, and which AI actions will be billed, while also accepting that usage limits are managed operationally rather than converted into a perfectly fixed spend line.",
@@ -181,6 +281,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://slack.com/pricing/",
     screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://slack.com/pricing/",
     pricing_surface: "Slack publicly presents a Free, Pro, Business+, and Enterprise+ ladder, but the paid self-serve economics are shaped by active-member billing, a 28-day activity window, free single-channel guests, and prorated credits when members go inactive.",
+
+    // Structured pricing logic
+    pricing_model: "Active-member billing with tier packaging, guest carve-outs, and inactivity credits",
+    key_driver: "Count of active members in the billing window",
+    upgrade_triggers: [
+      "More members become active within the 28-day billing window",
+      "Guest access no longer fits the collaboration pattern",
+      "The buyer needs Business+ or Enterprise governance"
+    ],
+    primary_component: "driver_logic",
+    what_is_monetized: "Active participation inside the workspace rather than every provisioned account.",
+    what_changes_the_bill: "The bill changes when more members count as active in the billing window or when the buyer moves into a higher governance tier.",
+    who_pays_more_and_why: "Organizations with more habitual active participation and stronger control needs pay more because more of the operating graph becomes billable.",
+    decision_core: {
+      what_is_monetized: "Active participation inside the workspace rather than every provisioned account.",
+      what_changes_the_bill: "The bill changes when more members count as active in the billing window or when the buyer moves into a higher governance tier.",
+      who_pays_more_and_why: "Organizations with more habitual active participation and stronger control needs pay more because more of the operating graph becomes billable."
+    },
+    student_10_second_takeaway: "The bill changes when more people are active often enough to count in Slack's billing window.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: driver_logic is the intended primary component because active-member count is the main bill-change mechanism.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Slack does not fully monetize provisioned accounts. It monetizes active participation inside the workspace, then widens the collaboration surface with guest-role carve-outs and inactivity credits so adoption can spread before every marginal participant becomes a full billable member.",
     target_buyer_inference: "The structure is best suited to organizations with uneven participation, contractor or partner access, and internal resistance to paying full-seat prices for everyone who might need visibility.",
     decision_friction: "The buyer must predict who will count as active over a 28-day window, decide when someone should be a full member versus a guest, and manage the fact that even light participation can flip a person back into billable status.",
@@ -219,6 +342,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://webflow.com/pricing",
     screenshot_url: "../../assets/images/cases/webflow-pricing-page.png",
     pricing_surface: "Webflow makes the buyer pay along three separate surfaces: a Site plan is required to publish each site, Workspace plans expand staging and collaboration controls across a portfolio, and seat types determine what each collaborator can do inside the Workspace.",
+
+    // Structured pricing logic
+    pricing_model: "Per-site publishing pricing plus workspace governance and role-seat pricing",
+    key_driver: "Which paid surface is activated: site plan, workspace tier, and paid seat role",
+    upgrade_triggers: [
+      "A new published site requires its own Site plan",
+      "The workspace needs higher collaboration or governance controls",
+      "A collaborator moves into a paid full or limited seat role"
+    ],
+    primary_component: "matrix",
+    what_is_monetized: "Live sites, workspace governance, and collaborator permission depth.",
+    what_changes_the_bill: "The bill changes when the buyer adds or upgrades a site plan, upgrades the workspace layer, or moves collaborators into paid seat roles.",
+    who_pays_more_and_why: "Teams with more live sites, more governance needs, and more high-permission collaborators pay more because more paid surfaces are activated.",
+    decision_core: {
+      what_is_monetized: "Live sites, workspace governance, and collaborator permission depth.",
+      what_changes_the_bill: "The bill changes when the buyer adds or upgrades a site plan, upgrades the workspace layer, or moves collaborators into paid seat roles.",
+      who_pays_more_and_why: "Teams with more live sites, more governance needs, and more high-permission collaborators pay more because more paid surfaces are activated."
+    },
+    student_10_second_takeaway: "The bill changes when Webflow activates more paid surfaces: sites, workspace governance, or paid collaborator roles.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: matrix is the intended primary component because multiple paid surfaces jointly determine the bill rather than one continuous variable alone.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Webflow does not bundle build, publish, and collaborate into one software seat. It monetizes the live site at the asset level, monetizes staging and governance at the Workspace level, and monetizes role intensity again through full, limited, and free reviewer seats.",
     target_buyer_inference: "The structure targets buyers who manage websites as operating assets rather than one-off projects: in-house marketing and web teams with multiple stakeholders, plus agencies and freelancers who need client collaboration without giving every participant full design access.",
     decision_friction: "The buyer has to solve three separate commercial questions before the bill feels intelligible: which Site plan each published property needs, whether the Workspace needs higher collaboration controls, and which collaborators deserve full, limited, or free reviewer access.",
@@ -257,6 +403,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://www.figma.com/pricing/",
     screenshot_url: "../../assets/images/cases/figma-pricing-page.png",
     pricing_surface: "Figma publicly separates paid access into Full, Dev, and Collab seats, alongside free View access. Each seat type is tied to a different point in the design-to-build workflow rather than simple per-user uniformity.",
+
+    // Structured pricing logic
+    pricing_model: "Role-based seat pricing across plan tiers",
+    key_driver: "Mix of paid seat types inside the selected plan",
+    upgrade_triggers: [
+      "A user needs to move from View into Collab, Dev, or Full access",
+      "More creators or builders need paid seats",
+      "The account needs a higher plan for stronger governance or security"
+    ],
+    primary_component: "matrix",
+    what_is_monetized: "Workflow responsibility through paid seat roles.",
+    what_changes_the_bill: "The bill changes when the mix of Full, Dev, and Collab seats changes or when the account moves into a higher plan tier.",
+    who_pays_more_and_why: "Organizations with more creators, more handoff users, and more governance needs pay more because more workflow responsibility becomes paid.",
+    decision_core: {
+      what_is_monetized: "Workflow responsibility through paid seat roles.",
+      what_changes_the_bill: "The bill changes when the mix of Full, Dev, and Collab seats changes or when the account moves into a higher plan tier.",
+      who_pays_more_and_why: "Organizations with more creators, more handoff users, and more governance needs pay more because more workflow responsibility becomes paid."
+    },
+    student_10_second_takeaway: "The bill changes when more users move into higher-responsibility paid seat roles.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: matrix is the intended primary component because paid seat role and plan tier interact to determine the bill.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "Figma monetizes workflow position, not just headcount. Full seats pay for creation and system ownership, Dev seats pay for advanced handoff and implementation inspection, Collab seats pay for lighter workshop and collaboration access, and View access stays free to widen network participation.",
     target_buyer_inference: "The structure targets organizations where many people touch product work but not all of them create design assets. It is especially well suited to teams that need broad visibility but want to reserve expensive seats for design owners and higher-intensity builders.",
     decision_friction: "The buying friction shifts from list price to seat classification. The buyer must decide who is really a creator, who is a builder, who only collaborates occasionally, and when a lower-cost seat starts to feel artificially restrictive.",
@@ -295,6 +464,29 @@ window.pricingCaseRecords = [
     pricing_page_url: "https://basecamp.com/pricing/",
     screenshot_url: "../../assets/images/cases/basecamp-pricing-page.png",
     pricing_surface: "Basecamp presents three price surfaces: a free one-project tier, a Plus plan at $15 per employee per month with free guests and contractors, and a Pro Unlimited plan at $299 per month billed annually or $349 month-to-month for unlimited users plus bundled upgrades.",
+
+    // Structured pricing logic
+    pricing_model: "Per-employee pricing plus flat organization cap",
+    key_driver: "Employee count until the flat-cap crossover becomes attractive",
+    upgrade_triggers: [
+      "Employee count or collaborator sprawl makes the capped plan economically superior",
+      "The buyer wants to remove seat-count anxiety",
+      "The buyer values the bundled upgrades in Pro Unlimited"
+    ],
+    primary_component: "trigger_path",
+    what_is_monetized: "Employee participation on the smaller plan and account-wide rollout on the capped plan.",
+    what_changes_the_bill: "The bill changes when employee count rises on Plus or when the buyer crosses into the flat Pro Unlimited plan.",
+    who_pays_more_and_why: "Smaller teams pay more as employee count rises, while fast-growing organizations pay the higher flat cap to remove headcount debates and unlock broad rollout.",
+    decision_core: {
+      what_is_monetized: "Employee participation on the smaller plan and account-wide rollout on the capped plan.",
+      what_changes_the_bill: "The bill changes when employee count rises on Plus or when the buyer crosses into the flat Pro Unlimited plan.",
+      who_pays_more_and_why: "Smaller teams pay more as employee count rises, while fast-growing organizations pay the higher flat cap to remove headcount debates and unlock broad rollout."
+    },
+    student_10_second_takeaway: "The bill changes when employee count rises enough that the flat-cap plan becomes the better pricing path.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: trigger_path is the intended primary component because the key teaching moment is the crossover from per-employee pricing to a flat organizational cap.",
+
+    // Supporting interpretation, not primary logic
     mechanism_summary: "The offer deliberately splits between per-employee pricing for smaller teams and a capped organizational price for fast-growing buyers, while still protecting monetization with flat add-ons and annual billing on the capped plan.",
     target_buyer_inference: "The capped plan is aimed at buyers whose coordination costs rise faster than their willingness to manage seat-count debates: agencies, client-facing teams, and growing organizations with many occasional users or external collaborators.",
     decision_friction: "The biggest friction is not feature comprehension but package crossover: buyers have to judge when flat pricing beats pay-per-user, whether annual prepayment is acceptable, and whether bundled upgrades are worth paying for before usage is fully proven.",
@@ -319,3 +511,79 @@ window.pricingCaseRecords = [
     transferable_principle: "When incremental user cost is low and collaboration breadth drives adoption, cap organizational price to remove headcount anxiety and monetize account-wide rollout."
   }
 ];
+
+(function validatePricingCaseRecords() {
+  const allowedPrimaryComponents = new Set([
+    "tier_ladder",
+    "matrix",
+    "driver_logic",
+    "trigger_path",
+    "value_extraction_map"
+  ]);
+
+  const requiredLogicFields = [
+    "pricing_model",
+    "key_driver",
+    "upgrade_triggers",
+    "primary_component",
+    "what_is_monetized",
+    "what_changes_the_bill",
+    "who_pays_more_and_why",
+    "student_10_second_takeaway"
+  ];
+
+  const requiredDecisionCoreFields = [
+    "what_is_monetized",
+    "what_changes_the_bill",
+    "who_pays_more_and_why"
+  ];
+
+  window.pricingCaseRecords = window.pricingCaseRecords.map(function (record) {
+    const issues = [];
+    const missingFields = requiredLogicFields.filter(function (field) {
+      const value = record[field];
+      if (Array.isArray(value)) {
+        return value.length === 0;
+      }
+      return typeof value !== "string" || value.trim() === "";
+    });
+
+    if (missingFields.length) {
+      issues.push("Missing required pricing logic fields: " + missingFields.join(", ") + ".");
+    }
+
+    if (!record.primary_component || String(record.primary_component).trim() === "") {
+      issues.push("primary_component must not be empty.");
+    }
+
+    if (!allowedPrimaryComponents.has(record.primary_component)) {
+      issues.push("Invalid primary_component: " + String(record.primary_component) + ".");
+    }
+
+    if (!Array.isArray(record.upgrade_triggers) || record.upgrade_triggers.length === 0) {
+      issues.push("upgrade_triggers must be a non-empty array.");
+    }
+
+    if (!record.decision_core || typeof record.decision_core !== "object") {
+      issues.push("decision_core must exist.");
+    } else {
+      const missingDecisionCoreFields = requiredDecisionCoreFields.filter(function (field) {
+        const value = record.decision_core[field];
+        return typeof value !== "string" || value.trim() === "";
+      });
+
+      if (missingDecisionCoreFields.length) {
+        issues.push("Missing decision_core fields: " + missingDecisionCoreFields.join(", ") + ".");
+      }
+    }
+
+    if (issues.length) {
+      return Object.assign({}, record, {
+        consistency_status: "flag",
+        consistency_note: issues.join(" ")
+      });
+    }
+
+    return record;
+  });
+}());

@@ -1,137 +1,123 @@
-# Pricing Case Template
+# Pricing Case JSON Schema
 
-This file is the working template and quality standard for new pages added under `cases/pricing/`.
+This file defines the canonical structured JSON schema for pricing cases.
+
+Use this file for case-data shape only. Layer 1 workflow belongs in `CASE_LAYER1_SCHEMA.md`. Public page order and section behavior belong in `CASE_TEMPLATE.html`.
 
 ## Purpose
 
-Each case should do three things clearly:
+The schema should make the pricing mechanism explicit enough that a page, visualization, simulator, or future automation can render the case without inferring the core logic from prose.
 
-1. Show how the pricing structure actually works.
-2. Explain where the buying friction or strategic weakness sits.
-3. Leave the reader with a reusable commercial takeaway.
+The canonical case JSON must answer:
 
-The page should stay abstract and teachable. It is not a dump of research notes, framework mapping, or internal review commentary.
+1. what is monetized
+2. what changes the bill
+3. who pays more and why
 
-## Public Page Rules
+The required shape below matches the hidden JSON contract already embedded in `CASE_TEMPLATE.html`.
 
-For every published case page:
+## Required Shape
 
-- Write for a public reader, not for an internal PR review.
-- Keep the page focused on the case itself, not on which framework it matches.
-- Use the section headings and order exactly as written below.
-- The right sidebar should be `Case Snapshot` only. Do not render a sidebar `Scoreboard`.
-- Do not include a separate `Framework Links` section.
-- Do not include a separate `Transferable principle` or callout box.
-- Do not add extra “why this belongs in EVAC/Marketing” explanation on the page.
-- Primary sources must use APA-style reference entries.
-- The key analytical sentence in each major section should be bolded inline.
+```json
+{
+  "case_id": "",
+  "case_type": "saas | retail | subscription | marketplace | service | hardware | restaurant | logistics | other",
+  "evidence_level": "observed | inferred | hypothesized",
+  "pricing_model": "",
+  "value_metric": "",
+  "segmentation_type": "",
+  "tiers": [],
+  "segments": [],
+  "pricing_logic": "",
+  "key_driver": "",
+  "drivers": [],
+  "formula": "",
+  "upgrade_triggers": [],
+  "visualization": {},
+  "primary_component": "tier_ladder | matrix | driver_logic | trigger_path | value_extraction_map",
+  "decision_core": {
+    "what_is_monetized": "",
+    "what_changes_the_bill": "",
+    "who_pays_more_and_why": ""
+  },
+  "student_10_second_takeaway": "",
+  "friction_points": [],
+  "risks": [],
+  "structural_weakness": "",
+  "strategic_insight": ""
+}
+```
 
-## Required Section Order
+## Field Rules
 
-Every pricing case page should follow this order:
+- `decision_core` is required. Do not make the renderer infer the three pricing answers from tiers, segments, or narrative copy.
+- `key_driver` must name the variable or pricing classification that most directly changes the bill.
+- `drivers` must explain the strategic role of each pricing variable, not just name the variable.
+- `formula` is required. It may be represented as a concise expression string or a structured object, but it must distinguish direct bill drivers from higher-level drivers that set parameters. Do not treat parameter-setting drivers such as plan tier as fixed constants when they determine prices inside the formula.
+- `upgrade_triggers` must name the conditions that move a buyer into a higher payment level, tighter governance tier, or more expensive pricing classification.
+- `primary_component` must use exactly one canonical token:
+  - `tier_ladder`
+  - `matrix`
+  - `driver_logic`
+  - `trigger_path`
+  - `value_extraction_map`
+- `primary_component` must match the mechanism logic, not the visible marketing layout.
+- `visualization.primary_component` must match `primary_component` when both are present.
+- `student_10_second_takeaway` should tell a learner what changes the bill in one sentence.
+- `friction_points`, `risks`, and `strategic_insight` support teaching and critique, but they do not replace `decision_core`, `key_driver`, `drivers`, `formula`, or `upgrade_triggers`.
 
-1. `Case Claim`
-2. `Tier Ladder Analysis`
-3. `Mechanism Summary`
-4. `Target Buyer Inference`
-5. `Decision Friction`
-6. `Exposure and Risk Logic`
-7. `Logic Flaw and Vulnerability` or `Logic Flaw, Vulnerability, and Strategic Opportunity`
-8. `Primary Sources`
+## Recommended Detail Shapes
 
-If a visual helps, place the pricing-page screenshot inside the pricing section rather than creating a separate standalone section.
-
-## Writing Rules By Section
-
-### 1. Case Claim
-
-- Open with the most important analytical claim.
-- The strongest takeaway sentence in the paragraph should be in `<strong>...</strong>`.
-- Do not add a separate principle box below it.
-
-### 2. Tier Ladder Analysis
-
-- Analyze the visible tier ladder and what matters commercially.
-- State how many visible tiers exist.
-- Explain the likely target buyer for each tier.
-- Name how each tier is labeled on the page.
-- Identify the anchor price for each tier when public pricing is shown.
-- State the price gap between tiers when the math is visible.
-- Explain the value-add argument used to push buyers upward.
-- Include the screenshot and a short caption if useful.
-- Bold the sentence that explains why the ladder matters.
-
-### 3. Mechanism Summary
-
-- Explain the mechanism in plain language.
-- Bold the sentence that states what the real mechanism is.
-
-### 4. Target Buyer Inference
-
-- State who this structure is really for.
-- If using bullets, each bullet must have a clear label and interpretation.
-- Bold the most decision-relevant inference.
-
-### 5. Decision Friction
-
-- Explain where the buyer has to think, classify, estimate, or hesitate.
-- Bold the sentence that names the main friction.
-
-### 6. Exposure and Risk Logic
-
-- Explain what risk the company takes on by pricing this way.
-- Bold the sentence that names the core exposure.
-
-### 7. Logic Flaw / Vulnerability / Strategic Opportunity
-
-- Name the weakness clearly.
-- Explain why that weakness matters.
-- End with the strategic opening created by the weakness.
-- Bold the sentence that identifies the core flaw or the key strategic conclusion.
-
-### 8. Primary Sources
-
-- Use APA-style entries only.
-- Use organization name as author when no individual author is shown.
-- Include retrieval date and full URL.
-- Example format:
-  - `<cite>Figma.</cite> (n.d.). <a href="...">Plans & pricing</a>. Retrieved April 22, 2026, from <a href="...">https://...</a>`
-
-## Things To Remove From Old Drafts
-
-If you are revising an older case, remove these elements when present:
-
-- sidebar `Scoreboard`
-- `Framework Links`
-- `Transferable principle` callout panels
-- PR-style evaluation commentary written for merge decisions
-- repetitive framework tags inside the body
-
-## Metadata Rules
-
-The case record in `case-library.js` may still keep structured metadata for internal sorting and future automation, including:
-
-- `framework_tags[]`
-- scoring fields
-- `verdict`
-- `transferable_principle`
-
-But those fields do not all need to be rendered on the public page.
+```json
+{
+  "drivers": [
+    {
+      "driver": "",
+      "type": "seat | role | usage | volume | asset | outcome | commitment | add_on",
+      "pricing_role": "base_charge | variable_charge | multiplier | threshold | discount | cap | zero_price_layer | access",
+      "direction": "increase_revenue | reduce_cost | segment_users | enforce_upgrade | reduce_friction | improve_adoption",
+      "effect": "",
+      "student_label": ""
+    }
+  ],
+  "formula": {
+    "expression": "",
+    "variables": [
+      {
+        "symbol": "",
+        "label": "",
+        "maps_to_driver": ""
+      }
+    ],
+    "output_label": "",
+    "explanation": ""
+  },
+  "upgrade_triggers": [
+    {
+      "trigger": "",
+      "from": "",
+      "to": "",
+      "why_it_happens": "",
+      "pricing_effect": ""
+    }
+  ],
+  "visualization": {
+    "primary_component": "tier_ladder | matrix | driver_logic | trigger_path | value_extraction_map",
+    "supporting_components": [],
+    "interactive_controls": [],
+    "default_view": "",
+    "student_prompt": ""
+  }
+}
+```
 
 ## Acceptance Gate
 
-A case is ready for the live site only if:
+A pricing case JSON object is complete only if:
 
-- it has at least 2 public primary sources
-- the argument is analytically reusable
-- the section structure matches this template
-- the body has been cleaned of framework-justification sections and principle callout boxes
-- the references are in APA-style format
-
-## Automation Rule
-
-Any future automation or manual drafting flow should generate copy in this exact public-facing shape first, then store extra scoring or framework metadata only in the data layer if needed.
-
-## HTML Starter
-
-Use `cases/pricing/CASE_TEMPLATE.html` as the copyable starting point for any new published pricing case page.
+- `decision_core` is explicitly filled
+- `key_driver` is explicit
+- `drivers` and `formula` can support the chosen mechanism
+- `upgrade_triggers` explain how payment level changes
+- `primary_component` matches the mechanism logic
+- the structure can support both a public page and system use

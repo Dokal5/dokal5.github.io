@@ -11,6 +11,68 @@
 </head>
 <body>
 
+<!--
+Pricing Case Public Page Template
+
+This file is the canonical public-page template for pricing cases under cases/pricing/.
+Use CASE_LAYER1_SCHEMA.md, CASE_SCHEMA.md, COMPONENT_LIBRARY.md, and the case-specific Layer 1 file as the source inputs.
+
+Public page rules:
+- The page is not a pricing description.
+- The page is a tool to understand what changes the bill.
+- Core Insight must appear before detailed architecture.
+- Do not reorder the teaching sequence. Insight must come before Logic, Logic before Mechanism, Mechanism before Architecture, Architecture before Tension, and Tension before Opportunity.
+- The key driver, mechanism, architecture, and tension must be consistent across the page.
+- If different sections imply different drivers or upgrade logic, the case is invalid.
+- Pricing Logic Deconstruction must explicitly answer: "The bill changes when _____."
+- Pricing Logic Deconstruction must identify:
+  1. key driver
+  2. whether pricing scales continuously or through thresholds
+  3. main upgrade condition
+- The Mechanism Logic section must use exactly one primary component from COMPONENT_LIBRARY.md.
+- Exactly one primary component must be selected and rendered.
+- Do not allow multiple mechanism types on the same page.
+- Do not replace the mechanism with text-only explanation.
+- The primary component must be rendered visually, not described.
+- The primary component must show how the bill changes.
+- The primary component must include structured elements such as tiers, axes, variables, or thresholds.
+- A placeholder or empty container is not valid.
+- If no component is rendered, the case is invalid.
+- Allowed primary components:
+  1. tier_ladder
+  2. matrix
+  3. driver_logic
+  4. trigger_path
+  5. value_extraction_map
+- Pricing Architecture should describe structure only:
+  1. tiers
+  2. segmentation
+  3. drivers
+  4. upgrade triggers
+- Pricing Architecture must not explain value capture logic.
+- Do not turn the page into a feature comparison.
+- Do not add long narrative setup.
+- Do not add a separate transferable-principle callout.
+- Do not render a visible Case Snapshot.
+- Keep the embedded JSON schema inside:
+  <script type="application/json" id="pricing-case-schema"> ... </script>
+- Decision Tension must be caused by pricing structure.
+- Each tension must link back to a driver, segmentation rule, or upgrade trigger.
+- Do not include general UX complaints, design complaints, or product complaints unless they are directly caused by pricing structure.
+
+Required public section order:
+1. Pricing Page Visual
+2. Core Insight
+3. Pricing Logic Deconstruction
+4. Pricing Matrix / Mechanism Logic
+5. Pricing Architecture
+6. Decision Tension Layer
+7. Optional Simulator
+8. Strategic Opportunity
+9. References
+10. Hidden JSON Schema
+-->
+
 <div class="layout">
 
   <aside class="sidebar">
@@ -33,126 +95,257 @@
 
   <main class="main">
     <div class="page-header case-hero">
-      <a class="back-link" href="index.html">← Back to Pricing Cases</a>
+      <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
       <div class="case-kicker">Pricing Case</div>
       <div class="case-company-lockup">
-        <div class="case-company-icon" aria-label="[Company Name] logo">
-          <img src="../../assets/images/cases/[company-logo-file]" alt="[Company Name] logo">
-        </div>
+        <div class="case-company-icon case-company-icon--text" aria-label="[Company Name] icon">[IN]</div>
         <div class="case-company-meta">
           <div class="case-company-name">[Company Name]</div>
         </div>
       </div>
       <h1>[Case Title]</h1>
       <p class="lead">
-        [One short paragraph introducing the company, what the pricing structure does, and why the case matters.]
+        [One sentence naming the pricing architecture and the value-capture question.]
       </p>
       <div class="case-tag-row" style="margin-top: 1.2rem;">
-        <span class="case-tag">[Mechanism Type]</span>
+        <span class="case-tag">[Tier layer]</span>
+        <span class="case-tag">[Segmentation layer]</span>
+        <span class="case-tag">[Value metric]</span>
       </div>
     </div>
 
     <div class="case-detail-layout">
       <div class="content-body">
-        <section class="section">
-          <h2>Case Claim</h2>
-          <p>
-            [Open with the core analytical point.] <strong>[Bold the most important takeaway sentence in the section.]</strong> [Then complete the explanation in plain language.]
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Tier Ladder Analysis</h2>
-          <p>
-            [State how many visible tiers exist and why the ladder matters.] <strong>[Bold the sentence that explains the commercial purpose of the ladder.]</strong>
-          </p>
-          <ul class="case-structure-list">
-            <li><strong>Tier count:</strong> [How many visible tiers are on the page, including free or enterprise/contact-sales tiers if relevant.]</li>
-            <li><strong>Target buyer by tier:</strong> [Who each tier seems to be for.]</li>
-            <li><strong>Tier labels:</strong> [How the company names each tier on the page.]</li>
-            <li><strong>Anchor prices:</strong> [The public starting price or anchor price for each tier.]</li>
-            <li><strong>Price gaps:</strong> [The visible step-up difference between adjacent tiers.]</li>
-            <li><strong>Value-add argument:</strong> [What extra capability, control, or buyer outcome is used to justify moving up.]</li>
-          </ul>
+        <section class="section case-framework-section" data-case-section="pricing-page-visual">
+          <div class="case-section-label">01 / Pricing Page Visual</div>
+          <h2>Pricing Page Visual</h2>
           <div class="case-visual-card">
-            <img src="[Screenshot URL]" alt="Screenshot of the pricing page">
+            <img src="[Screenshot URL]" alt="Screenshot of the [Company Name] pricing page">
             <div class="case-visual-body">
-              <div class="case-visual-label">Pricing Page Visual</div>
-              <p>[One short caption explaining what the screenshot helps the reader notice.]</p>
+              <div class="case-visual-label">Pricing artifact</div>
+              <p>[Insert original pricing page screenshot or reconstructed visual based on verified public information.]</p>
+              <p>[One short caption pointing to the pricing mechanism the reader should notice before scrolling. Do not describe UI design.]</p>
               <p><a class="case-link" href="[Pricing Page URL]">Open live pricing page</a></p>
             </div>
           </div>
         </section>
 
-        <section class="section">
-          <h2>Mechanism Summary</h2>
-          <p>
-            [Explain the mechanism plainly.] <strong>[Bold the sentence that states what the real mechanism is.]</strong>
+        <section class="section case-framework-section" data-case-section="core-insight">
+          <div class="case-section-label">02 / Core Insight</div>
+          <h2>Core Insight</h2>
+          <!--
+          Enforcement:
+          - Insight 1 must map to decision_core.what_is_monetized.
+          - Insight 2 must map to decision_core.what_changes_the_bill.
+          - Insight 3 must map to decision_core.who_pays_more_and_why.
+          - Do not use generic, descriptive, or thematic insights.
+          -->
+          <div class="case-layer1-insight-box">
+            <ul>
+              <li>[Insight 1 aligned with decision_core.what_is_monetized. Do not use a generic insight.]</li>
+              <li>[Insight 2 aligned with decision_core.what_changes_the_bill. Do not use a generic insight.]</li>
+              <li>[Insight 3 aligned with decision_core.who_pays_more_and_why. Do not use a generic insight.]</li>
+            </ul>
+          </div>
+          <p class="case-section-brief">
+            Monetized: [decision_core.what_is_monetized] &middot; Bill changes: [decision_core.what_changes_the_bill] &middot; Higher payers: [decision_core.who_pays_more_and_why]
           </p>
         </section>
 
-        <section class="section">
-          <h2>Target Buyer Inference</h2>
-          <p>
-            [State who the structure is really for.] <strong>[Bold the most decision-relevant inference.]</strong>
+        <section class="section case-framework-section" data-case-section="pricing-logic-deconstruction">
+          <div class="case-section-label">03 / Pricing Logic Deconstruction</div>
+          <h2>Pricing Logic Deconstruction</h2>
+          <!--
+          Enforcement:
+          - This section is invalid if it does not state "The bill changes when _____."
+          - Name the key driver, scaling logic, and upgrade trigger explicitly.
+          - Do not allow vague explanations of pricing.
+          -->
+          <p class="case-claim-statement">
+            The bill changes when [key driver / behavior / threshold condition].
+          </p>
+          <div class="case-answer-grid">
+            <div class="case-answer-card">
+              <span>Key driver</span>
+              <strong>[Driver]</strong>
+              <p>[Short explanation of the variable or condition that most directly changes the bill.]</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Scaling logic</span>
+              <strong>[Continuous | Threshold | Hybrid]</strong>
+              <p>[State whether spend grows continuously, through discrete thresholds, or through both.]</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Main upgrade condition</span>
+              <strong>[Upgrade trigger]</strong>
+              <p>[Name the condition that pushes the buyer into a higher payment level.]</p>
+            </div>
+          </div>
+          <p class="case-section-brief">
+            [Plain explanation of what changes the bill. Do not explain pricing without identifying the key driver, scaling logic, and main upgrade condition.]
           </p>
         </section>
 
-        <section class="section">
-          <h2>Decision Friction</h2>
-          <p>
-            [Explain where the buyer has to estimate, classify, justify, or hesitate.] <strong>[Bold the sentence that names the main friction.]</strong>
+        <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
+          <div class="case-section-label">04 / Pricing Matrix / Mechanism Logic</div>
+          <h2>Pricing Matrix / Mechanism Logic</h2>
+          <!--
+          Enforcement:
+          - Select exactly one primary component.
+          - Render the component visually.
+          - The component must show how the bill changes through structured elements.
+          - The component must map to the key driver and upgrade trigger defined in Pricing Logic Deconstruction.
+          - If the component does not reflect the driver or trigger, the case is invalid.
+          - Do not leave a placeholder or empty shell in a finished case.
+          - If no real component is rendered, the case is invalid.
+          -->
+          <p class="case-section-brief">
+            Primary component: [tier_ladder | matrix | driver_logic | trigger_path | value_extraction_map]
           </p>
+          <p class="case-section-brief">
+            [Render exactly one primary component here. Do not mix mechanism types. Do not replace the mechanism with prose.]
+          </p>
+          <div class="case-mechanism-shell">
+            [Insert exactly one visually rendered primary component from COMPONENT_LIBRARY.md here. It must show how the bill changes with real structured elements such as tiers, axes, variables, or thresholds. If this remains a placeholder, empty shell, or text-only block, the case is invalid.]
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Exposure and Risk Logic</h2>
-          <p>
-            [Explain what risk the company takes on by pricing this way.] <strong>[Bold the sentence that names the core exposure.]</strong>
+        <section class="section case-framework-section" data-case-section="pricing-architecture">
+          <div class="case-section-label">05 / Pricing Architecture</div>
+          <h2>Pricing Architecture</h2>
+          <p class="case-section-brief">
+            [Describe structure only. Do not explain why price changes or describe value capture logic.]
           </p>
+          <div class="case-architecture-grid">
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Tiers</div>
+              <h3>[List tiers]</h3>
+              <div class="case-tier-stack">
+                <div class="case-tier-row">
+                  <span>[Tier]</span>
+                  <strong>[Anchor price]</strong>
+                  <em>[Structural note only]</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>[Tier]</span>
+                  <strong>[Anchor price]</strong>
+                  <em>[Structural note only]</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>[Tier]</span>
+                  <strong>[Anchor price]</strong>
+                  <em>[Structural note only]</em>
+                </div>
+              </div>
+            </div>
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Segmentation</div>
+              <h3>[List segments]</h3>
+              <div class="case-segment-map">
+                <div class="case-segment-row">
+                  <span class="case-variable-token">[Segment]</span>
+                  <p>[How this segment is structurally treated in the pricing model.]</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">[Segment]</span>
+                  <p>[How this segment is structurally treated in the pricing model.]</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">[Segment]</span>
+                  <p>[How this segment is structurally treated in the pricing model.]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-driver-strip">
+            <div>
+              <span>Drivers</span>
+              <strong>[List pricing drivers]</strong>
+            </div>
+            <div>
+              <span>Upgrade triggers</span>
+              <strong>[List upgrade triggers]</strong>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Logic Flaw, Vulnerability, and Strategic Opportunity</h2>
-          <p>
-            <strong>[Bold the sentence that identifies the core flaw.]</strong> [Explain why the flaw matters and where the strategic opening sits.]
+        <section class="section case-framework-section" data-case-section="decision-tension-layer">
+          <div class="case-section-label">06 / Decision Tension Layer</div>
+          <h2>Decision Tension Layer</h2>
+          <!--
+          Enforcement:
+          - Every tension must explicitly name a driver, segmentation rule, or upgrade trigger.
+          - If the cause is not named, remove the tension.
+          - Do not include general UX complaints.
+          -->
+          <p class="case-section-brief">
+            [Show tension caused by pricing structure only. Each tension must explicitly name a driver, segmentation rule, or upgrade trigger. If no cause is named, remove the tension.]
           </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>[Tension point]</strong>
+              <p>[Explain where the buyer must estimate, classify, justify, forecast, or hesitate because of a named driver, segmentation rule, or upgrade trigger.]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>[Tension point]</strong>
+              <p>[Explain where the buyer must estimate, classify, justify, forecast, or hesitate because of a named driver, segmentation rule, or upgrade trigger.]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>[Tension point]</strong>
+              <p>[Explain where the buyer must estimate, classify, justify, forecast, or hesitate because of a named driver, segmentation rule, or upgrade trigger.]</p>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Primary Sources</h2>
+        <section class="section case-framework-section" data-case-section="optional-simulator">
+          <div class="case-section-label">07 / Optional Simulator</div>
+          <h2>Optional Simulator</h2>
+          <!--
+          Remove this entire section if not used.
+          Do not include simulator unless it adds understanding of the pricing mechanism.
+          Default is to remove this section.
+          Do not leave placeholder, empty shell, decorative simulator blocks, or empty simulator containers in a finished case.
+          -->
+          <p class="case-section-brief">
+            [Insert simulator only if useful. Otherwise remove this section.]
+          </p>
+          <!--
+          <div class="case-layer1-simulator">
+            [Insert simulator only when interaction makes the pricing mechanism easier to understand.]
+          </div>
+          -->
+        </section>
+
+        <section class="section case-framework-section" data-case-section="strategic-opportunity">
+          <div class="case-section-label">08 / Strategic Opportunity</div>
+          <h2>Strategic Opportunity</h2>
+          <!--
+          Enforcement:
+          - Each item must imply a concrete pricing move.
+          - Do not allow vague strategic statements.
+          - A reader should be able to see what a competitor or operator would actually change.
+          -->
+          <div class="case-attack-grid">
+            <div>
+              <span>Competitor attack angle</span>
+              <strong>[Actionable pricing move]</strong>
+            </div>
+            <div>
+              <span>Improvement opportunity</span>
+              <strong>[Actionable pricing move]</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
+          <div class="case-section-label">09 / References</div>
+          <h2>References</h2>
           <ul class="case-source-list">
             <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 1]">[Source Title 1]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 1]">[Source URL 1]</a></li>
             <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 2]">[Source Title 2]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 2]">[Source URL 2]</a></li>
           </ul>
         </section>
       </div>
-
-      <aside class="case-panel">
-        <h2>Case Snapshot</h2>
-        <div class="case-meta-list">
-          <div class="case-meta-item">
-            <div class="case-meta-label">Company</div>
-            <div class="case-meta-value">[Company Name]</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Industry</div>
-            <div class="case-meta-value">[Industry]</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Market</div>
-            <div class="case-meta-value">[Market]</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Date reviewed</div>
-            <div class="case-meta-value">[Month Day, Year]</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Verdict</div>
-            <div class="case-meta-value">Accept</div>
-          </div>
-        </div>
-      </aside>
     </div>
   </main>
 
@@ -162,6 +355,37 @@
   </footer>
 
 </div>
+
+<!-- Hidden system data only. Do not render this JSON visibly. Keep it aligned with the page content. -->
+<script type="application/json" id="pricing-case-schema">
+{
+  "case_id": "",
+  "case_type": "",
+  "evidence_level": "",
+  "pricing_model": "",
+  "value_metric": "",
+  "segmentation_type": "",
+  "tiers": [],
+  "segments": [],
+  "pricing_logic": "",
+  "key_driver": "",
+  "drivers": [],
+  "formula": "",
+  "upgrade_triggers": [],
+  "visualization": {},
+  "primary_component": "",
+  "decision_core": {
+    "what_is_monetized": "",
+    "what_changes_the_bill": "",
+    "who_pays_more_and_why": ""
+  },
+  "student_10_second_takeaway": "",
+  "friction_points": [],
+  "risks": [],
+  "structural_weakness": "",
+  "strategic_insight": ""
+}
+</script>
 
 </body>
 </html>
