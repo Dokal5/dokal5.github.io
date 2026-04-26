@@ -15,6 +15,44 @@
 window.pricingCaseRecords = [
   {
     // Identity
+    slug: "klaviyo-active-profile-billing",
+    title: "Klaviyo and active-profile billing inside retention marketing",
+    company: "Klaviyo",
+    industry: "Email and SMS marketing SaaS",
+    market: "Ecommerce and consumer brands running lifecycle marketing across email, SMS, and large customer databases",
+    reviewed_at: "2026-04-26",
+
+    // Public page inputs
+    mechanism_type: "Tier ladder + active-profile billing + suppression-based spend control",
+    pricing_page_url: "https://www.klaviyo.com/pricing/",
+    screenshot_url: "https://image.thum.io/get/width/1400/noanimate/https://www.klaviyo.com/pricing/",
+    pricing_surface: "Klaviyo publicly presents Free, Email, and Email + mobile messages, but the actual billing trigger sits underneath those plan names in active-profile bands. Any profile that can be emailed counts toward the email base plan, while suppressed profiles remain stored in the account but stop counting toward the bill.",
+    mechanism_summary: "Klaviyo does not mainly monetize total stored customer records or only explicit subscribers. It monetizes the current pool of emailable profiles, then layers monthly email-send limits and optional mobile credits on top of that reachable audience boundary.",
+    target_buyer_inference: "The structure is best suited to ecommerce and lifecycle marketing teams that want one persistent customer graph but are willing to actively manage who remains emailable as the brand grows.",
+    decision_friction: "The buyer has to manage audience hygiene as a billing task. Checkout-captured addresses can count even without explicit signup, suppressed profiles are free, and crossing an active-profile band can force a move to a profile-compliant plan on the next billing cycle.",
+    exposure_logic: "Klaviyo lowers adoption resistance by letting brands keep all-time customer data while charging the email plan only for emailable profiles. That means it captures less from dormant historical data and depends on customers accepting suppression and inactivity management as the main budget-control mechanism.",
+    logic_flaw: "The weakness is that the meter follows emailable status more closely than commercial value. Brands can keep much of the same strategic data value while changing what they pay simply by suppressing or unsuppressing profiles.",
+    strategic_opportunity: "A competitor could attack with pricing tied to engaged subscribers, recent reachable audience, or delivered campaign output, plus clearer inactivity grace periods. The opening is a cleaner link between price and value than suppression-driven budget control.",
+    page_path: "klaviyo-active-profile-billing.html",
+    source_urls: [
+      "https://www.klaviyo.com/pricing/",
+      "https://help.klaviyo.com/hc/en-us/articles/115000976672",
+      "https://help.klaviyo.com/hc/en-us/articles/24263920096027",
+      "https://help.klaviyo.com/hc/en-us/articles/115005246108"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing"],
+    counterintuitive_score: 5,
+    teaching_value_score: 5,
+    strategic_gap_score: 5,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Accept",
+    transferable_principle: "When a product stores much more customer data than it actively monetizes, price the reachable audience layer only if the eligibility boundary stays legible enough that suppression and hygiene do not become the buyer's main budgeting tool."
+  },
+  {
+    // Identity
     slug: "zapier-action-step-task-meter",
     title: "Zapier and the action-step task meter inside automation pricing",
     company: "Zapier",
