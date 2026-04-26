@@ -451,6 +451,67 @@ window.pricingCaseRecords = [
     transferable_principle: "When usage intensity differs by role, charge for decision-critical workflow access rather than for raw presence in the collaboration network."
   },
   {
+    // Comparison draft
+    slug: "figma-role-based-seat-segmentation-v2",
+    title: "Figma role-based seat segmentation (v2 comparison draft)",
+    company: "Figma",
+    industry: "Design and product collaboration SaaS",
+    market: "Global product teams spanning design, engineering, product, and cross-functional collaborators",
+    reviewed_at: "2026-04-26",
+
+    // Public page inputs
+    mechanism_type: "Role-based seat mix simulation + plan-tier governance",
+    pricing_page_url: "https://www.figma.com/pricing/",
+    screenshot_url: "../../assets/images/cases/figma-pricing-page.png",
+    pricing_surface: "Comparison draft: Figma prices one seat per person, but the bill moves through the mix of paid workflow roles inside each plan while View stays free.",
+
+    // Structured pricing logic
+    pricing_model: "Single-seat-per-user role-based pricing across plan tiers",
+    key_driver: "Mix of paid seat types inside the selected plan",
+    upgrade_triggers: [
+      "A user moves from View or Collab into Dev or Full access",
+      "More creators or handoff users need paid seats",
+      "The account needs a higher plan for stronger governance or security"
+    ],
+    primary_component: "driver_logic",
+    what_is_monetized: "Paid workflow roles inside the selected plan.",
+    what_changes_the_bill: "The bill changes when the mix of Collab, Dev, and Full seats changes or when the account moves into a higher plan tier.",
+    who_pays_more_and_why: "Teams with more creators, more handoff users, and higher governance needs pay more because more workflow responsibility becomes paid.",
+    decision_core: {
+      what_is_monetized: "Paid workflow roles inside the selected plan.",
+      what_changes_the_bill: "The bill changes when the mix of Collab, Dev, and Full seats changes or when the account moves into a higher plan tier.",
+      who_pays_more_and_why: "Teams with more creators, more handoff users, and higher governance needs pay more because more workflow responsibility becomes paid."
+    },
+    student_10_second_takeaway: "The bill changes when more users move into higher-responsibility paid seat roles or when the plan tier resets seat prices upward.",
+    consistency_status: "structurally_valid",
+    consistency_note: "Manual note: driver_logic is the intended primary component because the simulator makes paid seat mix and plan-tier-driven bill movement legible faster than a static matrix.",
+
+    // Supporting interpretation, not primary logic
+    mechanism_summary: "Comparison draft for the pricing framework v2 migration. The bill rises with the mix of paid seat types and rises again when the buyer needs a higher-governance plan that increases the price of every paid seat.",
+    target_buyer_inference: "The structure fits organizations where many people need visibility, a smaller set need structured collaboration or developer handoff, and only a tighter core owns design creation and system maintenance.",
+    decision_friction: "The main friction is seat classification. Admins have to decide who can remain free, who needs collaboration or handoff access, and when a cross-functional user has crossed into full creator responsibility.",
+    exposure_logic: "Figma lowers adoption friction by keeping visibility free, but it takes on governance complexity risk because the pricing boundary depends on admins accepting and maintaining a meaningful seat taxonomy over time.",
+    logic_flaw: "The weakness is that workflow responsibility is not always stable. When one person shifts between collaboration, inspection, and creation, seat assignment can feel like administrative overhead rather than a clean reflection of value.",
+    strategic_opportunity: "A competitor could attack with temporary upgrades, hybrid project-intensity pricing, or simpler cross-functional seat bundles that reduce seat-governance friction without giving away broad access.",
+    page_path: "figma-role-based-seat-segmentation-v2.html",
+    source_urls: [
+      "https://www.figma.com/pricing/",
+      "https://help.figma.com/hc/en-us/articles/29717597009431-Guide-to-billing-at-Figma",
+      "https://help.figma.com/hc/en-us/articles/360039960434-Manage-seats-in-Figma",
+      "https://help.figma.com/hc/en-us/articles/27468498501527-Updates-to-Figma-s-pricing-seats-and-billing-experience"
+    ],
+
+    // Metadata only
+    framework_tags: ["EVAC 2.0", "Marketing", "Comparison Draft"],
+    counterintuitive_score: 4,
+    teaching_value_score: 5,
+    strategic_gap_score: 4,
+    portability_score: 5,
+    evidence_strength_score: 5,
+    verdict: "Draft",
+    transferable_principle: "When workflow responsibility varies more than simple headcount, a pricing model can widen adoption with a free visibility layer and then capture value through paid responsibility tiers."
+  },
+  {
     // Identity
     slug: "basecamp-flat-organization-pricing",
     title: "Basecamp and the flat organization price cap",
