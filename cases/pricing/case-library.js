@@ -300,6 +300,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Organizations with more habitual active participation and stronger control needs pay more because more of the operating graph becomes billable."
     },
     student_10_second_takeaway: "The bill changes when more people are active often enough to count in Slack's billing window.",
+    contract_status: "migrated_v1",
     consistency_status: "structurally_valid",
     consistency_note: "Manual note: driver_logic is the intended primary component because active-member count is the main bill-change mechanism.",
 

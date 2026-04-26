@@ -33,7 +33,7 @@
 
   <main class="main">
     <div class="page-header case-hero">
-      <a class="back-link" href="index.html">← Back to Pricing Cases</a>
+      <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
       <div class="case-kicker">Pricing Case</div>
       <div class="case-company-lockup">
         <div class="case-company-icon" aria-label="Slack logo">
@@ -41,86 +41,288 @@
         </div>
         <div class="case-company-meta">
           <div class="case-company-name">Slack</div>
+          <div class="case-company-note case-company-note--reviewed">Reviewed April 23, 2026</div>
         </div>
       </div>
       <h1>Slack and active-user billing inside the collaboration seat ladder</h1>
       <p class="lead">
-        Slack is a workplace collaboration SaaS product used by teams that need fast internal and external coordination. This case matters because Slack looks like a standard seat-priced SaaS ladder, but its real monetization boundary is active participation over time: paid plans bill active members, credit inactivity, and keep some guest access free.
+        Slack looks like a normal seat-priced collaboration ladder, but the bill is governed by active members, guest-role exemptions, and inactivity credits.
       </p>
       <div class="case-tag-row" style="margin-top: 1.2rem;">
-        <span class="case-tag">Tier ladder + active-member billing + guest-role exemptions</span>
+        <span class="case-tag">Active-member billing</span>
+        <span class="case-tag">Guest carve-outs</span>
+        <span class="case-tag">Driver logic</span>
       </div>
     </div>
 
     <div class="case-detail-layout">
       <div class="content-body">
-        <section class="section">
-          <h2>Case Claim</h2>
-          <p>
-            Slack is worth studying because the visible plan ladder only tells half of the commercial story. <strong>Slack's actual monetization boundary is not a provisioned seat; it is an active member inside a 28-day operating window, with guest exemptions around the edge.</strong> That makes the case reusable for any company trying to charge for operational participation rather than for raw account count.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Tier Ladder Analysis</h2>
-          <p>
-            Slack's public pricing shows four visible plan tiers, but the ladder becomes more interesting once the billing documentation is layered on top. <strong>The ladder matters because Slack uses plan tier to sell capability and governance, then uses active-member rules to decide which people inside the workspace actually become revenue.</strong>
-          </p>
-          <ul class="case-structure-list">
-            <li><strong>Tier count:</strong> Four visible plan tiers appear on the public pricing page: Free, Pro, Business+, and Enterprise+.</li>
-            <li><strong>Target buyer by tier:</strong> Free fits small teams or early trials. Pro fits teams that want fuller collaboration without enterprise controls. Business+ targets larger organizations that need stronger admin, security, and AI capabilities. Enterprise+ is for scaled organizations that need the deepest governance, support, and compliance posture.</li>
-            <li><strong>Tier labels:</strong> The page labels the ladder as Free, Pro, Business+, and Enterprise+. The help documentation then adds the member-type layer: full members, multi-channel guests, single-channel guests, and bots.</li>
-            <li><strong>Anchor prices:</strong> The public anchors are $0 for Free, $8.75 per month billed monthly or $7.25 billed annually for Pro, $18 monthly or $15 annually for Business+, and contact sales for Enterprise+.</li>
-            <li><strong>Price gaps:</strong> On monthly self-serve pricing, the visible jump is $8.75 from Free to Pro and $9.25 from Pro to Business+, while the final Enterprise+ jump is intentionally hidden behind sales contact.</li>
-            <li><strong>Value-add argument:</strong> Slack justifies the move up the ladder with longer message history, more AI capability, broader app and external collaboration support, then stronger security, SSO, SCIM, support, and compliance features as the buyer moves into Business+ and Enterprise+.</li>
-          </ul>
+        <section class="section case-layer1-section" data-case-section="pricing-page-visual">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">01 / Pricing Page Visual</div>
+              <h2>Pricing Page Visual</h2>
+            </div>
+            <p>The public ladder sells capability and governance; the billing rules decide which people inside the workspace become revenue.</p>
+          </div>
           <div class="case-visual-card">
             <img src="https://image.thum.io/get/width/1400/noanimate/https://slack.com/pricing/" alt="Screenshot of the Slack pricing page">
             <div class="case-visual-body">
-              <div class="case-visual-label">Pricing Page Visual</div>
-              <p>The public page looks like a normal Free, Pro, Business+, and Enterprise+ ladder, which is exactly why the billing help pages matter: they explain who inside the paid workspace actually counts.</p>
+              <div class="case-visual-label">Pricing artifact</div>
+              <p>Slack presents Free, Pro, Business+, and Enterprise+ plans, but the key pricing mechanism sits underneath the plan names.</p>
+              <p>The learner should look past the tier ladder and ask which workspace participants count as active billable members.</p>
               <p><a class="case-link" href="https://slack.com/pricing/">Open live pricing page</a></p>
             </div>
           </div>
         </section>
 
-        <section class="section">
-          <h2>Mechanism Summary</h2>
-          <p>
-            Slack combines a conventional plan ladder with an activity-sensitive billing boundary. <strong>The real mechanism is active-member metering with prorated true-ups, inactivity credits, and free single-channel guest access at the edge of the workspace.</strong> A member who takes an action within the 28-day billing window counts as active, while inactive members generate credits and some guest patterns stay free instead of becoming full paid seats.
+        <section class="section case-layer1-section" data-case-section="core-insight">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">02 / Core Insight</div>
+              <h2>Core Insight</h2>
+            </div>
+            <p>These three points map directly to the hidden <code>decision_core</code> contract.</p>
+          </div>
+          <div class="case-layer1-insight-box">
+            <ul>
+              <li>Monetized: active participation inside the workspace rather than every provisioned account.</li>
+              <li>Bill changes: more members count as active in the billing window, or the buyer moves into a higher governance tier.</li>
+              <li>Higher payers: organizations with more habitual active participation and stronger control needs pay more because more of the operating graph becomes billable.</li>
+            </ul>
+          </div>
+          <p class="case-pricing-logic-summary">
+            Slack's core insight is that collaboration access is broader than monetized activity: <strong>the decision core is active participation, billable activity count, and governance intensity.</strong>
           </p>
         </section>
 
-        <section class="section">
-          <h2>Target Buyer Inference</h2>
-          <p>
-            Slack's structure is most attractive when many people may need visibility but only a smaller core will stay operationally active every month. <strong>The most relevant buyers are organizations with fluctuating staffing, contractors, client-facing projects, or cross-functional participants who need access without guaranteed daily usage.</strong> For these buyers, active-member billing feels safer than committing to a fully provisioned seat count up front.
+        <section class="section case-layer1-section" data-case-section="pricing-logic-deconstruction">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">03 / Pricing Logic Deconstruction</div>
+              <h2>Pricing Logic Deconstruction</h2>
+            </div>
+            <p>The bill-change sentence is deliberately explicit because the mechanism is easy to mistake for ordinary seat pricing.</p>
+          </div>
+          <p class="case-pricing-logic-summary">
+            <strong>The bill changes when more people become active members within Slack's billing window, when a paid guest role is needed, or when governance needs push the workspace up the plan ladder.</strong>
           </p>
+          <div class="case-pricing-logic-grid">
+            <article class="case-pricing-logic-card case-pricing-logic-card--role-3">
+              <div class="case-pricing-logic-card-top">
+                <strong>Count of active members</strong>
+                <span>Key driver</span>
+              </div>
+              <p>Slack charges for paid member types that are actively using the workspace, not for every dormant account that exists in the directory.</p>
+            </article>
+            <article class="case-pricing-logic-card case-pricing-logic-card--role-1">
+              <div class="case-pricing-logic-card-top">
+                <strong>Hybrid</strong>
+                <span>Scaling logic</span>
+              </div>
+              <p>Spend scales with active billable members, while plan tiers and guest-role rules create discrete boundaries around governance and access.</p>
+            </article>
+            <article class="case-pricing-logic-card case-pricing-logic-card--role-2">
+              <div class="case-pricing-logic-card-top">
+                <strong>Activity or governance boundary crossed</strong>
+                <span>Main upgrade condition</span>
+              </div>
+              <p>A workspace pays more when more members are active, when a collaborator needs multi-channel access, or when the account needs Business+ or Enterprise governance.</p>
+            </article>
+            <article class="case-pricing-logic-card case-pricing-logic-card--role-0">
+              <div class="case-pricing-logic-card-top">
+                <strong>Inactivity credit</strong>
+                <span>Bill relief</span>
+              </div>
+              <p>If a paid member becomes inactive, Slack's billing policy credits unused time, making ongoing activity the central revenue condition.</p>
+            </article>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Decision Friction</h2>
-          <p>
-            The buyer does not merely choose a plan; the buyer also has to manage who should be a full member, who can stay a guest, and who is likely to cross the 28-day activity threshold. <strong>The main friction is predictability: light participation can still make someone billable, while role choices such as multi-channel versus single-channel guest change cost without changing the need for access.</strong> The structure removes blanket seat anxiety, but it replaces that simplicity with ongoing classification and monitoring work.
-          </p>
+        <section class="section case-layer1-section" data-case-section="pricing-mechanism-logic">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">04 / Pricing Matrix / Mechanism Logic</div>
+              <h2>Pricing Matrix / Mechanism Logic</h2>
+            </div>
+            <p>Primary component: <code>driver_logic</code>.</p>
+          </div>
+          <div class="case-starter-funnel" aria-label="Driver logic showing how Slack billing moves">
+            <div class="case-starter-funnel-grid">
+              <article class="case-starter-funnel-card case-starter-funnel-card--entry">
+                <div class="case-starter-layer-label">Input driver</div>
+                <h3>Active member count</h3>
+                <ul>
+                  <li><strong>Paid member types</strong></li>
+                  <li><strong>28-day activity window</strong></li>
+                  <li><strong>Reactivation can restart billing</strong></li>
+                </ul>
+                <p>More active billable members raise the workspace's recurring spend.</p>
+              </article>
+
+              <article class="case-starter-funnel-card case-starter-funnel-card--activation">
+                <div class="case-starter-layer-label">Parameter layer</div>
+                <h3>Plan and role rules</h3>
+                <ul>
+                  <li><strong>Free, Pro, Business+, Enterprise+</strong></li>
+                  <li><strong>Multi-channel guests billed</strong></li>
+                  <li><strong>Single-channel guests and bots free</strong></li>
+                </ul>
+                <p>The plan sets the per-member price and governance package; role rules decide who counts.</p>
+              </article>
+
+              <article class="case-starter-funnel-card case-starter-funnel-card--conversion">
+                <div class="case-starter-layer-label">Bill consequence</div>
+                <h3>Prorated charge or credit</h3>
+                <ul>
+                  <li><strong>New active member: prorated charge</strong></li>
+                  <li><strong>Inactive member: prorated credit</strong></li>
+                  <li><strong>Higher tier: governance premium</strong></li>
+                </ul>
+                <p>The bill follows the active operating surface rather than the full collaboration graph.</p>
+              </article>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Exposure and Risk Logic</h2>
-          <p>
-            Slack absorbs revenue volatility by allowing inactivity credits and free guest access instead of charging every provisioned account. <strong>The core exposure is that Slack only wins if it becomes habitual enough that the active-user definition keeps mapping to real value.</strong> If teams preserve broad visibility while concentrating actual activity in a small operating core, the collaboration graph can expand faster than the monetized surface.
-          </p>
+        <section class="section case-layer1-section" data-case-section="pricing-architecture">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">05 / Pricing Architecture</div>
+              <h2>Pricing Architecture</h2>
+            </div>
+            <p>Structure only: tiers, segmentation, drivers, and upgrade triggers.</p>
+          </div>
+          <div class="case-pricing-logic-grid">
+            <article class="case-pricing-logic-panel">
+              <div class="case-pricing-logic-panel-head">
+                <div class="case-visual-label">Tiers</div>
+                <h3>Plan ladder</h3>
+              </div>
+              <div class="case-pricing-logic-card-list">
+                <article class="case-pricing-logic-card case-pricing-logic-card--tier-0">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Free</strong>
+                    <span>$0 anchor</span>
+                  </div>
+                  <p>Entry workspace with limited history and capability.</p>
+                </article>
+                <article class="case-pricing-logic-card case-pricing-logic-card--tier-1">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Pro</strong>
+                    <span>$8.75 monthly / $7.25 annual per active member</span>
+                  </div>
+                  <p>Paid collaboration layer for teams that need more complete workspace capability.</p>
+                </article>
+                <article class="case-pricing-logic-card case-pricing-logic-card--tier-2">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Business+</strong>
+                    <span>$18 monthly / $15 annual per active member</span>
+                  </div>
+                  <p>Higher governance, security, administration, and support layer.</p>
+                </article>
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-0">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Enterprise+</strong>
+                    <span>Contact sales</span>
+                  </div>
+                  <p>Contracted enterprise governance and scale layer.</p>
+                </article>
+              </div>
+            </article>
+
+            <article class="case-pricing-logic-panel">
+              <div class="case-pricing-logic-panel-head">
+                <div class="case-visual-label">Segmentation</div>
+                <h3>Member and guest classification</h3>
+              </div>
+              <div class="case-pricing-logic-card-list">
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-3">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Full members, owners, admins</strong>
+                    <span>Billable when active</span>
+                  </div>
+                  <p>Core internal users become recurring revenue when they actively use Slack.</p>
+                </article>
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-2">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Multi-channel guests</strong>
+                    <span>Billed like regular members</span>
+                  </div>
+                  <p>Broader external access crosses into the paid member boundary.</p>
+                </article>
+                <article class="case-pricing-logic-card case-pricing-logic-card--role-1">
+                  <div class="case-pricing-logic-card-top">
+                    <strong>Single-channel guests and bots</strong>
+                    <span>Free layer</span>
+                  </div>
+                  <p>Narrow participation remains free, widening adoption without making every edge participant billable.</p>
+                </article>
+              </div>
+            </article>
+          </div>
+          <ul class="case-structure-list">
+            <li><strong>Drivers:</strong> active member count, plan tier, member classification, activity state, and billing-period timing.</li>
+            <li><strong>Upgrade triggers:</strong> more members become active, guest access no longer fits one channel, or governance requirements require Business+ or Enterprise+.</li>
+          </ul>
         </section>
 
-        <section class="section">
-          <h2>Logic Flaw, Vulnerability, and Strategic Opportunity</h2>
-          <p>
-            <strong>The weak spot is that access value and activity value are not identical.</strong> A dormant or low-activity account can still matter strategically because searchable history, emergency access, and channel membership all have value even when a person falls below the active threshold. That creates room for buyers to push collaborators toward free single-channel guest status or tolerate low activity while still preserving the network benefits of inclusion. A competitor could attack with a clearer hybrid ladder: full active seats for heavy operators, cheaper retained-access seats for low-frequency participants, and temporary expansion passes for contractors or short project bursts.
-          </p>
+        <section class="section case-layer1-section" data-case-section="decision-tension-layer">
+          <div class="case-layer1-section-head">
+            <div>
+              <div class="case-visual-label">06 / Decision Tension Layer</div>
+              <h2>Decision Tension Layer</h2>
+            </div>
+            <p>Each tension comes from the active-member driver, a role rule, or a tier trigger.</p>
+          </div>
+          <div class="case-tension-grid">
+            <article class="case-tension-card">
+              <h3>Activity forecasting</h3>
+              <p>The buyer has to estimate who will take action often enough to count as active during the billing window.</p>
+              <div class="case-tension-line">
+                <span>Caused by</span>
+                <p>Active member count.</p>
+              </div>
+            </article>
+            <article class="case-tension-card">
+              <h3>Guest-role classification</h3>
+              <p>A collaborator may be free as a single-channel guest but billable as a multi-channel guest, so access design becomes a pricing decision.</p>
+              <div class="case-tension-line">
+                <span>Caused by</span>
+                <p>Member classification and guest access limits.</p>
+              </div>
+            </article>
+            <article class="case-tension-card">
+              <h3>Governance threshold</h3>
+              <p>Security, support, compliance, and administration needs can move the account into Business+ or Enterprise+ even if the active-member driver stays stable.</p>
+              <div class="case-tension-line">
+                <span>Caused by</span>
+                <p>Plan-tier upgrade trigger.</p>
+              </div>
+            </article>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Primary Sources</h2>
+        <section class="section case-layer1-section case-layer1-opportunity" data-case-section="strategic-opportunity">
+          <div class="case-visual-label">08 / Strategic Opportunity</div>
+          <h2>Strategic Opportunity</h2>
+          <p>
+            A competitor could price persistent knowledge access, retained network presence, or low-frequency participation more explicitly while still offering temporary-member flexibility.
+          </p>
+          <div class="case-layer1-opportunity-list">
+            <span>Low-frequency paid access</span>
+            <span>Temporary project passes</span>
+            <span>Retained-access tier</span>
+          </div>
+        </section>
+
+        <section class="section case-layer1-section" data-case-section="references">
+          <div class="case-layer1-section-head case-layer1-section-head--stacked">
+            <div>
+              <div class="case-visual-label">09 / References</div>
+              <h2>References</h2>
+            </div>
+          </div>
           <ul class="case-source-list">
             <li><cite>Slack.</cite> (n.d.). <a href="https://slack.com/pricing/">Pricing plans: Find the right fit for your team</a>. Retrieved April 23, 2026, from <a href="https://slack.com/pricing/">https://slack.com/pricing/</a></li>
             <li><cite>Slack.</cite> (n.d.). <a href="https://slack.com/help/articles/218915077-Slacks-Fair-Billing-Policy">Slack's Fair Billing Policy</a>. Retrieved April 23, 2026, from <a href="https://slack.com/help/articles/218915077-Slacks-Fair-Billing-Policy">https://slack.com/help/articles/218915077-Slacks-Fair-Billing-Policy</a></li>
@@ -129,37 +331,181 @@
           </ul>
         </section>
       </div>
-
-      <aside class="case-panel">
-        <h2>Case Snapshot</h2>
-        <div class="case-meta-list">
-          <div class="case-meta-item">
-            <div class="case-meta-label">Company</div>
-            <div class="case-meta-value">Slack / Salesforce</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Industry</div>
-            <div class="case-meta-value">Work collaboration and enterprise messaging SaaS</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Market</div>
-            <div class="case-meta-value">B2B teams coordinating internal work and external collaboration across changing participation levels</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Date reviewed</div>
-            <div class="case-meta-value">April 23, 2026</div>
-          </div>
-        </div>
-      </aside>
     </div>
   </main>
 
   <footer class="footer">
-    <span>dokal5.github.io · knowledge garden</span>
+    <span>dokal5.github.io &middot; knowledge garden</span>
     <span>Utrecht, NL</span>
   </footer>
 
 </div>
+
+<script type="application/json" id="pricing-case-schema">
+{
+  "schema_version": "1.0",
+  "case_id": "slack-active-user-billing",
+  "case_type": "saas",
+  "evidence_level": "observed",
+  "pricing_model": "Active-member billing with tier packaging, guest carve-outs, and inactivity credits",
+  "value_metric": "Active billable members in the workspace",
+  "segmentation_type": "Plan tier plus member role and activity state",
+  "tiers": [
+    {
+      "name": "Free",
+      "anchor_price": "$0",
+      "structural_role": "Entry workspace with limited history and capability"
+    },
+    {
+      "name": "Pro",
+      "anchor_price": "$8.75 monthly or $7.25 annually per active member",
+      "structural_role": "Paid collaboration layer"
+    },
+    {
+      "name": "Business+",
+      "anchor_price": "$18 monthly or $15 annually per active member",
+      "structural_role": "Higher governance, security, administration, and support layer"
+    },
+    {
+      "name": "Enterprise+",
+      "anchor_price": "Contact sales",
+      "structural_role": "Contracted enterprise governance and scale layer"
+    }
+  ],
+  "segments": [
+    {
+      "segment": "Workspace owners, admins, and full members",
+      "pricing_treatment": "Billable when active on paid plans"
+    },
+    {
+      "segment": "Multi-channel guests",
+      "pricing_treatment": "Billed like regular members"
+    },
+    {
+      "segment": "Single-channel guests",
+      "pricing_treatment": "Free guest layer with channel limits"
+    },
+    {
+      "segment": "Bots",
+      "pricing_treatment": "Free non-human account layer"
+    }
+  ],
+  "pricing_logic": "Slack sets a per-active-member price through the plan tier, counts paid member types that are active in the billing window, applies prorated charges when active billable members are added or reactivated, and applies prorated credits when paid members become inactive.",
+  "key_driver": "Count of active members in the billing window",
+  "drivers": [
+    {
+      "driver": "Active member count",
+      "type": "seat",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "Each active billable member increases recurring spend according to the selected plan's per-member price.",
+      "student_label": "Active billable people"
+    },
+    {
+      "driver": "Plan tier",
+      "type": "commitment",
+      "pricing_role": "multiplier",
+      "direction": "segment_users",
+      "effect": "Free, Pro, Business+, and Enterprise+ set the capability package and per-member price level.",
+      "student_label": "Governance tier"
+    },
+    {
+      "driver": "Member classification",
+      "type": "role",
+      "pricing_role": "access",
+      "direction": "reduce_friction",
+      "effect": "Full members and multi-channel guests sit inside the paid boundary, while single-channel guests and bots remain free.",
+      "student_label": "Member or guest status"
+    },
+    {
+      "driver": "Activity state",
+      "type": "usage",
+      "pricing_role": "threshold",
+      "direction": "reduce_friction",
+      "effect": "Inactive paid members generate prorated credits; reactivated members can create prorated charges.",
+      "student_label": "Active or inactive"
+    }
+  ],
+  "formula": {
+    "expression": "monthly_bill = plan_price_per_active_member(plan_tier) * billable_active_members + prorated_additions - inactivity_credits",
+    "variables": [
+      {
+        "symbol": "plan_tier",
+        "label": "Selected Slack plan",
+        "maps_to_driver": "Plan tier"
+      },
+      {
+        "symbol": "billable_active_members",
+        "label": "Paid member types active in the billing window",
+        "maps_to_driver": "Active member count"
+      },
+      {
+        "symbol": "prorated_additions",
+        "label": "Charges for newly active or newly added billable members",
+        "maps_to_driver": "Activity state"
+      },
+      {
+        "symbol": "inactivity_credits",
+        "label": "Credits for paid members who become inactive",
+        "maps_to_driver": "Activity state"
+      }
+    ],
+    "output_label": "Slack workspace bill",
+    "explanation": "Plan tier sets the per-member price; active billable member count is the dominant variable; guest and activity rules determine who enters or exits the billable base."
+  },
+  "upgrade_triggers": [
+    {
+      "trigger": "More members become active within the billing window",
+      "from": "Inactive or uncounted participation",
+      "to": "Billable active member",
+      "why_it_happens": "The member takes Slack actions often enough to count as active for billing.",
+      "pricing_effect": "Adds or restores a prorated active-member charge."
+    },
+    {
+      "trigger": "Guest access no longer fits one channel",
+      "from": "Free single-channel guest",
+      "to": "Billable multi-channel guest or full member",
+      "why_it_happens": "The collaborator needs access across more than one channel or broader workspace participation.",
+      "pricing_effect": "Moves the collaborator into the paid member boundary."
+    },
+    {
+      "trigger": "The buyer needs Business+ or Enterprise governance",
+      "from": "Lower self-serve plan",
+      "to": "Higher governance tier",
+      "why_it_happens": "Security, administration, support, or compliance needs exceed the lower tier.",
+      "pricing_effect": "Raises the per-active-member price level or moves the account to sales-led pricing."
+    }
+  ],
+  "visualization": {
+    "primary_component": "driver_logic",
+    "supporting_components": [
+      "tier_ladder"
+    ],
+    "interactive_controls": [],
+    "default_view": "Active member count flowing through plan and role rules into prorated bill consequences",
+    "student_prompt": "What happens to the bill when one more collaborator becomes active or needs broader channel access?"
+  },
+  "primary_component": "driver_logic",
+  "decision_core": {
+    "what_is_monetized": "Active participation inside the workspace rather than every provisioned account.",
+    "what_changes_the_bill": "The bill changes when more members count as active in the billing window or when the buyer moves into a higher governance tier.",
+    "who_pays_more_and_why": "Organizations with more habitual active participation and stronger control needs pay more because more of the operating graph becomes billable."
+  },
+  "student_10_second_takeaway": "The bill changes when more people are active often enough to count in Slack's billing window.",
+  "friction_points": [
+    "Buyers must forecast who will count as active over the billing window.",
+    "Buyers must decide when a collaborator can stay a single-channel guest versus becoming a billable multi-channel guest or full member.",
+    "Governance needs can raise the plan tier even when active-member count stays stable."
+  ],
+  "risks": [
+    "Slack gives up some revenue certainty by crediting inactivity and leaving narrow guest access free.",
+    "The meter can undercapture value from retained knowledge access and occasional emergency participation.",
+    "The activity definition must stay trusted or buyers may treat role and activity management as budget gaming."
+  ],
+  "structural_weakness": "Access value and activity value are not identical; a low-activity or dormant account can still benefit from searchable history, channel presence, and emergency access while falling outside the active billing boundary.",
+  "strategic_insight": "A competitor could attack with a hybrid model that captures retained access and temporary participation more explicitly without forcing every marginal collaborator into a full active seat."
+}
+</script>
 
 </body>
 </html>
