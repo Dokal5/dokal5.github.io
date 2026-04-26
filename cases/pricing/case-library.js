@@ -45,14 +45,14 @@ window.pricingCaseRecords = [
       "The account adds SMS or mobile-message credits",
       "Included send or feature limits no longer fit the reachable audience"
     ],
-    primary_component: "trigger_path",
+    primary_component: "driver_logic",
     what_is_monetized: "The current pool of emailable active profiles, with optional mobile-message usage layered on top.",
-    what_changes_the_bill: "The bill changes when more profiles remain emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
-    who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active.",
+    what_changes_the_bill: "The bill changes when more profiles stay emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
+    who_pays_more_and_why: "Brands with larger reachable audiences and multichannel retention needs pay more because more of the customer graph stays commercially active.",
     decision_core: {
       what_is_monetized: "The current pool of emailable active profiles, with optional mobile-message usage layered on top.",
-      what_changes_the_bill: "The bill changes when more profiles remain emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
-      who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active."
+      what_changes_the_bill: "The bill changes when more profiles stay emailable and push the account into a higher active-profile band, or when mobile messaging is added.",
+      who_pays_more_and_why: "Brands with larger reachable audiences and multichannel retention needs pay more because more of the customer graph stays commercially active."
     },
     student_10_second_takeaway: "The bill changes when more customer profiles stay emailable, not when total historical data grows.",
     contract_status: "structurally_validated",
