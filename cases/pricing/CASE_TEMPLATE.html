@@ -56,6 +56,8 @@ Public page rules:
 - Do not render a visible Case Snapshot.
 - Keep the embedded JSON schema inside:
   <script type="application/json" id="pricing-case-schema"> ... </script>
+- Hidden JSON must include `schema_version: "1.0"`.
+- Any hidden JSON version mismatch is invalid.
 - Decision Tension must be caused by pricing structure.
 - Each tension must link back to a driver, segmentation rule, or upgrade trigger.
 - Do not include general UX complaints, design complaints, or product complaints unless they are directly caused by pricing structure.
@@ -366,6 +368,7 @@ Migration checklist:
 <!-- Hidden system data only. Do not render this JSON visibly. Keep it aligned with the page content. -->
 <script type="application/json" id="pricing-case-schema">
 {
+  "schema_version": "1.0",
   "case_id": "",
   "case_type": "",
   "evidence_level": "",

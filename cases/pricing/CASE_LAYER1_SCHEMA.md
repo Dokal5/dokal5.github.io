@@ -50,6 +50,7 @@ The Layer 1 case JSON must conform to `CASE_SCHEMA.md`.
 
 Additional Layer 1 rules:
 
+- `schema_version` must be `"1.0"` in every Layer 1 case JSON object.
 - `decision_core` must answer:
   - what is monetized
   - what changes the bill
@@ -66,6 +67,7 @@ Additional Layer 1 rules:
 Deterministic mapping rules:
 
 - `Company` remains in the brief only. It does not map into `Case JSON`.
+- `schema_version` is not derived from the brief. It must be set directly to `"1.0"` in `Case JSON`.
 - `Case ID` in the brief maps to `case_id`.
 - `Pricing model` in the brief maps to `pricing_model`.
 - `Primary insight` in the brief maps to `pricing_logic`.
@@ -127,6 +129,7 @@ Layer 1 is complete only if:
 - the case can answer who pays more and why
 - the case explains why the pricing works, not only how it is structured
 - `decision_core` is explicitly filled
+- `schema_version` is explicitly set to `"1.0"`
 - the main pricing driver is explicit
 - `upgrade_triggers` are explicit
 - the recommended component follows from the pricing logic

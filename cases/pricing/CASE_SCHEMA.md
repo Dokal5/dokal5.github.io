@@ -18,6 +18,7 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 
 ```json
 {
+  "schema_version": "1.0",
   "case_id": "",
   "case_type": "",
   "evidence_level": "",
@@ -50,6 +51,7 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 
 | Field | Type | Required | Empty state | Contract |
 | --- | --- | --- | --- | --- |
+| `schema_version` | string | required | none | Current supported value is `1.0`. |
 | `case_id` | string | required | none | Stable case identifier. |
 | `case_type` | enum string | required | none | Must be one of: `saas`, `retail`, `subscription`, `marketplace`, `service`, `hardware`, `restaurant`, `logistics`, `other`. |
 | `evidence_level` | enum string | required | none | Must be one of: `observed`, `inferred`, `hypothesized`. |
@@ -142,6 +144,8 @@ When `visualization` is populated, it may contain only:
 
 ## Cross-Field Rules
 
+- `schema_version` is required and the current supported value is `1.0`.
+- Any `schema_version` mismatch is a FAIL.
 - `decision_core` is required. Do not infer the three pricing answers from prose.
 - `key_driver` is required and must match the mechanism logic selected by `primary_component`.
 - `upgrade_triggers` are required and must state what moves the buyer into a higher payment level, stronger governance tier, or more expensive pricing classification.
@@ -161,6 +165,7 @@ When `visualization` is populated, it may contain only:
 A pricing case JSON object is complete only if:
 
 - all required top-level fields are present
+- `schema_version` is present and equals `1.0`
 - `decision_core` is explicitly filled
 - `key_driver` is explicit
 - `drivers` and `formula` can support the chosen mechanism
