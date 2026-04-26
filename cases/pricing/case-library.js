@@ -6,14 +6,15 @@
 //
 // Field rule:
 // - Primary logic fields: pricing_model, key_driver, upgrade_triggers,
-//   primary_component, what_is_monetized, what_changes_the_bill,
+//   primary_component, decision_core, what_is_monetized, what_changes_the_bill,
 //   who_pays_more_and_why, student_10_second_takeaway.
 // - Supporting interpretation fields: mechanism_summary, decision_friction,
 //   logic_flaw, strategic_opportunity.
 // - Supporting interpretation fields help reading and previewing cases,
 //   but they are not the primary source of system logic decisions.
-// - Consistency fields: consistency_status, consistency_note.
-//   Use "flag" for structural index issues.
+// - Contract fields: contract_status, consistency_note.
+//   Use "structurally_validated" for passing structural validation and
+//   "flag" for structural index issues.
 //   The validator confirms structural readiness only.
 //   It checks required fields, decision_core presence, and canonical
 //   primary_component tokens only.
@@ -54,7 +55,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Brands with larger reachable audiences and added mobile messaging pay more because more of the customer graph is commercially active."
     },
     student_10_second_takeaway: "The bill changes when more customer profiles stay emailable, not when total historical data grows.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: trigger_path is the intended primary component because threshold movement across active-profile bands is the main bill-change mechanism.",
 
     // Supporting interpretation, not primary logic
@@ -115,7 +116,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Teams running more workflow volume and more operationally complex automations pay more because more completed work flows through Zapier's meter."
     },
     student_10_second_takeaway: "The bill changes when live workflows fire more successful action steps.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: driver_logic is the intended primary component because variable task volume is the main bill-change mechanism.",
 
     // Supporting interpretation, not primary logic
@@ -175,7 +176,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Teams with more system builders and more governance needs pay more because more users originate and administer the structure."
     },
     student_10_second_takeaway: "The bill changes when more people need to become Doc Makers.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: driver_logic is the intended primary component because maker count is the main bill-change mechanism.",
 
     // Supporting interpretation, not primary logic
@@ -239,7 +240,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Support teams with more human capacity and more successful AI-handled work pay more because both operating layers expand."
     },
     student_10_second_takeaway: "The bill changes when the team adds more paid seats or Fin handles more billable outcomes.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: driver_logic is the intended primary component because the pricing logic is a hybrid of seat volume and metered outcomes rather than a single threshold event.",
 
     // Supporting interpretation, not primary logic
@@ -300,7 +301,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Organizations with more habitual active participation and stronger control needs pay more because more of the operating graph becomes billable."
     },
     student_10_second_takeaway: "The bill changes when more people are active often enough to count in Slack's billing window.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: driver_logic is the intended primary component because active-member count is the main bill-change mechanism.",
 
     // Supporting interpretation, not primary logic
@@ -361,7 +362,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Teams with more live sites, more governance needs, and more high-permission collaborators pay more because more paid surfaces are activated."
     },
     student_10_second_takeaway: "The bill changes when Webflow activates more paid surfaces: sites, workspace governance, or paid collaborator roles.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: matrix is the intended primary component because multiple paid surfaces jointly determine the bill rather than one continuous variable alone.",
 
     // Supporting interpretation, not primary logic
@@ -422,7 +423,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Organizations with more creators, more handoff users, and more governance needs pay more because more workflow responsibility becomes paid."
     },
     student_10_second_takeaway: "The bill changes when more users move into higher-responsibility paid seat roles.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: matrix is the intended primary component because paid seat role and plan tier interact to determine the bill.",
 
     // Supporting interpretation, not primary logic
@@ -483,7 +484,7 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Smaller teams pay more as employee count rises, while fast-growing organizations pay the higher flat cap to remove headcount debates and unlock broad rollout."
     },
     student_10_second_takeaway: "The bill changes when employee count rises enough that the flat-cap plan becomes the better pricing path.",
-    consistency_status: "structurally_valid",
+    contract_status: "structurally_validated",
     consistency_note: "Manual note: trigger_path is the intended primary component because the key teaching moment is the crossover from per-employee pricing to a flat organizational cap.",
 
     // Supporting interpretation, not primary logic
@@ -579,7 +580,7 @@ window.pricingCaseRecords = [
 
     if (issues.length) {
       return Object.assign({}, record, {
-        consistency_status: "flag",
+        contract_status: "flag",
         consistency_note: issues.join(" ")
       });
     }

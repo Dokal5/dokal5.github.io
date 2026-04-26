@@ -63,6 +63,21 @@ Additional Layer 1 rules:
 - `primary_component` must follow the pricing logic, not visible page aesthetics.
 - `student_10_second_takeaway` should tell a learner what changes the bill within one sentence.
 
+Deterministic mapping rules:
+
+- `Company` remains in the brief only. It does not map into `Case JSON`.
+- `Case ID` in the brief maps to `case_id`.
+- `Pricing model` in the brief maps to `pricing_model`.
+- `Primary insight` in the brief maps to `pricing_logic`.
+- `What is monetized` in the brief maps to `decision_core.what_is_monetized`.
+- `How users are segmented` in the brief maps to `segmentation_type`. Any explicit segment labels belong in `segments`.
+- `What drives price differences` in the brief maps to `decision_core.what_changes_the_bill`. The dominant driver named in that statement must also populate `key_driver`.
+- `Why this pricing works` remains in the brief only unless the same reasoning is stated directly in `strategic_insight`. Do not infer that mapping silently.
+- `Where friction appears` in the brief maps to `friction_points` as one or more array items.
+- `Where risk appears` in the brief maps to `risks` as one or more array items.
+- `Structural weakness` in the brief maps to `structural_weakness`.
+- `Student 10-second takeaway` in the brief maps to `student_10_second_takeaway`.
+
 ## 3. Render Instruction
 
 The render instruction tells the UI layer what to emphasize. It selects components and interaction intent, not CSS or final visual design.
@@ -93,6 +108,15 @@ Field guidance:
 - `avoid`: render choices that would obscure the pricing logic
 - `failure_modes`: what a weak rendering would make unclear
 - `data_dependencies`: case JSON fields the renderer must consume
+
+Deterministic render mapping rules:
+
+- `Render Instruction.case_id` must match `Case JSON.case_id`.
+- `Render Instruction.primary_component` must match `Case JSON.primary_component`.
+- `Render Instruction.data_dependencies` must include `decision_core`, `key_driver`, `upgrade_triggers`, and `primary_component`.
+- `Render Instruction.first_screen_priority` must place `decision_core` before detailed architecture.
+- `Render Instruction.secondary_components` may support the primary mechanism only. They may not introduce new pricing logic.
+- `Render Instruction.interactive_controls` may reference only existing drivers or formula variables already defined in the case JSON.
 
 ## Layer 1 Acceptance Gate
 
