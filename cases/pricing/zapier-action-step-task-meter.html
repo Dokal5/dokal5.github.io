@@ -43,111 +43,181 @@
       </div>
       <h1>Zapier and the action-step task meter inside automation pricing</h1>
       <p class="lead">
-        Zapier is a workflow automation platform used by operations-heavy teams to connect many SaaS tools. This case matters because the visible plan ladder looks like ordinary software packaging, but the real monetization boundary sits inside each workflow: successful action steps consume tasks, some internal tools stay outside the meter, and automatic overage billing keeps live automations running when usage spikes.
+        Zapier now sells a unified AI orchestration platform, but the bill still moves at the workflow layer: successful action steps consume tasks, the selected task tier sets included capacity, and paid plans decide when richer automation or governance becomes available.
       </p>
       <div class="case-tag-row" style="margin-top: 1.2rem;">
-        <span class="case-tag">Tier ladder + action-step metering + automatic overage billing</span>
+        <span class="case-tag">Task meter</span>
+        <span class="case-tag">Tier packaging</span>
+        <span class="case-tag">Automatic overages</span>
       </div>
     </div>
 
     <div class="case-detail-layout">
       <div class="content-body">
-        <section class="section">
-          <h2>Case Claim</h2>
-          <p>
-            Zapier is worth studying because its commercial logic sits one level deeper than the headline plan comparison. <strong>Zapier does not mainly price users, integrations, or even the number of automations created; it prices successful action steps inside live workflows, then shapes buyer behavior further through feature gates and overage rules.</strong> That makes the case reusable for any platform deciding where the metered boundary should sit inside a multi-step product architecture.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Tier Ladder Analysis</h2>
-          <p>
-            Zapier presents four visible plan tiers, but the ladder is only half of the pricing story because a task selector sits underneath it. <strong>The ladder matters because Zapier uses plan tier to sell workflow power, collaboration, and governance, while the task meter decides how revenue actually scales once the workflows are live.</strong>
-          </p>
-          <ul class="case-structure-list">
-            <li><strong>Tier count:</strong> Four visible tiers appear on the public pricing page: Free, Professional, Team, and Enterprise, with task-volume bands ranging from 100 tasks per month to custom levels.</li>
-            <li><strong>Target buyer by tier:</strong> Free fits solo testers and lightweight automators. Professional fits individual power users or small ops teams that need multi-step workflows. Team targets departments that need shared automations, shared connections, and governance. Enterprise targets organization-wide automation programs that need admin control and annual task budgeting.</li>
-            <li><strong>Tier labels:</strong> The page labels the ladder as Free, Professional, Team, and Enterprise.</li>
-            <li><strong>Anchor prices:</strong> The visible anchors are $0 per month for Free with 100 tasks per month, $19.99 per month billed annually for Professional, $69 per month billed annually for Team, and contact sales for Enterprise.</li>
-            <li><strong>Price gaps:</strong> At the visible annual starting prices, the jump is $19.99 from Free to Professional and $49.01 from Professional to Team, but the more important economic jump sits inside the task selector because buyers can move into higher task bands before they ever change top-level plans.</li>
-            <li><strong>Value-add argument:</strong> Free allows two-step Zaps. Professional unlocks multi-step Zaps, premium apps, and webhooks. Team adds shared Zaps, shared app connections, and SAML SSO. Enterprise adds unlimited users, advanced permissions, annual task limits, and observability.</li>
-          </ul>
+        <section class="section case-framework-section" data-case-section="pricing-page-visual">
+          <div class="case-section-label">01 / Pricing Page Visual</div>
+          <h2>Pricing Page Visual</h2>
           <div class="case-visual-card">
             <img src="https://image.thum.io/get/width/1400/noanimate/https://zapier.com/pricing" alt="Screenshot of the Zapier pricing page">
             <div class="case-visual-body">
-              <div class="case-visual-label">Pricing Page Visual</div>
-              <p>The screenshot helps the reader notice that Zapier sells feature access and task capacity together, which hides the real billing boundary one layer below the plan names.</p>
+              <div class="case-visual-label">Pricing artifact</div>
+              <p>Zapier presents a visible plan ladder and a task-tier selector inside the same pricing surface.</p>
+              <p>Notice that the plan names package workflow power and governance, while the task selector tells you where successful action-step volume starts changing the bill.</p>
               <p><a class="case-link" href="https://zapier.com/pricing">Open live pricing page</a></p>
             </div>
           </div>
         </section>
 
-        <section class="section">
-          <h2>Mechanism Summary</h2>
-          <p>
-            The mechanism is more precise than pay per automation or pay per user. <strong>The real mechanism is per-successful-action metering wrapped inside a feature ladder.</strong> Each successful action step consumes a task, while triggers, filters, paths, Tables, Forms, and several Zapier-built tools do not. Paid plans expand what kinds of workflows can be built, especially by unlocking multi-step Zaps, while pay-per-task billing can keep production automations running when the included allowance runs out.
+        <section class="section case-framework-section" data-case-section="core-insight">
+          <div class="case-section-label">02 / Core Insight</div>
+          <h2>Core Insight</h2>
+          <div class="case-layer1-insight-box">
+            <ul>
+              <li>Zapier monetizes successful action steps inside live workflows.</li>
+              <li>The bill changes when workflows consume more successful action steps than the selected plan and task tier include, or when the workflow needs higher-tier packaging and governance.</li>
+              <li>Teams running more workflow volume and more operationally complex automations pay more because more completed work flows through Zapier&apos;s meter.</li>
+            </ul>
+          </div>
+          <p class="case-section-brief">
+            Monetized: Successful action steps inside live workflows. &middot; Bill changes: More successful action steps than the selected plan and task tier include, or higher-tier packaging and governance. &middot; Higher payers: Teams running more workflow volume and more operationally complex automations.
           </p>
         </section>
 
-        <section class="section">
-          <h2>Target Buyer Inference</h2>
-          <p>
-            This structure is really for buyers who want broad workflow design freedom and many app connections, but do not want to pay by user seat or by static access. <strong>The most relevant buyers are operations-heavy teams whose leaders care more about live automation throughput than about counting users, integrations, or the number of workflows created.</strong> Those buyers will tolerate a metered model if the action volume feels like a fair proxy for realized operational value.
+        <section class="section case-framework-section" data-case-section="pricing-logic-deconstruction">
+          <div class="case-section-label">03 / Pricing Logic Deconstruction</div>
+          <h2>Pricing Logic Deconstruction</h2>
+          <p class="case-claim-statement">
+            The bill changes when live workflows consume more successful action steps than the selected plan and task tier include, or when the workflow needs a more expensive plan tier.
+          </p>
+          <div class="case-layer1-example-grid">
+            <div class="case-layer1-example">
+              <strong>Key driver</strong>
+              <span>Successful action steps consumed per month</span>
+              <span>Each successful action step consumes tasks and moves the account toward overage charges or an upgrade.</span>
+            </div>
+            <div class="case-layer1-example">
+              <strong>Scaling logic</strong>
+              <span>Hybrid</span>
+              <span>Task usage scales continuously, while plan and governance upgrades happen through discrete packaging thresholds.</span>
+            </div>
+            <div class="case-layer1-example">
+              <strong>Main upgrade condition</strong>
+              <span>Exceed the included task allowance or need higher-tier workflow and governance features</span>
+              <span>Volume pressure and packaging limits jointly create the step-up path.</span>
+            </div>
+          </div>
+          <p class="case-section-brief">
+            Successful action steps are the spend meter. The selected task tier sets included capacity, and the selected plan decides when richer automation, shared governance, or enterprise controls require a higher subscription.
           </p>
         </section>
 
-        <section class="section">
-          <h2>Decision Friction</h2>
-          <p>
-            The buyer is not just estimating usage; the buyer is estimating architecture. <strong>The main friction is that cost depends on how many successful action steps a workflow executes, which means two automations solving the same business problem can carry different bills if one needs more downstream actions.</strong> Buyers also have to learn which built-in tools sit outside the task meter and when automatic pay-per-task billing might quietly extend spend instead of stopping the system.
+        <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
+          <div class="case-section-label">04 / Pricing Matrix / Mechanism Logic</div>
+          <h2>Pricing Matrix / Mechanism Logic</h2>
+          <p class="case-section-brief">
+            Primary component: driver_logic
           </p>
+          <div class="case-layer1-insight-box">
+            <p><strong>Driver logic:</strong> successful action steps are the billable unit, while plan and task tier set the included capacity and overage context.</p>
+            <div class="case-layer1-example-grid">
+              <div class="case-layer1-example">
+                <strong>Input variable</strong>
+                <span>Successful action steps / month</span>
+                <span>All successful action steps consume one task; triggers, Filters, Paths, and several built-in tools do not.</span>
+              </div>
+              <div class="case-layer1-example">
+                <strong>Included capacity</strong>
+                <span>Selected plan + task tier</span>
+                <span>The chosen package sets the base price, the included task allowance, and the workflow or governance features available.</span>
+              </div>
+              <div class="case-layer1-example">
+                <strong>Bill movement</strong>
+                <span>Overage or upgrade</span>
+                <span>Past the included tier, spend rises through pay-per-task billing or through pressure to move into a bigger plan or task tier.</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-layer1-insight-box case-layer1-insight-box--attached">
+            <p><strong>Formula:</strong> <code>Monthly bill = BasePrice(P, T) + max(0, A - IncludedTasks(T)) x OverageRate(P)</code> when pay-per-task billing is enabled.</p>
+            <p>If pay-per-task billing is disabled, usage above the included tier creates held runs and upgrade pressure instead of extra spend.</p>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Exposure and Risk Logic</h2>
-          <p>
-            Zapier intentionally gives away a lot of surface area to reduce adoption resistance: triggers do not count, several built-in tools do not count, and overage billing can preserve continuity. <strong>The core exposure is that Zapier only captures value when successful action steps fire, even though customers may derive meaningful value from designing, governing, and monitoring workflows that are partly non-billable.</strong> The model works if business value correlates strongly with executed actions, but it creates pricing risk if customers grow anxious about unpredictable step counts or learn how to shift more logic into non-billable steps.
+        <section class="section case-framework-section" data-case-section="pricing-architecture">
+          <div class="case-section-label">05 / Pricing Architecture</div>
+          <h2>Pricing Architecture</h2>
+          <p class="case-section-brief">
+            This section describes structure only: tiers, segmentation, drivers, and upgrade triggers.
           </p>
+          <div class="case-layer1-example-grid">
+            <div class="case-layer1-example">
+              <strong>Tiers</strong>
+              <span>Free, Professional, Team, Enterprise</span>
+              <span>Free includes 100 tasks and two-step Zaps. Paid plans open larger task tiers and richer governance.</span>
+            </div>
+            <div class="case-layer1-example">
+              <strong>Segmentation</strong>
+              <span>Solo testers, power users, department teams, enterprise programs</span>
+              <span>Zapier segments buyers by workflow complexity, shared operations, and admin requirements.</span>
+            </div>
+            <div class="case-layer1-example">
+              <strong>Drivers</strong>
+              <span>Successful action steps, selected task tier, selected plan tier</span>
+              <span>Task usage changes spend directly; selected packaging sets the included capacity and feature surface.</span>
+            </div>
+          </div>
+          <ul class="case-structure-list">
+            <li><strong>Upgrade triggers:</strong> exceed the included task allowance, need more than two-step Zaps or paid platform features, or need shared governance and enterprise controls.</li>
+          </ul>
         </section>
 
-        <section class="section">
-          <h2>Logic Flaw, Vulnerability, and Strategic Opportunity</h2>
-          <p>
-            <strong>The weakness is that the meter tracks workflow architecture more directly than business outcome.</strong> Two customers can create the same commercial result with different step counts, and the more complex workflow pays more even if the buyer does not perceive proportionally more value. That creates both vulnerability and opportunity: sophisticated buyers can redesign workflows to compress billable action count or lean harder on task-free built-ins, while a competitor could offer run-based automation bundles, capped workflow packages, or continuity-oriented pricing that monetizes completed business processes more directly than raw action volume.
+        <section class="section case-framework-section" data-case-section="decision-tension-layer">
+          <div class="case-section-label">06 / Decision Tension Layer</div>
+          <h2>Decision Tension Layer</h2>
+          <p class="case-section-brief">
+            Zapier&apos;s tension comes from pricing structure, not generic UX: buyers have to forecast the meter, choose the right included tier, and decide when automation complexity justifies a packaging jump.
           </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>Task forecast tension</strong>
+              <p>The driver is <strong>successful action steps consumed per month</strong>. Buyers must estimate how many successful actions a workflow will create before steady-state usage is obvious.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Task-tier selection tension</strong>
+              <p>The trigger is <strong>monthly task volume exceeds the included allowance</strong>. Buyers must decide whether to accept pay-per-task billing, move to a higher included tier, or redesign the workflow.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Packaging boundary tension</strong>
+              <p>The trigger is <strong>the workflow requires more than two-step Zaps or paid platform features</strong>. Buyers can hit a packaging jump before raw usage alone would have forced it.</p>
+            </div>
+          </div>
         </section>
 
-        <section class="section">
-          <h2>Primary Sources</h2>
+        <section class="section case-framework-section" data-case-section="strategic-opportunity">
+          <div class="case-section-label">08 / Strategic Opportunity</div>
+          <h2>Strategic Opportunity</h2>
+          <div class="case-attack-grid">
+            <div>
+              <span>Competitor attack angle</span>
+              <strong>Offer run-based automation bundles or capped throughput plans so buyers price completed business runs instead of raw action-step architecture.</strong>
+            </div>
+            <div>
+              <span>Improvement opportunity</span>
+              <strong>Separate continuity protection from raw task metering with clearer spend caps or simpler tier jumps once usage pressure becomes predictable.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
+          <div class="case-section-label">09 / References</div>
+          <h2>References</h2>
           <ul class="case-source-list">
-            <li><cite>Zapier.</cite> (n.d.). <a href="https://zapier.com/pricing">Plans &amp; pricing</a>. Retrieved April 25, 2026, from <a href="https://zapier.com/pricing">https://zapier.com/pricing</a></li>
-            <li><cite>Zapier.</cite> (2026, March 31). <a href="https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier">How is task usage measured in Zapier?</a>. Retrieved April 25, 2026, from <a href="https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier">https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier</a></li>
-            <li><cite>Zapier.</cite> (2026, April 10). <a href="https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier">How pay-per-task billing works in Zapier</a>. Retrieved April 25, 2026, from <a href="https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier">https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier</a></li>
+            <li><cite>Zapier.</cite> (n.d.). <a href="https://zapier.com/pricing">Plans &amp; pricing</a>. Retrieved April 26, 2026, from <a href="https://zapier.com/pricing">https://zapier.com/pricing</a></li>
+            <li><cite>Zapier.</cite> (2026, March 31). <a href="https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier">How is task usage measured in Zapier?</a>. Retrieved April 26, 2026, from <a href="https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier">https://help.zapier.com/hc/en-us/articles/8496196837261-How-is-task-usage-measured-in-Zapier</a></li>
+            <li><cite>Zapier.</cite> (2026, April 10). <a href="https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier">How pay-per-task billing works in Zapier</a>. Retrieved April 26, 2026, from <a href="https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier">https://help.zapier.com/hc/en-us/articles/15279018245901-How-pay-per-task-billing-works-in-Zapier</a></li>
           </ul>
         </section>
       </div>
-
-      <aside class="case-panel">
-        <h2>Case Snapshot</h2>
-        <div class="case-meta-list">
-          <div class="case-meta-item">
-            <div class="case-meta-label">Company</div>
-            <div class="case-meta-value">Zapier</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Industry</div>
-            <div class="case-meta-value">Workflow automation SaaS</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Market</div>
-            <div class="case-meta-value">B2B operations, RevOps, marketing ops, IT, and cross-functional teams orchestrating workflows across many SaaS tools</div>
-          </div>
-          <div class="case-meta-item">
-            <div class="case-meta-label">Date reviewed</div>
-            <div class="case-meta-value">April 25, 2026</div>
-          </div>
-        </div>
-      </aside>
     </div>
   </main>
 
@@ -157,6 +227,129 @@
   </footer>
 
 </div>
+
+<script type="application/json" id="pricing-case-schema">
+{
+  "schema_version": "1.0",
+  "case_id": "zapier-action-step-task-meter",
+  "case_type": "saas",
+  "evidence_level": "observed",
+  "pricing_model": "Task-metered automation pricing with tier packaging and automatic overages",
+  "value_metric": "Successful action steps per month",
+  "segmentation_type": "Plan tier and task-tier packaging",
+  "tiers": [
+    "Free",
+    "Professional",
+    "Team",
+    "Enterprise"
+  ],
+  "segments": [
+    "Solo testers",
+    "Individual power users and small ops teams",
+    "Department automation teams",
+    "Enterprise automation programs"
+  ],
+  "pricing_logic": "Zapier monetizes successful action steps inside live workflows, while plan tier and task tier set the included capacity, feature gates, and governance path.",
+  "key_driver": "Successful action steps consumed per month",
+  "drivers": [
+    {
+      "driver": "Successful action steps consumed per month",
+      "type": "usage",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "Each successful action step consumes tasks and moves the account toward overage charges or an upgrade.",
+      "student_label": "Successful actions are billable."
+    },
+    {
+      "driver": "Selected task tier",
+      "type": "commitment",
+      "pricing_role": "multiplier",
+      "direction": "segment_users",
+      "effect": "The chosen task tier sets the included task allowance that usage is measured against.",
+      "student_label": "The task tier sets included capacity."
+    },
+    {
+      "driver": "Selected plan tier",
+      "type": "commitment",
+      "pricing_role": "base_charge",
+      "direction": "enforce_upgrade",
+      "effect": "The chosen plan tier sets the base subscription price and the workflow or governance features available to the account.",
+      "student_label": "The plan tier sets the base package."
+    }
+  ],
+  "formula": {
+    "expression": "Monthly bill = BasePrice(P, T) + max(0, A - IncludedTasks(T)) x OverageRate(P) when pay-per-task billing is enabled",
+    "variables": [
+      {
+        "symbol": "A",
+        "label": "Successful action steps consumed per month",
+        "maps_to_driver": "Successful action steps consumed per month"
+      },
+      {
+        "symbol": "T",
+        "label": "Selected task tier",
+        "maps_to_driver": "Selected task tier"
+      },
+      {
+        "symbol": "P",
+        "label": "Selected plan tier",
+        "maps_to_driver": "Selected plan tier"
+      }
+    ],
+    "output_label": "Monthly Zapier automation bill",
+    "explanation": "Successful action steps drive spend directly. The selected task tier sets included capacity, and the selected plan tier sets the base subscription and overage pricing context. If pay-per-task billing is disabled, usage above the included tier creates held runs and upgrade pressure instead of extra spend."
+  },
+  "upgrade_triggers": [
+    {
+      "trigger": "Monthly task volume exceeds the included allowance",
+      "from": "Current task tier within the selected plan",
+      "to": "Pay-per-task billing or a higher task tier",
+      "why_it_happens": "Successful action steps outgrow the included task capacity.",
+      "pricing_effect": "Extra spend begins through pay-per-task billing, or the buyer upgrades to a higher included task tier."
+    },
+    {
+      "trigger": "The workflow requires more than two-step Zaps or paid platform features",
+      "from": "Free",
+      "to": "Professional or above",
+      "why_it_happens": "The automation needs multi-step workflows, premium apps, webhooks, or richer support.",
+      "pricing_effect": "The account moves into a paid base subscription and gains access to larger task tiers."
+    },
+    {
+      "trigger": "The buyer needs shared automation governance or enterprise controls",
+      "from": "Professional",
+      "to": "Team or Enterprise",
+      "why_it_happens": "The account needs shared Zaps, shared connections, SAML SSO, admin permissions, or enterprise oversight.",
+      "pricing_effect": "The subscription tier rises to a more expensive collaboration and governance package."
+    }
+  ],
+  "visualization": {
+    "primary_component": "driver_logic",
+    "supporting_components": [],
+    "interactive_controls": [],
+    "default_view": "task usage against the included task tier",
+    "student_prompt": "Track how successful action steps move the bill before plan labels distract you."
+  },
+  "primary_component": "driver_logic",
+  "decision_core": {
+    "what_is_monetized": "Successful action steps inside live workflows.",
+    "what_changes_the_bill": "The bill changes when workflows consume more successful action steps than the selected plan and task tier include, or when the workflow needs higher-tier packaging and governance.",
+    "who_pays_more_and_why": "Teams running more workflow volume and more operationally complex automations pay more because more completed work flows through Zapier's meter."
+  },
+  "student_10_second_takeaway": "The bill changes when live workflows fire more successful action steps than the selected plan and task tier include.",
+  "friction_points": [
+    "The buyer must forecast successful action-step volume before steady-state usage is obvious.",
+    "The buyer must choose a task tier before knowing whether pay-per-task billing or a higher included tier will be cheaper.",
+    "The buyer must decide when higher-tier workflow or governance limits justify an upgrade."
+  ],
+  "risks": [
+    "The meter tracks workflow architecture more directly than business outcome.",
+    "Non-billable built-ins can make similar commercial outcomes cost different amounts.",
+    "Automatic overage protection can preserve continuity while making spend less predictable."
+  ],
+  "structural_weakness": "Buyers can compress billable action count by redesigning workflows, which makes price feel sensitive to implementation design rather than commercial importance.",
+  "strategic_insight": "The commercial opening is cleaner automation pricing that ties spend to completed business runs or capped throughput instead of raw action-step architecture."
+}
+</script>
 
 </body>
 </html>
