@@ -8,6 +8,7 @@
 // - Primary logic fields: pricing_model, key_driver, upgrade_triggers,
 //   primary_component, decision_core, what_is_monetized, what_changes_the_bill,
 //   who_pays_more_and_why, student_10_second_takeaway.
+// - Contract tracking field: contract_status.
 // - Supporting interpretation fields: mechanism_summary, decision_friction,
 //   logic_flaw, strategic_opportunity.
 // - Supporting interpretation fields help reading and previewing cases,
