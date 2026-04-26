@@ -1,6 +1,6 @@
 # Pricing Case Component Library
 
-This file defines reusable pricing case components at the schema and instruction level. It does not define visual styling.
+This file defines reusable pricing case components. It does not define data structure, page structure, or visual styling.
 
 Layer 1 selects the primary component based on the pricing logic. `COMPONENT_LIBRARY.md` defines how each component should be used.
 
@@ -16,7 +16,7 @@ Use these exact tokens across Layer 1, the public-page template, and the case in
 - `trigger_path`
 - `value_extraction_map`
 
-If human-readable labels are shown in prose or UI copy, they are explanatory aliases only. The tokens above are the system identifiers.
+Use the tokens above exactly. No alias or synonym is valid in stored pricing case data.
 
 ## Primary Component Decision Logic
 
@@ -45,6 +45,7 @@ Required data fields:
 
 - `tiers`
 - `pricing_model`
+- `key_driver`
 - `upgrade_triggers`
 - `decision_core`
 
@@ -78,6 +79,7 @@ Required data fields:
 
 - `tiers`
 - `segments`
+- `key_driver`
 - `drivers`
 - `upgrade_triggers`
 - `decision_core`
@@ -153,6 +155,7 @@ What pricing logic it represents:
 Required data fields:
 
 - `upgrade_triggers`
+- `key_driver`
 - `drivers`
 - `decision_core`
 
@@ -190,6 +193,7 @@ Required data fields:
 
 - `pricing_logic`
 - `value_metric`
+- `key_driver`
 - `drivers`
 - `formula`
 - `decision_core`
