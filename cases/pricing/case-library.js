@@ -345,13 +345,13 @@ window.pricingCaseRecords = [
 
     // Structured pricing logic
     pricing_model: "Per-site publishing pricing plus workspace governance and role-seat pricing",
-    key_driver: "Which paid surface is activated: site plan, workspace tier, and paid seat role",
+    key_driver: "Activation and scale of paid surfaces: published sites, workspace governance, and paid seat roles",
     upgrade_triggers: [
       "A new published site requires its own Site plan",
       "The workspace needs higher collaboration or governance controls",
       "A collaborator moves into a paid full or limited seat role"
     ],
-    primary_component: "matrix",
+    primary_component: "driver_logic",
     what_is_monetized: "Live sites, workspace governance, and collaborator permission depth.",
     what_changes_the_bill: "The bill changes when the buyer adds or upgrades a site plan, upgrades the workspace layer, or moves collaborators into paid seat roles.",
     who_pays_more_and_why: "Teams with more live sites, more governance needs, and more high-permission collaborators pay more because more paid surfaces are activated.",
@@ -361,8 +361,9 @@ window.pricingCaseRecords = [
       who_pays_more_and_why: "Teams with more live sites, more governance needs, and more high-permission collaborators pay more because more paid surfaces are activated."
     },
     student_10_second_takeaway: "The bill changes when Webflow activates more paid surfaces: sites, workspace governance, or paid collaborator roles.",
+    contract_status: "webflow_layer1_migrated_v1",
     consistency_status: "structurally_valid",
-    consistency_note: "Manual note: matrix is the intended primary component because multiple paid surfaces jointly determine the bill rather than one continuous variable alone.",
+    consistency_note: "Manual note: driver_logic is the intended primary component because paid surface activation is the dominant bill-change driver across sites, workspace governance, and paid roles.",
 
     // Supporting interpretation, not primary logic
     mechanism_summary: "Webflow does not bundle build, publish, and collaborate into one software seat. It monetizes the live site at the asset level, monetizes staging and governance at the Workspace level, and monetizes role intensity again through full, limited, and free reviewer seats.",
