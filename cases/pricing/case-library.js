@@ -348,13 +348,13 @@ window.pricingCaseRecords = [
 
     // Structured pricing logic
     pricing_model: "Per-site publishing pricing plus workspace governance and role-seat pricing",
-    key_driver: "Which paid surface is activated: site plan, workspace tier, and paid seat role",
+    key_driver: "Activation and scale of paid surfaces: published sites, workspace governance, and paid seat roles",
     upgrade_triggers: [
       "A new published site requires its own Site plan",
       "The workspace needs higher collaboration or governance controls",
       "A collaborator moves into a paid full or limited seat role"
     ],
-    primary_component: "matrix",
+    primary_component: "driver_logic",
     what_is_monetized: "Live sites, workspace governance, and collaborator permission depth.",
     what_changes_the_bill: "The bill changes when the buyer adds or upgrades a site plan, upgrades the workspace layer, or moves collaborators into paid seat roles.",
     who_pays_more_and_why: "Teams with more live sites, more governance needs, and more high-permission collaborators pay more because more paid surfaces are activated.",
