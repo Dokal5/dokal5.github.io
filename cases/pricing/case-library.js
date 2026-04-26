@@ -258,6 +258,7 @@ window.pricingCaseRecords = [
     ],
 
     // Metadata only
+    contract_status: "layer1_migrated_v1",
     framework_tags: ["EVAC 2.0", "Marketing"],
     counterintuitive_score: 5,
     teaching_value_score: 5,
