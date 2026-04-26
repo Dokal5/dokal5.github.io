@@ -466,25 +466,26 @@ window.pricingCaseRecords = [
     pricing_surface: "Basecamp presents three price surfaces: a free one-project tier, a Plus plan at $15 per employee per month with free guests and contractors, and a Pro Unlimited plan at $299 per month billed annually or $349 month-to-month for unlimited users plus bundled upgrades.",
 
     // Structured pricing logic
-    pricing_model: "Per-employee pricing plus flat organization cap",
-    key_driver: "Employee count until the flat-cap crossover becomes attractive",
+    pricing_model: "Per-employee pricing with a flat organization-wide cap",
+    key_driver: "Billed employee count on Plus compared with the fixed Pro Unlimited organization price",
     upgrade_triggers: [
-      "Employee count or collaborator sprawl makes the capped plan economically superior",
-      "The buyer wants to remove seat-count anxiety",
-      "The buyer values the bundled upgrades in Pro Unlimited"
+      "Billed employee count makes Plus less attractive than the fixed organization price",
+      "The buyer wants predictable broad rollout without per-user expansion friction",
+      "The buyer values unlimited users, bundled upgrades, priority support, onboarding, or extra storage"
     ],
-    primary_component: "trigger_path",
-    what_is_monetized: "Employee participation on the smaller plan and account-wide rollout on the capped plan.",
-    what_changes_the_bill: "The bill changes when employee count rises on Plus or when the buyer crosses into the flat Pro Unlimited plan.",
-    who_pays_more_and_why: "Smaller teams pay more as employee count rises, while fast-growing organizations pay the higher flat cap to remove headcount debates and unlock broad rollout.",
+    primary_component: "driver_logic",
+    what_is_monetized: "Employee participation on Plus and organization-wide rollout on Pro Unlimited.",
+    what_changes_the_bill: "The bill changes when billed employee count rises on Plus, when the account selects Pro Unlimited, or when flat account add-ons are purchased.",
+    who_pays_more_and_why: "Smaller teams pay more as employee count grows on Plus; organizations that value predictable broad rollout pay the higher fixed Pro Unlimited price to remove per-user expansion friction.",
     decision_core: {
-      what_is_monetized: "Employee participation on the smaller plan and account-wide rollout on the capped plan.",
-      what_changes_the_bill: "The bill changes when employee count rises on Plus or when the buyer crosses into the flat Pro Unlimited plan.",
-      who_pays_more_and_why: "Smaller teams pay more as employee count rises, while fast-growing organizations pay the higher flat cap to remove headcount debates and unlock broad rollout."
+      what_is_monetized: "Employee participation on Plus and organization-wide rollout on Pro Unlimited.",
+      what_changes_the_bill: "The bill changes when billed employee count rises on Plus, when the account selects Pro Unlimited, or when flat account add-ons are purchased.",
+      who_pays_more_and_why: "Smaller teams pay more as employee count grows on Plus; organizations that value predictable broad rollout pay the higher fixed Pro Unlimited price to remove per-user expansion friction."
     },
-    student_10_second_takeaway: "The bill changes when employee count rises enough that the flat-cap plan becomes the better pricing path.",
+    student_10_second_takeaway: "The bill moves with billed employees on Plus, then stops moving per user once the buyer chooses Pro Unlimited.",
+    contract_status: "layer1_migrated",
     consistency_status: "structurally_valid",
-    consistency_note: "Manual note: trigger_path is the intended primary component because the key teaching moment is the crossover from per-employee pricing to a flat organizational cap.",
+    consistency_note: "Manual note: driver_logic is the intended primary component because billed employee count is the dominant variable that changes spend before Pro Unlimited converts the account to a fixed organization price.",
 
     // Supporting interpretation, not primary logic
     mechanism_summary: "The offer deliberately splits between per-employee pricing for smaller teams and a capped organizational price for fast-growing buyers, while still protecting monetization with flat add-ons and annual billing on the capped plan.",
