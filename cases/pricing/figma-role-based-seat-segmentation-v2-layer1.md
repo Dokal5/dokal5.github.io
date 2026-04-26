@@ -6,7 +6,7 @@ Pricing model: Single-seat-per-user role-based pricing across plan tiers
 Primary insight: Figma does not mainly monetize raw access to the workspace; it monetizes workflow responsibility by charging different seat prices for creation, developer handoff, and collaboration inside each plan.
 What is monetized: Paid workflow roles inside a selected plan, especially Full, Dev, and Collab seats.
 How users are segmented: By workflow role first (View, Collab, Dev, Full) and by organizational governance need second (Professional, Organization, Enterprise).
-What drives price differences: The count and mix of paid seat types, plus the plan tier that sets the price of each seat and the level of governance.
+What drives price differences: Not total user count, but the count and mix of paid seat types, plus the plan tier that sets the price of each seat and the level of governance.
 Why this pricing works: Figma can widen adoption with free view access while charging more when a user creates assets, operationalizes design in engineering handoff, or needs the governance layer that comes with larger cross-team design systems.
 Where friction appears: Admins have to classify users into the right paid role and revisit those assignments as cross-functional work shifts.
 Where risk appears: Role boundaries can feel political or arbitrary when one person moves between collaboration, inspection, and creation.
@@ -224,14 +224,14 @@ Student 10-second takeaway: Figma captures value by pricing responsibility in th
 ```json
 {
   "case_id": "figma-role-based-seat-segmentation-v2",
-  "render_goal": "Show within 10 seconds that Figma charges for workflow responsibility and governance, not for every visible user.",
+  "render_goal": "Show within 10 seconds that paid seat mix, not raw headcount, changes the bill because Figma charges for workflow responsibility and governance.",
   "primary_component": "Pricing Driver Simulator",
   "secondary_components": [
     "Segmentation Map",
     "Tier Ladder"
   ],
   "first_screen_priority": [
-    "View access is free",
+    "View seats can increase without changing paid spend",
     "Each user gets one seat type",
     "Paid seat mix drives the bill more than total headcount",
     "Plan tier raises every paid seat price as governance increases"
@@ -252,7 +252,7 @@ Student 10-second takeaway: Figma captures value by pricing responsibility in th
     "User cannot tell within 5 seconds that view access is free",
     "User leaves thinking Figma charges simple per-user pricing",
     "Role segmentation overwhelms the plan tier relationship or vice versa",
-    "Simulator changes numbers without making workflow responsibility more legible"
+    "Simulator behaves like a generic user-count calculator instead of a role-mix pricing explanation"
   ],
   "data_dependencies": [
     "tiers",

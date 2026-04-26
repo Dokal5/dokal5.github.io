@@ -113,8 +113,50 @@
           <div class="case-section-label">04 / Pricing Matrix / Mechanism Logic</div>
           <h2>Pricing Matrix / Mechanism Logic</h2>
           <p class="case-section-brief">
-            Figma's bill is not a flat seat ladder. It is a role-priced matrix where plan selection changes the price of each paid role.
+            Figma's bill is not a flat seat ladder. It is a role-priced matrix where plan selection changes the price of each paid role, and <strong>paid seat mix matters more than total headcount</strong>.
           </p>
+          <p class="case-claim-statement">
+            Keep the plan constant and add ten <strong>View</strong> seats: paid spend stays flat. Convert those same people into <strong>Collab</strong>, <strong>Dev</strong>, or <strong>Full</strong> seats: the bill rises because workflow responsibility changed.
+          </p>
+          <div class="case-layer1-simulator">
+            <div class="case-layer1-controls">
+              <label class="case-layer1-control">
+                <span>Plan tier</span>
+                <select id="figma-plan-selector"></select>
+              </label>
+              <div class="case-layer1-seat-inputs" id="figma-seat-inputs"></div>
+            </div>
+            <div class="case-layer1-results">
+              <div class="case-layer1-result case-layer1-result--primary">
+                <span>Monthly paid seat spend</span>
+                <strong id="figma-total-cost">$0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Paid seats</span>
+                <strong id="figma-paid-seats">0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Average paid seat</span>
+                <strong id="figma-average-paid-seat">$0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Full-seat share</span>
+                <strong id="figma-full-seat-share">0%</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>View-seat price</span>
+                <strong>$0</strong>
+              </div>
+              <div class="case-layer1-result">
+                <span>Free viewers</span>
+                <strong id="figma-view-count">0</strong>
+              </div>
+              <div class="case-layer1-mix">
+                <div class="case-layer1-mix-labels" id="figma-mix-labels"></div>
+                <div class="case-layer1-mix-bar" id="figma-mix-bar" aria-label="Paid seat mix"></div>
+              </div>
+            </div>
+          </div>
           <div class="case-layer1-matrix" id="figma-pricing-matrix"></div>
           <div class="case-driver-strip">
             <div>
@@ -212,42 +254,14 @@
           <div class="case-section-label">07 / Optional Simulator</div>
           <h2>Optional Simulator</h2>
           <p class="case-section-brief">
-            Change the team mix and watch how the bill moves. The teaching point is that workflow responsibility changes spend faster than raw headcount.
+            The primary simulator above already carries the mechanism. Use these checks to confirm you are reading <strong>role mix</strong>, not generic user growth.
           </p>
-          <div class="case-layer1-simulator">
-            <div class="case-layer1-controls">
-              <label class="case-layer1-control">
-                <span>Plan tier</span>
-                <select id="figma-plan-selector"></select>
-              </label>
-              <div class="case-layer1-seat-inputs" id="figma-seat-inputs"></div>
-            </div>
-            <div class="case-layer1-results">
-              <div class="case-layer1-result case-layer1-result--primary">
-                <span>Monthly paid seat spend</span>
-                <strong id="figma-total-cost">$0</strong>
-              </div>
-              <div class="case-layer1-result">
-                <span>Paid seats</span>
-                <strong id="figma-paid-seats">0</strong>
-              </div>
-              <div class="case-layer1-result">
-                <span>Average paid seat</span>
-                <strong id="figma-average-paid-seat">$0</strong>
-              </div>
-              <div class="case-layer1-result">
-                <span>Full-seat share</span>
-                <strong id="figma-full-seat-share">0%</strong>
-              </div>
-              <div class="case-layer1-result">
-                <span>Free viewers</span>
-                <strong id="figma-view-count">0</strong>
-              </div>
-              <div class="case-layer1-mix">
-                <div class="case-layer1-mix-labels" id="figma-mix-labels"></div>
-                <div class="case-layer1-mix-bar" id="figma-mix-bar" aria-label="Paid seat mix"></div>
-              </div>
-            </div>
+          <div class="case-layer1-insight-box">
+            <ul>
+              <li>Add more <strong>View</strong> seats and the paid bill should stay unchanged.</li>
+              <li>Reclassify two users from <strong>Collab</strong> to <strong>Dev</strong> or <strong>Full</strong> and spend should rise even if headcount does not.</li>
+              <li>Keep the same role mix and switch plans: every paid seat should get more expensive because governance changed.</li>
+            </ul>
           </div>
         </section>
 
@@ -481,7 +495,7 @@
       "Full seats"
     ],
     "default_view": "Organization plan with a viewer-heavy team and a smaller set of paid workflow owners",
-    "student_prompt": "Change the seat mix and watch how workflow responsibility, not total headcount, changes the bill."
+    "student_prompt": "Change the seat mix and confirm that paid role reclassification, not simple user growth, changes the bill."
   },
   "primary_component": "Pricing Driver Simulator",
   "decision_core": {
