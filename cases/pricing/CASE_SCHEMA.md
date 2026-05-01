@@ -12,6 +12,8 @@ The canonical case JSON must answer:
 2. what changes the bill
 3. who pays more and why
 
+Pricing structure answers how the bill is calculated. Strategic logic answers why this pricing structure is expected to work. Strategic logic is a hypothesized causal-assumption layer, not proof of causality.
+
 The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.html`.
 
 ## Canonical Object Shape
@@ -43,7 +45,13 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
   "friction_points": [],
   "risks": [],
   "structural_weakness": "",
-  "strategic_insight": ""
+  "strategic_insight": "",
+  "strategic_logic": {
+    "dominant_causal_chain": [],
+    "main_assumption": "",
+    "main_failure_risk": "",
+    "evidence_status": ""
+  }
 }
 ```
 
@@ -73,6 +81,7 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `risks` | array of strings | required | `[]` | Risk statements tied to the pricing structure. |
 | `structural_weakness` | string | required | none | Main weakness in the pricing architecture. |
 | `strategic_insight` | string | required | none | Short strategic implication of the pricing structure. |
+| `strategic_logic` | `StrategicLogic` object | required | `{ "dominant_causal_chain": [], "main_assumption": "", "main_failure_risk": "", "evidence_status": "" }` | Captures the hypothesized pricing-relevant causal logic behind the case. It explains why the pricing structure is expected to work, without claiming proof. |
 
 ## Nested Object Contract
 
@@ -85,6 +94,17 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `what_is_monetized` | string | required | none | Names what the company actually charges for. |
 | `what_changes_the_bill` | string | required | none | States the condition or variable that changes spend. |
 | `who_pays_more_and_why` | string | required | none | Explains which buyers pay more and the causal reason. |
+
+### `StrategicLogic`
+
+`strategic_logic` is required and must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `dominant_causal_chain` | array of strings | required | `[]` | A concise pricing-relevant causal chain. Use 3 to 5 steps only. It should move from customer condition to behavior change to pricing driver to billing change to financial outcome. |
+| `main_assumption` | string | required | none | The core causal assumption that must hold for the pricing logic to work. |
+| `main_failure_risk` | string | required | none | The main way the causal logic could break. |
+| `evidence_status` | enum string | required | none | Must be one of `observed`, `inferred`, `hypothesized`. It should usually match or be more cautious than `evidence_level`. |
 
 ### `Driver`
 
@@ -159,6 +179,16 @@ When `visualization` is populated, it may contain only:
 - `primary_component` must match the mechanism logic, not the visible marketing layout.
 - `visualization.primary_component` must match `primary_component` when both are present.
 - `student_10_second_takeaway` should tell a learner what changes the bill in one sentence.
+- `strategic_logic` is required.
+- `strategic_logic` must be written as hypothesized logic unless supported by direct evidence.
+- `strategic_logic.dominant_causal_chain` must contain 3 to 5 steps.
+- `strategic_logic.dominant_causal_chain` must be pricing-relevant only.
+- `strategic_logic.dominant_causal_chain` must not become a full company strategy DAG.
+- `strategic_logic.dominant_causal_chain` must include the `key_driver` or a direct equivalent from `decision_core.what_changes_the_bill`.
+- `strategic_logic` must connect to at least one of: `drivers`, `formula`, `upgrade_triggers`, `risks`, `structural_weakness`, or `strategic_insight`.
+- `strategic_logic` must not introduce new tiers, segments, drivers, or upgrade triggers that are absent from the case JSON.
+- If the causal chain implies a new driver, update `drivers` and `key_driver` first.
+- `strategic_logic.evidence_status` must not be stronger than `evidence_level` unless explicitly justified in `strategic_insight`.
 
 ## Acceptance Gate
 
@@ -170,5 +200,11 @@ A pricing case JSON object is complete only if:
 - `key_driver` is explicit
 - `drivers` and `formula` can support the chosen mechanism
 - `upgrade_triggers` explain how payment level changes
+- `strategic_logic` is present
+- `strategic_logic.dominant_causal_chain` has 3 to 5 pricing-relevant steps
+- `strategic_logic.main_assumption` is explicit
+- `strategic_logic.main_failure_risk` is explicit
+- the strategic logic chain includes or clearly maps to `key_driver`
+- the strategic logic chain does not claim proven causality without evidence
 - `primary_component` matches the mechanism logic
 - the structure can support both a public page and system use

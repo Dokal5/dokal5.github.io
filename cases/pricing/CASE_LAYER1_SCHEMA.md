@@ -6,11 +6,12 @@ Layer 1 separates analytical structure from public-page presentation.
 
 ## Layer 1 Output
 
-Every pricing case should produce three artifacts before page rendering:
+Every pricing case should produce four artifacts before page rendering:
 
 1. `Case Insight Brief`
 2. `Case JSON`
 3. `Render Instruction`
+4. `Strategic Logic`
 
 ## 1. Case Insight Brief
 
@@ -120,6 +121,49 @@ Deterministic render mapping rules:
 - `Render Instruction.secondary_components` may support the primary mechanism only. They may not introduce new pricing logic.
 - `Render Instruction.interactive_controls` may reference only existing drivers or formula variables already defined in the case JSON.
 
+## 4. Strategic Logic
+
+Purpose:
+
+Strategic Logic makes the assumed causal chain behind the pricing case explicit. It is not proof. It is the case's dominant hypothesized pricing logic.
+
+Required shape:
+
+```json
+{
+  "case_id": "",
+  "strategic_logic": {
+    "dominant_causal_chain": [
+      "customer condition",
+      "behavior change",
+      "pricing driver",
+      "billing change",
+      "financial outcome"
+    ],
+    "main_assumption": "",
+    "main_failure_risk": "",
+    "evidence_status": "observed | inferred | hypothesized"
+  }
+}
+```
+
+Field guidance:
+
+- `dominant_causal_chain`: 3 to 5 steps only. Prefer the sequence customer condition -> behavior change -> pricing driver -> billing change -> financial outcome.
+- `main_assumption`: the one causal belief the pricing model relies on.
+- `main_failure_risk`: the most likely way the logic breaks.
+- `evidence_status`: how confident the analyst can be based on available evidence.
+
+Deterministic mapping rules:
+
+- `Strategic Logic.case_id` must match `Case JSON.case_id`.
+- `Strategic Logic.strategic_logic` maps directly to `Case JSON.strategic_logic`.
+- `Strategic Logic` must not modify `primary_component`.
+- `Strategic Logic` must not introduce new drivers, tiers, segments, or upgrade triggers.
+- If `Strategic Logic` reveals a missing driver or trigger, update `Case JSON` first.
+- `Strategic Logic` should use the same `key_driver` already defined in `Case JSON`.
+- `Strategic Logic` is analyst-facing and may be rendered publicly only as a teaching aid.
+
 ## Layer 1 Acceptance Gate
 
 Layer 1 is complete only if:
@@ -132,5 +176,10 @@ Layer 1 is complete only if:
 - `schema_version` is explicitly set to `"1.0"`
 - the main pricing driver is explicit
 - `upgrade_triggers` are explicit
+- every case includes one dominant hypothesized causal chain
+- the chain has 3 to 5 steps
+- the chain includes the main pricing driver
+- the chain has a main assumption and main failure risk
+- the chain remains pricing-relevant and does not become a general business strategy map
 - the recommended component follows from the pricing logic
 - the render instruction defines at least one failure mode

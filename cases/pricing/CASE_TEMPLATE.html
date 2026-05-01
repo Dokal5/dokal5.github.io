@@ -58,6 +58,13 @@ Public page rules:
   <script type="application/json" id="pricing-case-schema"> ... </script>
 - Hidden JSON must include `schema_version: "1.0"`.
 - Any hidden JSON version mismatch is invalid.
+- Strategic Logic is required in hidden JSON.
+- Strategic Logic is a hypothesized causal chain, not proof.
+- Strategic Logic may be rendered as an optional teaching section.
+- If rendered, Strategic Logic should appear after Decision Tension Layer and before Optional Simulator.
+- Strategic Logic must not replace Pricing Logic Deconstruction or Pricing Architecture.
+- Strategic Logic must not introduce new drivers, tiers, segments, or upgrade triggers.
+- Strategic Logic must explain why the existing pricing structure is expected to work.
 - Decision Tension must be caused by pricing structure.
 - Each tension must link back to a driver, segmentation rule, or upgrade trigger.
 - Do not include general UX complaints, design complaints, or product complaints unless they are directly caused by pricing structure.
@@ -69,10 +76,11 @@ Required public section order:
 4. Pricing Matrix / Mechanism Logic
 5. Pricing Architecture
 6. Decision Tension Layer
-7. Optional Simulator
-8. Strategic Opportunity
-9. References
-10. Hidden JSON Schema
+7. Optional Strategic Logic
+8. Optional Simulator
+9. Strategic Opportunity
+10. References
+11. Hidden JSON Schema
 
 Migration checklist:
 - include hidden JSON with id="pricing-case-schema"
@@ -306,8 +314,41 @@ Migration checklist:
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="strategic-logic">
+          <div class="case-section-label">07 / Strategic Logic</div>
+          <h2>Strategic Logic</h2>
+          <!--
+          Optional public teaching section.
+          This section explains the hypothesized causal chain behind the pricing case.
+          It is not proof.
+          Enforcement:
+          - Use 3 to 5 steps only.
+          - The chain must move from customer condition to behavior change to pricing driver to billing change to financial outcome.
+          - The chain must include or clearly map to key_driver.
+          - Do not introduce new drivers, tiers, segments, or upgrade triggers.
+          - Do not turn this into a full company strategy DAG.
+          -->
+          <p class="case-section-brief">
+            [Explain the dominant hypothesized causal chain behind the pricing logic.]
+          </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>Hypothesized causal chain</strong>
+              <p>[Customer condition] &rarr; [Behavior change] &rarr; [Pricing driver] &rarr; [Billing change] &rarr; [Financial outcome]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Main assumption</strong>
+              <p>[Main assumption]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Main failure risk</strong>
+              <p>[Main failure risk]</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="optional-simulator">
-          <div class="case-section-label">07 / Optional Simulator</div>
+          <div class="case-section-label">08 / Optional Simulator</div>
           <h2>Optional Simulator</h2>
           <!--
           Remove this entire section if not used.
@@ -326,7 +367,7 @@ Migration checklist:
         </section>
 
         <section class="section case-framework-section" data-case-section="strategic-opportunity">
-          <div class="case-section-label">08 / Strategic Opportunity</div>
+          <div class="case-section-label">09 / Strategic Opportunity</div>
           <h2>Strategic Opportunity</h2>
           <!--
           Enforcement:
@@ -347,7 +388,7 @@ Migration checklist:
         </section>
 
         <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
-          <div class="case-section-label">09 / References</div>
+          <div class="case-section-label">10 / References</div>
           <h2>References</h2>
           <ul class="case-source-list">
             <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 1]">[Source Title 1]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 1]">[Source URL 1]</a></li>
@@ -393,7 +434,13 @@ Migration checklist:
   "friction_points": [],
   "risks": [],
   "structural_weakness": "",
-  "strategic_insight": ""
+  "strategic_insight": "",
+  "strategic_logic": {
+    "dominant_causal_chain": [],
+    "main_assumption": "",
+    "main_failure_risk": "",
+    "evidence_status": ""
+  }
 }
 </script>
 

@@ -6,6 +6,8 @@ Layer 1 selects the primary component based on the pricing logic. `COMPONENT_LIB
 
 Use exactly one primary component per case. Supporting visuals may exist, but they do not replace the primary component and they are not system identifiers.
 
+Strategic Logic is not a primary component. It is an analytical causal-assumption layer defined in `CASE_SCHEMA.md` and `CASE_LAYER1_SCHEMA.md`. It may inform what the visual component should emphasize, but it must not be used as a replacement for `tier_ladder`, `matrix`, `driver_logic`, `trigger_path`, or `value_extraction_map`.
+
 ## Canonical Primary Component Tokens
 
 Use these exact tokens across Layer 1, the public-page template, and the case index:
