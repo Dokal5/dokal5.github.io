@@ -47,6 +47,11 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
   "structural_weakness": "",
   "strategic_insight": "",
   "strategic_logic": {
+    "customer_condition": "",
+    "behavior_change": "",
+    "pricing_driver": "",
+    "billing_change": "",
+    "financial_outcome": "",
     "dominant_causal_chain": [],
     "main_assumption": "",
     "main_failure_risk": "",
@@ -85,7 +90,7 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `risks` | array of strings | required | `[]` | Risk statements tied to the pricing structure. |
 | `structural_weakness` | string | required | none | Main weakness in the pricing architecture. |
 | `strategic_insight` | string | required | none | Short strategic implication of the pricing structure. |
-| `strategic_logic` | `StrategicLogic` object | required | `{ "dominant_causal_chain": [], "main_assumption": "", "main_failure_risk": "", "evidence_status": "", "visual_strip": { "enabled": false, "layout": "canonical_five_step_strip" } }` | Captures the hypothesized pricing-relevant causal logic behind the case. It explains why the pricing structure is expected to work, without claiming proof. |
+| `strategic_logic` | `StrategicLogic` object | required | `{ "customer_condition": "", "behavior_change": "", "pricing_driver": "", "billing_change": "", "financial_outcome": "", "dominant_causal_chain": [], "main_assumption": "", "main_failure_risk": "", "evidence_status": "", "visual_strip": { "enabled": false, "layout": "canonical_five_step_strip" } }` | Captures the hypothesized pricing-relevant causal logic behind the case. It explains why the pricing structure is expected to work, without claiming proof. |
 
 ## Nested Object Contract
 
@@ -105,7 +110,12 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 
 | Field | Type | Required | Empty state | Contract |
 | --- | --- | --- | --- | --- |
-| `dominant_causal_chain` | array of strings | required | `[]` | A concise pricing-relevant causal chain. Use 3 to 5 steps only. It should move from customer condition to behavior change to pricing driver to billing change to financial outcome. |
+| `customer_condition` | string | required | none | Names the customer or market state that activates the pricing logic. This is the canonical source for the Customer Condition strip node. Keep it concise. |
+| `behavior_change` | string | required | none | Names the customer behavior shift. This is mandatory and is the canonical source for the Behavior Change strip node. Keep it concise. |
+| `pricing_driver` | string | required | none | Names what changes the bill. It must match or clearly map to `key_driver`. This is the canonical source for the Pricing Driver strip node. |
+| `billing_change` | string | required | none | Names how spending changes. This is the canonical source for the Billing Change strip node. Keep it concise. |
+| `financial_outcome` | string | required | none | Names the intended revenue, margin, ARPA, retention, or profit effect. This is the canonical source for the Financial Outcome strip node. |
+| `dominant_causal_chain` | array of strings | required | `[]` | Ordered compatibility array for rendering or migration. It should duplicate the five explicit causal fields in order when the strip is enabled and must not contradict them. |
 | `main_assumption` | string | required | none | The core causal assumption that must hold for the pricing logic to work. |
 | `main_failure_risk` | string | required | none | The main way the causal logic could break. |
 | `evidence_status` | enum string | required | none | Must be one of `observed`, `inferred`, `hypothesized`. It should usually match or be more cautious than `evidence_level`. |
@@ -195,11 +205,20 @@ When `visualization` is populated, it may contain only:
 - `student_10_second_takeaway` should tell a learner what changes the bill in one sentence.
 - `strategic_logic` is required.
 - `strategic_logic` must be written as hypothesized logic unless supported by direct evidence.
+- `strategic_logic` is not a primary component.
+- `strategic_logic.customer_condition`, `strategic_logic.behavior_change`, `strategic_logic.pricing_driver`, `strategic_logic.billing_change`, and `strategic_logic.financial_outcome` are required.
+- The five explicit strategic logic fields are the canonical source for rendering the Strategic Logic Strip.
+- `strategic_logic.behavior_change` is required and must not be empty.
+- `strategic_logic.pricing_driver` must match or clearly map to `key_driver`.
+- The five strategic logic fields must be short enough to render as strip nodes.
 - `strategic_logic.dominant_causal_chain` must contain 3 to 5 steps.
+- When `strategic_logic.visual_strip.enabled` is true, `strategic_logic.dominant_causal_chain` should contain five steps matching the five explicit causal fields.
 - `strategic_logic.dominant_causal_chain` must be pricing-relevant only.
 - `strategic_logic.dominant_causal_chain` must not become a full company strategy DAG.
 - `strategic_logic.dominant_causal_chain` must include the `key_driver` or a direct equivalent from `decision_core.what_changes_the_bill`.
+- `strategic_logic.dominant_causal_chain` must not contradict the five explicit strategic logic fields.
 - `strategic_logic.visual_strip.layout` must use the canonical five-step strip.
+- `strategic_logic.visual_strip.layout` must equal `canonical_five_step_strip`.
 - Do not allow arbitrary graph layouts.
 - Do not allow free-form DAG rendering.
 - The strip must remain directional and linear.
@@ -210,8 +229,10 @@ When `visualization` is populated, it may contain only:
 - The chain must not become a general company strategy diagram.
 - `strategic_logic` must connect to at least one of: `drivers`, `formula`, `upgrade_triggers`, `risks`, `structural_weakness`, or `strategic_insight`.
 - `strategic_logic` must not introduce new tiers, segments, drivers, or upgrade triggers that are absent from the case JSON.
+- `strategic_logic` must not introduce unmodeled drivers, segments, tiers, or upgrade triggers.
 - If the causal chain implies a new driver, update `drivers` and `key_driver` first.
 - `strategic_logic.evidence_status` must not be stronger than `evidence_level` unless explicitly justified in `strategic_insight`.
+- Strategic Logic is hypothesized unless `evidence_status` is `observed` and justified.
 
 ## Acceptance Gate
 
@@ -224,6 +245,10 @@ A pricing case JSON object is complete only if:
 - `drivers` and `formula` can support the chosen mechanism
 - `upgrade_triggers` explain how payment level changes
 - `strategic_logic` is present
+- `strategic_logic` includes five explicit causal slots
+- `strategic_logic.behavior_change` is filled
+- `strategic_logic.pricing_driver` maps to `key_driver`
+- the five strategic logic slots are short enough to render as nodes
 - `strategic_logic.visual_strip` is valid
 - `strategic_logic.dominant_causal_chain` has 3 to 5 pricing-relevant steps
 - `strategic_logic.main_assumption` is explicit

@@ -61,7 +61,7 @@ Public page rules:
 - Strategic Logic is required in hidden JSON.
 - Strategic Logic is a hypothesized causal chain, not proof.
 - Strategic Logic may be rendered as an optional teaching section.
-- If rendered, Strategic Logic should appear after Pricing Logic Deconstruction and before Pricing Matrix / Mechanism Logic.
+- If rendered, Strategic Logic should appear after Pricing Logic Deconstruction and before Pricing Mechanism Logic.
 - Strategic Logic must not replace Pricing Logic Deconstruction or Pricing Architecture.
 - Strategic Logic must not introduce new drivers, tiers, segments, or upgrade triggers.
 - Strategic Logic must explain why the existing pricing structure is expected to work.
@@ -90,7 +90,7 @@ Required public section order:
 2. Core Insight
 3. Pricing Logic Deconstruction
 4. Strategic Logic
-5. Pricing Matrix / Mechanism Logic
+5. Pricing Mechanism Logic
 6. Pricing Architecture
 7. Decision Tension Layer
 8. Optional Simulator
@@ -275,30 +275,30 @@ Migration checklist:
           <p class="case-section-brief">
             Hypothesized pricing-relevant causal logic. Not proof.
           </p>
-          <div class="case-strategic-strip">
+          <div class="case-strategic-strip" aria-label="Hypothesized strategic logic">
             <div class="case-strip-node case-strip-node--condition">
               <span class="case-strip-label">Customer Condition</span>
-              <strong>[Condition]</strong>
+              <strong>[Customer condition]</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--behavior">
               <span class="case-strip-label">Behavior Change</span>
-              <strong>[Behavior]</strong>
+              <strong>[Behavior change]</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--driver">
               <span class="case-strip-label">Pricing Driver</span>
-              <strong>[Driver]</strong>
+              <strong>[Pricing driver]</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--billing">
               <span class="case-strip-label">Billing Change</span>
-              <strong>[Billing Effect]</strong>
+              <strong>[Billing change]</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--outcome">
               <span class="case-strip-label">Financial Outcome</span>
-              <strong>[Outcome]</strong>
+              <strong>[Financial outcome]</strong>
             </div>
           </div>
           <div class="case-strategic-meta">
@@ -314,8 +314,8 @@ Migration checklist:
         </section>
 
         <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
-          <div class="case-section-label">05 / Pricing Matrix / Mechanism Logic</div>
-          <h2>Pricing Matrix / Mechanism Logic</h2>
+          <div class="case-section-label">05 / Pricing Mechanism Logic</div>
+          <h2>Pricing Mechanism Logic</h2>
           <!--
           Enforcement:
           - Select exactly one primary component.
@@ -513,6 +513,11 @@ Migration checklist:
   "structural_weakness": "",
   "strategic_insight": "",
   "strategic_logic": {
+    "customer_condition": "",
+    "behavior_change": "",
+    "pricing_driver": "",
+    "billing_change": "",
+    "financial_outcome": "",
     "dominant_causal_chain": [],
     "main_assumption": "",
     "main_failure_risk": "",
