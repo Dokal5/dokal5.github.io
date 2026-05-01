@@ -234,8 +234,45 @@
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="landed-bill-examples">
+          <div class="case-section-label">06 / Landed Bill Examples</div>
+          <h2>Landed Bill Examples</h2>
+          <p class="case-section-brief">
+            Concrete customer bill scenarios showing how the fulfillment driver changes the final bill.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Small parcel basket</span>
+              <strong>Product price + parcel fee - eligible discount</strong>
+              <p><strong>Customer situation:</strong> Customer buys smaller items eligible for parcel delivery.</p>
+              <p><strong>Product price:</strong> Illustrative product basket.</p>
+              <p><strong>Fulfillment fee:</strong> Parcel delivery public fee band.</p>
+              <p><strong>Discount or adjustment:</strong> Possible IKEA Family benefit when eligible.</p>
+              <p><strong>Pricing lesson:</strong> Low product prices stay visible while small-order fulfillment remains separately priced.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Medium furniture basket</span>
+              <strong>Product price + truck delivery fee</strong>
+              <p><strong>Customer situation:</strong> Customer buys furniture requiring truck delivery.</p>
+              <p><strong>Product price:</strong> Illustrative furniture basket.</p>
+              <p><strong>Fulfillment fee:</strong> Truck delivery fee band.</p>
+              <p><strong>Discount or adjustment:</strong> No generic discount assumed.</p>
+              <p><strong>Pricing lesson:</strong> The bill rises when the basket crosses from parcel handling into truck logistics.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Bulky room-of-choice basket</span>
+              <strong>Product price + delivery and handling service fee</strong>
+              <p><strong>Customer situation:</strong> Customer wants bulky items delivered to a specific room or floor.</p>
+              <p><strong>Product price:</strong> Illustrative bulky basket.</p>
+              <p><strong>Fulfillment fee:</strong> Higher handling and room-of-choice service fee.</p>
+              <p><strong>Discount or adjustment:</strong> No generic discount assumed.</p>
+              <p><strong>Pricing lesson:</strong> Convenience and handling complexity become the monetized service layer.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="pricing-architecture">
-          <div class="case-section-label">06 / Pricing Architecture</div>
+          <div class="case-section-label">07 / Pricing Architecture</div>
           <h2>Pricing Architecture</h2>
           <p class="case-section-brief">
             Structure only: service modes, weight bands, handling location, and membership status determine the fulfillment charge layered onto product price.
@@ -288,7 +325,7 @@
           <div class="case-driver-strip">
             <div>
               <span>Drivers</span>
-              <strong>Basket fulfillment difficulty, membership status, handling location</strong>
+              <strong>Basket fulfillment difficulty, membership status, handling convenience</strong>
             </div>
             <div>
               <span>Upgrade triggers</span>
@@ -297,8 +334,39 @@
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="boundary-crossing-map">
+          <div class="case-section-label">08 / Boundary Crossing Map</div>
+          <h2>Boundary Crossing Map</h2>
+          <p class="case-section-brief">
+            Where the buyer crosses into a different pricing state.
+          </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>Customer handles pickup → IKEA performs fulfillment work</strong>
+              <p><strong>Boundary:</strong> Customer chooses IKEA fulfillment instead of self-pickup.</p>
+              <p><strong>Driver:</strong> Fulfillment difficulty band.</p>
+              <p><strong>Billing effect:</strong> A separate service fee is added to the product price.</p>
+              <p><strong>Perception risk:</strong> The fee may feel like a late-stage surcharge if not explained early.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Parcel-eligible basket → Truck delivery required</strong>
+              <p><strong>Boundary:</strong> Basket size or weight exceeds parcel handling.</p>
+              <p><strong>Driver:</strong> Fulfillment difficulty band.</p>
+              <p><strong>Billing effect:</strong> Customer moves into higher delivery fee bands.</p>
+              <p><strong>Perception risk:</strong> The jump may feel disproportionate relative to visible product price.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Standard delivery → Higher handling service</strong>
+              <p><strong>Boundary:</strong> Customer requests floor or room-of-choice handling.</p>
+              <p><strong>Driver:</strong> Handling convenience.</p>
+              <p><strong>Billing effect:</strong> Higher service fee reflects more labor and delivery complexity.</p>
+              <p><strong>Perception risk:</strong> Customers may not distinguish logistics labor from delivery fee inflation.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="decision-tension-layer">
-          <div class="case-section-label">07 / Decision Tension Layer</div>
+          <div class="case-section-label">09 / Decision Tension Layer</div>
           <h2>Decision Tension Layer</h2>
           <p class="case-section-brief">
             The tension comes from separating the attractive product price from a service fee that can only be fully understood once the buyer knows the basket and fulfillment path.
@@ -320,7 +388,7 @@
         </section>
 
         <section class="section case-framework-section" data-case-section="decision-alternatives">
-          <div class="case-section-label">08 / Decision Alternatives</div>
+          <div class="case-section-label">10 / Decision Alternatives</div>
           <h2>Decision Alternatives</h2>
           <p class="case-section-brief">
             Concrete pricing moves, trade offs, and leading indicators.
@@ -350,8 +418,48 @@
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="decision-priority">
+          <div class="case-section-label">11 / Decision Priority</div>
+          <h2>Decision Priority</h2>
+          <p class="case-section-brief">
+            Which pricing move should be tested first, and why.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Priority 1</span>
+              <strong>Earlier landed cost estimate</strong>
+              <p><strong>Why first:</strong> It is the lowest-risk test and directly addresses checkout surprise.</p>
+              <p><strong>Test type:</strong> A/B test on earlier delivery fee visibility.</p>
+              <p><strong>Risk level:</strong> medium</p>
+              <p><strong>Upside potential:</strong> High trust improvement.</p>
+              <p><strong>Implementation complexity:</strong> medium</p>
+              <p><strong>Success metric:</strong> Lower checkout abandonment after delivery fee reveal.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Priority 2</span>
+              <strong>Member fulfillment benefit</strong>
+              <p><strong>Why first:</strong> It can improve perceived fairness while increasing IKEA Family enrollment.</p>
+              <p><strong>Test type:</strong> Targeted membership benefit experiment.</p>
+              <p><strong>Risk level:</strong> medium</p>
+              <p><strong>Upside potential:</strong> Medium to high CRM value.</p>
+              <p><strong>Implementation complexity:</strong> medium</p>
+              <p><strong>Success metric:</strong> IKEA Family signup and repeat purchase linked to fulfillment benefit.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Priority 3</span>
+              <strong>Delivery threshold framing</strong>
+              <p><strong>Why first:</strong> It has basket-building potential but higher margin leakage risk.</p>
+              <p><strong>Test type:</strong> Basket threshold promotion test.</p>
+              <p><strong>Risk level:</strong> high</p>
+              <p><strong>Upside potential:</strong> High basket value upside.</p>
+              <p><strong>Implementation complexity:</strong> medium</p>
+              <p><strong>Success metric:</strong> Basket value lift net of fulfillment margin leakage.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="reasoning-error-check">
-          <div class="case-section-label">09 / Reasoning Error Check</div>
+          <div class="case-section-label">12 / Reasoning Error Check</div>
           <h2>Reasoning Error Check</h2>
           <p class="case-section-brief">
             Stress test the pricing logic before accepting the recommendation.
@@ -389,7 +497,7 @@
         </section>
 
         <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
-          <div class="case-section-label">10 / References</div>
+          <div class="case-section-label">13 / References</div>
           <h2>References</h2>
           <ul class="case-source-list">
             <li><cite>IKEA Netherlands.</cite> (n.d.). <a href="https://www.ikea.com/nl/en/customer-service/services/delivery/">Delivery</a>. Retrieved May 1, 2026, from <a href="https://www.ikea.com/nl/en/customer-service/services/delivery/">https://www.ikea.com/nl/en/customer-service/services/delivery/</a></li>
@@ -452,7 +560,7 @@
       "student_label": "Membership discount"
     },
     {
-      "driver": "Handling location",
+      "driver": "Handling convenience",
       "type": "add_on",
       "pricing_role": "variable_charge",
       "direction": "increase_revenue",
@@ -580,6 +688,93 @@
       "expected_effect": "Encourages basket building and improves perceived fairness.",
       "trade_off": "Can create margin leakage on bulky low-margin baskets.",
       "leading_indicator": "Average basket value and fulfillment fee as percentage of basket value."
+    }
+  ],
+  "landed_bill_examples": [
+    {
+      "scenario": "Small parcel basket",
+      "customer_situation": "Customer buys smaller items eligible for parcel delivery.",
+      "product_price": "Illustrative product basket",
+      "fulfillment_fee": "Parcel delivery public fee band",
+      "discount_or_adjustment": "Possible IKEA Family benefit when eligible",
+      "landed_bill": "Product price + parcel fee - eligible discount",
+      "pricing_lesson": "Low product prices stay visible while small-order fulfillment remains separately priced."
+    },
+    {
+      "scenario": "Medium furniture basket",
+      "customer_situation": "Customer buys furniture requiring truck delivery.",
+      "product_price": "Illustrative furniture basket",
+      "fulfillment_fee": "Truck delivery fee band",
+      "discount_or_adjustment": "No generic discount assumed",
+      "landed_bill": "Product price + truck delivery fee",
+      "pricing_lesson": "The bill rises when the basket crosses from parcel handling into truck logistics."
+    },
+    {
+      "scenario": "Bulky room-of-choice basket",
+      "customer_situation": "Customer wants bulky items delivered to a specific room or floor.",
+      "product_price": "Illustrative bulky basket",
+      "fulfillment_fee": "Higher handling and room-of-choice service fee",
+      "discount_or_adjustment": "No generic discount assumed",
+      "landed_bill": "Product price + delivery and handling service fee",
+      "pricing_lesson": "Convenience and handling complexity become the monetized service layer."
+    }
+  ],
+  "boundary_crossing_map": [
+    {
+      "from_state": "Customer handles pickup",
+      "boundary_condition": "Customer chooses IKEA fulfillment instead of self-pickup",
+      "to_state": "IKEA performs fulfillment work",
+      "driver": "Fulfillment difficulty band",
+      "billing_effect": "A separate service fee is added to the product price",
+      "customer_perception_risk": "The fee may feel like a late-stage surcharge if not explained early"
+    },
+    {
+      "from_state": "Parcel-eligible basket",
+      "boundary_condition": "Basket size or weight exceeds parcel handling",
+      "to_state": "Truck delivery required",
+      "driver": "Fulfillment difficulty band",
+      "billing_effect": "Customer moves into higher delivery fee bands",
+      "customer_perception_risk": "The jump may feel disproportionate relative to visible product price"
+    },
+    {
+      "from_state": "Standard delivery",
+      "boundary_condition": "Customer requests floor or room-of-choice handling",
+      "to_state": "Higher handling service",
+      "driver": "Handling convenience",
+      "billing_effect": "Higher service fee reflects more labor and delivery complexity",
+      "customer_perception_risk": "Customers may not distinguish logistics labor from delivery fee inflation"
+    }
+  ],
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "Earlier landed cost estimate",
+      "why_first": "It is the lowest-risk test and directly addresses checkout surprise.",
+      "test_type": "A/B test on earlier delivery fee visibility",
+      "risk_level": "medium",
+      "upside_potential": "High trust improvement",
+      "implementation_complexity": "medium",
+      "success_metric": "Lower checkout abandonment after delivery fee reveal"
+    },
+    {
+      "priority_rank": 2,
+      "option": "Member fulfillment benefit",
+      "why_first": "It can improve perceived fairness while increasing IKEA Family enrollment.",
+      "test_type": "Targeted membership benefit experiment",
+      "risk_level": "medium",
+      "upside_potential": "Medium to high CRM value",
+      "implementation_complexity": "medium",
+      "success_metric": "IKEA Family signup and repeat purchase linked to fulfillment benefit"
+    },
+    {
+      "priority_rank": 3,
+      "option": "Delivery threshold framing",
+      "why_first": "It has basket-building potential but higher margin leakage risk.",
+      "test_type": "Basket threshold promotion test",
+      "risk_level": "high",
+      "upside_potential": "High basket value upside",
+      "implementation_complexity": "medium",
+      "success_metric": "Basket value lift net of fulfillment margin leakage"
     }
   ],
   "reasoning_error_check": [

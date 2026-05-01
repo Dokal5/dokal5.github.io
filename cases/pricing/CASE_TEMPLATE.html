@@ -21,7 +21,7 @@ Public page rules:
 - The page is not a pricing description.
 - The page is a tool to understand what changes the bill.
 - Core Insight must appear before detailed architecture.
-- Do not reorder the teaching sequence. Insight must come before Logic, Strategic Logic before Mechanism, Mechanism before Architecture, Architecture before Tension, and Tension before Opportunity.
+- Do not reorder the teaching sequence. Insight must come before Logic, Strategic Logic before Mechanism, Mechanism before Landed Bill Examples, Landed Bill Examples before Architecture, Architecture before Boundary Crossing Map, Tension before Decision Alternatives, and Decision Alternatives before Decision Priority.
 - The key driver, mechanism, architecture, and tension must be consistent across the page.
 - If different sections imply different drivers or upgrade logic, the case is invalid.
 - Pricing Logic Deconstruction must explicitly answer: "The bill changes when _____."
@@ -54,8 +54,7 @@ Public page rules:
 - Do not add long narrative setup.
 - Do not add a separate transferable-principle callout.
 - Do not render a visible Case Snapshot.
-- Keep the embedded JSON schema inside:
-  <script type="application/json" id="pricing-case-schema"> ... </script>
+- Keep the embedded JSON schema inside the `pricing-case-schema` application/json script tag.
 - Hidden JSON must include `schema_version: "1.0"`.
 - Any hidden JSON version mismatch is invalid.
 - Strategic Logic is required in hidden JSON.
@@ -83,6 +82,9 @@ Public page rules:
 - The strip should reduce cognitive load through chunking and directional hierarchy.
 - Decision Alternatives must turn strategic opportunity into concrete pricing moves.
 - Each decision alternative must show expected effect, trade off, and leading indicator.
+- Landed Bill Examples must show concrete customer bill scenarios without introducing unsupported precision.
+- Boundary Crossing Map must show buyer movement across existing pricing boundaries only.
+- Decision Priority must rank existing decision alternatives and identify the recommended first test.
 - Reasoning Error Check must stress test the pricing logic before accepting the recommendation.
 - Reasoning Error Check must link back to existing case logic and must not introduce new pricing logic.
 - Decision Tension must be caused by pricing structure.
@@ -95,13 +97,15 @@ Required public section order:
 3. Pricing Logic Deconstruction
 4. Strategic Logic
 5. Pricing Mechanism Logic
-6. Pricing Architecture
-7. Decision Tension Layer
-8. Decision Alternatives
-9. Reasoning Error Check
-10. Optional Simulator
-11. References
-12. Hidden JSON Schema
+6. Landed Bill Examples
+7. Pricing Architecture
+8. Boundary Crossing Map
+9. Decision Tension Layer
+10. Decision Alternatives
+11. Decision Priority
+12. Reasoning Error Check
+13. References
+14. Hidden JSON Schema
 
 Migration checklist:
 - include hidden JSON with id="pricing-case-schema"
@@ -342,8 +346,27 @@ Migration checklist:
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="landed-bill-examples">
+          <div class="case-section-label">06 / Landed Bill Examples</div>
+          <h2>Landed Bill Examples</h2>
+          <p class="case-section-brief">
+            Concrete customer bill scenarios showing how the pricing driver changes the final bill.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>[Scenario]</span>
+              <strong>[Landed bill]</strong>
+              <p><strong>Customer situation:</strong> [Customer situation]</p>
+              <p><strong>Product price:</strong> [Product price]</p>
+              <p><strong>Fulfillment fee:</strong> [Fulfillment fee]</p>
+              <p><strong>Discount or adjustment:</strong> [Discount or adjustment]</p>
+              <p><strong>Pricing lesson:</strong> [Pricing lesson]</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="pricing-architecture">
-          <div class="case-section-label">06 / Pricing Architecture</div>
+          <div class="case-section-label">07 / Pricing Architecture</div>
           <h2>Pricing Architecture</h2>
           <p class="case-section-brief">
             [Describe structure only. Do not explain why price changes or describe value capture logic.]
@@ -401,8 +424,25 @@ Migration checklist:
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="boundary-crossing-map">
+          <div class="case-section-label">08 / Boundary Crossing Map</div>
+          <h2>Boundary Crossing Map</h2>
+          <p class="case-section-brief">
+            Where the buyer crosses into a different pricing state.
+          </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>[From state] → [To state]</strong>
+              <p><strong>Boundary:</strong> [Boundary condition]</p>
+              <p><strong>Driver:</strong> [Driver]</p>
+              <p><strong>Billing effect:</strong> [Billing effect]</p>
+              <p><strong>Perception risk:</strong> [Customer perception risk]</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="decision-tension-layer">
-          <div class="case-section-label">07 / Decision Tension Layer</div>
+          <div class="case-section-label">09 / Decision Tension Layer</div>
           <h2>Decision Tension Layer</h2>
           <!--
           Enforcement:
@@ -430,7 +470,7 @@ Migration checklist:
         </section>
 
         <section class="section case-framework-section" data-case-section="decision-alternatives">
-          <div class="case-section-label">08 / Decision Alternatives</div>
+          <div class="case-section-label">10 / Decision Alternatives</div>
           <h2>Decision Alternatives</h2>
           <!--
           Enforcement:
@@ -460,8 +500,35 @@ Migration checklist:
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="decision-priority">
+          <div class="case-section-label">11 / Decision Priority</div>
+          <h2>Decision Priority</h2>
+          <!--
+          Enforcement:
+          - Each priority option must reference an existing decision alternative.
+          - Priority 1 is the recommended first test.
+          - Each priority item must include success metric, risk level, and implementation complexity.
+          - Do not introduce new pricing moves.
+          -->
+          <p class="case-section-brief">
+            Which pricing move should be tested first, and why.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Priority [Rank]</span>
+              <strong>[Option]</strong>
+              <p><strong>Why first:</strong> [Why first]</p>
+              <p><strong>Test type:</strong> [Test type]</p>
+              <p><strong>Risk level:</strong> [Risk level]</p>
+              <p><strong>Upside potential:</strong> [Upside potential]</p>
+              <p><strong>Implementation complexity:</strong> [Implementation complexity]</p>
+              <p><strong>Success metric:</strong> [Success metric]</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="reasoning-error-check">
-          <div class="case-section-label">09 / Reasoning Error Check</div>
+          <div class="case-section-label">12 / Reasoning Error Check</div>
           <h2>Reasoning Error Check</h2>
           <!--
           Enforcement:
@@ -498,27 +565,8 @@ Migration checklist:
           </div>
         </section>
 
-        <section class="section case-framework-section" data-case-section="optional-simulator">
-          <div class="case-section-label">10 / Optional Simulator</div>
-          <h2>Optional Simulator</h2>
-          <!--
-          Remove this entire section if not used.
-          Do not include simulator unless it adds understanding of the pricing mechanism.
-          Default is to remove this section.
-          Do not leave placeholder, empty shell, decorative simulator blocks, or empty simulator containers in a finished case.
-          -->
-          <p class="case-section-brief">
-            [Insert simulator only if useful. Otherwise remove this section.]
-          </p>
-          <!--
-          <div class="case-layer1-simulator">
-            [Insert simulator only when interaction makes the pricing mechanism easier to understand.]
-          </div>
-          -->
-        </section>
-
         <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
-          <div class="case-section-label">11 / References</div>
+          <div class="case-section-label">13 / References</div>
           <h2>References</h2>
           <ul class="case-source-list">
             <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 1]">[Source Title 1]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 1]">[Source URL 1]</a></li>
@@ -581,6 +629,9 @@ Migration checklist:
     }
   },
   "decision_alternatives": [],
+  "landed_bill_examples": [],
+  "boundary_crossing_map": [],
+  "decision_priority": [],
   "reasoning_error_check": []
 }
 </script>
