@@ -6,14 +6,17 @@ Layer 1 separates analytical structure from public-page presentation.
 
 ## Layer 1 Output
 
-Every pricing case should produce six artifacts before page rendering:
+Every pricing case should produce nine artifacts before page rendering:
 
 1. `Case Insight Brief`
 2. `Case JSON`
 3. `Render Instruction`
 4. `Strategic Logic`
 5. `Decision Alternatives`
-6. `Reasoning Error Check`
+6. `Landed Bill Examples`
+7. `Boundary Crossing Map`
+8. `Decision Priority`
+9. `Reasoning Error Check`
 
 ## 1. Case Insight Brief
 
@@ -263,7 +266,131 @@ Deterministic mapping rules:
 - Avoid generic strategy language.
 - Decision alternatives must not introduce new drivers, tiers, segments, or upgrade triggers. If an option requires a new driver or trigger, update `Case JSON` first.
 
-## 6. Reasoning Error Check
+## 6. Landed Bill Examples
+
+Purpose:
+
+Landed Bill Examples convert abstract pricing logic into concrete customer bill scenarios. They make the mechanism visible by showing how the product, service, usage, discount, or adjustment layer changes the final bill.
+
+Required shape:
+
+```json
+{
+  "case_id": "",
+  "landed_bill_examples": [
+    {
+      "scenario": "",
+      "customer_situation": "",
+      "product_price": "",
+      "fulfillment_fee": "",
+      "discount_or_adjustment": "",
+      "landed_bill": "",
+      "pricing_lesson": ""
+    }
+  ]
+}
+```
+
+Rules:
+
+- Convert abstract pricing logic into concrete customer bill scenarios.
+- Use actual public prices only when supported.
+- Use illustrative or public fee bands when exact prices are not verified.
+- Do not create unsupported precision.
+- Use existing `formula`, `drivers`, `value_metric`, `upgrade_triggers`, or `strategic_logic`.
+- Do not introduce new pricing logic.
+- Include `pricing_lesson` for every example.
+
+Deterministic mapping rules:
+
+- `Landed Bill Examples.case_id` must match `Case JSON.case_id`.
+- `landed_bill_examples` maps directly to `Case JSON.landed_bill_examples`.
+- For `driver_logic` cases, examples should show how changes in the driver alter the final bill.
+- At least two examples are required when `formula` or `driver_logic` is central.
+
+## 7. Boundary Crossing Map
+
+Purpose:
+
+Boundary Crossing Map shows the moment the buyer crosses into a higher payment state or different pricing classification.
+
+Required shape:
+
+```json
+{
+  "case_id": "",
+  "boundary_crossing_map": [
+    {
+      "from_state": "",
+      "boundary_condition": "",
+      "to_state": "",
+      "driver": "",
+      "billing_effect": "",
+      "customer_perception_risk": ""
+    }
+  ]
+}
+```
+
+Rules:
+
+- Show the moment the buyer crosses into a higher payment state or different pricing classification.
+- Map each boundary to `key_driver`, `drivers`, `formula`, or `upgrade_triggers`.
+- Do not invent boundaries.
+- Each boundary must state `billing_effect`.
+- Identify customer perception risk when the jump may feel surprising or unfair.
+
+Deterministic mapping rules:
+
+- `Boundary Crossing Map.case_id` must match `Case JSON.case_id`.
+- `boundary_crossing_map` maps directly to `Case JSON.boundary_crossing_map`.
+- Boundary crossing map is required when `primary_component` is `driver_logic` or `trigger_path`.
+- If a boundary requires a new driver, tier, segment, or trigger, update `Case JSON` first.
+
+## 8. Decision Priority
+
+Purpose:
+
+Decision Priority ranks existing decision alternatives by testability, risk, upside, and implementation complexity so the case supports pricing decision training.
+
+Required shape:
+
+```json
+{
+  "case_id": "",
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "",
+      "why_first": "",
+      "test_type": "",
+      "risk_level": "low | medium | high",
+      "upside_potential": "",
+      "implementation_complexity": "low | medium | high",
+      "success_metric": ""
+    }
+  ]
+}
+```
+
+Rules:
+
+- Rank existing `decision_alternatives`.
+- Identify the first recommended test.
+- Explain why it should be first.
+- Include `success_metric`.
+- Do not add new pricing moves here. New pricing moves belong in `decision_alternatives` first.
+- `risk_level` must be one of `low`, `medium`, or `high`.
+- `implementation_complexity` must be one of `low`, `medium`, or `high`.
+
+Deterministic mapping rules:
+
+- `Decision Priority.case_id` must match `Case JSON.case_id`.
+- `decision_priority` maps directly to `Case JSON.decision_priority`.
+- `decision_priority.option` must match an existing `decision_alternatives.option`.
+- `priority_rank: 1` marks the recommended first test.
+
+## 9. Reasoning Error Check
 
 Purpose:
 
@@ -332,6 +459,10 @@ Layer 1 is complete only if:
 - the render instruction defines at least one failure mode
 - Decision Alternatives include at least two concrete pricing moves
 - each decision alternative includes `trade_off` and `leading_indicator`
+- pricing logic has at least one concrete bill example when relevant
+- driver or trigger cases have boundary crossing map
+- decision alternatives have priority ranking
+- no analytical layer introduces new unmodeled drivers, tiers, segments, or triggers
 - Reasoning Error Check includes at least three checks
 - evidence and failure signals are explicit
 - no analytical layer introduces unmodeled pricing logic

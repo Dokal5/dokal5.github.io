@@ -62,6 +62,9 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
     }
   },
   "decision_alternatives": [],
+  "landed_bill_examples": [],
+  "boundary_crossing_map": [],
+  "decision_priority": [],
   "reasoning_error_check": []
 }
 ```
@@ -94,6 +97,9 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `strategic_insight` | string | required | none | Short strategic implication of the pricing structure. |
 | `strategic_logic` | `StrategicLogic` object | required | `{ "customer_condition": "", "behavior_change": "", "pricing_driver": "", "billing_change": "", "financial_outcome": "", "dominant_causal_chain": [], "main_assumption": "", "main_failure_risk": "", "evidence_status": "", "visual_strip": { "enabled": true, "layout": "canonical_five_step_strip" } }` | Captures the hypothesized pricing-relevant causal logic behind the case. It explains why the pricing structure is expected to work, without claiming proof. |
 | `decision_alternatives` | array of `DecisionAlternative` | required | `[]` | Concrete pricing moves with expected effects, trade offs, and leading indicators. |
+| `landed_bill_examples` | array of `LandedBillExample` | required | `[]` | Concrete numerical, semi-numerical, or illustrative examples showing how the pricing mechanism changes the final customer bill. |
+| `boundary_crossing_map` | array of `BoundaryCrossingMap` | required | `[]` | Buyer movement across pricing-relevant boundaries such as service bands, thresholds, tiers, role classifications, usage levels, delivery modes, or governance gates. |
+| `decision_priority` | array of `DecisionPriority` | required | `[]` | Ranking of existing decision alternatives by testability, risk, upside, and implementation complexity. |
 | `reasoning_error_check` | array of `ReasoningErrorCheck` | required | `[]` | Standard stress-test layer for checking whether the case logic is overclaimed, incomplete, or missing trade offs. |
 
 ## Nested Object Contract
@@ -145,6 +151,86 @@ Each item in `decision_alternatives` must contain:
 | `expected_effect` | string | required | none | What the move is expected to affect. |
 | `trade_off` | string | required | none | What the move sacrifices or risks. |
 | `leading_indicator` | string | required | none | Signal to monitor before treating the move as successful. |
+
+### `LandedBillExample`
+
+Each item in `landed_bill_examples` must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `scenario` | string | required | none | Short label for the bill scenario. |
+| `customer_situation` | string | required | none | Customer, basket, usage, or service situation activating the bill logic. |
+| `product_price` | string | required | none | Product, base, plan, or usage price used in the example. May be illustrative when exact public prices are unavailable. |
+| `fulfillment_fee` | string | required | none | Fee, service charge, usage charge, add-on, or other mechanism-linked charge used in the example. |
+| `discount_or_adjustment` | string | required | none | Discount, credit, membership benefit, adjustment, or explicit statement that none is assumed. |
+| `landed_bill` | string | required | none | Final customer bill expression or illustrative bill outcome. |
+| `pricing_lesson` | string | required | none | What the example teaches about the pricing mechanism. |
+
+Contract:
+
+Shows concrete numerical, semi-numerical, or illustrative examples of how the pricing mechanism changes the final customer bill.
+
+Rules:
+
+- Use existing `formula`, `drivers`, `value_metric`, `upgrade_triggers`, or `strategic_logic`.
+- Do not introduce new pricing logic.
+- If exact public prices are unavailable, mark the example as illustrative or use public fee bands only.
+- Each example must include `pricing_lesson`.
+- For `driver_logic` cases, examples should show how changes in the driver alter the final bill.
+- At least two examples are required when `formula` or `driver_logic` is central.
+
+### `BoundaryCrossingMap`
+
+Each item in `boundary_crossing_map` must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `from_state` | string | required | none | Starting pricing state, tier, service mode, usage state, role classification, or governance state. |
+| `boundary_condition` | string | required | none | Condition the buyer crosses to enter a different pricing state. |
+| `to_state` | string | required | none | Resulting pricing state, tier, service mode, usage state, role classification, or governance state. |
+| `driver` | string | required | none | Existing driver, formula variable, key driver, or upgrade trigger that causes the boundary. |
+| `billing_effect` | string | required | none | What changes financially after the boundary is crossed. |
+| `customer_perception_risk` | string | required | none | Surprise, unfairness, hidden-fee, or governance risk if the boundary feels unclear. |
+
+Contract:
+
+Shows when a buyer crosses a pricing-relevant boundary such as a service band, threshold, tier, role classification, usage level, delivery mode, or governance gate.
+
+Rules:
+
+- Required when `primary_component` is `driver_logic` or `trigger_path`.
+- Each boundary must map to `key_driver`, `drivers`, `formula`, or `upgrade_triggers`.
+- Do not create boundaries that are not already part of the pricing logic.
+- Each boundary must state `billing_effect`.
+- Each boundary should identify `customer_perception_risk` when the jump may feel surprising or unfair.
+
+### `DecisionPriority`
+
+Each item in `decision_priority` must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `priority_rank` | number | required | none | Rank order for testing existing decision alternatives. Starts at `1`. |
+| `option` | string | required | none | Must reference an existing `decision_alternatives.option`. |
+| `why_first` | string | required | none | Why this option should be tested at this rank, especially for rank `1`. |
+| `test_type` | string | required | none | Experiment, pilot, research, policy, or measurement test used to evaluate the option. |
+| `risk_level` | enum string | required | none | Must be one of: `low`, `medium`, `high`. |
+| `upside_potential` | string | required | none | Expected upside if the test works. |
+| `implementation_complexity` | enum string | required | none | Must be one of: `low`, `medium`, `high`. |
+| `success_metric` | string | required | none | Observable metric used to decide whether the test succeeded. |
+
+Contract:
+
+Ranks existing `decision_alternatives` by testability, risk, upside, and implementation complexity.
+
+Rules:
+
+- `decision_priority` must reference existing `decision_alternatives`.
+- At least one option must be marked as the recommended first test.
+- Every item must include `success_metric`.
+- Do not add new pricing moves here. New pricing moves belong in `decision_alternatives` first.
+- `risk_level` must be one of `low`, `medium`, `high`.
+- `implementation_complexity` must be one of `low`, `medium`, `high`.
 
 ### `ReasoningErrorCheck`
 
@@ -265,6 +351,25 @@ When `visualization` is populated, it may contain only:
 - Each `decision_alternatives` item must include `option`, `pricing_move`, `expected_effect`, `trade_off`, and `leading_indicator`.
 - Each decision alternative must imply a concrete pricing move. Do not use vague strategy statements.
 - Each decision alternative must include a trade off and a leading indicator.
+- `landed_bill_examples` is required when the case relies on `formula` or `driver_logic`.
+- Landed bill examples must use existing `formula`, `drivers`, `value_metric`, `upgrade_triggers`, or `strategic_logic`.
+- Landed bill examples must not introduce new pricing logic.
+- If exact public prices are unavailable, landed bill examples must be marked illustrative or use public fee bands only.
+- Each landed bill example must include `pricing_lesson`.
+- `driver_logic` cases should include landed bill examples that show how changes in the driver alter the final bill.
+- At least two landed bill examples are required when `formula` or `driver_logic` is central.
+- `boundary_crossing_map` is required when `primary_component` is `driver_logic` or `trigger_path`.
+- Each boundary crossing must map to `key_driver`, `drivers`, `formula`, or `upgrade_triggers`.
+- Boundary crossing entries must not create boundaries that are absent from the pricing logic.
+- Each boundary crossing must state `billing_effect`.
+- Boundary crossing entries should identify `customer_perception_risk` when the jump may feel surprising or unfair.
+- `decision_priority` must rank existing `decision_alternatives`.
+- At least one `decision_priority` item must be the recommended first test with `priority_rank` equal to `1`.
+- Every `decision_priority` item must include `success_metric`.
+- `decision_priority.option` must match an existing `decision_alternatives.option`.
+- `decision_priority` must not add new pricing moves. New pricing moves belong in `decision_alternatives` first.
+- `decision_priority.risk_level` must be one of `low`, `medium`, or `high`.
+- `decision_priority.implementation_complexity` must be one of `low`, `medium`, or `high`.
 - `reasoning_error_check` is required and must include at least three checks for a complete teaching case.
 - If `evidence_level` is `inferred` or `hypothesized`, `reasoning_error_check` must include `causal_overclaim` or `weak_evidence_fit`.
 - If `decision_alternatives` are present, `reasoning_error_check` must include `no_trade_off`.
@@ -296,6 +401,12 @@ A pricing case JSON object is complete only if:
 - the strategic logic chain does not claim proven causality without evidence
 - `decision_alternatives` includes at least two concrete pricing moves
 - each decision alternative includes `trade_off` and `leading_indicator`
+- `landed_bill_examples` are present when the case relies on `formula` or `driver_logic`
+- landed bill examples use only existing pricing logic and include `pricing_lesson`
+- `boundary_crossing_map` is present when the case relies on `driver_logic` or `trigger_path`
+- boundary crossings map to existing drivers, formula, key driver, or upgrade triggers
+- `decision_priority` ranks existing `decision_alternatives`
+- decision priority includes a recommended first test and success metrics
 - `reasoning_error_check` includes at least three checks
 - evidence needs and failure signals are explicit
 - no analytical layer introduces unmodeled pricing logic
