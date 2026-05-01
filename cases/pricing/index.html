@@ -37,7 +37,7 @@
       <div class="case-kicker">Case Library</div>
       <h1>Pricing Cases</h1>
       <p class="lead">
-        A compact library of pricing case studies. Each entry stays abstract on purpose: the goal is to surface the pricing structure, the relevant mechanism, and the key takeaway without turning this page into a full review memo.
+        Pricing case studies are being restructured. The library shell remains available while the underlying case logic, record format, and publication flow are rebuilt.
       </p>
       <div class="case-inline-summary">
         <span class="case-inline-item"><strong id="hero-case-count">0</strong> cases</span>
@@ -48,7 +48,7 @@
       <div class="case-list-head">
         <div>
           <h2>Case Studies</h2>
-          <p>Short, abstract summaries of the current pricing cases in the library.</p>
+          <p>The pricing case archive is currently paused while the next case structure is rebuilt.</p>
         </div>
         <div class="case-list-meta" id="case-count">Loading cases...</div>
       </div>
@@ -107,7 +107,7 @@
       caseCount.textContent = "Showing " + filtered.length + " of " + records.length + " cases";
 
       if (!filtered.length) {
-        caseList.innerHTML = '<div class="case-empty">No cases match the current filter set.</div>';
+        caseList.innerHTML = '<div class="case-empty">Pricing cases are being restructured. New cases will appear here after the next logic model is ready.</div>';
       } else {
         caseList.innerHTML = filtered.map(renderCard).join("");
       }
