@@ -133,6 +133,11 @@ Required shape:
 {
   "case_id": "",
   "strategic_logic": {
+    "customer_condition": "",
+    "behavior_change": "",
+    "pricing_driver": "",
+    "billing_change": "",
+    "financial_outcome": "",
     "dominant_causal_chain": [
       "customer condition",
       "behavior change",
@@ -144,7 +149,7 @@ Required shape:
     "main_failure_risk": "",
     "evidence_status": "observed | inferred | hypothesized",
     "visual_strip": {
-      "enabled": false,
+      "enabled": true,
       "layout": "canonical_five_step_strip"
     }
   }
@@ -153,7 +158,12 @@ Required shape:
 
 Field guidance:
 
-- `dominant_causal_chain`: 3 to 5 steps only. Prefer the sequence customer condition -> behavior change -> pricing driver -> billing change -> financial outcome.
+- `customer_condition`: names the customer or market state that activates the pricing logic.
+- `behavior_change`: names the customer behavior shift. This is mandatory.
+- `pricing_driver`: names what changes the bill. It must map to `key_driver`.
+- `billing_change`: names how spending changes.
+- `financial_outcome`: names the intended revenue, margin, ARPA, retention, or profit effect.
+- `dominant_causal_chain`: may duplicate the five explicit slots as an ordered array for rendering compatibility.
 - `main_assumption`: the one causal belief the pricing model relies on.
 - `main_failure_risk`: the most likely way the logic breaks.
 - `evidence_status`: how confident the analyst can be based on available evidence.
@@ -195,7 +205,12 @@ Deterministic mapping rules:
 - If `Strategic Logic` reveals a missing driver or trigger, update `Case JSON` first.
 - `Strategic Logic` should use the same `key_driver` already defined in `Case JSON`.
 - `Strategic Logic` is analyst-facing and may be rendered publicly only as a teaching aid.
+- `Strategic Logic` must contain five named causal slots: `customer_condition`, `behavior_change`, `pricing_driver`, `billing_change`, and `financial_outcome`.
+- Do not allow long prose in the five slot fields.
+- `pricing_driver` must map to `key_driver`.
+- If a new driver appears in Strategic Logic, update Case JSON `key_driver` and `drivers` first.
 - `dominant_causal_chain` step count must remain between 3 and 5.
+- When `visual_strip.enabled` is true, `dominant_causal_chain` should contain five steps matching the five explicit causal slots.
 - If fewer than 5 steps are used, preserve directional order.
 - The chain must include or clearly map to `key_driver`.
 - Behavior Change is required.
@@ -215,10 +230,15 @@ Layer 1 is complete only if:
 - the main pricing driver is explicit
 - `upgrade_triggers` are explicit
 - every case includes one dominant hypothesized causal chain
+- Strategic Logic has all five slots filled
 - the chain has 3 to 5 steps
 - the case includes a behavior change step
+- Behavior Change is not empty
 - the chain includes the main pricing driver
+- Pricing Driver maps to `key_driver`
+- each slot is concise
 - the strategic logic chain can be rendered linearly
+- the chain can render as a strip without prose
 - the chain supports fast causal comprehension
 - no free-form causal graph structure is introduced
 - the chain has a main assumption and main failure risk

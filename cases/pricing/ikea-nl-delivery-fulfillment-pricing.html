@@ -118,27 +118,27 @@
           <p class="case-section-brief">
             Hypothesized pricing-relevant causal logic. Not proof.
           </p>
-          <div class="case-strategic-strip" aria-label="Canonical strategic logic strip">
+          <div class="case-strategic-strip" aria-label="Hypothesized strategic logic">
             <div class="case-strip-node case-strip-node--condition">
               <span class="case-strip-label">Customer Condition</span>
               <strong>Low visible product prices</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--behavior">
               <span class="case-strip-label">Behavior Change</span>
               <strong>Pickup vs convenience choice</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--driver">
               <span class="case-strip-label">Pricing Driver</span>
               <strong>Fulfillment difficulty band</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--billing">
               <span class="case-strip-label">Billing Change</span>
               <strong>Larger baskets pay more</strong>
             </div>
-            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--outcome">
               <span class="case-strip-label">Financial Outcome</span>
               <strong>Preserve low-price perception</strong>
@@ -157,8 +157,8 @@
         </section>
 
         <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
-          <div class="case-section-label">05 / Pricing Matrix / Mechanism Logic</div>
-          <h2>Pricing Matrix / Mechanism Logic</h2>
+          <div class="case-section-label">05 / Pricing Mechanism Logic</div>
+          <h2>Pricing Mechanism Logic</h2>
           <p class="case-section-brief">
             Primary component: driver_logic
           </p>
@@ -320,7 +320,7 @@
         </section>
 
         <section class="section case-framework-section" data-case-section="strategic-opportunity">
-          <div class="case-section-label">09 / Strategic Opportunity</div>
+          <div class="case-section-label">08 / Strategic Opportunity</div>
           <h2>Strategic Opportunity</h2>
           <div class="case-attack-grid">
             <div>
@@ -335,7 +335,7 @@
         </section>
 
         <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
-          <div class="case-section-label">10 / References</div>
+          <div class="case-section-label">09 / References</div>
           <h2>References</h2>
           <ul class="case-source-list">
             <li><cite>IKEA Netherlands.</cite> (n.d.). <a href="https://www.ikea.com/nl/en/customer-service/services/delivery/">Delivery</a>. Retrieved May 1, 2026, from <a href="https://www.ikea.com/nl/en/customer-service/services/delivery/">https://www.ikea.com/nl/en/customer-service/services/delivery/</a></li>
@@ -485,6 +485,11 @@
   "structural_weakness": "The model protects low product-price perception, but it can create late-stage surprise when a bulky basket moves from parcel or pickup logic into truck delivery.",
   "strategic_insight": "The structure works as a low-price retail logic only if customers accept fulfillment work as a separate service rather than as a hidden part of the product price.",
   "strategic_logic": {
+    "customer_condition": "Low visible product prices",
+    "behavior_change": "Pickup vs convenience choice",
+    "pricing_driver": "Fulfillment difficulty band",
+    "billing_change": "Larger baskets pay more",
+    "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
       "Pickup vs convenience choice",
@@ -492,8 +497,8 @@
       "Larger baskets pay more",
       "Preserve low-price perception"
     ],
-    "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
-    "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
+    "main_assumption": "Customers tolerate fulfillment fees when product prices stay visibly low.",
+    "main_failure_risk": "Fees feel hidden instead of earned by logistics work.",
     "evidence_status": "hypothesized",
     "visual_strip": {
       "enabled": true,

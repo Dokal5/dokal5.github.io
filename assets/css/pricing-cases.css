@@ -991,7 +991,6 @@
   font-size: 1.2rem;
   line-height: 1;
   text-align: center;
-  transform: rotate(-90deg);
 }
 
 .case-strip-node--condition,
@@ -1428,7 +1427,7 @@
   }
 
   .case-strip-arrow {
-    transform: none;
+    transform: rotate(90deg);
   }
 
   .case-stat-grid,

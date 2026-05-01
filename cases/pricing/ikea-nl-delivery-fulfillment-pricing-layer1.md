@@ -145,6 +145,11 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "structural_weakness": "The model protects low product-price perception, but it can create late-stage surprise when a bulky basket moves from parcel or pickup logic into truck delivery.",
   "strategic_insight": "The structure works as a low-price retail logic only if customers accept fulfillment work as a separate service rather than as a hidden part of the product price.",
   "strategic_logic": {
+    "customer_condition": "Low visible product prices",
+    "behavior_change": "Pickup vs convenience choice",
+    "pricing_driver": "Fulfillment difficulty band",
+    "billing_change": "Larger baskets pay more",
+    "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
       "Pickup vs convenience choice",
@@ -152,8 +157,8 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
       "Larger baskets pay more",
       "Preserve low-price perception"
     ],
-    "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
-    "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
+    "main_assumption": "Customers tolerate fulfillment fees when product prices stay visibly low.",
+    "main_failure_risk": "Fees feel hidden instead of earned by logistics work.",
     "evidence_status": "hypothesized",
     "visual_strip": {
       "enabled": true,
@@ -205,6 +210,11 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
 {
   "case_id": "ikea-nl-delivery-fulfillment-pricing",
   "strategic_logic": {
+    "customer_condition": "Low visible product prices",
+    "behavior_change": "Pickup vs convenience choice",
+    "pricing_driver": "Fulfillment difficulty band",
+    "billing_change": "Larger baskets pay more",
+    "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
       "Pickup vs convenience choice",
@@ -212,8 +222,8 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
       "Larger baskets pay more",
       "Preserve low-price perception"
     ],
-    "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
-    "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
+    "main_assumption": "Customers tolerate fulfillment fees when product prices stay visibly low.",
+    "main_failure_risk": "Fees feel hidden instead of earned by logistics work.",
     "evidence_status": "hypothesized",
     "visual_strip": {
       "enabled": true,

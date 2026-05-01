@@ -7,7 +7,8 @@ Layer 1 selects the primary component based on the pricing logic. `COMPONENT_LIB
 Use exactly one primary component per case. Supporting visuals may exist, but they do not replace the primary component and they are not system identifiers.
 
 Strategic Logic Strip is not a primary component.
-It is a canonical reasoning overlay defined in `CASE_SCHEMA.md` and `CASE_LAYER1_SCHEMA.md`.
+It is a framework-level reasoning overlay defined by `CASE_SCHEMA.md` and `CASE_LAYER1_SCHEMA.md`.
+It may appear visually on a case page, but it must not be added to the canonical primary component token list.
 
 Its purpose is:
 
