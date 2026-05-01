@@ -948,6 +948,55 @@
   --logic-bg: rgba(194, 65, 12, 0.08);
 }
 
+.case-strategic-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+  margin: 1rem 0;
+}
+
+.case-strip-node {
+  min-width: 0;
+  border: 1px solid rgba(92, 61, 46, 0.16);
+  border-radius: 12px;
+  padding: 0.85rem;
+  background: rgba(247, 244, 239, 0.72);
+  display: grid;
+  gap: 0.35rem;
+  position: relative;
+}
+
+.case-strip-node span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.case-strip-node strong {
+  color: var(--dark);
+  font-size: 0.9rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.case-strip-arrow {
+  display: none;
+}
+
+.case-strip-node:not(:last-of-type)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -0.55rem;
+  transform: translate(50%, -50%);
+  color: var(--accent2);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
 .case-tension-toolbar {
   display: grid;
   grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
@@ -1303,6 +1352,7 @@
   .case-tension-toolbar,
   .case-tension-grid,
   .case-starter-funnel-grid,
+  .case-strategic-strip,
   .case-layer1-example-grid {
     grid-template-columns: 1fr;
   }
@@ -1319,6 +1369,13 @@
     top: auto;
     right: 50%;
     bottom: -0.95rem;
+    transform: translate(50%, 0) rotate(90deg);
+  }
+
+  .case-strip-node:not(:last-of-type)::after {
+    top: auto;
+    right: 50%;
+    bottom: -0.86rem;
     transform: translate(50%, 0) rotate(90deg);
   }
 

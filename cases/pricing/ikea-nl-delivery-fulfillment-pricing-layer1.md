@@ -154,7 +154,11 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
     ],
     "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
     "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
-    "evidence_status": "hypothesized"
+    "evidence_status": "hypothesized",
+    "visual_strip": {
+      "enabled": true,
+      "layout": "canonical_five_step_strip"
+    }
   }
 }
 ```
@@ -210,7 +214,11 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
     ],
     "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
     "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
-    "evidence_status": "hypothesized"
+    "evidence_status": "hypothesized",
+    "visual_strip": {
+      "enabled": true,
+      "layout": "canonical_five_step_strip"
+    }
   }
 }
 ```

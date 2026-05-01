@@ -65,6 +65,13 @@ Public page rules:
 - Strategic Logic must not replace Pricing Logic Deconstruction or Pricing Architecture.
 - Strategic Logic must not introduce new drivers, tiers, segments, or upgrade triggers.
 - Strategic Logic must explain why the existing pricing structure is expected to work.
+- Strategic Logic Strip uses one canonical visual grammar only.
+- Do not render arbitrary DAGs or network diagrams.
+- Strategic Logic Strip must remain visually linear and directional.
+- The strip exists to explain why the pricing structure is expected to work.
+- The strip must prioritize fast comprehension over causal completeness.
+- The strip must include a Behavior Change node.
+- If Behavior Change cannot be identified, the case is incomplete.
 - Decision Tension must be caused by pricing structure.
 - Each tension must link back to a driver, segmentation rule, or upgrade trigger.
 - Do not include general UX complaints, design complaints, or product complaints unless they are directly caused by pricing structure.
@@ -327,10 +334,51 @@ Migration checklist:
           - The chain must include or clearly map to key_driver.
           - Do not introduce new drivers, tiers, segments, or upgrade triggers.
           - Do not turn this into a full company strategy DAG.
+          - Strategic Logic Strip uses the canonical five-step strip only.
+          - Do not render arbitrary graph layouts, network diagrams, or full DAGs.
+          - The strip must remain visually linear and directional.
+          - The strip must include a Behavior Change node.
+          - If Behavior Change cannot be identified, the case is incomplete.
           -->
           <p class="case-section-brief">
             [Explain the dominant hypothesized causal chain behind the pricing logic.]
           </p>
+          <!--
+          Strategic Logic Strip Rules:
+          - Use fixed directional flow only.
+          - Do not use arbitrary graph layouts.
+          - Do not render full DAGs.
+          - Each node should contain one concise idea only.
+          - Optimize for understanding within 10 seconds.
+          - Keep labels short.
+          - Preserve the canonical sequence.
+          -->
+          <div class="case-strategic-strip">
+            <div class="case-strip-node">
+              <span>Customer Condition</span>
+              <strong>[Condition]</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Behavior Change</span>
+              <strong>[Behavior]</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Pricing Driver</span>
+              <strong>[Driver]</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Billing Change</span>
+              <strong>[Billing Effect]</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Financial Outcome</span>
+              <strong>[Outcome]</strong>
+            </div>
+          </div>
           <div class="case-friction-list">
             <div class="case-friction-item">
               <strong>Hypothesized causal chain</strong>
@@ -439,7 +487,11 @@ Migration checklist:
     "dominant_causal_chain": [],
     "main_assumption": "",
     "main_failure_risk": "",
-    "evidence_status": ""
+    "evidence_status": "",
+    "visual_strip": {
+      "enabled": false,
+      "layout": "canonical_five_step_strip"
+    }
   }
 }
 </script>

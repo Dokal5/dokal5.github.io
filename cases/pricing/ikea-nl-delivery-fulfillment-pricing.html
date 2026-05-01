@@ -281,6 +281,32 @@
           <p class="case-section-brief">
             This is a hypothesized causal chain, not proof. The case assumes that customers will accept a separate fulfillment fee when the added logistics work is visible and tied to their basket.
           </p>
+          <div class="case-strategic-strip" aria-label="Canonical strategic logic strip">
+            <div class="case-strip-node">
+              <span>Customer Condition</span>
+              <strong>Customers see product prices before fulfillment choices</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Behavior Change</span>
+              <strong>Some collect while others choose convenience</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Pricing Driver</span>
+              <strong>Basket fulfillment difficulty sets the service band</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Billing Change</span>
+              <strong>Harder baskets add higher fulfillment fees</strong>
+            </div>
+            <div class="case-strip-arrow">→</div>
+            <div class="case-strip-node">
+              <span>Financial Outcome</span>
+              <strong>IKEA protects price perception while charging for logistics work</strong>
+            </div>
+          </div>
           <div class="case-friction-list">
             <div class="case-friction-item">
               <strong>Hypothesized causal chain</strong>
@@ -472,7 +498,11 @@
     ],
     "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
     "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
-    "evidence_status": "hypothesized"
+    "evidence_status": "hypothesized",
+    "visual_strip": {
+      "enabled": true,
+      "layout": "canonical_five_step_strip"
+    }
   }
 }
 </script>
