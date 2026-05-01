@@ -57,10 +57,12 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
     "main_failure_risk": "",
     "evidence_status": "",
     "visual_strip": {
-      "enabled": false,
+      "enabled": true,
       "layout": "canonical_five_step_strip"
     }
-  }
+  },
+  "decision_alternatives": [],
+  "reasoning_error_check": []
 }
 ```
 
@@ -90,7 +92,9 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `risks` | array of strings | required | `[]` | Risk statements tied to the pricing structure. |
 | `structural_weakness` | string | required | none | Main weakness in the pricing architecture. |
 | `strategic_insight` | string | required | none | Short strategic implication of the pricing structure. |
-| `strategic_logic` | `StrategicLogic` object | required | `{ "customer_condition": "", "behavior_change": "", "pricing_driver": "", "billing_change": "", "financial_outcome": "", "dominant_causal_chain": [], "main_assumption": "", "main_failure_risk": "", "evidence_status": "", "visual_strip": { "enabled": false, "layout": "canonical_five_step_strip" } }` | Captures the hypothesized pricing-relevant causal logic behind the case. It explains why the pricing structure is expected to work, without claiming proof. |
+| `strategic_logic` | `StrategicLogic` object | required | `{ "customer_condition": "", "behavior_change": "", "pricing_driver": "", "billing_change": "", "financial_outcome": "", "dominant_causal_chain": [], "main_assumption": "", "main_failure_risk": "", "evidence_status": "", "visual_strip": { "enabled": true, "layout": "canonical_five_step_strip" } }` | Captures the hypothesized pricing-relevant causal logic behind the case. It explains why the pricing structure is expected to work, without claiming proof. |
+| `decision_alternatives` | array of `DecisionAlternative` | required | `[]` | Concrete pricing moves with expected effects, trade offs, and leading indicators. |
+| `reasoning_error_check` | array of `ReasoningErrorCheck` | required | `[]` | Standard stress-test layer for checking whether the case logic is overclaimed, incomplete, or missing trade offs. |
 
 ## Nested Object Contract
 
@@ -119,7 +123,7 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `main_assumption` | string | required | none | The core causal assumption that must hold for the pricing logic to work. |
 | `main_failure_risk` | string | required | none | The main way the causal logic could break. |
 | `evidence_status` | enum string | required | none | Must be one of `observed`, `inferred`, `hypothesized`. It should usually match or be more cautious than `evidence_level`. |
-| `visual_strip` | `StrategicLogicVisualStrip` object | required | `{ "enabled": false, "layout": "canonical_five_step_strip" }` | Controls whether the public page may render the canonical strategic logic strip. This is an analytical reasoning layer, not a primary component. |
+| `visual_strip` | `StrategicLogicVisualStrip` object | required | `{ "enabled": true, "layout": "canonical_five_step_strip" }` | Controls whether the public page may render the canonical strategic logic strip. This is an analytical reasoning layer, not a primary component. |
 
 ### `StrategicLogicVisualStrip`
 
@@ -127,8 +131,32 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 
 | Field | Type | Required | Empty state | Contract |
 | --- | --- | --- | --- | --- |
-| `enabled` | boolean | required | `false` | Whether the public page should render the canonical strategic logic strip. |
+| `enabled` | boolean | required | `true` | Whether the public page should render the canonical strategic logic strip. |
 | `layout` | enum string | required | none | Must currently equal `canonical_five_step_strip`. |
+
+### `DecisionAlternative`
+
+Each item in `decision_alternatives` must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `option` | string | required | none | Short label for the decision alternative. |
+| `pricing_move` | string | required | none | Concrete pricing move or pricing-system change. |
+| `expected_effect` | string | required | none | What the move is expected to affect. |
+| `trade_off` | string | required | none | What the move sacrifices or risks. |
+| `leading_indicator` | string | required | none | Signal to monitor before treating the move as successful. |
+
+### `ReasoningErrorCheck`
+
+Each item in `reasoning_error_check` must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `error_type` | enum string | required | none | Must be one of: `category_error`, `causal_overclaim`, `correlation_as_causation`, `weak_evidence_fit`, `missing_mechanism`, `missing_boundary_conditions`, `no_trade_off`, `value_price_confusion`, `governance_blindness`, `static_thinking`. |
+| `risk_statement` | string | required | none | Names the reasoning risk in the case interpretation. |
+| `case_specific_check` | string | required | none | Practical check tied to this case's existing logic. |
+| `evidence_needed` | string | required | none | Evidence required to reduce uncertainty. |
+| `failure_signal` | string | required | none | Observable signal that the interpretation or decision is failing. |
 
 ### `Driver`
 
@@ -233,6 +261,16 @@ When `visualization` is populated, it may contain only:
 - If the causal chain implies a new driver, update `drivers` and `key_driver` first.
 - `strategic_logic.evidence_status` must not be stronger than `evidence_level` unless explicitly justified in `strategic_insight`.
 - Strategic Logic is hypothesized unless `evidence_status` is `observed` and justified.
+- `decision_alternatives` is required and must include at least two concrete pricing moves for a complete teaching case.
+- Each `decision_alternatives` item must include `option`, `pricing_move`, `expected_effect`, `trade_off`, and `leading_indicator`.
+- Each decision alternative must imply a concrete pricing move. Do not use vague strategy statements.
+- Each decision alternative must include a trade off and a leading indicator.
+- `reasoning_error_check` is required and must include at least three checks for a complete teaching case.
+- If `evidence_level` is `inferred` or `hypothesized`, `reasoning_error_check` must include `causal_overclaim` or `weak_evidence_fit`.
+- If `decision_alternatives` are present, `reasoning_error_check` must include `no_trade_off`.
+- If the case includes fulfillment, delivery, sales execution, discounting, enterprise pricing, negotiation, or operational governance, include `governance_blindness` or `missing_boundary_conditions` where relevant.
+- Each reasoning error check must refer back to existing case logic. It must not introduce new pricing logic.
+- Reasoning error checks must link back to at least one of: `decision_core`, `key_driver`, `drivers`, `formula`, `upgrade_triggers`, `risks`, `structural_weakness`, `strategic_logic`, or `decision_alternatives`.
 
 ## Acceptance Gate
 
@@ -256,6 +294,11 @@ A pricing case JSON object is complete only if:
 - `dominant_causal_chain` can be rendered as a fixed five-step strip
 - the strategic logic chain includes or clearly maps to `key_driver`
 - the strategic logic chain does not claim proven causality without evidence
+- `decision_alternatives` includes at least two concrete pricing moves
+- each decision alternative includes `trade_off` and `leading_indicator`
+- `reasoning_error_check` includes at least three checks
+- evidence needs and failure signals are explicit
+- no analytical layer introduces unmodeled pricing logic
 - no arbitrary DAG structure is introduced
 - `primary_component` matches the mechanism logic
 - the structure can support both a public page and system use

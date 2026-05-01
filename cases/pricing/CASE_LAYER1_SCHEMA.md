@@ -6,12 +6,14 @@ Layer 1 separates analytical structure from public-page presentation.
 
 ## Layer 1 Output
 
-Every pricing case should produce four artifacts before page rendering:
+Every pricing case should produce six artifacts before page rendering:
 
 1. `Case Insight Brief`
 2. `Case JSON`
 3. `Render Instruction`
 4. `Strategic Logic`
+5. `Decision Alternatives`
+6. `Reasoning Error Check`
 
 ## 1. Case Insight Brief
 
@@ -205,6 +207,10 @@ Deterministic mapping rules:
 - If `Strategic Logic` reveals a missing driver or trigger, update `Case JSON` first.
 - `Strategic Logic` should use the same `key_driver` already defined in `Case JSON`.
 - `Strategic Logic` is analyst-facing and may be rendered publicly only as a teaching aid.
+- `Strategic Logic` must be hypothesized unless direct evidence supports it.
+- Use concise node text, ideally 2 to 8 words per node.
+- It must render as a canonical five-step strip.
+- It must not become a full company strategy DAG.
 - `Strategic Logic` must contain five named causal slots: `customer_condition`, `behavior_change`, `pricing_driver`, `billing_change`, and `financial_outcome`.
 - Do not allow long prose in the five slot fields.
 - `pricing_driver` must map to `key_driver`.
@@ -216,6 +222,85 @@ Deterministic mapping rules:
 - Behavior Change is required.
 - If Behavior Change cannot be identified, the case is incomplete.
 - The strip must not introduce new drivers, segments, tiers, or upgrade triggers.
+
+## 5. Decision Alternatives
+
+Purpose:
+
+Decision Alternatives turn strategic opportunity into concrete pricing moves. They make the page useful for decision training by forcing the learner to compare action, expected effect, sacrifice, and signal.
+
+Required shape:
+
+```json
+{
+  "case_id": "",
+  "decision_alternatives": [
+    {
+      "option": "",
+      "pricing_move": "",
+      "expected_effect": "",
+      "trade_off": "",
+      "leading_indicator": ""
+    }
+  ]
+}
+```
+
+Field guidance:
+
+- `option`: short label for the alternative.
+- `pricing_move`: concrete change to the pricing structure, packaging, fee visibility, discounting, threshold, or governance rule.
+- `expected_effect`: what the move is expected to improve or protect.
+- `trade_off`: what the move sacrifices, risks, or makes more salient.
+- `leading_indicator`: early signal to watch before treating the move as successful.
+
+Deterministic mapping rules:
+
+- `Decision Alternatives.case_id` must match `Case JSON.case_id`.
+- `decision_alternatives` maps directly to `Case JSON.decision_alternatives`.
+- Each option must be a concrete pricing move.
+- Each option must include `trade_off` and `leading_indicator`.
+- Avoid generic strategy language.
+- Decision alternatives must not introduce new drivers, tiers, segments, or upgrade triggers. If an option requires a new driver or trigger, update `Case JSON` first.
+
+## 6. Reasoning Error Check
+
+Purpose:
+
+Reasoning Error Check stress tests the case logic before a learner accepts the recommendation. It turns the case into a pricing decision training page rather than a pricing description.
+
+Required shape:
+
+```json
+{
+  "case_id": "",
+  "reasoning_error_check": [
+    {
+      "error_type": "category_error | causal_overclaim | correlation_as_causation | weak_evidence_fit | missing_mechanism | missing_boundary_conditions | no_trade_off | value_price_confusion | governance_blindness | static_thinking",
+      "risk_statement": "",
+      "case_specific_check": "",
+      "evidence_needed": "",
+      "failure_signal": ""
+    }
+  ]
+}
+```
+
+Field guidance:
+
+- `error_type`: the reasoning error being tested.
+- `risk_statement`: what could be wrong in the case interpretation.
+- `case_specific_check`: how to test the risk using this case's structure.
+- `evidence_needed`: evidence required to reduce uncertainty.
+- `failure_signal`: observable signal that the interpretation or decision is failing.
+
+Deterministic mapping rules:
+
+- `Reasoning Error Check.case_id` must match `Case JSON.case_id`.
+- `reasoning_error_check` maps directly to `Case JSON.reasoning_error_check`.
+- It must stress test the case logic.
+- It must not introduce new drivers, segments, tiers, or upgrade triggers.
+- It must link back to at least one of: `decision_core`, `key_driver`, `drivers`, `formula`, `upgrade_triggers`, `risks`, `structural_weakness`, `strategic_logic`, or `decision_alternatives`.
 
 ## Layer 1 Acceptance Gate
 
@@ -245,3 +330,8 @@ Layer 1 is complete only if:
 - the chain remains pricing-relevant and does not become a general business strategy map
 - the recommended component follows from the pricing logic
 - the render instruction defines at least one failure mode
+- Decision Alternatives include at least two concrete pricing moves
+- each decision alternative includes `trade_off` and `leading_indicator`
+- Reasoning Error Check includes at least three checks
+- evidence and failure signals are explicit
+- no analytical layer introduces unmodeled pricing logic
