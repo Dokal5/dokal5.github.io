@@ -21,7 +21,7 @@ Public page rules:
 - The page is not a pricing description.
 - The page is a tool to understand what changes the bill.
 - Core Insight must appear before detailed architecture.
-- Do not reorder the teaching sequence. Insight must come before Logic, Logic before Mechanism, Mechanism before Architecture, Architecture before Tension, and Tension before Opportunity.
+- Do not reorder the teaching sequence. Insight must come before Logic, Strategic Logic before Mechanism, Mechanism before Architecture, Architecture before Tension, and Tension before Opportunity.
 - The key driver, mechanism, architecture, and tension must be consistent across the page.
 - If different sections imply different drivers or upgrade logic, the case is invalid.
 - Pricing Logic Deconstruction must explicitly answer: "The bill changes when _____."
@@ -61,7 +61,7 @@ Public page rules:
 - Strategic Logic is required in hidden JSON.
 - Strategic Logic is a hypothesized causal chain, not proof.
 - Strategic Logic may be rendered as an optional teaching section.
-- If rendered, Strategic Logic should appear after Decision Tension Layer and before Optional Simulator.
+- If rendered, Strategic Logic should appear after Pricing Logic Deconstruction and before Pricing Matrix / Mechanism Logic.
 - Strategic Logic must not replace Pricing Logic Deconstruction or Pricing Architecture.
 - Strategic Logic must not introduce new drivers, tiers, segments, or upgrade triggers.
 - Strategic Logic must explain why the existing pricing structure is expected to work.
@@ -72,6 +72,15 @@ Public page rules:
 - The strip must prioritize fast comprehension over causal completeness.
 - The strip must include a Behavior Change node.
 - If Behavior Change cannot be identified, the case is incomplete.
+- Strategic Logic must optimize for recognition, not recall.
+- Readers should understand the causal flow within 10 seconds.
+- Each node must represent exactly one causal idea.
+- Use compressed causal statements, not paragraph prose.
+- Avoid full sentences when possible.
+- Keep each node between roughly 2 and 8 words.
+- The Pricing Driver node is the visual focal point.
+- Remove duplicated prose restatement below the strip.
+- The strip should reduce cognitive load through chunking and directional hierarchy.
 - Decision Tension must be caused by pricing structure.
 - Each tension must link back to a driver, segmentation rule, or upgrade trigger.
 - Do not include general UX complaints, design complaints, or product complaints unless they are directly caused by pricing structure.
@@ -80,10 +89,10 @@ Required public section order:
 1. Pricing Page Visual
 2. Core Insight
 3. Pricing Logic Deconstruction
-4. Pricing Matrix / Mechanism Logic
-5. Pricing Architecture
-6. Decision Tension Layer
-7. Optional Strategic Logic
+4. Strategic Logic
+5. Pricing Matrix / Mechanism Logic
+6. Pricing Architecture
+7. Decision Tension Layer
 8. Optional Simulator
 9. Strategic Opportunity
 10. References
@@ -210,8 +219,102 @@ Migration checklist:
           </p>
         </section>
 
+        <section class="section case-framework-section" data-case-section="strategic-logic">
+          <div class="case-section-label">04 / Strategic Logic</div>
+          <h2>Strategic Logic</h2>
+          <!--
+          Optional public teaching section.
+          This section explains the hypothesized causal chain behind the pricing case.
+          It is not proof.
+          Enforcement:
+          - Use 3 to 5 steps only.
+          - The chain must move from customer condition to behavior change to pricing driver to billing change to financial outcome.
+          - The chain must include or clearly map to key_driver.
+          - Do not introduce new drivers, tiers, segments, or upgrade triggers.
+          - Do not turn this into a full company strategy DAG.
+          - Strategic Logic Strip uses the canonical five-step strip only.
+          - Do not render arbitrary graph layouts, network diagrams, or full DAGs.
+          - The strip must remain visually linear and directional.
+          - The strip must include a Behavior Change node.
+          - If Behavior Change cannot be identified, the case is incomplete.
+          - Strategic Logic must optimize for recognition, not recall.
+          - Readers should understand the causal flow within 10 seconds.
+          - Each node must represent exactly one causal idea.
+          - Use compressed causal statements, not paragraph prose.
+          - Avoid full sentences when possible.
+          - Keep each node between roughly 2 and 8 words.
+          - The Pricing Driver node is the visual focal point.
+          - Remove duplicated prose restatement below the strip.
+          - The strip should reduce cognitive load through chunking and directional hierarchy.
+
+          Strategic Logic visual hierarchy:
+          - Pricing Driver node is the visual focal point.
+          - Customer Condition and Financial Outcome are secondary emphasis.
+          - Behavior Change and Billing Change are medium emphasis.
+          - Labels are visually quieter than node content.
+          - Arrows should feel directional and structural.
+          - Each node should feel like a chunked causal unit.
+
+          Cognitive load constraints:
+          - Avoid paragraph density.
+          - Prefer recognition over recall.
+          - One node = one idea.
+          - No node should exceed roughly two lines.
+          - Avoid explanatory filler language.
+          - Preserve whitespace between causal chunks.
+          - Keep directional flow visually obvious.
+
+          The Strategic Logic section is INVALID if:
+          - Behavior Change is missing.
+          - The Pricing Driver node is unclear.
+          - The strip becomes prose-heavy.
+          - Arbitrary DAG layouts appear.
+          - The causal direction becomes ambiguous.
+          - Duplicated causal restatement appears below the strip.
+          -->
+          <p class="case-section-brief">
+            Hypothesized pricing-relevant causal logic. Not proof.
+          </p>
+          <div class="case-strategic-strip">
+            <div class="case-strip-node case-strip-node--condition">
+              <span class="case-strip-label">Customer Condition</span>
+              <strong>[Condition]</strong>
+            </div>
+            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-node case-strip-node--behavior">
+              <span class="case-strip-label">Behavior Change</span>
+              <strong>[Behavior]</strong>
+            </div>
+            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-node case-strip-node--driver">
+              <span class="case-strip-label">Pricing Driver</span>
+              <strong>[Driver]</strong>
+            </div>
+            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-node case-strip-node--billing">
+              <span class="case-strip-label">Billing Change</span>
+              <strong>[Billing Effect]</strong>
+            </div>
+            <div class="case-strip-arrow">↓</div>
+            <div class="case-strip-node case-strip-node--outcome">
+              <span class="case-strip-label">Financial Outcome</span>
+              <strong>[Outcome]</strong>
+            </div>
+          </div>
+          <div class="case-strategic-meta">
+            <div class="case-strategic-meta-card">
+              <span>Main Assumption</span>
+              <p>[Main assumption]</p>
+            </div>
+            <div class="case-strategic-meta-card">
+              <span>Main Failure Risk</span>
+              <p>[Main failure risk]</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
-          <div class="case-section-label">04 / Pricing Matrix / Mechanism Logic</div>
+          <div class="case-section-label">05 / Pricing Matrix / Mechanism Logic</div>
           <h2>Pricing Matrix / Mechanism Logic</h2>
           <!--
           Enforcement:
@@ -235,7 +338,7 @@ Migration checklist:
         </section>
 
         <section class="section case-framework-section" data-case-section="pricing-architecture">
-          <div class="case-section-label">05 / Pricing Architecture</div>
+          <div class="case-section-label">06 / Pricing Architecture</div>
           <h2>Pricing Architecture</h2>
           <p class="case-section-brief">
             [Describe structure only. Do not explain why price changes or describe value capture logic.]
@@ -294,7 +397,7 @@ Migration checklist:
         </section>
 
         <section class="section case-framework-section" data-case-section="decision-tension-layer">
-          <div class="case-section-label">06 / Decision Tension Layer</div>
+          <div class="case-section-label">07 / Decision Tension Layer</div>
           <h2>Decision Tension Layer</h2>
           <!--
           Enforcement:
@@ -317,80 +420,6 @@ Migration checklist:
             <div class="case-friction-item">
               <strong>[Tension point]</strong>
               <p>[Explain where the buyer must estimate, classify, justify, forecast, or hesitate because of a named driver, segmentation rule, or upgrade trigger.]</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section case-framework-section" data-case-section="strategic-logic">
-          <div class="case-section-label">07 / Strategic Logic</div>
-          <h2>Strategic Logic</h2>
-          <!--
-          Optional public teaching section.
-          This section explains the hypothesized causal chain behind the pricing case.
-          It is not proof.
-          Enforcement:
-          - Use 3 to 5 steps only.
-          - The chain must move from customer condition to behavior change to pricing driver to billing change to financial outcome.
-          - The chain must include or clearly map to key_driver.
-          - Do not introduce new drivers, tiers, segments, or upgrade triggers.
-          - Do not turn this into a full company strategy DAG.
-          - Strategic Logic Strip uses the canonical five-step strip only.
-          - Do not render arbitrary graph layouts, network diagrams, or full DAGs.
-          - The strip must remain visually linear and directional.
-          - The strip must include a Behavior Change node.
-          - If Behavior Change cannot be identified, the case is incomplete.
-          -->
-          <p class="case-section-brief">
-            [Explain the dominant hypothesized causal chain behind the pricing logic.]
-          </p>
-          <!--
-          Strategic Logic Strip Rules:
-          - Use fixed directional flow only.
-          - Do not use arbitrary graph layouts.
-          - Do not render full DAGs.
-          - Each node should contain one concise idea only.
-          - Optimize for understanding within 10 seconds.
-          - Keep labels short.
-          - Preserve the canonical sequence.
-          -->
-          <div class="case-strategic-strip">
-            <div class="case-strip-node">
-              <span>Customer Condition</span>
-              <strong>[Condition]</strong>
-            </div>
-            <div class="case-strip-arrow">→</div>
-            <div class="case-strip-node">
-              <span>Behavior Change</span>
-              <strong>[Behavior]</strong>
-            </div>
-            <div class="case-strip-arrow">→</div>
-            <div class="case-strip-node">
-              <span>Pricing Driver</span>
-              <strong>[Driver]</strong>
-            </div>
-            <div class="case-strip-arrow">→</div>
-            <div class="case-strip-node">
-              <span>Billing Change</span>
-              <strong>[Billing Effect]</strong>
-            </div>
-            <div class="case-strip-arrow">→</div>
-            <div class="case-strip-node">
-              <span>Financial Outcome</span>
-              <strong>[Outcome]</strong>
-            </div>
-          </div>
-          <div class="case-friction-list">
-            <div class="case-friction-item">
-              <strong>Hypothesized causal chain</strong>
-              <p>[Customer condition] &rarr; [Behavior change] &rarr; [Pricing driver] &rarr; [Billing change] &rarr; [Financial outcome]</p>
-            </div>
-            <div class="case-friction-item">
-              <strong>Main assumption</strong>
-              <p>[Main assumption]</p>
-            </div>
-            <div class="case-friction-item">
-              <strong>Main failure risk</strong>
-              <p>[Main failure risk]</p>
             </div>
           </div>
         </section>

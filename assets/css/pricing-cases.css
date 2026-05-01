@@ -950,24 +950,89 @@
 
 .case-strategic-strip {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.75rem;
-  align-items: stretch;
-  margin: 1rem 0;
+  grid-template-columns: minmax(0, 1fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1.15fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: center;
+  margin: 1.1rem 0 1rem;
 }
 
 .case-strip-node {
+  --strip-accent: var(--gray);
+  --strip-bg: rgba(247, 244, 239, 0.72);
   min-width: 0;
-  border: 1px solid rgba(92, 61, 46, 0.16);
+  min-height: 118px;
+  border: 1px solid color-mix(in srgb, var(--strip-accent) 22%, var(--lightgray));
   border-radius: 12px;
-  padding: 0.85rem;
-  background: rgba(247, 244, 239, 0.72);
+  padding: 0.9rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), var(--strip-bg));
   display: grid;
-  gap: 0.35rem;
-  position: relative;
+  align-content: center;
+  gap: 0.38rem;
 }
 
-.case-strip-node span {
+.case-strip-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--strip-accent);
+}
+
+.case-strip-node strong {
+  color: var(--dark);
+  font-size: 0.96rem;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+
+.case-strip-arrow {
+  color: var(--accent2);
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  line-height: 1;
+  text-align: center;
+  transform: rotate(-90deg);
+}
+
+.case-strip-node--condition,
+.case-strip-node--outcome {
+  --strip-accent: var(--accent);
+  --strip-bg: rgba(92, 61, 46, 0.08);
+}
+
+.case-strip-node--behavior,
+.case-strip-node--billing {
+  --strip-accent: #0f766e;
+  --strip-bg: rgba(15, 118, 110, 0.08);
+}
+
+.case-strip-node--driver {
+  --strip-accent: #c2410c;
+  --strip-bg: rgba(194, 65, 12, 0.12);
+  border-color: rgba(194, 65, 12, 0.42);
+  box-shadow: 0 12px 30px rgba(194, 65, 12, 0.14), inset 0 0 0 2px rgba(194, 65, 12, 0.08);
+}
+
+.case-strip-node--driver strong {
+  color: #8f341f;
+  font-size: 1.06rem;
+}
+
+.case-strategic-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.9rem;
+}
+
+.case-strategic-meta-card {
+  border: 1px solid rgba(92, 61, 46, 0.14);
+  border-radius: 12px;
+  padding: 0.85rem 0.9rem;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.case-strategic-meta-card span {
   font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.08em;
@@ -975,26 +1040,11 @@
   color: var(--gray);
 }
 
-.case-strip-node strong {
+.case-strategic-meta-card p {
+  margin: 0.32rem 0 0;
   color: var(--dark);
   font-size: 0.9rem;
-  line-height: 1.25;
-  overflow-wrap: anywhere;
-}
-
-.case-strip-arrow {
-  display: none;
-}
-
-.case-strip-node:not(:last-of-type)::after {
-  content: "→";
-  position: absolute;
-  top: 50%;
-  right: -0.55rem;
-  transform: translate(50%, -50%);
-  color: var(--accent2);
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+  line-height: 1.42;
 }
 
 .case-tension-toolbar {
@@ -1353,6 +1403,7 @@
   .case-tension-grid,
   .case-starter-funnel-grid,
   .case-strategic-strip,
+  .case-strategic-meta,
   .case-layer1-example-grid {
     grid-template-columns: 1fr;
   }
@@ -1372,11 +1423,12 @@
     transform: translate(50%, 0) rotate(90deg);
   }
 
-  .case-strip-node:not(:last-of-type)::after {
-    top: auto;
-    right: 50%;
-    bottom: -0.86rem;
-    transform: translate(50%, 0) rotate(90deg);
+  .case-strip-node {
+    min-height: 0;
+  }
+
+  .case-strip-arrow {
+    transform: none;
   }
 
   .case-stat-grid,
