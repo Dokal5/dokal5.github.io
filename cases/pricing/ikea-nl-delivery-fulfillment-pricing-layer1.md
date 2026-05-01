@@ -146,11 +146,11 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "strategic_insight": "The structure works as a low-price retail logic only if customers accept fulfillment work as a separate service rather than as a hidden part of the product price.",
   "strategic_logic": {
     "dominant_causal_chain": [
-      "Customers see IKEA product prices before choosing fulfillment effort",
-      "Some customers self-transport or collect while others choose convenience",
-      "Basket fulfillment difficulty determines the relevant service band",
-      "Heavier, bulkier, or room-delivered baskets add higher service fees",
-      "IKEA preserves low product-price perception while charging more for costly fulfillment work"
+      "Low visible product prices",
+      "Pickup vs convenience choice",
+      "Fulfillment difficulty band",
+      "Larger baskets pay more",
+      "Preserve low-price perception"
     ],
     "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
     "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
@@ -206,11 +206,11 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "case_id": "ikea-nl-delivery-fulfillment-pricing",
   "strategic_logic": {
     "dominant_causal_chain": [
-      "Customers see IKEA product prices before choosing fulfillment effort",
-      "Some customers self-transport or collect while others choose convenience",
-      "Basket fulfillment difficulty determines the relevant service band",
-      "Heavier, bulkier, or room-delivered baskets add higher service fees",
-      "IKEA preserves low product-price perception while charging more for costly fulfillment work"
+      "Low visible product prices",
+      "Pickup vs convenience choice",
+      "Fulfillment difficulty band",
+      "Larger baskets pay more",
+      "Preserve low-price perception"
     ],
     "main_assumption": "Customers will treat fulfillment effort as a separate service worth paying for when the basket is harder to move or when convenience matters more.",
     "main_failure_risk": "The causal logic breaks if customers experience the separated fulfillment fee as a hidden product-price increase rather than a fair charge for extra logistics work.",
