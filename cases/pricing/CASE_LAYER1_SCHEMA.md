@@ -142,7 +142,11 @@ Required shape:
     ],
     "main_assumption": "",
     "main_failure_risk": "",
-    "evidence_status": "observed | inferred | hypothesized"
+    "evidence_status": "observed | inferred | hypothesized",
+    "visual_strip": {
+      "enabled": false,
+      "layout": "canonical_five_step_strip"
+    }
   }
 }
 ```
@@ -154,6 +158,34 @@ Field guidance:
 - `main_failure_risk`: the most likely way the logic breaks.
 - `evidence_status`: how confident the analyst can be based on available evidence.
 
+Visual rendering rule:
+
+If `strategic_logic.visual_strip.enabled` is true, the case may render the strategic logic using the canonical five-step strip layout.
+
+The strip must always follow this direction:
+
+Customer Condition -> Behavior Change -> Pricing Driver -> Billing Change -> Financial Outcome
+
+Do not render:
+
+- free DAGs
+- network graphs
+- causal loop diagrams
+- force-directed graphs
+- multi-directional arrows
+
+The strip is designed for:
+
+- fast causal comprehension
+- teaching pricing logic
+- reducing reasoning ambiguity
+- making cases comparable across industries
+
+Not for:
+
+- full strategic simulation
+- exhaustive causal modeling
+
 Deterministic mapping rules:
 
 - `Strategic Logic.case_id` must match `Case JSON.case_id`.
@@ -163,6 +195,12 @@ Deterministic mapping rules:
 - If `Strategic Logic` reveals a missing driver or trigger, update `Case JSON` first.
 - `Strategic Logic` should use the same `key_driver` already defined in `Case JSON`.
 - `Strategic Logic` is analyst-facing and may be rendered publicly only as a teaching aid.
+- `dominant_causal_chain` step count must remain between 3 and 5.
+- If fewer than 5 steps are used, preserve directional order.
+- The chain must include or clearly map to `key_driver`.
+- Behavior Change is required.
+- If Behavior Change cannot be identified, the case is incomplete.
+- The strip must not introduce new drivers, segments, tiers, or upgrade triggers.
 
 ## Layer 1 Acceptance Gate
 
@@ -178,7 +216,11 @@ Layer 1 is complete only if:
 - `upgrade_triggers` are explicit
 - every case includes one dominant hypothesized causal chain
 - the chain has 3 to 5 steps
+- the case includes a behavior change step
 - the chain includes the main pricing driver
+- the strategic logic chain can be rendered linearly
+- the chain supports fast causal comprehension
+- no free-form causal graph structure is introduced
 - the chain has a main assumption and main failure risk
 - the chain remains pricing-relevant and does not become a general business strategy map
 - the recommended component follows from the pricing logic
