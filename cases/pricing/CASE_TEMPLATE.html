@@ -81,6 +81,10 @@ Public page rules:
 - The Pricing Driver node is the visual focal point.
 - Remove duplicated prose restatement below the strip.
 - The strip should reduce cognitive load through chunking and directional hierarchy.
+- Decision Alternatives must turn strategic opportunity into concrete pricing moves.
+- Each decision alternative must show expected effect, trade off, and leading indicator.
+- Reasoning Error Check must stress test the pricing logic before accepting the recommendation.
+- Reasoning Error Check must link back to existing case logic and must not introduce new pricing logic.
 - Decision Tension must be caused by pricing structure.
 - Each tension must link back to a driver, segmentation rule, or upgrade trigger.
 - Do not include general UX complaints, design complaints, or product complaints unless they are directly caused by pricing structure.
@@ -93,10 +97,11 @@ Required public section order:
 5. Pricing Mechanism Logic
 6. Pricing Architecture
 7. Decision Tension Layer
-8. Optional Simulator
-9. Strategic Opportunity
-10. References
-11. Hidden JSON Schema
+8. Decision Alternatives
+9. Reasoning Error Check
+10. Optional Simulator
+11. References
+12. Hidden JSON Schema
 
 Migration checklist:
 - include hidden JSON with id="pricing-case-schema"
@@ -424,8 +429,77 @@ Migration checklist:
           </div>
         </section>
 
+        <section class="section case-framework-section" data-case-section="decision-alternatives">
+          <div class="case-section-label">08 / Decision Alternatives</div>
+          <h2>Decision Alternatives</h2>
+          <!--
+          Enforcement:
+          - Each alternative must be a concrete pricing move.
+          - Each alternative must include expected effect, trade off, and leading indicator.
+          - Do not use vague strategic statements.
+          - Do not introduce new drivers, tiers, segments, or upgrade triggers.
+          -->
+          <p class="case-section-brief">
+            Concrete pricing moves, trade offs, and leading indicators.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>[Option]</span>
+              <strong>[Pricing move]</strong>
+              <p><strong>Expected effect:</strong> [Expected effect]</p>
+              <p><strong>Trade off:</strong> [Trade off]</p>
+              <p><strong>Leading indicator:</strong> [Leading indicator]</p>
+            </div>
+            <div class="case-decision-card">
+              <span>[Option]</span>
+              <strong>[Pricing move]</strong>
+              <p><strong>Expected effect:</strong> [Expected effect]</p>
+              <p><strong>Trade off:</strong> [Trade off]</p>
+              <p><strong>Leading indicator:</strong> [Leading indicator]</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="reasoning-error-check">
+          <div class="case-section-label">09 / Reasoning Error Check</div>
+          <h2>Reasoning Error Check</h2>
+          <!--
+          Enforcement:
+          - Include at least three checks in a complete teaching case.
+          - Each check must stress test existing case logic.
+          - Each check must include evidence needed and failure signal.
+          - Do not introduce new drivers, tiers, segments, or upgrade triggers.
+          -->
+          <p class="case-section-brief">
+            Stress test the pricing logic before accepting the recommendation.
+          </p>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>[Error type]</strong>
+              <p>[Risk statement]</p>
+              <p><strong>Check:</strong> [Case-specific check]</p>
+              <p><strong>Evidence needed:</strong> [Evidence needed]</p>
+              <p><strong>Failure signal:</strong> [Failure signal]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>[Error type]</strong>
+              <p>[Risk statement]</p>
+              <p><strong>Check:</strong> [Case-specific check]</p>
+              <p><strong>Evidence needed:</strong> [Evidence needed]</p>
+              <p><strong>Failure signal:</strong> [Failure signal]</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>[Error type]</strong>
+              <p>[Risk statement]</p>
+              <p><strong>Check:</strong> [Case-specific check]</p>
+              <p><strong>Evidence needed:</strong> [Evidence needed]</p>
+              <p><strong>Failure signal:</strong> [Failure signal]</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section case-framework-section" data-case-section="optional-simulator">
-          <div class="case-section-label">08 / Optional Simulator</div>
+          <div class="case-section-label">10 / Optional Simulator</div>
           <h2>Optional Simulator</h2>
           <!--
           Remove this entire section if not used.
@@ -443,29 +517,8 @@ Migration checklist:
           -->
         </section>
 
-        <section class="section case-framework-section" data-case-section="strategic-opportunity">
-          <div class="case-section-label">09 / Strategic Opportunity</div>
-          <h2>Strategic Opportunity</h2>
-          <!--
-          Enforcement:
-          - Each item must imply a concrete pricing move.
-          - Do not allow vague strategic statements.
-          - A reader should be able to see what a competitor or operator would actually change.
-          -->
-          <div class="case-attack-grid">
-            <div>
-              <span>Competitor attack angle</span>
-              <strong>[Actionable pricing move]</strong>
-            </div>
-            <div>
-              <span>Improvement opportunity</span>
-              <strong>[Actionable pricing move]</strong>
-            </div>
-          </div>
-        </section>
-
         <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
-          <div class="case-section-label">10 / References</div>
+          <div class="case-section-label">11 / References</div>
           <h2>References</h2>
           <ul class="case-source-list">
             <li><cite>[Organization Name].</cite> (n.d.). <a href="[Source URL 1]">[Source Title 1]</a>. Retrieved [Month Day, Year], from <a href="[Source URL 1]">[Source URL 1]</a></li>
@@ -523,10 +576,12 @@ Migration checklist:
     "main_failure_risk": "",
     "evidence_status": "",
     "visual_strip": {
-      "enabled": false,
+      "enabled": true,
       "layout": "canonical_five_step_strip"
     }
-  }
+  },
+  "decision_alternatives": [],
+  "reasoning_error_check": []
 }
 </script>
 

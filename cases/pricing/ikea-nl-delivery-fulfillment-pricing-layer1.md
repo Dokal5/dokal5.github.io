@@ -146,13 +146,13 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "strategic_insight": "The structure works as a low-price retail logic only if customers accept fulfillment work as a separate service rather than as a hidden part of the product price.",
   "strategic_logic": {
     "customer_condition": "Low visible product prices",
-    "behavior_change": "Pickup vs convenience choice",
+    "behavior_change": "Customers outsource logistics work",
     "pricing_driver": "Fulfillment difficulty band",
     "billing_change": "Larger baskets pay more",
     "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
-      "Pickup vs convenience choice",
+      "Customers outsource logistics work",
       "Fulfillment difficulty band",
       "Larger baskets pay more",
       "Preserve low-price perception"
@@ -164,7 +164,60 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
       "enabled": true,
       "layout": "canonical_five_step_strip"
     }
-  }
+  },
+  "decision_alternatives": [
+    {
+      "option": "Earlier landed cost estimate",
+      "pricing_move": "Show estimated fulfillment fee earlier in the shopping journey.",
+      "expected_effect": "Reduces checkout surprise and increases price certainty.",
+      "trade_off": "May reduce basket continuation if high delivery fees become salient too early.",
+      "leading_indicator": "Checkout abandonment after delivery fee reveal."
+    },
+    {
+      "option": "Member fulfillment benefit",
+      "pricing_move": "Tie clearer delivery or pickup discounts to IKEA Family membership.",
+      "expected_effect": "Increases membership signups and repeat purchase tracking.",
+      "trade_off": "May reduce fulfillment service margin.",
+      "leading_indicator": "IKEA Family uptake tied to delivery discount usage."
+    },
+    {
+      "option": "Delivery threshold framing",
+      "pricing_move": "Offer delivery discount or clearer service bands above selected basket thresholds.",
+      "expected_effect": "Encourages basket building and improves perceived fairness.",
+      "trade_off": "Can create margin leakage on bulky low-margin baskets.",
+      "leading_indicator": "Average basket value and fulfillment fee as percentage of basket value."
+    }
+  ],
+  "reasoning_error_check": [
+    {
+      "error_type": "causal_overclaim",
+      "risk_statement": "The case may overclaim that separated fulfillment pricing preserves IKEA's low-price image.",
+      "case_specific_check": "Is low-price perception driven by separated delivery fees, or mainly by product design, scale, store format, and brand memory?",
+      "evidence_needed": "Customer perception data comparing product price salience and final landed cost perception.",
+      "failure_signal": "Customers increasingly describe IKEA as expensive after delivery fees are revealed."
+    },
+    {
+      "error_type": "value_price_confusion",
+      "risk_statement": "Customers may not perceive fulfillment work as separately valuable even if it has real operational cost.",
+      "case_specific_check": "Do customers see delivery and room-of-choice fees as earned logistics value or as hidden charges?",
+      "evidence_needed": "Complaint analysis, delivery option conversion, and willingness-to-pay evidence for service levels.",
+      "failure_signal": "Higher abandonment or complaints at the delivery option step."
+    },
+    {
+      "error_type": "missing_boundary_conditions",
+      "risk_statement": "The model depends on customers accepting unbundled fulfillment fees.",
+      "case_specific_check": "What happens if competitors offer clearer all-in delivery pricing?",
+      "evidence_needed": "Competitor landed-cost comparison and conversion impact of all-in pricing.",
+      "failure_signal": "Customers shift to competitors with simpler or more predictable delivery pricing."
+    },
+    {
+      "error_type": "no_trade_off",
+      "risk_statement": "Improvements such as earlier landed cost visibility may reduce checkout surprise but also expose fees earlier.",
+      "case_specific_check": "Does earlier fee visibility improve trust without reducing basket completion?",
+      "evidence_needed": "A/B test of earlier landed cost estimate versus checkout-only fee reveal.",
+      "failure_signal": "Lower add-to-cart or basket continuation after early delivery estimate."
+    }
+  ]
 }
 ```
 
@@ -199,7 +252,9 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
     "formula",
     "upgrade_triggers",
     "primary_component",
-    "strategic_logic"
+    "strategic_logic",
+    "decision_alternatives",
+    "reasoning_error_check"
   ]
 }
 ```
@@ -211,13 +266,13 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "case_id": "ikea-nl-delivery-fulfillment-pricing",
   "strategic_logic": {
     "customer_condition": "Low visible product prices",
-    "behavior_change": "Pickup vs convenience choice",
+    "behavior_change": "Customers outsource logistics work",
     "pricing_driver": "Fulfillment difficulty band",
     "billing_change": "Larger baskets pay more",
     "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
-      "Pickup vs convenience choice",
+      "Customers outsource logistics work",
       "Fulfillment difficulty band",
       "Larger baskets pay more",
       "Preserve low-price perception"
@@ -230,5 +285,74 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
       "layout": "canonical_five_step_strip"
     }
   }
+}
+```
+
+## 5. Decision Alternatives
+
+```json
+{
+  "case_id": "ikea-nl-delivery-fulfillment-pricing",
+  "decision_alternatives": [
+    {
+      "option": "Earlier landed cost estimate",
+      "pricing_move": "Show estimated fulfillment fee earlier in the shopping journey.",
+      "expected_effect": "Reduces checkout surprise and increases price certainty.",
+      "trade_off": "May reduce basket continuation if high delivery fees become salient too early.",
+      "leading_indicator": "Checkout abandonment after delivery fee reveal."
+    },
+    {
+      "option": "Member fulfillment benefit",
+      "pricing_move": "Tie clearer delivery or pickup discounts to IKEA Family membership.",
+      "expected_effect": "Increases membership signups and repeat purchase tracking.",
+      "trade_off": "May reduce fulfillment service margin.",
+      "leading_indicator": "IKEA Family uptake tied to delivery discount usage."
+    },
+    {
+      "option": "Delivery threshold framing",
+      "pricing_move": "Offer delivery discount or clearer service bands above selected basket thresholds.",
+      "expected_effect": "Encourages basket building and improves perceived fairness.",
+      "trade_off": "Can create margin leakage on bulky low-margin baskets.",
+      "leading_indicator": "Average basket value and fulfillment fee as percentage of basket value."
+    }
+  ]
+}
+```
+
+## 6. Reasoning Error Check
+
+```json
+{
+  "case_id": "ikea-nl-delivery-fulfillment-pricing",
+  "reasoning_error_check": [
+    {
+      "error_type": "causal_overclaim",
+      "risk_statement": "The case may overclaim that separated fulfillment pricing preserves IKEA's low-price image.",
+      "case_specific_check": "Is low-price perception driven by separated delivery fees, or mainly by product design, scale, store format, and brand memory?",
+      "evidence_needed": "Customer perception data comparing product price salience and final landed cost perception.",
+      "failure_signal": "Customers increasingly describe IKEA as expensive after delivery fees are revealed."
+    },
+    {
+      "error_type": "value_price_confusion",
+      "risk_statement": "Customers may not perceive fulfillment work as separately valuable even if it has real operational cost.",
+      "case_specific_check": "Do customers see delivery and room-of-choice fees as earned logistics value or as hidden charges?",
+      "evidence_needed": "Complaint analysis, delivery option conversion, and willingness-to-pay evidence for service levels.",
+      "failure_signal": "Higher abandonment or complaints at the delivery option step."
+    },
+    {
+      "error_type": "missing_boundary_conditions",
+      "risk_statement": "The model depends on customers accepting unbundled fulfillment fees.",
+      "case_specific_check": "What happens if competitors offer clearer all-in delivery pricing?",
+      "evidence_needed": "Competitor landed-cost comparison and conversion impact of all-in pricing.",
+      "failure_signal": "Customers shift to competitors with simpler or more predictable delivery pricing."
+    },
+    {
+      "error_type": "no_trade_off",
+      "risk_statement": "Improvements such as earlier landed cost visibility may reduce checkout surprise but also expose fees earlier.",
+      "case_specific_check": "Does earlier fee visibility improve trust without reducing basket completion?",
+      "evidence_needed": "A/B test of earlier landed cost estimate versus checkout-only fee reveal.",
+      "failure_signal": "Lower add-to-cart or basket continuation after early delivery estimate."
+    }
+  ]
 }
 ```

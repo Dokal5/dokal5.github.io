@@ -6,17 +6,19 @@ Layer 1 selects the primary component based on the pricing logic. `COMPONENT_LIB
 
 Use exactly one primary component per case. Supporting visuals may exist, but they do not replace the primary component and they are not system identifiers.
 
-Strategic Logic Strip is not a primary component.
-It is a framework-level reasoning overlay defined by `CASE_SCHEMA.md` and `CASE_LAYER1_SCHEMA.md`.
-It may appear visually on a case page, but it must not be added to the canonical primary component token list.
+Strategic Logic Strip, Decision Alternatives, and Reasoning Error Check are framework-level reasoning overlays.
+They are defined by `CASE_SCHEMA.md` and `CASE_LAYER1_SCHEMA.md`.
+They may appear visually on a case page, but they must not be added to the canonical primary component token list.
 
-Its purpose is:
+Their purpose is:
 
 - explaining hypothesized pricing-relevant causal logic
 - improving fast causal comprehension
 - supporting EVAC teaching
+- turning strategic opportunity into concrete pricing decisions
+- stress testing pricing reasoning before accepting a recommendation
 
-It must not replace:
+They must not replace:
 
 - `tier_ladder`
 - `matrix`
