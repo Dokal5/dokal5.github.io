@@ -1,17 +1,20 @@
 // Pricing case index note:
 // This file is a lightweight index layer for sorting, previewing, and
 // automation support across pricing cases.
-// Future case records may optionally include:
+// Future case records may optionally include lightweight preview summaries:
 // strategic_logic_summary
+// decision_alternatives_summary
 // bill_examples_summary
 // boundary_crossing_summary
 // decision_priority_summary
+// reasoning_error_summary
 //
 // However:
-// - canonical strategic_logic belongs inside each case JSON
-// - canonical bill_examples, boundary_crossing_map, and decision_priority
-//   belong inside each case JSON and CASE_SCHEMA.md
-// - strategic_logic is not an index-level rendering component
+// - canonical strategic_logic, decision_alternatives, bill_examples,
+//   boundary_crossing_map, decision_priority, and reasoning_error_check
+//   belong inside each case page hidden JSON and CASE_SCHEMA.md
+// - case-library.js is not the system of record for case analysis
+// - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
     slug: "ikea-nl-delivery-fulfillment-pricing",

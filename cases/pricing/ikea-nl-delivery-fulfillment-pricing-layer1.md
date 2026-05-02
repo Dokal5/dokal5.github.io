@@ -58,7 +58,7 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
       "student_label": "Membership discount"
     },
     {
-      "driver": "Handling location",
+      "driver": "Handling convenience",
       "type": "add_on",
       "pricing_role": "variable_charge",
       "direction": "increase_revenue",
@@ -188,6 +188,96 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
       "leading_indicator": "Average basket value and fulfillment fee as percentage of basket value."
     }
   ],
+  "bill_examples": [
+    {
+      "scenario": "Small parcel basket",
+      "customer_situation": "Customer buys smaller items eligible for parcel delivery.",
+      "base_price": "Illustrative product basket",
+      "pricing_driver": "Basket fulfillment difficulty",
+      "variable_charge": "Parcel delivery public fee band",
+      "discount_or_adjustment": "Possible IKEA Family benefit when eligible",
+      "final_bill": "Base price + parcel delivery charge - eligible discount",
+      "pricing_lesson": "Low product prices stay visible while small-order fulfillment remains separately priced."
+    },
+    {
+      "scenario": "Medium furniture basket",
+      "customer_situation": "Customer buys furniture requiring truck delivery.",
+      "base_price": "Illustrative furniture basket",
+      "pricing_driver": "Basket fulfillment difficulty",
+      "variable_charge": "Truck delivery fee band",
+      "discount_or_adjustment": "none",
+      "final_bill": "Base price + truck delivery charge",
+      "pricing_lesson": "The final bill rises when the basket crosses from parcel handling into truck logistics."
+    },
+    {
+      "scenario": "Bulky room-of-choice basket",
+      "customer_situation": "Customer wants bulky items delivered to a specific room or floor.",
+      "base_price": "Illustrative bulky basket",
+      "pricing_driver": "Handling convenience",
+      "variable_charge": "Higher delivery and room-of-choice handling charge",
+      "discount_or_adjustment": "none",
+      "final_bill": "Base price + delivery and handling charge",
+      "pricing_lesson": "Convenience and handling complexity become the monetized service layer."
+    }
+  ],
+  "boundary_crossing_map": [
+    {
+      "from_state": "Customer handles pickup",
+      "boundary_condition": "Customer chooses IKEA fulfillment instead of self-pickup",
+      "to_state": "IKEA performs fulfillment work",
+      "driver": "Basket fulfillment difficulty",
+      "billing_effect": "A separate service charge is added to the base product price",
+      "customer_perception_risk": "The fee may feel like a late-stage surcharge if not explained early"
+    },
+    {
+      "from_state": "Parcel-eligible basket",
+      "boundary_condition": "Basket size or weight exceeds parcel handling",
+      "to_state": "Truck delivery required",
+      "driver": "Basket fulfillment difficulty",
+      "billing_effect": "The customer moves into higher delivery fee bands",
+      "customer_perception_risk": "The jump may feel disproportionate relative to the visible product price"
+    },
+    {
+      "from_state": "Standard delivery",
+      "boundary_condition": "Customer requests floor or room-of-choice handling",
+      "to_state": "Higher handling service",
+      "driver": "Handling convenience",
+      "billing_effect": "A higher service charge reflects more labor and delivery complexity",
+      "customer_perception_risk": "Customers may not distinguish logistics labor from delivery fee inflation"
+    }
+  ],
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "Earlier landed cost estimate",
+      "why_first": "It is the lowest-risk test and directly addresses checkout surprise.",
+      "test_type": "A/B test on earlier delivery fee visibility",
+      "risk_level": "medium",
+      "upside_potential": "High trust improvement",
+      "implementation_complexity": "medium",
+      "success_metric": "Lower checkout abandonment after delivery fee reveal"
+    },
+    {
+      "priority_rank": 2,
+      "option": "Member fulfillment benefit",
+      "why_first": "It can improve perceived fairness while increasing IKEA Family enrollment.",
+      "test_type": "Targeted membership benefit experiment",
+      "risk_level": "medium",
+      "upside_potential": "Medium to high CRM value",
+      "implementation_complexity": "medium",
+      "success_metric": "IKEA Family signup and repeat purchase linked to fulfillment benefit"
+    },
+    {
+      "priority_rank": 3,
+      "option": "Delivery threshold framing",
+      "why_first": "It has basket-building potential but higher margin leakage risk.",
+      "test_type": "Basket threshold promotion test",
+      "risk_level": "high",
+      "upside_potential": "High basket value upside",
+      "implementation_complexity": "medium",
+      "success_metric": "Basket value lift net of fulfillment margin leakage"
+    }
+  ],
   "reasoning_error_check": [
     {
       "error_type": "causal_overclaim",
@@ -254,6 +344,9 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
     "primary_component",
     "strategic_logic",
     "decision_alternatives",
+    "bill_examples",
+    "boundary_crossing_map",
+    "decision_priority",
     "reasoning_error_check"
   ]
 }
@@ -319,7 +412,121 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
 }
 ```
 
-## 6. Reasoning Error Check
+## 6. Bill Examples
+
+```json
+{
+  "case_id": "ikea-nl-delivery-fulfillment-pricing",
+  "bill_examples": [
+    {
+      "scenario": "Small parcel basket",
+      "customer_situation": "Customer buys smaller items eligible for parcel delivery.",
+      "base_price": "Illustrative product basket",
+      "pricing_driver": "Basket fulfillment difficulty",
+      "variable_charge": "Parcel delivery public fee band",
+      "discount_or_adjustment": "Possible IKEA Family benefit when eligible",
+      "final_bill": "Base price + parcel delivery charge - eligible discount",
+      "pricing_lesson": "Low product prices stay visible while small-order fulfillment remains separately priced."
+    },
+    {
+      "scenario": "Medium furniture basket",
+      "customer_situation": "Customer buys furniture requiring truck delivery.",
+      "base_price": "Illustrative furniture basket",
+      "pricing_driver": "Basket fulfillment difficulty",
+      "variable_charge": "Truck delivery fee band",
+      "discount_or_adjustment": "none",
+      "final_bill": "Base price + truck delivery charge",
+      "pricing_lesson": "The final bill rises when the basket crosses from parcel handling into truck logistics."
+    },
+    {
+      "scenario": "Bulky room-of-choice basket",
+      "customer_situation": "Customer wants bulky items delivered to a specific room or floor.",
+      "base_price": "Illustrative bulky basket",
+      "pricing_driver": "Handling convenience",
+      "variable_charge": "Higher delivery and room-of-choice handling charge",
+      "discount_or_adjustment": "none",
+      "final_bill": "Base price + delivery and handling charge",
+      "pricing_lesson": "Convenience and handling complexity become the monetized service layer."
+    }
+  ]
+}
+```
+
+## 7. Boundary Crossing Map
+
+```json
+{
+  "case_id": "ikea-nl-delivery-fulfillment-pricing",
+  "boundary_crossing_map": [
+    {
+      "from_state": "Customer handles pickup",
+      "boundary_condition": "Customer chooses IKEA fulfillment instead of self-pickup",
+      "to_state": "IKEA performs fulfillment work",
+      "driver": "Basket fulfillment difficulty",
+      "billing_effect": "A separate service charge is added to the base product price",
+      "customer_perception_risk": "The fee may feel like a late-stage surcharge if not explained early"
+    },
+    {
+      "from_state": "Parcel-eligible basket",
+      "boundary_condition": "Basket size or weight exceeds parcel handling",
+      "to_state": "Truck delivery required",
+      "driver": "Basket fulfillment difficulty",
+      "billing_effect": "The customer moves into higher delivery fee bands",
+      "customer_perception_risk": "The jump may feel disproportionate relative to the visible product price"
+    },
+    {
+      "from_state": "Standard delivery",
+      "boundary_condition": "Customer requests floor or room-of-choice handling",
+      "to_state": "Higher handling service",
+      "driver": "Handling convenience",
+      "billing_effect": "A higher service charge reflects more labor and delivery complexity",
+      "customer_perception_risk": "Customers may not distinguish logistics labor from delivery fee inflation"
+    }
+  ]
+}
+```
+
+## 8. Decision Priority
+
+```json
+{
+  "case_id": "ikea-nl-delivery-fulfillment-pricing",
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "Earlier landed cost estimate",
+      "why_first": "It is the lowest-risk test and directly addresses checkout surprise.",
+      "test_type": "A/B test on earlier delivery fee visibility",
+      "risk_level": "medium",
+      "upside_potential": "High trust improvement",
+      "implementation_complexity": "medium",
+      "success_metric": "Lower checkout abandonment after delivery fee reveal"
+    },
+    {
+      "priority_rank": 2,
+      "option": "Member fulfillment benefit",
+      "why_first": "It can improve perceived fairness while increasing IKEA Family enrollment.",
+      "test_type": "Targeted membership benefit experiment",
+      "risk_level": "medium",
+      "upside_potential": "Medium to high CRM value",
+      "implementation_complexity": "medium",
+      "success_metric": "IKEA Family signup and repeat purchase linked to fulfillment benefit"
+    },
+    {
+      "priority_rank": 3,
+      "option": "Delivery threshold framing",
+      "why_first": "It has basket-building potential but higher margin leakage risk.",
+      "test_type": "Basket threshold promotion test",
+      "risk_level": "high",
+      "upside_potential": "High basket value upside",
+      "implementation_complexity": "medium",
+      "success_metric": "Basket value lift net of fulfillment margin leakage"
+    }
+  ]
+}
+```
+
+## 9. Reasoning Error Check
 
 ```json
 {
