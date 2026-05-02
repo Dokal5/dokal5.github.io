@@ -321,12 +321,11 @@ When `visualization` is populated, it may contain only:
 
 ## Cross-Field Rules
 
-- `schema_version` is required and the current supported value is `1.0`.
-- Any `schema_version` mismatch is a FAIL.
+### Core Data Contract
+
+- `schema_version` is required and must equal `1.0`; any mismatch is a FAIL.
 - `decision_core` is required. Do not infer the three pricing answers from prose.
 - `key_driver` is required and must match the mechanism logic selected by `primary_component`.
-- `upgrade_triggers` are required and must state what moves the buyer into a higher payment level, stronger governance tier, or more expensive pricing classification.
-- `formula` is required. It may use the string form or the object form, but it must distinguish direct bill drivers from higher-level drivers that set parameters.
 - `primary_component` must use exactly one canonical token:
   - `tier_ladder`
   - `matrix`
@@ -336,40 +335,34 @@ When `visualization` is populated, it may contain only:
 - `primary_component` must match the mechanism logic, not the visible marketing layout.
 - `visualization.primary_component` must match `primary_component` when both are present.
 - `student_10_second_takeaway` should tell a learner what changes the bill in one sentence.
-- `strategic_logic` is required.
+
+### Mechanism Consistency
+
+- `drivers` are required and must support the chosen mechanism.
+- `formula` is required. It may use the string form or the object form, but it must distinguish direct bill drivers from higher-level drivers that set parameters.
+- `upgrade_triggers` are required and must state what moves the buyer into a higher payment level, stronger governance tier, or more expensive pricing classification.
+- `primary_component` must match the mechanism logic implied by `key_driver`, `drivers`, `formula`, and `upgrade_triggers`.
+- No field may introduce unsupported drivers, tiers, segments, upgrade triggers, or pricing logic.
+
+### Strategic Logic Consistency
+
+- `strategic_logic` is required and is not a primary component.
 - `strategic_logic` must be written as hypothesized logic unless supported by direct evidence.
-- `strategic_logic` is not a primary component.
-- `strategic_logic.customer_condition`, `strategic_logic.behavior_change`, `strategic_logic.pricing_driver`, `strategic_logic.billing_change`, and `strategic_logic.financial_outcome` are required.
-- The five explicit strategic logic fields are the canonical source for rendering the Strategic Logic Strip.
+- `strategic_logic.customer_condition`, `strategic_logic.behavior_change`, `strategic_logic.pricing_driver`, `strategic_logic.billing_change`, and `strategic_logic.financial_outcome` are required and are the canonical source for rendering the Strategic Logic Strip.
 - `strategic_logic.behavior_change` is required and must not be empty.
 - `strategic_logic.pricing_driver` must match or clearly map to `key_driver`.
-- The five strategic logic fields must be short enough to render as strip nodes.
-- `strategic_logic.dominant_causal_chain` must contain 3 to 5 steps.
-- When `strategic_logic.visual_strip.enabled` is true, `strategic_logic.dominant_causal_chain` should contain five steps matching the five explicit causal fields.
-- `strategic_logic.dominant_causal_chain` must be pricing-relevant only.
-- `strategic_logic.dominant_causal_chain` must not become a full company strategy DAG.
-- `strategic_logic.dominant_causal_chain` must include the `key_driver` or a direct equivalent from `decision_core.what_changes_the_bill`.
-- `strategic_logic.dominant_causal_chain` must not contradict the five explicit strategic logic fields.
-- `strategic_logic.visual_strip.layout` must use the canonical five-step strip.
+- `strategic_logic.dominant_causal_chain` must contain 3 to 5 pricing-relevant steps.
+- When `strategic_logic.visual_strip.enabled` is true, `strategic_logic.dominant_causal_chain` should contain five steps matching the five explicit causal fields in order.
 - `strategic_logic.visual_strip.layout` must equal `canonical_five_step_strip`.
-- Do not allow arbitrary graph layouts.
-- Do not allow free-form DAG rendering.
-- The strip must remain directional and linear.
-- The strip must visually follow: customer condition -> behavior change -> pricing driver -> billing change -> financial outcome.
-- Each `dominant_causal_chain` item should map approximately to one visual node.
-- `dominant_causal_chain` must contain 3 to 5 steps only.
-- The chain must remain pricing-relevant.
-- The chain must not become a general company strategy diagram.
+- Do not allow free-form DAGs, arbitrary graph layouts, network diagrams, or multi-directional causal structures.
 - `strategic_logic` must connect to at least one of: `drivers`, `formula`, `upgrade_triggers`, `risks`, `structural_weakness`, or `strategic_insight`.
-- `strategic_logic` must not introduce new tiers, segments, drivers, or upgrade triggers that are absent from the case JSON.
-- `strategic_logic` must not introduce unmodeled drivers, segments, tiers, or upgrade triggers.
-- If the causal chain implies a new driver, update `drivers` and `key_driver` first.
+- `strategic_logic` must not introduce new tiers, segments, drivers, or upgrade triggers that are absent from the case JSON. If the causal chain implies a new driver, update `drivers` and `key_driver` first.
 - `strategic_logic.evidence_status` must not be stronger than `evidence_level` unless explicitly justified in `strategic_insight`.
-- Strategic Logic is hypothesized unless `evidence_status` is `observed` and justified.
+
+### Decision Training Overlays
+
 - `decision_alternatives` is required and must include at least two concrete pricing moves for a complete teaching case.
 - Each `decision_alternatives` item must include `option`, `pricing_move`, `expected_effect`, `trade_off`, and `leading_indicator`.
-- Each decision alternative must imply a concrete pricing move. Do not use vague strategy statements.
-- Each decision alternative must include a trade off and a leading indicator.
 - `bill_examples` must use existing `formula`, `drivers`, `value_metric`, `decision_core`, `strategic_logic`, or `upgrade_triggers`.
 - `bill_examples.pricing_driver` must map to `key_driver`, `drivers`, `formula`, `upgrade_triggers`, or `decision_core.what_changes_the_bill`.
 - `bill_examples` must not invent unsupported exact prices.
@@ -380,7 +373,6 @@ When `visualization` is populated, it may contain only:
 - These examples must remain industry-neutral and must not assume delivery, fulfillment, SaaS, or subscription unless the case itself is from that category.
 - `boundary_crossing_map` is required when `primary_component` is `driver_logic` or `trigger_path`.
 - `boundary_crossing_map.driver` must map to `key_driver`, `drivers`, `formula`, `upgrade_triggers`, or `decision_core.what_changes_the_bill`.
-- Each boundary crossing must map to `key_driver`, `drivers`, `formula`, `upgrade_triggers`, or `decision_core.what_changes_the_bill`.
 - Boundary crossing entries must not create boundaries that are absent from the pricing logic.
 - Each boundary crossing must state `billing_effect`.
 - Boundary crossing entries should identify `customer_perception_risk` when the jump may feel surprising or unfair.
@@ -393,49 +385,58 @@ When `visualization` is populated, it may contain only:
 - `decision_priority.risk_level` must be one of `low`, `medium`, or `high`.
 - `decision_priority.implementation_complexity` must be one of `low`, `medium`, or `high`.
 - `bill_examples`, `boundary_crossing_map`, and `decision_priority` must not introduce new tiers, segments, drivers, upgrade triggers, or pricing logic absent from the canonical case JSON.
-- `bill_examples`, `boundary_crossing_map`, and `decision_priority` are teaching and decision overlays, not primary components.
-- `bill_examples`, `boundary_crossing_map`, and `decision_priority` must remain industry-neutral.
+
+### Reasoning Integrity
+
 - `reasoning_error_check` is required and must include at least three checks for a complete teaching case.
 - If `evidence_level` is `inferred` or `hypothesized`, `reasoning_error_check` must include `causal_overclaim` or `weak_evidence_fit`.
 - If `decision_alternatives` are present, `reasoning_error_check` must include `no_trade_off`.
 - If the case includes fulfillment, delivery, sales execution, discounting, enterprise pricing, negotiation, or operational governance, include `governance_blindness` or `missing_boundary_conditions` where relevant.
-- Each reasoning error check must refer back to existing case logic. It must not introduce new pricing logic.
 - Reasoning error checks must link back to at least one of: `decision_core`, `key_driver`, `drivers`, `formula`, `upgrade_triggers`, `risks`, `structural_weakness`, `strategic_logic`, or `decision_alternatives`.
+- Reasoning checks cannot introduce new pricing logic.
 
 ## Acceptance Gate
 
-A pricing case JSON object is complete only if:
+A pricing case JSON object is complete only if it passes all gates below.
+
+### Gate 1: Core Pricing Logic
 
 - all required top-level fields are present
-- `schema_version` is present and equals `1.0`
-- `decision_core` is explicitly filled
+- `schema_version` equals `"1.0"`
+- `decision_core` is filled
 - `key_driver` is explicit
-- `drivers` and `formula` can support the chosen mechanism
+- `student_10_second_takeaway` explains what changes the bill
+
+### Gate 2: Mechanism Validity
+
+- `drivers` and `formula` support the chosen mechanism
 - `upgrade_triggers` explain how payment level changes
+- `primary_component` matches mechanism logic
+- no unsupported drivers, tiers, segments, or upgrade triggers are introduced
+
+### Gate 3: Strategic Logic
+
 - `strategic_logic` is present
-- `strategic_logic` includes five explicit causal slots
-- `strategic_logic.behavior_change` is filled
-- `strategic_logic.pricing_driver` maps to `key_driver`
-- the five strategic logic slots are short enough to render as nodes
-- `strategic_logic.visual_strip` is valid
-- `strategic_logic.dominant_causal_chain` has 3 to 5 pricing-relevant steps
-- `strategic_logic.main_assumption` is explicit
-- `strategic_logic.main_failure_risk` is explicit
-- `dominant_causal_chain` can be rendered as a fixed five-step strip
-- the strategic logic chain includes or clearly maps to `key_driver`
-- the strategic logic chain does not claim proven causality without evidence
-- `decision_alternatives` includes at least two concrete pricing moves
-- each decision alternative includes `trade_off` and `leading_indicator`
-- `bill_examples` are present when the case relies on `formula`, usage logic, customer bill movement, `driver_logic`, or concrete final customer bill change
-- bill examples use only existing pricing logic and include `pricing_lesson`
-- `boundary_crossing_map` is present when the case relies on `driver_logic`, `trigger_path`, thresholds, service bands, usage limits, role boundaries, delivery modes, access gates, or classification changes
-- boundary crossings map to existing drivers, formula, key driver, upgrade triggers, or `decision_core.what_changes_the_bill`
-- `decision_priority` ranks existing `decision_alternatives` when decision alternatives are present
-- decision priority includes a recommended first test and success metrics
+- the five explicit causal slots are filled
+- `behavior_change` is filled
+- `pricing_driver` maps to `key_driver`
+- `dominant_causal_chain` has 3 to 5 pricing-relevant steps
+- `visual_strip` is valid and uses `canonical_five_step_strip`
+- the chain does not claim proven causality without evidence
+
+### Gate 4: Decision Training Overlays
+
+- `decision_alternatives` includes at least two concrete pricing moves when the case is a teaching case
+- each decision alternative has `trade_off` and `leading_indicator`
+- `bill_examples` are present when the case relies on `formula`, usage logic, customer bill movement, `driver_logic`, or final bill change
+- `boundary_crossing_map` is present when the case relies on `driver_logic`, `trigger_path`, thresholds, service bands, usage limits, role boundaries, access gates, or classification changes
+- `decision_priority` ranks existing `decision_alternatives` when `decision_alternatives` are present
+- no overlay introduces unsupported pricing logic
+
+### Gate 5: Reasoning Stress Test
+
 - `reasoning_error_check` includes at least three checks
 - evidence needs and failure signals are explicit
-- no added layer introduces unsupported pricing logic
-- all fields remain consistent with `decision_core`, `key_driver`, `drivers`, `formula`, `upgrade_triggers`, `strategic_logic`, and `decision_alternatives`
+- reasoning checks link back to existing case logic
 - no arbitrary DAG structure is introduced
-- `primary_component` matches the mechanism logic
-- the structure can support both a public page and system use
+- the structure can support both public page rendering and system use
