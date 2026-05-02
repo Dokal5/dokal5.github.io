@@ -958,7 +958,7 @@
 
 .case-value-flow-node {
   min-width: 0;
-  min-height: 104px;
+  min-height: 96px;
   border: 1px solid rgba(92, 61, 46, 0.16);
   border-radius: 14px;
   padding: 0.78rem;
@@ -982,7 +982,7 @@
 
 .case-value-flow-node strong {
   color: var(--dark);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   line-height: 1.14;
   overflow-wrap: anywhere;
 }
@@ -1024,7 +1024,7 @@
 .case-priority-table td,
 .case-stress-test-table th,
 .case-stress-test-table td {
-  padding: 0.66rem 0.72rem;
+  padding: 0.58rem 0.64rem;
   border-right: 1px solid var(--lightgray);
   border-bottom: 1px solid var(--lightgray);
   text-align: left;
@@ -1056,7 +1056,7 @@
 .case-priority-table td,
 .case-stress-test-table td {
   color: var(--darkgray);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   line-height: 1.34;
 }
 
@@ -1131,7 +1131,7 @@
 
 .case-transition-row strong {
   color: var(--darkgray);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.18;
   overflow-wrap: anywhere;
@@ -1156,7 +1156,7 @@
 }
 
 .case-tension-visual strong {
-  min-height: 68px;
+  min-height: 60px;
   border: 1px solid rgba(92, 61, 46, 0.14);
   border-radius: 12px;
   padding: 0.68rem;
@@ -1796,7 +1796,7 @@
   .case-priority-table td,
   .case-stress-test-table td {
     border: 0;
-    padding: 0.4rem 0.72rem;
+    padding: 0.36rem 0.64rem;
   }
 
   .case-comparison-table td::before,
