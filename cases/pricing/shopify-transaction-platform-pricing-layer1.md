@@ -150,6 +150,21 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
     "default_view": "merchant commerce flow to billing points",
     "student_prompt": "Follow where the merchant receives value, then identify where Shopify captures economics from that commerce flow."
   },
+  "pricing_artifact": {
+    "source_url": "https://www.shopify.com/pricing",
+    "local_screenshot_path": "../../assets/pricing-artifacts/shopify-transaction-platform-pricing/shopify-pricing-page-2026-05-02.png",
+    "screenshot_captured_at": "2026-05-02",
+    "source_reviewed_at": "2026-05-02",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of the Shopify pricing page showing subscription plans and payment-related pricing information."
+  },
+  "brand_asset": {
+    "local_logo_path": "",
+    "logo_source": "",
+    "logo_verified": false,
+    "fallback_text": "SH"
+  },
   "primary_component": "value_extraction_map",
   "decision_core": {
     "what_is_monetized": "Shopify monetizes commerce platform access plus transaction infrastructure for storefront, checkout, payments, operations, and enterprise commerce capability.",
@@ -193,20 +208,20 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "decision_alternatives": [
     {
       "option": "Transaction-cost visibility layer",
-      "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, and plan level affect total platform cost.",
+      "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, plan level, and merchant commerce flow affect total platform cost.",
       "expected_effect": "Reduces merchant bill surprise and improves trust in transaction-linked economics.",
       "trade_off": "Makes fees more salient before merchants have experienced the full value of the platform.",
-      "leading_indicator": "Lower support contact rate about transaction fees and lower billing-page confusion."
+      "leading_indicator": "Lower support contact rate about transaction fees and higher completion of pricing or billing education modules."
     },
     {
-      "option": "Bundle more payment economics into higher plans",
-      "pricing_move": "Use higher plans to make improved payment or third-party transaction economics more visible as part of the upgrade logic.",
-      "expected_effect": "Gives growing merchants a clearer economic reason to upgrade before transaction fees become a source of frustration.",
-      "trade_off": "Can reduce flexibility if merchants with different provider needs are pushed toward plan upgrades they perceive as too broad.",
-      "leading_indicator": "Higher plan upgrade conversion among merchants with growing order volume or third-party provider usage."
+      "option": "GMV-triggered payment economics guidance",
+      "pricing_move": "Provide guidance showing when merchant commerce scale makes payment economics, provider choice, or higher-plan economics materially important.",
+      "expected_effect": "Helps growing merchants understand when total platform cost shifts from subscription-dominant to transaction-economics-dominant.",
+      "trade_off": "May make fast-growing merchants more aware of variable cost exposure earlier.",
+      "leading_indicator": "Higher plan-fit accuracy, payment setup completion, and lower billing-related support contact rate."
     },
     {
-      "option": "Clarify Plus migration economics",
+      "option": "Plus migration economics layer",
       "pricing_move": "Provide clearer education around when standard plan economics give way to Plus starting commitments or variable platform fees.",
       "expected_effect": "Improves enterprise pipeline quality and reduces late-stage pricing uncertainty.",
       "trade_off": "Could expose complexity earlier and slow merchants who are not ready for enterprise discussions.",
@@ -247,12 +262,12 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   ],
   "boundary_crossing_map": [
     {
-      "from_state": "Side project store",
-      "boundary_condition": "The merchant's order volume, team needs, and commerce operations become material enough that platform economics matter.",
-      "to_state": "Serious commerce business",
+      "from_state": "Subscription-dominant cost perception",
+      "boundary_condition": "Merchant commerce flow becomes large enough that payment and transaction economics matter.",
+      "to_state": "Transaction-economics-dominant cost perception",
       "driver": "Merchant commerce flow through Shopify infrastructure",
-      "billing_effect": "Subscription and payment-related costs become a meaningful operating expense rather than a small access fee.",
-      "customer_perception_risk": "The merchant may feel the platform became expensive only after growth made Shopify more central."
+      "billing_effect": "The merchant starts evaluating total platform cost rather than only monthly subscription fee.",
+      "customer_perception_risk": "The platform may feel like it became expensive only after the merchant grew."
     },
     {
       "from_state": "Shopify Payments configuration",
@@ -263,17 +278,17 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
       "customer_perception_risk": "Provider choice may feel like a penalty if the merchant does not understand the checkout and integration rationale."
     },
     {
-      "from_state": "Lower plan",
-      "boundary_condition": "The merchant needs higher plan scope, more operating capability, or different published payment and transaction fee parameters.",
-      "to_state": "Higher plan",
+      "from_state": "Plan-feature evaluation",
+      "boundary_condition": "The merchant needs better payment economics, higher plan scope, or more operating capability.",
+      "to_state": "Total-economics evaluation",
       "driver": "Subscription plan level",
       "billing_effect": "The recurring subscription fee changes, while payment and third-party transaction economics can also change by plan.",
       "customer_perception_risk": "The upgrade may feel like a forced bundle if the merchant only wants one economic improvement."
     },
     {
-      "from_state": "Standard merchant",
+      "from_state": "Standard-plan pricing logic",
       "boundary_condition": "The merchant becomes high-volume, complex, B2B, D2C, or enterprise-grade enough to require Plus capability or custom economics.",
-      "to_state": "Plus or enterprise merchant",
+      "to_state": "Enterprise platform commitment logic",
       "driver": "Enterprise complexity or revenue scale",
       "billing_effect": "The merchant moves toward Plus starting commitments, and more complex higher-volume businesses may face variable platform fees based on revenue and business model.",
       "customer_perception_risk": "The economics may feel opaque if the merchant cannot see when standard pricing ends and enterprise pricing begins."
@@ -292,23 +307,23 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
     },
     {
       "priority_rank": 2,
-      "option": "Clarify Plus migration economics",
+      "option": "GMV-triggered payment economics guidance",
+      "why_first": "It helps growing merchants understand when commerce scale shifts the relevant question from plan price to total platform economics.",
+      "test_type": "Guided total-cost education module",
+      "risk_level": "medium",
+      "upside_potential": "Better plan fit and stronger payment setup confidence.",
+      "implementation_complexity": "medium",
+      "success_metric": "Higher plan-fit accuracy, payment setup completion, and lower billing-related support contact rate."
+    },
+    {
+      "priority_rank": 3,
+      "option": "Plus migration economics layer",
       "why_first": "It improves enterprise qualification and reduces pricing uncertainty before merchants enter high-stakes sales conversations.",
       "test_type": "Enterprise pricing education pilot",
       "risk_level": "medium",
       "upside_potential": "Better Plus pipeline conversion and fewer late-stage pricing stalls.",
       "implementation_complexity": "medium",
       "success_metric": "Higher Plus sales-qualified conversion with fewer pricing-driven delays."
-    },
-    {
-      "priority_rank": 3,
-      "option": "Bundle more payment economics into higher plans",
-      "why_first": "It has meaningful upgrade upside but changes pricing salience and could affect plan choice incentives.",
-      "test_type": "Plan packaging and upgrade-message experiment",
-      "risk_level": "medium",
-      "upside_potential": "Higher plan conversion among merchants with growing order volume.",
-      "implementation_complexity": "medium",
-      "success_metric": "Plan upgrade conversion net of churn, downgrade, and payment-provider complaint signals."
     }
   ],
   "reasoning_error_check": [
@@ -422,20 +437,20 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "decision_alternatives": [
     {
       "option": "Transaction-cost visibility layer",
-      "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, and plan level affect total platform cost.",
+      "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, plan level, and merchant commerce flow affect total platform cost.",
       "expected_effect": "Reduces merchant bill surprise and improves trust in transaction-linked economics.",
       "trade_off": "Makes fees more salient before merchants have experienced the full value of the platform.",
-      "leading_indicator": "Lower support contact rate about transaction fees and lower billing-page confusion."
+      "leading_indicator": "Lower support contact rate about transaction fees and higher completion of pricing or billing education modules."
     },
     {
-      "option": "Bundle more payment economics into higher plans",
-      "pricing_move": "Use higher plans to make improved payment or third-party transaction economics more visible as part of the upgrade logic.",
-      "expected_effect": "Gives growing merchants a clearer economic reason to upgrade before transaction fees become a source of frustration.",
-      "trade_off": "Can reduce flexibility if merchants with different provider needs are pushed toward plan upgrades they perceive as too broad.",
-      "leading_indicator": "Higher plan upgrade conversion among merchants with growing order volume or third-party provider usage."
+      "option": "GMV-triggered payment economics guidance",
+      "pricing_move": "Provide guidance showing when merchant commerce scale makes payment economics, provider choice, or higher-plan economics materially important.",
+      "expected_effect": "Helps growing merchants understand when total platform cost shifts from subscription-dominant to transaction-economics-dominant.",
+      "trade_off": "May make fast-growing merchants more aware of variable cost exposure earlier.",
+      "leading_indicator": "Higher plan-fit accuracy, payment setup completion, and lower billing-related support contact rate."
     },
     {
-      "option": "Clarify Plus migration economics",
+      "option": "Plus migration economics layer",
       "pricing_move": "Provide clearer education around when standard plan economics give way to Plus starting commitments or variable platform fees.",
       "expected_effect": "Improves enterprise pipeline quality and reduces late-stage pricing uncertainty.",
       "trade_off": "Could expose complexity earlier and slow merchants who are not ready for enterprise discussions.",
@@ -492,12 +507,12 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "case_id": "shopify-transaction-platform-pricing",
   "boundary_crossing_map": [
     {
-      "from_state": "Side project store",
-      "boundary_condition": "The merchant's order volume, team needs, and commerce operations become material enough that platform economics matter.",
-      "to_state": "Serious commerce business",
+      "from_state": "Subscription-dominant cost perception",
+      "boundary_condition": "Merchant commerce flow becomes large enough that payment and transaction economics matter.",
+      "to_state": "Transaction-economics-dominant cost perception",
       "driver": "Merchant commerce flow through Shopify infrastructure",
-      "billing_effect": "Subscription and payment-related costs become a meaningful operating expense rather than a small access fee.",
-      "customer_perception_risk": "The merchant may feel the platform became expensive only after growth made Shopify more central."
+      "billing_effect": "The merchant starts evaluating total platform cost rather than only monthly subscription fee.",
+      "customer_perception_risk": "The platform may feel like it became expensive only after the merchant grew."
     },
     {
       "from_state": "Shopify Payments configuration",
@@ -508,17 +523,17 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
       "customer_perception_risk": "Provider choice may feel like a penalty if the merchant does not understand the checkout and integration rationale."
     },
     {
-      "from_state": "Lower plan",
-      "boundary_condition": "The merchant needs higher plan scope, more operating capability, or different published payment and transaction fee parameters.",
-      "to_state": "Higher plan",
+      "from_state": "Plan-feature evaluation",
+      "boundary_condition": "The merchant needs better payment economics, higher plan scope, or more operating capability.",
+      "to_state": "Total-economics evaluation",
       "driver": "Subscription plan level",
       "billing_effect": "The recurring subscription fee changes, while payment and third-party transaction economics can also change by plan.",
       "customer_perception_risk": "The upgrade may feel like a forced bundle if the merchant only wants one economic improvement."
     },
     {
-      "from_state": "Standard merchant",
+      "from_state": "Standard-plan pricing logic",
       "boundary_condition": "The merchant becomes high-volume, complex, B2B, D2C, or enterprise-grade enough to require Plus capability or custom economics.",
-      "to_state": "Plus or enterprise merchant",
+      "to_state": "Enterprise platform commitment logic",
       "driver": "Enterprise complexity or revenue scale",
       "billing_effect": "The merchant moves toward Plus starting commitments, and more complex higher-volume businesses may face variable platform fees based on revenue and business model.",
       "customer_perception_risk": "The economics may feel opaque if the merchant cannot see when standard pricing ends and enterprise pricing begins."
@@ -545,23 +560,23 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
     },
     {
       "priority_rank": 2,
-      "option": "Clarify Plus migration economics",
+      "option": "GMV-triggered payment economics guidance",
+      "why_first": "It helps growing merchants understand when commerce scale shifts the relevant question from plan price to total platform economics.",
+      "test_type": "Guided total-cost education module",
+      "risk_level": "medium",
+      "upside_potential": "Better plan fit and stronger payment setup confidence.",
+      "implementation_complexity": "medium",
+      "success_metric": "Higher plan-fit accuracy, payment setup completion, and lower billing-related support contact rate."
+    },
+    {
+      "priority_rank": 3,
+      "option": "Plus migration economics layer",
       "why_first": "It improves enterprise qualification and reduces pricing uncertainty before merchants enter high-stakes sales conversations.",
       "test_type": "Enterprise pricing education pilot",
       "risk_level": "medium",
       "upside_potential": "Better Plus pipeline conversion and fewer late-stage pricing stalls.",
       "implementation_complexity": "medium",
       "success_metric": "Higher Plus sales-qualified conversion with fewer pricing-driven delays."
-    },
-    {
-      "priority_rank": 3,
-      "option": "Bundle more payment economics into higher plans",
-      "why_first": "It has meaningful upgrade upside but changes pricing salience and could affect plan choice incentives.",
-      "test_type": "Plan packaging and upgrade-message experiment",
-      "risk_level": "medium",
-      "upside_potential": "Higher plan conversion among merchants with growing order volume.",
-      "implementation_complexity": "medium",
-      "success_metric": "Plan upgrade conversion net of churn, downgrade, and payment-provider complaint signals."
     }
   ]
 }
