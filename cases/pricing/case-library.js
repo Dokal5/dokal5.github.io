@@ -27,5 +27,17 @@ window.pricingCaseRecords = [
     transferable_principle: "When fulfillment effort varies sharply by basket, separate product price from service price only if the buyer can understand why heavier, bulkier, or more convenient-to-receive baskets cost more to fulfill.",
     strategic_logic_summary: "Hypothesis: visible fulfillment effort makes separate service charges feel more acceptable while preserving low product-price perception.",
     page_path: "ikea-nl-delivery-fulfillment-pricing.html"
+  },
+  {
+    slug: "shopify-transaction-platform-pricing",
+    title: "Shopify transaction platform pricing",
+    company: "Shopify",
+    industry: "Commerce platform software",
+    market: "Merchants choosing ecommerce plans, payment processing, third-party payment providers, and enterprise commerce capabilities",
+    reviewed_at: "2026-05-02",
+    mechanism_summary: "Shopify combines visible subscription access with payment and transaction-related economics. The merchant bill changes with commerce scale, payment setup, plan level, third-party payment provider usage, and enterprise requirements.",
+    transferable_principle: "When a platform creates value through transaction infrastructure, the visible subscription fee is only part of the price architecture; the real bill depends on how much commerce activity flows through the platform.",
+    strategic_logic_summary: "Hypothesis: merchants tolerate layered platform and payment economics when Shopify reduces commerce operating complexity and scales with merchant growth.",
+    page_path: "shopify-transaction-platform-pricing.html"
   }
 ];
