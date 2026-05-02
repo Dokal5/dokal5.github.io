@@ -234,38 +234,44 @@
           </div>
         </section>
 
-        <section class="section case-framework-section" data-case-section="landed-bill-examples">
-          <div class="case-section-label">06 / Landed Bill Examples</div>
-          <h2>Landed Bill Examples</h2>
+        <section class="section case-framework-section" data-case-section="bill-examples">
+          <div class="case-section-label">06 / Bill Examples</div>
+          <h2>Bill Examples</h2>
           <p class="case-section-brief">
             Concrete customer bill scenarios showing how the fulfillment driver changes the final bill.
           </p>
           <div class="case-decision-grid">
             <div class="case-decision-card">
               <span>Small parcel basket</span>
-              <strong>Product price + parcel fee - eligible discount</strong>
+              <strong>Base price + parcel delivery charge - eligible discount</strong>
               <p><strong>Customer situation:</strong> Customer buys smaller items eligible for parcel delivery.</p>
-              <p><strong>Product price:</strong> Illustrative product basket.</p>
-              <p><strong>Fulfillment fee:</strong> Parcel delivery public fee band.</p>
+              <p><strong>Base price:</strong> Illustrative product basket.</p>
+              <p><strong>Pricing driver:</strong> Basket fulfillment difficulty.</p>
+              <p><strong>Variable charge:</strong> Parcel delivery public fee band.</p>
               <p><strong>Discount or adjustment:</strong> Possible IKEA Family benefit when eligible.</p>
+              <p><strong>Final bill:</strong> Base price + parcel delivery charge - eligible discount.</p>
               <p><strong>Pricing lesson:</strong> Low product prices stay visible while small-order fulfillment remains separately priced.</p>
             </div>
             <div class="case-decision-card">
               <span>Medium furniture basket</span>
-              <strong>Product price + truck delivery fee</strong>
+              <strong>Base price + truck delivery charge</strong>
               <p><strong>Customer situation:</strong> Customer buys furniture requiring truck delivery.</p>
-              <p><strong>Product price:</strong> Illustrative furniture basket.</p>
-              <p><strong>Fulfillment fee:</strong> Truck delivery fee band.</p>
-              <p><strong>Discount or adjustment:</strong> No generic discount assumed.</p>
-              <p><strong>Pricing lesson:</strong> The bill rises when the basket crosses from parcel handling into truck logistics.</p>
+              <p><strong>Base price:</strong> Illustrative furniture basket.</p>
+              <p><strong>Pricing driver:</strong> Basket fulfillment difficulty.</p>
+              <p><strong>Variable charge:</strong> Truck delivery fee band.</p>
+              <p><strong>Discount or adjustment:</strong> none.</p>
+              <p><strong>Final bill:</strong> Base price + truck delivery charge.</p>
+              <p><strong>Pricing lesson:</strong> The final bill rises when the basket crosses from parcel handling into truck logistics.</p>
             </div>
             <div class="case-decision-card">
               <span>Bulky room-of-choice basket</span>
-              <strong>Product price + delivery and handling service fee</strong>
+              <strong>Base price + delivery and handling charge</strong>
               <p><strong>Customer situation:</strong> Customer wants bulky items delivered to a specific room or floor.</p>
-              <p><strong>Product price:</strong> Illustrative bulky basket.</p>
-              <p><strong>Fulfillment fee:</strong> Higher handling and room-of-choice service fee.</p>
-              <p><strong>Discount or adjustment:</strong> No generic discount assumed.</p>
+              <p><strong>Base price:</strong> Illustrative bulky basket.</p>
+              <p><strong>Pricing driver:</strong> Handling convenience.</p>
+              <p><strong>Variable charge:</strong> Higher delivery and room-of-choice handling charge.</p>
+              <p><strong>Discount or adjustment:</strong> none.</p>
+              <p><strong>Final bill:</strong> Base price + delivery and handling charge.</p>
               <p><strong>Pricing lesson:</strong> Convenience and handling complexity become the monetized service layer.</p>
             </div>
           </div>
@@ -344,22 +350,22 @@
             <div class="case-friction-item">
               <strong>Customer handles pickup → IKEA performs fulfillment work</strong>
               <p><strong>Boundary:</strong> Customer chooses IKEA fulfillment instead of self-pickup.</p>
-              <p><strong>Driver:</strong> Fulfillment difficulty band.</p>
-              <p><strong>Billing effect:</strong> A separate service fee is added to the product price.</p>
+              <p><strong>Driver:</strong> Basket fulfillment difficulty.</p>
+              <p><strong>Billing effect:</strong> A separate service charge is added to the base product price.</p>
               <p><strong>Perception risk:</strong> The fee may feel like a late-stage surcharge if not explained early.</p>
             </div>
             <div class="case-friction-item">
               <strong>Parcel-eligible basket → Truck delivery required</strong>
               <p><strong>Boundary:</strong> Basket size or weight exceeds parcel handling.</p>
-              <p><strong>Driver:</strong> Fulfillment difficulty band.</p>
-              <p><strong>Billing effect:</strong> Customer moves into higher delivery fee bands.</p>
-              <p><strong>Perception risk:</strong> The jump may feel disproportionate relative to visible product price.</p>
+              <p><strong>Driver:</strong> Basket fulfillment difficulty.</p>
+              <p><strong>Billing effect:</strong> The customer moves into higher delivery fee bands.</p>
+              <p><strong>Perception risk:</strong> The jump may feel disproportionate relative to the visible product price.</p>
             </div>
             <div class="case-friction-item">
               <strong>Standard delivery → Higher handling service</strong>
               <p><strong>Boundary:</strong> Customer requests floor or room-of-choice handling.</p>
               <p><strong>Driver:</strong> Handling convenience.</p>
-              <p><strong>Billing effect:</strong> Higher service fee reflects more labor and delivery complexity.</p>
+              <p><strong>Billing effect:</strong> A higher service charge reflects more labor and delivery complexity.</p>
               <p><strong>Perception risk:</strong> Customers may not distinguish logistics labor from delivery fee inflation.</p>
             </div>
           </div>
@@ -690,32 +696,35 @@
       "leading_indicator": "Average basket value and fulfillment fee as percentage of basket value."
     }
   ],
-  "landed_bill_examples": [
+  "bill_examples": [
     {
       "scenario": "Small parcel basket",
       "customer_situation": "Customer buys smaller items eligible for parcel delivery.",
-      "product_price": "Illustrative product basket",
-      "fulfillment_fee": "Parcel delivery public fee band",
+      "base_price": "Illustrative product basket",
+      "pricing_driver": "Basket fulfillment difficulty",
+      "variable_charge": "Parcel delivery public fee band",
       "discount_or_adjustment": "Possible IKEA Family benefit when eligible",
-      "landed_bill": "Product price + parcel fee - eligible discount",
+      "final_bill": "Base price + parcel delivery charge - eligible discount",
       "pricing_lesson": "Low product prices stay visible while small-order fulfillment remains separately priced."
     },
     {
       "scenario": "Medium furniture basket",
       "customer_situation": "Customer buys furniture requiring truck delivery.",
-      "product_price": "Illustrative furniture basket",
-      "fulfillment_fee": "Truck delivery fee band",
-      "discount_or_adjustment": "No generic discount assumed",
-      "landed_bill": "Product price + truck delivery fee",
-      "pricing_lesson": "The bill rises when the basket crosses from parcel handling into truck logistics."
+      "base_price": "Illustrative furniture basket",
+      "pricing_driver": "Basket fulfillment difficulty",
+      "variable_charge": "Truck delivery fee band",
+      "discount_or_adjustment": "none",
+      "final_bill": "Base price + truck delivery charge",
+      "pricing_lesson": "The final bill rises when the basket crosses from parcel handling into truck logistics."
     },
     {
       "scenario": "Bulky room-of-choice basket",
       "customer_situation": "Customer wants bulky items delivered to a specific room or floor.",
-      "product_price": "Illustrative bulky basket",
-      "fulfillment_fee": "Higher handling and room-of-choice service fee",
-      "discount_or_adjustment": "No generic discount assumed",
-      "landed_bill": "Product price + delivery and handling service fee",
+      "base_price": "Illustrative bulky basket",
+      "pricing_driver": "Handling convenience",
+      "variable_charge": "Higher delivery and room-of-choice handling charge",
+      "discount_or_adjustment": "none",
+      "final_bill": "Base price + delivery and handling charge",
       "pricing_lesson": "Convenience and handling complexity become the monetized service layer."
     }
   ],
@@ -724,24 +733,24 @@
       "from_state": "Customer handles pickup",
       "boundary_condition": "Customer chooses IKEA fulfillment instead of self-pickup",
       "to_state": "IKEA performs fulfillment work",
-      "driver": "Fulfillment difficulty band",
-      "billing_effect": "A separate service fee is added to the product price",
+      "driver": "Basket fulfillment difficulty",
+      "billing_effect": "A separate service charge is added to the base product price",
       "customer_perception_risk": "The fee may feel like a late-stage surcharge if not explained early"
     },
     {
       "from_state": "Parcel-eligible basket",
       "boundary_condition": "Basket size or weight exceeds parcel handling",
       "to_state": "Truck delivery required",
-      "driver": "Fulfillment difficulty band",
-      "billing_effect": "Customer moves into higher delivery fee bands",
-      "customer_perception_risk": "The jump may feel disproportionate relative to visible product price"
+      "driver": "Basket fulfillment difficulty",
+      "billing_effect": "The customer moves into higher delivery fee bands",
+      "customer_perception_risk": "The jump may feel disproportionate relative to the visible product price"
     },
     {
       "from_state": "Standard delivery",
       "boundary_condition": "Customer requests floor or room-of-choice handling",
       "to_state": "Higher handling service",
       "driver": "Handling convenience",
-      "billing_effect": "Higher service fee reflects more labor and delivery complexity",
+      "billing_effect": "A higher service charge reflects more labor and delivery complexity",
       "customer_perception_risk": "Customers may not distinguish logistics labor from delivery fee inflation"
     }
   ],
