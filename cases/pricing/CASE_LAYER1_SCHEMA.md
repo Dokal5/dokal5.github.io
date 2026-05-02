@@ -13,7 +13,7 @@ Every pricing case should produce nine artifacts before page rendering:
 3. `Render Instruction`
 4. `Strategic Logic`
 5. `Decision Alternatives`
-6. `Landed Bill Examples`
+6. `Bill Examples`
 7. `Boundary Crossing Map`
 8. `Decision Priority`
 9. `Reasoning Error Check`
@@ -266,25 +266,26 @@ Deterministic mapping rules:
 - Avoid generic strategy language.
 - Decision alternatives must not introduce new drivers, tiers, segments, or upgrade triggers. If an option requires a new driver or trigger, update `Case JSON` first.
 
-## 6. Landed Bill Examples
+## 6. Bill Examples
 
 Purpose:
 
-Landed Bill Examples convert abstract pricing logic into concrete customer bill scenarios. They make the mechanism visible by showing how the product, service, usage, discount, or adjustment layer changes the final bill.
+Bill Examples turn the pricing formula or pricing driver into concrete customer bill scenarios.
 
 Required shape:
 
 ```json
 {
   "case_id": "",
-  "landed_bill_examples": [
+  "bill_examples": [
     {
       "scenario": "",
       "customer_situation": "",
-      "product_price": "",
-      "fulfillment_fee": "",
+      "base_price": "",
+      "pricing_driver": "",
+      "variable_charge": "",
       "discount_or_adjustment": "",
-      "landed_bill": "",
+      "final_bill": "",
       "pricing_lesson": ""
     }
   ]
@@ -293,20 +294,21 @@ Required shape:
 
 Rules:
 
-- Convert abstract pricing logic into concrete customer bill scenarios.
-- Use actual public prices only when supported.
-- Use illustrative or public fee bands when exact prices are not verified.
-- Do not create unsupported precision.
-- Use existing `formula`, `drivers`, `value_metric`, `upgrade_triggers`, or `strategic_logic`.
-- Do not introduce new pricing logic.
-- Include `pricing_lesson` for every example.
+- Use exact public prices only when supported by sources.
+- Use public price bands or clearly marked illustrative values when exact prices are not verified.
+- Do not invent precision.
+- Each example must teach how the final customer bill changes.
+- The examples must map to `formula`, `drivers`, `value_metric`, `decision_core`, `strategic_logic`, or `upgrade_triggers`.
+- Keep examples industry-neutral. The same schema must support SaaS, retail, subscription, marketplace, service, hardware, restaurant, logistics, and other cases.
+- Case-specific language such as landed bill, delivery fee, active profiles, seats, tasks, add-ons, commission, service charge, or maintenance fee belongs inside the field values, not in canonical field names.
 
 Deterministic mapping rules:
 
-- `Landed Bill Examples.case_id` must match `Case JSON.case_id`.
-- `landed_bill_examples` maps directly to `Case JSON.landed_bill_examples`.
+- `Bill Examples.case_id` must match `Case JSON.case_id`.
+- `bill_examples` maps directly to `Case JSON.bill_examples`.
+- Each `pricing_driver` must map to `key_driver`, `drivers`, `formula`, `upgrade_triggers`, or `decision_core.what_changes_the_bill`.
 - For `driver_logic` cases, examples should show how changes in the driver alter the final bill.
-- At least two examples are required when `formula` or `driver_logic` is central.
+- At least two examples are required when `formula`, usage logic, `driver_logic`, or customer bill movement is central.
 
 ## 7. Boundary Crossing Map
 
@@ -334,11 +336,12 @@ Required shape:
 
 Rules:
 
-- Show the moment the buyer crosses into a higher payment state or different pricing classification.
-- Map each boundary to `key_driver`, `drivers`, `formula`, or `upgrade_triggers`.
+- Required for `driver_logic` and `trigger_path` cases.
+- Each boundary must map to `key_driver`, `drivers`, `formula`, `upgrade_triggers`, or `decision_core.what_changes_the_bill`.
 - Do not invent boundaries.
-- Each boundary must state `billing_effect`.
-- Identify customer perception risk when the jump may feel surprising or unfair.
+- Each boundary must explain `billing_effect`.
+- Include `customer_perception_risk` when the boundary may create surprise, confusion, or fairness concerns.
+- Keep the schema industry-neutral. Different industries may use different boundary types, but they must fit the same fields.
 
 Deterministic mapping rules:
 
@@ -375,11 +378,12 @@ Required shape:
 
 Rules:
 
-- Rank existing `decision_alternatives`.
-- Identify the first recommended test.
-- Explain why it should be first.
-- Include `success_metric`.
-- Do not add new pricing moves here. New pricing moves belong in `decision_alternatives` first.
+- Rank existing `decision_alternatives` only.
+- Do not create new pricing moves here.
+- Include at least one `priority_rank` 1 item.
+- Include `success_metric` for every priority item.
+- Prioritize testability, risk control, learning value, upside, and implementation complexity.
+- The output should help a decision maker choose what to test first.
 - `risk_level` must be one of `low`, `medium`, or `high`.
 - `implementation_complexity` must be one of `low`, `medium`, or `high`.
 
@@ -459,10 +463,13 @@ Layer 1 is complete only if:
 - the render instruction defines at least one failure mode
 - Decision Alternatives include at least two concrete pricing moves
 - each decision alternative includes `trade_off` and `leading_indicator`
-- pricing logic has at least one concrete bill example when relevant
-- driver or trigger cases have boundary crossing map
-- decision alternatives have priority ranking
-- no analytical layer introduces new unmodeled drivers, tiers, segments, or triggers
+- cases with `formula`, customer bill movement, usage logic, or `driver_logic` include `bill_examples`
+- cases with `driver_logic` or `trigger_path` include `boundary_crossing_map`
+- cases with `decision_alternatives` include `decision_priority`
+- the first decision priority is testable and has a `success_metric`
+- no artifact introduces unmodeled drivers, tiers, segments, triggers, or pricing moves
+- every artifact maps back to the canonical Case JSON
+- the added artifacts remain cross-industry and do not assume IKEA-style fulfillment logic
 - Reasoning Error Check includes at least three checks
 - evidence and failure signals are explicit
 - no analytical layer introduces unmodeled pricing logic

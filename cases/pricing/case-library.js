@@ -3,9 +3,14 @@
 // automation support across pricing cases.
 // Future case records may optionally include:
 // strategic_logic_summary
+// bill_examples_summary
+// boundary_crossing_summary
+// decision_priority_summary
 //
 // However:
 // - canonical strategic_logic belongs inside each case JSON
+// - canonical bill_examples, boundary_crossing_map, and decision_priority
+//   belong inside each case JSON and CASE_SCHEMA.md
 // - strategic_logic is not an index-level rendering component
 window.pricingCaseRecords = [
   {

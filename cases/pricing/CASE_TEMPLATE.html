@@ -21,7 +21,7 @@ Public page rules:
 - The page is not a pricing description.
 - The page is a tool to understand what changes the bill.
 - Core Insight must appear before detailed architecture.
-- Do not reorder the teaching sequence. Insight must come before Logic, Strategic Logic before Mechanism, Mechanism before Landed Bill Examples, Landed Bill Examples before Architecture, Architecture before Boundary Crossing Map, Tension before Decision Alternatives, and Decision Alternatives before Decision Priority.
+- Do not reorder the teaching sequence. Insight must come before Logic, Strategic Logic before Mechanism, Mechanism before Bill Examples, Bill Examples before Architecture, Architecture before Boundary Crossing Map, Tension before Decision Alternatives, and Decision Alternatives before Decision Priority.
 - The key driver, mechanism, architecture, and tension must be consistent across the page.
 - If different sections imply different drivers or upgrade logic, the case is invalid.
 - Pricing Logic Deconstruction must explicitly answer: "The bill changes when _____."
@@ -82,9 +82,15 @@ Public page rules:
 - The strip should reduce cognitive load through chunking and directional hierarchy.
 - Decision Alternatives must turn strategic opportunity into concrete pricing moves.
 - Each decision alternative must show expected effect, trade off, and leading indicator.
-- Landed Bill Examples must show concrete customer bill scenarios without introducing unsupported precision.
+- Bill Examples must show concrete customer bill scenarios without introducing unsupported precision.
+- Bill Examples must map to formula, driver, value metric, or decision_core.
+- Bill Examples must remain industry-neutral. Case-specific terms belong in the content, not the canonical field names.
 - Boundary Crossing Map must show buyer movement across existing pricing boundaries only.
+- Boundary Crossing Map must map to key_driver, drivers, formula, upgrade_triggers, or decision_core.
+- Boundary Crossing Map must remain industry-neutral.
 - Decision Priority must rank existing decision alternatives and identify the recommended first test.
+- Decision Priority must not introduce new pricing moves.
+- Decision Priority must include success_metric.
 - Reasoning Error Check must stress test the pricing logic before accepting the recommendation.
 - Reasoning Error Check must link back to existing case logic and must not introduce new pricing logic.
 - Decision Tension must be caused by pricing structure.
@@ -97,7 +103,7 @@ Required public section order:
 3. Pricing Logic Deconstruction
 4. Strategic Logic
 5. Pricing Mechanism Logic
-6. Landed Bill Examples
+6. Bill Examples
 7. Pricing Architecture
 8. Boundary Crossing Map
 9. Decision Tension Layer
@@ -346,19 +352,28 @@ Migration checklist:
           </div>
         </section>
 
-        <section class="section case-framework-section" data-case-section="landed-bill-examples">
-          <div class="case-section-label">06 / Landed Bill Examples</div>
-          <h2>Landed Bill Examples</h2>
+        <section class="section case-framework-section" data-case-section="bill-examples">
+          <div class="case-section-label">06 / Bill Examples</div>
+          <h2>Bill Examples</h2>
+          <!--
+          Enforcement:
+          - Must show how final customer bill changes.
+          - Must avoid unsupported price precision.
+          - Must map to formula, driver, value metric, or decision_core.
+          - Must remain industry-neutral.
+          - Case-specific terms belong in the content, not the canonical field names.
+          -->
           <p class="case-section-brief">
-            Concrete customer bill scenarios showing how the pricing driver changes the final bill.
+            Concrete customer bill scenarios showing how the pricing driver changes the final amount paid.
           </p>
           <div class="case-decision-grid">
             <div class="case-decision-card">
               <span>[Scenario]</span>
-              <strong>[Landed bill]</strong>
+              <strong>[Final bill]</strong>
               <p><strong>Customer situation:</strong> [Customer situation]</p>
-              <p><strong>Product price:</strong> [Product price]</p>
-              <p><strong>Fulfillment fee:</strong> [Fulfillment fee]</p>
+              <p><strong>Base price:</strong> [Base price]</p>
+              <p><strong>Pricing driver:</strong> [Pricing driver]</p>
+              <p><strong>Variable charge:</strong> [Variable charge]</p>
               <p><strong>Discount or adjustment:</strong> [Discount or adjustment]</p>
               <p><strong>Pricing lesson:</strong> [Pricing lesson]</p>
             </div>
@@ -427,6 +442,13 @@ Migration checklist:
         <section class="section case-framework-section" data-case-section="boundary-crossing-map">
           <div class="case-section-label">08 / Boundary Crossing Map</div>
           <h2>Boundary Crossing Map</h2>
+          <!--
+          Enforcement:
+          - Must show movement between pricing states.
+          - Must map to key_driver, drivers, formula, upgrade_triggers, or decision_core.
+          - Must not invent boundaries.
+          - Must remain industry-neutral.
+          -->
           <p class="case-section-brief">
             Where the buyer crosses into a different pricing state.
           </p>
@@ -509,6 +531,7 @@ Migration checklist:
           - Priority 1 is the recommended first test.
           - Each priority item must include success metric, risk level, and implementation complexity.
           - Do not introduce new pricing moves.
+          - Must identify which move should be tested first.
           -->
           <p class="case-section-brief">
             Which pricing move should be tested first, and why.
@@ -629,7 +652,7 @@ Migration checklist:
     }
   },
   "decision_alternatives": [],
-  "landed_bill_examples": [],
+  "bill_examples": [],
   "boundary_crossing_map": [],
   "decision_priority": [],
   "reasoning_error_check": []

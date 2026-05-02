@@ -6,11 +6,13 @@ Layer 1 selects the primary component based on the pricing logic. `COMPONENT_LIB
 
 Use exactly one primary component per case. Supporting visuals may exist, but they do not replace the primary component and they are not system identifiers.
 
-Strategic Logic Strip, Decision Alternatives, Landed Bill Examples, Boundary Crossing Map, Decision Priority, and Reasoning Error Check are framework-level reasoning, teaching, and decision overlays.
+Strategic Logic Strip, Decision Alternatives, Bill Examples, Boundary Crossing Map, Decision Priority, and Reasoning Error Check are framework-level reasoning, teaching, and decision overlays.
 They are defined by `CASE_SCHEMA.md` and `CASE_LAYER1_SCHEMA.md`.
 They may appear visually on a case page, but they must not be added to the canonical primary component token list.
 
-Landed Bill Examples, Boundary Crossing Map, and Decision Priority are framework-level teaching and decision overlays. They are not primary mechanism components and must not be added to the canonical primary_component token list.
+Bill Examples, Boundary Crossing Map, and Decision Priority are framework-level teaching and decision overlays. They are not primary mechanism components and must not be added to the canonical `primary_component` token list. They may appear visually on a case page, but they must not replace `tier_ladder`, `matrix`, `driver_logic`, `trigger_path`, or `value_extraction_map`.
+
+These overlays must remain industry-neutral. Case-specific terms such as landed bill, delivery fee, seat charge, usage fee, commission, service charge, add-on, or maintenance fee belong inside case content, not in canonical component tokens.
 
 Their purpose is:
 
