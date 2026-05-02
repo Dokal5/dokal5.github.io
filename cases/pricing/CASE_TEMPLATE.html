@@ -15,12 +15,16 @@
 Pricing Case Public Page Template
 
 This file is the canonical public-page template for pricing cases under cases/pricing/.
-Use CASE_LAYER1_SCHEMA.md, CASE_SCHEMA.md, COMPONENT_LIBRARY.md, and the case-specific Layer 1 file as the source inputs.
+Use CASE_LAYER1_SCHEMA.md, CASE_SCHEMA.md, COMPONENT_LIBRARY.md, CASE_VISUAL_DESIGN.md, and the case-specific Layer 1 file as the source inputs.
 
 Public page rules:
 - The page is not a pricing description.
 - The page is a tool to understand what changes the bill.
 - Follow the required public section order exactly.
+- Follow CASE_VISUAL_DESIGN.md for visual rendering of analytical artifacts.
+- Render analytical artifacts as visual decision interfaces, not prose reports.
+- Do not convert field-rich JSON objects into repeated paragraph-heavy cards.
+- Use flow, comparison, transition, ranking, and stress-test visuals before prose.
 - The key driver, mechanism, architecture, and tension must be consistent across the page.
 - If different sections imply different drivers or upgrade logic, the case is invalid.
 - Pricing Logic Deconstruction must explicitly answer: "The bill changes when _____."
@@ -32,6 +36,7 @@ Public page rules:
 - Exactly one primary component must be selected and rendered.
 - The primary component must show how the bill changes.
 - The primary component must include structured elements such as tiers, axes, variables, or thresholds.
+- The primary component must follow the corresponding rendering rule in CASE_VISUAL_DESIGN.md.
 - A placeholder or empty container is not valid.
 - Allowed primary components:
   1. tier_ladder
@@ -152,11 +157,11 @@ Migration checklist:
           <div class="case-section-label">01 / Pricing Page Visual</div>
           <h2>Pricing Page Visual</h2>
           <div class="case-visual-card">
-            <img src="[Screenshot URL]" alt="Screenshot of the [Company Name] pricing page">
+            <img src="[Local screenshot asset path]" alt="Screenshot of the [Company Name] pricing page">
             <div class="case-visual-body">
               <div class="case-visual-label">Pricing artifact</div>
-              <p>[Insert original pricing page screenshot or reconstructed visual based on verified public information.]</p>
-              <p>[One short caption pointing to the pricing mechanism the reader should notice before scrolling. Do not describe UI design.]</p>
+              <p>[Short caption naming what to notice in the verified local pricing screenshot. Do not describe UI design.]</p>
+              <p>[Source URL] · Screenshot captured [Month Day, Year] · Source reviewed [Month Day, Year]</p>
               <p><a class="case-link" href="[Pricing Page URL]">Open live pricing page</a></p>
             </div>
           </div>
@@ -297,6 +302,7 @@ Migration checklist:
           - Render the component visually.
           - The component must show how the bill changes through structured elements.
           - The component must map to the key driver and upgrade trigger defined in Pricing Logic Deconstruction.
+          - The selected primary_component must follow its visual rendering rule in CASE_VISUAL_DESIGN.md.
           - If the component does not reflect the driver or trigger, the case is invalid.
           - Do not leave a placeholder or empty shell in a finished case.
           - If no real component is rendered, the case is invalid.
@@ -322,22 +328,32 @@ Migration checklist:
           - Must map to formula, driver, value metric, or decision_core.
           - Must remain industry-neutral.
           - Case-specific terms belong in the content, not the canonical field names.
+          - Use a comparison table or compact comparison grid for multiple examples.
+          - Use long cards only when there is one bill example.
           -->
           <p class="case-section-brief">
             Concrete customer bill scenarios showing how the pricing driver changes the final amount paid.
           </p>
-          <div class="case-decision-grid">
-            <div class="case-decision-card">
-              <span>[Scenario]</span>
-              <p><strong>Customer situation:</strong> [Customer situation]</p>
-              <p><strong>Base price:</strong> [Base price]</p>
-              <p><strong>Pricing driver:</strong> [Pricing driver]</p>
-              <p><strong>Variable charge:</strong> [Variable charge]</p>
-              <p><strong>Discount or adjustment:</strong> [Discount or adjustment]</p>
-              <p><strong>Final bill:</strong> [Final bill]</p>
-              <p><strong>Pricing lesson:</strong> [Pricing lesson]</p>
-            </div>
-          </div>
+          <table class="case-comparison-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Base layer</th>
+                <th>Variable layer</th>
+                <th>Final bill logic</th>
+                <th>Pricing lesson</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[Scenario]</td>
+                <td>[Base price or base layer]</td>
+                <td>[Driver, variable charge, discount, or adjustment]</td>
+                <td>[How the final bill changes]</td>
+                <td>[Pricing lesson]</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
         <section class="section case-framework-section" data-case-section="pricing-architecture">
@@ -408,17 +424,18 @@ Migration checklist:
           - Must map to key_driver, drivers, formula, upgrade_triggers, or decision_core.
           - Must not invent boundaries.
           - Must remain industry-neutral.
+          - Render as transition rows: From state → To state, Driver, Billing effect, Perception risk.
           -->
           <p class="case-section-brief">
             Where the buyer crosses into a different pricing state.
           </p>
-          <div class="case-friction-list">
-            <div class="case-friction-item">
+          <div class="case-transition-map">
+            <div class="case-transition-row">
               <strong>[From state] → [To state]</strong>
-              <p><strong>Boundary:</strong> [Boundary condition]</p>
-              <p><strong>Driver:</strong> [Driver]</p>
-              <p><strong>Billing effect:</strong> [Billing effect]</p>
-              <p><strong>Perception risk:</strong> [Customer perception risk]</p>
+              <span>[Boundary condition]</span>
+              <span>Driver: [Driver]</span>
+              <span>Billing effect: [Billing effect]</span>
+              <span>Perception risk: [Customer perception risk]</span>
             </div>
           </div>
         </section>
@@ -431,10 +448,18 @@ Migration checklist:
           - Every tension must explicitly name a driver, segmentation rule, or upgrade trigger.
           - If the cause is not named, remove the tension.
           - Do not include general UX complaints.
+          - Show the central before → trigger or driver → after perception before supporting tensions.
           -->
           <p class="case-section-brief">
             [Show tension caused by pricing structure only. Each tension must explicitly name a driver, segmentation rule, or upgrade trigger. If no cause is named, remove the tension.]
           </p>
+          <div class="case-tension-visual">
+            <strong>[Before perception]</strong>
+            <span aria-hidden="true">→</span>
+            <strong>[Trigger or driver]</strong>
+            <span aria-hidden="true">→</span>
+            <strong>[After perception]</strong>
+          </div>
           <div class="case-friction-list">
             <div class="case-friction-item">
               <strong>[Tension point]</strong>
@@ -492,22 +517,34 @@ Migration checklist:
           - Each priority item must include success metric, risk level, and implementation complexity.
           - Do not introduce new pricing moves.
           - Must identify which move should be tested first.
+          - Use "Why this priority" as the visible label for why_first.
+          - Do not repeat full Decision Alternatives cards.
           -->
           <p class="case-section-brief">
             Which pricing move should be tested first, and why.
           </p>
-          <div class="case-decision-grid">
-            <div class="case-decision-card">
-              <span>Priority [Rank]</span>
-              <strong>[Option]</strong>
-              <p><strong>Why first:</strong> [Why first]</p>
-              <p><strong>Test type:</strong> [Test type]</p>
-              <p><strong>Risk level:</strong> [Risk level]</p>
-              <p><strong>Upside potential:</strong> [Upside potential]</p>
-              <p><strong>Implementation complexity:</strong> [Implementation complexity]</p>
-              <p><strong>Success metric:</strong> [Success metric]</p>
-            </div>
-          </div>
+          <table class="case-priority-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Move</th>
+                <th>Why this priority</th>
+                <th>Risk</th>
+                <th>Complexity</th>
+                <th>Success metric</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[Rank]</td>
+                <td>[Option]</td>
+                <td>[Why first]</td>
+                <td>[Risk level]</td>
+                <td>[Implementation complexity]</td>
+                <td>[Success metric]</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
         <section class="section case-framework-section" data-case-section="reasoning-error-check">
@@ -519,33 +556,41 @@ Migration checklist:
           - Each check must stress test existing case logic.
           - Each check must include evidence needed and failure signal.
           - Do not introduce new drivers, tiers, segments, or upgrade triggers.
+          - Use a stress-test checklist or compact table so evidence needed and failure signal remain visible.
           -->
           <p class="case-section-brief">
             Stress test the pricing logic before accepting the recommendation.
           </p>
-          <div class="case-friction-list">
-            <div class="case-friction-item">
-              <strong>[Error type]</strong>
-              <p>[Risk statement]</p>
-              <p><strong>Check:</strong> [Case-specific check]</p>
-              <p><strong>Evidence needed:</strong> [Evidence needed]</p>
-              <p><strong>Failure signal:</strong> [Failure signal]</p>
-            </div>
-            <div class="case-friction-item">
-              <strong>[Error type]</strong>
-              <p>[Risk statement]</p>
-              <p><strong>Check:</strong> [Case-specific check]</p>
-              <p><strong>Evidence needed:</strong> [Evidence needed]</p>
-              <p><strong>Failure signal:</strong> [Failure signal]</p>
-            </div>
-            <div class="case-friction-item">
-              <strong>[Error type]</strong>
-              <p>[Risk statement]</p>
-              <p><strong>Check:</strong> [Case-specific check]</p>
-              <p><strong>Evidence needed:</strong> [Evidence needed]</p>
-              <p><strong>Failure signal:</strong> [Failure signal]</p>
-            </div>
-          </div>
+          <table class="case-stress-test-table">
+            <thead>
+              <tr>
+                <th>Reasoning risk</th>
+                <th>Case-specific check</th>
+                <th>Evidence needed</th>
+                <th>Failure signal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[Risk statement]</td>
+                <td>[Case-specific check]</td>
+                <td>[Evidence needed]</td>
+                <td>[Failure signal]</td>
+              </tr>
+              <tr>
+                <td>[Risk statement]</td>
+                <td>[Case-specific check]</td>
+                <td>[Evidence needed]</td>
+                <td>[Failure signal]</td>
+              </tr>
+              <tr>
+                <td>[Risk statement]</td>
+                <td>[Case-specific check]</td>
+                <td>[Evidence needed]</td>
+                <td>[Failure signal]</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
 
         <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
