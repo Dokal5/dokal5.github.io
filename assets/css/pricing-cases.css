@@ -948,6 +948,192 @@
   --logic-bg: rgba(194, 65, 12, 0.08);
 }
 
+.case-value-flow-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1fr);
+  gap: 0.62rem;
+  align-items: stretch;
+  margin: 1rem 0;
+}
+
+.case-value-flow-node {
+  min-width: 0;
+  min-height: 128px;
+  border: 1px solid rgba(92, 61, 46, 0.16);
+  border-radius: 14px;
+  padding: 0.95rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 244, 239, 0.78));
+  display: grid;
+  align-content: center;
+  gap: 0.4rem;
+}
+
+.case-value-flow-node span,
+.case-transition-row span,
+.case-comparison-table th,
+.case-priority-table th,
+.case-stress-test-table th {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.case-value-flow-node strong {
+  color: var(--dark);
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+
+.case-value-flow-node:last-child {
+  border-color: rgba(194, 65, 12, 0.34);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(194, 65, 12, 0.09));
+}
+
+.case-value-flow-node:last-child strong {
+  color: #8f341f;
+}
+
+.case-value-flow-arrow {
+  color: var(--accent2);
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  line-height: 1;
+  text-align: center;
+  align-self: center;
+}
+
+.case-comparison-table,
+.case-priority-table,
+.case-stress-test-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.case-comparison-table th,
+.case-comparison-table td,
+.case-priority-table th,
+.case-priority-table td,
+.case-stress-test-table th,
+.case-stress-test-table td {
+  padding: 0.78rem 0.82rem;
+  border-right: 1px solid var(--lightgray);
+  border-bottom: 1px solid var(--lightgray);
+  text-align: left;
+  vertical-align: top;
+}
+
+.case-comparison-table th:last-child,
+.case-comparison-table td:last-child,
+.case-priority-table th:last-child,
+.case-priority-table td:last-child,
+.case-stress-test-table th:last-child,
+.case-stress-test-table td:last-child {
+  border-right: 0;
+}
+
+.case-comparison-table tbody tr:last-child td,
+.case-priority-table tbody tr:last-child td,
+.case-stress-test-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.case-comparison-table thead,
+.case-priority-table thead,
+.case-stress-test-table thead {
+  background: rgba(247, 244, 239, 0.82);
+}
+
+.case-comparison-table td,
+.case-priority-table td,
+.case-stress-test-table td {
+  color: var(--darkgray);
+  font-size: 0.88rem;
+  line-height: 1.38;
+}
+
+.case-comparison-table td:first-child,
+.case-priority-table td:first-child,
+.case-stress-test-table td:first-child {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.case-transition-map {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.case-transition-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 1fr) 1.2rem minmax(130px, 1fr) repeat(3, minmax(120px, 0.9fr));
+  gap: 0.55rem;
+  align-items: stretch;
+  border: 1px solid var(--lightgray);
+  border-radius: 14px;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.case-transition-row > div {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 0.24rem;
+}
+
+.case-transition-row strong {
+  color: var(--dark);
+  font-size: 0.88rem;
+  line-height: 1.22;
+  overflow-wrap: anywhere;
+}
+
+.case-tension-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0.95rem;
+  border: 1px solid rgba(194, 65, 12, 0.26);
+  border-radius: 14px;
+  background: rgba(194, 65, 12, 0.06);
+}
+
+.case-tension-visual strong {
+  min-height: 88px;
+  border: 1px solid rgba(92, 61, 46, 0.14);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.18;
+}
+
+.case-tension-visual strong:last-child {
+  border-color: rgba(194, 65, 12, 0.35);
+  color: #8f341f;
+}
+
+.case-tension-visual span {
+  color: var(--accent2);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
 .case-strategic-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1.15fr) 1.6rem minmax(0, 1fr) 1.6rem minmax(0, 1fr);
@@ -1442,6 +1628,9 @@
   .case-tension-toolbar,
   .case-tension-grid,
   .case-starter-funnel-grid,
+  .case-value-flow-map,
+  .case-transition-row,
+  .case-tension-visual,
   .case-strategic-strip,
   .case-strategic-meta,
   .case-decision-grid,
@@ -1472,6 +1661,15 @@
     transform: rotate(90deg);
   }
 
+  .case-value-flow-node,
+  .case-tension-visual strong {
+    min-height: 0;
+  }
+
+  .case-value-flow-arrow {
+    transform: rotate(90deg);
+  }
+
   .case-stat-grid,
   .case-score-board {
     grid-template-columns: 1fr 1fr;
@@ -1499,5 +1697,130 @@
 
   .case-layer1-result--primary {
     grid-column: auto;
+  }
+
+  .case-comparison-table,
+  .case-priority-table,
+  .case-stress-test-table,
+  .case-comparison-table thead,
+  .case-comparison-table tbody,
+  .case-comparison-table tr,
+  .case-comparison-table th,
+  .case-comparison-table td,
+  .case-priority-table thead,
+  .case-priority-table tbody,
+  .case-priority-table tr,
+  .case-priority-table th,
+  .case-priority-table td,
+  .case-stress-test-table thead,
+  .case-stress-test-table tbody,
+  .case-stress-test-table tr,
+  .case-stress-test-table th,
+  .case-stress-test-table td {
+    display: block;
+  }
+
+  .case-comparison-table thead,
+  .case-priority-table thead,
+  .case-stress-test-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .case-comparison-table tr,
+  .case-priority-table tr,
+  .case-stress-test-table tr {
+    border-bottom: 1px solid var(--lightgray);
+    padding: 0.65rem 0;
+  }
+
+  .case-comparison-table tr:last-child,
+  .case-priority-table tr:last-child,
+  .case-stress-test-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .case-comparison-table td,
+  .case-priority-table td,
+  .case-stress-test-table td {
+    border: 0;
+    padding: 0.42rem 0.82rem;
+  }
+
+  .case-comparison-table td::before,
+  .case-priority-table td::before,
+  .case-stress-test-table td::before {
+    display: block;
+    margin-bottom: 0.16rem;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 400;
+  }
+
+  .case-comparison-table td:nth-child(1)::before {
+    content: "Scenario";
+  }
+
+  .case-comparison-table td:nth-child(2)::before {
+    content: "Base layer";
+  }
+
+  .case-comparison-table td:nth-child(3)::before {
+    content: "Variable layer";
+  }
+
+  .case-comparison-table td:nth-child(4)::before {
+    content: "Final bill logic";
+  }
+
+  .case-comparison-table td:nth-child(5)::before {
+    content: "Pricing lesson";
+  }
+
+  .case-priority-table td:nth-child(1)::before {
+    content: "Rank";
+  }
+
+  .case-priority-table td:nth-child(2)::before {
+    content: "Move";
+  }
+
+  .case-priority-table td:nth-child(3)::before {
+    content: "Why this priority";
+  }
+
+  .case-priority-table td:nth-child(4)::before {
+    content: "Risk";
+  }
+
+  .case-priority-table td:nth-child(5)::before {
+    content: "Complexity";
+  }
+
+  .case-priority-table td:nth-child(6)::before {
+    content: "Success metric";
+  }
+
+  .case-stress-test-table td:nth-child(1)::before {
+    content: "Reasoning risk";
+  }
+
+  .case-stress-test-table td:nth-child(2)::before {
+    content: "Case-specific check";
+  }
+
+  .case-stress-test-table td:nth-child(3)::before {
+    content: "Evidence needed";
+  }
+
+  .case-stress-test-table td:nth-child(4)::before {
+    content: "Failure signal";
   }
 }
