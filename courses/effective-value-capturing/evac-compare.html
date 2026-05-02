@@ -15,6 +15,32 @@
     --v2-light: #5a7a9c;
   }
 
+  .site-top-nav {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .site-top-nav a {
+    color: rgba(245,240,232,0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245,240,232,0.2);
+    padding-bottom: 4px;
+  }
+
+  .site-top-nav a:hover {
+    color: var(--cream);
+    border-bottom-color: rgba(245,240,232,0.5);
+  }
+
   /* ── COMPARE BAND (dark) ── */
   .compare-band {
     background: var(--ink);
@@ -690,6 +716,13 @@
 </style>
 </head>
 <body>
+
+<nav class="site-top-nav" aria-label="Site navigation">
+  <a href="../../index.html">Home</a>
+  <a href="../index.html">Courses</a>
+  <a href="../../cases/index.html">Case Library</a>
+  <a href="../../cases/pricing/index.html">Pricing Cases</a>
+</nav>
 
 <!-- ── HERO ── -->
 <section class="hero">
