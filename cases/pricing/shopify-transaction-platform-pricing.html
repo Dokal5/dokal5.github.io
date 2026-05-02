@@ -102,21 +102,21 @@
             <div class="case-decision-card">
               <span>Key driver</span>
               <strong>Merchant commerce flow through Shopify infrastructure</strong>
-              <p>Orders, GMV, payment setup, provider choice, and complexity make billing points material.</p>
+              <p>Orders, GMV, payment setup, and provider choice make billing points material.</p>
             </div>
             <div class="case-decision-card">
               <span>Scaling logic</span>
               <strong>Hybrid</strong>
-              <p>Spend combines plan thresholds, transaction economics, provider configuration, and commitments.</p>
+              <p>Plan thresholds and transaction economics work together.</p>
             </div>
             <div class="case-decision-card">
               <span>Main upgrade condition</span>
               <strong>Commerce complexity crosses a plan or provider boundary</strong>
-              <p>The merchant pays differently when plan scope, payment setup, provider usage, or Plus needs change.</p>
+              <p>Plan scope, provider setup, or Plus needs change the payment state.</p>
             </div>
           </div>
           <p class="case-section-brief">
-            Shopify positions the subscription as access, but the total platform cost depends on how much commerce activity and payment complexity flows through the platform.
+            Subscription buys access; commerce flow drives total platform cost.
           </p>
         </section>
 
@@ -144,7 +144,7 @@
             <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--billing">
               <span class="case-strip-label">Billing Change</span>
-              <strong>Platform cost scales with activity and configuration</strong>
+              <strong>Cost scales with activity</strong>
             </div>
             <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--outcome">
@@ -249,65 +249,28 @@
           <div class="case-section-label">07 / Pricing Architecture</div>
           <h2>Pricing Architecture</h2>
           <p class="case-section-brief">
-            Structure only: plan access, payment processing, provider configuration, and Plus commitments determine the billing points layered around merchant commerce flow.
-          </p>
-          <p class="case-section-brief">
             Public pricing structure shown at review date: 2026-05-02.
           </p>
-          <div class="case-architecture-grid">
-            <div class="case-layer-panel">
-              <div class="case-layer-label">Tiers</div>
-              <h3>Plan access levels</h3>
-              <div class="case-tier-stack">
-                <div class="case-tier-row">
-                  <span>Basic</span>
-                  <strong>Standard plan access</strong>
-                  <em>Published subscription and payment parameters vary by region and billing cycle.</em>
-                </div>
-                <div class="case-tier-row">
-                  <span>Grow</span>
-                  <strong>Higher standard-plan scope</strong>
-                  <em>Plan level changes the recurring subscription fee and published payment economics.</em>
-                </div>
-                <div class="case-tier-row">
-                  <span>Advanced</span>
-                  <strong>Advanced commerce scope</strong>
-                  <em>Higher plan scope can carry different card and third-party provider parameters.</em>
-                </div>
-                <div class="case-tier-row">
-                  <span>Plus</span>
-                  <strong>Enterprise platform commitment</strong>
-                  <em>Published starting commitments apply to standard setups; complex higher-volume businesses may move to variable platform fees.</em>
-                </div>
-              </div>
+          <div class="case-architecture-panel-grid">
+            <div class="case-architecture-panel">
+              <span>Tiers</span>
+              <strong class="case-architecture-token-line">Basic → Grow → Advanced → Plus</strong>
+              <p>Plan access levels and published pricing parameters vary by region and billing cycle.</p>
             </div>
-            <div class="case-layer-panel">
-              <div class="case-layer-label">Segmentation</div>
-              <h3>Merchant and payment classifications</h3>
-              <div class="case-segment-map">
-                <div class="case-segment-row">
-                  <span class="case-variable-token">Scale</span>
-                  <p>Side project stores and serious commerce businesses experience the same architecture with different cost salience.</p>
-                </div>
-                <div class="case-segment-row">
-                  <span class="case-variable-token">Payments</span>
-                  <p>Shopify Payments and third-party payment provider setups create different transaction-fee conditions.</p>
-                </div>
-                <div class="case-segment-row">
-                  <span class="case-variable-token">Complexity</span>
-                  <p>Enterprise merchants may need Plus capabilities, contract terms, and variable platform-fee evaluation.</p>
-                </div>
-              </div>
+            <div class="case-architecture-panel">
+              <span>Segmentation</span>
+              <strong class="case-architecture-token-line">Scale &middot; Payments &middot; Complexity</strong>
+              <p>Merchants face different cost salience depending on commerce scale, payment setup, and enterprise complexity.</p>
             </div>
-          </div>
-          <div class="case-driver-strip">
-            <div>
+            <div class="case-architecture-panel">
               <span>Drivers</span>
-              <strong>Merchant commerce flow, subscription plan level, payment processing volume, third-party provider usage, enterprise complexity or revenue scale</strong>
+              <strong class="case-architecture-token-line">Commerce flow &middot; Plan level &middot; Payment volume &middot; Provider usage &middot; Enterprise complexity</strong>
+              <p>Multiple billing points become material as commerce activity runs deeper through Shopify infrastructure.</p>
             </div>
-            <div>
+            <div class="case-architecture-panel">
               <span>Upgrade triggers</span>
-              <strong>Serious commerce scale, third-party provider choice, higher plan needs, Plus-level complexity</strong>
+              <strong class="case-architecture-token-line">Serious commerce scale &middot; Third-party provider choice &middot; Higher plan needs &middot; Plus-level complexity</strong>
+              <p>Merchants move into different pricing states when activity, provider needs, plan scope, or enterprise requirements change.</p>
             </div>
           </div>
         </section>
@@ -385,28 +348,28 @@
           </p>
           <div class="case-decision-grid">
             <div class="case-decision-card">
-              <span>Move name</span>
+              <span>Move</span>
               <strong>Transaction-cost visibility layer</strong>
               <p><strong>Pricing move:</strong> Clarify how payments, provider choice, plan level, and commerce flow affect total cost.</p>
-              <p><strong>Expected effect:</strong> Less bill surprise.</p>
+              <p><strong>Effect:</strong> Less bill surprise.</p>
               <p><strong>Trade off:</strong> Fees become salient earlier.</p>
-              <p><strong>Leading indicator:</strong> Fewer transaction-fee support contacts.</p>
+              <p><strong>Signal:</strong> Fewer fee-related support contacts.</p>
             </div>
             <div class="case-decision-card">
-              <span>Move name</span>
+              <span>Move</span>
               <strong>GMV-triggered payment economics guidance</strong>
               <p><strong>Pricing move:</strong> Show when scale makes payment economics and provider choice material.</p>
-              <p><strong>Expected effect:</strong> Better total-economics understanding.</p>
+              <p><strong>Effect:</strong> Better total-economics understanding.</p>
               <p><strong>Trade off:</strong> Earlier awareness of variable cost exposure.</p>
-              <p><strong>Leading indicator:</strong> Higher plan-fit accuracy and payment setup completion.</p>
+              <p><strong>Signal:</strong> Higher plan-fit accuracy and payment setup completion.</p>
             </div>
             <div class="case-decision-card">
-              <span>Move name</span>
+              <span>Move</span>
               <strong>Plus migration economics layer</strong>
               <p><strong>Pricing move:</strong> Explain when standard-plan economics shift to Plus commitment logic.</p>
-              <p><strong>Expected effect:</strong> Less enterprise pricing uncertainty.</p>
+              <p><strong>Effect:</strong> Less enterprise pricing uncertainty.</p>
               <p><strong>Trade off:</strong> Complexity appears earlier.</p>
-              <p><strong>Leading indicator:</strong> Higher Plus sales-qualified conversion.</p>
+              <p><strong>Signal:</strong> Higher Plus sales-qualified conversion.</p>
             </div>
           </div>
         </section>
