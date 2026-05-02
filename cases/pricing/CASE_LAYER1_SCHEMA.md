@@ -4,6 +4,8 @@ Layer 1 is the upstream structuring step before page rendering. Its job is to de
 
 Layer 1 separates analytical structure from public-page presentation.
 
+Public-page visual rendering is governed by `CASE_VISUAL_DESIGN.md`. Layer 1 may define what the renderer should emphasize, but it must not prescribe prose-heavy layouts or convert JSON fields directly into visible paragraph cards.
+
 ## Layer 1 Output
 
 Every pricing case should produce nine artifacts before page rendering:
@@ -105,6 +107,8 @@ Purpose:
 
 The render instruction tells the UI layer what to emphasize. It selects components and interaction intent, not CSS or final visual design.
 
+The public renderer must pair this instruction with `CASE_VISUAL_DESIGN.md` before generating page markup. The render instruction should point the renderer toward the pricing decision pattern; the visual design contract defines how that pattern should appear.
+
 Required shape:
 
 ```json
@@ -128,7 +132,7 @@ Field guidance:
 - `secondary_components`: supporting context only
 - `first_screen_priority`: what must appear before detailed architecture
 - `interactive_controls`: variables a learner can change
-- `avoid`: render choices that would obscure the pricing logic
+- `avoid`: render choices that would obscure the pricing logic, including direct JSON-to-card rendering and paragraph-heavy repeated field cards
 - `failure_modes`: what a weak rendering would make unclear
 - `data_dependencies`: case JSON fields the renderer must consume
 
@@ -140,6 +144,9 @@ Deterministic render mapping rules:
 - `Render Instruction.first_screen_priority` must place `decision_core` before detailed architecture.
 - `Render Instruction.secondary_components` may support the primary mechanism only. They may not introduce new pricing logic.
 - `Render Instruction.interactive_controls` may reference only existing drivers or formula variables already defined in the case JSON.
+- `Render Instruction` may reference visual patterns from `CASE_VISUAL_DESIGN.md`, but it must not create new `primary_component` tokens.
+- `Render Instruction.avoid` should name any case-specific rendering failure that would make the page text-heavy or obscure bill movement.
+- `Render Instruction.failure_modes` should include visual failures where the selected primary component, bill examples, boundary crossings, decision priority, or reasoning checks would become prose instead of decision visuals.
 
 ## 4. Strategic Logic
 
@@ -450,6 +457,7 @@ Layer 1 is complete only if it passes all gates below.
 - the render instruction defines at least one failure mode
 - the selected component can show how the bill changes
 - no artifact introduces unmodeled drivers, tiers, segments, triggers, or pricing moves
+- public rendering can follow `CASE_VISUAL_DESIGN.md` without turning analytical artifacts into paragraph-heavy cards
 
 ### Decision Training Gate
 
