@@ -41,6 +41,14 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "key_driver": "Merchant commerce flow through Shopify infrastructure",
   "drivers": [
     {
+      "driver": "Merchant commerce flow through Shopify infrastructure",
+      "type": "usage",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "As more orders, payment volume, provider choices, and commerce complexity flow through Shopify, more billing points become economically material.",
+      "student_label": "Commerce flow"
+    },
+    {
       "driver": "Subscription plan level",
       "type": "commitment",
       "pricing_role": "base_charge",
@@ -164,13 +172,13 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "strategic_logic": {
     "customer_condition": "Merchants grow commerce activity",
     "behavior_change": "More commerce runs through Shopify",
-    "pricing_driver": "Commerce flow and payment setup drive fees",
+    "pricing_driver": "Merchant commerce flow through Shopify infrastructure",
     "billing_change": "Platform cost scales with activity and configuration",
     "financial_outcome": "Shopify captures growth-linked economics",
     "dominant_causal_chain": [
       "Merchants grow commerce activity",
       "More commerce runs through Shopify",
-      "Commerce flow and payment setup drive fees",
+      "Merchant commerce flow through Shopify infrastructure",
       "Platform cost scales with activity and configuration",
       "Shopify captures growth-linked economics"
     ],
@@ -184,7 +192,7 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   },
   "decision_alternatives": [
     {
-      "option": "Increase transaction-fee transparency",
+      "option": "Transaction-cost visibility layer",
       "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, and plan level affect total platform cost.",
       "expected_effect": "Reduces merchant bill surprise and improves trust in transaction-linked economics.",
       "trade_off": "Makes fees more salient before merchants have experienced the full value of the platform.",
@@ -274,7 +282,7 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "decision_priority": [
     {
       "priority_rank": 1,
-      "option": "Increase transaction-fee transparency",
+      "option": "Transaction-cost visibility layer",
       "why_first": "It is the lowest-risk test and directly addresses bill surprise without changing the underlying pricing architecture.",
       "test_type": "Billing education and pricing-page comprehension experiment",
       "risk_level": "low",
@@ -385,13 +393,13 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "strategic_logic": {
     "customer_condition": "Merchants grow commerce activity",
     "behavior_change": "More commerce runs through Shopify",
-    "pricing_driver": "Commerce flow and payment setup drive fees",
+    "pricing_driver": "Merchant commerce flow through Shopify infrastructure",
     "billing_change": "Platform cost scales with activity and configuration",
     "financial_outcome": "Shopify captures growth-linked economics",
     "dominant_causal_chain": [
       "Merchants grow commerce activity",
       "More commerce runs through Shopify",
-      "Commerce flow and payment setup drive fees",
+      "Merchant commerce flow through Shopify infrastructure",
       "Platform cost scales with activity and configuration",
       "Shopify captures growth-linked economics"
     ],
@@ -413,7 +421,7 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "case_id": "shopify-transaction-platform-pricing",
   "decision_alternatives": [
     {
-      "option": "Increase transaction-fee transparency",
+      "option": "Transaction-cost visibility layer",
       "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, and plan level affect total platform cost.",
       "expected_effect": "Reduces merchant bill surprise and improves trust in transaction-linked economics.",
       "trade_off": "Makes fees more salient before merchants have experienced the full value of the platform.",
@@ -527,7 +535,7 @@ Student 10-second takeaway: The bill changes when more commerce activity, paymen
   "decision_priority": [
     {
       "priority_rank": 1,
-      "option": "Increase transaction-fee transparency",
+      "option": "Transaction-cost visibility layer",
       "why_first": "It is the lowest-risk test and directly addresses bill surprise without changing the underlying pricing architecture.",
       "test_type": "Billing education and pricing-page comprehension experiment",
       "risk_level": "low",

@@ -59,7 +59,10 @@
           <div class="case-section-label">01 / Pricing Page Visual</div>
           <h2>Pricing Page Visual</h2>
           <div class="case-visual-card">
-            <img src="https://image.thum.io/get/width/1400/noanimate/https://www.shopify.com/pricing" alt="Screenshot of the Shopify pricing page">
+            <div class="case-visual-placeholder">
+              <strong>Shopify pricing page visual unavailable</strong>
+              <p>Use the live pricing page link below. The case analysis is based on Shopify's official pricing and help pages.</p>
+            </div>
             <div class="case-visual-body">
               <div class="case-visual-label">Pricing artifact</div>
               <p>Shopify's public pricing page shows subscription plans beside card rates, third-party payment provider rates, and Plus entry points.</p>
@@ -289,6 +292,9 @@
           <p class="case-section-brief">
             Structure only: plan access, payment processing, provider configuration, and Plus commitments determine the billing points layered around merchant commerce flow.
           </p>
+          <p class="case-section-brief">
+            Public pricing structure shown at review date: May 2, 2026.
+          </p>
           <div class="case-architecture-grid">
             <div class="case-layer-panel">
               <div class="case-layer-label">Tiers</div>
@@ -415,7 +421,7 @@
           </p>
           <div class="case-decision-grid">
             <div class="case-decision-card">
-              <span>Increase transaction-fee transparency</span>
+              <span>Transaction-cost visibility layer</span>
               <strong>Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, and plan level affect total platform cost.</strong>
               <p><strong>Expected effect:</strong> Reduces merchant bill surprise and improves trust in transaction-linked economics.</p>
               <p><strong>Trade off:</strong> Makes fees more salient before merchants have experienced the full value of the platform.</p>
@@ -447,7 +453,7 @@
           <div class="case-decision-grid">
             <div class="case-decision-card">
               <span>Priority 1</span>
-              <strong>Increase transaction-fee transparency</strong>
+              <strong>Transaction-cost visibility layer</strong>
               <p><strong>Why this priority:</strong> It is the lowest-risk test and directly addresses bill surprise without changing the underlying pricing architecture.</p>
               <p><strong>Test type:</strong> Billing education and pricing-page comprehension experiment.</p>
               <p><strong>Risk level:</strong> low</p>
@@ -566,6 +572,14 @@
   "pricing_logic": "Shopify combines visible subscription access with transaction and payment-related economics. The merchant bill changes when commerce activity, payment setup, provider choice, plan level, or enterprise requirements change.",
   "key_driver": "Merchant commerce flow through Shopify infrastructure",
   "drivers": [
+    {
+      "driver": "Merchant commerce flow through Shopify infrastructure",
+      "type": "usage",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "As more orders, payment volume, provider choices, and commerce complexity flow through Shopify, more billing points become economically material.",
+      "student_label": "Commerce flow"
+    },
     {
       "driver": "Subscription plan level",
       "type": "commitment",
@@ -690,13 +704,13 @@
   "strategic_logic": {
     "customer_condition": "Merchants grow commerce activity",
     "behavior_change": "More commerce runs through Shopify",
-    "pricing_driver": "Commerce flow and payment setup drive fees",
+    "pricing_driver": "Merchant commerce flow through Shopify infrastructure",
     "billing_change": "Platform cost scales with activity and configuration",
     "financial_outcome": "Shopify captures growth-linked economics",
     "dominant_causal_chain": [
       "Merchants grow commerce activity",
       "More commerce runs through Shopify",
-      "Commerce flow and payment setup drive fees",
+      "Merchant commerce flow through Shopify infrastructure",
       "Platform cost scales with activity and configuration",
       "Shopify captures growth-linked economics"
     ],
@@ -710,7 +724,7 @@
   },
   "decision_alternatives": [
     {
-      "option": "Increase transaction-fee transparency",
+      "option": "Transaction-cost visibility layer",
       "pricing_move": "Show clearer pre-checkout and billing explanations of how Shopify Payments, third-party providers, and plan level affect total platform cost.",
       "expected_effect": "Reduces merchant bill surprise and improves trust in transaction-linked economics.",
       "trade_off": "Makes fees more salient before merchants have experienced the full value of the platform.",
@@ -800,7 +814,7 @@
   "decision_priority": [
     {
       "priority_rank": 1,
-      "option": "Increase transaction-fee transparency",
+      "option": "Transaction-cost visibility layer",
       "why_first": "It is the lowest-risk test and directly addresses bill surprise without changing the underlying pricing architecture.",
       "test_type": "Billing education and pricing-page comprehension experiment",
       "risk_level": "low",
