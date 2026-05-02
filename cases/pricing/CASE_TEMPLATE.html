@@ -20,8 +20,7 @@ Use CASE_LAYER1_SCHEMA.md, CASE_SCHEMA.md, COMPONENT_LIBRARY.md, and the case-sp
 Public page rules:
 - The page is not a pricing description.
 - The page is a tool to understand what changes the bill.
-- Core Insight must appear before detailed architecture.
-- Do not reorder the teaching sequence. Insight must come before Logic, Strategic Logic before Mechanism, Mechanism before Bill Examples, Bill Examples before Architecture, Architecture before Boundary Crossing Map, Tension before Decision Alternatives, and Decision Alternatives before Decision Priority.
+- Follow the required public section order exactly.
 - The key driver, mechanism, architecture, and tension must be consistent across the page.
 - If different sections imply different drivers or upgrade logic, the case is invalid.
 - Pricing Logic Deconstruction must explicitly answer: "The bill changes when _____."
@@ -31,13 +30,9 @@ Public page rules:
   3. main upgrade condition
 - The Mechanism Logic section must use exactly one primary component from COMPONENT_LIBRARY.md.
 - Exactly one primary component must be selected and rendered.
-- Do not allow multiple mechanism types on the same page.
-- Do not replace the mechanism with text-only explanation.
-- The primary component must be rendered visually, not described.
 - The primary component must show how the bill changes.
 - The primary component must include structured elements such as tiers, axes, variables, or thresholds.
 - A placeholder or empty container is not valid.
-- If no component is rendered, the case is invalid.
 - Allowed primary components:
   1. tier_ladder
   2. matrix
@@ -59,27 +54,16 @@ Public page rules:
 - Any hidden JSON version mismatch is invalid.
 - Strategic Logic is required in hidden JSON.
 - Strategic Logic is a hypothesized causal chain, not proof.
-- Strategic Logic may be rendered as an optional teaching section.
-- If rendered, Strategic Logic should appear after Pricing Logic Deconstruction and before Pricing Mechanism Logic.
 - Strategic Logic must not replace Pricing Logic Deconstruction or Pricing Architecture.
 - Strategic Logic must not introduce new drivers, tiers, segments, or upgrade triggers.
 - Strategic Logic must explain why the existing pricing structure is expected to work.
-- Strategic Logic Strip uses one canonical visual grammar only.
-- Do not render arbitrary DAGs or network diagrams.
-- Strategic Logic Strip must remain visually linear and directional.
-- The strip exists to explain why the pricing structure is expected to work.
-- The strip must prioritize fast comprehension over causal completeness.
+- Strategic Logic Strip uses one canonical, linear, directional visual grammar only.
+- Do not render arbitrary DAGs, network diagrams, or multi-directional graph structures.
 - The strip must include a Behavior Change node.
 - If Behavior Change cannot be identified, the case is incomplete.
-- Strategic Logic must optimize for recognition, not recall.
-- Readers should understand the causal flow within 10 seconds.
 - Each node must represent exactly one causal idea.
-- Use compressed causal statements, not paragraph prose.
-- Avoid full sentences when possible.
-- Keep each node between roughly 2 and 8 words.
+- Keep nodes concise, ideally 2 to 8 words.
 - The Pricing Driver node is the visual focal point.
-- Remove duplicated prose restatement below the strip.
-- The strip should reduce cognitive load through chunking and directional hierarchy.
 - Decision Alternatives must turn strategic opportunity into concrete pricing moves.
 - Each decision alternative must show expected effect, trade off, and leading indicator.
 - Bill Examples must show concrete customer bill scenarios without introducing unsupported precision.
@@ -246,38 +230,14 @@ Migration checklist:
           - The chain must move from customer condition to behavior change to pricing driver to billing change to financial outcome.
           - The chain must include or clearly map to key_driver.
           - Do not introduce new drivers, tiers, segments, or upgrade triggers.
-          - Do not turn this into a full company strategy DAG.
-          - Strategic Logic Strip uses the canonical five-step strip only.
-          - Do not render arbitrary graph layouts, network diagrams, or full DAGs.
-          - The strip must remain visually linear and directional.
+          - Use the canonical five-step strip only; do not render arbitrary graph layouts, network diagrams, or full DAGs.
+          - Keep the strip visually linear and directional.
           - The strip must include a Behavior Change node.
           - If Behavior Change cannot be identified, the case is incomplete.
-          - Strategic Logic must optimize for recognition, not recall.
-          - Readers should understand the causal flow within 10 seconds.
           - Each node must represent exactly one causal idea.
-          - Use compressed causal statements, not paragraph prose.
-          - Avoid full sentences when possible.
-          - Keep each node between roughly 2 and 8 words.
+          - Use compressed causal statements, ideally 2 to 8 words.
           - The Pricing Driver node is the visual focal point.
           - Remove duplicated prose restatement below the strip.
-          - The strip should reduce cognitive load through chunking and directional hierarchy.
-
-          Strategic Logic visual hierarchy:
-          - Pricing Driver node is the visual focal point.
-          - Customer Condition and Financial Outcome are secondary emphasis.
-          - Behavior Change and Billing Change are medium emphasis.
-          - Labels are visually quieter than node content.
-          - Arrows should feel directional and structural.
-          - Each node should feel like a chunked causal unit.
-
-          Cognitive load constraints:
-          - Avoid paragraph density.
-          - Prefer recognition over recall.
-          - One node = one idea.
-          - No node should exceed roughly two lines.
-          - Avoid explanatory filler language.
-          - Preserve whitespace between causal chunks.
-          - Keep directional flow visually obvious.
 
           The Strategic Logic section is INVALID if:
           - Behavior Change is missing.
@@ -369,12 +329,12 @@ Migration checklist:
           <div class="case-decision-grid">
             <div class="case-decision-card">
               <span>[Scenario]</span>
-              <strong>[Final bill]</strong>
               <p><strong>Customer situation:</strong> [Customer situation]</p>
               <p><strong>Base price:</strong> [Base price]</p>
               <p><strong>Pricing driver:</strong> [Pricing driver]</p>
               <p><strong>Variable charge:</strong> [Variable charge]</p>
               <p><strong>Discount or adjustment:</strong> [Discount or adjustment]</p>
+              <p><strong>Final bill:</strong> [Final bill]</p>
               <p><strong>Pricing lesson:</strong> [Pricing lesson]</p>
             </div>
           </div>

@@ -20,9 +20,11 @@ Every pricing case should produce nine artifacts before page rendering:
 
 ## 1. Case Insight Brief
 
+Purpose:
+
 The brief is a compact analyst-facing summary. It should explain the pricing mechanism without page layout, visual styling, or long prose.
 
-Required fields:
+Required shape:
 
 ```md
 # Case Insight Brief
@@ -41,7 +43,7 @@ Structural weakness:
 Student 10-second takeaway:
 ```
 
-Rules:
+Field guidance:
 
 - Keep `Primary insight` to one sentence.
 - Use `Why this pricing works` for causal judgment, not structure restatement.
@@ -50,11 +52,22 @@ Rules:
 - Do not include marketing copy.
 - Do not list product features unless a feature is a pricing boundary.
 
+Deterministic mapping rules:
+
+- Use the mapping rules in `Case JSON` when converting brief fields into canonical data.
+- Do not create canonical fields from brief labels.
+
 ## 2. Case JSON
+
+Purpose:
 
 The Layer 1 case JSON must conform to `CASE_SCHEMA.md`.
 
-Additional Layer 1 rules:
+Required shape:
+
+Use the canonical object shape defined in `CASE_SCHEMA.md`.
+
+Field guidance and rules:
 
 - `schema_version` must be `"1.0"` in every Layer 1 case JSON object.
 - `decision_core` must answer:
@@ -87,6 +100,8 @@ Deterministic mapping rules:
 - `Student 10-second takeaway` in the brief maps to `student_10_second_takeaway`.
 
 ## 3. Render Instruction
+
+Purpose:
 
 The render instruction tells the UI layer what to emphasize. It selects components and interaction intent, not CSS or final visual design.
 
@@ -173,33 +188,15 @@ Field guidance:
 - `main_failure_risk`: the most likely way the logic breaks.
 - `evidence_status`: how confident the analyst can be based on available evidence.
 
-Visual rendering rule:
+Rules:
 
-If `strategic_logic.visual_strip.enabled` is true, the case may render the strategic logic using the canonical five-step strip layout.
-
-The strip must always follow this direction:
-
-Customer Condition -> Behavior Change -> Pricing Driver -> Billing Change -> Financial Outcome
-
-Do not render:
-
-- free DAGs
-- network graphs
-- causal loop diagrams
-- force-directed graphs
-- multi-directional arrows
-
-The strip is designed for:
-
-- fast causal comprehension
-- teaching pricing logic
-- reducing reasoning ambiguity
-- making cases comparable across industries
-
-Not for:
-
-- full strategic simulation
-- exhaustive causal modeling
+- The five required slots are `customer_condition`, `behavior_change`, `pricing_driver`, `billing_change`, and `financial_outcome`.
+- `behavior_change` is required. If it cannot be identified, the case is incomplete.
+- `dominant_causal_chain` must contain 3 to 5 pricing-relevant steps.
+- If `strategic_logic.visual_strip.enabled` is true, `dominant_causal_chain` should contain five steps matching the five explicit slots in order.
+- The visual strip must use `canonical_five_step_strip` and follow: Customer Condition -> Behavior Change -> Pricing Driver -> Billing Change -> Financial Outcome.
+- Do not render free DAGs, network graphs, causal loop diagrams, force-directed graphs, or multi-directional arrows.
+- Use concise node text, ideally 2 to 8 words per node.
 
 Deterministic mapping rules:
 
@@ -211,20 +208,10 @@ Deterministic mapping rules:
 - `Strategic Logic` should use the same `key_driver` already defined in `Case JSON`.
 - `Strategic Logic` is analyst-facing and may be rendered publicly only as a teaching aid.
 - `Strategic Logic` must be hypothesized unless direct evidence supports it.
-- Use concise node text, ideally 2 to 8 words per node.
-- It must render as a canonical five-step strip.
-- It must not become a full company strategy DAG.
-- `Strategic Logic` must contain five named causal slots: `customer_condition`, `behavior_change`, `pricing_driver`, `billing_change`, and `financial_outcome`.
-- Do not allow long prose in the five slot fields.
 - `pricing_driver` must map to `key_driver`.
-- If a new driver appears in Strategic Logic, update Case JSON `key_driver` and `drivers` first.
-- `dominant_causal_chain` step count must remain between 3 and 5.
-- When `visual_strip.enabled` is true, `dominant_causal_chain` should contain five steps matching the five explicit causal slots.
-- If fewer than 5 steps are used, preserve directional order.
 - The chain must include or clearly map to `key_driver`.
-- Behavior Change is required.
-- If Behavior Change cannot be identified, the case is incomplete.
-- The strip must not introduce new drivers, segments, tiers, or upgrade triggers.
+- If fewer than 5 steps are used, preserve directional order.
+- The chain must not become a full company strategy DAG.
 
 ## 5. Decision Alternatives
 
@@ -435,41 +422,48 @@ Deterministic mapping rules:
 
 ## Layer 1 Acceptance Gate
 
-Layer 1 is complete only if:
+Layer 1 is complete only if it passes all gates below.
 
-- the case can answer what is monetized
-- the case can answer what changes the bill
-- the case can answer who pays more and why
-- the case explains why the pricing works, not only how it is structured
+### Core Logic Gate
+
+- the case can answer what is monetized, what changes the bill, and who pays more and why
 - `decision_core` is explicitly filled
 - `schema_version` is explicitly set to `"1.0"`
 - the main pricing driver is explicit
 - `upgrade_triggers` are explicit
+- every artifact maps back to the canonical Case JSON
+
+### Strategic Logic Gate
+
 - every case includes one dominant hypothesized causal chain
 - Strategic Logic has all five slots filled
-- the chain has 3 to 5 steps
-- the case includes a behavior change step
 - Behavior Change is not empty
-- the chain includes the main pricing driver
 - Pricing Driver maps to `key_driver`
-- each slot is concise
-- the strategic logic chain can be rendered linearly
-- the chain can render as a strip without prose
-- the chain supports fast causal comprehension
-- no free-form causal graph structure is introduced
+- the chain has 3 to 5 pricing-relevant steps
+- the chain includes or clearly maps to the main pricing driver
 - the chain has a main assumption and main failure risk
-- the chain remains pricing-relevant and does not become a general business strategy map
+- no free-form causal graph structure is introduced
+
+### Mechanism Rendering Gate
+
 - the recommended component follows from the pricing logic
 - the render instruction defines at least one failure mode
+- the selected component can show how the bill changes
+- no artifact introduces unmodeled drivers, tiers, segments, triggers, or pricing moves
+
+### Decision Training Gate
+
 - Decision Alternatives include at least two concrete pricing moves
 - each decision alternative includes `trade_off` and `leading_indicator`
 - cases with `formula`, customer bill movement, usage logic, or `driver_logic` include `bill_examples`
 - cases with `driver_logic` or `trigger_path` include `boundary_crossing_map`
 - cases with `decision_alternatives` include `decision_priority`
 - the first decision priority is testable and has a `success_metric`
-- no artifact introduces unmodeled drivers, tiers, segments, triggers, or pricing moves
-- every artifact maps back to the canonical Case JSON
-- the added artifacts remain cross-industry and do not assume IKEA-style fulfillment logic
+- the added artifacts remain cross-industry and industry-neutral
+
+### Reasoning Integrity Gate
+
 - Reasoning Error Check includes at least three checks
 - evidence and failure signals are explicit
+- reasoning checks link back to existing case logic
 - no analytical layer introduces unmodeled pricing logic
