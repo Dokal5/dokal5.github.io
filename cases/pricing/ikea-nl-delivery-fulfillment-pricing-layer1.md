@@ -10,6 +10,7 @@ What drives price differences: Basket fulfillment difficulty, expressed through 
 Why this pricing works: The hypothesized logic is that customers who value low product prices can self-transport or collect, while customers with heavier or more convenience-sensitive baskets accept a separate service charge because the additional logistics work is visible.
 Where friction appears: Buyers have to estimate whether basket weight, dimensions, membership status, and handling preference will push them into a higher service band before checkout confirms exact options.
 Where risk appears: The separated service bill can make the product price feel incomplete if delivery or room handling materially changes the landed cost.
+Pricing architecture note: Public prices shown at review date: May 1, 2026.
 Structural weakness: The model protects low product-price perception, but it can create late-stage surprise when a bulky basket moves from parcel or pickup logic into truck delivery.
 Student 10-second takeaway: The bill changes when the same IKEA basket becomes heavier, bulkier, more convenient to receive, or eligible for a service discount.
 
@@ -147,13 +148,13 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "strategic_logic": {
     "customer_condition": "Low visible product prices",
     "behavior_change": "Customers outsource logistics work",
-    "pricing_driver": "Fulfillment difficulty band",
+    "pricing_driver": "Basket fulfillment difficulty",
     "billing_change": "Larger baskets pay more",
     "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
       "Customers outsource logistics work",
-      "Fulfillment difficulty band",
+      "Basket fulfillment difficulty",
       "Larger baskets pay more",
       "Preserve low-price perception"
     ],
@@ -360,13 +361,13 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
   "strategic_logic": {
     "customer_condition": "Low visible product prices",
     "behavior_change": "Customers outsource logistics work",
-    "pricing_driver": "Fulfillment difficulty band",
+    "pricing_driver": "Basket fulfillment difficulty",
     "billing_change": "Larger baskets pay more",
     "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
       "Customers outsource logistics work",
-      "Fulfillment difficulty band",
+      "Basket fulfillment difficulty",
       "Larger baskets pay more",
       "Preserve low-price perception"
     ],
@@ -527,6 +528,8 @@ Student 10-second takeaway: The bill changes when the same IKEA basket becomes h
 ```
 
 ## 9. Reasoning Error Check
+
+Class prompt: Which risk would you test first, and what evidence would reduce uncertainty most?
 
 ```json
 {

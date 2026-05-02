@@ -131,7 +131,7 @@
             <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--driver">
               <span class="case-strip-label">Pricing Driver</span>
-              <strong>Fulfillment difficulty band</strong>
+              <strong>Basket fulfillment difficulty</strong>
             </div>
             <div class="case-strip-arrow" aria-hidden="true">→</div>
             <div class="case-strip-node case-strip-node--billing">
@@ -162,6 +162,9 @@
           <p class="case-section-brief">
             Primary component: driver_logic
           </p>
+          <p class="case-section-brief">
+            Effort gradient: lower IKEA effort &rarr; shared logistics effort &rarr; higher IKEA handling effort.
+          </p>
           <div class="case-pricing-logic-grid">
             <div class="case-pricing-logic-panel">
               <div class="case-pricing-logic-panel-head">
@@ -170,8 +173,8 @@
               <div class="case-pricing-logic-card-list">
                 <div class="case-pricing-logic-card case-pricing-logic-card--tier-0">
                   <div class="case-pricing-logic-card-top">
-                    <span>Lowest service effort</span>
-                    <strong>Click & Collect or parcel delivery</strong>
+                    <span>Customer does more work</span>
+                    <strong>Service mode: Click & Collect or parcel delivery</strong>
                   </div>
                   <ul class="case-pricing-logic-points">
                     <li><strong>Driver:</strong> basket remains eligible for collection or parcel handling.</li>
@@ -180,8 +183,8 @@
                 </div>
                 <div class="case-pricing-logic-card case-pricing-logic-card--tier-1">
                   <div class="case-pricing-logic-card-top">
-                    <span>Higher logistics effort</span>
-                    <strong>Truck delivery</strong>
+                    <span>Shared logistics work</span>
+                    <strong>Service mode: Truck delivery</strong>
                   </div>
                   <ul class="case-pricing-logic-points">
                     <li><strong>Driver:</strong> basket becomes too heavy or bulky for lower-effort options.</li>
@@ -190,8 +193,8 @@
                 </div>
                 <div class="case-pricing-logic-card case-pricing-logic-card--tier-2">
                   <div class="case-pricing-logic-card-top">
-                    <span>Highest handling effort</span>
-                    <strong>Floor and room of choice</strong>
+                    <span>IKEA does more work</span>
+                    <strong>Service mode: Floor and room of choice</strong>
                   </div>
                   <ul class="case-pricing-logic-points">
                     <li><strong>Driver:</strong> delivery team carries the order beyond the ground-floor threshold.</li>
@@ -282,6 +285,9 @@
           <h2>Pricing Architecture</h2>
           <p class="case-section-brief">
             Structure only: service modes, weight bands, handling location, and membership status determine the fulfillment charge layered onto product price.
+          </p>
+          <p class="case-section-brief">
+            Public prices shown at review date: May 1, 2026.
           </p>
           <div class="case-architecture-grid">
             <div class="case-layer-panel">
@@ -434,7 +440,7 @@
             <div class="case-decision-card">
               <span>Priority 1</span>
               <strong>Earlier landed cost estimate</strong>
-              <p><strong>Why first:</strong> It is the lowest-risk test and directly addresses checkout surprise.</p>
+              <p><strong>Why this priority:</strong> It is the lowest-risk test and directly addresses checkout surprise.</p>
               <p><strong>Test type:</strong> A/B test on earlier delivery fee visibility.</p>
               <p><strong>Risk level:</strong> medium</p>
               <p><strong>Upside potential:</strong> High trust improvement.</p>
@@ -444,7 +450,7 @@
             <div class="case-decision-card">
               <span>Priority 2</span>
               <strong>Member fulfillment benefit</strong>
-              <p><strong>Why first:</strong> It can improve perceived fairness while increasing IKEA Family enrollment.</p>
+              <p><strong>Why this priority:</strong> It can improve perceived fairness while increasing IKEA Family enrollment.</p>
               <p><strong>Test type:</strong> Targeted membership benefit experiment.</p>
               <p><strong>Risk level:</strong> medium</p>
               <p><strong>Upside potential:</strong> Medium to high CRM value.</p>
@@ -454,7 +460,7 @@
             <div class="case-decision-card">
               <span>Priority 3</span>
               <strong>Delivery threshold framing</strong>
-              <p><strong>Why first:</strong> It has basket-building potential but higher margin leakage risk.</p>
+              <p><strong>Why this priority:</strong> It has basket-building potential but higher margin leakage risk.</p>
               <p><strong>Test type:</strong> Basket threshold promotion test.</p>
               <p><strong>Risk level:</strong> high</p>
               <p><strong>Upside potential:</strong> High basket value upside.</p>
@@ -469,6 +475,9 @@
           <h2>Reasoning Error Check</h2>
           <p class="case-section-brief">
             Stress test the pricing logic before accepting the recommendation.
+          </p>
+          <p class="case-section-brief">
+            Class prompt: Which risk would you test first, and what evidence would reduce uncertainty most?
           </p>
           <div class="case-friction-list">
             <div class="case-friction-item">
@@ -655,13 +664,13 @@
   "strategic_logic": {
     "customer_condition": "Low visible product prices",
     "behavior_change": "Customers outsource logistics work",
-    "pricing_driver": "Fulfillment difficulty band",
+    "pricing_driver": "Basket fulfillment difficulty",
     "billing_change": "Larger baskets pay more",
     "financial_outcome": "Preserve low-price perception",
     "dominant_causal_chain": [
       "Low visible product prices",
       "Customers outsource logistics work",
-      "Fulfillment difficulty band",
+      "Basket fulfillment difficulty",
       "Larger baskets pay more",
       "Preserve low-price perception"
     ],
