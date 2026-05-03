@@ -17,6 +17,18 @@
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
+    slug: "peloton-hardware-membership-pricing",
+    title: "Peloton hardware-to-membership pricing",
+    company: "Peloton",
+    industry: "Connected fitness hardware",
+    market: "Connected home fitness customers",
+    reviewed_at: "2026-05-03",
+    mechanism_summary: "Peloton connected equipment creates a trigger path from app-only access into recurring All-Access Membership economics. The customer bill changes when equipment ownership, hardware model choice, financing, or membership dependency changes total cost exposure.",
+    transferable_principle: "When hardware is designed around a connected experience, the product purchase can become a boundary that triggers recurring subscription value capture.",
+    strategic_logic_summary: "Hypothesis: customers accept recurring membership when the integrated equipment, content, metrics, and software experience keep delivering value; if usage drops, the same membership can feel like lock-in.",
+    page_path: "peloton-hardware-membership-pricing.html"
+  },
+  {
     slug: "amazon-fba-fulfillment-storage-pricing",
     title: "Amazon FBA fulfillment and storage pricing",
     company: "Amazon FBA",
