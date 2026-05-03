@@ -1005,82 +1005,6 @@
   align-self: center;
 }
 
-.case-trigger-path {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 1.4rem minmax(0, 1fr) 1.4rem minmax(0, 1fr) 1.4rem minmax(0, 1fr) 1.4rem minmax(0, 1fr);
-  gap: 0.55rem;
-  align-items: stretch;
-  margin: 1rem 0;
-}
-
-.case-trigger-node {
-  --trigger-accent: var(--gray);
-  --trigger-bg: rgba(247, 244, 239, 0.72);
-  min-width: 0;
-  min-height: 104px;
-  border: 1px solid color-mix(in srgb, var(--trigger-accent) 22%, var(--lightgray));
-  border-radius: 14px;
-  padding: 0.78rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), var(--trigger-bg));
-  display: grid;
-  align-content: center;
-  gap: 0.3rem;
-}
-
-.case-trigger-node span {
-  font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--trigger-accent);
-}
-
-.case-trigger-node strong {
-  color: var(--dark);
-  font-size: 0.9rem;
-  line-height: 1.14;
-  overflow-wrap: anywhere;
-}
-
-.case-trigger-node p {
-  margin: 0;
-  color: var(--darkgray);
-  font-size: 0.78rem;
-  line-height: 1.28;
-}
-
-.case-trigger-node--start {
-  --trigger-accent: #6b7280;
-  --trigger-bg: rgba(107, 114, 128, 0.08);
-}
-
-.case-trigger-node--trigger {
-  --trigger-accent: #c2410c;
-  --trigger-bg: rgba(194, 65, 12, 0.12);
-  border-color: rgba(194, 65, 12, 0.42);
-  box-shadow: 0 12px 30px rgba(194, 65, 12, 0.12), inset 0 0 0 2px rgba(194, 65, 12, 0.08);
-}
-
-.case-trigger-node--state,
-.case-trigger-node--effect {
-  --trigger-accent: #0f766e;
-  --trigger-bg: rgba(15, 118, 110, 0.08);
-}
-
-.case-trigger-node--outcome {
-  --trigger-accent: var(--accent);
-  --trigger-bg: rgba(92, 61, 46, 0.08);
-}
-
-.case-trigger-arrow {
-  color: var(--accent2);
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  line-height: 1;
-  text-align: center;
-  align-self: center;
-}
-
 .case-comparison-table,
 .case-priority-table,
 .case-stress-test-table {
@@ -1759,7 +1683,6 @@
   .case-strategic-strip,
   .case-strategic-meta,
   .case-decision-grid,
-  .case-trigger-path,
   .case-layer1-example-grid {
     grid-template-columns: 1fr;
   }
@@ -1793,14 +1716,6 @@
   }
 
   .case-value-flow-arrow {
-    transform: rotate(90deg);
-  }
-
-  .case-trigger-node {
-    min-height: 0;
-  }
-
-  .case-trigger-arrow {
     transform: rotate(90deg);
   }
 
