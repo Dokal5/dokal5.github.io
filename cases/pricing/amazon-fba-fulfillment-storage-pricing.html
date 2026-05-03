@@ -65,6 +65,7 @@
               <div class="case-visual-label">Pricing artifact</div>
               <p>Amazon's official FBA page shows fulfillment-cost tables by size tier, shipping weight, and category, then storage costs by cubic-foot volume and season.</p>
               <p>The mechanism to notice is the matrix: seller cost exposure changes when the product crosses an operational burden boundary.</p>
+              <p><strong>Evidence note:</strong> Primary visible pricing evidence comes from Amazon's public FBA page. Seller Central links are official references but require manual content verification in this environment. Aged inventory surcharge is retained as a boundary concept with verification caveat.</p>
               <p>Screenshot captured: 2026-05-03 &middot; Source reviewed: 2026-05-03</p>
               <p><a class="case-link" href="https://sell.amazon.com/fulfillment-by-amazon">Open live pricing page</a></p>
             </div>
@@ -376,7 +377,7 @@
           <div class="case-strategic-meta">
             <div class="case-strategic-meta-card">
               <span>Formula</span>
-              <p>Seller FBA cost exposure = fulfillment fee by size, weight, and category + monthly storage fee by cubic feet and season + aged inventory surcharge exposure, manual verification required.</p>
+              <p>Seller FBA cost exposure = fulfillment fee by size, weight, and category + monthly storage fee by cubic feet and season + aged inventory surcharge exposure.</p>
             </div>
             <div class="case-strategic-meta-card">
               <span>Teaching point</span>
@@ -419,8 +420,8 @@
               <tr>
                 <td>Slow-moving inventory during storage period</td>
                 <td>Monthly storage fee based on average daily cubic-foot volume</td>
-                <td>Peak-season rates or aged inventory surcharge exposure, manual verification required, can increase storage cost.</td>
-                <td>FBA cost exposure = monthly storage by cubic feet and season + aged inventory surcharge exposure, manual verification required, where applicable.</td>
+                <td>Peak-season rates or aged inventory surcharge exposure can increase storage cost.</td>
+                <td>FBA cost exposure = monthly storage by cubic feet and season + aged inventory surcharge exposure where applicable.</td>
                 <td>Unsold inventory is not neutral. Time and space become pricing drivers.</td>
               </tr>
             </tbody>
@@ -431,7 +432,7 @@
           <div class="case-section-label">07 / Pricing Architecture</div>
           <h2>Pricing Architecture</h2>
           <p class="case-section-brief">
-            Public pricing structure reviewed May 3, 2026. Scope: FBA fulfillment fee, monthly inventory storage fee, aged inventory surcharge exposure, manual verification required.
+            Public pricing structure reviewed May 3, 2026. Scope: FBA fulfillment fee, monthly inventory storage fee, aged inventory surcharge exposure.
           </p>
           <div class="case-architecture-panel-grid">
             <div class="case-architecture-panel">
@@ -451,7 +452,7 @@
             </div>
             <div class="case-architecture-panel">
               <span>Upgrade triggers</span>
-              <strong class="case-architecture-token-line">Larger size tier &middot; Higher weight interval &middot; Peak season &middot; Aged inventory threshold, manual verification required</strong>
+              <strong class="case-architecture-token-line">Larger size tier &middot; Higher weight interval &middot; Peak season &middot; Aged inventory threshold</strong>
               <p>The seller crosses into a different payment state when the product or inventory crosses a burden boundary.</p>
             </div>
           </div>
@@ -491,9 +492,9 @@
             <div class="case-transition-row">
               <div><span>From</span><strong>Normal storage inventory</strong></div>
               <div class="case-value-flow-arrow" aria-hidden="true">&rarr;</div>
-              <div><span>To</span><strong>Aged inventory surcharge exposure, manual verification required</strong></div>
+              <div><span>To</span><strong>Aged inventory surcharge exposure</strong></div>
               <div><span>Driver</span><strong>Inventory age</strong></div>
-              <div><span>Billing effect</span><strong>Additional monthly surcharge exposure may appear on top of normal storage cost; manual verification required.</strong></div>
+              <div><span>Billing effect</span><strong>Additional monthly surcharge exposure may appear on top of normal storage cost.</strong></div>
               <div><span>Perception risk</span><strong>Slow-moving inventory can feel penalized after stock is already committed to FBA.</strong></div>
             </div>
           </div>
@@ -540,7 +541,7 @@
             <div class="case-decision-card">
               <span>Move</span>
               <strong>Inventory aging warning layer</strong>
-              <p><strong>Pricing move:</strong> Warn sellers before aged inventory surcharge exposure, manual verification required.</p>
+              <p><strong>Pricing move:</strong> Warn sellers before aged inventory surcharge exposure.</p>
               <p><strong>Effect:</strong> Improves inventory velocity decisions.</p>
               <p><strong>Trade off:</strong> May push discounting, removal, or lower stocking.</p>
               <p><strong>Signal:</strong> Lower aged inventory exposure; higher action rate before aging thresholds.</p>
@@ -588,7 +589,7 @@
                 <td>It targets a high-friction margin risk after inventory is already stored.</td>
                 <td>medium</td>
                 <td>medium</td>
-                <td>Lower aged inventory surcharge exposure, manual verification required, and higher removal, discount, or replenishment adjustment action rate.</td>
+                <td>Lower aged inventory surcharge exposure and higher removal, discount, or replenishment adjustment action rate.</td>
               </tr>
               <tr>
                 <td>3</td>
@@ -745,7 +746,7 @@
       "type": "usage",
       "pricing_role": "threshold",
       "direction": "increase_revenue",
-      "effect": "Inventory stored for more than the published aging threshold can trigger aged inventory surcharge exposure, manual verification required.",
+      "effect": "Inventory stored for more than the published aging threshold can trigger aged inventory surcharge exposure.",
       "student_label": "Inventory age"
     }
   ],
@@ -764,7 +765,7 @@
       },
       {
         "symbol": "aged_inventory_surcharge",
-        "label": "Aged inventory surcharge exposure, manual verification required",
+        "label": "Aged inventory surcharge exposure",
         "maps_to_driver": "Inventory age"
       }
     ],
@@ -796,7 +797,7 @@
     {
       "trigger": "Inventory becomes aged",
       "from": "Normal inventory storage",
-      "to": "Aged inventory surcharge exposure, manual verification required",
+      "to": "Aged inventory surcharge exposure",
       "why_it_happens": "Inventory remains in Amazon fulfillment centers beyond the published aging threshold.",
       "pricing_effect": "Additional monthly surcharge exposure appears on top of normal storage fees."
     }
@@ -868,7 +869,7 @@
     },
     {
       "option": "Inventory aging warning layer",
-      "pricing_move": "Show sellers a sharper warning path before inventory crosses aged inventory surcharge exposure, manual verification required.",
+      "pricing_move": "Show sellers a sharper warning path before inventory crosses aged inventory surcharge exposure.",
       "expected_effect": "Improves inventory velocity decisions and reduces seller frustration with slow-moving stock fees.",
       "trade_off": "May push sellers to discount, remove, or avoid stocking products that Amazon would otherwise store and monetize.",
       "leading_indicator": "Lower aged inventory exposure and higher seller action rate before aging thresholds."
@@ -907,9 +908,9 @@
       "customer_situation": "A seller keeps inventory in Amazon fulfillment centers for a long period.",
       "base_price": "Monthly storage fee based on average daily cubic-foot volume",
       "pricing_driver": "Storage volume, season, and inventory age",
-      "variable_charge": "Peak-season rates or aged inventory surcharge exposure, manual verification required, can increase storage cost.",
+      "variable_charge": "Peak-season rates or aged inventory surcharge exposure can increase storage cost.",
       "discount_or_adjustment": "none",
-      "final_bill": "FBA cost exposure = monthly storage by cubic feet and season + aged inventory surcharge exposure, manual verification required, where applicable.",
+      "final_bill": "FBA cost exposure = monthly storage by cubic feet and season + aged inventory surcharge exposure where applicable.",
       "pricing_lesson": "Unsold inventory is not neutral. Time and space become pricing drivers."
     }
   ],
@@ -940,8 +941,8 @@
     },
     {
       "from_state": "Normal storage inventory",
-      "boundary_condition": "Inventory remains in fulfillment centers beyond the aged inventory threshold, manual verification required.",
-      "to_state": "Aged inventory surcharge exposure, manual verification required",
+      "boundary_condition": "Inventory remains in fulfillment centers beyond the aged inventory threshold.",
+      "to_state": "Aged inventory surcharge exposure",
       "driver": "Inventory age",
       "billing_effect": "Additional monthly surcharge exposure appears on top of normal storage cost.",
       "customer_perception_risk": "Slow-moving inventory can feel like a penalty after the seller has already committed stock to FBA."
@@ -966,7 +967,7 @@
       "risk_level": "medium",
       "upside_potential": "Lower aged inventory exposure and improved seller action before surcharge thresholds.",
       "implementation_complexity": "medium",
-      "success_metric": "Lower aged inventory surcharge exposure, manual verification required, and higher removal, discount, or replenishment adjustment action rate."
+      "success_metric": "Lower aged inventory surcharge exposure and higher removal, discount, or replenishment adjustment action rate."
     },
     {
       "priority_rank": 3,
