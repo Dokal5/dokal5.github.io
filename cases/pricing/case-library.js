@@ -17,6 +17,18 @@
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
+    slug: "amazon-fba-fulfillment-storage-pricing",
+    title: "Amazon FBA fulfillment and storage pricing",
+    company: "Amazon FBA",
+    industry: "Ecommerce logistics",
+    market: "Third-party sellers using Amazon fulfillment and storage infrastructure",
+    reviewed_at: "2026-05-03",
+    mechanism_summary: "Amazon FBA translates product size, shipping weight, category, storage volume, season, and inventory age into fulfillment and storage fee states. The seller bill changes when products cross operational burden boundaries.",
+    transferable_principle: "When cost-to-serve varies by physical handling and capacity burden, pricing can use a matrix to push sellers toward better packaging, inventory planning, and margin discipline.",
+    strategic_logic_summary: "Hypothesis: sellers accept operationally driven FBA fees because Amazon reduces fulfillment complexity, but fee boundaries can create margin surprise when products become bulky, slow-moving, or peak-season inventory.",
+    page_path: "amazon-fba-fulfillment-storage-pricing.html"
+  },
+  {
     slug: "ikea-nl-delivery-fulfillment-pricing",
     title: "IKEA Netherlands delivery fulfillment pricing",
     company: "IKEA Netherlands",

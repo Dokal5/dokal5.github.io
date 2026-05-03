@@ -1386,7 +1386,7 @@
 }
 
 .case-layer1-matrix {
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid var(--lightgray);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.9);
@@ -1395,6 +1395,7 @@
 .case-layer1-matrix-grid {
   display: grid;
   grid-template-columns: minmax(138px, 1.35fr) repeat(var(--case-layer1-role-count), minmax(62px, 0.9fr));
+  min-width: 720px;
   width: 100%;
 }
 
