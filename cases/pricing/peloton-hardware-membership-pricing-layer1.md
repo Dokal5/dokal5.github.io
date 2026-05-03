@@ -78,7 +78,7 @@ Peloton corporate turnaround, full financial performance, commercial Pro Series,
   "drivers": [
     {
       "driver": "Access mode",
-      "type": "access",
+      "type": "usage",
       "pricing_role": "access",
       "direction": "segment_users",
       "effect": "App-only users and connected-equipment owners face different access and membership logic.",
@@ -102,7 +102,7 @@ Peloton corporate turnaround, full financial performance, commercial Pro Series,
     },
     {
       "driver": "Membership tier",
-      "type": "access",
+      "type": "usage",
       "pricing_role": "access",
       "direction": "segment_users",
       "effect": "App One, App+, and All-Access Membership represent different levels of access and connected experience.",
