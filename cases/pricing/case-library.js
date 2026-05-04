@@ -17,6 +17,18 @@
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
+    slug: "hp-instant-ink-page-count-subscription-pricing",
+    title: "HP Instant Ink page-count subscription pricing",
+    company: "HP Instant Ink",
+    industry: "Printer hardware and consumables subscription",
+    market: "Home and small-office printer users choosing monthly page allowances for ink or toner replenishment",
+    reviewed_at: "2026-05-04",
+    mechanism_summary: "HP Instant Ink turns consumables into a page-count subscription. The customer bill changes when printed pages consume the monthly allowance, use rollover pages, and then trigger additional page blocks or upgrade pressure.",
+    transferable_principle: "When usage is variable but customers want predictability, pricing can anchor on a monthly allowance while using rollover and overage thresholds to manage spikes.",
+    strategic_logic_summary: "Hypothesis: customers accept page-count pricing when automatic replenishment lowers consumables friction; the model weakens when page counting feels disconnected from ink or toner use.",
+    page_path: "hp-instant-ink-page-count-subscription-pricing.html"
+  },
+  {
     slug: "peloton-hardware-membership-pricing",
     title: "Peloton hardware-to-membership pricing",
     company: "Peloton",
