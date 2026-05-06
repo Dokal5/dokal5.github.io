@@ -17,6 +17,18 @@
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
+    slug: "airbnb-service-fee-incidence-pricing",
+    title: "Airbnb service-fee incidence pricing",
+    company: "Airbnb",
+    industry: "Lodging marketplace",
+    market: "Hosts and guests affected by Airbnb split-fee and single-fee service-fee structures",
+    reviewed_at: "2026-05-06",
+    mechanism_summary: "Airbnb service-fee pricing shifts platform fee visibility between guest checkout and host payout. The bill changes when bookings move from split-fee logic to single-fee logic and hosts adjust listed prices to preserve payout.",
+    transferable_principle: "In two-sided marketplaces, pricing architecture can change perceived fairness and conversion pressure by moving fee incidence between buyer-visible checkout fees and seller-side payout deductions.",
+    strategic_logic_summary: "Hypothesis: Airbnb can preserve marketplace value capture while simplifying guest-facing price, but the model depends on hosts understanding and managing listed-price response.",
+    page_path: "airbnb-service-fee-incidence-pricing.html"
+  },
+  {
     slug: "hp-instant-ink-page-count-subscription-pricing",
     title: "HP Instant Ink page-count subscription pricing",
     company: "HP Instant Ink",
