@@ -28,120 +28,150 @@
       </div>
     </nav>
   </aside>
-
   <main class="main">
     <div class="page-header case-hero">
       <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
       <div class="case-kicker">Pricing Case</div>
       <h1>monday.com Seat-Based Work Management Pricing</h1>
-      <p class="lead">Per-seat subscription with feature-gated plan tiers where the bill scales with seat volume and capability depth.</p>
+      <p class="lead">Seat-priced plan tiers with feature boundaries make spend scale with both team size and workflow complexity.</p>
     </div>
 
-    <div class="case-detail-layout">
-      <div class="content-body">
-        <section class="section case-framework-section">
-          <div class="case-section-label">01 / Case Overview</div>
-          <p><strong>Company:</strong> monday.com</p>
-          <p><strong>Domain:</strong> B2B SaaS Work Management</p>
-          <p><strong>Pricing model:</strong> Per-seat subscription with plan-tier feature gating</p>
-          <p><strong>Decision context:</strong> Buyer chooses a plan tier and expected seat count under collaboration, governance, and integration requirements.</p>
-        </section>
+    <div class="case-detail-layout"><div class="content-body">
+      <section class="section case-framework-section" data-case-section="pricing-page-visual">
+        <div class="case-section-label">01 / Pricing Page Visual</div><h2>Pricing Page Visual</h2>
+        <div class="case-visual-card">
+          <img src="../../assets/images/pricing/shopify-pricing-page.png" alt="Placeholder image for monday.com pricing page capture">
+          <div class="case-visual-body">
+            <div class="case-visual-label">Pricing artifact</div>
+            <p><strong>Placeholder image:</strong> local placeholder while a verified monday.com pricing screenshot asset is pending.</p>
+            <p>Source: https://monday.com/pricing &middot; Source reviewed: 2026-05-14</p>
+            <p><a class="case-link" href="https://monday.com/pricing">Open live pricing page</a></p>
+          </div>
+        </div>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">02 / Strategic Logic</div>
-          <h2>Strategic Logic</h2>
-          <p><strong>What is monetized:</strong> Active collaborating seats.</p>
-          <p><strong>What changes the bill:</strong> Seat count, selected tier, and monthly versus annual commitment.</p>
-          <p><strong>Who pays more and why:</strong> Larger or more complex organizations pay more because they need more seats and deeper governance, automation, and integration capabilities found in higher tiers.</p>
-        </section>
+      <section class="section case-framework-section" data-case-section="core-insight">
+        <div class="case-section-label">02 / Core Insight</div><h2>Core Insight</h2>
+        <div class="case-decision-grid">
+          <div class="case-decision-card"><span>Monetized</span><strong>Paid collaborating seats on a selected plan</strong></div>
+          <div class="case-decision-card"><span>Bill changes when</span><strong>Plan tier, paid seat count, or billing cycle changes</strong></div>
+          <div class="case-decision-card"><span>Higher payers</span><strong>Larger or more complex teams needing higher-tier controls and automation</strong></div>
+        </div>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">03 / Decision Core</div>
-          <h2>Decision Core</h2>
-          <ul>
-            <li>Preserve clear price-to-value logic per active collaborator.</li>
-            <li>Keep entry friction low for initial team rollout.</li>
-            <li>Create a defensible expansion path to advanced capabilities as operational complexity grows.</li>
-          </ul>
-        </section>
+      <section class="section case-framework-section" data-case-section="pricing-logic-deconstruction">
+        <div class="case-section-label">03 / Pricing Logic Deconstruction</div><h2>Pricing Logic Deconstruction</h2>
+        <p class="case-claim-statement">The bill changes when selected plan tier, paid seat count, or workflow capability boundaries change.</p>
+        <div class="case-decision-grid">
+          <div class="case-decision-card"><span>Key driver</span><strong>Paid seat count within a chosen tier</strong><p>Seat volume multiplies the tier unit price.</p></div>
+          <div class="case-decision-card"><span>Scaling logic</span><strong>Hybrid</strong><p>Continuous seat expansion plus threshold jumps at tier boundaries.</p></div>
+          <div class="case-decision-card"><span>Main upgrade condition</span><strong>Workflow governance or automation needs exceed current tier limits</strong><p>Capability boundary crossing forces a higher plan state.</p></div>
+        </div>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">04 / Pricing Architecture</div>
-          <h2>Pricing Architecture</h2>
-          <p>The architecture pairs linear seat pricing with feature-gated plan tiers so the bill scales with headcount and capability depth.</p>
-        </section>
+      <section class="section case-framework-section" data-case-section="strategic-logic">
+        <div class="case-section-label">04 / Strategic Logic</div><h2>Strategic Logic</h2>
+        <div class="case-strategic-strip" aria-label="Hypothesized strategic logic">
+          <div class="case-strip-node case-strip-node--condition"><span class="case-strip-label">Customer Condition</span><strong>Teams coordinate more work cross-functionally</strong></div>
+          <div class="case-strip-arrow" aria-hidden="true">→</div>
+          <div class="case-strip-node case-strip-node--behavior"><span class="case-strip-label">Behavior Change</span><strong>More users become active collaborators</strong></div>
+          <div class="case-strip-arrow" aria-hidden="true">→</div>
+          <div class="case-strip-node case-strip-node--driver"><span class="case-strip-label">Pricing Driver</span><strong>Paid seat count and tier depth</strong></div>
+          <div class="case-strip-arrow" aria-hidden="true">→</div>
+          <div class="case-strip-node case-strip-node--billing"><span class="case-strip-label">Billing Change</span><strong>Seat total and unit price increase</strong></div>
+          <div class="case-strip-arrow" aria-hidden="true">→</div>
+          <div class="case-strip-node case-strip-node--outcome"><span class="case-strip-label">Financial Outcome</span><strong>Revenue grows with adoption and complexity</strong></div>
+        </div>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">05 / Pricing Mechanism Logic</div>
-          <h2>Pricing Mechanism Logic</h2>
-          <p><strong>Primary component:</strong> tier_ladder</p>
-          <table>
-            <thead><tr><th>Tier</th><th>Seat price (USD/mo)</th><th>Typical trigger</th></tr></thead>
-            <tbody>
-              <tr><td>Standard</td><td>12</td><td>Core collaborative planning</td></tr>
-              <tr><td>Pro</td><td>19</td><td>Cross-functional coordination with automation depth</td></tr>
-              <tr><td>Enterprise</td><td>32</td><td>Department-scale governance and secure integration requirements</td></tr>
-            </tbody>
-          </table>
-        </section>
+      <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
+        <div class="case-section-label">05 / Pricing Mechanism Logic</div><h2>Pricing Mechanism Logic</h2>
+        <p class="case-section-brief">Primary component: tier_ladder</p>
+        <table class="case-comparison-table"><thead><tr><th>Tier state</th><th>Boundary to next state</th><th>Unit bill logic</th><th>Bill consequence</th></tr></thead><tbody>
+          <tr><td>Basic ($9/seat/month, annual billing view)</td><td>Need timeline, guest, or larger collaboration controls</td><td>Seat count × Basic unit price</td><td>Bill grows linearly with seats.</td></tr>
+          <tr><td>Standard ($12/seat/month)</td><td>Need deeper automation/integration allowances</td><td>Seat count × Standard unit price</td><td>Per-seat rate and total bill rise versus Basic.</td></tr>
+          <tr><td>Pro ($19/seat/month)</td><td>Need enterprise governance/security posture</td><td>Seat count × Pro unit price</td><td>Higher unit price plus same seat multiplier.</td></tr>
+          <tr><td>Enterprise (quote-based / contact sales)</td><td>Negotiated enterprise scope and controls</td><td>Contracted pricing state</td><td>Billing shifts from listed unit price to quote-based terms.</td></tr>
+        </tbody></table>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">06 / Landed Bill Examples</div>
-          <h2>Landed Bill Examples</h2>
-          <ul>
-            <li>Small team: 10 Standard seats × $12 = <strong>$120/month</strong>; prepaid annual ≈ <strong>$1,181/year</strong>.</li>
-            <li>Growing team: 35 Pro seats × $19 = <strong>$665/month</strong>; prepaid annual ≈ <strong>$6,544/year</strong>.</li>
-            <li>Enterprise department: 120 Enterprise seats × $32 = <strong>$3,840/month</strong>; prepaid annual ≈ <strong>$37,786/year</strong>.</li>
-          </ul>
-        </section>
+      <section class="section case-framework-section" data-case-section="bill-examples">
+        <div class="case-section-label">06 / Bill Examples</div><h2>Bill Examples</h2>
+        <p class="case-section-brief">Illustrative public-page logic only (not a contract quote).</p>
+        <table class="case-comparison-table"><thead><tr><th>Scenario</th><th>State</th><th>Illustrative bill logic</th><th>Decision signal</th></tr></thead><tbody>
+          <tr><td>10-seat team on Standard</td><td>Published tier</td><td>10 × $12 = $120/month equivalent on annual view</td><td>Seat growth directly expands spend.</td></tr>
+          <tr><td>35-seat team on Pro</td><td>Published tier</td><td>35 × $19 = $665/month equivalent on annual view</td><td>Capability and headcount both drive increase.</td></tr>
+          <tr><td>120-seat team needing Enterprise controls</td><td>Quote-based tier</td><td>No fixed public unit price; move to sales quote</td><td>Governance boundary triggers pricing-state change.</td></tr>
+        </tbody></table>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">07 / Boundary Crossing Map</div>
-          <h2>Boundary Crossing Map</h2>
-          <ul>
-            <li><strong>Team size:</strong> Growing seat count pushes demand for stronger admin controls.</li>
-            <li><strong>Workflow criticality:</strong> Mission-critical usage increases tolerance for premium tiers.</li>
-            <li><strong>Integration depth:</strong> Secure integrations and scaled automations pressure upgrades.</li>
-          </ul>
-        </section>
+      <section class="section case-framework-section" data-case-section="pricing-architecture">
+        <div class="case-section-label">07 / Pricing Architecture</div><h2>Pricing Architecture</h2>
+        <div class="case-architecture-panel-grid">
+          <div class="case-architecture-panel"><span>Tiers</span><strong class="case-architecture-token-line">Basic → Standard → Pro → Enterprise</strong></div>
+          <div class="case-architecture-panel"><span>Segmentation</span><strong class="case-architecture-token-line">Team maturity and governance complexity</strong></div>
+          <div class="case-architecture-panel"><span>Drivers</span><strong class="case-architecture-token-line">Plan level, paid seats, billing cycle</strong></div>
+          <div class="case-architecture-panel"><span>Upgrade triggers</span><strong class="case-architecture-token-line">Automation limits, integration depth, security/admin requirements</strong></div>
+        </div>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">08 / Decision Priority</div>
-          <h2>Decision Priority</h2>
-          <ol>
-            <li>Preserve price-to-value clarity per seat.</li>
-            <li>Minimize initial adoption friction.</li>
-            <li>Maximize expansion into higher-value bundles.</li>
-            <li>Maintain procurement-friendly predictability.</li>
-          </ol>
-        </section>
+      <section class="section case-framework-section" data-case-section="boundary-crossing-map">
+        <div class="case-section-label">08 / Boundary Crossing Map</div><h2>Boundary Crossing Map</h2>
+        <div class="case-transition-map">
+          <div class="case-transition-row"><div><span>From state</span><strong>Basic plan collaboration</strong></div><div><span>Boundary condition</span><strong>Needs timeline/dependency and richer coordination controls</strong></div><div><span>To state</span><strong>Standard plan</strong></div><div><span>Driver</span><strong>Workflow coordination complexity</strong></div><div><span>Billing effect</span><strong>Higher per-seat rate on same seat base</strong></div><div><span>Customer perception risk</span><strong>Upgrade feels feature-forced</strong></div></div>
+          <div class="case-transition-row"><div><span>From state</span><strong>Standard plan</strong></div><div><span>Boundary condition</span><strong>Needs deeper automation/integration scale</strong></div><div><span>To state</span><strong>Pro plan</strong></div><div><span>Driver</span><strong>Operational scale</strong></div><div><span>Billing effect</span><strong>Step-up in seat unit price</strong></div><div><span>Customer perception risk</span><strong>Cost jump may outpace perceived incremental value</strong></div></div>
+          <div class="case-transition-row"><div><span>From state</span><strong>Pro plan</strong></div><div><span>Boundary condition</span><strong>Enterprise governance/security requirements</strong></div><div><span>To state</span><strong>Enterprise quote</strong></div><div><span>Driver</span><strong>Risk and compliance posture</strong></div><div><span>Billing effect</span><strong>Moves from listed price to negotiated pricing</strong></div><div><span>Customer perception risk</span><strong>Quote opacity can slow procurement trust</strong></div></div>
+        </div>
+      </section>
 
-        <section class="section case-framework-section">
-          <div class="case-section-label">09 / Reasoning Error Check</div>
-          <h2>Reasoning Error Check</h2>
-          <ul>
-            <li>Do not assume all seats create equal value; separate creator and collaborator value density.</li>
-            <li>Do not ignore procurement thresholds in larger accounts.</li>
-            <li>Do not treat annual discounting as purely commercial; include retention and cash-flow effects.</li>
-          </ul>
-        </section>
-      </div>
-    </div>
+      <section class="section case-framework-section" data-case-section="decision-tension-layer"><div class="case-section-label">09 / Decision Tension Layer</div><h2>Decision Tension Layer</h2>
+        <table class="case-comparison-table"><thead><tr><th>Tension</th><th>Pricing-structure cause</th><th>Why it matters</th></tr></thead><tbody>
+          <tr><td>Adoption vs cost control</td><td>Per-seat expansion compounds monthly spend.</td><td>Teams may restrict collaborators, reducing product spread.</td></tr>
+          <tr><td>Capability depth vs price step-up</td><td>Tier boundaries bundle advanced controls with higher unit rates.</td><td>Buyers may delay needed upgrades and accept process friction.</td></tr>
+          <tr><td>Enterprise trust vs quote opacity</td><td>Enterprise shifts from listed rates to negotiated terms.</td><td>Opaque pricing can add procurement cycle time.</td></tr>
+        </tbody></table>
+      </section>
+
+      <section class="section case-framework-section" data-case-section="decision-alternatives"><div class="case-section-label">10 / Decision Alternatives</div><h2>Decision Alternatives</h2>
+      <table class="case-comparison-table"><thead><tr><th>Pricing move</th><th>Expected effect</th><th>Trade off</th><th>Leading indicator</th></tr></thead><tbody>
+        <tr><td>Introduce collaborator-light seat class between viewer and full seat</td><td>Lowers expansion friction for partial contributors</td><td>Potential ARPU dilution if full seats downgrade</td><td>Net seat growth with stable or rising total revenue per account</td></tr>
+        <tr><td>Publish clearer tier-boundary usage thresholds on pricing page</td><td>Reduces surprise at upgrade moments</td><td>May slow urgency for premature upgrades</td><td>Lower sales-call objections on plan-transition clarity</td></tr>
+        <tr><td>Add Enterprise starting package bands (still quote-based)</td><td>Improves procurement predictability</td><td>Less negotiating flexibility at top end</td><td>Shorter enterprise sales cycle to quote acceptance</td></tr>
+      </tbody></table></section>
+
+      <section class="section case-framework-section" data-case-section="decision-priority"><div class="case-section-label">11 / Decision Priority</div><h2>Decision Priority</h2>
+      <table class="case-comparison-table"><thead><tr><th>Rank</th><th>Move</th><th>Why this priority</th><th>Risk</th><th>Complexity</th><th>Success metric</th></tr></thead><tbody>
+        <tr><td>1</td><td>Publish clearer tier-boundary usage thresholds</td><td>Fastest trust improvement without contract redesign</td><td>Could anchor buyers to lower tiers longer</td><td>Low</td><td>Increase in self-serve tier upgrades with lower objection rates</td></tr>
+        <tr><td>2</td><td>Enterprise starting package bands</td><td>Directly addresses quote-opacity tension</td><td>May reduce sales flexibility</td><td>Medium</td><td>Reduced days from enterprise discovery to pricing acceptance</td></tr>
+        <tr><td>3</td><td>Collaborator-light seat class</td><td>Potentially strongest expansion lever but requires packaging changes</td><td>Cannibalization of full paid seats</td><td>High</td><td>Positive revenue lift from net new collaborating users</td></tr>
+      </tbody></table></section>
+
+      <section class="section case-framework-section" data-case-section="reasoning-error-check"><div class="case-section-label">12 / Reasoning Error Check</div><h2>Reasoning Error Check</h2>
+      <table class="case-comparison-table"><thead><tr><th>Reasoning risk</th><th>Case-specific check</th><th>Evidence needed</th><th>Failure signal</th></tr></thead><tbody>
+        <tr><td>Overstating published Enterprise price certainty</td><td>Verify Enterprise is quote-based on official pricing page</td><td>Current pricing page capture + text reference</td><td>Any internal model using fixed public Enterprise unit price</td></tr>
+        <tr><td>Assuming all seat additions carry equal value density</td><td>Compare heavy creators vs light collaborators at expansion</td><td>Seat-type usage mix and retention by role</td><td>Seat growth with declining activation depth</td></tr>
+        <tr><td>Treating annual discount as universally stable</td><td>Confirm annual discount policy in current FAQ copy</td><td>Dated source excerpt from official pricing FAQ</td><td>Examples relying on outdated discount assumptions</td></tr>
+      </tbody></table></section>
+
+      <section class="section case-framework-section" data-case-section="references"><div class="case-section-label">13 / References</div><h2>References</h2>
+      <ul><li><a class="case-link" href="https://monday.com/pricing">monday.com pricing and plans</a> (reviewed 2026-05-14).</li></ul></section>
+
+      <section class="section case-framework-section" data-case-section="hidden-json-schema"><div class="case-section-label">14 / Hidden JSON Schema</div><h2>Hidden JSON Schema</h2><p class="case-section-brief">Embedded machine-readable case schema is included below in a hidden JSON script tag.</p></section>
+    </div></div>
   </main>
 </div>
-
 <script type="application/json" id="pricing-case-schema">
 {
   "schema_version": "1.0",
-  "case_id": "monday-seat-based-work-management-pricing",
+  "case_id": "monday_seat_based_work_management_pricing",
   "case_title": "monday.com Seat-Based Work Management Pricing",
   "company": "monday.com",
   "pricing_model": "Per-seat subscription with plan-tier feature gating",
   "primary_component": "tier_ladder",
   "strategic_logic": {
-    "what_is_monetized": "active collaborating seats",
-    "what_changes_the_bill": ["seat count", "plan tier", "billing period"],
-    "who_pays_more_and_why": "Larger and more complex organizations pay more because they require additional seats and advanced governance, automation, and integration capabilities in higher tiers."
+    "what_is_monetized": "paid collaborating seats within selected plan tiers",
+    "what_changes_the_bill": ["selected tier", "paid seat count", "billing cycle", "capability boundary crossings"],
+    "who_pays_more_and_why": "Larger or more operationally complex organizations pay more because they add seats and cross into higher tiers for governance, automation, integration, and security controls."
   }
 }
 </script>
