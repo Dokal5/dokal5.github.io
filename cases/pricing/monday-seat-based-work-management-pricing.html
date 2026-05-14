@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
-<link rel="stylesheet" href="../../assets/css/pricing-cases.css">
+<link rel="stylesheet" href="../../assets/css/pricing-cases.css?v=20260514-monday-boundary">
 </head>
 <body>
 <div class="layout">
@@ -40,11 +40,12 @@
       <section class="section case-framework-section" data-case-section="pricing-page-visual">
         <div class="case-section-label">01 / Pricing Page Visual</div><h2>Pricing Page Visual</h2>
         <div class="case-visual-card">
-          <img src="../../assets/images/pricing/shopify-pricing-page.png" alt="Placeholder image for monday.com pricing page capture">
+          <img src="../../assets/pricing-artifacts/monday-seat-based-work-management-pricing/monday-pricing-page-2026-05-14.png" alt="Screenshot of the monday.com pricing page showing plan cards for Free, Basic, Standard, Pro, and Enterprise">
           <div class="case-visual-body">
             <div class="case-visual-label">Pricing artifact</div>
-            <p><strong>Placeholder image:</strong> local placeholder while a verified monday.com pricing screenshot asset is pending.</p>
-            <p>Source: https://monday.com/pricing &middot; Source reviewed: 2026-05-14</p>
+            <p>monday.com's public pricing page shows a plan ladder from Free through Enterprise, with seat-count selection and annual/monthly billing context shaping the listed plan prices.</p>
+            <p>The mechanism to notice is the combination of plan tier and seat count. The same product choice becomes more expensive as more collaborating users are added or as the team crosses into higher-tier workflow controls.</p>
+            <p>Screenshot captured: 2026-05-14 &middot; Source reviewed: 2026-05-14</p>
             <p><a class="case-link" href="https://monday.com/pricing">Open live pricing page</a></p>
           </div>
         </div>
@@ -117,10 +118,34 @@
 
       <section class="section case-framework-section" data-case-section="boundary-crossing-map">
         <div class="case-section-label">08 / Boundary Crossing Map</div><h2>Boundary Crossing Map</h2>
-        <div class="case-transition-map">
-          <div class="case-transition-row"><div><span>From state</span><strong>Basic plan collaboration</strong></div><div><span>Boundary condition</span><strong>Needs timeline/dependency and richer coordination controls</strong></div><div><span>To state</span><strong>Standard plan</strong></div><div><span>Driver</span><strong>Workflow coordination complexity</strong></div><div><span>Billing effect</span><strong>Higher per-seat rate on same seat base</strong></div><div><span>Customer perception risk</span><strong>Upgrade feels feature-forced</strong></div></div>
-          <div class="case-transition-row"><div><span>From state</span><strong>Standard plan</strong></div><div><span>Boundary condition</span><strong>Needs deeper automation/integration scale</strong></div><div><span>To state</span><strong>Pro plan</strong></div><div><span>Driver</span><strong>Operational scale</strong></div><div><span>Billing effect</span><strong>Step-up in seat unit price</strong></div><div><span>Customer perception risk</span><strong>Cost jump may outpace perceived incremental value</strong></div></div>
-          <div class="case-transition-row"><div><span>From state</span><strong>Pro plan</strong></div><div><span>Boundary condition</span><strong>Enterprise governance/security requirements</strong></div><div><span>To state</span><strong>Enterprise quote</strong></div><div><span>Driver</span><strong>Risk and compliance posture</strong></div><div><span>Billing effect</span><strong>Moves from listed price to negotiated pricing</strong></div><div><span>Customer perception risk</span><strong>Quote opacity can slow procurement trust</strong></div></div>
+        <div class="case-boundary-map">
+          <div class="case-boundary-card">
+            <div class="case-boundary-route"><span>From state</span><strong>Basic plan collaboration</strong><b aria-hidden="true">→</b><span>To state</span><strong>Standard plan</strong></div>
+            <div class="case-boundary-details">
+              <div><span>Boundary condition</span><strong>Needs timeline/dependency and richer coordination controls</strong></div>
+              <div><span>Driver</span><strong>Workflow coordination complexity</strong></div>
+              <div><span>Billing effect</span><strong>Higher per-seat rate on same seat base</strong></div>
+              <div><span>Customer perception risk</span><strong>Upgrade feels feature-forced</strong></div>
+            </div>
+          </div>
+          <div class="case-boundary-card">
+            <div class="case-boundary-route"><span>From state</span><strong>Standard plan</strong><b aria-hidden="true">→</b><span>To state</span><strong>Pro plan</strong></div>
+            <div class="case-boundary-details">
+              <div><span>Boundary condition</span><strong>Needs deeper automation/integration scale</strong></div>
+              <div><span>Driver</span><strong>Operational scale</strong></div>
+              <div><span>Billing effect</span><strong>Step-up in seat unit price</strong></div>
+              <div><span>Customer perception risk</span><strong>Cost jump may outpace perceived incremental value</strong></div>
+            </div>
+          </div>
+          <div class="case-boundary-card">
+            <div class="case-boundary-route"><span>From state</span><strong>Pro plan</strong><b aria-hidden="true">→</b><span>To state</span><strong>Enterprise quote</strong></div>
+            <div class="case-boundary-details">
+              <div><span>Boundary condition</span><strong>Enterprise governance/security requirements</strong></div>
+              <div><span>Driver</span><strong>Risk and compliance posture</strong></div>
+              <div><span>Billing effect</span><strong>Moves from listed price to negotiated pricing</strong></div>
+              <div><span>Customer perception risk</span><strong>Quote opacity can slow procurement trust</strong></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -156,7 +181,7 @@
       <section class="section case-framework-section" data-case-section="references"><div class="case-section-label">13 / References</div><h2>References</h2>
       <ul><li><a class="case-link" href="https://monday.com/pricing">monday.com pricing and plans</a> (reviewed 2026-05-14).</li></ul></section>
 
-      <section class="section case-framework-section" data-case-section="hidden-json-schema"><div class="case-section-label">14 / Hidden JSON Schema</div><h2>Hidden JSON Schema</h2><p class="case-section-brief">Embedded machine-readable case schema is included below in a hidden JSON script tag.</p></section>
+      <section class="section case-framework-section" data-case-section="hidden-json-schema" hidden aria-hidden="true"><div class="case-section-label">14 / Hidden JSON Schema</div><h2>Hidden JSON Schema</h2><p class="case-section-brief">Embedded machine-readable case schema is included below in a hidden JSON script tag.</p></section>
     </div></div>
   </main>
 </div>

@@ -1198,6 +1198,11 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
+.case-transition-map--boundary .case-transition-row {
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 0.82rem 1rem;
+}
+
 .case-transition-row > div {
   min-width: 0;
   display: grid;
@@ -1217,6 +1222,104 @@
 .case-transition-row > div:nth-child(3) strong {
   color: var(--dark);
   font-weight: 600;
+}
+
+.case-boundary-map {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.case-boundary-card {
+  display: grid;
+  gap: 0.9rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.case-boundary-route {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.3rem 0.75rem;
+  align-items: center;
+}
+
+.case-boundary-route span {
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.case-boundary-route span:first-of-type {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.case-boundary-route span:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.case-boundary-route strong {
+  color: var(--dark);
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.18;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.case-boundary-route strong:first-of-type {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.case-boundary-route strong:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.case-boundary-route b {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.case-boundary-details {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  border-top: 1px solid rgba(222, 213, 201, 0.82);
+  padding-top: 0.78rem;
+}
+
+.case-boundary-details > div {
+  display: grid;
+  align-content: start;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.case-boundary-details span {
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-boundary-details strong {
+  color: var(--darkgray);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .case-tension-visual {
@@ -1759,9 +1862,24 @@
   .case-strategic-strip,
   .case-strategic-meta,
   .case-decision-grid,
+  .case-boundary-route,
+  .case-boundary-details,
   .case-trigger-path,
   .case-layer1-example-grid {
     grid-template-columns: 1fr;
+  }
+
+  .case-boundary-route b {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .case-boundary-route strong:first-of-type,
+  .case-boundary-route strong:nth-of-type(2),
+  .case-boundary-route span:first-of-type,
+  .case-boundary-route span:nth-of-type(2) {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .case-starter-toggle {
