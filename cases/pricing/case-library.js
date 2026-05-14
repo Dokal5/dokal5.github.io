@@ -87,5 +87,18 @@ window.pricingCaseRecords = [
     transferable_principle: "When a platform creates value through transaction infrastructure, the visible subscription fee is only part of the price architecture; the real bill depends on how much commerce activity flows through the platform.",
     strategic_logic_summary: "Hypothesis: merchants tolerate layered platform and payment economics when Shopify reduces commerce operating complexity and scales with merchant growth.",
     page_path: "shopify-transaction-platform-pricing.html"
-  }
+  },
+  {
+    slug: "monday-seat-based-work-management-pricing",
+    title: "monday.com seat-based work management pricing",
+    company: "monday.com",
+    industry: "Work management software",
+    market: "B2B teams selecting collaborative planning and workflow operating systems",
+    reviewed_at: "2026-05-13",
+    mechanism_summary: "monday.com combines a per-seat price with a tier ladder of capability depth. The bill changes when seat count grows, buyers move up tiers, or commitment shifts from monthly to annual billing.",
+    transferable_principle: "When collaboration software value scales with organizational complexity, a seat-based tier ladder can align willingness-to-pay with both team size and operational requirements.",
+    strategic_logic_summary: "Hypothesis: buyers accept linear seat pricing when tier progression matches real governance and integration needs as teams scale.",
+    page_path: "monday-seat-based-work-management-pricing.html"
+  },
+
 ];
