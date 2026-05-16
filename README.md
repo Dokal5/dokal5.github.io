@@ -32,6 +32,8 @@ Production pricing case work is governed by the contracts in `cases/pricing/`:
 
 Use `cognition/` for upstream reasoning prompts and constitution checks before production implementation. Use `cases/pricing/` as the source of truth for production pages, schemas, public rendering, and index behavior.
 
+Brain Workflow v1 is defined in `cognition/README.md`. It adds Brain Lookup, Workbench Artifact, Implementation Gate, Implementation Review, Post Merge Audit, and Brain Update as protocol steps without adding a build system, database, or runtime.
+
 ## Local Verification
 
 Because the site is static, most pages can be opened directly in a browser. For local HTTP testing:

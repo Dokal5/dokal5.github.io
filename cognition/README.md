@@ -4,6 +4,45 @@ This directory defines an upstream reasoning governance layer for pricing case g
 
 It does not replace the production pricing case contracts.
 
+## Brain Workflow v1
+
+Brain Workflow v1 formalizes the pricing case production flow:
+
+```text
+Candidate Case
+-> Brain Lookup
+-> Layer 1 Analytical Brief
+-> Constitutional Review
+-> Workbench Artifact
+-> Implementation Gate
+-> Codex Implementation
+-> Implementation Review
+-> GitHub PR
+-> Post Merge Audit
+-> Brain Update
+-> Published Case
+```
+
+This workflow is a repo-level protocol. It does not add a database, build step, server runtime, automated retrieval engine, or agent orchestration layer.
+
+## Dry Run Protocol
+
+Before expanding automation, Brain Workflow v1 must be tested on real candidate pricing cases.
+
+The first dry run should stop at approved Workbench Artifact before Codex implementation.
+
+Suggested dry-run sequence:
+
+1. Select one candidate pricing case.
+2. Complete Brain Lookup.
+3. Draft Workbench Artifact.
+4. Run Constitutional Review.
+5. Resolve required fixes.
+6. Set Implementation Gate to `READY_FOR_CODEX` only if all checks pass.
+7. Do not implement HTML during the first dry run unless explicitly approved.
+
+The purpose of the dry run is to test reasoning quality, not publishing speed.
+
 ## Source Of Truth
 
 `/cases/pricing` remains the production source of truth for pricing cases, including schema, Layer 1 requirements, component selection, public-page template, visual design, library indexing, and rendered case behavior.
@@ -22,18 +61,21 @@ Production implementation must continue to follow:
 
 `/cognition` exists before production implementation. It guides ChatGPT when reasoning about pricing mechanisms and generating Layer 1 analytical briefs.
 
-The cognition layer clarifies how to think before producing Layer 1. It does not create new schemas, component tokens, rendering contracts, automation, retrieval, or agent orchestration.
+The cognition layer clarifies how to think before producing Layer 1 and how to review implementation fidelity after Codex produces a page. It does not create new production schemas, component tokens, rendering contracts, automation, retrieval, or agent orchestration.
 
 ## Workflow Roles
 
-ChatGPT should read `/cognition` before generating a Layer 1 pricing brief.
+ChatGPT should read `/cognition` before generating a Layer 1 pricing brief, running Constitutional Review, or running Implementation Review.
 
-Codex should use `/cases/pricing` production contracts when implementing or editing pricing case pages.
+Codex should implement only after the Workbench Artifact passes the Implementation Gate. During implementation, Codex should use `/cases/pricing` production contracts and the approved case-specific Layer 1 sidecar.
 
 Linear can reference `/cognition/prompts` during workflow orchestration when a ticket requires Layer 1 generation or review.
 
 ## Files
 
+- `brain_lookup.md`: structured lookup protocol for relating a candidate case to existing cases, pricing concepts, component patterns, and teaching sequence before Layer 1 generation.
+- `workbench_artifact.md`: approved Layer 1 sidecar contract and Implementation Gate for `cases/pricing/[slug]-layer1.md`.
 - `constitution/pricing_constitution.md`: reasoning principles that govern pricing case cognition before Layer 1 output.
 - `prompts/generate_layer1.md`: generation prompt for producing the nine Layer 1 artifacts required by the production Layer 1 schema.
 - `prompts/constitutional_review.md`: review prompt for checking a Layer 1 brief against the constitution and production contracts.
+- `prompts/implementation_review.md`: review prompt for checking Codex output against the approved Workbench Artifact, hidden JSON, case template, visual design, and library index.
