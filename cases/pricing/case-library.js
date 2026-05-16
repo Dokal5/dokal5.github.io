@@ -17,6 +17,18 @@
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
+    slug: "aws-reserved-instances-savings-plans",
+    title: "AWS Reserved Instances / Savings Plans pricing",
+    company: "AWS",
+    industry: "Cloud infrastructure",
+    market: "Cloud customers choosing between On-Demand usage, committed usage discounts, and EC2 capacity reservation needs",
+    reviewed_at: "2026-05-16",
+    mechanism_summary: "AWS commitment pricing discounts eligible usage covered by a one- or three-year commitment. The bill changes when usage is covered, remains uncovered at On-Demand rates, or leaves the customer carrying underused commitment risk.",
+    transferable_principle: "When customers can forecast demand, pricing can exchange lower effective rates for supplier predictability while transferring utilization risk to the buyer.",
+    strategic_logic_summary: "Hypothesis: customers accept commitment risk when predictable workloads make lower effective rates worth reduced flexibility; the model weakens when forecasts miss.",
+    page_path: "aws-reserved-instances-savings-plans.html"
+  },
+  {
     slug: "airbnb-service-fee-incidence-pricing",
     title: "Airbnb service-fee incidence pricing",
     company: "Airbnb",
