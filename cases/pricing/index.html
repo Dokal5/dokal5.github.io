@@ -44,6 +44,30 @@
       </div>
     </div>
 
+    <section class="case-filter-shell" aria-label="Pricing case filters">
+      <div class="case-filter-head">
+        <div>
+          <h2>Filter Cases</h2>
+          <p>Narrow the library by company or industry while keeping the newest cases first.</p>
+        </div>
+        <button class="case-filter-reset" id="reset-filters" type="button">Reset filters</button>
+      </div>
+      <div class="case-filter-grid">
+        <div class="case-filter-group">
+          <label for="company-filter">Company</label>
+          <select id="company-filter">
+            <option value="">All companies</option>
+          </select>
+        </div>
+        <div class="case-filter-group">
+          <label for="industry-filter">Industry</label>
+          <select id="industry-filter">
+            <option value="">All industries</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
     <section class="case-list-shell">
       <div class="case-list-head">
         <div>
@@ -70,6 +94,9 @@
     const heroCaseCount = document.getElementById("hero-case-count");
     const caseCount = document.getElementById("case-count");
     const caseList = document.getElementById("case-list");
+    const companyFilter = document.getElementById("company-filter");
+    const industryFilter = document.getElementById("industry-filter");
+    const resetFilters = document.getElementById("reset-filters");
 
     function escapeHtml(value) {
       return String(value)
@@ -84,23 +111,46 @@
       return record.transferable_principle || record.mechanism_summary;
     }
 
+    function uniqueValues(key) {
+      const values = records
+        .map(function (record) { return record[key]; })
+        .filter(Boolean);
+      return Array.from(new Set(values)).sort(function (a, b) {
+        return String(a).localeCompare(String(b));
+      });
+    }
+
+    function appendOptions(select, values) {
+      values.forEach(function (value) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+      });
+    }
+
     function renderCard(record) {
       return [
         '<article class="case-card">',
         '  <div class="case-card-top">',
-        '    <h3><a class="article-link" href="' + record.page_path + '">' + record.title + "</a></h3>",
+        '    <h3><a class="article-link" href="' + escapeHtml(record.page_path) + '">' + escapeHtml(record.title) + "</a></h3>",
         "  </div>",
-        '  <p class="case-card-sub">' + record.industry + " · " + record.market + "</p>",
+        '  <p class="case-card-sub">' + escapeHtml(record.industry) + " · " + escapeHtml(record.market) + "</p>",
         '  <div class="case-tag-row"><span class="case-tag case-industry-tag">' + escapeHtml(record.industry) + "</span></div>",
-        '  <div class="case-card-summary"><p>' + record.mechanism_summary + "</p></div>",
-        '  <div class="case-takeaway"><strong>Key takeaway</strong><p>' + takeawayText(record) + "</p></div>",
-        '  <div class="case-card-footer"><span class="case-list-meta">Reviewed ' + record.reviewed_at + '</span><a class="case-link" href="' + record.page_path + '">Open case</a></div>',
+        '  <div class="case-card-summary"><p>' + escapeHtml(record.mechanism_summary) + "</p></div>",
+        '  <div class="case-takeaway"><strong>Key takeaway</strong><p>' + escapeHtml(takeawayText(record)) + "</p></div>",
+        '  <div class="case-card-footer"><span class="case-list-meta">Reviewed ' + escapeHtml(record.reviewed_at) + '</span><a class="case-link" href="' + escapeHtml(record.page_path) + '">Open case</a></div>',
         "</article>"
       ].join("");
     }
 
     function renderList() {
-      const filtered = records.slice().sort(function (a, b) {
+      const selectedCompany = companyFilter.value;
+      const selectedIndustry = industryFilter.value;
+      const filtered = records.filter(function (record) {
+        return (!selectedCompany || record.company === selectedCompany) &&
+          (!selectedIndustry || record.industry === selectedIndustry);
+      }).sort(function (a, b) {
         return b.reviewed_at.localeCompare(a.reviewed_at);
       });
       heroCaseCount.textContent = records.length;
@@ -112,6 +162,16 @@
         caseList.innerHTML = filtered.map(renderCard).join("");
       }
     }
+
+    appendOptions(companyFilter, uniqueValues("company"));
+    appendOptions(industryFilter, uniqueValues("industry"));
+    companyFilter.addEventListener("change", renderList);
+    industryFilter.addEventListener("change", renderList);
+    resetFilters.addEventListener("click", function () {
+      companyFilter.value = "";
+      industryFilter.value = "";
+      renderList();
+    });
     renderList();
   }());
 </script>

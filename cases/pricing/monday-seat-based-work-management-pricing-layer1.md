@@ -1,15 +1,54 @@
-# WORKBENCH ARTIFACT (PRE-PRODUCTION ONLY)
+# monday.com Seat-Based Work Management Pricing Layer 1
 
-- Status: Workbench draft storage (not production source of truth)
-- Scope: Layer 1 analytical brief artifact
+- Status: Production support artifact
+- Scope: Layer 1 analytical brief
 - Case: monday.com seat-based work management pricing
-- Version: v2
+- Source page: `monday-seat-based-work-management-pricing.html`
+- Reviewed: 2026-05-14
+
+## Case Insight Brief
+
+Company:
+monday.com
+
+Case ID:
+monday_seat_based_work_management_pricing
+
+Pricing model:
+Per-seat subscription with plan-tier feature gating.
+
+Primary insight:
+monday.com makes spend scale with both team size and workflow complexity by combining paid seats with tier boundaries.
+
+What is monetized:
+Paid collaborating seats within selected work management plan tiers.
+
+How users are segmented:
+Teams are segmented by plan tier, seat count, workflow maturity, governance needs, automation depth, integration needs, and billing cycle.
+
+What drives price differences:
+The bill changes when selected tier, paid seat count, billing cycle, or capability boundary crossings change.
+
+Why this pricing works:
+The hypothesized logic is that larger and more operationally complex teams tolerate higher spend when governance, automation, integration, and security controls become necessary.
+
+Where friction appears:
+Seat expansion can encourage seat pruning, and feature boundaries can make upgrades feel forced when teams need only one advanced capability.
+
+Where risk appears:
+Linear per-seat growth can face procurement pressure in larger accounts, especially when light collaborators do not carry the same value density as heavy creators.
+
+Structural weakness:
+The model is easy to understand, but it can overstate the link between every added seat and realized customer value.
+
+Student 10-second takeaway:
+The bill changes when a team adds paid seats, moves up a plan tier, or crosses a workflow capability boundary.
 
 ## Case JSON
 
 ```json
 {
-  "case_id": "monday_seat_based_work_management_pricing_v2",
+  "case_id": "monday_seat_based_work_management_pricing",
   "case_title": "monday.com Seat-Based Work Management Pricing",
   "company": "monday.com",
   "domain": "B2B SaaS Work Management",
@@ -17,8 +56,8 @@
   "currency": "USD",
   "billing_period_options": ["monthly", "annual"],
   "decision_context": "Buyer chooses a plan tier and expected seat count under collaboration, governance, and integration requirements.",
-  "artifact_stage": "pre-production",
-  "source_of_truth": "workbench_only"
+  "artifact_stage": "production_support",
+  "source_of_truth": "cases/pricing"
 }
 ```
 
