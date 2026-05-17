@@ -756,12 +756,12 @@
       {
         "symbol": "fulfillment_fee_by_size_weight_category",
         "label": "Fulfillment fee by size, weight, and category",
-        "maps_to_driver": "Product size tier, Shipping weight, Apparel or non-apparel classification"
+        "maps_to_driver": "Product size tier"
       },
       {
         "symbol": "monthly_storage_fee_by_cubic_feet_and_season",
         "label": "Monthly storage fee by volume and season",
-        "maps_to_driver": "Storage volume, Season"
+        "maps_to_driver": "Storage volume"
       },
       {
         "symbol": "aged_inventory_surcharge",
@@ -887,7 +887,7 @@
       "scenario": "Small standard non-apparel product",
       "customer_situation": "A seller sends a compact, lightweight non-apparel item to FBA.",
       "base_price": "Fulfillment fee based on small or large standard size and shipping weight band",
-      "pricing_driver": "Product size tier and shipping weight",
+      "pricing_driver": "Product size tier",
       "variable_charge": "The item moves through the fulfillment fee table based on packaged weight and dimensions.",
       "discount_or_adjustment": "none",
       "final_bill": "FBA cost exposure = fulfillment fee by size and weight + any applicable storage cost.",
@@ -897,7 +897,7 @@
       "scenario": "Bulky product with higher handling burden",
       "customer_situation": "A seller sends a larger packaged item that falls into bulky or extra-large logic.",
       "base_price": "Fulfillment fee from bulky or extra-large size tier",
-      "pricing_driver": "Product size tier and shipping weight",
+      "pricing_driver": "Product size tier",
       "variable_charge": "Per-pound or interval charges can apply above the base tier.",
       "discount_or_adjustment": "none",
       "final_bill": "FBA cost exposure = higher fulfillment fee state + weight interval charge + storage by occupied volume.",
@@ -907,7 +907,7 @@
       "scenario": "Slow-moving inventory during storage period",
       "customer_situation": "A seller keeps inventory in Amazon fulfillment centers for a long period.",
       "base_price": "Monthly storage fee based on average daily cubic-foot volume",
-      "pricing_driver": "Storage volume, season, and inventory age",
+      "pricing_driver": "Storage volume",
       "variable_charge": "Peak-season rates or aged inventory surcharge exposure can increase storage cost.",
       "discount_or_adjustment": "none",
       "final_bill": "FBA cost exposure = monthly storage by cubic feet and season + aged inventory surcharge exposure where applicable.",

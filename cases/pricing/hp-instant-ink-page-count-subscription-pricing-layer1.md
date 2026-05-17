@@ -139,7 +139,7 @@ Full HP printer hardware strategy, printer lock-in litigation, third-party cartr
       {
         "symbol": "additional_page_block_charges",
         "label": "Charges when printed pages exceed plan pages plus rollover pages",
-        "maps_to_driver": "Printed pages per billing period and Additional page blocks"
+        "maps_to_driver": "Additional page blocks"
       },
       {
         "symbol": "applicable_adjustments",
@@ -287,7 +287,7 @@ Full HP printer hardware strategy, printer lock-in litigation, third-party cartr
       "scenario": "Printing spike covered by rollover",
       "customer_situation": "A customer prints more than the monthly plan allowance but still has rollover pages available.",
       "base_price": "Monthly plan fee",
-      "pricing_driver": "Printed pages per billing period and rollover balance",
+      "pricing_driver": "Rollover page balance",
       "variable_charge": "Rollover pages are consumed before additional-page billing applies.",
       "discount_or_adjustment": "Rollover balance reduces immediate overage exposure.",
       "final_bill": "Monthly bill = plan fee, while extra printed pages reduce rollover balance instead of triggering additional page blocks.",
@@ -558,7 +558,7 @@ Observed pricing structure; strategic causal logic is hypothesized.
       "scenario": "Printing spike covered by rollover",
       "customer_situation": "A customer prints more than the monthly plan allowance but still has rollover pages available.",
       "base_price": "Monthly plan fee",
-      "pricing_driver": "Printed pages per billing period and rollover balance",
+      "pricing_driver": "Rollover page balance",
       "variable_charge": "Rollover pages are consumed before additional-page billing applies.",
       "discount_or_adjustment": "Rollover balance reduces immediate overage exposure.",
       "final_bill": "Monthly bill = plan fee, while extra printed pages reduce rollover balance instead of triggering additional page blocks.",
