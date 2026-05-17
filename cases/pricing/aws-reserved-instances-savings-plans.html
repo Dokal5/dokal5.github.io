@@ -64,12 +64,20 @@
           <div class="case-section-label">01 / Pricing Page Visual</div>
           <h2>Pricing Page Visual</h2>
           <div class="case-visual-card">
+            <img src="../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-reserved-instances-savings-plans-page-2026-05-17.png" alt="Screenshot of the official AWS Savings Plans page showing the Savings Plans overview and savings claim">
             <div class="case-visual-body">
-              <div class="case-visual-label">Official AWS pricing artifacts</div>
-              <p>Local screenshots have not been captured yet. Before final publication, capture dated local screenshots of the official AWS EC2 Reserved Instances page and the AWS Savings Plans page.</p>
-              <p>The mechanism to notice is commitment coverage: AWS official pages support commitment terms, payment options, lower prices versus On-Demand, On-Demand exposure beyond Savings Plans commitment, and the capacity-reservation distinction between Savings Plans and zonal EC2 Reserved Instances.</p>
-              <p>Source reviewed: May 16, 2026 &middot; Screenshot status: required before final publication</p>
+              <div class="case-visual-label">Official AWS Savings Plans page</div>
+              <p>The mechanism to notice is commitment coverage: AWS presents Savings Plans as a flexible pricing model for steady-state usage savings.</p>
+              <p>Source reviewed: May 16, 2026 &middot; Screenshot captured: May 17, 2026</p>
               <p><a class="case-link" href="https://aws.amazon.com/ec2/pricing/reserved-instances/">Open EC2 Reserved Instances page</a> &middot; <a class="case-link" href="https://aws.amazon.com/savingsplans/">Open Savings Plans page</a></p>
+            </div>
+          </div>
+          <div class="case-visual-card">
+            <img src="../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png" alt="Screenshot of the official AWS EC2 Reserved Instances page showing discount and capacity reservation messaging">
+            <div class="case-visual-body">
+              <div class="case-visual-label">Official AWS EC2 Reserved Instances page</div>
+              <p>EC2 Reserved Instances support the capacity-reservation boundary in this case: zonal EC2 RIs can provide reserved capacity, while Savings Plans do not provide EC2 capacity reservation.</p>
+              <p>Source reviewed: May 16, 2026 &middot; Screenshot captured: May 17, 2026</p>
             </div>
           </div>
         </section>
@@ -519,8 +527,8 @@
               <p>The uncertainty-monetization framing is this case's analytical interpretation of the pricing mechanics, not AWS-stated causal intent.</p>
             </div>
             <div class="case-evidence-item">
-              <strong>Publication asset need</strong>
-              <p>Before final publication, capture dated local screenshots for the AWS EC2 Reserved Instances page and AWS Savings Plans page. No third-party or non-official screenshots are used here.</p>
+              <strong>Local pricing artifacts</strong>
+              <p>Dated local screenshots were captured from the official AWS EC2 Reserved Instances page and AWS Savings Plans page on May 17, 2026. No third-party or non-official screenshots are used here.</p>
             </div>
           </div>
           <ul class="case-source-list" style="margin-top: 1rem;">
@@ -692,7 +700,12 @@
       "uncovered usage"
     ],
     "default_view": "Commitment coverage drives effective bill exposure",
-    "student_prompt": "What portion of usage is covered, uncovered, or underused?"
+    "student_prompt": "What portion of usage is covered, uncovered, or underused?",
+    "local_screenshot_paths": [
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-reserved-instances-savings-plans-page-2026-05-17.png",
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png"
+    ],
+    "screenshot_captured_at": "2026-05-17"
   },
   "primary_component": "driver_logic",
   "decision_core": {

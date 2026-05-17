@@ -568,6 +568,10 @@
   color: var(--dark);
 }
 
+.case-source-list a {
+  overflow-wrap: anywhere;
+}
+
 .case-visual-card {
   border: 1px solid var(--lightgray);
   border-radius: 18px;

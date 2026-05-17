@@ -67,7 +67,7 @@ Mechanism uncertainty:
 
 Evidence gaps:
 - Official pages support discount, commitment, term, payment option, capacity reservation, and uncovered usage mechanics, but they do not state the full strategic causal logic.
-- A finished public page would still need a dated local screenshot plan and source capture before implementation.
+- Dated local screenshots were captured from the official AWS Savings Plans and EC2 Reserved Instances pages on 2026-05-17 for the public implementation.
 
 Lookup status:
 READY_FOR_LAYER_1
@@ -270,7 +270,12 @@ This case illustrates that uncertainty can be monetized when customers have fore
       "uncovered usage"
     ],
     "default_view": "Commitment coverage drives effective bill exposure",
-    "student_prompt": "What portion of usage is covered, uncovered, or underused?"
+    "student_prompt": "What portion of usage is covered, uncovered, or underused?",
+    "local_screenshot_paths": [
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-reserved-instances-savings-plans-page-2026-05-17.png",
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png"
+    ],
+    "screenshot_captured_at": "2026-05-17"
   },
   "primary_component": "driver_logic",
   "decision_core": {
@@ -537,7 +542,7 @@ This case illustrates that uncertainty can be monetized when customers have fore
 ```
 
 Pricing artifact plan:
-Capture dated local screenshots of the official AWS EC2 Reserved Instances page and AWS Savings Plans page before public HTML implementation. Cite the Savings Plans FAQ and Compute Savings Plans pricing page as supporting sources for commitment, overage, flexibility, and capacity-reservation distinctions.
+Dated local screenshots were captured from the official AWS EC2 Reserved Instances page and AWS Savings Plans page on 2026-05-17. Cite the Savings Plans FAQ and Compute Savings Plans pricing page as supporting sources for commitment, overage, flexibility, and capacity-reservation distinctions.
 
 ## Strategic Logic
 
