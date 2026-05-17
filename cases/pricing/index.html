@@ -111,6 +111,42 @@
       return record.transferable_principle || record.mechanism_summary;
     }
 
+    function parseIsoDateToUtc(value) {
+      const parts = String(value || "").split("-").map(Number);
+      if (parts.length !== 3 || parts.some(Number.isNaN)) {
+        return "";
+      }
+      return Date.UTC(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function freshnessState(record) {
+      if (record.case_status === "historical") {
+        return "historical";
+      }
+
+      const reviewedTime = parseIsoDateToUtc(record.reviewed_at);
+      if (reviewedTime === "") {
+        return "";
+      }
+
+      const staleAfterDays = Number(record.stale_after_days || 180);
+      const today = new Date();
+      const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      const ageDays = Math.floor((todayUtc - reviewedTime) / 86400000);
+      return ageDays > staleAfterDays ? "stale" : "fresh";
+    }
+
+    function freshnessBadge(record) {
+      const state = freshnessState(record);
+      if (state === "historical") {
+        return '<span class="case-tag case-freshness-badge case-freshness-badge--historical">Historical case</span>';
+      }
+      if (state === "stale") {
+        return '<span class="case-tag case-freshness-badge case-freshness-badge--stale">Stale review</span>';
+      }
+      return "";
+    }
+
     function uniqueValues(key) {
       const values = records
         .map(function (record) { return record[key]; })
@@ -130,13 +166,14 @@
     }
 
     function renderCard(record) {
+      const badge = freshnessBadge(record);
       return [
         '<article class="case-card">',
         '  <div class="case-card-top">',
         '    <h3><a class="article-link" href="' + escapeHtml(record.page_path) + '">' + escapeHtml(record.title) + "</a></h3>",
         "  </div>",
         '  <p class="case-card-sub">' + escapeHtml(record.industry) + " · " + escapeHtml(record.market) + "</p>",
-        '  <div class="case-tag-row"><span class="case-tag case-industry-tag">' + escapeHtml(record.industry) + "</span></div>",
+        '  <div class="case-tag-row"><span class="case-tag case-industry-tag">' + escapeHtml(record.industry) + "</span>" + badge + "</div>",
         '  <div class="case-card-summary"><p>' + escapeHtml(record.mechanism_summary) + "</p></div>",
         '  <div class="case-takeaway"><strong>Key takeaway</strong><p>' + escapeHtml(takeawayText(record)) + "</p></div>",
         '  <div class="case-card-footer"><span class="case-list-meta">Reviewed ' + escapeHtml(record.reviewed_at) + '</span><a class="case-link" href="' + escapeHtml(record.page_path) + '">Open case</a></div>',

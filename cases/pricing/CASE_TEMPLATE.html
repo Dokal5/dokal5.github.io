@@ -56,6 +56,11 @@ Public page rules:
 - Do not render a visible Case Snapshot.
 - Keep the embedded JSON schema inside the `pricing-case-schema` application/json script tag.
 - Hidden JSON must include `schema_version: "1.0"`.
+- Hidden JSON must include `reviewed_at`, `case_status`, and `freshness_policy`.
+- `case_status` is editorial status only (`current` or `historical`); stale state is computed by display logic.
+- Visible metadata must label reviewed date, case status, artifact date, screenshot date, and source reviewed date when present.
+- Use a visible `Stale review` badge only when display logic determines the case is stale.
+- Use a visible `Historical case` badge and short note when `case_status` is `historical`.
 - Any hidden JSON version mismatch is invalid.
 - Strategic Logic is required in hidden JSON.
 - Strategic Logic is a hypothesized causal chain, not proof.
@@ -138,6 +143,7 @@ Migration checklist:
         <div class="case-company-icon case-company-icon--text" aria-label="[Company Name] icon">[IN]</div>
         <div class="case-company-meta">
           <div class="case-company-name">[Company Name]</div>
+          <div class="case-company-note case-company-note--reviewed">Reviewed [Month Day, Year]</div>
         </div>
       </div>
       <h1>[Case Title]</h1>
@@ -148,7 +154,12 @@ Migration checklist:
         <span class="case-tag">[Tier layer]</span>
         <span class="case-tag">[Segmentation layer]</span>
         <span class="case-tag">[Value metric]</span>
+        <!-- Add only when applicable: <span class="case-tag case-freshness-badge">Stale review</span> -->
+        <!-- Add only when case_status is historical: <span class="case-tag case-freshness-badge case-freshness-badge--historical">Historical case</span> -->
       </div>
+      <!-- Add only when case_status is historical:
+      <p class="case-company-note">This case is retained as a historical teaching artifact. Review current [Company Name] pricing before using it as current evidence.</p>
+      -->
     </div>
 
     <div class="case-detail-layout">
@@ -161,7 +172,8 @@ Migration checklist:
             <div class="case-visual-body">
               <div class="case-visual-label">Pricing artifact</div>
               <p>[Short caption naming what to notice in the verified local pricing screenshot. Do not describe UI design.]</p>
-              <p>[Source URL] · Screenshot captured [Month Day, Year] · Source reviewed [Month Day, Year]</p>
+              <p>Artifact date: [Month Day, Year] · Screenshot captured: [Month Day, Year] · Source reviewed: [Month Day, Year]</p>
+              <p>Case reviewed: [Month Day, Year] · Status: [current or historical]</p>
               <p><a class="case-link" href="[Pricing Page URL]">Open live pricing page</a></p>
             </div>
           </div>
@@ -619,6 +631,13 @@ Migration checklist:
   "case_id": "",
   "case_type": "",
   "evidence_level": "",
+  "reviewed_at": "",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180,
+    "historical_rule": ""
+  },
   "pricing_model": "",
   "value_metric": "",
   "segmentation_type": "",
@@ -630,6 +649,16 @@ Migration checklist:
   "formula": "",
   "upgrade_triggers": [],
   "visualization": {},
+  "pricing_artifact": {
+    "source_url": "",
+    "local_screenshot_path": "",
+    "artifact_date": null,
+    "source_screenshot_date": null,
+    "source_reviewed_at": "",
+    "artifact_type": "",
+    "capture_status": "",
+    "alt_text": ""
+  },
   "primary_component": "",
   "decision_core": {
     "what_is_monetized": "",

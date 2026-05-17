@@ -68,7 +68,8 @@
             <div class="case-visual-body">
               <div class="case-visual-label">Official AWS Savings Plans page</div>
               <p>The mechanism to notice is commitment coverage: AWS presents Savings Plans as a flexible pricing model for steady-state usage savings.</p>
-              <p>Source reviewed: May 16, 2026 &middot; Screenshot captured: May 17, 2026</p>
+              <p>Artifact date: May 17, 2026 &middot; Screenshot captured: May 17, 2026 &middot; Source reviewed: May 16, 2026</p>
+              <p>Case reviewed: May 16, 2026 &middot; Status: current</p>
               <p><a class="case-link" href="https://aws.amazon.com/ec2/pricing/reserved-instances/">Open EC2 Reserved Instances page</a> &middot; <a class="case-link" href="https://aws.amazon.com/savingsplans/">Open Savings Plans page</a></p>
             </div>
           </div>
@@ -77,7 +78,8 @@
             <div class="case-visual-body">
               <div class="case-visual-label">Official AWS EC2 Reserved Instances page</div>
               <p>EC2 Reserved Instances support the capacity-reservation boundary in this case: zonal EC2 RIs can provide reserved capacity, while Savings Plans do not provide EC2 capacity reservation.</p>
-              <p>Source reviewed: May 16, 2026 &middot; Screenshot captured: May 17, 2026</p>
+              <p>Artifact date: May 17, 2026 &middot; Screenshot captured: May 17, 2026 &middot; Source reviewed: May 16, 2026</p>
+              <p>Case reviewed: May 16, 2026 &middot; Status: current</p>
             </div>
           </div>
         </section>
@@ -556,6 +558,13 @@
   "case_id": "aws-reserved-instances-savings-plans",
   "case_type": "other",
   "evidence_level": "inferred",
+  "reviewed_at": "2026-05-16",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180,
+    "historical_rule": "Mark historical when AWS no longer presents this commitment-pricing mechanism as current, but the case remains useful for teaching commitment coverage, capacity reservation, or utilization-risk transfer."
+  },
   "pricing_model": "Commitment-discount pricing for eligible cloud usage, with optional capacity reservation for zonal EC2 Reserved Instances",
   "value_metric": "Eligible cloud usage covered by a committed usage level or reserved EC2 attributes",
   "segmentation_type": "On-Demand usage, commitment-covered usage, RI attribute coverage, Savings Plan flexibility level, payment option, term length, and uncovered usage",
@@ -706,6 +715,19 @@
       "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png"
     ],
     "screenshot_captured_at": "2026-05-17"
+  },
+  "pricing_artifact": {
+    "source_url": "https://aws.amazon.com/savingsplans/",
+    "local_screenshot_path": "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-reserved-instances-savings-plans-page-2026-05-17.png",
+    "additional_local_screenshot_paths": [
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png"
+    ],
+    "artifact_date": "2026-05-17",
+    "source_screenshot_date": "2026-05-17",
+    "source_reviewed_at": "2026-05-16",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of the official AWS Savings Plans page showing the Savings Plans overview and savings claim."
   },
   "primary_component": "driver_logic",
   "decision_core": {
