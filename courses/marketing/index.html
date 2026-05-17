@@ -241,6 +241,19 @@
       gap: 22px;
     }
 
+    .course-groups {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .course-group {
+      min-width: 0;
+    }
+
+    [data-stage-group="case-lens"] .article-item {
+      flex-wrap: wrap;
+      gap: 8px 12px;
+    }
+
     .sequence-track::before,
     .sequence-track::after {
       left: 22px;
@@ -471,6 +484,36 @@
             <li class="article-item">
               <a class="article-link" href="product-life-cycle-and-diffusion.html">Product Life Cycle and Diffusion</a>
               <span class="article-tag">Article</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="course-group" data-stage-group="case-lens">
+          <div class="group-heading">
+            <div class="group-kicker">Case lens</div>
+            <h3 class="group-title">Use cases to test the marketing logic</h3>
+          </div>
+          <p class="group-copy">Use these pricing cases when you want to test how marketing concepts show up in real price architecture.</p>
+          <ul class="article-list">
+            <li class="article-item">
+              <strong>Segmentation by operational complexity:</strong> <a class="article-link" href="../../cases/pricing/monday-seat-based-work-management-pricing.html">monday.com</a> shows how team size and workflow maturity become pricing segments through seats and capability tiers.
+              <span class="article-tag">Segmentation</span>
+            </li>
+            <li class="article-item">
+              <strong>Fee visibility and positioning pressure:</strong> <a class="article-link" href="../../cases/pricing/airbnb-service-fee-incidence-pricing.html">Airbnb</a> shows how the same platform fee feels different at guest checkout versus inside host-side payout logic.
+              <span class="article-tag">Positioning</span>
+            </li>
+            <li class="article-item">
+              <strong>Place and fulfillment boundary:</strong> <a class="article-link" href="../../cases/pricing/ikea-nl-delivery-fulfillment-pricing.html">IKEA Netherlands</a> shows how delivery mode and service level turn place decisions into visible fee exposure.
+              <span class="article-tag">Marketing mix</span>
+            </li>
+            <li class="article-item">
+              <strong>Platform transaction economics:</strong> <a class="article-link" href="../../cases/pricing/shopify-transaction-platform-pricing.html">Shopify</a> shows how price architecture extends beyond subscription access when merchant activity flows through payments and transactions.
+              <span class="article-tag">Profit logic</span>
+            </li>
+            <li class="article-item">
+              <strong>Post-purchase recurring value:</strong> <a class="article-link" href="../../cases/pricing/hp-instant-ink-page-count-subscription-pricing.html">HP Instant Ink</a> shows how page allowance, rollover, and replenishment logic keep a usage relationship active after purchase.
+              <span class="article-tag">Retention</span>
             </li>
           </ul>
         </section>

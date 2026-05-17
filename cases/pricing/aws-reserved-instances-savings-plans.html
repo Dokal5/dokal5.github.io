@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Reserved Instances / Savings Plans Pricing | Pricing Cases | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,opsz,wght@0,9..40,400;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/pricing-cases.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="site-title">Think with Dave</div>
+    <div class="site-sub">Knowledge Garden</div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-label">Navigation</div>
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../thoughts/index.html">Thoughts</a>
+        <a class="nav-link" href="../../courses/index.html">Courses</a>
+        <a class="nav-link" href="../index.html">Case Library</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Pricing Cases</div>
+        <a class="nav-link" href="index.html">Library Home</a>
+        <a class="nav-link active" href="aws-reserved-instances-savings-plans.html">AWS</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header case-hero">
+      <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
+      <div class="case-kicker">Pricing Case</div>
+      <div class="case-company-lockup">
+        <div class="case-company-icon case-company-icon--text" aria-label="AWS icon">AWS</div>
+        <div class="case-company-meta">
+          <div class="case-company-name">AWS</div>
+          <div class="case-company-note case-company-note--reviewed">Reviewed May 16, 2026</div>
+        </div>
+      </div>
+      <h1>AWS Reserved Instances / Savings Plans pricing</h1>
+      <p class="lead">
+        AWS commitment pricing changes the effective cloud bill when eligible usage is covered by a one- or three-year commitment instead of remaining fully On-Demand.
+      </p>
+      <div class="case-tag-row" style="margin-top: 1.2rem;">
+        <span class="case-tag">Driver logic</span>
+        <span class="case-tag">Commitment pricing</span>
+        <span class="case-tag">Inferred strategic logic</span>
+      </div>
+      <div class="case-takeaway">
+        <strong>Student 10-second takeaway</strong>
+        <p>The bill changes when eligible usage is covered by a commitment; uncovered usage stays On-Demand, and underused commitments leave the customer carrying utilization risk.</p>
+      </div>
+    </div>
+
+    <div class="case-detail-layout">
+      <div class="content-body">
+        <section class="section case-framework-section" data-case-section="pricing-page-visual">
+          <div class="case-section-label">01 / Pricing Page Visual</div>
+          <h2>Pricing Page Visual</h2>
+          <div class="case-visual-card">
+            <img src="../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-reserved-instances-savings-plans-page-2026-05-17.png" alt="Screenshot of the official AWS Savings Plans page showing the Savings Plans overview and savings claim">
+            <div class="case-visual-body">
+              <div class="case-visual-label">Official AWS Savings Plans page</div>
+              <p>The mechanism to notice is commitment coverage: AWS presents Savings Plans as a flexible pricing model for steady-state usage savings.</p>
+              <p>Source reviewed: May 16, 2026 &middot; Screenshot captured: May 17, 2026</p>
+              <p><a class="case-link" href="https://aws.amazon.com/ec2/pricing/reserved-instances/">Open EC2 Reserved Instances page</a> &middot; <a class="case-link" href="https://aws.amazon.com/savingsplans/">Open Savings Plans page</a></p>
+            </div>
+          </div>
+          <div class="case-visual-card">
+            <img src="../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png" alt="Screenshot of the official AWS EC2 Reserved Instances page showing discount and capacity reservation messaging">
+            <div class="case-visual-body">
+              <div class="case-visual-label">Official AWS EC2 Reserved Instances page</div>
+              <p>EC2 Reserved Instances support the capacity-reservation boundary in this case: zonal EC2 RIs can provide reserved capacity, while Savings Plans do not provide EC2 capacity reservation.</p>
+              <p>Source reviewed: May 16, 2026 &middot; Screenshot captured: May 17, 2026</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="core-insight">
+          <div class="case-section-label">02 / Core Insight</div>
+          <h2>Core Insight / Decision Core</h2>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Monetized</span>
+              <strong>Predictable future eligible cloud usage commitments and, for zonal EC2 Reserved Instances, optional capacity reservation.</strong>
+            </div>
+            <div class="case-decision-card">
+              <span>Bill changes when</span>
+              <strong>Eligible usage is covered by commitment; uncovered usage remains On-Demand; underused commitment becomes customer risk.</strong>
+            </div>
+            <div class="case-decision-card">
+              <span>Higher payers</span>
+              <strong>Customers who keep full flexibility, under-commit, over-commit, or run usage outside commitment coverage.</strong>
+            </div>
+          </div>
+          <p class="case-section-brief">
+            This case monetizes infrastructure predictability by changing the effective compute rate when customers exchange future usage flexibility for a one- or three-year commitment.
+          </p>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-logic-deconstruction">
+          <div class="case-section-label">03 / Pricing Logic Deconstruction</div>
+          <h2>Pricing Logic Deconstruction</h2>
+          <p class="case-claim-statement">
+            The bill changes when eligible usage is covered by a commitment.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Key driver</span>
+              <strong>Commitment coverage of eligible usage</strong>
+              <p>Covered usage receives discounted effective pricing instead of fully flexible On-Demand pricing.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Scaling logic</span>
+              <strong>Hybrid commitment coverage</strong>
+              <p>The blended bill depends on covered usage, uncovered usage, and any committed value that actual usage does not consume.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Main upgrade condition</span>
+              <strong>On-Demand usage &rarr; committed usage coverage</strong>
+              <p>The buyer accepts a one- or three-year commitment when predictable workloads make the discount worth the flexibility trade off.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="strategic-logic">
+          <div class="case-section-label">04 / Strategic Logic</div>
+          <h2>Strategic Logic</h2>
+          <p class="case-section-brief">Hypothesized pricing-relevant causal logic. Not AWS-stated intent.</p>
+          <div class="case-strategic-strip" aria-label="AWS commitment pricing strategic logic">
+            <div class="case-strip-node case-strip-node--condition">
+              <span class="case-strip-label">Customer Condition</span>
+              <strong>Customers face usage uncertainty</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-strip-node case-strip-node--behavior">
+              <span class="case-strip-label">Behavior Change</span>
+              <strong>They commit predictable workloads</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-strip-node case-strip-node--driver">
+              <span class="case-strip-label">Pricing Driver</span>
+              <strong>Commitment coverage of eligible usage</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-strip-node case-strip-node--billing">
+              <span class="case-strip-label">Billing Change</span>
+              <strong>Covered usage receives discounted rates</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-strip-node case-strip-node--outcome">
+              <span class="case-strip-label">Financial Outcome</span>
+              <strong>AWS gains predictability; customers carry utilization risk</strong>
+            </div>
+          </div>
+          <div class="case-strategic-meta">
+            <div class="case-strategic-meta-card">
+              <span>Main Assumption</span>
+              <p>Customers can forecast enough eligible usage that the discount is worth the flexibility and utilization risk they accept.</p>
+            </div>
+            <div class="case-strategic-meta-card">
+              <span>Main Failure Risk</span>
+              <p>Workload demand changes faster than the commitment can adapt, causing underused commitments or uncovered usage to erode expected savings.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
+          <div class="case-section-label">05 / Pricing Mechanism Logic</div>
+          <h2>Driver Logic</h2>
+          <p class="case-section-brief">Primary component: driver_logic</p>
+          <div class="case-value-flow-map" aria-label="AWS commitment coverage driver-to-bill flow">
+            <div class="case-value-flow-node">
+              <span>Driver</span>
+              <strong>Commitment coverage of eligible usage</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-value-flow-node">
+              <span>Pricing parameter</span>
+              <strong>Term, payment option, and flexibility/specificity set effective rate</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-value-flow-node">
+              <span>Bill effect</span>
+              <strong>Covered usage discounted; uncovered usage On-Demand</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">&rarr;</div>
+            <div class="case-value-flow-node">
+              <span>Customer consequence</span>
+              <strong>Underused commitment transfers utilization risk to customer</strong>
+            </div>
+          </div>
+          <div class="case-architecture-panel-grid">
+            <div class="case-architecture-panel">
+              <span>Commitment coverage</span>
+              <div class="case-architecture-token-line">Primary bill driver</div>
+              <p>Eligible usage covered by commitment receives discounted effective pricing.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Term length</span>
+              <div class="case-architecture-token-line">1-year or 3-year</div>
+              <p>Longer commitments generally trade more flexibility for stronger savings potential.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Payment option</span>
+              <div class="case-architecture-token-line">No, Partial, All Upfront</div>
+              <p>Payment timing changes the economics of the commitment without changing the core bill driver.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Flexibility / specificity</span>
+              <div class="case-architecture-token-line">More flexible vs more specific</div>
+              <p>Flexible commitments preserve workload movement; specific commitments can narrow the coverage boundary.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Uncovered usage exposure</span>
+              <div class="case-architecture-token-line">Beyond commitment</div>
+              <p>Usage beyond commitment remains exposed to On-Demand pricing.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Capacity reservation scope</span>
+              <div class="case-architecture-token-line">Zonal EC2 RI only</div>
+              <p>Savings Plans do not provide EC2 capacity reservation; zonal EC2 Reserved Instances can.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="bill-examples">
+          <div class="case-section-label">06 / Bill Examples</div>
+          <h2>Bill Examples</h2>
+          <p class="case-section-brief">Illustrative bill logic only. Exact discounts depend on AWS product rules and dated pricing tables.</p>
+          <table class="case-comparison-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Base layer</th>
+                <th>Variable layer</th>
+                <th>Final bill logic</th>
+                <th>Pricing lesson</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Predictable workload covered by commitment</td>
+                <td>On-Demand rate for eligible usage</td>
+                <td>Commitment discount applies to covered usage.</td>
+                <td>Covered usage is billed at discounted commitment pricing instead of On-Demand pricing.</td>
+                <td>Forecastable usage becomes cheaper when the customer trades flexibility for commitment coverage.</td>
+              </tr>
+              <tr>
+                <td>Usage exceeds commitment</td>
+                <td>Committed usage charge plus On-Demand exposure</td>
+                <td>Usage beyond the active commitment is billed at regular On-Demand rates.</td>
+                <td>The blended bill rises because excess usage remains outside the savings envelope.</td>
+                <td>Under-commitment preserves flexibility but leaves incremental usage exposed.</td>
+              </tr>
+              <tr>
+                <td>Commitment is underused</td>
+                <td>Committed usage obligation</td>
+                <td>Actual covered usage is lower than the committed level.</td>
+                <td>The customer still carries commitment exposure, so expected savings can disappear.</td>
+                <td>The discount is valuable only when the customer can use enough of the commitment.</td>
+              </tr>
+              <tr>
+                <td>Zonal EC2 RI for capacity assurance</td>
+                <td>EC2 usage matching RI attributes</td>
+                <td>Zonal RI can provide capacity reservation plus discounted RI pricing for matching attributes.</td>
+                <td>The buyer receives discount mechanics and capacity assurance, unlike a Savings Plan alone.</td>
+                <td>Capacity assurance is a different pricing boundary from generic commitment discount coverage.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-architecture">
+          <div class="case-section-label">07 / Pricing Architecture</div>
+          <h2>Pricing Architecture</h2>
+          <p class="case-section-brief">Structure only: the page compares commitment vehicles as support, while driver_logic remains the primary mechanism.</p>
+          <table class="case-comparison-table">
+            <thead>
+              <tr>
+                <th>Commitment vehicle</th>
+                <th>Commitment basis</th>
+                <th>Flexibility boundary</th>
+                <th>Capacity reservation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>EC2 Reserved Instances</td>
+                <td>EC2 RI attributes and one- or three-year term</td>
+                <td>Attribute match and RI class determine how the discount applies.</td>
+                <td>Zonal EC2 Reserved Instances can provide capacity reservation.</td>
+              </tr>
+              <tr>
+                <td>Savings Plans</td>
+                <td>Specific usage commitment measured over time</td>
+                <td>Plan type determines eligible usage coverage and flexibility.</td>
+                <td>Savings Plans do not provide EC2 capacity reservation.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="case-architecture-panel-grid">
+            <div class="case-architecture-panel">
+              <span>Tiers</span>
+              <div class="case-architecture-token-line">On-Demand, 1-year commitment, 3-year commitment</div>
+              <p>Term choice structures the commitment horizon.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Payment options</span>
+              <div class="case-architecture-token-line">No Upfront, Partial Upfront, All Upfront</div>
+              <p>Payment timing is a pricing parameter for commitment economics.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Segments</span>
+              <div class="case-architecture-token-line">Covered, uncovered, underused</div>
+              <p>The bill is easiest to understand by separating usage into these states.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Upgrade triggers</span>
+              <div class="case-architecture-token-line">Commit, exceed, underuse, reserve capacity</div>
+              <p>Each trigger moves the buyer into a different pricing state.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="boundary-crossing-map">
+          <div class="case-section-label">08 / Boundary Crossing Map</div>
+          <h2>Boundary Crossing Map</h2>
+          <p class="case-section-brief">Where the buyer crosses into a different pricing state.</p>
+          <div class="case-transition-map case-transition-map--boundary">
+            <div class="case-transition-row">
+              <div><span>From</span><strong>Fully flexible On-Demand usage</strong></div>
+              <div><span>Boundary</span><strong>Customer commits to eligible usage for one or three years</strong></div>
+              <div><span>To</span><strong>Discounted commitment-covered usage</strong></div>
+              <div><span>Driver</span><strong>Commitment coverage of eligible usage</strong></div>
+              <div><span>Billing effect</span><strong>Covered usage receives commitment pricing instead of On-Demand pricing.</strong></div>
+              <div><span>Perception risk</span><strong>The discount may look simple while the commitment risk is harder to price mentally.</strong></div>
+            </div>
+            <div class="case-transition-row">
+              <div><span>From</span><strong>Covered commitment usage</strong></div>
+              <div><span>Boundary</span><strong>Actual usage exceeds the commitment or covered attributes</strong></div>
+              <div><span>To</span><strong>Uncovered On-Demand usage</strong></div>
+              <div><span>Driver</span><strong>Uncovered usage exposure</strong></div>
+              <div><span>Billing effect</span><strong>Excess usage is charged at On-Demand rates.</strong></div>
+              <div><span>Perception risk</span><strong>The buyer may expect the discount to cover more usage than the commitment actually covers.</strong></div>
+            </div>
+            <div class="case-transition-row">
+              <div><span>From</span><strong>Forecasted usage matches commitment</strong></div>
+              <div><span>Boundary</span><strong>Actual usage falls below the committed level</strong></div>
+              <div><span>To</span><strong>Underused commitment exposure</strong></div>
+              <div><span>Driver</span><strong>Commitment coverage of eligible usage</strong></div>
+              <div><span>Billing effect</span><strong>Expected savings decline because the customer carries unused commitment value.</strong></div>
+              <div><span>Perception risk</span><strong>The buyer may experience the discount as lock-in if workloads shrink or move.</strong></div>
+            </div>
+            <div class="case-transition-row">
+              <div><span>From</span><strong>Savings Plans discount expectation</strong></div>
+              <div><span>Boundary</span><strong>Customer needs EC2 capacity reserved in a specific Availability Zone</strong></div>
+              <div><span>To</span><strong>Zonal EC2 Reserved Instance capacity reservation logic</strong></div>
+              <div><span>Driver</span><strong>Capacity reservation scope</strong></div>
+              <div><span>Billing effect</span><strong>The buyer must use zonal EC2 RI reservation logic for capacity assurance.</strong></div>
+              <div><span>Perception risk</span><strong>The buyer may confuse discount coverage with capacity reservation.</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-tension-layer">
+          <div class="case-section-label">09 / Decision Tension Layer</div>
+          <h2>Decision Tension Layer</h2>
+          <p class="case-section-brief">The pricing tension is caused by commitment coverage: lower effective cost requires forecasting confidence and less future flexibility.</p>
+          <div class="case-tension-visual">
+            <strong>Customer wants flexibility</strong>
+            <span aria-hidden="true">&rarr;</span>
+            <strong>Commitment coverage of eligible usage</strong>
+            <span aria-hidden="true">&rarr;</span>
+            <strong>Lower rate, transferred utilization risk</strong>
+          </div>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Forecasting tension</span>
+              <strong>Commit too little or too much</strong>
+              <p>Under-commitment leaves usage On-Demand; over-commitment creates unused commitment exposure.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Flexibility tension</span>
+              <strong>Specificity can improve economics</strong>
+              <p>The more specific the commitment boundary, the more important workload stability becomes.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Capacity tension</span>
+              <strong>Discount is not always reservation</strong>
+              <p>Savings Plans discount coverage should not be mistaken for EC2 capacity reservation.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-alternatives">
+          <div class="case-section-label">10 / Decision Alternatives</div>
+          <h2>Decision Alternatives</h2>
+          <p class="case-section-brief">Concrete pricing interface moves, trade offs, and leading indicators.</p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Underuse-risk calculator</span>
+              <strong>Show underused commitment exposure beside projected savings before purchase.</strong>
+              <p><strong>Expected effect:</strong> Better commitment sizing discipline.</p>
+              <p><strong>Trade off:</strong> Commitment risk becomes more salient.</p>
+              <p><strong>Leading indicator:</strong> Lower post-purchase commitment underutilization.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Coverage-first purchase flow</span>
+              <strong>Frame decisions around covered, uncovered, and underused usage first.</strong>
+              <p><strong>Expected effect:</strong> Buyers focus on what changes the bill.</p>
+              <p><strong>Trade off:</strong> Advanced product differences may need a second layer.</p>
+              <p><strong>Leading indicator:</strong> More buyers set explicit coverage targets.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Capacity-reservation separation</span>
+              <strong>Separate Savings Plans discount coverage from zonal EC2 RI capacity reservation.</strong>
+              <p><strong>Expected effect:</strong> Fewer category errors.</p>
+              <p><strong>Trade off:</strong> Adds another decision step.</p>
+              <p><strong>Leading indicator:</strong> Fewer customers expect Savings Plans to reserve EC2 capacity.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-priority">
+          <div class="case-section-label">11 / Decision Priority</div>
+          <h2>Decision Priority</h2>
+          <p class="case-section-brief">Which pricing move should be tested first, and why.</p>
+          <table class="case-priority-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Move</th>
+                <th>Why this priority</th>
+                <th>Risk</th>
+                <th>Complexity</th>
+                <th>Success metric</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Coverage-first purchase flow</td>
+                <td>It targets the fastest comprehension problem: covered, uncovered, or underused usage.</td>
+                <td>Low</td>
+                <td>Medium</td>
+                <td>More buyers correctly identify bill exposure before purchase.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Underuse-risk calculator</td>
+                <td>It reduces the main customer-side failure mode but needs more usage-forecast modeling.</td>
+                <td>Medium</td>
+                <td>Medium</td>
+                <td>Lower commitment underutilization among calculator users.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Capacity-reservation separation</td>
+                <td>It fixes an important category error for customers evaluating EC2 capacity assurance.</td>
+                <td>Low</td>
+                <td>Low</td>
+                <td>Lower capacity-reservation confusion in feedback or support signals.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="reasoning-error-check">
+          <div class="case-section-label">12 / Reasoning Error Check</div>
+          <h2>Reasoning Error Check</h2>
+          <p class="case-section-brief">Stress test the pricing logic before accepting the recommendation.</p>
+          <table class="case-stress-test-table">
+            <thead>
+              <tr>
+                <th>Reasoning risk</th>
+                <th>Case-specific check</th>
+                <th>Evidence needed</th>
+                <th>Failure signal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Strategic intent overclaim</td>
+                <td>Keep uncertainty monetization framed as analytical interpretation.</td>
+                <td>Official AWS strategy language would be needed to state intent.</td>
+                <td>The page presents the interpretation as AWS-stated intent.</td>
+              </tr>
+              <tr>
+                <td>RI and Savings Plans blur</td>
+                <td>Keep capacity reservation separate from Savings Plans discount coverage.</td>
+                <td>Official AWS documentation on capacity reservation behavior.</td>
+                <td>A reader believes Savings Plans provide EC2 capacity reservation.</td>
+              </tr>
+              <tr>
+                <td>Exact discount overreach</td>
+                <td>Avoid precise savings examples not traceable to dated AWS pricing tables.</td>
+                <td>AWS pricing tables or calculator output for exact examples.</td>
+                <td>The page gives unsupported precise savings.</td>
+              </tr>
+              <tr>
+                <td>Pure-savings framing</td>
+                <td>Keep underuse risk and flexibility loss visible beside discount logic.</td>
+                <td>Commitment utilization reporting would validate practical risk size.</td>
+                <td>The page teaches buyers to maximize discount depth without showing utilization risk.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
+          <div class="case-section-label">13 / References</div>
+          <h2>Evidence and Pricing Artifact Notes</h2>
+          <div class="case-evidence-grid">
+            <div class="case-evidence-item">
+              <strong>Official support</strong>
+              <p>AWS official pages support commitment, term, payment option, discount relative to On-Demand, On-Demand exposure beyond commitment, and capacity-reservation distinctions.</p>
+            </div>
+            <div class="case-evidence-item">
+              <strong>Analytical interpretation</strong>
+              <p>The uncertainty-monetization framing is this case's analytical interpretation of the pricing mechanics, not AWS-stated causal intent.</p>
+            </div>
+            <div class="case-evidence-item">
+              <strong>Local pricing artifacts</strong>
+              <p>Dated local screenshots were captured from the official AWS EC2 Reserved Instances page and AWS Savings Plans page on May 17, 2026. No third-party or non-official screenshots are used here.</p>
+            </div>
+          </div>
+          <ul class="case-source-list" style="margin-top: 1rem;">
+            <li><cite>Amazon Web Services.</cite> (n.d.). <a href="https://aws.amazon.com/ec2/pricing/reserved-instances/">Amazon EC2 Reserved Instances</a>. Retrieved May 16, 2026, from <a href="https://aws.amazon.com/ec2/pricing/reserved-instances/">https://aws.amazon.com/ec2/pricing/reserved-instances/</a></li>
+            <li><cite>Amazon Web Services.</cite> (n.d.). <a href="https://aws.amazon.com/savingsplans/">Savings Plans</a>. Retrieved May 16, 2026, from <a href="https://aws.amazon.com/savingsplans/">https://aws.amazon.com/savingsplans/</a></li>
+            <li><cite>Amazon Web Services.</cite> (n.d.). <a href="https://aws.amazon.com/savingsplans/faqs/">Savings Plans FAQs</a>. Retrieved May 16, 2026, from <a href="https://aws.amazon.com/savingsplans/faqs/">https://aws.amazon.com/savingsplans/faqs/</a></li>
+            <li><cite>Amazon Web Services.</cite> (n.d.). <a href="https://aws.amazon.com/savingsplans/compute-pricing/">Compute Savings Plans pricing</a>. Retrieved May 16, 2026, from <a href="https://aws.amazon.com/savingsplans/compute-pricing/">https://aws.amazon.com/savingsplans/compute-pricing/</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>dokal5.github.io &middot; knowledge garden</span>
+    <span>Utrecht, NL</span>
+  </footer>
+
+</div>
+
+<!-- Hidden system data only. Do not render this JSON visibly. Keep it aligned with the page content. -->
+<script type="application/json" id="pricing-case-schema">
+{
+  "schema_version": "1.0",
+  "case_id": "aws-reserved-instances-savings-plans",
+  "case_type": "other",
+  "evidence_level": "inferred",
+  "pricing_model": "Commitment-discount pricing for eligible cloud usage, with optional capacity reservation for zonal EC2 Reserved Instances",
+  "value_metric": "Eligible cloud usage covered by a committed usage level or reserved EC2 attributes",
+  "segmentation_type": "On-Demand usage, commitment-covered usage, RI attribute coverage, Savings Plan flexibility level, payment option, term length, and uncovered usage",
+  "tiers": [
+    "On-Demand usage",
+    "1-year commitment",
+    "3-year commitment",
+    "No Upfront",
+    "Partial Upfront",
+    "All Upfront"
+  ],
+  "segments": [
+    "Fully flexible On-Demand users",
+    "Savings Plans customers",
+    "EC2 Reserved Instance customers",
+    "Zonal EC2 Reserved Instance customers",
+    "Uncovered usage",
+    "Underused commitment"
+  ],
+  "pricing_logic": "AWS discounts eligible usage when customers commit to a one- or three-year usage level or EC2 Reserved Instance attributes. The customer bill changes with commitment coverage, term length, payment option, commitment specificity, and any usage that remains uncovered or underused.",
+  "key_driver": "Commitment coverage of eligible usage",
+  "drivers": [
+    {
+      "driver": "Commitment coverage of eligible usage",
+      "type": "commitment",
+      "pricing_role": "discount",
+      "direction": "segment_users",
+      "effect": "Eligible usage covered by a commitment receives discounted pricing instead of fully flexible On-Demand pricing.",
+      "student_label": "Coverage"
+    },
+    {
+      "driver": "Term length",
+      "type": "commitment",
+      "pricing_role": "discount",
+      "direction": "segment_users",
+      "effect": "Longer commitments generally support deeper effective discounts because the customer gives AWS more future-demand certainty.",
+      "student_label": "Term"
+    },
+    {
+      "driver": "Payment option",
+      "type": "commitment",
+      "pricing_role": "discount",
+      "direction": "segment_users",
+      "effect": "No Upfront, Partial Upfront, and All Upfront options change payment timing and can change the effective discounted rate.",
+      "student_label": "Payment timing"
+    },
+    {
+      "driver": "Flexibility or specificity of commitment",
+      "type": "commitment",
+      "pricing_role": "discount",
+      "direction": "segment_users",
+      "effect": "More specific commitments can produce lower prices, while more flexible commitments preserve workload mobility at a shallower discount.",
+      "student_label": "Flexibility"
+    },
+    {
+      "driver": "Uncovered usage exposure",
+      "type": "usage",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "Usage beyond the active commitment remains charged at On-Demand rates, raising the blended effective bill.",
+      "student_label": "Uncovered usage"
+    },
+    {
+      "driver": "Capacity reservation scope",
+      "type": "asset",
+      "pricing_role": "access",
+      "direction": "segment_users",
+      "effect": "A zonal EC2 Reserved Instance can add capacity reservation for matching EC2 attributes, separating capacity assurance from Savings Plans discount coverage.",
+      "student_label": "Capacity scope"
+    }
+  ],
+  "formula": {
+    "expression": "effective_cloud_bill = discounted_covered_usage + on_demand_uncovered_usage + unused_commitment_exposure",
+    "variables": [
+      {
+        "symbol": "discounted_covered_usage",
+        "label": "Eligible usage covered by commitment",
+        "maps_to_driver": "Commitment coverage of eligible usage"
+      },
+      {
+        "symbol": "on_demand_uncovered_usage",
+        "label": "Usage beyond commitment billed On-Demand",
+        "maps_to_driver": "Uncovered usage exposure"
+      },
+      {
+        "symbol": "unused_commitment_exposure",
+        "label": "Committed value not matched by actual usage",
+        "maps_to_driver": "Commitment coverage of eligible usage"
+      }
+    ],
+    "output_label": "Effective cloud bill exposure",
+    "explanation": "The customer's final bill depends on how much actual eligible usage is covered by commitment pricing, how much remains On-Demand, and whether any committed usage value goes unused."
+  },
+  "upgrade_triggers": [
+    {
+      "trigger": "Customer moves from On-Demand to committed usage",
+      "from": "Fully flexible On-Demand usage",
+      "to": "Committed usage discount state",
+      "why_it_happens": "The customer believes a workload is predictable enough to justify a one- or three-year commitment.",
+      "pricing_effect": "Covered eligible usage receives discounted pricing, while the customer accepts commitment and utilization risk."
+    },
+    {
+      "trigger": "Customer chooses a longer or more specific commitment",
+      "from": "More flexible or shorter commitment",
+      "to": "Lower effective rate with more commitment constraints",
+      "why_it_happens": "The customer values lower effective cost more than preserving maximum future flexibility.",
+      "pricing_effect": "Discount depth can improve, but the customer has less room for forecast error or workload change."
+    },
+    {
+      "trigger": "Actual usage exceeds commitment coverage",
+      "from": "Usage covered by commitment",
+      "to": "Uncovered usage billed On-Demand",
+      "why_it_happens": "The customer uses more eligible cloud capacity than the committed amount or covered attributes allow.",
+      "pricing_effect": "The blended bill rises because the excess usage is charged at On-Demand rates."
+    },
+    {
+      "trigger": "Actual usage falls below commitment coverage",
+      "from": "Forecasted usage matches commitment",
+      "to": "Underused commitment exposure",
+      "why_it_happens": "The customer's workload demand falls, migrates, or changes faster than the commitment can absorb.",
+      "pricing_effect": "The customer still carries commitment cost, reducing or eliminating the expected savings."
+    },
+    {
+      "trigger": "Customer specifies an Availability Zone for an EC2 Reserved Instance",
+      "from": "Regional discount-oriented coverage",
+      "to": "Zonal EC2 Reserved Instance capacity reservation",
+      "why_it_happens": "The customer wants additional confidence that matching EC2 capacity will be available in a specific Availability Zone.",
+      "pricing_effect": "The commitment can provide both RI discount coverage and reserved EC2 capacity for matching attributes."
+    }
+  ],
+  "visualization": {
+    "primary_component": "driver_logic",
+    "supporting_components": [
+      "variant comparison table",
+      "boundary transition rows"
+    ],
+    "interactive_controls": [
+      "commitment coverage",
+      "term length",
+      "payment option",
+      "flexibility or specificity",
+      "uncovered usage"
+    ],
+    "default_view": "Commitment coverage drives effective bill exposure",
+    "student_prompt": "What portion of usage is covered, uncovered, or underused?",
+    "local_screenshot_paths": [
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-reserved-instances-savings-plans-page-2026-05-17.png",
+      "../../assets/pricing-artifacts/aws-reserved-instances-savings-plans/aws-ec2-reserved-instances-page-2026-05-17.png"
+    ],
+    "screenshot_captured_at": "2026-05-17"
+  },
+  "primary_component": "driver_logic",
+  "decision_core": {
+    "what_is_monetized": "Predictable future eligible cloud usage commitments and, for zonal EC2 Reserved Instances, optional capacity reservation.",
+    "what_changes_the_bill": "The bill changes when eligible usage is covered by a commitment, when term length, payment option, or commitment specificity changes the effective rate, and when usage remains uncovered or underused.",
+    "who_pays_more_and_why": "Customers who keep full flexibility, under-commit, over-commit, or run usage outside commitment coverage pay more because they either remain exposed to On-Demand rates or carry unused commitment cost."
+  },
+  "student_10_second_takeaway": "The bill changes when eligible usage is covered by a commitment; uncovered usage stays On-Demand, and underused commitments leave the customer carrying utilization risk.",
+  "friction_points": [
+    "Customers must forecast future usage before knowing whether the commitment will be fully used.",
+    "Discount depth depends on product rules, term length, payment option, region, operating system, and usage eligibility.",
+    "Savings Plans and EC2 Reserved Instances can look similar as discount vehicles while differing on capacity reservation and flexibility.",
+    "A lower nominal rate can hide underuse risk if workloads shrink or move."
+  ],
+  "risks": [
+    "Customers may overbuy commitments and lose expected savings through underutilization.",
+    "Customers may underbuy commitments and leave predictable usage at On-Demand rates.",
+    "Buyers may confuse Savings Plans discounts with EC2 capacity reservation.",
+    "The analytical interpretation of uncertainty monetization could be overclaimed if presented as AWS's stated strategy."
+  ],
+  "structural_weakness": "The model creates powerful savings for predictable workloads, but the buyer must understand commitment coverage, flexibility limits, capacity reservation differences, and utilization risk before the effective bill is clear.",
+  "strategic_insight": "AWS commitment pricing works when customers can convert workload predictability into lower effective rates while AWS gains stronger demand visibility and shifts underuse risk to the customer.",
+  "strategic_logic": {
+    "customer_condition": "Customers face usage uncertainty",
+    "behavior_change": "They commit predictable workloads",
+    "pricing_driver": "Commitment coverage of eligible usage",
+    "billing_change": "Covered usage receives discounted rates",
+    "financial_outcome": "AWS gains demand predictability while customers carry utilization risk",
+    "dominant_causal_chain": [
+      "Customers face usage uncertainty",
+      "They commit predictable workloads",
+      "Commitment coverage of eligible usage",
+      "Covered usage receives discounted rates",
+      "AWS gains demand predictability while customers carry utilization risk"
+    ],
+    "main_assumption": "Customers can forecast enough eligible usage that the discount is worth the flexibility and utilization risk they accept.",
+    "main_failure_risk": "Workload demand changes faster than the commitment can adapt, causing underused commitments or uncovered usage to erode expected savings.",
+    "evidence_status": "inferred",
+    "visual_strip": {
+      "enabled": true,
+      "layout": "canonical_five_step_strip"
+    }
+  },
+  "decision_alternatives": [
+    {
+      "option": "Underuse-risk calculator",
+      "pricing_move": "Make underused commitment exposure visible beside projected savings before purchase.",
+      "expected_effect": "Improves commitment sizing discipline and reduces buyer surprise when usage falls below forecast.",
+      "trade_off": "Makes commitment risk more salient and may reduce aggressive upfront commitment purchases.",
+      "leading_indicator": "Lower post-purchase commitment underutilization and fewer support or billing questions about expected savings."
+    },
+    {
+      "option": "Coverage-first purchase flow",
+      "pricing_move": "Frame purchase decisions around covered, uncovered, and underused usage before showing detailed product variant comparisons.",
+      "expected_effect": "Keeps the buyer focused on what changes the bill instead of only comparing AWS product labels.",
+      "trade_off": "May simplify product differences that matter for advanced FinOps buyers.",
+      "leading_indicator": "Higher share of buyers completing recommendations with explicit coverage targets and fewer mismatched commitment choices."
+    },
+    {
+      "option": "Capacity-reservation separation",
+      "pricing_move": "More clearly separate Savings Plans discount coverage from zonal EC2 RI capacity reservation in the purchase education path.",
+      "expected_effect": "Reduces category errors between discount commitments and capacity assurance.",
+      "trade_off": "Adds another decision step for buyers who only want a savings recommendation.",
+      "leading_indicator": "Lower rate of customers expecting Savings Plans to provide EC2 capacity reservation."
+    }
+  ],
+  "bill_examples": [
+    {
+      "scenario": "Predictable workload covered by commitment",
+      "customer_situation": "A customer has steady eligible usage and commits to the expected baseline for one or three years.",
+      "base_price": "On-Demand rate for the eligible usage",
+      "pricing_driver": "Commitment coverage of eligible usage",
+      "variable_charge": "Eligible usage up to the commitment receives the applicable discounted commitment rate.",
+      "discount_or_adjustment": "Commitment discount applies to covered usage; exact discount depends on AWS product rules and selected terms.",
+      "final_bill": "Illustrative logic: covered usage is billed at discounted commitment pricing instead of On-Demand pricing.",
+      "pricing_lesson": "Forecastable usage becomes cheaper when the customer trades flexibility for commitment coverage."
+    },
+    {
+      "scenario": "Usage exceeds commitment",
+      "customer_situation": "A customer commits to a baseline but actual eligible usage rises above the committed amount.",
+      "base_price": "Committed usage charge plus On-Demand pricing for excess usage",
+      "pricing_driver": "Uncovered usage exposure",
+      "variable_charge": "Usage beyond the active commitment is billed at regular On-Demand rates.",
+      "discount_or_adjustment": "Discount applies only to covered eligible usage.",
+      "final_bill": "Illustrative logic: blended bill rises because uncovered usage keeps full flexibility and full On-Demand exposure.",
+      "pricing_lesson": "Under-commitment preserves flexibility but leaves incremental usage outside the savings envelope."
+    },
+    {
+      "scenario": "Commitment is underused",
+      "customer_situation": "A customer commits to expected usage, then workload demand falls or migrates outside the covered pattern.",
+      "base_price": "Committed usage obligation",
+      "pricing_driver": "Commitment coverage of eligible usage",
+      "variable_charge": "Actual covered usage is lower than the commitment level.",
+      "discount_or_adjustment": "Expected savings shrink because committed value is not fully matched by usage.",
+      "final_bill": "Illustrative logic: the customer still carries commitment exposure, so the effective savings can disappear.",
+      "pricing_lesson": "The discount is valuable only when the customer can use enough of the commitment."
+    },
+    {
+      "scenario": "Zonal EC2 RI for capacity assurance",
+      "customer_situation": "A customer needs matching EC2 capacity confidence in a specific Availability Zone.",
+      "base_price": "EC2 usage matching RI attributes",
+      "pricing_driver": "Capacity reservation scope",
+      "variable_charge": "The zonal EC2 RI can provide capacity reservation plus discounted RI pricing for matching attributes.",
+      "discount_or_adjustment": "RI discount applies when matching usage attributes are present.",
+      "final_bill": "Illustrative logic: the buyer receives discount mechanics and capacity assurance, unlike a Savings Plan alone.",
+      "pricing_lesson": "Capacity assurance is a different pricing boundary from generic commitment discount coverage."
+    }
+  ],
+  "boundary_crossing_map": [
+    {
+      "from_state": "Fully flexible On-Demand usage",
+      "boundary_condition": "Customer commits to eligible usage for one or three years",
+      "to_state": "Discounted commitment-covered usage",
+      "driver": "Commitment coverage of eligible usage",
+      "billing_effect": "Covered usage receives commitment pricing instead of On-Demand pricing.",
+      "customer_perception_risk": "The discount may look simple while the commitment risk is harder to price mentally."
+    },
+    {
+      "from_state": "Covered commitment usage",
+      "boundary_condition": "Actual usage exceeds the commitment or covered attributes",
+      "to_state": "Uncovered On-Demand usage",
+      "driver": "Uncovered usage exposure",
+      "billing_effect": "Excess usage is charged at On-Demand rates.",
+      "customer_perception_risk": "The buyer may expect the discount to cover more usage than the commitment actually covers."
+    },
+    {
+      "from_state": "Forecasted usage matches commitment",
+      "boundary_condition": "Actual usage falls below the committed level",
+      "to_state": "Underused commitment exposure",
+      "driver": "Commitment coverage of eligible usage",
+      "billing_effect": "Expected savings decline because the customer carries unused commitment value.",
+      "customer_perception_risk": "The buyer may experience the discount as lock-in if workloads shrink or move."
+    },
+    {
+      "from_state": "Savings Plans discount expectation",
+      "boundary_condition": "Customer needs EC2 capacity reserved in a specific Availability Zone",
+      "to_state": "Zonal EC2 Reserved Instance capacity reservation logic",
+      "driver": "Capacity reservation scope",
+      "billing_effect": "The buyer must use zonal EC2 RI reservation logic for capacity assurance rather than relying on Savings Plans alone.",
+      "customer_perception_risk": "The buyer may confuse discount coverage with capacity reservation."
+    }
+  ],
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "Coverage-first purchase flow",
+      "why_first": "It targets the fastest comprehension problem: what portion of usage is covered, uncovered, or underused.",
+      "test_type": "Purchase-flow comprehension test",
+      "risk_level": "low",
+      "upside_potential": "Better commitment matching without changing the underlying pricing model.",
+      "implementation_complexity": "medium",
+      "success_metric": "Increase in buyers who can correctly identify covered, uncovered, and underused bill exposure before purchase."
+    },
+    {
+      "priority_rank": 2,
+      "option": "Underuse-risk calculator",
+      "why_first": "It directly reduces the main customer-side failure mode but requires more usage-forecast modeling.",
+      "test_type": "Recommendation tool experiment",
+      "risk_level": "medium",
+      "upside_potential": "Lower regret and better realized savings for commitment buyers.",
+      "implementation_complexity": "medium",
+      "success_metric": "Reduction in commitment underutilization among customers using the calculator."
+    },
+    {
+      "priority_rank": 3,
+      "option": "Capacity-reservation separation",
+      "why_first": "It fixes an important category error, but only for customers evaluating EC2 capacity assurance.",
+      "test_type": "Documentation and purchase education test",
+      "risk_level": "low",
+      "upside_potential": "Fewer mismatched expectations between Savings Plans and zonal EC2 RIs.",
+      "implementation_complexity": "low",
+      "success_metric": "Decrease in capacity reservation confusion signals in support, docs search, or purchase-flow feedback."
+    }
+  ],
+  "reasoning_error_check": [
+    {
+      "error_type": "causal_overclaim",
+      "risk_statement": "The case could overstate AWS's strategic intent by saying AWS explicitly monetizes uncertainty reduction.",
+      "case_specific_check": "Keep the uncertainty-monetization claim framed as analytical interpretation from commitment pricing mechanics.",
+      "evidence_needed": "Official AWS strategy language would be needed to state intent rather than inferred mechanism.",
+      "failure_signal": "The public page presents the strategic interpretation as an AWS-stated claim."
+    },
+    {
+      "error_type": "missing_boundary_conditions",
+      "risk_statement": "The case could blur Savings Plans and EC2 Reserved Instances into one product.",
+      "case_specific_check": "Maintain the boundary that Savings Plans provide discount coverage but no EC2 capacity reservation, while zonal EC2 RIs can reserve capacity.",
+      "evidence_needed": "Official AWS RI and Savings Plans documentation on capacity reservation behavior.",
+      "failure_signal": "A reader believes Savings Plans provide capacity reservation."
+    },
+    {
+      "error_type": "weak_evidence_fit",
+      "risk_statement": "Exact discount claims may be too broad because AWS discount levels vary by product, region, OS, term, payment option, and eligibility.",
+      "case_specific_check": "Use only broad official maximum discount language and avoid invented exact pricing examples.",
+      "evidence_needed": "AWS pricing tables or calculator output for any exact future implementation example.",
+      "failure_signal": "The artifact or page gives precise savings that are not traceable to a dated official source."
+    },
+    {
+      "error_type": "no_trade_off",
+      "risk_statement": "The discount can look like pure savings if underuse risk and flexibility loss are hidden.",
+      "case_specific_check": "Every bill example and decision alternative should show the trade between lower effective rate and commitment risk.",
+      "evidence_needed": "Commitment utilization reporting or customer forecast outcomes would help validate the practical size of the trade off.",
+      "failure_signal": "The page teaches buyers to maximize discount depth without showing utilization risk."
+    },
+    {
+      "error_type": "value_price_confusion",
+      "risk_statement": "The case could confuse workload value with the price driver.",
+      "case_specific_check": "Keep `key_driver` anchored on commitment coverage of eligible usage, not generic cloud value or workload importance.",
+      "evidence_needed": "No extra evidence needed if all JSON fields continue to map to commitment coverage, uncovered usage, term, payment option, flexibility, and capacity scope.",
+      "failure_signal": "The case starts explaining cloud architecture value instead of what changes the bill."
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

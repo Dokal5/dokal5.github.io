@@ -543,7 +543,20 @@ p { margin-bottom: 1.2rem; color: var(--darkgray); font-size: 0.95rem; }
     border-bottom: 1px solid var(--lightgray);
     padding: 2rem 1.5rem 1.5rem;
   }
-  .main { padding: 2rem 1.5rem; }
+  .main {
+    min-width: 0;
+    padding: 2rem 1.5rem;
+  }
+  h1 {
+    max-width: 100%;
+    font-size: 2.2rem;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+  .lead {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
   .tools-grid { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
   .footer { grid-column: 1; }
