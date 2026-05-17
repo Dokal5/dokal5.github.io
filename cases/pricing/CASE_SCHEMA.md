@@ -24,6 +24,13 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
   "case_id": "",
   "case_type": "",
   "evidence_level": "",
+  "reviewed_at": "",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180,
+    "historical_rule": ""
+  },
   "pricing_model": "",
   "value_metric": "",
   "segmentation_type": "",
@@ -35,6 +42,16 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
   "formula": "",
   "upgrade_triggers": [],
   "visualization": {},
+  "pricing_artifact": {
+    "source_url": "",
+    "local_screenshot_path": "",
+    "artifact_date": null,
+    "source_screenshot_date": null,
+    "source_reviewed_at": "",
+    "artifact_type": "",
+    "capture_status": "",
+    "alt_text": ""
+  },
   "primary_component": "",
   "decision_core": {
     "what_is_monetized": "",
@@ -77,6 +94,9 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `case_id` | string | required | none | Stable case identifier. |
 | `case_type` | enum string | required | none | Must be one of: `saas`, `retail`, `subscription`, `marketplace`, `service`, `hardware`, `restaurant`, `logistics`, `other`. |
 | `evidence_level` | enum string | required | none | Must be one of: `observed`, `inferred`, `hypothesized`. |
+| `reviewed_at` | ISO date string | required | none | Last manual review date for case analysis and official sources. This date governs case freshness and library sorting. |
+| `case_status` | enum string | required | `current` | Editorial status. Must be one of: `current`, `historical`. Do not use this field for computed stale state. |
+| `freshness_policy` | `FreshnessPolicy` object | required | `{ "review_interval_days": 180, "stale_after_days": 180, "historical_rule": "" }` | Static review policy for this case. Freshness is computed by display logic from `reviewed_at`, `stale_after_days`, and `case_status`. |
 | `pricing_model` | string | required | none | Short statement of the monetization model. |
 | `value_metric` | string | required | none | Names the unit of value capture used by the model. |
 | `segmentation_type` | string | required | none | Names how buyers, users, or assets are segmented. |
@@ -88,6 +108,7 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `formula` | string or `FormulaObject` | required | none | Must distinguish direct bill drivers from higher-level drivers that set parameters. |
 | `upgrade_triggers` | array of `UpgradeTrigger` | required | `[]` | Conditions that move the buyer into a higher payment level or tighter governance tier. |
 | `visualization` | object | required | `{}` | Visualization metadata object. May remain empty when no visualization metadata is defined. |
+| `pricing_artifact` | `PricingArtifact` object | optional | `{}` | Evidence artifact metadata for the visible pricing artifact or official pricing screenshot. |
 | `primary_component` | enum string | required | none | Must be one of: `tier_ladder`, `matrix`, `driver_logic`, `trigger_path`, `value_extraction_map`. |
 | `decision_core` | `DecisionCore` object | required | none | Explicit answers to the three pricing questions. |
 | `student_10_second_takeaway` | string | required | none | One-sentence statement of what changes the bill. |
@@ -103,6 +124,45 @@ The schema below matches the hidden JSON contract embedded in `CASE_TEMPLATE.htm
 | `reasoning_error_check` | array of `ReasoningErrorCheck` | required | `[]` | Standard stress-test layer for checking whether the case logic is overclaimed, incomplete, or missing trade offs. |
 
 ## Nested Object Contract
+
+### `FreshnessPolicy`
+
+`freshness_policy` is required for newly created or revised cases and must contain:
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `review_interval_days` | number | required | `180` | Default manual review cadence for pricing pages, fee structures, and screenshots. |
+| `stale_after_days` | number | required | `180` | Display logic treats a case as stale when `reviewed_at` is older than this value and `case_status` is not `historical`. |
+| `historical_rule` | string | required | none | Short explanation of when the case should be retained as a historical teaching artifact instead of presented as current evidence. |
+
+Computed freshness states are display behavior, not stored editorial status:
+
+- fresh: `reviewed_at` is within `stale_after_days`
+- stale: `reviewed_at` is older than `stale_after_days` and `case_status` is not `historical`
+- historical: `case_status` is `historical`; this manual status overrides computed stale display
+
+### `PricingArtifact`
+
+`pricing_artifact` describes the local visual evidence artifact when one is used.
+
+| Field | Type | Required | Empty state | Contract |
+| --- | --- | --- | --- | --- |
+| `source_url` | URL string | required when artifact exists | none | Official source represented by the artifact. |
+| `local_screenshot_path` | string | required when artifact exists | none | Local screenshot path. Avoid remote screenshot dependencies for finished cases. |
+| `artifact_date` | ISO date string or null | required when artifact exists | `null` | Date represented by the local artifact file. It should match the dated asset filename. Use `null` when no local dated artifact exists yet. |
+| `source_screenshot_date` | ISO date string or null | required when artifact exists | `null` | Date the live source screenshot was captured. For screenshots, this usually equals `artifact_date`. |
+| `source_reviewed_at` | ISO date string | required when artifact exists | none | Date the official source was manually checked. |
+| `artifact_type` | string | optional | none | Short type such as `pricing_page_screenshot` or `official_fee_page_screenshot`. |
+| `capture_status` | string | optional | none | Capture state such as `captured`, `missing`, or `needs_refresh`. |
+| `alt_text` | string | required when artifact exists | none | Alt text for the visible artifact. |
+
+Date usage:
+
+- `reviewed_at` governs case freshness and library sorting.
+- `artifact_date` is the date represented by the local artifact file.
+- `source_screenshot_date` is when the live source screenshot was captured.
+- `source_reviewed_at` is when the official source was manually checked.
+- Retrieved dates in references remain citation metadata and must not be mixed with freshness or screenshot dates without labels.
 
 ### `DecisionCore`
 
@@ -403,6 +463,8 @@ A pricing case JSON object is complete only if it passes all gates below.
 
 - all required top-level fields are present
 - `schema_version` equals `"1.0"`
+- `reviewed_at`, `case_status`, and `freshness_policy` are present
+- `case_status` is `current` or `historical`; stale state is computed by display logic
 - `decision_core` is filled
 - `key_driver` is explicit
 - `student_10_second_takeaway` explains what changes the bill

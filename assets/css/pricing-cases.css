@@ -112,6 +112,13 @@
   text-transform: none;
 }
 
+.case-historical-note {
+  max-width: 46rem;
+  margin: 0.2rem 0 0;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
 .case-panel {
   border: 1px solid var(--lightgray);
   border-radius: 18px;
@@ -430,6 +437,18 @@
   border-color: rgba(92, 61, 46, 0.14);
   color: var(--accent);
   background: rgba(92, 61, 46, 0.06);
+}
+
+.case-freshness-badge--stale {
+  border-color: rgba(164, 86, 43, 0.26);
+  color: #8f4b21;
+  background: rgba(164, 86, 43, 0.08);
+}
+
+.case-freshness-badge--historical {
+  border-color: rgba(61, 94, 90, 0.24);
+  color: #3d5e5a;
+  background: rgba(61, 94, 90, 0.08);
 }
 
 .case-verdict {

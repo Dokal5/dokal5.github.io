@@ -51,7 +51,9 @@
         <span class="case-tag">Driver logic</span>
         <span class="case-tag">Retail fulfillment</span>
         <span class="case-tag">Hypothesized strategic logic</span>
+        <span class="case-tag case-freshness-badge case-freshness-badge--historical">Historical case</span>
       </div>
+      <p class="case-historical-note">This case is retained as a historical teaching artifact. Review current IKEA pricing before using it as current evidence.</p>
     </div>
 
     <div class="case-detail-layout">
@@ -65,6 +67,8 @@
               <div class="case-visual-label">Pricing artifact</div>
               <p>IKEA Netherlands states that delivery prices are not included in product prices, then lists separate service bands for parcel delivery, truck delivery, and floor-and-room handling.</p>
               <p>The mechanism to notice is not a product tier ladder. It is the movement from low-effort fulfillment to higher-effort logistics work.</p>
+              <p>Artifact date: Not available for a dated local artifact &middot; Screenshot captured: Not available for a dated local artifact &middot; Source reviewed: May 1, 2026</p>
+              <p>Case reviewed: May 1, 2026 &middot; Status: historical</p>
               <p><a class="case-link" href="https://www.ikea.com/nl/en/customer-service/services/delivery/">Open live pricing page</a></p>
             </div>
           </div>
@@ -539,6 +543,13 @@
   "case_id": "ikea-nl-delivery-fulfillment-pricing",
   "case_type": "retail",
   "evidence_level": "observed",
+  "reviewed_at": "2026-05-01",
+  "case_status": "historical",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180,
+    "historical_rule": "Retain as a historical teaching artifact when the case is useful for fulfillment-pricing instruction but should not be used as current evidence without reviewing current IKEA pricing."
+  },
   "pricing_model": "Product-price separation with fulfillment service bands, handling surcharges, and membership discounts",
   "value_metric": "Fulfillment effort required to move the basket from IKEA to the customer",
   "segmentation_type": "Fulfillment mode, basket weight and size, handling location, and membership status",
@@ -642,6 +653,16 @@
     "interactive_controls": [],
     "default_view": "fulfillment effort ladder",
     "student_prompt": "Follow the same basket as it becomes heavier, bulkier, and more convenient to receive."
+  },
+  "pricing_artifact": {
+    "source_url": "https://www.ikea.com/nl/en/customer-service/services/delivery/",
+    "local_screenshot_path": "",
+    "artifact_date": null,
+    "source_screenshot_date": null,
+    "source_reviewed_at": "2026-05-01",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "missing_local_artifact",
+    "alt_text": "Screenshot of the IKEA Netherlands delivery page."
   },
   "primary_component": "driver_logic",
   "decision_core": {

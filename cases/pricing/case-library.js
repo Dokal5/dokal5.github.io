@@ -8,11 +8,15 @@
 // boundary_crossing_summary
 // decision_priority_summary
 // reasoning_error_summary
+// case_status
+// stale_after_days
 //
 // However:
 // - canonical strategic_logic, decision_alternatives, bill_examples,
 //   boundary_crossing_map, decision_priority, and reasoning_error_check
 //   belong inside each case page hidden JSON and CASE_SCHEMA.md
+// - canonical freshness and evidence artifact fields belong inside each
+//   case page hidden JSON and CASE_SCHEMA.md
 // - case-library.js is not the system of record for case analysis
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
@@ -23,6 +27,8 @@ window.pricingCaseRecords = [
     industry: "Cloud infrastructure",
     market: "Cloud customers choosing between On-Demand usage, committed usage discounts, and EC2 capacity reservation needs",
     reviewed_at: "2026-05-16",
+    case_status: "current",
+    stale_after_days: 180,
     mechanism_summary: "AWS commitment pricing discounts eligible usage covered by a one- or three-year commitment. The bill changes when usage is covered, remains uncovered at On-Demand rates, or leaves the customer carrying underused commitment risk.",
     transferable_principle: "When customers can forecast demand, pricing can exchange lower effective rates for supplier predictability while transferring utilization risk to the buyer.",
     strategic_logic_summary: "Hypothesis: customers accept commitment risk when predictable workloads make lower effective rates worth reduced flexibility; the model weakens when forecasts miss.",
@@ -35,6 +41,7 @@ window.pricingCaseRecords = [
     industry: "Lodging marketplace",
     market: "Hosts and guests affected by Airbnb split-fee and single-fee service-fee structures",
     reviewed_at: "2026-05-06",
+    case_status: "current",
     mechanism_summary: "Airbnb service-fee pricing shifts platform fee visibility between guest checkout and host payout. The bill changes when bookings move from split-fee logic to single-fee logic and hosts adjust listed prices to preserve payout.",
     transferable_principle: "In two-sided marketplaces, pricing architecture can change perceived fairness and conversion pressure by moving fee incidence between buyer-visible checkout fees and seller-side payout deductions.",
     strategic_logic_summary: "Hypothesis: Airbnb can preserve marketplace value capture while simplifying guest-facing price, but the model depends on hosts understanding and managing listed-price response.",
@@ -47,6 +54,7 @@ window.pricingCaseRecords = [
     industry: "Printer hardware and consumables subscription",
     market: "Home and small-office printer users choosing monthly page allowances for ink or toner replenishment",
     reviewed_at: "2026-05-04",
+    case_status: "current",
     mechanism_summary: "HP Instant Ink turns consumables into a page-count subscription. The customer bill changes when printed pages consume the monthly allowance, use rollover pages, and then trigger additional page blocks or upgrade pressure.",
     transferable_principle: "When usage is variable but customers want predictability, pricing can anchor on a monthly allowance while using rollover and overage thresholds to manage spikes.",
     strategic_logic_summary: "Hypothesis: customers accept page-count pricing when automatic replenishment lowers consumables friction; the model weakens when page counting feels disconnected from ink or toner use.",
@@ -59,6 +67,7 @@ window.pricingCaseRecords = [
     industry: "Connected fitness hardware",
     market: "Connected home fitness customers",
     reviewed_at: "2026-05-03",
+    case_status: "current",
     mechanism_summary: "Peloton connected equipment creates a trigger path from app-only access into recurring All-Access Membership economics. The customer bill changes when equipment ownership, hardware model choice, financing, or membership dependency changes total cost exposure.",
     transferable_principle: "When hardware is designed around a connected experience, the product purchase can become a boundary that triggers recurring subscription value capture.",
     strategic_logic_summary: "Hypothesis: customers accept recurring membership when the integrated equipment, content, metrics, and software experience keep delivering value; if usage drops, the same membership can feel like lock-in.",
@@ -71,6 +80,7 @@ window.pricingCaseRecords = [
     industry: "Ecommerce logistics",
     market: "Third-party sellers using Amazon fulfillment and storage infrastructure",
     reviewed_at: "2026-05-03",
+    case_status: "current",
     mechanism_summary: "Amazon FBA translates product size, shipping weight, category, storage volume, season, and inventory age into fulfillment and storage fee states. The seller bill changes when products cross operational burden boundaries.",
     transferable_principle: "When cost-to-serve varies by physical handling and capacity burden, pricing can use a matrix to push sellers toward better packaging, inventory planning, and margin discipline.",
     strategic_logic_summary: "Hypothesis: sellers accept operationally driven FBA fees because Amazon reduces fulfillment complexity, but fee boundaries can create margin surprise when products become bulky, slow-moving, or peak-season inventory.",
@@ -83,6 +93,8 @@ window.pricingCaseRecords = [
     industry: "Home furnishing retail",
     market: "Netherlands retail customers choosing between self-transport, collection, parcel delivery, truck delivery, and room delivery",
     reviewed_at: "2026-05-01",
+    case_status: "historical",
+    stale_after_days: 180,
     mechanism_summary: "IKEA Netherlands separates product price from fulfillment service fees. The case turns on basket fulfillment difficulty: weight, size, service mode, handling location, and membership status change the service fee layered onto product price.",
     transferable_principle: "When fulfillment effort varies sharply by basket, separate product price from service price only if the buyer can understand why heavier, bulkier, or more convenient-to-receive baskets cost more to fulfill.",
     strategic_logic_summary: "Hypothesis: visible fulfillment effort makes separate service charges feel more acceptable while preserving low product-price perception.",
@@ -95,6 +107,7 @@ window.pricingCaseRecords = [
     industry: "Commerce platform software",
     market: "Merchants choosing ecommerce plans, payment processing, third-party payment providers, and enterprise commerce capabilities",
     reviewed_at: "2026-05-02",
+    case_status: "current",
     mechanism_summary: "Shopify combines visible subscription access with payment and transaction-related economics. The merchant bill changes with commerce scale, payment setup, plan level, third-party payment provider usage, and enterprise requirements.",
     transferable_principle: "When a platform creates value through transaction infrastructure, the visible subscription fee is only part of the price architecture; the real bill depends on how much commerce activity flows through the platform.",
     strategic_logic_summary: "Hypothesis: merchants tolerate layered platform and payment economics when Shopify reduces commerce operating complexity and scales with merchant growth.",
@@ -107,6 +120,7 @@ window.pricingCaseRecords = [
     industry: "Work management software",
     market: "B2B teams selecting collaborative planning and workflow operating systems",
     reviewed_at: "2026-05-13",
+    case_status: "current",
     mechanism_summary: "monday.com combines a per-seat price with a tier ladder of capability depth. The bill changes when seat count grows, buyers move up tiers, or commitment shifts from monthly to annual billing.",
     transferable_principle: "When collaboration software value scales with organizational complexity, a seat-based tier ladder can align willingness-to-pay with both team size and operational requirements.",
     strategic_logic_summary: "Hypothesis: buyers accept linear seat pricing when tier progression matches real governance and integration needs as teams scale.",

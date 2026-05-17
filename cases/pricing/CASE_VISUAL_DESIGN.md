@@ -108,6 +108,23 @@ Do not:
 Visual density rule:
 The caption should not exceed two short paragraphs.
 
+### Freshness And Evidence Dates
+
+Purpose:
+Keep pricing pages, fee structures, screenshots, and references from being treated as timeless evidence.
+
+Date definitions:
+1. `reviewed_at` is the case analysis and source review date. It governs case freshness and library sorting.
+2. `source_reviewed_at` is the date the official source was manually checked.
+3. `source_screenshot_date` is the date the live source screenshot was captured.
+4. `artifact_date` is the date represented by the local artifact filename.
+
+Display rule:
+Label review date, screenshot date, artifact date, and retrieved date explicitly. Do not mix review date, screenshot date, artifact date, and retrieved date without labels.
+
+Status rule:
+Show `Stale review` only when display logic determines `reviewed_at` is older than the case freshness window and the case is not historical. Show `Historical case` when `case_status` is `historical`.
+
 ### 02 Core Insight
 
 Purpose:
@@ -465,7 +482,7 @@ Must include:
 Do not:
 1. use unsupported price claims
 2. cite weak third-party sources when official sources exist
-3. mix evidence dates with screenshot dates unless explicitly stated
+3. mix evidence dates, screenshot dates, artifact dates, or retrieved dates unless explicitly labeled
 
 ## Prose Density Rules
 

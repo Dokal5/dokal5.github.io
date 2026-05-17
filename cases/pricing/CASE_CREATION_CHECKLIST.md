@@ -41,34 +41,47 @@ Use this checklist when creating or revising a production pricing case.
 - Stamp the visible page copy with capture and review dates.
 - Avoid remote image dependencies for the case visual.
 
-## 6. Library Index
+## 6. Freshness Review
+
+For every new or revised case:
+
+- Refresh official pricing or fee sources before updating the case.
+- Update `reviewed_at` after manual evidence review.
+- Update `pricing_artifact.source_reviewed_at` for the official source check.
+- Update the local screenshot artifact if the visible pricing structure changed.
+- Ensure `pricing_artifact.artifact_date` matches the dated local asset filename.
+- Keep `case_status` as `current` unless the case is retained for teaching but no longer presented as current evidence.
+- Mark `case_status` as `historical` when the mechanism is retained for teaching but no longer presented as current.
+- Add a visible historical note when `case_status` is `historical`.
+
+## 7. Library Index
 
 - Add or update the record in `case-library.js`.
-- Keep the index lightweight: title, company, industry, market, review date, mechanism summary, transferable principle, optional preview summaries, and page path.
+- Keep the index lightweight: title, company, industry, market, review date, case status, optional stale window, mechanism summary, transferable principle, optional preview summaries, and page path.
 - Do not move canonical case analysis into `case-library.js`.
 
-## 7. Implementation Review
+## 8. Implementation Review
 
 - Run `/cognition/prompts/implementation_review.md` before merge or publication.
 - Check the page against the approved Layer 1, `CASE_SCHEMA.md`, `CASE_TEMPLATE.html`, `CASE_VISUAL_DESIGN.md`, and `case-library.js`.
 - Confirm hidden JSON, mechanism rendering, evidence artifact, navigation, index entry, sorting, filters, and counts.
 - Treat `FAIL` as a blocker before merge.
 
-## 8. Local Verification
+## 9. Local Verification
 
 - Open the case page locally.
 - Check the hero lockup, pricing artifact, back link, section order, and hidden JSON.
 - Check the Pricing Cases index count, sorting, filters, and card link.
 - Check Home and Case Library dynamic counts.
 
-## 9. GitHub PR And Post Merge Audit
+## 10. GitHub PR And Post Merge Audit
 
 - Use the PR for final human review and merge decision.
 - After publishing, compare key online files against local files and account for GitHub Pages cache.
 - Check the live GitHub Pages page, navigation, assets, library counts, sorting, and filters.
 - Record any cache delay or live/local mismatch before treating the case as fully published.
 
-## 10. Brain Update
+## 11. Brain Update
 
 - Before merge, add public backlinks or teaching-sequence links required by the case page.
 - After merge, update internal related-case, concept, or teaching-sequence notes when needed.
