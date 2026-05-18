@@ -677,6 +677,13 @@
   "case_id": "amazon-fba-fulfillment-storage-pricing",
   "case_type": "logistics",
   "evidence_level": "observed",
+  "reviewed_at": "2026-05-03",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180,
+    "historical_rule": "Retain as historical only if Amazon changes the public FBA fee structure enough that this page is no longer current evidence."
+  },
   "pricing_model": "Fulfillment and inventory storage fee matrix based on product size tier, shipping weight, storage volume, season, and inventory age",
   "value_metric": "Operational burden created by each seller product inside Amazon fulfillment and storage infrastructure",
   "segmentation_type": "Product size tier, shipping weight, apparel classification, cubic-foot storage volume, season, and inventory age",
@@ -817,6 +824,16 @@
     ],
     "default_view": "Operational burden fee matrix",
     "student_prompt": "Which operational boundary changes the seller's FBA cost exposure?"
+  },
+  "pricing_artifact": {
+    "source_url": "https://sell.amazon.com/fulfillment-by-amazon",
+    "local_screenshot_path": "../../assets/pricing-artifacts/amazon-fba-fulfillment-storage-pricing/amazon-fba-pricing-page-2026-05-03.png",
+    "artifact_date": "2026-05-03",
+    "source_screenshot_date": "2026-05-03",
+    "source_reviewed_at": "2026-05-03",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of the official Amazon FBA page showing fulfillment costs, storage costs, product examples, and aged inventory costs."
   },
   "primary_component": "matrix",
   "decision_core": {
