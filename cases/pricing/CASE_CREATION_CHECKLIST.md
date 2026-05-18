@@ -69,6 +69,7 @@ For every new or revised case:
 
 ## 9. Local Verification
 
+- Run `node scripts/validate-pricing-cases.mjs` from the repository root.
 - Open the case page locally.
 - Check the hero lockup, pricing artifact, back link, section order, and hidden JSON.
 - Check the Pricing Cases index count, sorting, filters, and card link.

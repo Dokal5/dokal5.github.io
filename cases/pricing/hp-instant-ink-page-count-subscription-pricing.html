@@ -489,6 +489,13 @@
   "case_id": "hp-instant-ink-page-count-subscription-pricing",
   "case_type": "hardware",
   "evidence_level": "observed",
+  "reviewed_at": "2026-05-04",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180,
+    "historical_rule": "Retain as historical only if HP changes the public Instant Ink page-count subscription structure enough that this page is no longer current evidence."
+  },
   "pricing_model": "Printer consumables subscription based on monthly page allowance, rollover pages, and additional page blocks",
   "value_metric": "Printed pages per billing period",
   "segmentation_type": "Monthly page allowance, ink versus toner plan type, rollover balance, and overage exposure",
@@ -638,6 +645,16 @@
     ],
     "default_view": "Plan allowance to rollover to additional page block trigger path",
     "student_prompt": "At what point does printing move from included pages to rollover use and then to extra-page billing?"
+  },
+  "pricing_artifact": {
+    "source_url": "https://www.hp.com/us-en/shop/cv/instantink",
+    "local_screenshot_path": "../../assets/pricing-artifacts/hp-instant-ink-page-count-subscription-pricing/hp-instant-ink-pricing-page-2026-05-04.png",
+    "artifact_date": "2026-05-04",
+    "source_screenshot_date": "2026-05-04",
+    "source_reviewed_at": "2026-05-04",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of the official HP Instant Ink pricing page showing plan prices, monthly page allowances, and extra page set billing."
   },
   "primary_component": "trigger_path",
   "decision_core": {

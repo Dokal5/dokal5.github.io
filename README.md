@@ -12,11 +12,11 @@ The site is published from this repository as plain HTML, CSS, and JavaScript. T
 - Case Library: case-based teaching material.
 - Pricing Cases: structured pricing mechanism cases rendered from static case pages and a lightweight index file.
 
-As of the 2026-05-16 progress review, the site includes:
+As of the 2026-05-17 progress review, the site includes:
 
 - 2 thought essays.
 - 15 course pages.
-- 7 published pricing cases.
+- 8 published pricing cases.
 
 ## Pricing Case Workflow
 
@@ -51,6 +51,7 @@ http://localhost:8000/
 Before publishing, check:
 
 - `git status --short --branch`
+- `node scripts/validate-pricing-cases.mjs`
 - Home page pricing case count.
 - Case Library pricing case count.
 - Pricing Cases list sorting and filters.
