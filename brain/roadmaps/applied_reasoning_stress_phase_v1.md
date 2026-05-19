@@ -364,6 +364,8 @@ This phase succeeds when:
 
 This phase pressure-tests existing and architecture-referenced Brain systems rather than replacing them.
 
+Some referenced systems are not present in the repository yet. When a referenced file is absent, it remains roadmap context only and should not be treated as active governance, an implementation prerequisite, or evidence that the layer has already been operationalized.
+
 - `pricing_reasoning_ontology.md` is pressure-tested for concept boundaries, low-fit mappings, and candidate gaps.
 - `ontology_fit_classification.md` is pressure-tested for whether reviewers can preserve weak fit without forcing a clean mapping.
 - `brain_lookup_retrieval_policy.md` is pressure-tested for whether retrieval improves reasoning clarity rather than surface similarity.
@@ -373,6 +375,8 @@ This phase pressure-tests existing and architecture-referenced Brain systems rat
 - `brain_concept_lifecycle_governance_v1.md` is pressure-tested for whether repeated gaps are promoted slowly and isolated gaps remain exploratory.
 
 If referenced governance or protocol files are absent from the checkout, they remain referenced architecture context only. This roadmap does not create, modify, or backfill those files.
+
+This phase must not create or backfill missing ontology, retrieval, or analogical comparison files as a side effect of stress testing. Missing referenced files require separate review before creation.
 
 ## Suggested Execution Order
 

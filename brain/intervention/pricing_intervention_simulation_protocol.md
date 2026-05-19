@@ -340,7 +340,7 @@ brain/intervention/pricing_intervention_simulation_protocol.md
 
 This is the preferred location because Pricing Intervention Simulation is a Brain-layer reasoning protocol, not a production artifact contract.
 
-`cognition/pricing_intervention_simulation_protocol.md` would be plausible if this were mainly an operational workflow entrypoint, but the protocol is more directly about reasoning behavior.
+`cognition/pricing_intervention_simulation_protocol.md` was considered conceptually plausible if this were mainly an operational workflow entrypoint, but it is intentionally not used. No cognition copy is required, and this missing cognition path should not be treated as a missing file.
 
 Adding this protocol to `cognition/workbench_artifact.md` would make the Workbench Artifact contract carry too much reasoning governance and could imply a required production-sidecar schema change too early.
 
