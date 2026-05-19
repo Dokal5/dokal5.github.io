@@ -190,6 +190,12 @@
   "case_id": "monday_seat_based_work_management_pricing",
   "case_type": "saas",
   "evidence_level": "observed",
+  "reviewed_at": "2026-05-13",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180
+  },
   "pricing_model": "Per-seat subscription with plan-tier feature gating",
   "value_metric": "Paid collaborating seats within selected work management plan tiers",
   "segmentation_type": "Plan tier, paid seat count, workflow maturity, governance needs, automation depth, integration needs, and billing cycle",
@@ -331,6 +337,15 @@
     ],
     "default_view": "Seat count multiplies the selected plan tier",
     "student_prompt": "Which part of the bill changed: seats, tier depth, billing cycle, or enterprise quote state?"
+  },
+  "pricing_artifact": {
+    "source_url": "https://monday.com/pricing",
+    "local_screenshot_path": "../../assets/pricing-artifacts/monday-seat-based-work-management-pricing/monday-pricing-page-2026-05-14.png",
+    "screenshot_captured_at": "2026-05-14",
+    "source_reviewed_at": "2026-05-13",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of the monday.com pricing page showing plan cards for Free, Basic, Standard, Pro, and Enterprise"
   },
   "primary_component": "tier_ladder",
   "decision_core": {

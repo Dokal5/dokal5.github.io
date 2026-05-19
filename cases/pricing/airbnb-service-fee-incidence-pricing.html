@@ -528,6 +528,12 @@
   "case_id": "airbnb-service-fee-incidence-pricing",
   "case_type": "marketplace",
   "evidence_level": "observed",
+  "reviewed_at": "2026-05-06",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 180,
+    "stale_after_days": 180
+  },
   "pricing_model": "Marketplace service-fee structure that shifts platform fee incidence between guest-visible checkout fee and host-side payout deduction",
   "value_metric": "Confirmed booking subtotal and marketplace transaction coordination",
   "segmentation_type": "Fee structure, host type, software connection status, hospitality listing status, geography, currency condition, and booking type",
@@ -682,6 +688,15 @@
     ],
     "default_view": "Split fee versus single fee incidence map",
     "student_prompt": "Where does Airbnb's service fee appear: guest checkout, host payout, or host listed price?"
+  },
+  "pricing_artifact": {
+    "source_url": "https://www.airbnb.com/resources/hosting-homes/a/simplifying-airbnb-service-fees-746",
+    "local_screenshot_path": "../../assets/pricing-artifacts/airbnb-service-fee-incidence-pricing/airbnb-service-fee-incidence-page-2026-05-06.png",
+    "screenshot_captured_at": "2026-05-06",
+    "source_reviewed_at": "2026-05-06",
+    "artifact_type": "pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of Airbnb Resource Center page showing split-fee, single-fee, host payout, and guest payment examples"
   },
   "primary_component": "value_extraction_map",
   "decision_core": {
