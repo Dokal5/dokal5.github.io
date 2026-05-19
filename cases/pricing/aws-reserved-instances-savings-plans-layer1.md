@@ -836,3 +836,14 @@ Unresolved mechanism uncertainty:
 
 Recommended next action:
 Run a review-only pass against `cognition/workbench_artifact.md` and `cases/pricing/CASE_LAYER1_SCHEMA.md`. If the artifact remains `READY_FOR_CODEX`, plan the public HTML implementation separately.
+
+## Human Gate
+
+Status: NOT_APPROVED
+
+Trace:
+- No explicit owner sign-off is recorded in this Layer 1 artifact.
+- This stabilization task does not grant owner sign-off for implementation or release.
+- Implementation Gate means analytical readiness for Codex work.
+- Human Gate means explicit owner approval to implement or publish.
+- The existing public page is not evidence of Human Gate approval.
