@@ -82,7 +82,7 @@ Examples:
 - `brain/ontology/ontology_fit_classification.md`
 - `brain/ontology/pricing_ontology_stress_test_01.md`
 
-Can govern:
+When present and reviewed, this layer can govern:
 
 - pattern language
 - fit confidence
@@ -105,7 +105,7 @@ Examples:
 - `cognition/brain_lookup_retrieval_policy.md`
 - `brain/analogical_reasoning/analogical_comparison_protocol.md`
 
-Can govern:
+When present and reviewed, this layer can govern:
 
 - analogy quality
 - retrieval roles
@@ -254,13 +254,27 @@ Current asset classification:
 | `cases/pricing/CASE_SCHEMA.md` | production-safe |
 | `cases/pricing/CASE_TEMPLATE.html` | production-safe |
 | `cases/pricing/COMPONENT_LIBRARY.md` | production-safe |
-| `brain/ontology/pricing_reasoning_ontology.md` | advisory |
-| `brain/ontology/ontology_fit_classification.md` | advisory |
-| `cognition/brain_lookup_retrieval_policy.md` | advisory |
-| `brain/analogical_reasoning/analogical_comparison_protocol.md` | advisory |
+| `brain/ontology/pricing_reasoning_ontology.md` | referenced architecture context only; not present |
+| `brain/ontology/ontology_fit_classification.md` | referenced architecture context only; not present |
+| `cognition/brain_lookup_retrieval_policy.md` | referenced architecture context only; not present |
+| `brain/analogical_reasoning/analogical_comparison_protocol.md` | referenced architecture context only; not present |
 | `brain/intervention/pricing_intervention_simulation_protocol.md` | exploratory to advisory |
 | ontology stress tests | exploratory |
 | candidate ontology gaps | exploratory |
+
+## Referenced But Not Present
+
+The following files are referenced as planned or architecture-context documents, but they are not present in the repository at this time:
+
+- `brain/ontology/pricing_reasoning_ontology.md`
+- `brain/ontology/ontology_fit_classification.md`
+- `brain/ontology/pricing_ontology_stress_test_01.md`
+- `cognition/brain_lookup_retrieval_policy.md`
+- `brain/analogical_reasoning/analogical_comparison_protocol.md`
+
+These references do not create active governance authority. They must not be treated as current source-of-truth documents, implementation prerequisites, production contracts, ontology labels, UI dependencies, hidden JSON fields, automation inputs, or case implementation rules.
+
+If any of these files are later created, they require normal review and must remain subordinate to the authority hierarchy in this document. Until then, they remain referenced architecture context only.
 
 ## Promotion Rules
 
