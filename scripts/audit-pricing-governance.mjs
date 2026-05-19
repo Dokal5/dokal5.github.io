@@ -24,6 +24,7 @@ const REQUIRED_HIDDEN_JSON_FIELDS = [
 ];
 
 const ALLOWED_CASE_STATUSES = new Set(["current", "historical"]);
+const MISSING_HISTORICAL_ARTIFACT_WAIVERS = new Set(["missing_historical_waiver"]);
 
 const BRAIN_ONLY_FIELDS = [
   "ontology_fit",
@@ -591,12 +592,19 @@ function auditArtifacts(casePages) {
       );
     } else {
       const explained = Boolean(captureStatus) || hasWaiverMetadata(artifact);
+      const hasHistoricalArtifactWaiver =
+        page.hiddenJson?.case_status === "historical" &&
+        MISSING_HISTORICAL_ARTIFACT_WAIVERS.has(captureStatus);
       addFinding(
         "AR002_local_screenshot_path_exists",
-        "WARNING",
+        hasHistoricalArtifactWaiver ? "PASS" : "WARNING",
         page.file,
-        "local_screenshot_path is missing or empty.",
-        "Add a local screenshot path, or keep a clear capture_status or waiver for the missing artifact."
+        hasHistoricalArtifactWaiver
+          ? `local_screenshot_path is missing under explicit historical waiver: ${captureStatus}.`
+          : "local_screenshot_path is missing or empty.",
+        hasHistoricalArtifactWaiver
+          ? "No repair needed."
+          : "Add a local screenshot path, or keep a clear capture_status or waiver for the missing artifact."
       );
       addFinding(
         "AR003_missing_artifact_has_waiver",
