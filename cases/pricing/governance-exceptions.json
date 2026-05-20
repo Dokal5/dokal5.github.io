@@ -101,14 +101,14 @@
       "severity": "WARNING",
       "target_file": "cases/pricing/monday-seat-based-work-management-pricing-layer1.md",
       "target_scope": "layer1",
-      "reason": "The Monday Layer 1 sidecar is intentionally tracked as legacy_published during a transitional governance period.",
-      "status": "active",
+      "reason": "The Monday Layer 1 sidecar was intentionally tracked as legacy_published during a transitional governance period.",
+      "status": "resolved",
       "created_at": "2026-05-19",
       "review_after": "2026-08-17",
       "owner": "pricing-governance-maintainers",
       "allowed_until": "2026-11-15",
-      "resolution_plan": "Modernize the Layer 1 sidecar to the current Workbench contract or keep the legacy status visible until the broader Layer 1 modernization batch.",
-      "notes": "Legacy maturity is descriptive only and does not approve missing Human Gate requirements."
+      "resolution_plan": "Resolved by modernizing the Monday Layer 1 sidecar to the current Layer 1 Workbench shape.",
+      "notes": "Historical legacy maturity record only. The modernization preserves separate Human Gate treatment and does not infer owner sign-off from publication."
     },
     {
       "exception_id": "pricing-gov-ex-2026-05-19-cache-buster-version-mismatch",
