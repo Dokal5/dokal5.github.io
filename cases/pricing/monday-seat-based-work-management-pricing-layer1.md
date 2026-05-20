@@ -12,7 +12,7 @@ Company:
 monday.com
 
 Case ID:
-monday_seat_based_work_management_pricing
+monday-seat-based-work-management-pricing
 
 Pricing model:
 Per-seat subscription with plan-tier feature gating.
@@ -49,7 +49,7 @@ The bill changes when a team adds paid seats, moves up a plan tier, or crosses a
 ```json
 {
   "schema_version": "1.0",
-  "case_id": "monday_seat_based_work_management_pricing",
+  "case_id": "monday-seat-based-work-management-pricing",
   "case_type": "saas",
   "evidence_level": "observed",
   "pricing_model": "Per-seat subscription with plan-tier feature gating",
