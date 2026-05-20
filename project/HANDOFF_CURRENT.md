@@ -4,19 +4,19 @@
 
 - Snapshot date: 2026-05-20.
   verified_from: automation run date and UTC capture `2026-05-20T12:07:45Z`.
-- Branch: `site/pricing-governance-cleanup-2026-05-20`.
+- Branch: `main`.
   verified_from: `git status --short --branch`.
-- Commit: `157d8880cecff2e30a23c58808213f5d1491a692`.
-  verified_from: `git rev-parse HEAD`.
+- Latest main commit: `76e9dd5 Merge pull request #75 from Dokal5/case/resolve-monday-layer1-maturity-warning`.
+  verified_from: `git log -1 --oneline`.
 - Worktree path: `/Users/davechiu/Projects/25032026 Github perosnal website`.
   verified_from: `pwd`.
 
 ## Current State
 
 - Governance audit result: 341 PASS / 0 WARNING / 0 FAIL.
-  verified_from: `node scripts/audit-pricing-governance.mjs --format json`.
-- The Monday Layer 1 maturity warning is resolved; `L1003_maturity_classified` now passes for the monday.com Layer 1 sidecar.
-  verified_from: `node scripts/audit-pricing-governance.mjs --format json`.
+  verified_from: `node scripts/audit-pricing-governance.mjs --strict --format json`.
+- The Monday Layer 1 maturity warning is resolved; `L1003_maturity_classified` now passes and the monday.com Layer 1 sidecar is classified as `stress_tested`.
+  verified_from: `node scripts/audit-pricing-governance.mjs --strict --format json`.
 - Published pricing case count: 8.
   verified_from: `cases/pricing/case-library.js` (8 `slug:` records).
 - `README.md` reports 8 published pricing cases.
