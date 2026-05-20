@@ -13,9 +13,9 @@
 
 ## Current State
 
-- Governance audit result: 340 PASS / 1 WARNING / 0 FAIL.
+- Governance audit result: 341 PASS / 0 WARNING / 0 FAIL.
   verified_from: `node scripts/audit-pricing-governance.mjs --format json`.
-- The only remaining warning is `L1003_maturity_classified` for the monday.com Layer 1 sidecar, classified as `legacy_published`.
+- The Monday Layer 1 maturity warning is resolved; `L1003_maturity_classified` now passes for the monday.com Layer 1 sidecar.
   verified_from: `node scripts/audit-pricing-governance.mjs --format json`.
 - Published pricing case count: 8.
   verified_from: `cases/pricing/case-library.js` (8 `slug:` records).
@@ -28,16 +28,16 @@
 
 ## Active Warnings
 
-- `L1003_maturity_classified` on `cases/pricing/monday-seat-based-work-management-pricing-layer1.md`: Layer 1 maturity remains `legacy_published`.
+- None.
   verified_from: `node scripts/audit-pricing-governance.mjs --format json`.
 
 ## Active Governance Exceptions
 
-- Active exceptions total: 2.
+- Active exceptions total: 1.
   verified_from: `cases/pricing/governance-exceptions.json`.
 - `artifact_policy`: 1 active IKEA historical artifact exception remains.
   verified_from: `cases/pricing/governance-exceptions.json`.
-- `layer1`: 1 active Monday legacy Layer 1 maturity exception remains.
+- `layer1`: 0 active exceptions.
   verified_from: `cases/pricing/governance-exceptions.json`.
 - `identifier_alignment`: 0 active exceptions.
   verified_from: `cases/pricing/governance-exceptions.json`.
@@ -46,7 +46,7 @@
 
 ## Open Risks
 
-- The only remaining audit warning is the Monday Layer 1 legacy maturity state; identifier drift is no longer part of current risk.
+- No active audit warnings remain after the Monday Layer 1 maturity modernization; identifier drift is no longer part of current risk.
   verified_from: `node scripts/audit-pricing-governance.mjs --format json`.
 - The historical progress review still contains the old 7-case snapshot inside a document now explicitly labeled historical, so it should not be read as current state.
   verified_from: `progress-review-2026-05-16.md`.
@@ -55,7 +55,7 @@
 
 ## Current Priority
 
-- Primary priority: keep the repository anchored to this normalized post-cleanup state and treat the remaining Monday Layer 1 legacy maturity as the only live governance warning.
+- Primary priority: keep the repository anchored to this normalized post-cleanup state with zero active audit warnings.
   verified_from: audit result and normalized monday identifiers above.
 
 ## Do Not Do Next
@@ -69,5 +69,5 @@
 
 ## Suggested Next Codex Task
 
-- If further governance work is needed, scope it narrowly to the Monday Layer 1 legacy maturity exception rather than reopening identifier or cache-buster cleanup.
+- If further governance work is needed, scope it to remaining non-Monday governance exceptions rather than reopening identifier, cache-buster, or Monday Layer 1 maturity cleanup.
   verified_from: current audit and exception state.

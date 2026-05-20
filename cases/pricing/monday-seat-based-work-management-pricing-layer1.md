@@ -3,8 +3,60 @@
 - Status: Production support artifact
 - Scope: Layer 1 analytical brief
 - Case: monday.com seat-based work management pricing
+- Case ID: monday-seat-based-work-management-pricing
+- File slug: monday-seat-based-work-management-pricing
 - Source page: `monday-seat-based-work-management-pricing.html`
 - Reviewed: 2026-05-14
+
+## Brain Lookup
+
+Candidate:
+monday.com seat-based work management pricing
+
+Reviewed date:
+2026-05-14
+
+Official artifact:
+Source page and pricing artifact are anchored to the existing published case metadata. No fresh pricing verification was performed during this structure-only modernization.
+
+Related cases:
+- Existing pricing cases that use seats, plan tiers, commitment, or capability boundaries can compare against this case, but this modernization does not add new relationship claims.
+
+Relevant pricing concepts:
+- Seat-based subscription pricing.
+- Plan-tier capability gating.
+- Billing-cycle presentation.
+- Enterprise quote boundary.
+- Collaboration expansion friction.
+
+Likely component pattern:
+`tier_ladder`
+
+Primary component justification:
+`tier_ladder` is selected because the existing Case JSON identifies paid seats inside selected plan tiers as the central bill-changing mechanism.
+
+Teaching sequence fit:
+This case teaches how a SaaS bill changes when a buyer adds seats, crosses plan boundaries, changes billing-cycle view, or enters an Enterprise quote state.
+
+Reasoning novelty:
+The existing case logic shows how team size and workflow complexity can act as linked proxies for willingness to pay.
+
+Evidence confidence:
+HIGH
+
+Mechanism certainty:
+MEDIUM
+
+Mechanism uncertainty:
+- Enterprise remains quote-based in this artifact; no fixed public Enterprise unit price is inferred.
+- Annual-view examples remain anchored to the existing reviewed state and were not freshly verified.
+
+Evidence gaps:
+- Current live pricing page copy was not rechecked during this modernization.
+- Seat-type usage mix and retention by role would be needed to validate collaborator-light seat recommendations.
+
+Lookup status:
+READY_FOR_LAYER_1
 
 ## Case Insight Brief
 
@@ -43,6 +95,14 @@ The model is easy to understand, but it can overstate the link between every add
 
 Student 10-second takeaway:
 The bill changes when a team adds paid seats, moves up a plan tier, or crosses a workflow capability boundary.
+
+## Canonical Insight Sentence
+
+This case monetizes paid collaboration by changing the subscription bill when teams add paid seats, move up plan tiers, change billing-cycle view, or cross workflow capability boundaries.
+
+## Generalizable Pricing Principle
+
+This case illustrates that seats can become a scalable value metric when team size and workflow complexity plausibly grow together because the seller can pair a simple seat multiplier with higher-tier capability boundaries.
 
 ## Case JSON
 
@@ -381,3 +441,335 @@ The bill changes when a team adds paid seats, moves up a plan tier, or crosses a
   ]
 }
 ```
+
+## Render Instruction
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "render_goal": "Show within 10 seconds that monday.com spend changes when paid seat count, plan tier, billing-cycle view, or Enterprise quote state changes.",
+  "primary_component": "tier_ladder",
+  "secondary_components": [
+    "bill examples table",
+    "boundary crossing cards",
+    "decision priority table"
+  ],
+  "first_screen_priority": [
+    "decision_core",
+    "student_10_second_takeaway",
+    "key_driver",
+    "seat count inside selected tier"
+  ],
+  "interactive_controls": [
+    "plan tier",
+    "paid seat count",
+    "billing cycle",
+    "capability boundary"
+  ],
+  "avoid": [
+    "Do not treat Enterprise as a fixed public unit price.",
+    "Do not imply every added collaborator has equal value density.",
+    "Do not hide the trade off between collaboration expansion and seat-pruning pressure.",
+    "Do not render plan features as the main mechanism without showing what changes the bill."
+  ],
+  "failure_modes": [
+    "A reader cannot tell whether seats, tier depth, billing cycle, or Enterprise quote state changed the bill.",
+    "The page presents plan labels without showing how seat count multiplies the selected tier.",
+    "Enterprise quote opacity is treated as a fixed public price.",
+    "Seat expansion friction is hidden."
+  ],
+  "data_dependencies": [
+    "decision_core",
+    "key_driver",
+    "drivers",
+    "formula",
+    "upgrade_triggers",
+    "primary_component",
+    "strategic_logic",
+    "bill_examples",
+    "boundary_crossing_map"
+  ]
+}
+```
+
+Pricing artifact plan:
+Use the existing reviewed source page and source artifact from the published Monday case. No new source claims, dates, screenshots, or pricing facts were added during this modernization.
+
+## Strategic Logic
+
+Strategic logic compression:
+team coordination growth -> active collaboration -> paid seat count and tier depth -> higher seat total and unit price -> revenue grows with adoption and complexity
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "strategic_logic": {
+    "customer_condition": "Teams coordinate more work cross-functionally",
+    "behavior_change": "More users become active collaborators",
+    "pricing_driver": "Paid seat count and tier depth",
+    "billing_change": "Seat total and unit price increase",
+    "financial_outcome": "Revenue grows with adoption and complexity",
+    "dominant_causal_chain": [
+      "Teams coordinate more work cross-functionally",
+      "More users become active collaborators",
+      "Paid seat count and tier depth",
+      "Seat total and unit price increase",
+      "Revenue grows with adoption and complexity"
+    ],
+    "main_assumption": "Seat count and tier depth remain good enough proxies for collaboration value and operational complexity.",
+    "main_failure_risk": "Broad collaboration expands faster than perceived seat-level value, causing seat pruning or resistance to tier upgrades.",
+    "evidence_status": "inferred",
+    "visual_strip": {
+      "enabled": true,
+      "layout": "canonical_five_step_strip"
+    }
+  }
+}
+```
+
+## Decision Alternatives
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "decision_alternatives": [
+    {
+      "option": "Collaborator-light seat class",
+      "pricing_move": "Introduce a collaborator-light seat class between viewer and full paid seat.",
+      "expected_effect": "Lowers expansion friction for partial contributors.",
+      "trade_off": "Potential ARPU dilution if full seats downgrade.",
+      "leading_indicator": "Net seat growth with stable or rising total revenue per account."
+    },
+    {
+      "option": "Publish clearer tier-boundary usage thresholds",
+      "pricing_move": "Publish clearer tier-boundary usage thresholds on the pricing page.",
+      "expected_effect": "Reduces surprise at upgrade moments.",
+      "trade_off": "May slow urgency for premature upgrades.",
+      "leading_indicator": "Lower sales-call objections on plan-transition clarity."
+    },
+    {
+      "option": "Enterprise starting package bands",
+      "pricing_move": "Add Enterprise starting package bands while keeping final pricing quote-based.",
+      "expected_effect": "Improves procurement predictability.",
+      "trade_off": "Less negotiating flexibility at the top end.",
+      "leading_indicator": "Shorter enterprise sales cycle to quote acceptance."
+    }
+  ]
+}
+```
+
+## Bill Examples
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "bill_examples": [
+    {
+      "scenario": "10-seat team on Standard",
+      "customer_situation": "A small team chooses the Standard plan in the annual billing view.",
+      "base_price": "Public annual-view unit price of $12 per seat/month equivalent",
+      "pricing_driver": "Paid seat count within a chosen tier",
+      "variable_charge": "10 paid seats multiply the Standard unit price.",
+      "discount_or_adjustment": "Annual billing view is shown; no additional adjustment is modeled.",
+      "final_bill": "Illustrative public-page logic: 10 x $12 = $120/month equivalent on the annual view.",
+      "pricing_lesson": "Seat growth directly expands spend inside a chosen tier."
+    },
+    {
+      "scenario": "35-seat team on Pro",
+      "customer_situation": "A growing cross-functional team needs Pro-level workflow capability.",
+      "base_price": "Public annual-view unit price of $19 per seat/month equivalent",
+      "pricing_driver": "Plan tier / capability depth",
+      "variable_charge": "35 paid seats multiply the Pro unit price.",
+      "discount_or_adjustment": "Annual billing view is shown; no additional adjustment is modeled.",
+      "final_bill": "Illustrative public-page logic: 35 x $19 = $665/month equivalent on the annual view.",
+      "pricing_lesson": "Capability depth and headcount both drive the bill increase."
+    },
+    {
+      "scenario": "120-seat team needing Enterprise controls",
+      "customer_situation": "A larger department needs enterprise governance, security, or procurement controls.",
+      "base_price": "No fixed public Enterprise unit price",
+      "pricing_driver": "Risk and compliance posture",
+      "variable_charge": "Enterprise pricing moves to a sales quote rather than a listed public unit price.",
+      "discount_or_adjustment": "Negotiated terms may apply; no exact price is inferred.",
+      "final_bill": "Illustrative public-page logic: governance boundary triggers a quote-based pricing state.",
+      "pricing_lesson": "Enterprise requirements change the pricing state, not just the seat multiplier."
+    }
+  ]
+}
+```
+
+## Boundary Crossing Map
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "boundary_crossing_map": [
+    {
+      "from_state": "Basic plan collaboration",
+      "boundary_condition": "Needs timeline/dependency and richer coordination controls",
+      "to_state": "Standard plan",
+      "driver": "Workflow coordination complexity",
+      "billing_effect": "Higher per-seat rate on the same seat base.",
+      "customer_perception_risk": "Upgrade feels feature-forced."
+    },
+    {
+      "from_state": "Standard plan",
+      "boundary_condition": "Needs deeper automation/integration scale",
+      "to_state": "Pro plan",
+      "driver": "Operational scale",
+      "billing_effect": "Step-up in seat unit price.",
+      "customer_perception_risk": "Cost jump may outpace perceived incremental value."
+    },
+    {
+      "from_state": "Pro plan",
+      "boundary_condition": "Enterprise governance/security requirements",
+      "to_state": "Enterprise quote",
+      "driver": "Risk and compliance posture",
+      "billing_effect": "Moves from listed price to negotiated pricing.",
+      "customer_perception_risk": "Quote opacity can slow procurement trust."
+    }
+  ]
+}
+```
+
+## Decision Priority
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "Publish clearer tier-boundary usage thresholds",
+      "why_first": "It is the fastest trust improvement without redesigning the contract structure.",
+      "test_type": "Pricing page clarity experiment",
+      "risk_level": "low",
+      "upside_potential": "Higher buyer confidence at tier transition moments.",
+      "implementation_complexity": "low",
+      "success_metric": "Increase in self-serve tier upgrades with lower objection rates."
+    },
+    {
+      "priority_rank": 2,
+      "option": "Enterprise starting package bands",
+      "why_first": "It directly addresses quote-opacity tension for larger buyers.",
+      "test_type": "Enterprise pricing-page and sales-cycle pilot",
+      "risk_level": "medium",
+      "upside_potential": "More predictable enterprise procurement conversations.",
+      "implementation_complexity": "medium",
+      "success_metric": "Reduced days from enterprise discovery to pricing acceptance."
+    },
+    {
+      "priority_rank": 3,
+      "option": "Collaborator-light seat class",
+      "why_first": "It could be the strongest expansion lever but requires packaging changes and cannibalization controls.",
+      "test_type": "Packaging experiment",
+      "risk_level": "high",
+      "upside_potential": "Broader collaboration adoption without forcing every participant into a full seat.",
+      "implementation_complexity": "high",
+      "success_metric": "Positive revenue lift from net new collaborating users."
+    }
+  ]
+}
+```
+
+## Reasoning Error Check
+
+```json
+{
+  "case_id": "monday-seat-based-work-management-pricing",
+  "reasoning_error_check": [
+    {
+      "error_type": "weak_evidence_fit",
+      "risk_statement": "The case could overstate published Enterprise price certainty.",
+      "case_specific_check": "Verify Enterprise remains quote-based on the official pricing page before using any fixed public Enterprise unit price.",
+      "evidence_needed": "Current pricing page capture and text reference.",
+      "failure_signal": "Any internal model uses a fixed public Enterprise unit price."
+    },
+    {
+      "error_type": "value_price_confusion",
+      "risk_statement": "The case could assume all seat additions carry equal value density.",
+      "case_specific_check": "Compare heavy creators versus light collaborators during expansion.",
+      "evidence_needed": "Seat-type usage mix and retention by role.",
+      "failure_signal": "Seat growth rises while activation depth declines."
+    },
+    {
+      "error_type": "weak_evidence_fit",
+      "risk_statement": "Annual discount assumptions can become stale if pricing page or FAQ copy changes.",
+      "case_specific_check": "Confirm annual discount policy in current source copy before using exact annualized examples.",
+      "evidence_needed": "Dated source excerpt from the official pricing FAQ or pricing page.",
+      "failure_signal": "Examples rely on outdated discount assumptions."
+    },
+    {
+      "error_type": "no_trade_off",
+      "risk_statement": "Recommended pricing moves could hide trade offs across adoption, ARPU, and sales flexibility.",
+      "case_specific_check": "Keep trade offs visible for collaborator-light seats, clearer tier thresholds, and Enterprise package bands.",
+      "evidence_needed": "Experiment readouts by seat mix, plan movement, and enterprise sales-cycle length.",
+      "failure_signal": "A recommendation improves one metric while silently weakening expansion quality or sales flexibility."
+    }
+  ]
+}
+```
+
+## Constitutional Review
+
+Status: PASS
+
+Decision core clarity:
+PASS. The existing artifact directly states what is monetized, what changes the bill, and who pays more and why.
+
+Component alignment:
+PASS. `tier_ladder` matches the bill-changing mechanism because paid seats multiply inside selected plan tiers, with Enterprise moving into a quote-based state.
+
+Causal coherence:
+PASS. The strategic chain is linear and pricing-relevant: team coordination growth -> active collaboration -> paid seat count and tier depth -> higher seat total and unit price -> revenue grows with adoption and complexity.
+
+Unsupported claims:
+PASS WITH SCOPE. This modernization uses the existing Monday sidecar and Case JSON only. Current live pricing, Enterprise quote details, and annual discount policy were not freshly verified.
+
+Strategic tension visibility:
+PASS. The artifact keeps the core tension visible: collaboration expansion can increase revenue, but broad seat growth can create seat-pruning pressure when value density differs by role.
+
+Reasoning compression quality:
+PASS. The canonical insight sentence, generalizable principle, student takeaway, and primary driver all compress the same mechanism without changing the pricing facts.
+
+Constitutional conclusion:
+The Layer 1 brief satisfies current Workbench structure for this production support artifact. Remaining evidence uncertainty is scoped rather than converted into new claims.
+
+## Implementation Gate
+
+Status: READY_FOR_CODEX
+
+Checks:
+- Brain Lookup ready: PASS
+- Nine Layer 1 artifacts present: PASS
+- Case JSON schema-ready: PASS
+- Decision core complete: PASS
+- Canonical insight sentence present: PASS
+- Generalizable pricing principle present: PASS
+- 10-second bill logic clear: PASS
+- Primary component valid: PASS
+- Constitutional Review passed: PASS
+- Evidence risks resolved or scoped: PASS
+- Pricing artifact plan named: PASS
+
+Required fixes before Codex:
+None for structure-only maturity modernization.
+
+Unresolved mechanism uncertainty:
+- Enterprise remains quote-based in this artifact; no fixed public Enterprise unit price is inferred.
+- Annual-view examples are preserved from the existing reviewed artifact and were not freshly verified.
+- Seat-level value density differs by user role and would need usage evidence before changing packaging recommendations.
+
+Recommended next action:
+Run the pricing governance audit and confirm `L1003_maturity_classified` passes for this sidecar before relying on the updated maturity state.
+
+## Human Gate
+
+Status: NOT_RECORDED
+
+Trace:
+- No explicit owner sign-off is recorded in this Layer 1 artifact.
+- This structure-only maturity task does not grant owner sign-off for implementation or release.
+- Implementation Gate means analytical readiness for Codex work.
+- Human Gate means explicit owner sign-off to implement or publish.
+- The existing public page is not used as Human Gate evidence.
