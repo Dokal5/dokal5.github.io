@@ -26,7 +26,7 @@ Related cases:
 - `amazon-fba-fulfillment-storage-pricing`: Verified in Layer 1, HTML, and `case-library.js`. Related because both cases translate capacity burden and predictability into structured pricing exposure.
 - `shopify-transaction-platform-pricing`: Verified in Layer 1, HTML, and `case-library.js`. Related because both cases monetize platform infrastructure through customer activity flowing through the system.
 - `hp-instant-ink-page-count-subscription-pricing`: Verified in Layer 1, HTML, and `case-library.js`. Related because both cases make forecastable usage economically valuable while exposing the customer to overuse or underuse risk.
-- `monday_seat_based_work_management_pricing`: Verified as the canonical `case_id` in Layer 1 and HTML; `case-library.js` uses slug `monday-seat-based-work-management-pricing`. Related because commitment and scale affect spend, although AWS commitment pricing is not a simple seat subscription.
+- `monday-seat-based-work-management-pricing`: Verified as the canonical `case_id` in Layer 1, HTML, and `case-library.js`. Related because commitment and scale affect spend, although AWS commitment pricing is not a simple seat subscription.
 
 Relevant pricing concepts:
 - Commitment pricing: customers receive lower effective rates in exchange for one- or three-year usage commitments.

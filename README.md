@@ -16,7 +16,7 @@ As of the 2026-05-16 progress review, the site includes:
 
 - 2 thought essays.
 - 15 course pages.
-- 7 published pricing cases.
+- 8 published pricing cases.
 
 ## Pricing Case Workflow
 

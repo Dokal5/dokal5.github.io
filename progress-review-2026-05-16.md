@@ -1,5 +1,7 @@
 # dokal5.github.io Progress Review (2026-05-16)
 
+Historical note: This document is a 2026-05-16 snapshot. It is retained for review history and is not the current live project state.
+
 ## Current Status
 
 The local repository and live GitHub Pages site were checked for consistency on 2026-05-16. Local `main` matched `origin/main`, the working tree was clean before this maintenance pass, and sampled live files matched local files.

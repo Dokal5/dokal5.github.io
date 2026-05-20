@@ -42,13 +42,7 @@ const NON_CASE_HTML_FILES = new Set([
   "mechanism-navigator.html"
 ]);
 
-const KNOWN_IDENTIFIER_EXCEPTIONS = {
-  "monday-seat-based-work-management-pricing": {
-    hidden_case_id: "monday_seat_based_work_management_pricing",
-    layer1_case_id: "monday_seat_based_work_management_pricing",
-    reason: "Existing canonical case_id uses underscores while the published slug uses hyphens."
-  }
-};
+const KNOWN_IDENTIFIER_EXCEPTIONS = {};
 
 const KNOWN_CACHE_BUSTER_EXCEPTIONS = {};
 
