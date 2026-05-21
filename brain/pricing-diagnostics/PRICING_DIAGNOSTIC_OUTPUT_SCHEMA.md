@@ -2,7 +2,7 @@
 
 This document defines a structured advisory output format for future diagnostic answers.
 
-This is not a production JSON schema. This is a Brain advisory output structure only. It must not be copied into `CASE_SCHEMA.md`, `CASE_LAYER1_SCHEMA.md`, hidden JSON, public pages, `case-library.js`, or case navigation without explicit human approval and a separate production implementation plan.
+This is not a production JSON schema. This is a Brain advisory output structure only. It must not be copied into `CASE_SCHEMA.md`, `CASE_LAYER1_SCHEMA.md`, `CASE_TEMPLATE.html`, `CASE_VISUAL_DESIGN.md`, hidden JSON, public pages, case artifacts, `case-library.js`, navigation, or automation files without explicit human approval and a separate production implementation plan.
 
 The default `promotion_status` is `brain_only`.
 
@@ -11,6 +11,8 @@ Allowed `promotion_status` values:
 - `brain_only`: Advisory Brain structure only. It has no production authority.
 - `candidate_for_layer1`: Human reviewers may consider using the diagnostic output as upstream context for Layer 1.
 - `approved_for_production`: Explicit human approval has separately authorized production-facing use.
+
+The fields `required_confirming_evidence`, `hard_stop_conditions`, and `recommendation_state_rationale` are Brain advisory fields only. They help preserve diagnostic discipline, but they do not create production schema authority.
 
 ## Example Advisory Output
 
@@ -51,6 +53,13 @@ Allowed `promotion_status` values:
   "causal_hypothesis": "If qualified trial users reach first value with lower perceived risk and clearer plan boundaries, more will convert to paid without attracting uneconomic demand.",
   "expected_customer_behavior_change": "More qualified trial users activate, understand the paid path, and convert to an appropriate paid tier.",
   "expected_business_outcome": "Higher qualified adoption and trial-to-paid conversion with monitored support cost and cannibalization risk.",
+  "required_confirming_evidence": [
+    "Prospect drop-off before paid conversion",
+    "Activation rate during the trial",
+    "Support cost per trial user",
+    "Evidence that trial users are qualified prospects",
+    "Paid customer cannibalization monitoring"
+  ],
   "required_data": {
     "minimum_required": [
       "Trial starts",
@@ -96,6 +105,13 @@ Allowed `promotion_status` values:
     "Offer an annual incentive only after activation"
   ],
   "recommendation_state": "Pilot only",
+  "recommendation_state_rationale": "Pilot only because the symptom suggests a qualified adoption problem, but local evidence is not yet sufficient to separate access-design failure from activation failure, pricing uncertainty, poor segmentation, or weak product value.",
+  "hard_stop_conditions": [
+    "No activation tracking exists",
+    "Free users create unsustainable support cost",
+    "Paid customer cannibalization cannot be monitored",
+    "The upgrade path from trial or starter tier is weak"
+  ],
   "validation_plan": {
     "test": "Pilot an activation-based trial redesign for a qualified cohort.",
     "duration": "One or two buying cycles, depending on normal trial length.",

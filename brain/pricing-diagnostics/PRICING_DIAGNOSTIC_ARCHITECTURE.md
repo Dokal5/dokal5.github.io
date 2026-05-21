@@ -412,4 +412,6 @@ Layer 1 produces case implementation inputs.
 
 Diagnostic outputs may later become upstream context for Layer 1, but only after explicit approval. This file must not redefine Layer 1 schema fields, create new public rendering requirements, add hidden JSON fields, alter `CASE_SCHEMA.md`, or change `CASE_LAYER1_SCHEMA.md`.
 
+This diagnostic architecture must not modify or redefine `CASE_SCHEMA.md`, `CASE_LAYER1_SCHEMA.md`, `CASE_TEMPLATE.html`, `CASE_VISUAL_DESIGN.md`, `case-library.js`, public case pages, hidden JSON, case artifacts, navigation, or automation files.
+
 If this Brain diagnostic architecture conflicts with existing pricing production contracts, the production contracts remain authoritative.

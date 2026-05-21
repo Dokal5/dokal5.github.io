@@ -156,7 +156,7 @@ Required confirming evidence: One side of the platform is constrained, liquidity
 
 Possible pricing designs: Consider subsidizing the constrained side, changing take rates, seller or buyer incentives, peak/off-peak pricing, capacity pricing, or segment-specific participation rules.
 
-Do not recommend when: Cross-side network effects are weak, multihoming dominates, no monetization path exists, capacity constraints are unmeasured, or fairness guardrails are absent.
+Do not recommend when: Cross-side network effects are weak, multihoming dominates, no monetization path exists, capacity constraints are unmeasured, fairness guardrails are absent, segment definitions are unsupported, fences are arbitrary or discriminatory, or eligibility can be easily gamed.
 
 Recommendation state logic: Recommend only when network effects and monetization path are credible. Pilot only when imbalance is clear but subsidy level or dynamic rule is uncertain. Do not recommend yet when liquidity issues are not pricing-caused.
 
