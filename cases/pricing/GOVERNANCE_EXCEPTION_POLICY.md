@@ -84,7 +84,7 @@ The monday.com case has a known slug versus internal identifier mismatch. The ex
 
 ### IKEA historical artifact waiver
 
-The IKEA case is historical, but evidence governance is still required. A waiver documents the absence of a local artifact or the recovery plan; it is not approval to ignore artifact governance.
+The IKEA case is historical, but historical case status alone does not waive artifact governance. A missing local screenshot is acceptable only for a historical case with `pricing_artifact.capture_status: "missing_historical_waiver"` plus explanatory artifact metadata. The case must remain visibly historical and must not be treated as current evidence. The waiver is time-bound and reviewable, not permanent suppression.
 
 ### Legacy Layer 1 maturity transition
 

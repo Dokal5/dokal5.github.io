@@ -86,14 +86,14 @@
       "severity": "WARNING",
       "target_file": "cases/pricing/ikea-nl-delivery-fulfillment-pricing.html",
       "target_scope": "artifact_policy",
-      "reason": "The IKEA case is marked historical and its pricing_artifact object has explicit missing-local-artifact metadata, but local_screenshot_path remains empty.",
+      "reason": "The IKEA case is marked historical and its missing local_screenshot_path is documented by explicit historical waiver metadata in the pricing_artifact object.",
       "status": "active",
       "created_at": "2026-05-19",
       "review_after": "2026-06-18",
       "owner": "pricing-governance-maintainers",
       "allowed_until": "2026-08-17",
-      "resolution_plan": "Add a valid local screenshot path if a historical artifact can be recovered, or replace this entry with a formally approved artifact policy decision.",
-      "notes": "Historical status does not automatically waive artifact governance."
+      "resolution_plan": "Recover and add a valid local screenshot path, or renew or replace this policy decision before the review deadlines if no historical artifact can be recovered.",
+      "notes": "Historical status does not automatically waive artifact governance; this active entry tracks the missing recoverable local artifact, not an active audit warning."
     },
     {
       "exception_id": "pricing-gov-ex-2026-05-19-monday-legacy-layer1-maturity",
