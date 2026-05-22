@@ -2,11 +2,11 @@
 
 ## Snapshot Metadata
 
-- Snapshot date: 2026-05-20.
-  verified_from: automation run date and UTC capture `2026-05-20T12:07:45Z`.
+- Snapshot date: 2026-05-22.
+  verified_from: handoff refresh after pricing diagnostic completion.
 - Branch: `main`.
   verified_from: `git status --short --branch`.
-- Latest main commit: `76e9dd5 Merge pull request #75 from Dokal5/case/resolve-monday-layer1-maturity-warning`.
+- Latest main commit: `73c2ab7 Add pricing diagnostic JSON output test`.
   verified_from: `git log -1 --oneline`.
 - Worktree path: `/Users/davechiu/Projects/25032026 Github perosnal website`.
   verified_from: `pwd`.
@@ -25,6 +25,12 @@
   verified_from: `progress-review-2026-05-16.md`.
 - monday.com identifier normalization is complete in both the hidden JSON and Layer 1 sidecar.
   verified_from: `cases/pricing/monday-seat-based-work-management-pricing.html` and `cases/pricing/monday-seat-based-work-management-pricing-layer1.md`.
+- Pricing Diagnostic Architecture Foundation is complete as a Brain-only advisory layer under `brain/pricing-diagnostics/`.
+  verified_from: `brain/pricing-diagnostics/README.md`, `brain/pricing-diagnostics/PRICING_DIAGNOSTIC_ARCHITECTURE.md`, and commits `d06d13a`, `81722b4`, `73c2ab7`.
+- The diagnostic module has passed three checks: architecture foundation, five-case stress-test mapping, and JSON-style advisory output usability.
+  verified_from: `brain/pricing-diagnostics/STRESS_TEST_RESULTS.md` and `brain/pricing-diagnostics/JSON_OUTPUT_TEST_RESULTS.md`.
+- The diagnostic output remains `promotion_status: brain_only` and has no production authority.
+  verified_from: `brain/pricing-diagnostics/README.md` and `brain/pricing-diagnostics/PRICING_DIAGNOSTIC_OUTPUT_SCHEMA.md`.
 
 ## Active Warnings
 
@@ -52,11 +58,13 @@
   verified_from: `progress-review-2026-05-16.md`.
 - Handoff audit automation is still not implemented in this repository.
   verified_from: missing `scripts/audit-project-handoff.mjs`.
+- Main risk for the diagnostic module: future sessions may accidentally overstate it as production-ready. It is not production schema, not Layer 1, and does not authorize hidden JSON, public page, `case-library.js`, navigation, automation, or pricing artifact changes.
+  verified_from: `brain/pricing-diagnostics/README.md` and `brain/pricing-diagnostics/PRICING_DIAGNOSTIC_ARCHITECTURE.md`.
 
 ## Current Priority
 
-- Primary priority: keep the repository anchored to this normalized post-cleanup state with zero active audit warnings.
-  verified_from: audit result and normalized monday identifiers above.
+- Primary priority: preserve the completed Brain-only pricing diagnostic module as advisory architecture, then use it in controlled advisory trials or decide through explicit governance whether any specific fields should later be promoted.
+  verified_from: completed diagnostic artifacts and Brain-only boundary language.
 
 ## Do Not Do Next
 
@@ -66,8 +74,12 @@
   verified_from: normalized canonical `case_id` in monday production files.
 - Do not create new cache-buster or identifier-alignment exceptions for resolved conditions.
   verified_from: zero active `cache_buster` and `identifier_alignment` exceptions.
+- Do not add more diagnostic docs immediately; the architecture, stress-test, and JSON-output usability checks are complete.
+  verified_from: `brain/pricing-diagnostics/STRESS_TEST_RESULTS.md` and `brain/pricing-diagnostics/JSON_OUTPUT_TEST_RESULTS.md`.
+- Do not treat diagnostic fields as production schema, Layer 1 fields, hidden JSON fields, public page sections, navigation entries, automation changes, pricing artifacts, or `case-library.js` records.
+  verified_from: Brain-only boundary language in `brain/pricing-diagnostics/README.md`.
 
 ## Suggested Next Codex Task
 
-- If further governance work is needed, scope it to remaining non-Monday governance exceptions rather than reopening identifier, cache-buster, or Monday Layer 1 maturity cleanup.
-  verified_from: current audit and exception state.
+- Recommended next task: use the Brain-only diagnostic layer in controlled advisory trials, or explicitly scope a governance decision for whether any single diagnostic field should be promoted later. Do not expand the diagnostic documentation set by default.
+  verified_from: completed diagnostic test artifacts and Brain-only promotion boundary.
