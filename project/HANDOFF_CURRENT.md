@@ -6,7 +6,7 @@
   verified_from: stabilization refresh after Effectory advisory test commit.
 - Branch: `main`.
   verified_from: `git status --short --branch`.
-- Latest main commit: `d8fa231 Add Effectory pricing diagnostic advisory test`.
+- Latest main commit: `cd4ed2d Stabilize pricing site consistency`.
   verified_from: `git log -1 --oneline`.
 - Worktree path: `/Users/davechiu/Projects/25032026 Github perosnal website`.
   verified_from: `pwd`.
@@ -83,5 +83,5 @@
 
 ## Suggested Next Codex Task
 
-- Recommended next task: complete the small public-site consistency stabilization pass for handoff freshness, EVAC language metadata, monday.com case hero consistency, and mechanism navigator count drift. Do not expand the diagnostic documentation set by default.
-  verified_from: completed diagnostic test artifacts, Brain-only promotion boundary, and stabilization review findings.
+- Recommended next task: plan the commercial positioning layer for an advisory credibility engine. Do not modify pricing diagnostics or production case contracts. First define positioning, reader paths, and service-offer scope before creating About, Contact, Work with Dave, newsletter, or workshop pages.
+  verified_from: completed stabilization patch, completed diagnostic test artifacts, and Brain-only promotion boundary.
