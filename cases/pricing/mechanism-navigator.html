@@ -41,8 +41,8 @@
         A guided learning map for reading pricing cases by mechanism. Start with the pricing decision you are trying to understand, then choose the case that best exposes the decision tension behind the bill.
       </p>
       <div class="case-inline-summary">
-        <span class="case-inline-item"><strong>7</strong> mechanism clusters</span>
-        <span class="case-inline-item"><strong>8</strong> published cases</span>
+        <span class="case-inline-item"><strong data-mechanism-cluster-count>7</strong> mechanism clusters</span>
+        <span class="case-inline-item"><strong data-navigator-pricing-case-count>8</strong> published cases</span>
         <a class="case-inline-item case-inline-link" href="index.html">Full library</a>
       </div>
     </div>
@@ -263,5 +263,25 @@
 
 </div>
 
+<script src="case-library.js?v=20260517-aws-ri-sp"></script>
+<script>
+  (function () {
+    function setAll(selector, value) {
+      document.querySelectorAll(selector).forEach(function (element) {
+        element.textContent = String(value);
+      });
+    }
+
+    const clusterCount = document.querySelectorAll(".case-mechanism-card").length;
+    if (clusterCount) {
+      setAll("[data-mechanism-cluster-count]", clusterCount);
+    }
+
+    const records = Array.isArray(window.pricingCaseRecords) ? window.pricingCaseRecords : [];
+    if (records.length) {
+      setAll("[data-navigator-pricing-case-count]", records.length);
+    }
+  }());
+</script>
 </body>
 </html>
