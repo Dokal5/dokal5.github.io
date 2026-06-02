@@ -2,13 +2,13 @@
 
 ## Snapshot Metadata
 
-- Snapshot date: 2026-05-26.
-  verified_from: automation run date in this repository.
+- Snapshot date: 2026-06-02.
+  verified_from: current session date and verification run in this repository.
 - Branch: `main`.
   verified_from: `git branch --show-current`.
-- Branch tracking state: `main` is `0` commits behind and `1` commit ahead of `origin/main`.
+- Branch tracking state: `main` is `0` commits behind and `0` commits ahead of `origin/main`.
   verified_from: `git status -sb` and `git rev-list --left-right --count origin/main...HEAD`.
-- Latest commit: `cab89734cc97d0e52ac5168d9699e533d5204bdd` (`cab8973 Add commercial positioning plan`).
+- Latest commit: `ac72ae2b4161c1bc27b0b2419591d0799dd2abec` (`ac72ae2 Refresh handoff protocol after positioning plan`).
   verified_from: `git rev-parse HEAD` and `git log -1 --oneline`.
 - Worktree path: `/Users/davechiu/Projects/25032026 Github perosnal website`.
   verified_from: `pwd`.
@@ -58,9 +58,9 @@
 
 ## Open Risks
 
-- Local `main` is not fully aligned with `origin/main`; it is one commit ahead, so restart context should reflect local repository state until that commit is pushed or reconciled.
+- Local `main` is aligned with `origin/main`; restart context can treat the tracked remote branch as current for this snapshot.
   verified_from: `git status -sb` and `git rev-list --left-right --count origin/main...HEAD`.
-- The IKEA Netherlands historical case still carries the only active governance exception for missing local screenshot artifact recovery, with `review_after` 2026-06-18 and `allowed_until` 2026-08-17.
+- The IKEA Netherlands historical case still carries the only active governance exception for missing local screenshot artifact recovery. The next exception review deadline is `review_after` 2026-06-18, with `allowed_until` 2026-08-17.
   verified_from: `cases/pricing/governance-exceptions.json`.
 - `progress-review-2026-05-16.md` still contains a historical 7-case snapshot, so it must not be copied into current-state handoff text.
   verified_from: `progress-review-2026-05-16.md`.
