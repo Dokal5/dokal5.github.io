@@ -2,13 +2,13 @@
 
 ## Snapshot Metadata
 
-- Snapshot date: 2026-06-02.
+- Snapshot date: 2026-06-03.
   verified_from: current session date and verification run in this repository.
 - Branch: `main`.
   verified_from: `git branch --show-current`.
 - Branch tracking state: `main` is `0` commits behind and `0` commits ahead of `origin/main`.
   verified_from: `git status -sb` and `git rev-list --left-right --count origin/main...HEAD`.
-- Latest commit: `ac72ae2b4161c1bc27b0b2419591d0799dd2abec` (`ac72ae2 Refresh handoff protocol after positioning plan`).
+- Latest commit: `21ac18dad062636bd2528944c20b7b8ce8b557f6` (`21ac18d Refresh handoff snapshot`).
   verified_from: `git rev-parse HEAD` and `git log -1 --oneline`.
 - Worktree path: `/Users/davechiu/Projects/25032026 Github perosnal website`.
   verified_from: `pwd`.
@@ -28,7 +28,7 @@
 - monday.com identifier normalization is complete in both the hidden JSON and Layer 1 sidecar.
   verified_from: `cases/pricing/monday-seat-based-work-management-pricing.html` and `cases/pricing/monday-seat-based-work-management-pricing-layer1.md`.
 - The commercial positioning plan now exists as a tracked project document on `main`.
-  verified_from: `project/commercial-positioning-plan.md` and `git log -1 --oneline`.
+  verified_from: `project/commercial-positioning-plan.md` and `git log -1 --oneline -- project/commercial-positioning-plan.md`.
 - The pricing diagnostic module remains a Brain-only advisory layer with no production authority over hidden JSON, Layer 1, public pages, navigation, automation, or `case-library.js`.
   verified_from: `brain/pricing-diagnostics/README.md`.
 
