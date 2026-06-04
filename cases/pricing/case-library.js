@@ -21,6 +21,20 @@
 // - index summaries must not override the hidden JSON contract
 window.pricingCaseRecords = [
   {
+    slug: "openai-api-token-metered-pricing",
+    title: "OpenAI API token-metered pricing",
+    company: "OpenAI API",
+    industry: "AI infrastructure",
+    market: "Developers and teams using OpenAI API models for text, reasoning, batch, and tool-supported workloads",
+    reviewed_at: "2026-06-04",
+    case_status: "current",
+    stale_after_days: 30,
+    mechanism_summary: "OpenAI API pricing separates model usage into input tokens, cached input tokens, and output tokens, then changes the effective bill through model choice, processing tier, and tool or storage boundaries where used.",
+    transferable_principle: "When usage is variable and workloads differ in capability, latency, and output intensity, pricing can expose the computation driver while letting customers choose their price-performance tradeoff.",
+    strategic_logic_summary: "Hypothesis: customers accept granular token-metered pricing when they can manage model choice, token mix, caching, and processing urgency; the model weakens when usage is hard to forecast.",
+    page_path: "openai-api-token-metered-pricing.html"
+  },
+  {
     slug: "aws-reserved-instances-savings-plans",
     title: "AWS Reserved Instances / Savings Plans pricing",
     company: "AWS",

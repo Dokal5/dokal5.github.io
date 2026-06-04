@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAI API token-metered pricing | Pricing Cases | Think with Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/pricing-cases.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="site-title">Think with Dave</div>
+    <div class="site-sub">Knowledge Garden</div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-label">Navigation</div>
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../thoughts/index.html">Thoughts</a>
+        <a class="nav-link" href="../../courses/index.html">Courses</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Pricing Cases</div>
+        <a class="nav-link" href="index.html">Library Home</a>
+        <a class="nav-link active" href="openai-api-token-metered-pricing.html">OpenAI API</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header case-hero">
+      <a class="back-link" href="index.html">&larr; Back to Pricing Cases</a>
+      <div class="case-kicker">Pricing Case</div>
+      <div class="case-company-lockup">
+        <div class="case-company-icon case-company-icon--text" aria-label="OpenAI icon">OA</div>
+        <div class="case-company-meta">
+          <div class="case-company-name">OpenAI API</div>
+          <div class="case-company-note case-company-note--reviewed">Reviewed June 4, 2026</div>
+        </div>
+      </div>
+      <h1>OpenAI API token-metered pricing</h1>
+      <p class="lead">
+        OpenAI API pricing makes the customer bill move with model choice, input tokens, cached input, output length, processing tier, and tool boundaries.
+      </p>
+      <div class="case-tag-row" style="margin-top: 1.2rem;">
+        <span class="case-tag">Current review</span>
+        <span class="case-tag">driver_logic</span>
+        <span class="case-tag">Token-metered API usage</span>
+      </div>
+      <p class="case-company-note">
+        OpenAI API prices and model availability change quickly. This case was reviewed on June 4, 2026 and should be rechecked within 30 days. Exact price examples must be recaptured from official OpenAI pricing sources within 7 days before any future production promotion or material update; if not recaptured, remove exact prices and keep only driver-based bill examples.
+      </p>
+    </div>
+
+    <div class="case-detail-layout">
+      <div class="content-body">
+        <section class="section case-framework-section" data-case-section="pricing-page-visual">
+          <div class="case-section-label">01 / Pricing Page Visual</div>
+          <h2>Pricing Page Visual</h2>
+          <div class="case-visual-card">
+            <img src="../../assets/pricing-artifacts/openai-api-token-metered-pricing/openai-api-pricing-page-2026-06-04.png" alt="Screenshot of the official OpenAI API pricing documentation showing token pricing categories and model rates reviewed on June 4, 2026.">
+            <div class="case-visual-body">
+              <div class="case-visual-label">Pricing artifact</div>
+              <p>Local screenshot captured from the official OpenAI developer pricing documentation on June 4, 2026.</p>
+              <p>Artifact status: captured · Artifact date: June 4, 2026 · Screenshot captured: June 4, 2026 · Source reviewed: June 4, 2026 · Case reviewed: June 4, 2026 · Status: current</p>
+              <p><a class="case-link" href="https://developers.openai.com/api/docs/pricing">Open official API pricing docs</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="core-insight">
+          <div class="case-section-label">02 / Core Insight</div>
+          <h2>Core Insight</h2>
+          <div class="case-layer1-insight-box">
+            <ul>
+              <li>OpenAI monetizes API computation consumed through model calls, primarily measured by token category and processing mode.</li>
+              <li>The bill changes when model choice, input volume, cached input reuse, output length, processing tier, or tool boundaries change.</li>
+              <li>Customers using higher-priced models, more uncached input, longer output, urgent processing, or additional tools pay more because their workload consumes more or higher-priority API capacity.</li>
+            </ul>
+          </div>
+          <p class="case-section-brief">
+            Monetized: API computation consumed &middot; Bill changes: model, tokens, tier, and tools &middot; Higher payers: customers with heavier or higher-priority API workloads.
+          </p>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-logic-deconstruction">
+          <div class="case-section-label">03 / Pricing Logic Deconstruction</div>
+          <h2>Pricing Logic Deconstruction</h2>
+          <p class="case-claim-statement">
+            The bill changes when model choice, input volume, cached context reuse, output length, processing tier, or tool usage changes the amount and urgency of API computation consumed.
+          </p>
+          <div class="case-answer-grid">
+            <div class="case-answer-card">
+              <span>Key driver</span>
+              <strong>API computation consumed</strong>
+              <p>Computation is exposed through model choice, token categories, processing tier, and tool boundaries.</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Scaling logic</span>
+              <strong>Hybrid variable driver</strong>
+              <p>Spend scales continuously with tokens, while model and processing choices change the rate applied to that usage.</p>
+            </div>
+            <div class="case-answer-card">
+              <span>Main upgrade condition</span>
+              <strong>Higher capability or urgency</strong>
+              <p>Customers move into higher spend states when they select higher-priced models, generate longer output, need priority processing, or use extra tools.</p>
+            </div>
+          </div>
+          <p class="case-section-brief">
+            The observable pricing structure is official; the strategic explanation for why OpenAI uses this structure is hypothesized and should not be treated as proof of internal cost structure.
+          </p>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="strategic-logic">
+          <div class="case-section-label">04 / Strategic Logic</div>
+          <h2>Strategic Logic</h2>
+          <p class="case-section-brief">
+            Hypothesized pricing-relevant causal logic. Not proof.
+          </p>
+          <div class="case-strategic-strip" aria-label="Hypothesized strategic logic">
+            <div class="case-strip-node case-strip-node--condition">
+              <span class="case-strip-label">Customer Condition</span>
+              <strong>Variable AI workloads</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-strip-node case-strip-node--behavior">
+              <span class="case-strip-label">Behavior Change</span>
+              <strong>Choose model and urgency</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-strip-node case-strip-node--driver">
+              <span class="case-strip-label">Pricing Driver</span>
+              <strong>API computation consumed</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-strip-node case-strip-node--billing">
+              <span class="case-strip-label">Billing Change</span>
+              <strong>Token and tier charges change</strong>
+            </div>
+            <div class="case-strip-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-strip-node case-strip-node--outcome">
+              <span class="case-strip-label">Financial Outcome</span>
+              <strong>Revenue tracks workload shape</strong>
+            </div>
+          </div>
+          <div class="case-strategic-meta">
+            <div class="case-strategic-meta-card">
+              <span>Main Assumption</span>
+              <p>Customers can understand and manage token mix, output length, caching, and processing tier well enough to choose their preferred price-performance tradeoff.</p>
+            </div>
+            <div class="case-strategic-meta-card">
+              <span>Main Failure Risk</span>
+              <p>If developers cannot forecast token and tool usage, the pricing system can feel unpredictable even when the billing units are explicit.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-mechanism-logic">
+          <div class="case-section-label">05 / Pricing Mechanism Logic</div>
+          <h2>Pricing Mechanism Logic</h2>
+          <p class="case-section-brief">Primary component: driver_logic</p>
+          <div class="case-value-flow-map" aria-label="OpenAI API token-metered driver-to-bill flow">
+            <div class="case-value-flow-node">
+              <span>Driver</span>
+              <strong>API computation consumed</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-value-flow-node">
+              <span>Pricing parameter</span>
+              <strong>Model, token category, and processing tier set rate exposure</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-value-flow-node">
+              <span>Bill effect</span>
+              <strong>Input, cached input, output, and tool charges accumulate</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-value-flow-node">
+              <span>Customer consequence</span>
+              <strong>Workload shape determines the price-performance tradeoff</strong>
+            </div>
+          </div>
+          <div class="case-architecture-panel-grid">
+            <div class="case-architecture-panel">
+              <span>Model choice</span>
+              <div class="case-architecture-token-line">Rate family</div>
+              <p>The selected model sets the per-token pricing context for the workload.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Token mix</span>
+              <div class="case-architecture-token-line">Input, cached input, output</div>
+              <p>The same request shape can bill differently depending on cached context and generated length.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Processing tier</span>
+              <div class="case-architecture-token-line">Urgency tradeoff</div>
+              <p>Batch can be lower cost only where supported and delayed completion is acceptable.</p>
+            </div>
+            <div class="case-architecture-panel">
+              <span>Tool boundary</span>
+              <div class="case-architecture-token-line">Beyond core tokens</div>
+              <p>Search, storage, containers, or other tools can add charges beyond model token usage.</p>
+            </div>
+          </div>
+          <p class="case-section-brief">
+            This case uses a driver view instead of a model price table. The learner should see which variables move the bill before memorizing any model-specific rate.
+          </p>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="bill-examples">
+          <div class="case-section-label">06 / Bill Examples</div>
+          <h2>Bill Examples</h2>
+          <p class="case-section-brief">
+            Limited dated examples from official pricing reviewed on June 4, 2026. These examples teach bill movement and are not a comprehensive price table. Exact price examples must be recaptured from official OpenAI pricing sources within 7 days before production promotion; if not recaptured, remove exact prices and keep only driver-based bill examples.
+          </p>
+          <table class="case-comparison-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Base layer</th>
+                <th>Variable layer</th>
+                <th>Final bill logic</th>
+                <th>Pricing lesson</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Standard uncached text workload</td>
+                <td>Reviewed gpt-5.5 standard short-context rates: input $5.00 per 1M tokens and output $30.00 per 1M tokens.</td>
+                <td>1M input tokens plus 1M output tokens.</td>
+                <td>$5.00 input + $30.00 output = $35.00 before any tool or storage charges.</td>
+                <td>Output can dominate the bill even when input and output token counts are equal.</td>
+              </tr>
+              <tr>
+                <td>Cached context reuse</td>
+                <td>Reviewed gpt-5.5 standard short-context rates: cached input $0.50 per 1M tokens and output $30.00 per 1M tokens.</td>
+                <td>1M cached input tokens plus 1M output tokens.</td>
+                <td>$0.50 cached input + $30.00 output = $30.50 before any tool or storage charges.</td>
+                <td>Caching changes the input portion, but output length can still drive most spend.</td>
+              </tr>
+              <tr>
+                <td>Batch-eligible asynchronous workload</td>
+                <td>Reviewed gpt-5.5 Batch short-context rates: input $2.50 per 1M tokens and output $15.00 per 1M tokens.</td>
+                <td>1M input tokens plus 1M output tokens processed through Batch.</td>
+                <td>$2.50 input + $15.00 output = $17.50 before any tool or storage charges.</td>
+                <td>Processing urgency changes the price-performance tradeoff only when the model and endpoint support Batch and the workload can tolerate delayed completion.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="pricing-architecture">
+          <div class="case-section-label">07 / Pricing Architecture</div>
+          <h2>Pricing Architecture</h2>
+          <p class="case-section-brief">
+            Structure only: the API pricing architecture separates model rate, token category, processing mode, and tool boundaries.
+          </p>
+          <div class="case-architecture-grid">
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Processing states</div>
+              <h3>How work is processed</h3>
+              <div class="case-tier-stack">
+                <div class="case-tier-row">
+                  <span>Standard</span>
+                  <strong>Synchronous baseline</strong>
+                  <em>Default API processing path.</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>Batch</span>
+                  <strong>Potential lower-cost asynchronous path</strong>
+                  <em>Only where the model and endpoint support Batch and the workload can tolerate delayed completion.</em>
+                </div>
+                <div class="case-tier-row">
+                  <span>Flex / Priority / Regional</span>
+                  <strong>Processing tradeoff states</strong>
+                  <em>Boundary states where price, availability, latency, or residency can differ.</em>
+                </div>
+              </div>
+            </div>
+            <div class="case-layer-panel">
+              <div class="case-layer-label">Segmentation</div>
+              <h3>How usage is structurally treated</h3>
+              <div class="case-segment-map">
+                <div class="case-segment-row">
+                  <span class="case-variable-token">Input</span>
+                  <p>Uncached prompt or context tokens are charged as input.</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">Cached input</span>
+                  <p>Repeated eligible context can be charged through the cached input category.</p>
+                </div>
+                <div class="case-segment-row">
+                  <span class="case-variable-token">Output</span>
+                  <p>Generated response tokens are charged separately from input.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-driver-strip">
+            <div>
+              <span>Drivers</span>
+              <strong>model, input, cached input, output, processing tier, tools</strong>
+            </div>
+            <div>
+              <span>Upgrade triggers</span>
+              <strong>higher model, longer output, async Batch eligibility, tool boundary</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="boundary-crossing-map">
+          <div class="case-section-label">08 / Boundary Crossing Map</div>
+          <h2>Boundary Crossing Map</h2>
+          <p class="case-section-brief">
+            Where a customer crosses into a different API pricing state.
+          </p>
+          <div class="case-transition-map case-transition-map--boundary">
+            <div class="case-transition-row">
+              <div><span>From / To</span><strong>Lower-cost model -&gt; Higher-rate model</strong></div>
+              <div><span>Boundary condition</span><strong>Workload needs higher capability or performance.</strong></div>
+              <div><span>Driver</span><strong>Model choice</strong></div>
+              <div><span>Billing effect</span><strong>The same broad token shape is charged at a different model-specific rate.</strong></div>
+              <div><span>Perception risk</span><strong>Model choice may feel like quality only, not a billing boundary.</strong></div>
+            </div>
+            <div class="case-transition-row">
+              <div><span>From / To</span><strong>Uncached input -&gt; Cached input</strong></div>
+              <div><span>Boundary condition</span><strong>Context becomes reusable and eligible for cached input pricing.</strong></div>
+              <div><span>Driver</span><strong>Cached input reuse</strong></div>
+              <div><span>Billing effect</span><strong>Input can be charged at cached input rates where supported.</strong></div>
+              <div><span>Perception risk</span><strong>Customers may overestimate savings if the workload is not cacheable.</strong></div>
+            </div>
+            <div class="case-transition-row">
+              <div><span>From / To</span><strong>Short output -&gt; Long output</strong></div>
+              <div><span>Boundary condition</span><strong>Prompt or product behavior produces longer generated responses.</strong></div>
+              <div><span>Driver</span><strong>Output token volume</strong></div>
+              <div><span>Billing effect</span><strong>Output charges increase with generated length.</strong></div>
+              <div><span>Perception risk</span><strong>Response style can quietly become a billing driver.</strong></div>
+            </div>
+            <div class="case-transition-row">
+              <div><span>From / To</span><strong>Standard job -&gt; Batch job</strong></div>
+              <div><span>Boundary condition</span><strong>The job can tolerate asynchronous completion.</strong></div>
+              <div><span>Driver</span><strong>Processing tier</strong></div>
+              <div><span>Billing effect</span><strong>Batch can be a lower-cost asynchronous path only where the model and endpoint support Batch and delayed completion is acceptable.</strong></div>
+              <div><span>Perception risk</span><strong>Lower cost can hide the time-to-completion tradeoff.</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-tension-layer">
+          <div class="case-section-label">09 / Decision Tension Layer</div>
+          <h2>Decision Tension Layer</h2>
+          <p class="case-section-brief">
+            The central tension is forecastability: token-metering is precise, but the buyer must predict how model choice, output behavior, caching, processing tier, and tools interact.
+          </p>
+          <div class="case-tension-visual">
+            <strong>Flexible experimentation</strong>
+            <span aria-hidden="true">-&gt;</span>
+            <strong>API computation consumed</strong>
+            <span aria-hidden="true">-&gt;</span>
+            <strong>Forecasting burden</strong>
+          </div>
+          <div class="case-friction-list">
+            <div class="case-friction-item">
+              <strong>Token mix uncertainty</strong>
+              <p>Input token volume, cached input reuse, and output token volume must be forecast together before the bill is easy to estimate.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Output surprise</strong>
+              <p>Output token volume can grow because of prompt style, product behavior, or multi-step reasoning needs.</p>
+            </div>
+            <div class="case-friction-item">
+              <strong>Boundary expansion</strong>
+              <p>Tool usage boundary can add search, storage, container, or tool-call charges beyond core model tokens.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-alternatives">
+          <div class="case-section-label">10 / Decision Alternatives</div>
+          <h2>Decision Alternatives</h2>
+          <p class="case-section-brief">
+            Concrete pricing moves, trade offs, and leading indicators.
+          </p>
+          <div class="case-decision-grid">
+            <div class="case-decision-card">
+              <span>Token mix estimator</span>
+              <strong>Show input, cached input, and output exposure before production use.</strong>
+              <p><strong>Expected effect:</strong> Reduce bill surprise and improve model selection discipline.</p>
+              <p><strong>Trade off:</strong> More salient cost drivers may slow simple experimentation.</p>
+              <p><strong>Leading indicator:</strong> More customers set budgets or choose lower-cost models before production launch.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Batch eligibility nudge</span>
+              <strong>Surface Batch only for supported workloads that can tolerate delayed completion.</strong>
+              <p><strong>Expected effect:</strong> Move asynchronous jobs into a better urgency-cost match.</p>
+              <p><strong>Trade off:</strong> Customers may overuse Batch for latency-sensitive jobs or workloads that cannot tolerate delayed completion.</p>
+              <p><strong>Leading indicator:</strong> More eligible bulk jobs use Batch without support escalation.</p>
+            </div>
+            <div class="case-decision-card">
+              <span>Cached context education</span>
+              <strong>Explain cached input through repeated-context examples.</strong>
+              <p><strong>Expected effect:</strong> Encourage reusable context patterns where appropriate.</p>
+              <p><strong>Trade off:</strong> Customers may over-optimize prompt design for price.</p>
+              <p><strong>Leading indicator:</strong> More repeated-context workloads show cached input usage without worse output quality.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="decision-priority">
+          <div class="case-section-label">11 / Decision Priority</div>
+          <h2>Decision Priority</h2>
+          <p class="case-section-brief">
+            Which pricing move should be tested first, and why.
+          </p>
+          <table class="case-comparison-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Move</th>
+                <th>Why this priority</th>
+                <th>Risk</th>
+                <th>Complexity</th>
+                <th>Success metric</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Token mix estimator</td>
+                <td>Reduces the main forecasting friction without changing prices or processing mode.</td>
+                <td>low</td>
+                <td>medium</td>
+                <td>Increase in customers setting budgets or selecting model tiers after viewing token guidance.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Batch eligibility nudge</td>
+                <td>Teaches the urgency-for-cost tradeoff after customers understand token mix.</td>
+                <td>medium</td>
+                <td>medium</td>
+                <td>Share of eligible bulk jobs moved to Batch without increased failure or support rate.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Cached context education</td>
+                <td>Can improve cost efficiency but requires careful workload understanding.</td>
+                <td>medium</td>
+                <td>low</td>
+                <td>Increase in cached input share for repeated-context use cases without lower task quality.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section case-framework-section" data-case-section="reasoning-error-check">
+          <div class="case-section-label">12 / Reasoning Error Check</div>
+          <h2>Reasoning Error Check</h2>
+          <p class="case-section-brief">
+            Stress test the pricing logic before accepting the recommendation.
+          </p>
+          <table class="case-comparison-table">
+            <thead>
+              <tr>
+                <th>Reasoning risk</th>
+                <th>Case-specific check</th>
+                <th>Evidence needed</th>
+                <th>Failure signal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Published prices are treated as proof of internal OpenAI cost structure.</td>
+                <td>Keep internal-cost claims out and label strategic logic as hypothesized.</td>
+                <td>Direct OpenAI statement would be needed to discuss internal cost rationale.</td>
+                <td>The page says output is priced higher because it costs OpenAI exactly more to produce.</td>
+              </tr>
+              <tr>
+                <td>API pricing is mixed with ChatGPT subscription pricing.</td>
+                <td>Keep ChatGPT subscriptions only as a boundary note.</td>
+                <td>Official pricing page language separating API and ChatGPT billing.</td>
+                <td>The case treats ChatGPT Plus, Business, Enterprise, or Edu as API pricing tiers.</td>
+              </tr>
+              <tr>
+                <td>Exact prices become stale but still look comprehensive.</td>
+                <td>Limit exact prices to dated examples and enforce a 30-day review window.</td>
+                <td>Fresh official pricing check within 7 days before production promotion; if exact prices are not recaptured, remove them and keep driver-based examples only.</td>
+                <td>A reader mistakes this case for a current full model price table.</td>
+              </tr>
+              <tr>
+                <td>Batch or caching is presented as pure savings.</td>
+                <td>Show timing, eligibility, product-quality, and support tradeoffs.</td>
+                <td>Workload-level evidence that lower-cost processing modes fit the use case.</td>
+                <td>Latency-sensitive jobs move to Batch or prompt quality suffers from over-optimization.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section case-framework-section case-framework-section--sources" data-case-section="references">
+          <div class="case-section-label">13 / References</div>
+          <h2>References</h2>
+          <ul class="case-source-list">
+            <li><cite>OpenAI.</cite> (n.d.). <a href="https://developers.openai.com/api/docs/pricing">Pricing | OpenAI API</a>. Retrieved June 4, 2026, from <a href="https://developers.openai.com/api/docs/pricing">https://developers.openai.com/api/docs/pricing</a></li>
+            <li><cite>OpenAI.</cite> (n.d.). <a href="https://openai.com/api/pricing/">API Pricing</a>. Retrieved June 4, 2026, from <a href="https://openai.com/api/pricing/">https://openai.com/api/pricing/</a></li>
+            <li><cite>OpenAI.</cite> (n.d.). <a href="https://developers.openai.com/api/docs/guides/batch">Batch API</a>. Retrieved June 4, 2026, from <a href="https://developers.openai.com/api/docs/guides/batch">https://developers.openai.com/api/docs/guides/batch</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>dokal5.github.io · knowledge garden</span>
+    <span>Utrecht, NL</span>
+  </footer>
+
+</div>
+
+<!-- Hidden system data only. Do not render this JSON visibly. Keep it aligned with the page content. -->
+<script type="application/json" id="pricing-case-schema">
+{
+  "schema_version": "1.0",
+  "case_id": "openai-api-token-metered-pricing",
+  "case_type": "other",
+  "evidence_level": "observed",
+  "reviewed_at": "2026-06-04",
+  "case_status": "current",
+  "freshness_policy": {
+    "review_interval_days": 30,
+    "stale_after_days": 30,
+    "historical_rule": "Mark historical if OpenAI no longer presents token-metered API pricing with separate input, cached input, output, and processing-tier logic as current public evidence."
+  },
+  "pricing_model": "Token-metered API pricing with separate input, cached input, output, model-choice, processing-tier, and tool-boundary billing layers.",
+  "value_metric": "API computation consumed, primarily measured through input tokens, cached input tokens, output tokens, and processing tier.",
+  "segmentation_type": "Model choice, token category, context reuse, workload urgency, processing mode, and optional tool usage.",
+  "tiers": [
+    "Standard processing",
+    "Batch processing",
+    "Flex processing",
+    "Priority processing",
+    "Regional processing"
+  ],
+  "segments": [
+    "Synchronous API workloads",
+    "Asynchronous batch workloads",
+    "Cost-sensitive flexible workloads",
+    "Latency-sensitive priority workloads",
+    "Tool-using applications"
+  ],
+  "pricing_logic": "OpenAI API pricing separates model usage into input tokens, cached input tokens, and output tokens, then changes the effective bill through model choice, processing tier, and tool or storage boundaries where used.",
+  "key_driver": "API computation consumed",
+  "drivers": [
+    {
+      "driver": "Model choice",
+      "type": "add_on",
+      "pricing_role": "multiplier",
+      "direction": "segment_users",
+      "effect": "The selected model sets the per-token rate for the workload.",
+      "student_label": "Model"
+    },
+    {
+      "driver": "Input token volume",
+      "type": "usage",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "More uncached input tokens increase the input portion of the bill.",
+      "student_label": "Input"
+    },
+    {
+      "driver": "Cached input reuse",
+      "type": "usage",
+      "pricing_role": "discount",
+      "direction": "reduce_friction",
+      "effect": "Repeated context can qualify for cached input pricing, reducing the charge for that input category where supported.",
+      "student_label": "Cached input"
+    },
+    {
+      "driver": "Output token volume",
+      "type": "usage",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "Longer generated responses increase the output portion of the bill.",
+      "student_label": "Output"
+    },
+    {
+      "driver": "Processing tier",
+      "type": "add_on",
+      "pricing_role": "multiplier",
+      "direction": "segment_users",
+      "effect": "Batch, Flex, Standard, Priority, and regional processing choices change the price-performance or timing tradeoff where officially supported by the model and endpoint and where workload timing fits.",
+      "student_label": "Processing mode"
+    },
+    {
+      "driver": "Tool usage boundary",
+      "type": "add_on",
+      "pricing_role": "variable_charge",
+      "direction": "increase_revenue",
+      "effect": "Built-in tools, file storage, web search, or containers can add charges beyond core text tokens.",
+      "student_label": "Tools"
+    }
+  ],
+  "formula": {
+    "expression": "API bill = model_rate(input_tokens + cached_input_tokens + output_tokens) adjusted by processing_tier + tool_boundary_charges",
+    "variables": [
+      {
+        "symbol": "M",
+        "label": "Model choice",
+        "maps_to_driver": "Model choice"
+      },
+      {
+        "symbol": "I",
+        "label": "Input token volume",
+        "maps_to_driver": "Input token volume"
+      },
+      {
+        "symbol": "C",
+        "label": "Cached input reuse",
+        "maps_to_driver": "Cached input reuse"
+      },
+      {
+        "symbol": "O",
+        "label": "Output token volume",
+        "maps_to_driver": "Output token volume"
+      },
+      {
+        "symbol": "P",
+        "label": "Processing tier",
+        "maps_to_driver": "Processing tier"
+      },
+      {
+        "symbol": "T",
+        "label": "Tool usage boundary",
+        "maps_to_driver": "Tool usage boundary"
+      }
+    ],
+    "output_label": "API usage bill",
+    "explanation": "The formula is conceptual: exact rates depend on the model and officially supported processing mode reviewed on the pricing page."
+  },
+  "upgrade_triggers": [
+    {
+      "trigger": "Higher-priced model selected",
+      "from": "Lower-cost model usage",
+      "to": "Higher-rate model usage",
+      "why_it_happens": "The workload needs more capability, reasoning, context, or performance than the lower-priced model provides.",
+      "pricing_effect": "The same token shape is charged at a higher model-specific rate."
+    },
+    {
+      "trigger": "Output grows",
+      "from": "Short generated output",
+      "to": "Longer generated output",
+      "why_it_happens": "The application asks for longer, more detailed, or multi-step responses.",
+      "pricing_effect": "Output token charges increase with generated length."
+    },
+    {
+      "trigger": "Context becomes cacheable",
+      "from": "Uncached input",
+      "to": "Cached input",
+      "why_it_happens": "Repeated context is reused in a way that qualifies for cached input pricing where supported.",
+      "pricing_effect": "The input portion can be charged at the cached input rate instead of the uncached input rate."
+    },
+    {
+      "trigger": "Workload moves to asynchronous processing",
+      "from": "Standard synchronous processing",
+      "to": "Batch processing",
+      "why_it_happens": "The job uses a model and endpoint that support Batch and can tolerate delayed asynchronous completion.",
+      "pricing_effect": "Batch can be a lower-cost asynchronous path only where the model and endpoint support Batch and the workload can tolerate delayed completion."
+    },
+    {
+      "trigger": "Tool boundary crossed",
+      "from": "Core model token usage",
+      "to": "Model usage plus tool, storage, search, or container charges",
+      "why_it_happens": "The application uses built-in tools or storage-backed workflows.",
+      "pricing_effect": "Non-token or token-adjacent charges can be added to model token charges."
+    }
+  ],
+  "visualization": {
+    "primary_component": "driver_logic",
+    "supporting_components": [
+      "bill_examples",
+      "boundary_crossing_map",
+      "decision_priority"
+    ],
+    "interactive_controls": [
+      "Model choice",
+      "Input token volume",
+      "Cached input reuse",
+      "Output token volume",
+      "Processing tier"
+    ],
+    "default_view": "Text/model API token-metering logic",
+    "student_prompt": "Change one driver and explain how the API bill moves."
+  },
+  "pricing_artifact": {
+    "source_url": "https://developers.openai.com/api/docs/pricing",
+    "local_screenshot_path": "../../assets/pricing-artifacts/openai-api-token-metered-pricing/openai-api-pricing-page-2026-06-04.png",
+    "artifact_date": "2026-06-04",
+    "source_screenshot_date": "2026-06-04",
+    "source_reviewed_at": "2026-06-04",
+    "artifact_type": "official_pricing_page_screenshot",
+    "capture_status": "captured",
+    "alt_text": "Screenshot of the official OpenAI API pricing documentation showing token pricing categories and model rates reviewed on 2026-06-04."
+  },
+  "primary_component": "driver_logic",
+  "decision_core": {
+    "what_is_monetized": "API computation consumed through model calls, primarily measured by token category and processing mode.",
+    "what_changes_the_bill": "Model choice, input token volume, cached input reuse, output token volume, processing tier, and tool usage boundaries.",
+    "who_pays_more_and_why": "Customers using higher-priced models, more uncached input, longer output, more urgent processing, or additional tools pay more because they consume more or higher-priority API capacity."
+  },
+  "student_10_second_takeaway": "The bill changes when model choice, input volume, cached context reuse, output length, processing tier, or tool usage changes the amount and urgency of API computation consumed.",
+  "friction_points": [
+    "Developers must estimate token mix before spend is easy to forecast.",
+    "Output length can dominate spend even when input volume looks modest.",
+    "Caching benefits depend on whether repeated context qualifies for cached input pricing.",
+    "Processing-tier choices require teams to decide whether immediacy is worth the price-performance tradeoff.",
+    "Tool usage can make the bill extend beyond core model token charges."
+  ],
+  "risks": [
+    "Customers may confuse ChatGPT subscriptions with separately billed API usage.",
+    "Applications may create bill surprise if output length grows unnoticed.",
+    "A full model price table can distract from the mechanism and become stale quickly.",
+    "Interpreting price differences as internal cost proof would overclaim beyond public evidence."
+  ],
+  "structural_weakness": "The pricing architecture is granular and adaptable, but customers must forecast multiple interacting drivers before the final bill is intuitive.",
+  "strategic_insight": "OpenAI API pricing works as a flexible computation meter: it lets customers choose capability, urgency, and cost posture while tying revenue to observable API consumption.",
+  "strategic_logic": {
+    "customer_condition": "Variable AI workloads",
+    "behavior_change": "Choose model and urgency",
+    "pricing_driver": "API computation consumed",
+    "billing_change": "Token and tier charges change",
+    "financial_outcome": "Revenue tracks workload shape",
+    "dominant_causal_chain": [
+      "Variable AI workloads",
+      "Choose model and urgency",
+      "API computation consumed",
+      "Token and tier charges change",
+      "Revenue tracks workload shape"
+    ],
+    "main_assumption": "Customers can understand and manage token mix, output length, caching, and processing tier well enough to choose their preferred price-performance tradeoff.",
+    "main_failure_risk": "If developers cannot forecast token and tool usage, the pricing system can feel unpredictable even when the billing units are explicit.",
+    "evidence_status": "hypothesized",
+    "visual_strip": {
+      "enabled": true,
+      "layout": "canonical_five_step_strip"
+    }
+  },
+  "decision_alternatives": [
+    {
+      "option": "Token mix estimator",
+      "pricing_move": "Make input, cached input, and output token exposure more visible before customers run production workloads.",
+      "expected_effect": "Reduce bill surprise and improve model selection discipline.",
+      "trade_off": "Making cost drivers more salient may slow adoption for customers who prefer simple experimentation.",
+      "leading_indicator": "More customers set budgets or choose lower-cost models before production launch."
+    },
+    {
+      "option": "Batch eligibility nudge",
+      "pricing_move": "Surface Batch as a potentially lower-cost asynchronous path only for workloads whose model and endpoint support Batch and that can tolerate delayed completion.",
+      "expected_effect": "Move asynchronous workloads into a pricing mode that better matches urgency.",
+      "trade_off": "Customers may overuse Batch for jobs that actually need interactive latency or cannot tolerate delayed completion.",
+      "leading_indicator": "Higher share of eligible evaluation, classification, and bulk jobs processed through Batch without support escalation."
+    },
+    {
+      "option": "Cached context education",
+      "pricing_move": "Explain cached input pricing with practical examples of repeated system prompts or reusable context.",
+      "expected_effect": "Encourage customers to design reusable context patterns where appropriate.",
+      "trade_off": "Customers may over-optimize prompts for caching even when product quality or simplicity matters more.",
+      "leading_indicator": "A higher share of repeated-context workloads show cached input usage without degraded output quality."
+    }
+  ],
+  "bill_examples": [
+    {
+      "scenario": "Standard uncached text workload",
+      "customer_situation": "A developer uses a flagship text model with uncached input and generated output.",
+      "base_price": "Example using reviewed gpt-5.5 standard short-context rates: input $5.00 per 1M tokens and output $30.00 per 1M tokens.",
+      "pricing_driver": "Input token volume and Output token volume",
+      "variable_charge": "1M input tokens plus 1M output tokens.",
+      "discount_or_adjustment": "none",
+      "final_bill": "Example bill logic: $5.00 input + $30.00 output = $35.00 before any tool or storage charges.",
+      "pricing_lesson": "The output side can dominate the bill even when input and output token counts are equal."
+    },
+    {
+      "scenario": "Cached context reuse",
+      "customer_situation": "A developer reuses context that qualifies for cached input pricing on the same reviewed model.",
+      "base_price": "Example using reviewed gpt-5.5 standard short-context rates: cached input $0.50 per 1M tokens and output $30.00 per 1M tokens.",
+      "pricing_driver": "Cached input reuse and Output token volume",
+      "variable_charge": "1M cached input tokens plus 1M output tokens.",
+      "discount_or_adjustment": "Cached input rate applies where supported.",
+      "final_bill": "Example bill logic: $0.50 cached input + $30.00 output = $30.50 before any tool or storage charges.",
+      "pricing_lesson": "Caching changes the input portion of the bill, but output length can still drive most spend."
+    },
+    {
+      "scenario": "Batch-eligible asynchronous workload",
+      "customer_situation": "A bulk job uses a model and endpoint that support Batch and can tolerate delayed asynchronous completion.",
+      "base_price": "Example using reviewed gpt-5.5 Batch short-context rates: input $2.50 per 1M tokens and output $15.00 per 1M tokens.",
+      "pricing_driver": "Processing tier",
+      "variable_charge": "1M input tokens plus 1M output tokens processed through Batch.",
+      "discount_or_adjustment": "Batch processing rate applies only where the model and endpoint support Batch and the workload can tolerate delayed completion.",
+      "final_bill": "Example bill logic: $2.50 input + $15.00 output = $17.50 before any tool or storage charges.",
+      "pricing_lesson": "Processing urgency changes the price-performance tradeoff only when the model and endpoint support Batch and the workload can tolerate delayed completion."
+    }
+  ],
+  "boundary_crossing_map": [
+    {
+      "from_state": "Lower-cost model",
+      "boundary_condition": "Workload needs higher capability or performance",
+      "to_state": "Higher-rate model",
+      "driver": "Model choice",
+      "billing_effect": "The same broad token shape is charged at a different model-specific rate.",
+      "customer_perception_risk": "Customers may think model selection is a quality choice only, not a billing boundary."
+    },
+    {
+      "from_state": "Uncached input",
+      "boundary_condition": "Context becomes reusable and eligible for cached input pricing",
+      "to_state": "Cached input",
+      "driver": "Cached input reuse",
+      "billing_effect": "The input portion can be charged at the cached input rate where supported.",
+      "customer_perception_risk": "Customers may overestimate savings if the workload is not actually cacheable."
+    },
+    {
+      "from_state": "Short output",
+      "boundary_condition": "Prompt or product behavior produces longer generated responses",
+      "to_state": "Long output",
+      "driver": "Output token volume",
+      "billing_effect": "Output charges increase with generated length.",
+      "customer_perception_risk": "Users may not notice that response style or verbosity has become a billing driver."
+    },
+    {
+      "from_state": "Standard synchronous job",
+      "boundary_condition": "Job can tolerate asynchronous completion",
+      "to_state": "Batch job",
+      "driver": "Processing tier",
+      "billing_effect": "Batch can be a lower-cost asynchronous path only where the model and endpoint support Batch and delayed completion is acceptable.",
+      "customer_perception_risk": "Customers may choose the lower-cost tier without recognizing the time-to-completion tradeoff."
+    },
+    {
+      "from_state": "Core model call",
+      "boundary_condition": "Application invokes built-in tools, search, files, or containers",
+      "to_state": "Model call plus tool boundary",
+      "driver": "Tool usage boundary",
+      "billing_effect": "Tool, storage, or container charges can be added to token charges.",
+      "customer_perception_risk": "The bill may feel surprising if customers budget only for model tokens."
+    }
+  ],
+  "decision_priority": [
+    {
+      "priority_rank": 1,
+      "option": "Token mix estimator",
+      "why_first": "It directly reduces the main forecasting friction without changing prices or requiring customers to change processing mode.",
+      "test_type": "Price page or dashboard experiment",
+      "risk_level": "low",
+      "upside_potential": "Better customer cost comprehension and fewer bill-surprise escalations.",
+      "implementation_complexity": "medium",
+      "success_metric": "Increase in customers setting budgets or selecting model tiers after viewing token mix guidance."
+    },
+    {
+      "priority_rank": 2,
+      "option": "Batch eligibility nudge",
+      "why_first": "It is useful after customers understand token mix because it teaches the urgency-for-cost tradeoff.",
+      "test_type": "Cohort comparison for eligible asynchronous workloads",
+      "risk_level": "medium",
+      "upside_potential": "Higher Batch adoption for jobs that do not need immediate responses.",
+      "implementation_complexity": "medium",
+      "success_metric": "Share of eligible bulk jobs moved to Batch without increased failure or support rate."
+    },
+    {
+      "priority_rank": 3,
+      "option": "Cached context education",
+      "why_first": "It can improve cost efficiency but requires careful workload understanding to avoid over-optimization.",
+      "test_type": "Documentation and example-path test",
+      "risk_level": "medium",
+      "upside_potential": "More efficient repeated-context workloads.",
+      "implementation_complexity": "low",
+      "success_metric": "Increase in cached input share for repeated-context use cases without lower task quality."
+    }
+  ],
+  "reasoning_error_check": [
+    {
+      "error_type": "causal_overclaim",
+      "risk_statement": "The case could imply that published price differences prove OpenAI's internal cost structure.",
+      "case_specific_check": "Keep all internal-cost claims out of the page and label strategic logic as hypothesized.",
+      "evidence_needed": "Direct OpenAI statement would be needed to discuss internal cost rationale.",
+      "failure_signal": "The page says output is priced higher because it costs OpenAI exactly more to produce."
+    },
+    {
+      "error_type": "category_error",
+      "risk_statement": "The case could mix API pricing with ChatGPT subscription pricing.",
+      "case_specific_check": "Keep ChatGPT subscriptions only as a boundary note and state that API usage is billed separately.",
+      "evidence_needed": "Official billing FAQ or pricing page language separating API and ChatGPT billing.",
+      "failure_signal": "The case treats ChatGPT Plus, Business, Enterprise, or Edu as API pricing tiers."
+    },
+    {
+      "error_type": "static_thinking",
+      "risk_statement": "The case could become stale quickly if it preserves exact model prices as if they are stable.",
+      "case_specific_check": "Limit exact prices to dated examples and enforce a 30-day review window.",
+      "evidence_needed": "Fresh official pricing check within 7 days before any promotion; if exact prices are not recaptured, remove them and keep driver-based examples only.",
+      "failure_signal": "A reader can mistake the case for a current comprehensive model price table."
+    },
+    {
+      "error_type": "no_trade_off",
+      "risk_statement": "The case could present Batch or caching as pure savings without showing timing, eligibility, or product-quality tradeoffs.",
+      "case_specific_check": "Every decision alternative must include trade off and leading indicator.",
+      "evidence_needed": "Workload-level evidence that lower-cost processing modes fit the use case.",
+      "failure_signal": "Customers move latency-sensitive jobs into Batch or over-optimize context for price while harming product behavior."
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
