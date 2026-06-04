@@ -163,30 +163,47 @@
           <div class="case-section-label">05 / Pricing Mechanism Logic</div>
           <h2>Pricing Mechanism Logic</h2>
           <p class="case-section-brief">Primary component: driver_logic</p>
-          <div class="case-driver-strip">
-            <div>
+          <div class="case-value-flow-map" aria-label="OpenAI API token-metered driver-to-bill flow">
+            <div class="case-value-flow-node">
+              <span>Driver</span>
+              <strong>API computation consumed</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-value-flow-node">
+              <span>Pricing parameter</span>
+              <strong>Model, token category, and processing tier set rate exposure</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-value-flow-node">
+              <span>Bill effect</span>
+              <strong>Input, cached input, output, and tool charges accumulate</strong>
+            </div>
+            <div class="case-value-flow-arrow" aria-hidden="true">-&gt;</div>
+            <div class="case-value-flow-node">
+              <span>Customer consequence</span>
+              <strong>Workload shape determines the price-performance tradeoff</strong>
+            </div>
+          </div>
+          <div class="case-architecture-panel-grid">
+            <div class="case-architecture-panel">
               <span>Model choice</span>
-              <strong>Sets rate family</strong>
+              <div class="case-architecture-token-line">Rate family</div>
+              <p>The selected model sets the per-token pricing context for the workload.</p>
             </div>
-            <div>
-              <span>Input tokens</span>
-              <strong>Add input charge</strong>
+            <div class="case-architecture-panel">
+              <span>Token mix</span>
+              <div class="case-architecture-token-line">Input, cached input, output</div>
+              <p>The same request shape can bill differently depending on cached context and generated length.</p>
             </div>
-            <div>
-              <span>Cached input</span>
-              <strong>Changes input rate</strong>
-            </div>
-            <div>
-              <span>Output tokens</span>
-              <strong>Add generation charge</strong>
-            </div>
-            <div>
+            <div class="case-architecture-panel">
               <span>Processing tier</span>
-              <strong>Changes urgency tradeoff</strong>
+              <div class="case-architecture-token-line">Urgency tradeoff</div>
+              <p>Batch can be lower cost only where supported and delayed completion is acceptable.</p>
             </div>
-            <div>
+            <div class="case-architecture-panel">
               <span>Tool boundary</span>
-              <strong>Adds non-core charges</strong>
+              <div class="case-architecture-token-line">Beyond core tokens</div>
+              <p>Search, storage, containers, or other tools can add charges beyond model token usage.</p>
             </div>
           </div>
           <p class="case-section-brief">
@@ -301,34 +318,34 @@
           <p class="case-section-brief">
             Where a customer crosses into a different API pricing state.
           </p>
-          <div class="case-transition-map">
+          <div class="case-transition-map case-transition-map--boundary">
             <div class="case-transition-row">
-              <strong>Lower-cost model -&gt; Higher-rate model</strong>
-              <span>Boundary condition: workload needs higher capability or performance.</span>
-              <span>Driver: Model choice</span>
-              <span>Billing effect: the same broad token shape is charged at a different model-specific rate.</span>
-              <span>Perception risk: model choice may feel like quality only, not a billing boundary.</span>
+              <div><span>From / To</span><strong>Lower-cost model -&gt; Higher-rate model</strong></div>
+              <div><span>Boundary condition</span><strong>Workload needs higher capability or performance.</strong></div>
+              <div><span>Driver</span><strong>Model choice</strong></div>
+              <div><span>Billing effect</span><strong>The same broad token shape is charged at a different model-specific rate.</strong></div>
+              <div><span>Perception risk</span><strong>Model choice may feel like quality only, not a billing boundary.</strong></div>
             </div>
             <div class="case-transition-row">
-              <strong>Uncached input -&gt; Cached input</strong>
-              <span>Boundary condition: context becomes reusable and eligible for cached input pricing.</span>
-              <span>Driver: Cached input reuse</span>
-              <span>Billing effect: input can be charged at cached input rates where supported.</span>
-              <span>Perception risk: customers may overestimate savings if the workload is not cacheable.</span>
+              <div><span>From / To</span><strong>Uncached input -&gt; Cached input</strong></div>
+              <div><span>Boundary condition</span><strong>Context becomes reusable and eligible for cached input pricing.</strong></div>
+              <div><span>Driver</span><strong>Cached input reuse</strong></div>
+              <div><span>Billing effect</span><strong>Input can be charged at cached input rates where supported.</strong></div>
+              <div><span>Perception risk</span><strong>Customers may overestimate savings if the workload is not cacheable.</strong></div>
             </div>
             <div class="case-transition-row">
-              <strong>Short output -&gt; Long output</strong>
-              <span>Boundary condition: prompt or product behavior produces longer generated responses.</span>
-              <span>Driver: Output token volume</span>
-              <span>Billing effect: output charges increase with generated length.</span>
-              <span>Perception risk: response style can quietly become a billing driver.</span>
+              <div><span>From / To</span><strong>Short output -&gt; Long output</strong></div>
+              <div><span>Boundary condition</span><strong>Prompt or product behavior produces longer generated responses.</strong></div>
+              <div><span>Driver</span><strong>Output token volume</strong></div>
+              <div><span>Billing effect</span><strong>Output charges increase with generated length.</strong></div>
+              <div><span>Perception risk</span><strong>Response style can quietly become a billing driver.</strong></div>
             </div>
             <div class="case-transition-row">
-              <strong>Standard job -&gt; Batch job</strong>
-              <span>Boundary condition: the job can tolerate asynchronous completion.</span>
-              <span>Driver: Processing tier</span>
-              <span>Billing effect: Batch can be a lower-cost asynchronous path only where the model and endpoint support Batch and delayed completion is acceptable.</span>
-              <span>Perception risk: lower cost can hide the time-to-completion tradeoff.</span>
+              <div><span>From / To</span><strong>Standard job -&gt; Batch job</strong></div>
+              <div><span>Boundary condition</span><strong>The job can tolerate asynchronous completion.</strong></div>
+              <div><span>Driver</span><strong>Processing tier</strong></div>
+              <div><span>Billing effect</span><strong>Batch can be a lower-cost asynchronous path only where the model and endpoint support Batch and delayed completion is acceptable.</strong></div>
+              <div><span>Perception risk</span><strong>Lower cost can hide the time-to-completion tradeoff.</strong></div>
             </div>
           </div>
         </section>
