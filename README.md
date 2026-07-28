@@ -34,6 +34,10 @@ Use `cognition/` for upstream reasoning prompts and constitution checks before p
 
 Brain Workflow v1 is defined in `cognition/README.md`. It adds Brain Lookup, Workbench Artifact, Implementation Gate, Implementation Review, Post Merge Audit, and Brain Update as protocol steps without adding a build system, database, or runtime.
 
+## Project Research
+
+- [European Commercial Excellence Field Lab 2026–2027 trade-show background guide](project/european-trade-show-field-guide-2026-2027.md): pre-event themes, commercial questions, evidence standards, and preparation guidance for the European exhibition portfolio.
+
 ## Local Verification
 
 Because the site is static, most pages can be opened directly in a browser. For local HTTP testing:
